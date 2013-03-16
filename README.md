@@ -1,3 +1,25 @@
+Version 0.9.9 '16-3-2013'
+- Fixed betterdefault generator bug
+- Fixed empty generator string error
+- Fixed weird rectangular tunnels caused by dungeons
+- Added biome borders to betterdefault
+- Added villages to gold and betterdefault
+- Added witch huts, desert pyramids and jungle temples to betterdefault
+- Fixed sand rivers on betterdefault
+- Added slimes to the swampland biome on betterdefault
+- Changed biome heights on betterdefault
+- Now compatible with the Biosphere mod
+- Fixed ugly beaches on betterdefault
+- Beaches and dunes cannot spawn next to cold biomes anymore
+- Changed biome colors on betterdefault
+- Increased amount of islands on betterdefault
+
+Version 0.9.8 '13-3-2013'
+- Updated to minecraft 1.5
+- Some small changes to the create world gui
+- Fixed treelayers 
+- Added nether Quartz to all hell world generators
+
 Version 0.9.7 '10-3-2013'
 - Increased Regionpack size
 - Changed cloud height in gold
