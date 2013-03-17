@@ -16,15 +16,11 @@ public abstract class GenLayer
 		if(par2WorldType == WorldType.BWG4GOLD)
 		{
 			GenLayer obj = new BWG4LayerCreate(1L);
-			obj = new BWG4LayerRegion(1L, (GenLayer)(obj));
-			//obj = new GenLayerFuzzyZoom(2000L, (GenLayer)(obj));
-			//obj = GenLayerZoom.func_75915_a(1000L, var13, var4 + 2);
 			obj = new GenLayerZoom(2000L, (GenLayer)(obj));
-			//obj = GenLayerZoom.func_75915_a(1000L, var13, var4 + 2);
-			//obj = new BWG4LayerRegion(1L, (GenLayer)(obj));
 			obj = new GenLayerZoom(2001L, (GenLayer)(obj));
-			obj = new BWG4LayerPack(2L, (GenLayer)(obj), 1);
 			obj = new GenLayerZoom(2002L, (GenLayer)(obj));
+			obj = new BWG4LayerRegion(1L, (GenLayer)(obj));
+			obj = new BWG4LayerPack(2L, (GenLayer)(obj), 1);
 			obj = new GenLayerZoom(2003L, (GenLayer)(obj));
 			byte size = 4;
 			

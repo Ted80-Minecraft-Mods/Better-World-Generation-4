@@ -94,14 +94,14 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
 									}
 									else
 									{
-										if(THEMEID == 2)
-										{
-											var51 = Block.lavaStill.blockID;
-										}
-										else
-										{
+										//if(THEMEID == 2)
+										//{
+										//	var51 = Block.lavaStill.blockID;
+										//}
+										//else
+										//{
 											var51 = Block.waterStill.blockID;
-										}	
+										//}	
 									}	
                                 } 
 
@@ -240,7 +240,7 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
 		double extremenes = -3000.0D;
 		double weight = 8000.0D;
 		if(THEMEID == 1) { maxHeight = 80.0F; extremenes = -2500.0D; }
-		if(THEMEID == 2) { maxHeight = 80.0F; extremenes = -2500.0D; }
+		//if(THEMEID == 2) { maxHeight = 80.0F; extremenes = -2500.0D; }
 		if(THEMEID == 4) { extremenes = -400.0D; }		
 		
         double var8 = 684.412D;

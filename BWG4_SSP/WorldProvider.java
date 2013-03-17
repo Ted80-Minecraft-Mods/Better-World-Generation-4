@@ -68,7 +68,7 @@ public abstract class WorldProvider
 		//THEME GENERATOR SETTINGS
 		int themeID = 1;
 		String zer = "", one = "1", two = "2", thr = "3", fou = "4", fiv = "5", theme = worldObj.getWorldInfo().getGeneratorOptions();
-		if(theme.equals(zer)) { themeID = 0; }
+		if(theme.equals(zer)) { themeID = 1; }
 		if(theme.equals(one)) { themeID = 1; }
 		if(theme.equals(two)) { themeID = 2; }
 		if(theme.equals(thr)) { themeID = 3; }
@@ -137,7 +137,7 @@ public abstract class WorldProvider
 		//THEME GENERATOR SETTINGS
 		int themeID = 1;
 		String zer = "", one = "1", two = "2", thr = "3", fou = "4", fiv = "5", theme = worldObj.getWorldInfo().getGeneratorOptions();
-		if(theme.equals(zer)) { themeID = 0; }
+		if(theme.equals(zer)) { themeID = 1; }
 		if(theme.equals(one)) { themeID = 1; }
 		if(theme.equals(two)) { themeID = 2; }
 		if(theme.equals(thr)) { themeID = 3; }

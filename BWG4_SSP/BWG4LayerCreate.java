@@ -3,10 +3,12 @@ package net.minecraft.src;
 public class BWG4LayerCreate extends GenLayer
 {
 	private boolean ocean = false;
+	private boolean gold = false;
 
     public BWG4LayerCreate(long par1)
     {
         super(par1);
+		gold = true;
     }
 	
     public BWG4LayerCreate(long par1, String[] Settings, boolean remote)
@@ -34,6 +36,10 @@ public class BWG4LayerCreate extends GenLayer
 				if(ocean)
 				{
 					var5[var7 + var6 * par3] = this.nextInt(10) == 0 ? 1 : 0;
+				}
+				else if(gold)
+				{
+					var5[var7 + var6 * par3] = 5;
 				}
 				else
 				{

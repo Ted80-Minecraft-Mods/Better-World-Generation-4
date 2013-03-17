@@ -12,15 +12,15 @@ public class WorldType
     public static final WorldType DEFAULT_1_1 = (new WorldType(8, "default_1_1", 0)).setCanBeCreated(false);
 
 	//BWG4 BIG WORLDTYPES
-	public static final WorldType BWG4DEFAULT = (new WorldType(10, "BetterDefault")).setCanBeCreated(false); 
-	public static final WorldType BWG4LARGE = (new WorldType(11, "LargeDefault")).setCanBeCreated(false); 
+	public static final WorldType BWG4DEFAULT = (new WorldType(10, "BetterDefault")).setCanBeCreated(false); //SMP
+	public static final WorldType BWG4LARGE = (new WorldType(11, "LargeDefault")).setCanBeCreated(false); //SMP
 	public static final WorldType BWG4BETA1 = new WorldType(12, "Beta"); 
-	public static final WorldType BWG4BETA2 = (new WorldType(13, "BetaDefault")).setCanBeCreated(false); 
+	public static final WorldType BWG4BETA2 = (new WorldType(13, "BetaDefault")).setCanBeCreated(false); //SMP
 	public static final WorldType BWG4BETA3 = (new WorldType(14, "BetaGold")).setCanBeCreated(false); 
 	public static final WorldType BWG4ALPHA = new WorldType(15, "Alpha"); 
 	public static final WorldType BWG4INFDEV = new WorldType(16, "Infdev"); 
 	public static final WorldType BWG4INDEV1 = new WorldType(17, "Indev");
-	public static final WorldType BWG4INDEV2 = (new WorldType(18, "Indev_floating")).setCanBeCreated(false);
+	public static final WorldType BWG4INDEV2 = (new WorldType(18, "Indev_floating")).setCanBeCreated(false); //SMP
 	public static final WorldType BWG4GOLD = new WorldType(19, "Gold"); 
 	
 	//BWG4 SURVIVAL WORLDTYPES	
@@ -30,7 +30,7 @@ public class WorldType
 	
 	//BWG4 FUN/DIMENSION WORLDTYPES
     public static final WorldType BWG4SKY1 = new WorldType(25, "Sky Dimension"); 
-    public static final WorldType BWG4SKY2 = (new WorldType(26, "SkyDimensionBeta")).setCanBeCreated(false); 
+    public static final WorldType BWG4SKY2 = (new WorldType(26, "SkyDimensionBeta")).setCanBeCreated(false); //SMP
     public static final WorldType BWG4SKY3 = (new WorldType(27, "SkyDimensionGold")).setCanBeCreated(false); 
     public static final WorldType BWG4CAVE = (new WorldType(28, "Cave Dimension")).setCanBeCreated(false);  
     public static final WorldType BWG4HARD = (new WorldType(29, "Hardcore")).setCanBeCreated(false);  

@@ -41,7 +41,7 @@ public class BWG4LayerRiverMix extends GenLayer
 				{
 					var7[var8] = BiomeGenBase.BDgreenriver.biomeID;
 				}
-				else if (var5[var8] == BiomeGenBase.BDdesert.biomeID)
+				else if (var5[var8] == BiomeGenBase.BDdesert.biomeID || var5[var8] == BiomeGenBase.BDocean.biomeID || var5[var8] == BiomeGenBase.BDbeach.biomeID || var5[var8] == BiomeGenBase.BDbeachDunes.biomeID) 
 				{
 					var7[var8] = BiomeGenBase.BDsandriver.biomeID;
 				}

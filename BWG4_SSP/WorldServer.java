@@ -726,9 +726,7 @@ public class WorldServer extends World
             }
             else
             {
-                System.out.println("=============================================");
-                System.out.println("= BETTER WORLD GENERATION 4 - MADE BY TED80 =");
-                System.out.println("=============================================");
+                System.out.println("BETTER WORLD GENERATION 4 - MADE BY TED80");
             }
 
             int var9 = 0;

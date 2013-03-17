@@ -82,6 +82,7 @@ public class GuiCreateWorld extends GuiScreen
 	private GuiButton buttonCave;
 	private GuiButton buttonCustomDefault1;
 	private GuiButton buttonCustomDefault2;
+	private GuiButton buttonSkyBlock;
 	
     private int selectDefault = 1;
     private int selectLargeBiomes = 1;
@@ -93,6 +94,7 @@ public class GuiCreateWorld extends GuiScreen
     private int selectSkyland = 0;
     private int selectSkydimension = 0;
     private int selectCave = 0;
+    private int selectSkyBlock = 0;
 	
 	private int currentWorldtype = 1;
 	private int maxWorldtype = 0;
@@ -165,6 +167,7 @@ public class GuiCreateWorld extends GuiScreen
         this.buttonList.add(this.buttonCave = new GuiButton(18, this.width / 2 + 5, 125, 160, 20, "buttonCave")); 
         this.buttonList.add(this.buttonCustomDefault1 = new GuiButton(19, this.width / 2 + 5, 150, 160, 20, var1.translateKey("selectWorld.customizeType"))); 
         this.buttonList.add(this.buttonCustomDefault2 = new GuiButton(20, this.width / 2 + 5, 150, 160, 20, var1.translateKey("selectWorld.customizeType"))); 
+        this.buttonList.add(this.buttonSkyBlock = new GuiButton(21, this.width / 2 + 5, 125, 160, 20, "buttonSkyBlock")); 
 		
 		//BWG4 - DRAW BUTTONS
         this.buttonDefault.drawButton = false;
@@ -178,7 +181,9 @@ public class GuiCreateWorld extends GuiScreen
         this.buttonSkydimension.drawButton = false;
         this.buttonCave.drawButton = false;
 		this.buttonCustomDefault1.drawButton = false;
-		this.buttonCustomDefault2.drawButton = false;		
+		this.buttonCustomDefault2.drawButton = false;	
+		this.buttonSkyBlock.drawButton = false;
+		this.buttonSkyBlock.enabled = false;
 		
         this.textboxWorldName = new GuiTextField(this.fontRenderer, this.width / 2 - 100, 60, 200, 20);
         this.textboxWorldName.setFocused(true);
@@ -298,16 +303,20 @@ public class GuiCreateWorld extends GuiScreen
 		else { buttonIndev2.displayString = "Theme: Snow"; }
 		
 		if(selectIsland == 0) { buttonIsland.displayString = "Theme: Normal"; }
-		else if(selectIsland == 1) { buttonIsland.displayString = "Theme: Hell"; }
-		else if(selectIsland == 2) { buttonIsland.displayString = "Theme: Snow"; }
+		else if(selectIsland == 1) { buttonIsland.displayString = "Theme: -"; }
+		else if(selectIsland == 2) { buttonIsland.displayString = "Theme: -"; }
 		else if(selectIsland == 3) { buttonIsland.displayString = "Theme: Paradise"; }
 		else { buttonIsland.displayString = "Theme: -"; }
 		
 		if(selectSkyland == 0) { buttonSkyland.displayString = "Theme: Normal"; }
-		else if(selectSkyland == 1) { buttonSkyland.displayString = "Theme: Hell"; }
+		else if(selectSkyland == 1) { buttonSkyland.displayString = "Theme: -"; }
 		else if(selectSkyland == 2) { buttonSkyland.displayString = "Theme: Snow"; }
 		else if(selectSkyland == 3) { buttonSkyland.displayString = "Theme: Jungle"; }
 		else { buttonSkyland.displayString = "Theme: -"; }
+		
+		if(selectSkyBlock == 0) { buttonSkyBlock.displayString = "Type: Classic"; }
+		else if(selectSkyBlock == 1) { buttonSkyBlock.displayString = "Type: 2"; }
+		else { buttonSkyBlock.displayString = "Type: 3"; }
 		
 		if(selectSkydimension == 0) { buttonSkydimension.displayString = "Biomes: Default"; }
 		else if(selectSkydimension == 1) { buttonSkydimension.displayString = "Biomes: Beta"; }
@@ -414,7 +423,7 @@ public class GuiCreateWorld extends GuiScreen
 				else if(selectIndev2 == 3 && worldTypeId == 18) { var6.func_82750_a("4"); }
 				else if(selectIndev2 == 4 && worldTypeId == 18) { var6.func_82750_a("5"); }
 				else if(selectInfdev == 0 && worldTypeId == 16) { var6.func_82750_a("1"); }
-				else if(selectInfdev == 1 && worldTypeId == 16) { var6.func_82750_a("2"); }
+				else if(selectInfdev == 1 && worldTypeId == 16) { var6.func_82750_a("2"); } //buttonSkyBlock selectSkyBlock
 				else if(selectIsland == 0 && worldTypeId == 21) { var6.func_82750_a("1"); }
 				else if(selectIsland == 1 && worldTypeId == 21) { var6.func_82750_a("2"); }
 				else if(selectIsland == 2 && worldTypeId == 21) { var6.func_82750_a("3"); }
@@ -553,49 +562,59 @@ public class GuiCreateWorld extends GuiScreen
             else if (par1GuiButton.id == 8)
             {
                 this.mc.displayGuiScreen(new GuiCreateFlatWorld(this, this.generatorOptionsToUse));
-            }//BWG4 9-16
+            }//BWG4 9-21
             else if (par1GuiButton.id == 9) 
             {
-                if(selectDefault == 0) { selectDefault = 1; updateButtonText(); } else { selectDefault = 0; updateButtonText(); }
+                if(selectDefault == 0) { selectDefault = 1; } else { selectDefault = 0; }
 				this.func_82288_a(this.moreOptions);
+            	updateButtonText();
             }
             else if (par1GuiButton.id == 10) 
             {
-                if(selectLargeBiomes == 0) { selectLargeBiomes = 1; updateButtonText(); } else { selectLargeBiomes = 0; updateButtonText(); }
+                if(selectLargeBiomes == 0) { selectLargeBiomes = 1; } else { selectLargeBiomes = 0; }
 				this.func_82288_a(this.moreOptions);
+            	updateButtonText();
             }
             else if (par1GuiButton.id == 11) 
             {
-                if(selectBeta == 0) { selectBeta = 1; updateButtonText(); } else { selectBeta = 0; updateButtonText(); }
+                if(selectBeta == 0) { selectBeta = 1; } else { selectBeta = 0; }
+            	updateButtonText();
             }
             else if (par1GuiButton.id == 12) 
             {
-                if(selectInfdev == 0) { selectInfdev = 1; updateButtonText(); } else { selectInfdev = 0; updateButtonText(); }
+                if(selectInfdev == 0) { selectInfdev = 1; } else { selectInfdev = 0; }
+            	updateButtonText();
             }
             else if (par1GuiButton.id == 13) 
             {
-                if(selectIndev1 == 0) { selectIndev1 = 1; updateButtonText(); } else { selectIndev1 = 0; updateButtonText(); }
+                if(selectIndev1 == 0) { selectIndev1 = 1; } else { selectIndev1 = 0; }
 				this.func_82288_a(this.moreOptions);
+            	updateButtonText();
             }
             else if (par1GuiButton.id == 14) 
             {
-                /*if(selectIsland == 0) { selectIsland = 1; updateButtonText(); } else if(selectIsland == 1) { selectIsland = 2; updateButtonText(); } else*/ if(selectIsland == 0) { selectIsland = 3; updateButtonText(); } /* else if(selectIsland == 3) { selectIsland = 4; updateButtonText(); }*/ else { selectIsland = 0; updateButtonText(); }
+                /*if(selectIsland == 0) { selectIsland = 1; } else if(selectIsland == 1) { selectIsland = 2; } else*/ if(selectIsland == 0) { selectIsland = 3; } /* else if(selectIsland == 3) { selectIsland = 4; }*/ else { selectIsland = 0; }
+            	updateButtonText();
             }
             else if (par1GuiButton.id == 15) 
             {
-                /*if(selectSkyland == 0) { selectSkyland = 1; updateButtonText(); } else*/ if(selectSkyland == 0) { selectSkyland = 2; updateButtonText(); } else if(selectSkyland == 2) { selectSkyland = 3; updateButtonText(); } /* else if(selectSkyland == 3) { selectSkyland = 4; updateButtonText(); }*/ else { selectSkyland = 0; updateButtonText(); }
+                /*if(selectSkyland == 0) { selectSkyland = 1; } else*/ if(selectSkyland == 0) { selectSkyland = 2; } else if(selectSkyland == 2) { selectSkyland = 3; } /* else if(selectSkyland == 3) { selectSkyland = 4; }*/ else { selectSkyland = 0; }
+            	updateButtonText();
             }
             else if (par1GuiButton.id == 16) 
             {
-                if(selectSkydimension == 0) { selectSkydimension = 1; updateButtonText(); } /*else if(selectSkydimension == 1) { selectSkydimension = 2; updateButtonText(); }*/ else { selectSkydimension = 0; updateButtonText(); }
+                if(selectSkydimension == 0) { selectSkydimension = 1; } /*else if(selectSkydimension == 1) { selectSkydimension = 2; }*/ else { selectSkydimension = 0; }
+            	updateButtonText();
             }
             else if (par1GuiButton.id == 17) 
             {
-                if(selectIndev2 == 0) { selectIndev2 = 1; updateButtonText(); } else if(selectIndev2 == 1) { selectIndev2 = 2; updateButtonText(); } else if(selectIndev2 == 2) { selectIndev2 = 3; updateButtonText(); } else if(selectIndev2 == 3) { selectIndev2 = 4; updateButtonText(); } else { selectIndev2 = 0; updateButtonText(); }
+                if(selectIndev2 == 0) { selectIndev2 = 1; } else if(selectIndev2 == 1) { selectIndev2 = 2; } else if(selectIndev2 == 2) { selectIndev2 = 3; } else if(selectIndev2 == 3) { selectIndev2 = 4; } else { selectIndev2 = 0; }
+            	updateButtonText();
             }
             else if (par1GuiButton.id == 18) 
             {
-                if(selectCave == 0) { selectCave = 1; updateButtonText(); } else if(selectCave == 1) { selectCave = 2; updateButtonText(); } else { selectCave = 0; updateButtonText(); }
+                if(selectCave == 0) { selectCave = 1; } else if(selectCave == 1) { selectCave = 2; } else { selectCave = 0; }
+				updateButtonText();
             }
 			else if (par1GuiButton.id == 19)
 			{
@@ -604,6 +623,11 @@ public class GuiCreateWorld extends GuiScreen
 			else if (par1GuiButton.id == 20)
 			{
 				this.mc.displayGuiScreen(new BWG4GuiDefault(this, this.generatorOptionsToUse));
+			}
+			else if (par1GuiButton.id == 21)
+			{
+                if(selectSkyBlock == 0) { selectSkyBlock = 1; } else if(selectSkyBlock == 1) { selectSkyBlock = 2; } else { selectSkyBlock = 0; }
+				updateButtonText();
 			}
         }
     }
@@ -636,6 +660,8 @@ public class GuiCreateWorld extends GuiScreen
 		this.buttonSkyland.drawButton = this.moreOptions && WorldType.worldTypes[this.worldTypeId] == WorldType.BWG4SKYLAND;
 		this.buttonSkydimension.drawButton = this.moreOptions && WorldType.worldTypes[this.worldTypeId] == WorldType.BWG4SKY1;		
 		this.buttonCave.drawButton = this.moreOptions && WorldType.worldTypes[this.worldTypeId] == WorldType.BWG4CAVE;	
+		this.buttonSkyBlock.drawButton = this.moreOptions && WorldType.worldTypes[this.worldTypeId] == WorldType.BWG4SKYBLOCK;	
+		
         StringTranslate var2;
 
         if (this.moreOptions)
@@ -741,23 +767,7 @@ public class GuiCreateWorld extends GuiScreen
 		else if(worldTypeId == 14) { selectBeta = 2; worldTypeId = 12; }
 		else if(worldTypeId == 18) { selectIndev1 = 1; worldTypeId = 17; }
 		else if(worldTypeId == 26) { selectSkydimension = 1; worldTypeId = 25; }
-		else if(worldTypeId == 27) { selectSkydimension = 2; worldTypeId = 25; }
-
-		if(worldTypeId == 0) { currentWorldtype = 1; }
-		else if(worldTypeId == 1) { currentWorldtype = 2; }
-		else if(worldTypeId == 2) { currentWorldtype = 3; }
-		else if(worldTypeId == 12) { currentWorldtype = 4; }
-		else if(worldTypeId == 15) { currentWorldtype = 5; }
-		else if(worldTypeId == 16) { currentWorldtype = 6; }
-		else if(worldTypeId == 17) { currentWorldtype = 7; }
-		else if(worldTypeId == 19) { currentWorldtype = 8; }
-		else if(worldTypeId == 21) { currentWorldtype = 9; }
-		else if(worldTypeId == 22) { currentWorldtype = 10; }
-		else if(worldTypeId == 23) { currentWorldtype = 11; }
-		else if(worldTypeId == 25) { currentWorldtype = 12; }
-		else if(worldTypeId == 28) { currentWorldtype = 13; }
-		else if(worldTypeId == 29) { currentWorldtype = 14; }
-		else if(worldTypeId == 30) { currentWorldtype = 15; }		
+		else if(worldTypeId == 27) { selectSkydimension = 2; worldTypeId = 25; }	
 		
 		//count worldtypes
 		int newnumber = 1;

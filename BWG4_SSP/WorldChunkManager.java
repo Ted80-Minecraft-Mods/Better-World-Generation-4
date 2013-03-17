@@ -35,7 +35,7 @@ public class WorldChunkManager
 		//bwg4 spawn biomes
     }
 
-    public WorldChunkManager(long par1, WorldType par3WorldType, String GenString, boolean remote)
+    public WorldChunkManager(long par1, WorldType par3WorldType, String GenString)//, boolean remote)
     {
         this();
 		terrainType = par3WorldType;
@@ -43,24 +43,31 @@ public class WorldChunkManager
         field_4194_e = new BWG4oldNoiseGeneratorOctaves2(new Random(par1 * 9871L), 4);
         field_4193_f = new BWG4oldNoiseGeneratorOctaves2(new Random(par1 * 39811L), 4);
         field_4192_g = new BWG4oldNoiseGeneratorOctaves2(new Random(par1 * 0x84a59L), 2);
+		
+		boolean remote = false;
+		if(GenString.length() > 3)
+		{
+			remote = true;
+		}
+		
         GenLayer[] var4 = GenLayer.initializeAllBiomeGenerators(par1, par3WorldType, GenString, remote);
         this.genBiomes = var4[0];
         this.biomeIndexLayer = var4[1];
     }
 
-    public WorldChunkManager(long par1, WorldType par3WorldType, String GenString) //ANVIL SAVE CONVERTER
-    {
-        this(par1, par3WorldType, GenString, true);
-    }
+    //public WorldChunkManager(long par1, WorldType par3WorldType, String GenString) //ANVIL SAVE CONVERTER
+    //{
+    //    this(par1, par3WorldType, GenString);//, true);
+    //}
 	
     public WorldChunkManager(long par1, WorldType par3WorldType) //CLIENT CALL
     {
-        this(par1, par3WorldType, "", false);
+        this(par1, par3WorldType, "");//, false);
     }
 
     public WorldChunkManager(World par1World) //WORLD PROVIDER
     {
-        this(par1World.getSeed(), par1World.getWorldInfo().getTerrainType(), par1World.getWorldInfo().getGeneratorOptions(), par1World.isRemote);
+        this(par1World.getSeed(), par1World.getWorldInfo().getTerrainType(), par1World.getWorldInfo().getGeneratorOptions());//, par1World.isRemote);
     }
 
 	public double[] getColdTemperatures(double ad[], int i, int j, int k, int l)

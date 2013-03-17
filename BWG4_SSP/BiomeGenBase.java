@@ -86,7 +86,7 @@ public abstract class BiomeGenBase
 	public static final BiomeGenBase SURVIVALnether = (new BWG4BiomesSurvival(119)).setColor(353825).setBiomeName("Hell").setTemperatureRainfall(0.8F, 0.6F);
 	public static final BiomeGenBase SKYBLOCKworld = (new BWG4BiomesSurvival(120)).setColor(353825).setBiomeName("Survival Skyblock").setTemperatureRainfall(0.9F, 0.8F);
 
-	//BETTER DEFAULT 121/159 
+	//BETTER DEFAULT 121/164  
 	public static final BiomeGenBase BDocean = (new BWG4BiomesDefault(121, 1, 1)).setColor(353825).setBiomeName("Ocean").setTemperatureRainfall(0.8F, 0.6F).setMinMaxHeight(-1.1F, 0.3F).beach(2);
 	public static final BiomeGenBase BDtropicalisland = (new BWG4BiomesDefault(122, 1, 2)).setColor(353825).setBiomeName("Tropical Island").setTemperatureRainfall(1.0F, 1.0F).setMinMaxHeight(0.2F, 0.3F).beach(2);
 	public static final BiomeGenBase BDjungleisland = (new BWG4BiomesDefault(123, 1, 3)).setColor(353825).setBiomeName("Jungle Island").setTemperatureRainfall(1.0F, 1.0F).setMinMaxHeight(0.2F, 0.3F).beach(2);
@@ -119,14 +119,17 @@ public abstract class BiomeGenBase
 	public static final BiomeGenBase BDsandriver = (new BWG4BiomesDefault(150, 6, 4)).setColor(353825).setBiomeName("River_sand").setTemperatureRainfall(0.9F, 0.1F).setMinMaxHeight(-0.8F, 0.0F);
 	public static final BiomeGenBase BDjungle_nocolor = (new BWG4BiomesDefault(151, 4, 4)).setColor(353825).setBiomeName("Jungle").setMinMaxHeight(0.2F, 0.8F).setTemperatureRainfall(1.0F, 1.0F).beach(0);
 	public static final BiomeGenBase BDswampland_nocolor = (new BWG4BiomesDefault(152, 4, 5)).setColor(353825).setBiomeName("Swampland").setMinMaxHeight(-0.2F, 0.3F).setTemperatureRainfall(0.9F, 1.0F).beach(0);
+	//12 left
 	
-	//WASTELAND 160/- 
+	//WASTELAND 165/- 
 	
 	//HARDCORE -/-
 	
 	//CAVE DIMENSION -/183
 
 	//GOLD 184/255
+	
+	public static final BiomeGenBase GOLD1taigaHills = (new BWG4BiomesGold1(197, 1, 1)).setColor(1456435).setBiomeName("Taiga_Hills");
 	
 	public static final BiomeGenBase GOLD1iceOcean = (new BWG4BiomesGold1(198, 2, 1)).setColor(1456435).setBiomeName("Ice_Ocean").setMinMaxHeight(-1.1F, 0.2F).setTemperatureRainfall(0.0F, 0.0F).snow(62);
 	public static final BiomeGenBase GOLD1iceBeach = (new BWG4BiomesGold1(199, 2, 2)).setColor(1456435).setBiomeName("Ice_Beach").setMinMaxHeight(0.0F, 0.6F).setTemperatureRainfall(0.0F, 0.0F).snow(62).disableLakes();
@@ -139,7 +142,7 @@ public abstract class BiomeGenBase
 	public static final BiomeGenBase GOLD1snowpineForest = (new BWG4BiomesGold1(205, 3, 3)).setColor(1456435).setBiomeName("SnowPine_Forest").setMinMaxHeight(0.6F, 0.7F).setTemperatureRainfall(0.0F, 0.0F).beach(3).mountain(105, true).snow(62);
 	public static final BiomeGenBase GOLD1snowpineField = (new BWG4BiomesGold1(206, 3, 4)).setColor(1456435).setBiomeName("SnowPine_Field").setMinMaxHeight(0.6F, 0.7F).setTemperatureRainfall(0.0F, 0.0F).beach(3).mountain(105, true).snow(62);
 	public static final BiomeGenBase GOLD1snowpineHigh = (new BWG4BiomesGold1(207, 3, 5)).setColor(1456435).setBiomeName("SnowPine_High").setMinMaxHeight(1.6F, 1.6F).setTemperatureRainfall(0.0F, 0.0F).beach(3).mountain(105, true).snow(62);
-	public static final BiomeGenBase GOLD1snowpineBorder = (new BWG4BiomesGold1(208, 3, 6)).setColor(1456435).setBiomeName("SnowPine_Border").setMinMaxHeight(0.3F, 0.4F).setTemperatureRainfall(0.0F, 0.0F).beach(3).mountain(105, true).snow(62);
+	public static final BiomeGenBase GOLD1snowpineBorder = (new BWG4BiomesGold1(208, 3, 6)).setColor(1456435).setBiomeName("SnowPine_Border").setMinMaxHeight(0.3F, 0.4F).setTemperatureRainfall(0.6F, 0.6F).beach(3).mountain(105, false);
 	public static final BiomeGenBase GOLD2pineNormal = (new BWG4BiomesGold2(209, 1, 1)).setColor(353825).setBiomeName("Pine_Normal").setTemperatureRainfall(0.9F, 0.7F).setMinMaxHeight(0.2F, 0.9F).beach(0).mountain(100, false);
 	public static final BiomeGenBase GOLD2pineHills = (new BWG4BiomesGold2(210, 1, 2)).setColor(353825).setBiomeName("Pine_Hills").setTemperatureRainfall(0.9F, 0.7F).setMinMaxHeight(0.5F, 1.1F).beach(0).mountain(100, false);
 	public static final BiomeGenBase GOLD2pineMix = (new BWG4BiomesGold2(211, 1, 3)).setColor(353825).setBiomeName("Pine_Mix").setTemperatureRainfall(0.9F, 0.7F).setMinMaxHeight(0.2F, 0.8F).beach(0).mountain(100, false);
