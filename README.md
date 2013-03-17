@@ -1,3 +1,11 @@
+Version 1.0.0 '17-3-2013'
+- Fixed betterdefault loading bug
+- Removed lilypads from jungle islands
+- Added new skyblock option
+- Changed regionpack system
+- Updated SMP version
+- Added FORGE version
+
 Version 0.9.9 '16-3-2013'
 - Fixed betterdefault generator bug
 - Fixed empty generator string error
