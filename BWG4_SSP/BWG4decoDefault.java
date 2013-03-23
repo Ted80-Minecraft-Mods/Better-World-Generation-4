@@ -33,13 +33,13 @@ public class BWG4decoDefault extends WorldGenerator
 				{
 					if(par2Random.nextInt(8) != 0)
 					{
-						par1World.setBlockAndMetadataWithNotify(var8, var9, var10, Block.tallGrass.blockID, 1, 2);
+						par1World.setBlock(var8, var9, var10, Block.tallGrass.blockID, 1, 0);
 					}
 					else
 					{
-						par1World.setBlockAndMetadataWithNotify(var8, var9, var10, Block.leaves.blockID, 4, 2);
+						par1World.setBlock(var8, var9, var10, Block.leaves.blockID, 4, 0);
 					}
-					par1World.setBlockAndMetadataWithNotify(var8, var9 - 1, var10, Block.grass.blockID, 0, 2);
+					par1World.setBlock(var8, var9 - 1, var10, Block.grass.blockID);
 				}
 			}
 

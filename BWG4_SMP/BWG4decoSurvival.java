@@ -24,11 +24,11 @@ public class BWG4decoSurvival extends WorldGenerator
 					{
 						if(y1 == 0 + y)
 						{
-							par1World.setBlockAndMetadataWithNotify(x1, y1, z1, Block.grass.blockID, 0, 2);
+							par1World.setBlock(x1, y1, z1, Block.grass.blockID);
 						}
 						else
 						{
-							par1World.setBlockAndMetadataWithNotify(x1, y1, z1, Block.dirt.blockID, 0, 2);
+							par1World.setBlock(x1, y1, z1, Block.dirt.blockID);
 						}	
 					}
 				}
@@ -44,7 +44,7 @@ public class BWG4decoSurvival extends WorldGenerator
 				{			
 					for (int y3 = yy + 2; y3 <= yy + 3; y3++)
 					{
-						par1World.setBlockAndMetadataWithNotify(x3, y3, z3, Block.leaves.blockID, 0, 2);
+						par1World.setBlock(x3, y3, z3, Block.leaves.blockID);
 					}
 				}	
 			}		
@@ -52,21 +52,21 @@ public class BWG4decoSurvival extends WorldGenerator
 			{
 				for (int z4 = zz - 1; z4 <= zz + 1; z4++)
 				{			
-					par1World.setBlockAndMetadataWithNotify(x4, yy + 4, z4, Block.leaves.blockID, 0, 2);
+					par1World.setBlock(x4, yy + 4, z4, Block.leaves.blockID);
 				}	
 			}		
 			for (int y2 = yy; y2 <= yy + 4; y2++) //LOG
 			{
-				par1World.setBlockAndMetadataWithNotify(xx, y2, zz, Block.wood.blockID, 0, 2);
+				par1World.setBlock(xx, y2, zz, Block.wood.blockID);
 			}
-			par1World.setBlockAndMetadataWithNotify(xx + 1, yy + 5, zz, Block.leaves.blockID, 0, 2);
-			par1World.setBlockAndMetadataWithNotify(xx - 1, yy + 5, zz, Block.leaves.blockID, 0, 2);
-			par1World.setBlockAndMetadataWithNotify(xx, yy + 5, zz + 1, Block.leaves.blockID, 0, 2);
-			par1World.setBlockAndMetadataWithNotify(xx, yy + 5, zz - 1, Block.leaves.blockID, 0, 2);
-			par1World.setBlockAndMetadataWithNotify(xx, yy + 5, zz, Block.leaves.blockID, 0, 2);
+			par1World.setBlock(xx + 1, yy + 5, zz, Block.leaves.blockID);
+			par1World.setBlock(xx - 1, yy + 5, zz, Block.leaves.blockID);
+			par1World.setBlock(xx, yy + 5, zz + 1, Block.leaves.blockID);
+			par1World.setBlock(xx, yy + 5, zz - 1, Block.leaves.blockID);
+			par1World.setBlock(xx, yy + 5, zz, Block.leaves.blockID);
 			
 			//CHEST
-			par1World.setBlockAndMetadataWithNotify(xx - 1, yy, zz, Block.chest.blockID, 0, 2);
+			par1World.setBlock(xx - 1, yy, zz, Block.chest.blockID);
 			TileEntityChest tileentitychest = (TileEntityChest)par1World.getBlockTileEntity(xx - 1, yy, zz);		
 			for (int c = 0; c < 20; c++) 
 			{ 
@@ -136,7 +136,7 @@ public class BWG4decoSurvival extends WorldGenerator
 
 					if ((var11 == Block.netherrack.blockID) && y < 256 - var6 - 1)
 					{
-						par1World.setBlockAndMetadataWithNotify( x, y - 1, z, Block.netherrack.blockID, 0, 2);
+						this.setBlock(par1World, x, y - 1, z, Block.netherrack.blockID);
 						var21 = par2Random.nextInt(2);
 						var13 = 1;
 						byte var22 = 0;
@@ -157,7 +157,7 @@ public class BWG4decoSurvival extends WorldGenerator
 
 									if ((Math.abs(var18) != var21 || Math.abs(var20) != var21 || var21 <= 0) && !Block.opaqueCubeLookup[par1World.getBlockId(var17, var16, var19)])
 									{
-										par1World.setBlockAndMetadataWithNotify( var17, var16, var19, Block.glowStone.blockID, 0, 2);
+										this.setBlockAndMetadata(par1World, var17, var16, var19, Block.glowStone.blockID, 0);
 									}
 								}
 							}
@@ -187,7 +187,7 @@ public class BWG4decoSurvival extends WorldGenerator
 
 							if (var17 == 0 || var17 == Block.glowStone.blockID)
 							{
-								par1World.setBlockAndMetadataWithNotify( x, y + var16, z, Block.slowSand.blockID, 0, 2);
+								this.setBlockAndMetadata(par1World, x, y + var16, z, Block.slowSand.blockID, 0);
 							}
 						}
 
@@ -214,8 +214,8 @@ public class BWG4decoSurvival extends WorldGenerator
 
 				if (par1World.isAirBlock(var7, var8, var9) && par1World.getBlockId(var7, var8 - 1, var9) == Block.netherrack.blockID)
 				{
-					par1World.setBlockAndMetadataWithNotify(var7, var8 - 1, var9, Block.slowSand.blockID, 0, 2);
-					par1World.setBlockAndMetadataWithNotify(var7, var8, var9, Block.netherStalk.blockID, 1, 2);
+					par1World.setBlock(var7, var8 - 1, var9, Block.slowSand.blockID);
+					par1World.setBlock(var7, var8, var9, Block.netherStalk.blockID, 1, 0);
 				}
 			}
 
@@ -234,21 +234,21 @@ public class BWG4decoSurvival extends WorldGenerator
 		
 			for(int s = 0 + y; s < treeheight + y; s++)
 			{
-				if (par1World.isAirBlock(x, s, z)) { par1World.setBlockAndMetadataWithNotify(x, s, z, Block.wood.blockID, 3, 2); }
+				if (par1World.isAirBlock(x, s, z)) { par1World.setBlock(x, s, z, Block.wood.blockID, 3, 0); }
 			}
-			if (par1World.isAirBlock(x, y + treeheight, z)) { par1World.setBlockAndMetadataWithNotify(x, y + treeheight, z, Block.leaves.blockID, 3, 2); }
-			if (par1World.isAirBlock(x, y + treeheight - 1, z + 1)) { par1World.setBlockAndMetadataWithNotify(x, y + treeheight - 1, z + 1, Block.leaves.blockID, 3, 2); }
-			if (par1World.isAirBlock(x, y + treeheight - 1, z - 1)) { par1World.setBlockAndMetadataWithNotify(x, y + treeheight - 1, z - 1, Block.leaves.blockID, 3, 2); }
-			if (par1World.isAirBlock(x + 1, y + treeheight - 1, z)) { par1World.setBlockAndMetadataWithNotify(x + 1, y + treeheight - 1, z, Block.leaves.blockID, 3, 2); }
-			if (par1World.isAirBlock(x - 1, y + treeheight - 1, z)) { par1World.setBlockAndMetadataWithNotify(x - 1, y + treeheight - 1, z, Block.leaves.blockID, 3, 2); }
-			if (par1World.isAirBlock(x, y + treeheight - 1, z + 2)) { par1World.setBlockAndMetadataWithNotify(x, y + treeheight - 1, z + 2, Block.leaves.blockID, 3, 2); }
-			if (par1World.isAirBlock(x, y + treeheight - 1, z - 2)) { par1World.setBlockAndMetadataWithNotify(x, y + treeheight - 1, z - 2, Block.leaves.blockID, 3, 2); }
-			if (par1World.isAirBlock(x + 2, y + treeheight - 1, z)) { par1World.setBlockAndMetadataWithNotify(x + 2, y + treeheight - 1, z, Block.leaves.blockID, 3, 2); }
-			if (par1World.isAirBlock(x - 2, y + treeheight - 1, z)) { par1World.setBlockAndMetadataWithNotify(x - 2, y + treeheight - 1, z, Block.leaves.blockID, 3, 2); }
-			if (par1World.isAirBlock(x, y + treeheight - 2, z + 3)) { par1World.setBlockAndMetadataWithNotify(x, y + treeheight - 2, z + 3, Block.leaves.blockID, 3, 2); }
-			if (par1World.isAirBlock(x, y + treeheight - 2, z - 3)) { par1World.setBlockAndMetadataWithNotify(x, y + treeheight - 2, z - 3, Block.leaves.blockID, 3, 2); }
-			if (par1World.isAirBlock(x + 3, y + treeheight - 2, z)) { par1World.setBlockAndMetadataWithNotify(x + 3, y + treeheight - 2, z, Block.leaves.blockID, 3, 2); }
-			if (par1World.isAirBlock(x - 3, y + treeheight - 2, z)) { par1World.setBlockAndMetadataWithNotify(x - 3, y + treeheight - 2, z, Block.leaves.blockID, 3, 2); }
+			if (par1World.isAirBlock(x, y + treeheight, z)) { par1World.setBlock(x, y + treeheight, z, Block.leaves.blockID, 3, 0); }
+			if (par1World.isAirBlock(x, y + treeheight - 1, z + 1)) { par1World.setBlock(x, y + treeheight - 1, z + 1, Block.leaves.blockID, 3, 0); }
+			if (par1World.isAirBlock(x, y + treeheight - 1, z - 1)) { par1World.setBlock(x, y + treeheight - 1, z - 1, Block.leaves.blockID, 3, 0); }
+			if (par1World.isAirBlock(x + 1, y + treeheight - 1, z)) { par1World.setBlock(x + 1, y + treeheight - 1, z, Block.leaves.blockID, 3, 0); }
+			if (par1World.isAirBlock(x - 1, y + treeheight - 1, z)) { par1World.setBlock(x - 1, y + treeheight - 1, z, Block.leaves.blockID, 3, 0); }
+			if (par1World.isAirBlock(x, y + treeheight - 1, z + 2)) { par1World.setBlock(x, y + treeheight - 1, z + 2, Block.leaves.blockID, 3, 0); }
+			if (par1World.isAirBlock(x, y + treeheight - 1, z - 2)) { par1World.setBlock(x, y + treeheight - 1, z - 2, Block.leaves.blockID, 3, 0); }
+			if (par1World.isAirBlock(x + 2, y + treeheight - 1, z)) { par1World.setBlock(x + 2, y + treeheight - 1, z, Block.leaves.blockID, 3, 0); }
+			if (par1World.isAirBlock(x - 2, y + treeheight - 1, z)) { par1World.setBlock(x - 2, y + treeheight - 1, z, Block.leaves.blockID, 3, 0); }
+			if (par1World.isAirBlock(x, y + treeheight - 2, z + 3)) { par1World.setBlock(x, y + treeheight - 2, z + 3, Block.leaves.blockID, 3, 0); }
+			if (par1World.isAirBlock(x, y + treeheight - 2, z - 3)) { par1World.setBlock(x, y + treeheight - 2, z - 3, Block.leaves.blockID, 3, 0); }
+			if (par1World.isAirBlock(x + 3, y + treeheight - 2, z)) { par1World.setBlock(x + 3, y + treeheight - 2, z, Block.leaves.blockID, 3, 0); }
+			if (par1World.isAirBlock(x - 3, y + treeheight - 2, z)) { par1World.setBlock(x - 3, y + treeheight - 2, z, Block.leaves.blockID, 3, 0); }
 			
 			return true;
 		}
@@ -263,7 +263,7 @@ public class BWG4decoSurvival extends WorldGenerator
 			{	
 				if(ice1 < 1) { /* do nothing */ }
 				else if (!par1World.isAirBlock(x, ice1, z)) { break; }
-				else { par1World.setBlockAndMetadataWithNotify(x, ice1, z, Block.ice.blockID, 0, 2); }
+				else { par1World.setBlock(x, ice1, z, Block.ice.blockID); }
 			}
 			
 			/*
@@ -289,7 +289,7 @@ public class BWG4decoSurvival extends WorldGenerator
 				{			
 					for (int y3 = yy + 2; y3 <= yy + 3; y3++)
 					{
-						par1World.setBlockAndMetadataWithNotify(x3, y3, z3, Block.leaves.blockID, 0, 2);
+						par1World.setBlock(x3, y3, z3, Block.leaves.blockID);
 					}
 				}	
 			}		
@@ -297,18 +297,18 @@ public class BWG4decoSurvival extends WorldGenerator
 			{
 				for (int z4 = zz - 1; z4 <= zz + 1; z4++)
 				{			
-					par1World.setBlockAndMetadataWithNotify(x4, yy + 4, z4, Block.leaves.blockID, 0, 2);
+					par1World.setBlock(x4, yy + 4, z4, Block.leaves.blockID);
 				}	
 			}		
 			for (int y2 = yy; y2 <= yy + 4; y2++) //LOG
 			{
-				par1World.setBlockAndMetadataWithNotify(xx, y2, zz, Block.wood.blockID, 0, 2);
+				par1World.setBlock(xx, y2, zz, Block.wood.blockID);
 			}
-			par1World.setBlockAndMetadataWithNotify(xx + 1, yy + 5, zz, Block.leaves.blockID, 0, 2);
-			par1World.setBlockAndMetadataWithNotify(xx - 1, yy + 5, zz, Block.leaves.blockID, 0, 2);
-			par1World.setBlockAndMetadataWithNotify(xx, yy + 5, zz + 1, Block.leaves.blockID, 0, 2);
-			par1World.setBlockAndMetadataWithNotify(xx, yy + 5, zz - 1, Block.leaves.blockID, 0, 2);
-			par1World.setBlockAndMetadataWithNotify(xx, yy + 5, zz, Block.leaves.blockID, 0, 2);		
+			par1World.setBlock(xx + 1, yy + 5, zz, Block.leaves.blockID);
+			par1World.setBlock(xx - 1, yy + 5, zz, Block.leaves.blockID);
+			par1World.setBlock(xx, yy + 5, zz + 1, Block.leaves.blockID);
+			par1World.setBlock(xx, yy + 5, zz - 1, Block.leaves.blockID);
+			par1World.setBlock(xx, yy + 5, zz, Block.leaves.blockID);		
 	
 			//CREATE BLOCK
 			int bx = x - 1;
@@ -323,11 +323,11 @@ public class BWG4decoSurvival extends WorldGenerator
 					{
 						if(bly == 2 + by)
 						{
-							par1World.setBlockAndMetadataWithNotify(blx, bly, blz, Block.grass.blockID, 0, 2);
+							par1World.setBlock(blx, bly, blz, Block.grass.blockID);
 						}
 						else
 						{
-							par1World.setBlockAndMetadataWithNotify(blx, bly, blz, Block.dirt.blockID, 0, 2);
+							par1World.setBlock(blx, bly, blz, Block.dirt.blockID);
 						}	
 					}
 				}
@@ -338,14 +338,14 @@ public class BWG4decoSurvival extends WorldGenerator
 				{
 					for(blz = 0 + bz; blz <= bz + 3 ; blz++)
 					{
-						par1World.setBlockAndMetadataWithNotify(blx, bly, blz, 0, 0, 2);
+						par1World.setBlock(blx, bly, blz, 0);
 					}
 				}
 			}
 			
 			//ADD CHEST AND BEDROCK
-			par1World.setBlockAndMetadataWithNotify(bx + 1, by, bz + 5, Block.bedrock.blockID, 0, 2);
-			par1World.setBlockAndMetadataWithNotify(bx + 1, by + 3, bz, Block.chest.blockID, 0, 2);
+			par1World.setBlock(bx + 1, by, bz + 5, Block.bedrock.blockID);
+			par1World.setBlock(bx + 1, by + 3, bz, Block.chest.blockID);
 			TileEntityChest tileentitychest = (TileEntityChest)par1World.getBlockTileEntity(bx + 1, by + 3, bz);
 			for (int c = 0; c < 20; c++) 
 			{ 
@@ -359,8 +359,8 @@ public class BWG4decoSurvival extends WorldGenerator
 		else if(survivalobject == 7)//SURVIVAL SKYBLOCK DESERT
 		{
 			//ADD CHEST AND CACTI
-			par1World.setBlockAndMetadataWithNotify(x + 1, y + 2, z + 1, Block.cactus.blockID, 0, 2);
-			par1World.setBlockAndMetadataWithNotify(x, y + 2, z, Block.chest.blockID, 0, 2);
+			par1World.setBlock(x + 1, y + 2, z + 1, Block.cactus.blockID);
+			par1World.setBlock(x, y + 2, z, Block.chest.blockID);
 			TileEntityChest tileentitychest = (TileEntityChest)par1World.getBlockTileEntity(x, y + 2, z);		
 			for (int c = 0; c < 20; c++) 
 			{ 
@@ -380,11 +380,11 @@ public class BWG4decoSurvival extends WorldGenerator
 					{
 						if(by == -2 + y)
 						{
-							par1World.setBlockAndMetadataWithNotify(bx, by, bz, Block.sandStone.blockID, 0, 2);
+							par1World.setBlock(bx, by, bz, Block.sandStone.blockID);
 						}
 						else
 						{
-							par1World.setBlockAndMetadataWithNotify(bx, by, bz, Block.sand.blockID, 0, 2);
+							par1World.setBlock(bx, by, bz, Block.sand.blockID);
 						}	
 					}
 				}
@@ -399,15 +399,15 @@ public class BWG4decoSurvival extends WorldGenerator
 				{
 					for(int bz = -1 + z; bz <= 1 + z;bz++)
 					{
-						par1World.setBlockAndMetadataWithNotify(bx, by, bz, Block.glowStone.blockID, 0, 2);
+						par1World.setBlock(bx, by, bz, Block.glowStone.blockID);
 					}
 				}
 			}
 			
 			//chest and mushrooms
-			par1World.setBlockAndMetadataWithNotify(x, y + 2, z + 1, Block.mushroomBrown.blockID, 0, 2);
-			par1World.setBlockAndMetadataWithNotify(x + 1, y + 2, z, Block.mushroomRed.blockID, 0, 2);
-			par1World.setBlockAndMetadataWithNotify(x - 1, y + 2, z - 1, Block.chest.blockID, 0, 2);
+			par1World.setBlock(x, y + 2, z + 1, Block.mushroomBrown.blockID);
+			par1World.setBlock(x + 1, y + 2, z, Block.mushroomRed.blockID);
+			par1World.setBlock(x - 1, y + 2, z - 1, Block.chest.blockID);
 			TileEntityChest tileentitychest = (TileEntityChest)par1World.getBlockTileEntity(x - 1, y + 2, z - 1);		
 			for (int c = 0; c < 20; c++) 
 			{ 

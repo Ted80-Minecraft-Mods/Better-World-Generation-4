@@ -535,12 +535,12 @@ public class BWG4ChunkProviderInfdev implements IChunkProvider
 
                 if (field_907_p.isBlockFreezable(sn1 + k, sn3 - 1, sn2 + l))
                 {
-                    field_907_p.setBlockAndMetadataWithNotify(sn1 + k, sn3 - 1, sn2 + l, Block.ice.blockID, 0, 2);
+                    field_907_p.setBlock(sn1 + k, sn3 - 1, sn2 + l, Block.ice.blockID, 0, 2);
                 }
 
                 if (field_907_p.canSnowAt(sn1 + k, sn3, sn2 + l))
                 {
-                    field_907_p.setBlockAndMetadataWithNotify(sn1 + k, sn3, sn2 + l, Block.snow.blockID, 0, 2);
+                    field_907_p.setBlock(sn1 + k, sn3, sn2 + l, Block.snow.blockID, 0, 2);
                 }
             }
         }

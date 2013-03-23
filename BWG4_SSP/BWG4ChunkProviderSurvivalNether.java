@@ -403,7 +403,7 @@ public class BWG4ChunkProviderSurvivalNether implements IChunkProvider
 			int nq1 = var4 + this.endRNG.nextInt(16);
 			int nq2 = this.endRNG.nextInt(108) + 10;
 			int nq3 = var5 + this.endRNG.nextInt(16);
-			(new WorldGenMinable(Block.field_94342_cr.blockID, 13, Block.netherrack.blockID)).generate(this.endWorld, this.endRNG, nq1, nq2, nq3);
+			(new WorldGenMinable(Block.oreNetherQuartz.blockID, 13, Block.netherrack.blockID)).generate(this.endWorld, this.endRNG, nq1, nq2, nq3);
 		}
 		
         BiomeGenBase var6 = this.endWorld.getBiomeGenForCoords(var4 + 16, var5 + 16);

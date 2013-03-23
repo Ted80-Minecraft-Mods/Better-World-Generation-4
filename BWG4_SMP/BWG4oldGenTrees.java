@@ -62,7 +62,7 @@ public class BWG4oldGenTrees extends WorldGenerator
 			{
 				return false;
 			}
-			world.setBlockAndMetadataWithNotify(i, j - 1, k, Block.dirt.blockID, 0, 2);
+			world.setBlock(i, j - 1, k, Block.dirt.blockID);
 			for(int k1 = (j - 3) + l; k1 <= j + l; k1++)
 			{
 				int j2 = k1 - (j + l);
@@ -75,7 +75,7 @@ public class BWG4oldGenTrees extends WorldGenerator
 						int j4 = i4 - k;
 						if((Math.abs(l3) != i3 || Math.abs(j4) != i3 || random.nextInt(2) != 0 && j2 != 0) && !Block.opaqueCubeLookup[world.getBlockId(k3, k1, i4)])
 						{
-							world.setBlockAndMetadataWithNotify(k3, k1, i4, Block.leaves.blockID, 0, 2);
+							world.setBlock(k3, k1, i4, Block.leaves.blockID);
 						}
 					}
 
@@ -88,7 +88,7 @@ public class BWG4oldGenTrees extends WorldGenerator
 				int k2 = world.getBlockId(i, j + l1, k);
 				if(k2 == 0 || k2 == Block.leaves.blockID)
 				{
-					world.setBlockAndMetadataWithNotify(i, j + l1, k, Block.wood.blockID, 0, 2);
+					world.setBlock(i, j + l1, k, Block.wood.blockID);
 				}
 			}
 
@@ -143,7 +143,7 @@ public class BWG4oldGenTrees extends WorldGenerator
 			{
 				return false;
 			}
-			world.setBlockAndMetadataWithNotify(i, j - 1, k, Block.dirt.blockID, 0, 2);
+			world.setBlock(i, j - 1, k, Block.dirt.blockID);
 			for(int k1 = (j - 3) + l; k1 <= j + l; k1++)
 			{
 				int j2 = k1 - (j + l);
@@ -156,7 +156,7 @@ public class BWG4oldGenTrees extends WorldGenerator
 						int j4 = i4 - k;
 						if((Math.abs(l3) != i3 || Math.abs(j4) != i3 || random.nextInt(2) != 0 && j2 != 0) && !Block.opaqueCubeLookup[world.getBlockId(k3, k1, i4)])
 						{
-							world.setBlockAndMetadataWithNotify(k3, k1, i4, Block.leaves.blockID, 0, 2);
+							world.setBlock(k3, k1, i4, Block.leaves.blockID);
 						}
 					}
 
@@ -169,7 +169,7 @@ public class BWG4oldGenTrees extends WorldGenerator
 				int k2 = world.getBlockId(i, j + l1, k);
 				if(k2 == 0 || k2 == Block.leaves.blockID)
 				{
-					world.setBlockAndMetadataWithNotify(i, j + l1, k, Block.wood.blockID, 0, 2);
+					world.setBlock(i, j + l1, k, Block.wood.blockID);
 				}
 			}
 

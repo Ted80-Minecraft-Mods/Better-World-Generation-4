@@ -41,23 +41,23 @@ public class BWG4decoDungeons extends WorldGenerator
 			}
 			
 			//Build Chains
-			for(int chy1 = par4 + 5; chy1 < 70 ; chy1++) { if(!par1World.isAirBlock(par3 + 4, chy1, par5 + 4)) { break; } par1World.setBlockAndMetadataWithNotify(par3 + 4, chy1, par5 + 4, Block.fenceIron.blockID, 0, 2); }		
-			for(int chy2 = par4 + 5; chy2 < 70 ; chy2++) { if(!par1World.isAirBlock(par3 + 4, chy2, par5 - 4)) { break; } par1World.setBlockAndMetadataWithNotify(par3 + 4, chy2, par5 - 4, Block.fenceIron.blockID, 0, 2); }		
-			for(int chy3 = par4 + 5; chy3 < 70 ; chy3++) { if(!par1World.isAirBlock(par3 - 4, chy3, par5 + 4)) { break; } par1World.setBlockAndMetadataWithNotify(par3 - 4, chy3, par5 + 4, Block.fenceIron.blockID, 0, 2); }		
-			for(int chy4 = par4 + 5; chy4 < 70 ; chy4++) { if(!par1World.isAirBlock(par3 - 4, chy4, par5 - 4)) { break; } par1World.setBlockAndMetadataWithNotify(par3 - 4, chy4, par5 - 4, Block.fenceIron.blockID, 0, 2); }	
+			for(int chy1 = par4 + 5; chy1 < 70 ; chy1++) { if(!par1World.isAirBlock(par3 + 4, chy1, par5 + 4)) { break; } par1World.setBlock(par3 + 4, chy1, par5 + 4, Block.fenceIron.blockID); }		
+			for(int chy2 = par4 + 5; chy2 < 70 ; chy2++) { if(!par1World.isAirBlock(par3 + 4, chy2, par5 - 4)) { break; } par1World.setBlock(par3 + 4, chy2, par5 - 4, Block.fenceIron.blockID); }		
+			for(int chy3 = par4 + 5; chy3 < 70 ; chy3++) { if(!par1World.isAirBlock(par3 - 4, chy3, par5 + 4)) { break; } par1World.setBlock(par3 - 4, chy3, par5 + 4, Block.fenceIron.blockID); }		
+			for(int chy4 = par4 + 5; chy4 < 70 ; chy4++) { if(!par1World.isAirBlock(par3 - 4, chy4, par5 - 4)) { break; } par1World.setBlock(par3 - 4, chy4, par5 - 4, Block.fenceIron.blockID); }	
 			if(checkpos)
 			{	
-				par1World.setBlockAndMetadataWithNotify(par3 + 4, par4 + 6, par5 + 4, Block.netherBrick.blockID, 0, 2);
-				par1World.setBlockAndMetadataWithNotify(par3 + 4, par4 + 6, par5 - 4, Block.netherBrick.blockID, 0, 2);
-				par1World.setBlockAndMetadataWithNotify(par3 - 4, par4 + 6, par5 + 4, Block.netherBrick.blockID, 0, 2);
-				par1World.setBlockAndMetadataWithNotify(par3 - 4, par4 + 6, par5 - 4, Block.netherBrick.blockID, 0, 2);
+				par1World.setBlock(par3 + 4, par4 + 6, par5 + 4, Block.netherBrick.blockID);
+				par1World.setBlock(par3 + 4, par4 + 6, par5 - 4, Block.netherBrick.blockID);
+				par1World.setBlock(par3 - 4, par4 + 6, par5 + 4, Block.netherBrick.blockID);
+				par1World.setBlock(par3 - 4, par4 + 6, par5 - 4, Block.netherBrick.blockID);
 			}
 			else
 			{
-				par1World.setBlockAndMetadataWithNotify(par3 + 4, par4 + 6, par5 + 4, Block.cobblestoneMossy.blockID, 0, 2);
-				par1World.setBlockAndMetadataWithNotify(par3 + 4, par4 + 6, par5 - 4, Block.cobblestoneMossy.blockID, 0, 2);
-				par1World.setBlockAndMetadataWithNotify(par3 - 4, par4 + 6, par5 + 4, Block.cobblestoneMossy.blockID, 0, 2);
-				par1World.setBlockAndMetadataWithNotify(par3 - 4, par4 + 6, par5 - 4, Block.cobblestoneMossy.blockID, 0, 2);
+				par1World.setBlock(par3 + 4, par4 + 6, par5 + 4, Block.cobblestoneMossy.blockID);
+				par1World.setBlock(par3 + 4, par4 + 6, par5 - 4, Block.cobblestoneMossy.blockID);
+				par1World.setBlock(par3 - 4, par4 + 6, par5 + 4, Block.cobblestoneMossy.blockID);
+				par1World.setBlock(par3 - 4, par4 + 6, par5 - 4, Block.cobblestoneMossy.blockID);
 			}	
 			
 			//Build SkyDungeon
@@ -69,23 +69,23 @@ public class BWG4decoDungeons extends WorldGenerator
 					{
 						if (par2Random.nextInt(10) == 0)
 						{
-							par1World.setBlockAndMetadataWithNotify(x1, y1, z1, 0, 0, 2);
+							par1World.setBlock(x1, y1, z1, 0);
 						}
 						else
 						{
 							if(checkpos)
 							{
-								par1World.setBlockAndMetadataWithNotify(x1, y1, z1, Block.netherBrick.blockID, 0, 2);
+								par1World.setBlock(x1, y1, z1, Block.netherBrick.blockID);
 							}
 							else
 							{
 								if (par2Random.nextInt(2) != 0)
 								{
-									par1World.setBlockAndMetadataWithNotify(x1, y1, z1, Block.cobblestoneMossy.blockID, 0, 2);
+									par1World.setBlock(x1, y1, z1, Block.cobblestoneMossy.blockID);
 								}
 								else
 								{
-									par1World.setBlockAndMetadataWithNotify(x1, y1, z1, Block.cobblestone.blockID, 0, 2);
+									par1World.setBlock(x1, y1, z1, Block.cobblestone.blockID);
 								}
 							}
 						}
@@ -100,7 +100,7 @@ public class BWG4decoDungeons extends WorldGenerator
 				{
 					for(int z2 = par5 - 3; z2 < par5 + 4 ; z2++)
 					{
-						par1World.setBlockAndMetadataWithNotify(x2, y2, z2, 0, 0, 2);
+						par1World.setBlock(x2, y2, z2, 0);
 					}
 				}
 			}
@@ -108,39 +108,39 @@ public class BWG4decoDungeons extends WorldGenerator
 			//Chests and Spawners
 			if(isEndDungeon)
 			{
-				par1World.setBlockAndMetadataWithNotify(par3 + 2, par4 + 1, par5 - 1, Block.endPortalFrame.blockID, 1 + (par2Random.nextFloat() > 0.9F ? 4 : 0), 2);
-				par1World.setBlockAndMetadataWithNotify(par3 + 2, par4 + 1, par5 + 0, Block.endPortalFrame.blockID, 1 + (par2Random.nextFloat() > 0.9F ? 4 : 0), 2);
-				par1World.setBlockAndMetadataWithNotify(par3 + 2, par4 + 1, par5 + 1, Block.endPortalFrame.blockID, 1 + (par2Random.nextFloat() > 0.9F ? 4 : 0), 2);
+				par1World.setBlock(par3 + 2, par4 + 1, par5 - 1, Block.endPortalFrame.blockID, 1 + (par2Random.nextFloat() > 0.9F ? 4 : 0), 0);
+				par1World.setBlock(par3 + 2, par4 + 1, par5 + 0, Block.endPortalFrame.blockID, 1 + (par2Random.nextFloat() > 0.9F ? 4 : 0), 0);
+				par1World.setBlock(par3 + 2, par4 + 1, par5 + 1, Block.endPortalFrame.blockID, 1 + (par2Random.nextFloat() > 0.9F ? 4 : 0), 0);
 				
-				par1World.setBlockAndMetadataWithNotify(par3 - 1, par4 + 1, par5 + 2, Block.endPortalFrame.blockID, 2 + (par2Random.nextFloat() > 0.9F ? 4 : 0), 2);
-				par1World.setBlockAndMetadataWithNotify(par3 + 0, par4 + 1, par5 + 2, Block.endPortalFrame.blockID, 2 + (par2Random.nextFloat() > 0.9F ? 4 : 0), 2);
-				par1World.setBlockAndMetadataWithNotify(par3 + 1, par4 + 1, par5 + 2, Block.endPortalFrame.blockID, 2 + (par2Random.nextFloat() > 0.9F ? 4 : 0), 2);
+				par1World.setBlock(par3 - 1, par4 + 1, par5 + 2, Block.endPortalFrame.blockID, 2 + (par2Random.nextFloat() > 0.9F ? 4 : 0), 0);
+				par1World.setBlock(par3 + 0, par4 + 1, par5 + 2, Block.endPortalFrame.blockID, 2 + (par2Random.nextFloat() > 0.9F ? 4 : 0), 0);
+				par1World.setBlock(par3 + 1, par4 + 1, par5 + 2, Block.endPortalFrame.blockID, 2 + (par2Random.nextFloat() > 0.9F ? 4 : 0), 0);
 				
-				par1World.setBlockAndMetadataWithNotify(par3 - 2, par4 + 1, par5 - 1, Block.endPortalFrame.blockID, 3 + (par2Random.nextFloat() > 0.9F ? 4 : 0), 2);
-				par1World.setBlockAndMetadataWithNotify(par3 - 2, par4 + 1, par5 + 0, Block.endPortalFrame.blockID, 3 + (par2Random.nextFloat() > 0.9F ? 4 : 0), 2);
-				par1World.setBlockAndMetadataWithNotify(par3 - 2, par4 + 1, par5 + 1, Block.endPortalFrame.blockID, 3 + (par2Random.nextFloat() > 0.9F ? 4 : 0), 2);
+				par1World.setBlock(par3 - 2, par4 + 1, par5 - 1, Block.endPortalFrame.blockID, 3 + (par2Random.nextFloat() > 0.9F ? 4 : 0), 0);
+				par1World.setBlock(par3 - 2, par4 + 1, par5 + 0, Block.endPortalFrame.blockID, 3 + (par2Random.nextFloat() > 0.9F ? 4 : 0), 0);
+				par1World.setBlock(par3 - 2, par4 + 1, par5 + 1, Block.endPortalFrame.blockID, 3 + (par2Random.nextFloat() > 0.9F ? 4 : 0), 0);
 				
-				par1World.setBlockAndMetadataWithNotify(par3 - 1, par4 + 1, par5 - 2, Block.endPortalFrame.blockID, 0 + (par2Random.nextFloat() > 0.9F ? 4 : 0), 2);
-				par1World.setBlockAndMetadataWithNotify(par3 + 0, par4 + 1, par5 - 2, Block.endPortalFrame.blockID, 0 + (par2Random.nextFloat() > 0.9F ? 4 : 0), 2);
-				par1World.setBlockAndMetadataWithNotify(par3 + 1, par4 + 1, par5 - 2, Block.endPortalFrame.blockID, 0 + (par2Random.nextFloat() > 0.9F ? 4 : 0), 2);
+				par1World.setBlock(par3 - 1, par4 + 1, par5 - 2, Block.endPortalFrame.blockID, 0 + (par2Random.nextFloat() > 0.9F ? 4 : 0), 0);
+				par1World.setBlock(par3 + 0, par4 + 1, par5 - 2, Block.endPortalFrame.blockID, 0 + (par2Random.nextFloat() > 0.9F ? 4 : 0), 0);
+				par1World.setBlock(par3 + 1, par4 + 1, par5 - 2, Block.endPortalFrame.blockID, 0 + (par2Random.nextFloat() > 0.9F ? 4 : 0), 0);
 
-				par1World.setBlockAndMetadataWithNotify(par3, par4 + 6, par5, Block.mobSpawner.blockID, 0, 2);
+				par1World.setBlock(par3, par4 + 6, par5, Block.mobSpawner.blockID);
 				TileEntityMobSpawner spawn3 = (TileEntityMobSpawner)par1World.getBlockTileEntity(par3, par4 + 6, par5);
-				if (spawn3 != null) { spawn3.func_98049_a().func_98272_a(this.pickMobSpawner(par2Random)); }
+				if (spawn3 != null) { spawn3.func_98049_a().setMobID(this.pickMobSpawner(par2Random)); }
 			}
 			else
 			{
-				par1World.setBlockAndMetadataWithNotify(par3, par4 + 1, par5, Block.mobSpawner.blockID, 0, 2);
-				par1World.setBlockAndMetadataWithNotify(par3, par4 + 3, par5, Block.mobSpawner.blockID, 0, 2);
-				par1World.setBlockAndMetadataWithNotify(par3, par4 + 6, par5, Block.mobSpawner.blockID, 0, 2);
+				par1World.setBlock(par3, par4 + 1, par5, Block.mobSpawner.blockID);
+				par1World.setBlock(par3, par4 + 3, par5, Block.mobSpawner.blockID);
+				par1World.setBlock(par3, par4 + 6, par5, Block.mobSpawner.blockID);
 				TileEntityMobSpawner spawn1 = (TileEntityMobSpawner)par1World.getBlockTileEntity(par3, par4 + 1, par5);
 				TileEntityMobSpawner spawn2 = (TileEntityMobSpawner)par1World.getBlockTileEntity(par3, par4 + 3, par5);
 				TileEntityMobSpawner spawn3 = (TileEntityMobSpawner)par1World.getBlockTileEntity(par3, par4 + 6, par5);
-				if (spawn1 != null) { spawn1.func_98049_a().func_98272_a(this.pickMobSpawner(par2Random)); }
-				if (spawn2 != null) { spawn2.func_98049_a().func_98272_a(this.pickMobSpawner(par2Random)); }
-				if (spawn3 != null) { spawn3.func_98049_a().func_98272_a(this.pickMobSpawner(par2Random)); }
+				if (spawn1 != null) { spawn1.func_98049_a().setMobID(this.pickMobSpawner(par2Random)); }
+				if (spawn2 != null) { spawn2.func_98049_a().setMobID(this.pickMobSpawner(par2Random)); }
+				if (spawn3 != null) { spawn3.func_98049_a().setMobID(this.pickMobSpawner(par2Random)); }
 				
-				par1World.setBlockAndMetadataWithNotify(par3, par4 + 2, par5, Block.chest.blockID, 0, 2);
+				par1World.setBlock(par3, par4 + 2, par5, Block.chest.blockID);
 				TileEntityChest var16 = (TileEntityChest)par1World.getBlockTileEntity(par3, par4 + 2, par5);
 				
 				if(specialChest == true)
@@ -218,22 +218,22 @@ public class BWG4decoDungeons extends WorldGenerator
 						{
 							if (var10 != par3 - var7 - 1 && var11 != par4 - 1 && var12 != par5 - var8 - 1 && var10 != par3 + var7 + 1 && var11 != par4 + var6 + 1 && var12 != par5 + var8 + 1)
 							{
-								par1World.setBlockAndMetadataWithNotify(var10, var11, var12, 0, 0, 2);
+								par1World.setBlock(var10, var11, var12, 0);
 							}
 							else if (var11 >= 0 && !par1World.getBlockMaterial(var10, var11 - 1, var12).isSolid())
 							{
-								par1World.setBlockAndMetadataWithNotify(var10, var11, var12, 0, 0, 2);
+								par1World.setBlock(var10, var11, var12, 0);
 							}
 							else if (par1World.getBlockMaterial(var10, var11, var12).isSolid())
 							{
 								if (var11 == par4 - 1 && par2Random.nextInt(4) != 0)
 								{
-									par1World.setBlockAndMetadataWithNotify(var10, var11, var12, Block.cobblestoneMossy.blockID, 0, 2);
+									par1World.setBlock(var10, var11, var12, Block.cobblestoneMossy.blockID);
 								}
 								else
 								{
-									par1World.setBlockAndMetadataWithNotify(var10, var11, var12, Block.cobblestone.blockID, 0, 2);
-								} 
+									par1World.setBlock(var10, var11, var12, Block.cobblestone.blockID);
+								}
 							}
 						}
 					}
@@ -286,7 +286,7 @@ public class BWG4decoDungeons extends WorldGenerator
 
 									if (var15 == 1)
 									{
-										par1World.setBlockAndMetadataWithNotify(var12, par4, var14, Block.chest.blockID, 0, 2);
+										par1World.setBlock(var12, par4, var14, Block.chest.blockID);
 										TileEntityChest var16 = (TileEntityChest)par1World.getBlockTileEntity(var12, par4, var14);
 
 										if (var16 != null)
@@ -331,13 +331,12 @@ public class BWG4decoDungeons extends WorldGenerator
 					}
 				}
 
-				par1World.setBlockAndMetadataWithNotify(par3, par4, par5, Block.mobSpawner.blockID, 0, 2);
+				par1World.setBlock(par3, par4, par5, Block.mobSpawner.blockID);
 				TileEntityMobSpawner var19 = (TileEntityMobSpawner)par1World.getBlockTileEntity(par3, par4, par5);
 
 				if (var19 != null)
 				{
-					//var19.setMobID(this.pickMobSpawner(par2Random));
-					var19.func_98049_a().func_98272_a(this.pickMobSpawner(par2Random));
+					var19.func_98049_a().setMobID(this.pickMobSpawner(par2Random));
 				}
 				else
 				{
@@ -380,10 +379,10 @@ public class BWG4decoDungeons extends WorldGenerator
 		if(chestID == 0)//DEFAULT LOOT
 		{
 			int i = par1Random.nextInt(17);
-			if (i == 0) { return new ItemStack(Item.helmetChain); } 
-			if (i == 1) { return new ItemStack(Item.plateChain); }
-			if (i == 2) { return new ItemStack(Item.legsChain); }
-			if (i == 3) { return new ItemStack(Item.bootsChain); }
+			if (i == 0 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.helmetChain); } 
+			if (i == 1 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.plateChain); }
+			if (i == 2 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.legsChain); }
+			if (i == 3 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.bootsChain); }
 			if (i == 4 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.itemsList[Item.record13.itemID + par1Random.nextInt(10)]); }
 			if (i == 5) { return new ItemStack(Item.saddle); }
 			if (i == 6) { return new ItemStack(Item.gunpowder, par1Random.nextInt(4) + 1); }
@@ -411,10 +410,10 @@ public class BWG4decoDungeons extends WorldGenerator
 			if (i == 6 && par1Random.nextInt(3) == 0) { return new ItemStack(Block.mycelium); }
 			if (i == 7 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.itemsList[Item.record13.itemID + par1Random.nextInt(10)]); }
 			if (i == 8) { return new ItemStack(Item.saddle); }
-			if (i == 9) { return new ItemStack(Item.helmetChain); }
-			if (i == 10) { return new ItemStack(Item.plateChain); }
-			if (i == 11) { return new ItemStack(Item.legsChain); }
-			if (i == 12) { return new ItemStack(Item.bootsChain); }
+			if (i == 9 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.helmetChain); }
+			if (i == 10 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.plateChain); }
+			if (i == 11 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.legsChain); }
+			if (i == 12 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.bootsChain); }
 			if (i == 13) { return new ItemStack(Block.sapling, 1, 3); }
 			if (i == 14) { return Item.enchantedBook.func_92109_a(par1Random); }
 			if (i == 15) { return new ItemStack(Block.waterlily, par1Random.nextInt(4) + 1); }
@@ -428,10 +427,10 @@ public class BWG4decoDungeons extends WorldGenerator
 			if (i == 2 && par1Random.nextInt(3) == 0) { return new ItemStack(Block.mycelium); }
 			if (i == 3 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.itemsList[Item.record13.itemID + par1Random.nextInt(10)]); }
 			if (i == 4) { return new ItemStack(Item.saddle); }
-			if (i == 5) { return new ItemStack(Item.helmetChain); }
-			if (i == 6) { return new ItemStack(Item.plateChain); }
-			if (i == 7) { return new ItemStack(Item.legsChain); }
-			if (i == 8) { return new ItemStack(Item.bootsChain); }
+			if (i == 5 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.helmetChain); }
+			if (i == 6 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.plateChain); }
+			if (i == 7 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.legsChain); }
+			if (i == 8 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.bootsChain); }
 			if (i == 9) { return Item.enchantedBook.func_92109_a(par1Random); }
 			if (i == 10) { return new ItemStack(Item.bucketEmpty); }
 			if (i == 11) { return new ItemStack(Item.redstone, par1Random.nextInt(4) + 1); }
@@ -453,10 +452,10 @@ public class BWG4decoDungeons extends WorldGenerator
 			if (i == 6 && par1Random.nextInt(3) == 0) { return new ItemStack(Block.mycelium); }
 			if (i == 7 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.itemsList[Item.record13.itemID + par1Random.nextInt(10)]); }
 			if (i == 8) { return new ItemStack(Item.saddle); }
-			if (i == 9) { return new ItemStack(Item.helmetChain); }
-			if (i == 10) { return new ItemStack(Item.plateChain); }
-			if (i == 11) { return new ItemStack(Item.legsChain); }
-			if (i == 12) { return new ItemStack(Item.bootsChain); }
+			if (i == 9 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.helmetChain); }
+			if (i == 10 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.plateChain); }
+			if (i == 11 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.legsChain); }
+			if (i == 12 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.bootsChain); }
 			if (i == 13) { return new ItemStack(Block.sapling, 1, par1Random.nextInt(3) + 1); }
 			if (i == 14) { return Item.enchantedBook.func_92109_a(par1Random); }
 			if (i == 15 || i == 16 || i == 17) { return new ItemStack(Item.seeds, par1Random.nextInt(12) + 1); }
@@ -475,10 +474,10 @@ public class BWG4decoDungeons extends WorldGenerator
 			if (i == 6 && par1Random.nextInt(3) == 0) { return new ItemStack(Block.mycelium); }
 			if (i == 7 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.itemsList[Item.record13.itemID + par1Random.nextInt(10)]); }
 			if (i == 8) { return new ItemStack(Item.saddle); }
-			if (i == 9) { return new ItemStack(Item.helmetChain); }
-			if (i == 10) { return new ItemStack(Item.plateChain); }
-			if (i == 11) { return new ItemStack(Item.legsChain); }
-			if (i == 12) { return new ItemStack(Item.bootsChain); }
+			if (i == 9 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.helmetChain); }
+			if (i == 10 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.plateChain); }
+			if (i == 11 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.legsChain); }
+			if (i == 12 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.bootsChain); }
 			if (i == 13) { return new ItemStack(Block.sapling, 1, par1Random.nextInt(3) + 1); }
 			if (i == 14) { return Item.enchantedBook.func_92109_a(par1Random); }
 			if (i == 15 || i == 16 || i == 17) { return new ItemStack(Item.seeds, par1Random.nextInt(12) + 1); }
@@ -500,10 +499,10 @@ public class BWG4decoDungeons extends WorldGenerator
 			if (i == 6 && par1Random.nextInt(3) == 0) { return new ItemStack(Block.mycelium); }
 			if (i == 7 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.itemsList[Item.record13.itemID + par1Random.nextInt(10)]); }
 			if (i == 8) { return new ItemStack(Item.saddle); }
-			if (i == 9) { return new ItemStack(Item.helmetChain); }
-			if (i == 10) { return new ItemStack(Item.plateChain); }
-			if (i == 11) { return new ItemStack(Item.legsChain); }
-			if (i == 12) { return new ItemStack(Item.bootsChain); }
+			if (i == 9 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.helmetChain); }
+			if (i == 10 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.plateChain); }
+			if (i == 11 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.legsChain); }
+			if (i == 12 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.bootsChain); }
 			if (i == 13) { return new ItemStack(Block.sapling, 1, par1Random.nextInt(3) + 1); }
 			if (i == 14) { return Item.enchantedBook.func_92109_a(par1Random); }
 			if (i == 15 || i == 16 || i == 17) { return new ItemStack(Item.seeds, par1Random.nextInt(12) + 1); }
@@ -526,10 +525,10 @@ public class BWG4decoDungeons extends WorldGenerator
 			if (i == 6 && par1Random.nextInt(3) == 0) { return new ItemStack(Block.mycelium); }
 			if (i == 7 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.itemsList[Item.record13.itemID + par1Random.nextInt(10)]); }
 			if (i == 8) { return new ItemStack(Item.saddle); }
-			if (i == 9) { return new ItemStack(Item.helmetChain); }
-			if (i == 10) { return new ItemStack(Item.plateChain); }
-			if (i == 11) { return new ItemStack(Item.legsChain); }
-			if (i == 12) { return new ItemStack(Item.bootsChain); }
+			if (i == 9 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.helmetChain); }
+			if (i == 10 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.plateChain); }
+			if (i == 11 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.legsChain); }
+			if (i == 12 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.bootsChain); }
 			if (i == 13) { return new ItemStack(Block.sapling, 1, par1Random.nextInt(3) + 1); }
 			if (i == 14) { return Item.enchantedBook.func_92109_a(par1Random); }
 			if (i == 15 || i == 16 || i == 17) { return new ItemStack(Item.seeds, par1Random.nextInt(12) + 1); }
@@ -543,10 +542,10 @@ public class BWG4decoDungeons extends WorldGenerator
 		else if(chestID == 7)//GOLD LOOT
 		{
 			int i = par1Random.nextInt(18);
-			if (i == 0) { return new ItemStack(Item.helmetChain); } 
-			if (i == 1) { return new ItemStack(Item.plateChain); }
-			if (i == 2) { return new ItemStack(Item.legsChain); }
-			if (i == 3) { return new ItemStack(Item.bootsChain); }
+			if (i == 0 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.helmetChain); } 
+			if (i == 1 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.plateChain); }
+			if (i == 2 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.legsChain); }
+			if (i == 3 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.bootsChain); }
 			if (i == 4 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.itemsList[Item.record13.itemID + par1Random.nextInt(10)]); }
 			if (i == 5) { return new ItemStack(Item.saddle); }
 			if (i == 6) { return new ItemStack(Item.gunpowder, par1Random.nextInt(4) + 1); }
@@ -566,10 +565,10 @@ public class BWG4decoDungeons extends WorldGenerator
 		else if(chestID == 8)//ISLAND LOOT
 		{
 			int i = par1Random.nextInt(19);
-			if (i == 0) { return new ItemStack(Item.helmetChain); } 
-			if (i == 1) { return new ItemStack(Item.plateChain); }
-			if (i == 2) { return new ItemStack(Item.legsChain); }
-			if (i == 3) { return new ItemStack(Item.bootsChain); }
+			if (i == 0 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.helmetChain); } 
+			if (i == 1 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.plateChain); }
+			if (i == 2 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.legsChain); }
+			if (i == 3 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.bootsChain); }
 			if (i == 4 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.itemsList[Item.record13.itemID + par1Random.nextInt(10)]); }
 			if (i == 5) { return new ItemStack(Item.saddle); }
 			if (i == 6) { return new ItemStack(Item.gunpowder, par1Random.nextInt(4) + 1); }
@@ -616,10 +615,10 @@ public class BWG4decoDungeons extends WorldGenerator
 			if (i == 0) { return new ItemStack(Block.cactus, par1Random.nextInt(4) + 1); }
 			if (i == 1) { return new ItemStack(Item.reed, par1Random.nextInt(4) + 1); }
 			if (i == 2) { return new ItemStack(Block.sapling, 1, par1Random.nextInt(3) + 1); }
-			if (i == 3) { return new ItemStack(Item.helmetChain); }
-			if (i == 4) { return new ItemStack(Item.plateChain); }
-			if (i == 5) { return new ItemStack(Item.legsChain); }
-			if (i == 6) { return new ItemStack(Item.bootsChain); }
+			if (i == 3 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.helmetChain); }
+			if (i == 4 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.plateChain); }
+			if (i == 5 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.legsChain); }
+			if (i == 6 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.bootsChain); }
 			if (i == 7 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.itemsList[Item.record13.itemID + par1Random.nextInt(10)]); }
 			if (i == 8) { return new ItemStack(Item.melonSeeds, par1Random.nextInt(4) + 1); }
 			if (i == 9) { return new ItemStack(Item.pumpkinSeeds, par1Random.nextInt(4) + 1); }
@@ -643,10 +642,10 @@ public class BWG4decoDungeons extends WorldGenerator
 			if (i == 6 && par1Random.nextInt(3) == 0) { return new ItemStack(Block.mycelium); }
 			if (i == 7 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.itemsList[Item.record13.itemID + par1Random.nextInt(10)]); }
 			if (i == 8) { return new ItemStack(Item.saddle); }
-			if (i == 9) { return new ItemStack(Item.helmetChain); }
-			if (i == 10) { return new ItemStack(Item.plateChain); }
-			if (i == 11) { return new ItemStack(Item.legsChain); }
-			if (i == 12) { return new ItemStack(Item.bootsChain); }
+			if (i == 9 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.helmetChain); }
+			if (i == 10 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.plateChain); }
+			if (i == 11 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.legsChain); }
+			if (i == 12 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.bootsChain); }
 			if (i == 13) { return new ItemStack(Block.sapling, 1, 3); }
 			if (i == 14) { return Item.enchantedBook.func_92109_a(par1Random); }
 			if (i == 15) { return new ItemStack(Block.waterlily, par1Random.nextInt(4) + 1); }
@@ -660,10 +659,10 @@ public class BWG4decoDungeons extends WorldGenerator
 			if (i == 2 && par1Random.nextInt(3) == 0) { return new ItemStack(Block.mycelium); }
 			if (i == 3 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.itemsList[Item.record13.itemID + par1Random.nextInt(10)]); }
 			if (i == 4) { return new ItemStack(Item.saddle); }
-			if (i == 5) { return new ItemStack(Item.helmetChain); }
-			if (i == 6) { return new ItemStack(Item.plateChain); }
-			if (i == 7) { return new ItemStack(Item.legsChain); }
-			if (i == 8) { return new ItemStack(Item.bootsChain); }
+			if (i == 5 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.helmetChain); }
+			if (i == 6 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.plateChain); }
+			if (i == 7 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.legsChain); }
+			if (i == 8 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.bootsChain); }
 			if (i == 9) { return Item.enchantedBook.func_92109_a(par1Random); }
 			if (i == 10) { return new ItemStack(Item.bucketEmpty); }
 			if (i == 11) { return new ItemStack(Item.redstone, par1Random.nextInt(4) + 1); }
@@ -676,10 +675,10 @@ public class BWG4decoDungeons extends WorldGenerator
 		else if(chestID == 17)//SKYNETHER
 		{
 			int i = par1Random.nextInt(17);
-			if (i == 0) { return new ItemStack(Item.helmetChain); } 
-			if (i == 1) { return new ItemStack(Item.plateChain); }
-			if (i == 2) { return new ItemStack(Item.legsChain); }
-			if (i == 3) { return new ItemStack(Item.bootsChain); }
+			if (i == 0 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.helmetChain); } 
+			if (i == 1 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.plateChain); }
+			if (i == 2 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.legsChain); }
+			if (i == 3 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.bootsChain); }
 			if (i == 4 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.itemsList[Item.record13.itemID + par1Random.nextInt(10)]); }
 			if (i == 5) { return new ItemStack(Item.saddle); }
 			if (i == 6) { return new ItemStack(Item.gunpowder, par1Random.nextInt(4) + 1); }

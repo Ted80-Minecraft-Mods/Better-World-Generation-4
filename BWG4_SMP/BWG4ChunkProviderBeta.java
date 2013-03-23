@@ -686,11 +686,11 @@ public class BWG4ChunkProviderBeta implements IChunkProvider
 					{
 						if( worldObj.getBlockMaterial(j19, k25 - 1, j22).blocksMovement() && worldObj.getBlockMaterial(j19, k25 - 1, j22) != Material.ice )
 						{
-							worldObj.setBlockAndMetadataWithNotify(j19, k25, j22, Block.snow.blockID, 0, 2);
+							worldObj.setBlock(j19, k25, j22, Block.snow.blockID, 0, 2);
 						}
 						else if ( worldObj.getBlockMaterial(j19, 63, j22) == Material.water )
 						{
-							worldObj.setBlockAndMetadataWithNotify(j19, 63, j22, Block.ice.blockID, 0, 2);					
+							worldObj.setBlock(j19, 63, j22, Block.ice.blockID, 0, 2);					
 						}
 					}	
 				}
@@ -756,11 +756,11 @@ public class BWG4ChunkProviderBeta implements IChunkProvider
 					{
 						if( worldObj.getBlockMaterial(j19, k25 - 1, j22).blocksMovement() && worldObj.getBlockMaterial(j19, k25 - 1, j22) != Material.ice )
 						{
-							worldObj.setBlockAndMetadataWithNotify(j19, k25, j22, Block.snow.blockID, 0, 2);
+							worldObj.setBlock(j19, k25, j22, Block.snow.blockID, 0, 2);
 						}
 						else if ( worldObj.getBlockMaterial(j19, 63, j22) == Material.water )
 						{
-							worldObj.setBlockAndMetadataWithNotify(j19, 63, j22, Block.ice.blockID, 0, 2);					
+							worldObj.setBlock(j19, 63, j22, Block.ice.blockID, 0, 2);					
 						}
 					}	
 				}

@@ -613,11 +613,11 @@ public class BWG4ChunkProviderAlpha implements IChunkProvider
                 {
 					if( worldObj_16.getBlockMaterial(k15, i21 - 1, j18).blocksMovement() && worldObj_16.getBlockMaterial(k15, i21 - 1, j18) != Material.ice )
 					{
-						worldObj_16.setBlockAndMetadataWithNotify(k15, i21, j18, Block.snow.blockID, 0, 2);
+						worldObj_16.setBlock(k15, i21, j18, Block.snow.blockID, 0, 2);
 					}
 					else if ( worldObj_16.getBlockMaterial(k15, i21 - 1, j18) == Material.water )
 					{
-						worldObj_16.setBlockAndMetadataWithNotify(k15, i21 - 1, j18, Block.ice.blockID, 0, 2);					
+						worldObj_16.setBlock(k15, i21 - 1, j18, Block.ice.blockID, 0, 2);					
 					}
                 }
             }

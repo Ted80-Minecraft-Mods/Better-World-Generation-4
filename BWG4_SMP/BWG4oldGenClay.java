@@ -54,7 +54,7 @@ public class BWG4oldGenClay extends WorldGenerator
 							int l1 = world.getBlockId(i1, j1, k1);
 							if(l1 == Block.sand.blockID)
 							{
-								world.setBlockAndMetadataWithNotify(i1, j1, k1, clayBlockId, 0, 2);
+								world.setBlock(i1, j1, k1, clayBlockId);
 							}
 						}
 
@@ -109,7 +109,7 @@ public class BWG4oldGenClay extends WorldGenerator
 							int j3 = world.getBlockId(k2, l2, i3);
 							if(j3 == Block.sand.blockID)
 							{
-								world.setBlockAndMetadataWithNotify(k2, l2, i3, clayBlockId, 0, 2);
+								world.setBlock(k2, l2, i3, clayBlockId);
 							}
 						}
 

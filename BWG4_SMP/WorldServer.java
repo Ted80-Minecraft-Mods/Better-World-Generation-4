@@ -67,7 +67,7 @@ public class WorldServer extends World
         }
 
         this.field_85177_Q = new Teleporter(this);
-        this.field_96442_D = new ServerScoreboard(par1MinecraftServer);
+        this.worldScoreboard = new ServerScoreboard(par1MinecraftServer);
         ScoreboardSaveData var8 = (ScoreboardSaveData)this.mapStorage.loadData(ScoreboardSaveData.class, "scoreboard");
 
         if (var8 == null)
@@ -76,8 +76,8 @@ public class WorldServer extends World
             this.mapStorage.setData("scoreboard", var8);
         }
 
-        var8.func_96499_a(this.field_96442_D);
-        ((ServerScoreboard)this.field_96442_D).func_96547_a(var8);
+        var8.func_96499_a(this.worldScoreboard);
+        ((ServerScoreboard)this.worldScoreboard).func_96547_a(var8);
     }
 
     /**
@@ -279,12 +279,12 @@ public class WorldServer extends World
 
                 if (this.isBlockFreezableNaturally(var9 + var5, var11 - 1, var10 + var6))
                 {
-                    this.func_94575_c(var9 + var5, var11 - 1, var10 + var6, Block.ice.blockID);
+                    this.setBlock(var9 + var5, var11 - 1, var10 + var6, Block.ice.blockID);
                 }
 
                 if (this.isRaining() && this.canSnowAt(var9 + var5, var11, var10 + var6))
                 {
-                    this.func_94575_c(var9 + var5, var11, var10 + var6, Block.snow.blockID);
+                    this.setBlock(var9 + var5, var11, var10 + var6, Block.snow.blockID);
                 }
 
                 if (this.isRaining())
@@ -337,7 +337,10 @@ public class WorldServer extends World
         }
     }
 
-    public boolean func_94573_a(int par1, int par2, int par3, int par4)
+    /**
+     * Returns true if the given block will receive a scheduled tick in the future. Args: X, Y, Z, blockID
+     */
+    public boolean isBlockTickScheduled(int par1, int par2, int par3, int par4)
     {
         NextTickListEntry var5 = new NextTickListEntry(par1, par2, par3, par4);
         return this.field_94579_S.contains(var5);
@@ -489,7 +492,7 @@ public class WorldServer extends World
                 {
                     int var6 = this.getBlockId(var4.xCoord, var4.yCoord, var4.zCoord);
 
-                    if (var6 > 0 && Block.func_94329_b(var6, var4.blockID))
+                    if (var6 > 0 && Block.isAssociatedBlockID(var6, var4.blockID))
                     {
                         try
                         {
@@ -759,7 +762,7 @@ public class WorldServer extends World
 		int var5 = getTopSolidOrLiquidBlock(var3, var4);
 
 		new BWG4decoIndevHouse(typeID).generate(this, rand, var3, var5, var4);
-    }	
+    }
 
     /**
      * Creates the bonus chest in the world.

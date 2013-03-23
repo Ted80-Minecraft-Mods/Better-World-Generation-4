@@ -25,7 +25,7 @@ public class BWG4oldGenReed extends WorldGenerator
             {
                 if(Block.reed.canBlockStay(world, i1, j1 + i2, k1))
                 {
-                    world.setBlockAndMetadataWithNotify(i1, j1 + i2, k1, Block.reed.blockID, 0, 2);
+                    world.setBlock(i1, j1 + i2, k1, Block.reed.blockID);
                 }
             }
 

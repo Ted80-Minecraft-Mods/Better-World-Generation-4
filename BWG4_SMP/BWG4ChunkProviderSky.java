@@ -647,11 +647,11 @@ public class BWG4ChunkProviderSky implements IChunkProvider
 					{
 						if( worldObj.getBlockMaterial(j19, k25 - 1, j22).blocksMovement() && worldObj.getBlockMaterial(j19, k25 - 1, j22) != Material.ice )
 						{
-							worldObj.setBlockAndMetadataWithNotify(j19, k25, j22, Block.snow.blockID, 0, 2);
+							worldObj.setBlock(j19, k25, j22, Block.snow.blockID, 0, 2);
 						}
 						else if ( worldObj.getBlockMaterial(j19, 63, j22) == Material.water )
 						{
-							worldObj.setBlockAndMetadataWithNotify(j19, 63, j22, Block.ice.blockID, 0, 2);					
+							worldObj.setBlock(j19, 63, j22, Block.ice.blockID, 0, 2);					
 						}
 					}	
 				}
@@ -721,11 +721,11 @@ public class BWG4ChunkProviderSky implements IChunkProvider
 					{
 						if( worldObj.getBlockMaterial(j19, k25 - 1, j22).blocksMovement() && worldObj.getBlockMaterial(j19, k25 - 1, j22) != Material.ice )
 						{
-							worldObj.setBlockAndMetadataWithNotify(j19, k25, j22, Block.snow.blockID, 0, 2);
+							worldObj.setBlock(j19, k25, j22, Block.snow.blockID, 0, 2);
 						}
 						else if ( worldObj.getBlockMaterial(j19, 63, j22) == Material.water )
 						{
-							worldObj.setBlockAndMetadataWithNotify(j19, 63, j22, Block.ice.blockID, 0, 2);					
+							worldObj.setBlock(j19, 63, j22, Block.ice.blockID, 0, 2);					
 						}
 					}	
 				}
@@ -800,7 +800,7 @@ public class BWG4ChunkProviderSky implements IChunkProvider
 				int nq1 = var4 + this.rand.nextInt(16);
 				int nq2 = this.rand.nextInt(108) + 10;
 				int nq3 = var5 + this.rand.nextInt(16);
-				(new WorldGenMinable(Block.field_94342_cr.blockID, 13, Block.netherrack.blockID)).generate(this.worldObj, this.rand, nq1, nq2, nq3);
+				(new WorldGenMinable(Block.oreNetherQuartz.blockID, 13, Block.netherrack.blockID)).generate(this.worldObj, this.rand, nq1, nq2, nq3);
 			}
 			
 			BiomeGenBase var6 = this.worldObj.getBiomeGenForCoords(var4 + 16, var5 + 16);

@@ -151,7 +151,7 @@ public class BWG4oldGenBigTree extends WorldGenerator
                         l1++;
                     } else
                     {
-                        worldObj.setBlockAndMetadataWithNotify(ai1[0], ai1[1], ai1[2], l, 0, 2);
+                        worldObj.setBlock(ai1[0], ai1[1], ai1[2], l);
                         l1++;
                     }
                 }
@@ -246,7 +246,7 @@ public class BWG4oldGenBigTree extends WorldGenerator
             ai3[j] = MathHelper.floor_double((double)(ai[j] + k) + 0.5D);
             ai3[byte1] = MathHelper.floor_double((double)ai[byte1] + (double)k * d + 0.5D);
             ai3[byte2] = MathHelper.floor_double((double)ai[byte2] + (double)k * d1 + 0.5D);
-            worldObj.setBlockAndMetadataWithNotify(ai3[0], ai3[1], ai3[2], i, 0, 2);
+            worldObj.setBlock(ai3[0], ai3[1], ai3[2], i);
         }
 
     }

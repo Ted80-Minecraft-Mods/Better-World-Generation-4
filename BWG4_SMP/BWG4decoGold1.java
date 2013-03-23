@@ -99,7 +99,7 @@ public class BWG4decoGold1 extends WorldGenerator
 
 						if ((Math.abs(l3) != l1 || Math.abs(j4) != l1 || l1 <= 0) && !Block.opaqueCubeLookup[par1World.getBlockId(i3, j2, i4)])
 						{
-							par1World.setBlockAndMetadataWithNotify( i3, j2, i4, Block.leaves.blockID, 0, 2);
+							setBlockAndMetadata(par1World, i3, j2, i4, Block.leaves.blockID, 0);
 						}
 					}
 				}
@@ -122,7 +122,7 @@ public class BWG4decoGold1 extends WorldGenerator
 
 				if (j3 == 0 || j3 == Block.leaves.blockID)
 				{
-					par1World.setBlockAndMetadataWithNotify( x, y + k2, z, Block.wood.blockID, 0, 2);
+					setBlockAndMetadata(par1World, x, y + k2, z, Block.wood.blockID, 0);
 				}
 			}
 
@@ -187,7 +187,7 @@ public class BWG4decoGold1 extends WorldGenerator
 				return false;
 			}
 
-			par1World.setBlockAndMetadataWithNotify( x, y - 1, z, Block.dirt.blockID, 0, 2);
+			setBlock(par1World, x, y - 1, z, Block.dirt.blockID);
 			int l1 = par2Random.nextInt(2);
 			int j2 = 1;
 			boolean flag1 = true;
@@ -206,7 +206,7 @@ public class BWG4decoGold1 extends WorldGenerator
 
 						if ((Math.abs(k4) != l1 || Math.abs(i5) != l1 || l1 <= 0) && !Block.opaqueCubeLookup[par1World.getBlockId(i4, k3, l4)])
 						{
-							par1World.setBlockAndMetadataWithNotify( i4, k3, l4, Block.leaves.blockID, 0, 2);
+							setBlockAndMetadata(par1World, i4, k3, l4, Block.leaves.blockID, 0);
 						}
 					}
 				}
@@ -235,7 +235,7 @@ public class BWG4decoGold1 extends WorldGenerator
 
 				if (j4 == 0 || j4 == Block.leaves.blockID)
 				{
-					par1World.setBlockAndMetadataWithNotify( x, y + l3, z, Block.wood.blockID, 0, 2);
+					setBlockAndMetadata(par1World, x, y + l3, z, Block.wood.blockID, 0);
 				}
 			}
 
@@ -300,7 +300,7 @@ public class BWG4decoGold1 extends WorldGenerator
 				return false;
 			}
 
-			par1World.setBlockAndMetadataWithNotify( x, y - 1, z, Block.dirt.blockID, 0, 2);
+			setBlock(par1World, x, y - 1, z, Block.dirt.blockID);
 			int l1 = par2Random.nextInt(2);
 			int j2 = 1;
 			boolean flag1 = true;
@@ -319,7 +319,7 @@ public class BWG4decoGold1 extends WorldGenerator
 
 						if ((Math.abs(k4) != l1 || Math.abs(i5) != l1 || l1 <= 0) && !Block.opaqueCubeLookup[par1World.getBlockId(i4, k3, l4)])
 						{
-							par1World.setBlockAndMetadataWithNotify( i4, k3, l4, Block.leaves.blockID, 0, 2);
+							setBlockAndMetadata(par1World, i4, k3, l4, Block.leaves.blockID, 0);
 						}
 					}
 				}
@@ -348,7 +348,7 @@ public class BWG4decoGold1 extends WorldGenerator
 
 				if (j4 == 0 || j4 == Block.leaves.blockID)
 				{
-					par1World.setBlockAndMetadataWithNotify( x, y + l3, z, Block.wood.blockID, 0, 2);
+					setBlockAndMetadata(par1World, x, y + l3, z, Block.wood.blockID, 0);
 				}
 			}
 
@@ -394,7 +394,7 @@ public class BWG4decoGold1 extends WorldGenerator
 						count = Math.ceil(count);
 						if(par2Random.nextInt((int)count) == 0)
 						{
-							par1World.setBlockAndMetadataWithNotify(var8, 62, var10, Block.ice.blockID, 0, 2);
+							par1World.setBlock(var8, 62, var10, Block.ice.blockID, 0, 0);
 						}	
 					}	
 				}
@@ -413,13 +413,13 @@ public class BWG4decoGold1 extends WorldGenerator
 			//leaves
 			
 			//wood
-			for(int ty1 = y - 3; ty1 < randheight + y; ty1++ )  { int block = par1World.getBlockId(x, ty1, z); if(block == 0) { par1World.setBlockAndMetadataWithNotify(x, ty1, z, Block.wood.blockID, 12, 2); } }
+			for(int ty1 = y - 3; ty1 < randheight + y; ty1++ )  { int block = par1World.getBlockId(x, ty1, z); if(block == 0) { par1World.setBlock(x, ty1, z, Block.wood.blockID, 12, 0); } }
 			
 			//root
-			for(int ry1 = y - 3; ry1 < y + 5; ry1++ ) { int block = par1World.getBlockId(x + 1, ry1, z); if(block == 0) { par1World.setBlockAndMetadataWithNotify(x + 1, ry1, z, Block.wood.blockID, 12, 2); if(ry1 > y + 0 && par2Random.nextInt(3) == 0) { break; } } }
-			for(int ry2 = y - 3; ry2 < y + 5; ry2++ ) { int block = par1World.getBlockId(x - 1, ry2, z); if(block == 0) { par1World.setBlockAndMetadataWithNotify(x - 1, ry2, z, Block.wood.blockID, 12, 2); if(ry2 > y + 0 && par2Random.nextInt(3) == 0) { break; } } }
-			for(int ry3 = y - 3; ry3 < y + 5; ry3++ ) { int block = par1World.getBlockId(x, ry3, z - 1); if(block == 0) { par1World.setBlockAndMetadataWithNotify(x, ry3, z - 1, Block.wood.blockID, 12, 2); if(ry3 > y + 0 && par2Random.nextInt(3) == 0) { break; } } }
-			for(int ry4 = y - 3; ry4 < y + 5; ry4++ ) { int block = par1World.getBlockId(x, ry4, z + 1); if(block == 0) { par1World.setBlockAndMetadataWithNotify(x, ry4, z + 1, Block.wood.blockID, 12, 2); if(ry4 > y + 0 && par2Random.nextInt(3) == 0) { break; } } }
+			for(int ry1 = y - 3; ry1 < y + 5; ry1++ ) { int block = par1World.getBlockId(x + 1, ry1, z); if(block == 0) { par1World.setBlock(x + 1, ry1, z, Block.wood.blockID, 12, 0); if(ry1 > y + 0 && par2Random.nextInt(3) == 0) { break; } } }
+			for(int ry2 = y - 3; ry2 < y + 5; ry2++ ) { int block = par1World.getBlockId(x - 1, ry2, z); if(block == 0) { par1World.setBlock(x - 1, ry2, z, Block.wood.blockID, 12, 0); if(ry2 > y + 0 && par2Random.nextInt(3) == 0) { break; } } }
+			for(int ry3 = y - 3; ry3 < y + 5; ry3++ ) { int block = par1World.getBlockId(x, ry3, z - 1); if(block == 0) { par1World.setBlock(x, ry3, z - 1, Block.wood.blockID, 12, 0); if(ry3 > y + 0 && par2Random.nextInt(3) == 0) { break; } } }
+			for(int ry4 = y - 3; ry4 < y + 5; ry4++ ) { int block = par1World.getBlockId(x, ry4, z + 1); if(block == 0) { par1World.setBlock(x, ry4, z + 1, Block.wood.blockID, 12, 0); if(ry4 > y + 0 && par2Random.nextInt(3) == 0) { break; } } }
 			
 			return true;
 		}

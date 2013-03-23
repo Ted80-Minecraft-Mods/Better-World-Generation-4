@@ -23,11 +23,11 @@ public class BWG4decoPumpkin extends WorldGenerator
             {
 				if(whatblock == 0)
 				{
-					par1World.setBlockAndMetadataWithNotify(var7, var8, var9, Block.pumpkin.blockID, par2Random.nextInt(4), 2);
+					par1World.setBlock(var7, var8, var9, Block.pumpkin.blockID, par2Random.nextInt(4), 0);
 				}
 				else
 				{
-					par1World.setBlockAndMetadataWithNotify(var7, var8, var9, Block.melon.blockID, 0, 2);
+					par1World.setBlock(var7, var8, var9, Block.melon.blockID, 0, 0);
 				}
             }
         }

@@ -542,12 +542,12 @@ public class BWG4ChunkProviderDefault implements IChunkProvider
 
                 if (this.worldObj.isBlockFreezable(var12 + var4, var14 - 1, var13 + var5))
                 {
-                    this.worldObj.setBlockAndMetadataWithNotify(var12 + var4, var14 - 1, var13 + var5, Block.ice.blockID, 0, 2);
+                    this.worldObj.setBlock(var12 + var4, var14 - 1, var13 + var5, Block.ice.blockID, 0, 2);
                 }
 
                 if (this.worldObj.canSnowAt(var12 + var4, var14, var13 + var5))
                 {
-                    this.worldObj.setBlockAndMetadataWithNotify(var12 + var4, var14, var13 + var5, Block.snow.blockID, 0, 2);
+                    this.worldObj.setBlock(var12 + var4, var14, var13 + var5, Block.snow.blockID, 0, 2);
                 }
             }
         }

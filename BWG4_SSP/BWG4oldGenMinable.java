@@ -45,7 +45,7 @@ public class BWG4oldGenMinable extends WorldGenerator
 							double d14 = (((double)k1 + 0.5D) - d8) / (d10 / 2D);
 							if(d12 * d12 + d13 * d13 + d14 * d14 < 1.0D && world.getBlockId(i1, j1, k1) == Block.stone.blockID)
 							{
-								world.setBlockAndMetadataWithNotify(i1, j1, k1, minableBlockId, 0, 2);
+								world.setBlock(i1, j1, k1, minableBlockId);
 							}
 						}
 
@@ -99,7 +99,7 @@ public class BWG4oldGenMinable extends WorldGenerator
 							double d14 = (((double)i3 + 0.5D) - d8) / (d10 / 2D);
 							if(d12 * d12 + d13 * d13 + d14 * d14 < 1.0D && world.getBlockId(k2, l2, i3) == Block.stone.blockID)
 							{
-								world.setBlockAndMetadataWithNotify(k2, l2, i3, minableBlockId, 0, 2);
+								world.setBlock(k2, l2, i3, minableBlockId);
 							}
 						}
 

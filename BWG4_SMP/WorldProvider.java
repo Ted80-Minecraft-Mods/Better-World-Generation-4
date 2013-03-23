@@ -199,7 +199,7 @@ public abstract class WorldProvider
 		{
 			return this.terrainType.getChunkGenerator(this.worldObj, worldObj.getWorldInfo().getGeneratorOptions());
 			//return (IChunkProvider)(this.terrainType == WorldType.FLAT ? new ChunkProviderFlat(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled(), this.field_82913_c) : new ChunkProviderGenerate(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled()));
-		}    
+		}
 	}
 
     /**
@@ -210,7 +210,7 @@ public abstract class WorldProvider
         int var3 = this.worldObj.getFirstUncoveredBlock(par1, par2);
         return var3 == Block.grass.blockID;
     }
-
+	
 	public boolean mayRandSpawn()
 	{	
 		if(terrainType == WorldType.BWG4ISLAND || this.terrainType == WorldType.BWG4SKYLAND || this.terrainType == WorldType.BWG4SKYBLOCK )
@@ -219,7 +219,7 @@ public abstract class WorldProvider
 		}
 		return true;
 	}
-	
+
     /**
      * Calculates the angle of sun and moon in the sky relative to a specified time (usually worldTime)
      */
@@ -237,7 +237,7 @@ public abstract class WorldProvider
         {
             --var5;
         }
-		
+
 		if (terrainType == WorldType.BWG4CAVE || terrainType == WorldType.BWG4HARD) 
 		{ 
 			var5 = 0.4F; 

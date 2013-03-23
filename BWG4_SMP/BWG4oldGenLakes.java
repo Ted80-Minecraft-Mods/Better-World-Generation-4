@@ -81,7 +81,7 @@ public class BWG4oldGenLakes extends WorldGenerator
                 {
                     if(aflag[(k1 * 16 + k2) * 8 + k3])
                     {
-                        world.setBlockAndMetadataWithNotify(i + k1, j + k3, k + k2, k3 < 4 ? field_15235_a : 0, 0, 2);
+                        world.setBlock(i + k1, j + k3, k + k2, k3 < 4 ? field_15235_a : 0);
                     }
                 }
 
@@ -97,7 +97,7 @@ public class BWG4oldGenLakes extends WorldGenerator
                 {
                     if(aflag[(l1 * 16 + l2) * 8 + l3] && world.getBlockId(i + l1, (j + l3) - 1, k + l2) == Block.dirt.blockID && world.getSavedLightValue(EnumSkyBlock.Sky, i + l1, j + l3, k + l2) > 0)
                     {
-                        world.setBlockAndMetadataWithNotify(i + l1, (j + l3) - 1, k + l2, Block.grass.blockID, 0, 2);
+                        world.setBlock(i + l1, (j + l3) - 1, k + l2, Block.grass.blockID);
                     }
                 }
 
@@ -116,7 +116,7 @@ public class BWG4oldGenLakes extends WorldGenerator
                         boolean flag1 = !aflag[(i2 * 16 + i3) * 8 + i4] && (i2 < 15 && aflag[((i2 + 1) * 16 + i3) * 8 + i4] || i2 > 0 && aflag[((i2 - 1) * 16 + i3) * 8 + i4] || i3 < 15 && aflag[(i2 * 16 + (i3 + 1)) * 8 + i4] || i3 > 0 && aflag[(i2 * 16 + (i3 - 1)) * 8 + i4] || i4 < 7 && aflag[(i2 * 16 + i3) * 8 + (i4 + 1)] || i4 > 0 && aflag[(i2 * 16 + i3) * 8 + (i4 - 1)]);
                         if(flag1 && (i4 < 4 || random.nextInt(2) != 0) && world.getBlockMaterial(i + i2, j + i4, k + i3).isSolid())
                         {
-                            world.setBlockAndMetadataWithNotify(i + i2, j + i4, k + i3, Block.stone.blockID, 0, 2);
+                            world.setBlock(i + i2, j + i4, k + i3, Block.stone.blockID);
                         }
                     }
 

@@ -188,7 +188,7 @@ public abstract class BiomeGenBase
 	public static final BiomeGenBase GOLD4canyonValley = (new BWG4BiomesGold4(253, 3, 2)).setColor(353825).setBiomeName("Canyon_Valley").setTemperatureRainfall(2.0F, 0.0F).setDisableRain().setMinMaxHeight(0.5F, 0.3F).canyon().beach(0).disableLakes();
 	public static final BiomeGenBase GOLD4canyonFields = (new BWG4BiomesGold4(254, 3, 3)).setColor(353825).setBiomeName("Canyon_Fields").setTemperatureRainfall(2.0F, 0.0F).setDisableRain().setMinMaxHeight(0.5F, 0.2F).canyon().beach(0).disableLakes();
 	public static final BiomeGenBase GOLD4canyonLake = (new BWG4BiomesGold4(255, 3, 4)).setColor(353825).setBiomeName("Canyon_Lake").setTemperatureRainfall(2.0F, 0.2F).setDisableRain().setMinMaxHeight(-0.2F, 0.2F).canyon().beach(0).disableLakes();	
-
+	
     public String biomeName;
     public int color;
     public byte topBlock;
@@ -210,7 +210,7 @@ public abstract class BiomeGenBase
     protected WorldGenTrees worldGeneratorTrees;
     protected WorldGenBigTree worldGeneratorBigTree;
     protected WorldGenForest worldGeneratorForest;
-    protected WorldGenSwamp worldGeneratorSwamp;
+    protected WorldGenSwamp worldGeneratorSwamp;	
 	
 	//BWG4
 	public int beachID;		
@@ -245,7 +245,7 @@ public abstract class BiomeGenBase
         this.worldGeneratorSwamp = new WorldGenSwamp();
         this.biomeID = par1;
         biomeList[par1] = this;
-		
+	
 		//BWG4
 		beachID = 0; 
 		mountainStart = 128;
@@ -257,7 +257,7 @@ public abstract class BiomeGenBase
 		randblock = 0;
 		topBlock2 = (byte)Block.grass.blockID;
 		fillerBlock2 = (byte)Block.dirt.blockID;
-		
+	
         this.theBiomeDecorator = this.createBiomeDecorator();
         this.spawnableCreatureList.add(new SpawnListEntry(EntitySheep.class, 12, 4, 4));
         this.spawnableCreatureList.add(new SpawnListEntry(EntityPig.class, 10, 4, 4));
@@ -273,11 +273,17 @@ public abstract class BiomeGenBase
         this.spawnableCaveCreatureList.add(new SpawnListEntry(EntityBat.class, 10, 8, 8));
     }
 
+    /**
+     * Allocate a new BiomeDecorator for this BiomeGenBase
+     */
     protected BiomeDecorator createBiomeDecorator()
     {
         return new BiomeDecorator(this);
     }
 
+    /**
+     * Sets the temperature and rainfall of this biome.
+     */
     private BiomeGenBase setTemperatureRainfall(float par1, float par2)
     {
         if (par1 > 0.1F && par1 < 0.2F)
@@ -292,13 +298,16 @@ public abstract class BiomeGenBase
         }
     }
 
+    /**
+     * Sets the minimum and maximum height of this biome. Seems to go from -2.0 to 2.0.
+     */
     private BiomeGenBase setMinMaxHeight(float par1, float par2)
     {
         this.minHeight = par1;
         this.maxHeight = par2;
         return this;
     }
-
+	
 	//BWG4 ==========================
     public WorldGenerator getRandomWorldGenForTrees2(Random par1Random)
     {
@@ -356,8 +365,10 @@ public abstract class BiomeGenBase
     }
 
 	//BWG4 ==========================
-	
-	
+
+    /**
+     * Disable the rain for the biome.
+     */
     private BiomeGenBase setDisableRain()
     {
         this.enableRain = false;
