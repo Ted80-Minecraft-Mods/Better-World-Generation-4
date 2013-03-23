@@ -1,3 +1,8 @@
+Version 1.0.1 '23-3-2013'
+- Updated to minecraft 1.5.1
+- Changed dungeons loot
+- Added forge version (7.7.0.605)
+
 Version 1.0.0 '17-3-2013'
 - Fixed betterdefault loading bug
 - Removed lilypads from jungle islands
