@@ -1,3 +1,6 @@
+Version 1.0.1B '23-3-2013' 
+- (forge)Fixed themes not working
+
 Version 1.0.1 '23-3-2013'
 - Updated to minecraft 1.5.1
 - Changed dungeons loot
