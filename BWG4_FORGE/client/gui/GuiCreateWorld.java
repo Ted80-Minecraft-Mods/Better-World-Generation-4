@@ -446,9 +446,12 @@ public class GuiCreateWorld extends GuiScreen
 				else if(selectCave == 1 && worldTypeId == 28) { worldsettings.func_82750_a("1"); }
 				else if(selectCave == 2 && worldTypeId == 28) { worldsettings.func_82750_a("2"); }
 				else if(selectCave == 3 && worldTypeId == 28) { worldsettings.func_82750_a("3"); }
+				
+				if(worldTypeId == 1 || worldTypeId == 10 || worldTypeId == 11) 
+				{ 
+					worldsettings.func_82750_a(this.generatorOptionsToUse);
+				} 
 				//==================
-
-                worldsettings.func_82750_a(this.generatorOptionsToUse);
 
                 if (this.bonusItems && !this.isHardcore)
                 {
