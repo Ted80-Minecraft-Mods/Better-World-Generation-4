@@ -33,6 +33,31 @@ public class WorldChunkManager
         this.biomesToSpawnIn.add(BiomeGenBase.beach);
 		
 		//bwg4 spawn biomes
+        this.biomesToSpawnIn.add(BiomeGenBase.BDtropicalisland);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDjungleisland);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDmushroomisland);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDbeach);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDbeachDunes); 
+        this.biomesToSpawnIn.add(BiomeGenBase.BDsnowpines);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDsnowforest);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDsnowtaiga);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDsnowplains);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDsnowhills);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDplains);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDforest);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDforesthills);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDforestlakes);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDpines);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDtaiga);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDgrassland);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDrainforest);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDjungle);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDswampland);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDdesert);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDsavanna);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDsavannaforest);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDshrubland);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDshrublandHill);
     }
 
     public WorldChunkManager(long par1, WorldType par3WorldType, String GenString)//, boolean remote)
