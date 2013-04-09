@@ -1,4 +1,4 @@
-package ted80.common;
+package ted80.api;
 
 import java.util.ArrayList;
 
@@ -7,8 +7,8 @@ import net.minecraft.world.biome.BiomeGenBase;
 public class DefaultBiomeList 
 {
 	public static ArrayList<BiomeGenBase> allowedBiomes = new ArrayList<BiomeGenBase>();
-	public static String[] biomeList = new String[100];
-	public static int[] biomeType = new int[100];
+	public static String[] biomeList = new String[256];
+	public static int[] biomeType = new int[256];
 	public static int generatorversion = 1;
 	
 	public static void addBiome(String name, BiomeGenBase biome, int biometype)

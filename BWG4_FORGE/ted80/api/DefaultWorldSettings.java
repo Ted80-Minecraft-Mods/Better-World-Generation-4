@@ -1,4 +1,4 @@
-package ted80.common;
+package ted80.api;
 
 public class DefaultWorldSettings {
 
