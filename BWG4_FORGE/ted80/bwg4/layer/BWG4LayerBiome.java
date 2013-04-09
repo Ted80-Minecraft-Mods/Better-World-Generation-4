@@ -2,6 +2,8 @@ package ted80.bwg4.layer;
 
 import java.util.ArrayList;
 
+import ted80.api.DefaultBiomeList;
+
 import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.layer.IntCache;
@@ -39,28 +41,37 @@ public class BWG4LayerBiome extends BWG4Layer
 			{
 				int count = 0;
 				allowedBiomes.clear();
+				
+				ArrayList<BiomeGenBase> biomesinput = DefaultBiomeList.getBiomeList();
+				String[] biomesettingsinput = DefaultBiomeList.getStringList();
+				int[] biomeTypes = DefaultBiomeList.getTypesList();
+				
 				for(int i = 0; i < Settings.length; i++)
 				{
-					if(Settings[i].equals("Shrubland=true")) { allowedBiomes.add(BiomeGenBase.BDshrubland); count++;  }
-					else if(Settings[i].equals("Savanna=true")) { allowedBiomes.add(BiomeGenBase.BDsavanna); count++; }
-					else if(Settings[i].equals("Desert=true")) { allowedBiomes.add(BiomeGenBase.BDdesert); count++; }
-					else if(Settings[i].equals("Swampland=true")) { allowedBiomes.add(BiomeGenBase.BDswampland); count++; }
-					else if(Settings[i].equals("Jungle=true")) { allowedBiomes.add(BiomeGenBase.BDjungle); count++; }
-					else if(Settings[i].equals("RainForest=true")) { allowedBiomes.add(BiomeGenBase.BDrainforest); count++; }
-					else if(Settings[i].equals("Grassland=true")) { allowedBiomes.add(BiomeGenBase.BDgrassland); count++; }
-					else if(Settings[i].equals("Taiga=true")) { allowedBiomes.add(BiomeGenBase.BDtaiga); count++; }
-					else if(Settings[i].equals("Pines=true")) { allowedBiomes.add(BiomeGenBase.BDpines); count++; }
-					else if(Settings[i].equals("Forest Lakes=true")) { allowedBiomes.add(BiomeGenBase.BDforestlakes); count++; }
-					else if(Settings[i].equals("Forest Hills=true")) { allowedBiomes.add(BiomeGenBase.BDforesthills); count++; }
-					else if(Settings[i].equals("Forest=true")) { allowedBiomes.add(BiomeGenBase.BDforest); count++; }
-					else if(Settings[i].equals("Plains=true")) { allowedBiomes.add(BiomeGenBase.BDplains); count++; }
-					else if(Settings[i].equals("Snow Hills=true")) { allowedBiomes.add(BiomeGenBase.BDsnowhills); count++; }
-					else if(Settings[i].equals("Snow Plains=true")) { allowedBiomes.add(BiomeGenBase.BDsnowplains); count++; }
-					else if(Settings[i].equals("Snow Taiga=true")) { allowedBiomes.add(BiomeGenBase.BDsnowtaiga); count++; }
-					else if(Settings[i].equals("Snow Forest=true")) { allowedBiomes.add(BiomeGenBase.BDsnowforest); count++; }
-					else if(Settings[i].equals("Snow Pines=true")) { allowedBiomes.add(BiomeGenBase.BDsnowpines); count++; }
-					else if(Settings[i].equals("Ocean=true")) { ocean = true; }
+					for(int b = 0; b < biomesettingsinput.length; b++)
+					{
+						if(biomesettingsinput[b] != null)
+						{
+							System.out.println(Settings[i] + " equals " + biomesettingsinput[b] + " type " + biomeTypes[b]);
+							if(Settings[i].equals(biomesettingsinput[b]) && biomeTypes[b] > 0 && biomeTypes[b] < 5) 
+							{ 
+								allowedBiomes.add(biomesinput.get(b));
+								count++;
+								System.out.println("================ MATCH FOUND <3 ================");
+								break;
+							}
+							else if(Settings[i].equals("Ocean=true") && biomeTypes[b] == 0)
+							{
+								ocean = true;
+							}
+						}
+						else
+						{
+							break;
+						}
+					}
 				}
+				
 				if(count == 0) 
 				{ 
 					if(ocean == true)

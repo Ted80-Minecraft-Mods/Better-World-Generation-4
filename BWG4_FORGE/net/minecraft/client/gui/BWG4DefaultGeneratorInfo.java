@@ -7,6 +7,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import net.minecraft.world.biome.BiomeGenBase;
+
+import ted80.api.DefaultBiomeList;
+
 public class BWG4DefaultGeneratorInfo
 {
     private final List Biomelist = new ArrayList();
@@ -18,44 +22,7 @@ public class BWG4DefaultGeneratorInfo
 	
     public static BWG4DefaultGeneratorInfo defaultBiomesList()
     {
-		//DONT FORGET TO UPDATE THE 2 GEN STRINGS IN GuiCreateWorld.java :)
-	
-        BWG4DefaultGeneratorInfo var0 = new BWG4DefaultGeneratorInfo();
-
-		//HOT
-		var0.theBiomesList().add(new BWG4BiomeInfo("Shrubland", true));
-		var0.theBiomesList().add(new BWG4BiomeInfo("Savanna", true));
-		var0.theBiomesList().add(new BWG4BiomeInfo("Desert", true));
-		
-		//WARM
-		var0.theBiomesList().add(new BWG4BiomeInfo("Swampland", true));
-		var0.theBiomesList().add(new BWG4BiomeInfo("Jungle", true));
-		var0.theBiomesList().add(new BWG4BiomeInfo("RainForest", true));
-	
-		//NORMAL
-		var0.theBiomesList().add(new BWG4BiomeInfo("Grassland", true));
-		var0.theBiomesList().add(new BWG4BiomeInfo("Taiga", true));
-		var0.theBiomesList().add(new BWG4BiomeInfo("Pines", true));
-		var0.theBiomesList().add(new BWG4BiomeInfo("Forest Lakes", true));
-		var0.theBiomesList().add(new BWG4BiomeInfo("Forest Hills", true));
-		var0.theBiomesList().add(new BWG4BiomeInfo("Forest", true));
-		var0.theBiomesList().add(new BWG4BiomeInfo("Plains", true));
-		
-		//COLD
-		var0.theBiomesList().add(new BWG4BiomeInfo("Snow Hills", true));
-		var0.theBiomesList().add(new BWG4BiomeInfo("Snow Plains", true));
-		var0.theBiomesList().add(new BWG4BiomeInfo("Snow Taiga", true));
-		var0.theBiomesList().add(new BWG4BiomeInfo("Snow Forest", true));
-		var0.theBiomesList().add(new BWG4BiomeInfo("Snow Pines", true));
-	
-		//OCEAN
-		var0.theBiomesList().add(new BWG4BiomeInfo("Beach Dunes", true));
-		var0.theBiomesList().add(new BWG4BiomeInfo("Beach", true));
-		var0.theBiomesList().add(new BWG4BiomeInfo("Mushroom Island", true));
-		var0.theBiomesList().add(new BWG4BiomeInfo("Jungle Island", true));
-		var0.theBiomesList().add(new BWG4BiomeInfo("Tropical Island", true));
-		var0.theBiomesList().add(new BWG4BiomeInfo("Ocean", true));  
-        return var0;
+        return FromString(DefaultBiomeList.getDefaultString());
 	}
 	
     public String toString()

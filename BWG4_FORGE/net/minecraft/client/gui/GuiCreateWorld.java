@@ -14,6 +14,8 @@ import net.minecraft.world.storage.ISaveFormat;
 import net.minecraft.world.storage.WorldInfo;
 import org.lwjgl.input.Keyboard;
 
+import ted80.api.DefaultBiomeList;
+
 @SideOnly(Side.CLIENT)
 public class GuiCreateWorld extends GuiScreen
 {
@@ -208,7 +210,7 @@ public class GuiCreateWorld extends GuiScreen
 		
 		if(generatorOptionsToUse.length() < 2)
 		{
-			generatorOptionsToUse = "1&Shrubland=true;Savanna=true;Desert=true;Swampland=true;Jungle=true;RainForest=true;Grassland=true;Taiga=true;Pines=true;Forest Lakes=true;Forest Hills=true;Forest=true;Plains=true;Snow Hills=true;Snow Plains=true;Snow Taiga=true;Snow Forest=true;Snow Pines=true;Beach Dunes=true;Beach=true;Mushroom Island=true;Jungle Island=true;Tropical Island=true;Ocean=true";
+			generatorOptionsToUse = DefaultBiomeList.getDefaultString();
 		}
     }
 
@@ -555,7 +557,7 @@ public class GuiCreateWorld extends GuiScreen
 
 				if(worldTypeId == 0 || worldTypeId == 2)
 				{
-					generatorOptionsToUse = "1&Shrubland=true;Savanna=true;Desert=true;Swampland=true;Jungle=true;RainForest=true;Grassland=true;Taiga=true;Pines=true;Forest Lakes=true;Forest Hills=true;Forest=true;Plains=true;Snow Hills=true;Snow Plains=true;Snow Taiga=true;Snow Forest=true;Snow Pines=true;Beach Dunes=true;Beach=true;Mushroom Island=true;Jungle Island=true;Tropical Island=true;Ocean=true";
+					generatorOptionsToUse = DefaultBiomeList.getDefaultString();
 				}
 				else
 				{

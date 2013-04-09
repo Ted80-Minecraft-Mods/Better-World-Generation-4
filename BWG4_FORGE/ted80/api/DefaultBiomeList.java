@@ -30,6 +30,11 @@ public class DefaultBiomeList
 	{
 		return allowedBiomes;
 	}
+
+	public static int[] getTypesList()
+	{
+		return biomeType;
+	}
 	
 	public static String[] getStringList()
 	{
