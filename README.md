@@ -1,3 +1,10 @@
+version 1.0.3 '07-4-2013'
+- (forge)More compatibilityness
+
+Version 1.0.2 '04-4-2013'
+- Fixed BoP crash
+- Added better default biomes to spawn biomes list
+
 Version 1.0.1B '23-3-2013' 
 - (forge)Fixed themes not working
 
