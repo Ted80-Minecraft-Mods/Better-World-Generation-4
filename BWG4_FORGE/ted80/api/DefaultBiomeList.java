@@ -1,7 +1,6 @@
 package ted80.api;
 
 import java.util.ArrayList;
-
 import net.minecraft.world.biome.BiomeGenBase;
 
 public class DefaultBiomeList 
@@ -38,12 +37,12 @@ public class DefaultBiomeList
 	
 	public static String[] getStringList()
 	{
-		String[] newbiomelist = biomeList;
-		for(int i = 0; i < newbiomelist.length; i++)
+		String[] newbiomelist = new String[biomeList.length];
+		for(int i = 0; i < biomeList.length; i++)
 		{
-			if(newbiomelist[i] != null)
+			if(biomeList[i] != null)
 			{
-				newbiomelist[i] += "=true";
+				newbiomelist[i] = biomeList[i] + "=true";
 			}
 			else
 			{

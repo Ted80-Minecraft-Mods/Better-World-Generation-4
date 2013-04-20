@@ -52,12 +52,10 @@ public class BWG4LayerBiome extends BWG4Layer
 					{
 						if(biomesettingsinput[b] != null)
 						{
-							System.out.println(Settings[i] + " equals " + biomesettingsinput[b] + " type " + biomeTypes[b]);
 							if(Settings[i].equals(biomesettingsinput[b]) && biomeTypes[b] > 0 && biomeTypes[b] < 5) 
 							{ 
 								allowedBiomes.add(biomesinput.get(b));
 								count++;
-								System.out.println("================ MATCH FOUND <3 ================");
 								break;
 							}
 							else if(Settings[i].equals("Ocean=true") && biomeTypes[b] == 0)

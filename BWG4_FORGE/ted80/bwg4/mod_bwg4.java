@@ -49,7 +49,7 @@ public class mod_bwg4
 		BiomeManager.addVillageBiome(BiomeGenBase.GOLD3rainField, true);
 		BiomeManager.addVillageBiome(BiomeGenBase.GOLD3jungleFlat, true);
 		BiomeManager.addVillageBiome(BiomeGenBase.GOLD2forestPlains, true);
-		
+
 		DefaultBiomeList.addBiome("Shrubland", BiomeGenBase.BDshrubland, 4);
 		DefaultBiomeList.addBiome("Savanna", BiomeGenBase.BDsavanna, 4);
 		DefaultBiomeList.addBiome("Desert", BiomeGenBase.BDdesert, 4);
@@ -74,7 +74,5 @@ public class mod_bwg4
 		DefaultBiomeList.addBiome("Jungle Island", BiomeGenBase.BDjungleisland, 5);
 		DefaultBiomeList.addBiome("Tropical Island", BiomeGenBase.BDtropicalisland, 5);
 		DefaultBiomeList.addBiome("Ocean", BiomeGenBase.BDocean, 0);
-		
-		
 	}
 }
