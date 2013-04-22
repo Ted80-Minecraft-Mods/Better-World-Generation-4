@@ -19,7 +19,7 @@ public class BWG4ProviderHell extends WorldProviderHell
         {
 			this.worldChunkMgr = new WorldChunkManagerHell(BiomeGenBase.SURVIVALnether, 1.0F, 0.0F);
 		}
-		else if (this.worldObj.getWorldInfo().getTerrainType() == WorldType.BWG4SKY1 || this.worldObj.getWorldInfo().getTerrainType() == WorldType.BWG4SKY2 || this.worldObj.getWorldInfo().getTerrainType() ==WorldType.BWG4SKY3)
+		else if (this.worldObj.getWorldInfo().getTerrainType() == WorldType.BWG4SKY1 || this.worldObj.getWorldInfo().getTerrainType() == WorldType.BWG4SKY2)
         {
 			this.worldChunkMgr = new WorldChunkManagerHell(BiomeGenBase.SURVIVALnether, 1.0F, 0.0F);
         }
@@ -39,7 +39,7 @@ public class BWG4ProviderHell extends WorldProviderHell
         {
 			return new BWG4ChunkProviderSurvivalNether(this.worldObj, this.worldObj.getSeed());
 		}
-		else if (this.terrainType == WorldType.BWG4SKY1 || this.terrainType == WorldType.BWG4SKY2 || this.terrainType == WorldType.BWG4SKY3)
+		else if (this.terrainType == WorldType.BWG4SKY1 || this.terrainType == WorldType.BWG4SKY2)
         {
 			return new BWG4ChunkProviderSky(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled(), 4);
         }

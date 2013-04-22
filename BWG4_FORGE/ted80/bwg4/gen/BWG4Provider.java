@@ -94,12 +94,9 @@ public class BWG4Provider extends WorldProvider
 			this.worldObj.getWorldInfo().getTerrainType() == WorldType.BWG4LARGE ||
 			this.worldObj.getWorldInfo().getTerrainType() == WorldType.BWG4BETA1 ||
 			this.worldObj.getWorldInfo().getTerrainType() == WorldType.BWG4BETA2 ||
-			this.worldObj.getWorldInfo().getTerrainType() == WorldType.BWG4BETA3 ||
 			this.worldObj.getWorldInfo().getTerrainType() == WorldType.BWG4ALPHA ||
-			this.worldObj.getWorldInfo().getTerrainType() == WorldType.BWG4GOLD ||
 			this.worldObj.getWorldInfo().getTerrainType() == WorldType.BWG4SKY1 ||
 			this.worldObj.getWorldInfo().getTerrainType() == WorldType.BWG4SKY2 ||
-			this.worldObj.getWorldInfo().getTerrainType() == WorldType.BWG4SKY3 ||
 			this.worldObj.getWorldInfo().getTerrainType() == WorldType.BWG4CAVE ||
 			this.worldObj.getWorldInfo().getTerrainType() == WorldType.BWG4HARD ||
 			this.worldObj.getWorldInfo().getTerrainType() == WorldType.BWG4WASTE
@@ -143,14 +140,14 @@ public class BWG4Provider extends WorldProvider
         {
             return new BWG4ChunkProviderAlpha(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled());
         }
-        else if (terrainType == WorldType.BWG4BETA1 || terrainType == WorldType.BWG4BETA2 || terrainType == WorldType.BWG4BETA3)
+        else if (terrainType == WorldType.BWG4BETA1 || terrainType == WorldType.BWG4BETA2)
         {
 			int worldID = 1; if(terrainType == WorldType.BWG4BETA2) { worldID = 2; }
             return new BWG4ChunkProviderBeta(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled(), worldID);
         }
-        else if (terrainType == WorldType.BWG4SKY1 || terrainType == WorldType.BWG4SKY2 || terrainType == WorldType.BWG4SKY3)
+        else if (terrainType == WorldType.BWG4SKY1 || terrainType == WorldType.BWG4SKY2 )
         {
-			int worldID = 1; if(terrainType == WorldType.BWG4SKY2) { worldID = 2; } if(terrainType == WorldType.BWG4SKY3) { worldID = 3; }
+			int worldID = 1; if(terrainType == WorldType.BWG4SKY2) { worldID = 2; } 
             return new BWG4ChunkProviderSky(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled(), worldID);
         }
         else if (this.terrainType == WorldType.BWG4CAVE)
@@ -168,10 +165,6 @@ public class BWG4Provider extends WorldProvider
 		else if (this.terrainType == WorldType.BWG4SKYBLOCK)
         {
 			return new BWG4ChunkProviderSkyBlock(this.worldObj, this.worldObj.getSeed(), false);
-        }
-        else if (this.terrainType == WorldType.BWG4GOLD)
-        {
-            return new BWG4ChunkProviderGold(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled());
         }
         else if (this.terrainType == WorldType.BWG4DEFAULT || this.terrainType == WorldType.BWG4LARGE)
         {
@@ -262,13 +255,9 @@ public class BWG4Provider extends WorldProvider
 	@Override
     public float getCloudHeight()
     {
-		if (terrainType == WorldType.BWG4INDEV2 || terrainType == WorldType.BWG4SKYLAND || terrainType == WorldType.BWG4SKYBLOCK || terrainType == WorldType.BWG4SKY1 || terrainType == WorldType.BWG4SKY2 || terrainType == WorldType.BWG4SKY3)
+		if (terrainType == WorldType.BWG4INDEV2 || terrainType == WorldType.BWG4SKYLAND || terrainType == WorldType.BWG4SKYBLOCK || terrainType == WorldType.BWG4SKY1 || terrainType == WorldType.BWG4SKY2)
 		{
 			return -5F;
-		}
-		else if (terrainType == WorldType.BWG4GOLD)
-		{
-			return 145.0F;
 		}
 		else
 		{
@@ -412,7 +401,7 @@ public class BWG4Provider extends WorldProvider
 	@Override
     public double getHorizon()
     {
-		if(terrainType == WorldType.BWG4INDEV2 || terrainType == WorldType.BWG4SKYLAND || terrainType == WorldType.BWG4SKYBLOCK || terrainType == WorldType.BWG4SKY1 || terrainType == WorldType.BWG4SKY2 || terrainType == WorldType.BWG4SKY3)
+		if(terrainType == WorldType.BWG4INDEV2 || terrainType == WorldType.BWG4SKYLAND || terrainType == WorldType.BWG4SKYBLOCK || terrainType == WorldType.BWG4SKY1 || terrainType == WorldType.BWG4SKY2)
 		{
 			return 0.0D;
 		}

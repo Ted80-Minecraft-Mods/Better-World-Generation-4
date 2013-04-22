@@ -3,6 +3,9 @@ package ted80.bwg4.gen.chunkproviders;
 import java.util.List;
 import java.util.Random;
 
+import ted80.bwg4.deco.BWG4decoCaveLight;
+import ted80.bwg4.deco.BWG4decoHugeCaves;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSand;
 import net.minecraft.entity.EnumCreatureType;
@@ -15,6 +18,7 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.MapGenBase;
 import net.minecraft.world.gen.MapGenCaves;
 import net.minecraft.world.gen.NoiseGeneratorOctaves;
+import net.minecraft.world.gen.feature.WorldGenVines;
 import net.minecraft.world.gen.structure.MapGenMineshaft;
 import net.minecraft.world.gen.structure.MapGenStronghold;
 
@@ -34,7 +38,7 @@ public class BWG4ChunkProviderCave implements IChunkProvider
     private double[] slowsandNoise = new double[256];
     private double[] gravelNoise = new double[256];
     private double[] netherrackExclusivityNoise = new double[256];
-    private MapGenBase caveGenerator = new MapGenCaves();
+    private MapGenBase caveGenerator = new BWG4decoHugeCaves();
     private MapGenStronghold strongholdGenerator = new MapGenStronghold();
     private MapGenMineshaft mineshaftGenerator = new MapGenMineshaft();
     double[] noiseData1;
@@ -71,7 +75,7 @@ public class BWG4ChunkProviderCave implements IChunkProvider
     public void generateNetherTerrain(int par1, int par2, byte[] par3ArrayOfByte)
     {
         byte var4 = 4;
-        byte var5 = 32;
+        byte var5 = 45;
         int var6 = var4 + 1;
         byte var7 = 17;
         int var8 = var4 + 1;
@@ -115,13 +119,15 @@ public class BWG4ChunkProviderCave implements IChunkProvider
 
                                 if (var11 * 8 + var30 < var5)
                                 {
-                                    var51 = Block.lavaStill.blockID;
+                                    var51 = Block.waterStill.blockID;
                                 }
 
                                 if (var46 > 0.0D)
                                 {
                                     var51 = Block.stone.blockID;
-                                }								
+                                }	
+                                
+                                var51 = Block.stone.blockID;
 								
                                 par3ArrayOfByte[var42] = (byte)var51;
                                 var42 += var43;
@@ -144,7 +150,7 @@ public class BWG4ChunkProviderCave implements IChunkProvider
 
     public void replaceBlocksForBiome(int par1, int par2, byte[] par3ArrayOfByte)
     {
-        byte var4 = 64;
+        byte var4 = 32;
         double var5 = 0.03125D;
         this.slowsandNoise = this.slowsandGravelNoiseGen.generateNoiseOctaves(this.slowsandNoise, par1 * 16, par2 * 16, 0, 16, 16, 1, var5, var5, 1.0D);
         this.gravelNoise = this.slowsandGravelNoiseGen.generateNoiseOctaves(this.gravelNoise, par1 * 16, 109, par2 * 16, 16, 1, 16, var5, 1.0D, var5);
@@ -250,8 +256,9 @@ public class BWG4ChunkProviderCave implements IChunkProvider
         this.hellRNG.setSeed((long)par1 * 341873128712L + (long)par2 * 132897987541L);
         byte[] var3 = new byte[32768];
         this.generateNetherTerrain(par1, par2, var3);
-        this.replaceBlocksForBiome(par1, par2, var3);
         this.caveGenerator.generate(this, worldObj, par1, par2, var3);
+        this.replaceBlocksForBiome(par1, par2, var3);
+        //this.caveGenerator.generate(this, worldObj, par1, par2, var3);
 
         if (mapFeaturesEnabled)
         {
@@ -278,8 +285,8 @@ public class BWG4ChunkProviderCave implements IChunkProvider
             par1ArrayOfDouble = new double[par5 * par6 * par7];
         }
 
-        double var8 = 684.412D;
-        double var10 = 2053.236D;
+        double var8 = 684.412D * 4;
+        double var10 = 684.412D * -16; //2053.236D;
         this.noiseData4 = this.netherNoiseGen6.generateNoiseOctaves(this.noiseData4, par2, par3, par4, par5, 1, par7, 1.0D, 0.0D, 1.0D);
         this.noiseData5 = this.netherNoiseGen7.generateNoiseOctaves(this.noiseData5, par2, par3, par4, par5, 1, par7, 100.0D, 0.0D, 100.0D);
         this.noiseData1 = this.netherNoiseGen3.generateNoiseOctaves(this.noiseData1, par2, par3, par4, par5, par6, par7, var8 / 80.0D, var10 / 60.0D, var8 / 80.0D);
@@ -434,7 +441,29 @@ public class BWG4ChunkProviderCave implements IChunkProvider
             strongholdGenerator.generateStructuresInChunk(this.worldObj, this.hellRNG, par2, par3);
         }
 
-		
+        for (int lr = 0; lr < 60*3; ++lr)
+        {
+            int lr1 = var4 + hellRNG.nextInt(16) + 8;
+            int lr2 = hellRNG.nextInt(94) + 32;
+            int lr3 = var5 + hellRNG.nextInt(16) + 8;
+            (new BWG4decoCaveLight(Block.glowStone.blockID, 0)).generate(this.worldObj, this.hellRNG, lr1, lr2, lr3);
+        }
+        
+        for (int lr = 0; lr < 60*4; ++lr)
+        {
+            int lr1 = var4 + hellRNG.nextInt(16) + 8;
+            int lr2 = hellRNG.nextInt(28) + 4;
+            int lr3 = var5 + hellRNG.nextInt(16) + 8;
+            (new BWG4decoCaveLight(Block.glowStone.blockID, Block.waterStill.blockID)).generate(this.worldObj, this.hellRNG, lr1, lr2, lr3);
+        }
+        
+        for (int j1 = 0; j1 < 50; ++j1)
+        {
+            int var7 = var4 + hellRNG.nextInt(16) + 8;
+            byte var8 = 20;
+            int var9 = var5 + hellRNG.nextInt(16) + 8;
+            (new WorldGenVines()).generate(worldObj, hellRNG, var7, var8, var9);
+        }
 		
         BlockSand.fallInstantly = false;
     }

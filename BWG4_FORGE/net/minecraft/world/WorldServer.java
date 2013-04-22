@@ -12,7 +12,7 @@ import java.util.Random;
 import java.util.Set;
 import java.util.TreeSet;
 
-import ted80.bwg4.gen.BWG4Provider;
+import ted80.bwg4.deco.BWG4decoIndevHouse;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEventData;
 import net.minecraft.crash.CrashReport;
@@ -136,7 +136,10 @@ public class WorldServer extends World
             this.mapStorage.setData("scoreboard", scoreboardsavedata);
         }
 
-        scoreboardsavedata.func_96499_a(this.worldScoreboard);
+        if (!(this instanceof WorldServerMulti)) //Forge: We fix the global mapStorage, which causes us to share scoreboards early. So don't associate the save data with the temporary scoreboard
+        {
+            scoreboardsavedata.func_96499_a(this.worldScoreboard);
+        }
         ((ServerScoreboard)this.worldScoreboard).func_96547_a(scoreboardsavedata);
         DimensionManager.setWorld(par4, this);
     }
@@ -200,10 +203,10 @@ public class WorldServer extends World
         this.villageCollectionObj.tick();
         this.villageSiegeObj.tick();
         this.theProfiler.endStartSection("portalForcer");
-        this.field_85177_Q.func_85189_a(this.getTotalWorldTime());
+        this.field_85177_Q.removeStalePortalLocations(this.getTotalWorldTime());
         for (Teleporter tele : customTeleporters)
         {
-            tele.func_85189_a(getTotalWorldTime());
+            tele.removeStalePortalLocations(getTotalWorldTime());
         }
         this.theProfiler.endSection();
         this.sendAndApplyBlockEvents();
@@ -349,8 +352,8 @@ public class WorldServer extends World
             this.moodSoundAndLightCheck(k, l, chunk);
             this.theProfiler.endStartSection("tickChunk");
             //Limits and evenly distributes the lighting update time
-            if (System.nanoTime() - startTime <= 4000000 && doneChunks.add(chunkcoordintpair)) 
-            { 
+            if (System.nanoTime() - startTime <= 4000000 && doneChunks.add(chunkcoordintpair))
+            {
                 chunk.updateSkylight();
             }
             this.theProfiler.endStartSection("thunder");
@@ -855,11 +858,41 @@ public class WorldServer extends World
 			
             this.findingSpawnPoint = false;
 
+			if(par1WorldSettings.getTerrainType() == WorldType.BWG4INDEV1 || par1WorldSettings.getTerrainType() == WorldType.BWG4INDEV2)
+			{
+				int themeID = 1;
+				String zer = "", one = "1", two = "2", thr = "3", fou = "4", fiv = "5", theme = par1WorldSettings.func_82749_j();
+				if(theme.equals(zer)) { themeID = 0; }
+				if(theme.equals(one)) { themeID = 1; }
+				if(theme.equals(two)) { themeID = 2; }
+				if(theme.equals(thr)) { themeID = 3; }
+				if(theme.equals(fou)) { themeID = 4; }
+				if(theme.equals(fiv)) { themeID = 5; }
+				
+				if(themeID == 2)
+				{
+					createIndevHouse(2);
+				}
+				else
+				{
+					createIndevHouse(1);
+				}	
+			}	
+
             if (par1WorldSettings.isBonusChestEnabled())
             {
                 this.createBonusChest();
             }
         }
+    }
+	
+    protected void createIndevHouse(int typeID)
+    {
+		int var3 = worldInfo.getSpawnX();
+		int var4 = worldInfo.getSpawnZ();
+		int var5 = getTopSolidOrLiquidBlock(var3, var4);
+
+		new BWG4decoIndevHouse(typeID).generate(this, rand, var3, var5, var4);
     }
 
     /**

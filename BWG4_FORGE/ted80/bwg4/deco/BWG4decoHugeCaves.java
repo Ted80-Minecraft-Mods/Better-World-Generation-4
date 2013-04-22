@@ -5,17 +5,17 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import net.minecraft.world.gen.MapGenBase;
 
-import ted80.bwg4.map.BWG4MapGenBase;
-
-public class BWG4decoHugeCaves extends BWG4MapGenBase
+public class BWG4decoHugeCaves extends MapGenBase
 {
     /**
      * Generates a larger initial cave node than usual. Called 25% of the time.
      */
     protected void generateLargeCaveNode(long par1, int par3, int par4, byte[] par5ArrayOfByte, double par6, double par8, double par10)
     {
-        this.generateCaveNode(par1, par3, par4, par5ArrayOfByte, par6, par8, par10, 1.0F + this.rand.nextFloat() * 6.0F, 0.0F, 0.0F, -1, -1, 0.5D);
+        this.generateCaveNode(par1, par3, par4, par5ArrayOfByte, par6, par8, par10, 1.0F + 2F * 6.0F, 0.0F, 0.0F, -1, -1, 0.5D);
+        //this.generateCaveNode(par1, par3, par4, par5ArrayOfByte, par6, par8, par10, 1.0F + this.rand.nextFloat() * 6.0F, 0.0F, 0.0F, -1, -1, 0.5D);
     }
 
     /**
@@ -23,6 +23,8 @@ public class BWG4decoHugeCaves extends BWG4MapGenBase
      */
     protected void generateCaveNode(long par1, int par3, int par4, byte[] par5ArrayOfByte, double par6, double par8, double par10, float par12, float par13, float par14, int par15, int par16, double par17)
     {
+    	par12 = 1.0F + 1.6F * 6.0F;
+    	
         double var19 = (double)(par3 * 16 + 8);
         double var21 = (double)(par4 * 16 + 8);
         float var23 = 0.0F;
@@ -173,7 +175,7 @@ public class BWG4decoHugeCaves extends BWG4MapGenBase
                                 {
                                     for (int var50 = var38 - 1; var50 >= var57; --var50)
                                     {
-                                        double var51 = ((double)var50 + 0.5D - par8) / var31;
+                                        double var51 = ((double)var50 + 2.5D - par8) / var31;
 
                                         if (var51 > -0.7D && var59 * var59 + var51 * var51 + var46 * var46 < 1.0D)
                                         {
@@ -186,9 +188,9 @@ public class BWG4decoHugeCaves extends BWG4MapGenBase
 
                                             if (var53 == Block.stone.blockID || var53 == Block.dirt.blockID || var53 == Block.grass.blockID)
                                             {
-                                                if (var50 < 10)
+                                                if (var50 < 45)
                                                 {
-                                                    par5ArrayOfByte[var48] = (byte)Block.lavaMoving.blockID;
+                                                    par5ArrayOfByte[var48] = (byte)Block.waterMoving.blockID;
                                                 }
                                                 else
                                                 {
@@ -251,7 +253,8 @@ public class BWG4decoHugeCaves extends BWG4MapGenBase
 
                 if (this.rand.nextInt(10) == 0)
                 {
-                    var19 *= this.rand.nextFloat() * this.rand.nextFloat() * 3.0F + 1.0F;
+                    var19 *= 2F * 2F * 3.0F + 1.0F;
+                    // var19 *= this.rand.nextFloat() * this.rand.nextFloat() * 3.0F + 1.0F;
                 }
 
                 this.generateCaveNode(this.rand.nextLong(), par4, par5, par6ArrayOfByte, var9, var11, var13, var19, var17, var18, 0, 0, 1.0D);

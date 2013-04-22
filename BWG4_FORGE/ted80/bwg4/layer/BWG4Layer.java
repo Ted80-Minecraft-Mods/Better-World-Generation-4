@@ -18,49 +18,7 @@ public abstract class BWG4Layer
     {
 		if(!isRemote) { isRemote = remote; }
 	
-		if(par2WorldType == WorldType.BWG4GOLD)
-		{
-			BWG4Layer obj = new BWG4LayerCreate(1L);
-			obj = new BWG4LayerZoom(2000L, (BWG4Layer)(obj));
-			obj = new BWG4LayerZoom(2001L, (BWG4Layer)(obj));
-			obj = new BWG4LayerZoom(2002L, (BWG4Layer)(obj));
-			obj = new BWG4LayerRegion(1L, (BWG4Layer)(obj));
-			obj = new BWG4LayerPack(2L, (BWG4Layer)(obj), 1);
-			obj = new BWG4LayerZoom(2003L, (BWG4Layer)(obj));
-			byte size = 4;
-			
-			/* GenLayer obj1 = obj;
-			obj1 = GenLayerZoom.func_75915_a(1000L, ((GenLayer)(obj1)), 0);
-			obj1 = new GenLayerRiverInit(100L, ((GenLayer)(obj1)));
-			obj1 = GenLayerZoom.func_75915_a(1000L, ((GenLayer)(obj1)), size + 2);
-			obj1 = new GenLayerRiver(1L, ((GenLayer)(obj1)));
-			obj1 = new GenLayerSmooth(1000L, ((GenLayer)(obj1))); */
-			BWG4Layer obj2 = obj;
-			obj2 = BWG4LayerZoom.func_75915_a(1000L, ((BWG4Layer)(obj2)), 0);
-			obj2 = new BWG4LayerBiome(200L, ((BWG4Layer)(obj2)), par2WorldType, generatorSettings, 1, false);
-			obj2 = BWG4LayerZoom.func_75915_a(1000L, ((BWG4Layer)(obj2)), 2);
-			obj2 = new BWG4LayerSmall(1000L, ((BWG4Layer)(obj2)));
-			obj2 = new BWG4LayerBorder(1000L, ((BWG4Layer)(obj2)));
-			obj2 = new BWG4LayerZoom(1000, ((BWG4Layer)(obj2)));
-			//obj2 = new BWG4LayerShore(1000L, ((GenLayer)(obj2)));
-
-			for (int i = 0 + 1; i < size; i++)
-			{
-				obj2 = new BWG4LayerZoom(1000 + i, ((BWG4Layer)(obj2)));
-			}
-
-			obj2 = new BWG4LayerSmooth(1000L, ((BWG4Layer)(obj2)));
-			// obj2 = new BWG3LayerRiverMix(100L, ((GenLayer)(obj2)), ((GenLayer)(obj1)));
-			// BWG3LayerRiverMix bwg3layerrivermix = ((BWG3LayerRiverMix)(obj2));
-			BWG4LayerVoronoiZoom genlayervoronoizoom = new BWG4LayerVoronoiZoom(10L, ((BWG4Layer)(obj2)));
-			((BWG4Layer)(obj2)).initWorldGenSeed(par0);
-			genlayervoronoizoom.initWorldGenSeed(par0);
-			return (new BWG4Layer[]
-					{
-						obj2, genlayervoronoizoom//, bwg3layerrivermix
-					});		
-		}
-		else if(par2WorldType == WorldType.BWG4DEFAULT || par2WorldType == WorldType.BWG4LARGE)
+		if(par2WorldType == WorldType.BWG4DEFAULT || par2WorldType == WorldType.BWG4LARGE)
 		{
 			System.out.println("GENSTRING: " + genstring);
 			if(genstring.length() > 3)

@@ -148,28 +148,25 @@ public class AnvilSaveConverter extends SaveFormatOld
         		worldinfo.getTerrainType() == WorldType.BWG4LARGE ||
         		worldinfo.getTerrainType() == WorldType.BWG4BETA1 ||
         		worldinfo.getTerrainType() == WorldType.BWG4BETA2 || 
-        		worldinfo.getTerrainType() == WorldType.BWG4BETA3 ||
 	        	worldinfo.getTerrainType() == WorldType.BWG4ALPHA || 
 	        	worldinfo.getTerrainType() == WorldType.BWG4INFDEV ||
 	        	worldinfo.getTerrainType() == WorldType.BWG4INDEV1 || 
 	        	worldinfo.getTerrainType() == WorldType.BWG4INDEV2 ||
-	        	worldinfo.getTerrainType() == WorldType.BWG4GOLD || 
 	        	worldinfo.getTerrainType() == WorldType.BWG4ISLAND ||
 	        	worldinfo.getTerrainType() == WorldType.BWG4SKYLAND || 
 	        	worldinfo.getTerrainType() == WorldType.BWG4SKYBLOCK ||
 	        	worldinfo.getTerrainType() == WorldType.BWG4SKY1 || 
 	        	worldinfo.getTerrainType() == WorldType.BWG4SKY2 ||
-	        	worldinfo.getTerrainType() == WorldType.BWG4SKY3 || 
 	        	worldinfo.getTerrainType() == WorldType.BWG4CAVE ||
 	        	worldinfo.getTerrainType() == WorldType.BWG4HARD || 
 	        	worldinfo.getTerrainType() == WorldType.BWG4WASTE)
         {    		
         	object = new BWG4WorldChunkManager(worldinfo.getSeed(), worldinfo.getTerrainType(), worldinfo.getGeneratorOptions());	
         }
-		else
-		{
-			object = new WorldChunkManager(worldinfo.getSeed(), worldinfo.getTerrainType());
-		}	
+        else
+        {
+            object = new WorldChunkManager(worldinfo.getSeed(), worldinfo.getTerrainType());
+        }
 
         this.convertFile(new File(file1, "region"), arraylist, (WorldChunkManager)object, 0, i, par2IProgressUpdate);
         this.convertFile(new File(file2, "region"), arraylist1, new WorldChunkManagerHell(BiomeGenBase.hell, 1.0F, 0.0F), arraylist.size(), i, par2IProgressUpdate);
