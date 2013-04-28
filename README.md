@@ -1,3 +1,10 @@
+version 1.0.4 '20-4-2013'
+- Added api
+- Removed gold gen (this will become a separate mod)
+- Started working on re-adding cave dimension
+- Fixed themes not working
+- (forge)More compatibilityness
+
 version 1.0.3 '07-4-2013'
 - (forge)More compatibilityness
 
