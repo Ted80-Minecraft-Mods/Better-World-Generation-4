@@ -93,7 +93,6 @@ public class GuiCreateWorld extends GuiScreen
 	private GuiButton buttonIsland;
 	private GuiButton buttonSkyland;
 	private GuiButton buttonSkydimension;
-	private GuiButton buttonCave;
 	private GuiButton buttonCustomDefault1;
 	private GuiButton buttonCustomDefault2;
 	private GuiButton buttonSkyBlock;
@@ -107,15 +106,10 @@ public class GuiCreateWorld extends GuiScreen
     private int selectIsland = 0;
     private int selectSkyland = 0;
     private int selectSkydimension = 0;
-    private int selectCave = 0;
     private int selectSkyBlock = 0;
 	
 	private int currentWorldtype = 1;
 	private int maxWorldtype = 0;
-	private String goldworldtypetext1 = "";
-	private String goldworldtypetext2 = "";
-	private String goldworldtypetext3 = "";
-	private String goldworldtypetext4 = "";
 	 
     private static final String[] ILLEGAL_WORLD_NAMES = new String[] {"CON", "COM", "PRN", "AUX", "CLOCK$", "NUL", "COM1", "COM2", "COM3", "COM4", "COM5", "COM6", "COM7", "COM8", "COM9", "LPT1", "LPT2", "LPT3", "LPT4", "LPT5", "LPT6", "LPT7", "LPT8", "LPT9"};
 
@@ -178,7 +172,6 @@ public class GuiCreateWorld extends GuiScreen
         this.buttonList.add(this.buttonIsland = new GuiButton(14, this.width / 2 + 5, 125, 160, 20, "buttonIsland")); 
         this.buttonList.add(this.buttonSkyland = new GuiButton(15, this.width / 2 + 5, 125, 160, 20, "buttonSkyland")); 
         this.buttonList.add(this.buttonSkydimension = new GuiButton(16, this.width / 2 + 5, 125, 160, 20, "buttonSkydimension")); 
-        this.buttonList.add(this.buttonCave = new GuiButton(18, this.width / 2 + 5, 125, 160, 20, "buttonCave")); 
         this.buttonList.add(this.buttonCustomDefault1 = new GuiButton(19, this.width / 2 + 5, 150, 160, 20, var1.translateKey("selectWorld.customizeType"))); 
         this.buttonList.add(this.buttonCustomDefault2 = new GuiButton(20, this.width / 2 + 5, 150, 160, 20, var1.translateKey("selectWorld.customizeType"))); 
         this.buttonList.add(this.buttonSkyBlock = new GuiButton(21, this.width / 2 + 5, 125, 160, 20, "buttonSkyBlock")); 
@@ -193,7 +186,6 @@ public class GuiCreateWorld extends GuiScreen
         this.buttonIsland.drawButton = false;
         this.buttonSkyland.drawButton = false;
         this.buttonSkydimension.drawButton = false;
-        this.buttonCave.drawButton = false;
 		this.buttonCustomDefault1.drawButton = false;
 		this.buttonCustomDefault2.drawButton = false;	
 		this.buttonSkyBlock.drawButton = false;
@@ -280,20 +272,6 @@ public class GuiCreateWorld extends GuiScreen
 		
 		
 		//====== BWG4 ======
-		if(worldTypeId == 19)
-		{
-			this.goldworldtypetext1 = "!! This worldtype is still in";
-			this.goldworldtypetext2 = "development and may cause chunk";
-			this.goldworldtypetext3 = "glitches the next time you";
-			this.goldworldtypetext4 = "update to a new bwg4 version !!";
-		}
-		else
-		{
-			this.goldworldtypetext1 = "";
-			this.goldworldtypetext2 = "";
-			this.goldworldtypetext3 = "";
-			this.goldworldtypetext4 = "";
-		}
 		
 		if(selectDefault == 0) { buttonDefault.displayString = "Better Default: " + var1.translateKey("options.off"); }
 		else { buttonDefault.displayString = "Better Default: " + var1.translateKey("options.on"); }
@@ -329,16 +307,12 @@ public class GuiCreateWorld extends GuiScreen
 		else { buttonSkyland.displayString = "Theme: -"; }
 		
 		if(selectSkyBlock == 0) { buttonSkyBlock.displayString = "Type: Classic"; }
-		else if(selectSkyBlock == 1) { buttonSkyBlock.displayString = "Type: 2"; }
-		else { buttonSkyBlock.displayString = "Type: 3"; }
+		else if(selectSkyBlock == 1) { buttonSkyBlock.displayString = "Type: Extended"; }
+		else { buttonSkyBlock.displayString = "Type: Endless"; }
 		
 		if(selectSkydimension == 0) { buttonSkydimension.displayString = "Biomes: Default"; }
 		else if(selectSkydimension == 1) { buttonSkydimension.displayString = "Biomes: Beta"; }
 		else { buttonSkydimension.displayString = "Biomes: Adventure"; }
-		
-		if(selectCave == 0) { buttonCave.displayString = "Theme: Default"; }
-		else if(selectCave == 1) { buttonCave.displayString = "Theme: Stone Only"; }
-		else { buttonCave.displayString = "Theme: Desert"; }
     }
 
     public static String func_73913_a(ISaveFormat par0ISaveFormat, String par1Str)
@@ -418,26 +392,24 @@ public class GuiCreateWorld extends GuiScreen
 				if(selectDefault == 1 && worldTypeId == 0) { worldTypeId = 10; }
 				if(selectLargeBiomes == 1 && worldTypeId == 2) { worldTypeId = 11; }
 				if(selectBeta == 1 && worldTypeId == 12) { worldTypeId = 13; }
-				if(selectBeta == 2 && worldTypeId == 12) { worldTypeId = 14; }
 				if(selectIndev1 == 1 && worldTypeId == 17) { worldTypeId = 18; }
 				if(selectSkydimension == 1 && worldTypeId == 25) { worldTypeId = 26; }
-				if(selectSkydimension == 2 && worldTypeId == 25) { worldTypeId = 27; }
 				//==================
 
                 EnumGameType var8 = EnumGameType.getByName(this.gameMode);
                 WorldSettings var6 = new WorldSettings(var2, var8, this.generateStructures, this.isHardcore, WorldType.worldTypes[this.worldTypeId]);
 				
 				//====== BWG4 ======
-				if(selectIndev2 == 1 && worldTypeId == 17) { var6.func_82750_a("2"); }
+				if(selectIndev2 == 1 && worldTypeId == 16) { var6.func_82750_a("2"); }
+				else if(selectIndev2 == 2 && worldTypeId == 16) { var6.func_82750_a("3"); }
+				else if(selectIndev2 == 3 && worldTypeId == 16) { var6.func_82750_a("4"); }
+				else if(selectIndev2 == 4 && worldTypeId == 16) { var6.func_82750_a("5"); }
+				else if(selectIndev2 == 1 && worldTypeId == 17) { var6.func_82750_a("2"); }
 				else if(selectIndev2 == 2 && worldTypeId == 17) { var6.func_82750_a("3"); }
 				else if(selectIndev2 == 3 && worldTypeId == 17) { var6.func_82750_a("4"); }
 				else if(selectIndev2 == 4 && worldTypeId == 17) { var6.func_82750_a("5"); }
-				else if(selectIndev2 == 1 && worldTypeId == 18) { var6.func_82750_a("2"); }
-				else if(selectIndev2 == 2 && worldTypeId == 18) { var6.func_82750_a("3"); }
-				else if(selectIndev2 == 3 && worldTypeId == 18) { var6.func_82750_a("4"); }
-				else if(selectIndev2 == 4 && worldTypeId == 18) { var6.func_82750_a("5"); }
-				else if(selectInfdev == 0 && worldTypeId == 16) { var6.func_82750_a("1"); }
-				else if(selectInfdev == 1 && worldTypeId == 16) { var6.func_82750_a("2"); } //buttonSkyBlock selectSkyBlock
+				else if(selectInfdev == 0 && worldTypeId == 15) { var6.func_82750_a("1"); }
+				else if(selectInfdev == 1 && worldTypeId == 15) { var6.func_82750_a("2"); } 
 				else if(selectIsland == 0 && worldTypeId == 21) { var6.func_82750_a("1"); }
 				else if(selectIsland == 1 && worldTypeId == 21) { var6.func_82750_a("2"); }
 				else if(selectIsland == 2 && worldTypeId == 21) { var6.func_82750_a("3"); }
@@ -448,14 +420,15 @@ public class GuiCreateWorld extends GuiScreen
 				else if(selectSkyland == 2 && worldTypeId == 22) { var6.func_82750_a("3"); }
 				else if(selectSkyland == 3 && worldTypeId == 22) { var6.func_82750_a("4"); }
 				else if(selectSkyland == 4 && worldTypeId == 22) { var6.func_82750_a("5"); }
-				else if(selectCave == 1 && worldTypeId == 28) { var6.func_82750_a("1"); }
-				else if(selectCave == 2 && worldTypeId == 28) { var6.func_82750_a("2"); }
-				else if(selectCave == 3 && worldTypeId == 28) { var6.func_82750_a("3"); }
+				else if(selectSkyBlock == 0 && worldTypeId == 23) { var6.func_82750_a("1"); }
+				else if(selectSkyBlock == 1 && worldTypeId == 23) { var6.func_82750_a("2"); }
+				else if(selectSkyBlock == 2 && worldTypeId == 23) { var6.func_82750_a("3"); }
 
 				if(worldTypeId == 1 || worldTypeId == 10 || worldTypeId == 11) 
 				{ 
 					var6.func_82750_a(this.generatorOptionsToUse);
 				} 
+
 				//==================
 
                 if (this.bonusItems && !this.isHardcore)
@@ -626,11 +599,6 @@ public class GuiCreateWorld extends GuiScreen
                 if(selectIndev2 == 0) { selectIndev2 = 1; } else if(selectIndev2 == 1) { selectIndev2 = 2; } else if(selectIndev2 == 2) { selectIndev2 = 3; } else if(selectIndev2 == 3) { selectIndev2 = 4; } else { selectIndev2 = 0; }
             	updateButtonText();
             }
-            else if (par1GuiButton.id == 18) 
-            {
-                if(selectCave == 0) { selectCave = 1; } else if(selectCave == 1) { selectCave = 2; } else { selectCave = 0; }
-				updateButtonText();
-            }
 			else if (par1GuiButton.id == 19)
 			{
 				this.mc.displayGuiScreen(new BWG4GuiDefault(this, this.generatorOptionsToUse));
@@ -675,7 +643,6 @@ public class GuiCreateWorld extends GuiScreen
 		this.buttonIsland.drawButton = this.moreOptions && WorldType.worldTypes[this.worldTypeId] == WorldType.BWG4ISLAND;
 		this.buttonSkyland.drawButton = this.moreOptions && WorldType.worldTypes[this.worldTypeId] == WorldType.BWG4SKYLAND;
 		this.buttonSkydimension.drawButton = this.moreOptions && WorldType.worldTypes[this.worldTypeId] == WorldType.BWG4SKY1;		
-		this.buttonCave.drawButton = this.moreOptions && WorldType.worldTypes[this.worldTypeId] == WorldType.BWG4CAVE;	
 		this.buttonSkyBlock.drawButton = this.moreOptions && WorldType.worldTypes[this.worldTypeId] == WorldType.BWG4SKYBLOCK;	
 		
         StringTranslate var2;
@@ -751,10 +718,6 @@ public class GuiCreateWorld extends GuiScreen
             //this.drawString(this.fontRenderer, var4.translateKey("selectWorld.allowCommands.info"), this.width / 2 - 150, 172, 10526880);
             this.textboxSeed.drawTextBox();
             this.drawString(this.fontRenderer, "(" + currentWorldtype + "/" + maxWorldtype + ")", this.width / 2 + 120, 90, 10526880);  
-            this.drawString(this.fontRenderer, this.goldworldtypetext1, this.width / 2 + 6, 125, 8526880);
-            this.drawString(this.fontRenderer, this.goldworldtypetext2, this.width / 2 + 6, 137, 8526880);
-            this.drawString(this.fontRenderer, this.goldworldtypetext3, this.width / 2 + 6, 149, 8526880);
-            this.drawString(this.fontRenderer, this.goldworldtypetext4, this.width / 2 + 6, 161, 8526880);
         }
         else
         {

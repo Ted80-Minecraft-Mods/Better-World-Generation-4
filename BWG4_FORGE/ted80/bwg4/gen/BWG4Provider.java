@@ -164,7 +164,7 @@ public class BWG4Provider extends WorldProvider
         }
 		else if (this.terrainType == WorldType.BWG4SKYBLOCK)
         {
-			return new BWG4ChunkProviderSkyBlock(this.worldObj, this.worldObj.getSeed(), false);
+			return new BWG4ChunkProviderSkyBlock(this.worldObj, this.worldObj.getSeed(), false, themeID);
         }
         else if (this.terrainType == WorldType.BWG4DEFAULT || this.terrainType == WorldType.BWG4LARGE)
         {

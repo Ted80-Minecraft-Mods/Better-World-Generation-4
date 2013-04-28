@@ -45,7 +45,7 @@ public class BWG4ProviderHell extends WorldProviderHell
         }
 		else if (this.terrainType == WorldType.BWG4SKYBLOCK)
         {
-			return new BWG4ChunkProviderSkyBlock(this.worldObj, this.worldObj.getSeed(), true);
+			return new BWG4ChunkProviderSkyBlock(this.worldObj, this.worldObj.getSeed(), true, -1);
         }
 		else
 		{

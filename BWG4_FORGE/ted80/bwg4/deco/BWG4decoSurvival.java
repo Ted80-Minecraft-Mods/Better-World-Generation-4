@@ -425,6 +425,29 @@ public class BWG4decoSurvival extends WorldGenerator
 				} 
 			}
 		}
+		else if(survivalobject > 19 && survivalobject < 28)
+		{
+			int ore = 0, size = 1;
+			if(survivalobject == 20) { ore = Block.oreCoal.blockID; size = 3; }
+			if(survivalobject == 21) { ore = Block.oreIron.blockID; size = 3; }
+			if(survivalobject == 22) { ore = Block.oreLapis.blockID; size = 2; }
+			if(survivalobject == 23) { ore = Block.oreGold.blockID; size = 2; }
+			if(survivalobject == 24) { ore = Block.oreRedstone.blockID; size = 3; }
+			if(survivalobject == 26) { ore = Block.oreDiamond.blockID; size = 2; }
+			if(survivalobject == 27) { ore = Block.oreEmerald.blockID; size = 2; }
+			
+			for(int oreX = x; oreX < size + x; oreX++) {
+				for(int oreY = y; oreY < size + y; oreY++) {
+					for(int oreZ = z; oreZ < size + z; oreZ++) {
+						if(par2Random.nextInt(3) != 0) {
+							par1World.setBlock(oreX, oreY, oreZ, Block.stone.blockID, 0, 2);
+						} else {
+							par1World.setBlock(oreX, oreY, oreZ, ore, 0, 2);
+						}
+					}
+				}
+			}
+		}
 		else
 		{
 		}

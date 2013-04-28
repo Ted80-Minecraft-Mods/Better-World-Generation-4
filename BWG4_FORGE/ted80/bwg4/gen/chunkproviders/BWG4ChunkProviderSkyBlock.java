@@ -21,13 +21,21 @@ public class BWG4ChunkProviderSkyBlock implements IChunkProvider
     private BiomeGenBase[] biomesForGeneration;
     int[][] field_73203_h = new int[32][32];
 	int getSize = 1;
-	boolean isNether = false;
+	private boolean isNether = false;
+	private boolean themeClassic = false;
+	private boolean themeExtended = false;
+	private boolean themeEndless = false;
 
-    public BWG4ChunkProviderSkyBlock(World par1World, long par2, boolean nether)
+    public BWG4ChunkProviderSkyBlock(World par1World, long par2, boolean nether, int theme)
     {
         this.endWorld = par1World;
         this.endRNG = new Random(par2);
-		isNether = nether;
+        isNether = nether;
+        	
+        if(theme == 1) { themeClassic = true; }
+        else if(theme == 2) { themeExtended = true; }
+        else if(theme == 3) { themeEndless = true; }
+        else { themeClassic = true; }
     }
 
     public Chunk loadChunk(int par1, int par2)
@@ -65,17 +73,44 @@ public class BWG4ChunkProviderSkyBlock implements IChunkProvider
         BiomeGenBase var6 = this.endWorld.getBiomeGenForCoords(var4 + 16, var5 + 16);
         var6.decorate(this.endWorld, this.endWorld.rand, var4, var5);
 		
-		if(par2 == 0 && par3 == 0)
+        if(themeEndless)
+        {
+        	if(par2 == 0 && par3 == 0)
+        	{
+        		(new BWG4decoSurvival(6)).generate(endWorld, endRNG, 0, 70, 0);
+        	}
+        	else
+        	{
+        		if(endRNG.nextInt(8) == 0) { (new BWG4decoSurvival(20 + endRNG.nextInt(2))).generate(endWorld, endRNG, var4 + endRNG.nextInt(16), 5 + endRNG.nextInt(240), var5 + endRNG.nextInt(16)); }
+        		if(endRNG.nextInt(15) == 0) { (new BWG4decoSurvival(20 + endRNG.nextInt(4))).generate(endWorld, endRNG, var4 + endRNG.nextInt(16), 5 + endRNG.nextInt(60), var5 + endRNG.nextInt(16)); }
+        		if(endRNG.nextInt(30) == 0) { (new BWG4decoSurvival(24 + endRNG.nextInt(3))).generate(endWorld, endRNG, var4 + endRNG.nextInt(16), 5 + endRNG.nextInt(40), var5 + endRNG.nextInt(16)); }
+        	}
+        }
+        else if(par2 == 0 && par3 == 0)
 		{
 			if(isNether)
 			{
-				(new BWG4decoSurvival(8)).generate(endWorld, endRNG, 10, 80, 0);
+				if(themeClassic)
+				{
+					(new BWG4decoSurvival(8)).generate(endWorld, endRNG, 10, 80, 0);
+				}	
+				if(themeExtended)
+				{
+					
+				}
 			}
 			else
 			{
-				(new BWG4decoSurvival(6)).generate(endWorld, endRNG, 0, 70, 0);
-				(new BWG4decoSurvival(7)).generate(endWorld, endRNG, 0, 80, 60);
-			}	
+				if(themeClassic)
+				{
+					(new BWG4decoSurvival(6)).generate(endWorld, endRNG, 0, 70, 0);
+					(new BWG4decoSurvival(7)).generate(endWorld, endRNG, 0, 80, 60);
+				}	
+				if(themeExtended)
+				{
+					(new BWG4decoSurvival(6)).generate(endWorld, endRNG, 0, 70, 0);
+				}
+			}
 		}	
     }
 
