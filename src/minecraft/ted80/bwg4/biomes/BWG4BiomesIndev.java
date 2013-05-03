@@ -7,7 +7,7 @@ import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.SpawnListEntry;
 
-public class BWG4BiomesIndev extends BWG4BiomeGenBase
+public class BWG4BiomesIndev extends BiomeGenBase
 {
 	private int indevID;
 

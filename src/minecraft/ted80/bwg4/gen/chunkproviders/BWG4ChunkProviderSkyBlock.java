@@ -96,7 +96,8 @@ public class BWG4ChunkProviderSkyBlock implements IChunkProvider
 				}	
 				if(themeExtended)
 				{
-					
+					(new BWG4decoSurvival(8)).generate(endWorld, endRNG, 10, 80, 0);
+					(new BWG4decoSurvival(12)).generate(endWorld, endRNG, 30, 80, 20);
 				}
 			}
 			else
@@ -108,7 +109,16 @@ public class BWG4ChunkProviderSkyBlock implements IChunkProvider
 				}	
 				if(themeExtended)
 				{
+					//main
 					(new BWG4decoSurvival(6)).generate(endWorld, endRNG, 0, 70, 0);
+					
+					//desert
+					(new BWG4decoSurvival(7)).generate(endWorld, endRNG, 0, 80, 60);
+					
+					//trees
+					(new BWG4decoSurvival(9)).generate(endWorld, endRNG, 0, 78, -80);
+					(new BWG4decoSurvival(10)).generate(endWorld, endRNG, 80, 78, 0);
+					(new BWG4decoSurvival(11)).generate(endWorld, endRNG, -80, 78, 0);
 				}
 			}
 		}	
@@ -154,6 +164,8 @@ public class BWG4ChunkProviderSkyBlock implements IChunkProvider
     {
         return 0;
     }
+
+    public void func_104112_b() {}
 
     public void recreateStructures(int par1, int par2) {}
 }

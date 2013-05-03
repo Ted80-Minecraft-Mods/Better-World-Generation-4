@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import ted80.bwg4.biomes.BWG4BiomeGenBase;
 import ted80.bwg4.layer.BWG4Layer;
 import ted80.bwg4.noise.BWG4oldNoiseGeneratorOctaves2;
 import net.minecraft.world.ChunkPosition;
@@ -44,31 +43,31 @@ public class BWG4WorldChunkManager extends WorldChunkManager
         this.biomesToSpawnIn.add(BiomeGenBase.beach);
 		
 		//bwg4 spawn biomes
-        this.biomesToSpawnIn.add(BWG4BiomeGenBase.BDtropicalisland);
-        this.biomesToSpawnIn.add(BWG4BiomeGenBase.BDjungleisland);
-        this.biomesToSpawnIn.add(BWG4BiomeGenBase.BDmushroomisland);
-        this.biomesToSpawnIn.add(BWG4BiomeGenBase.BDbeach);
-        this.biomesToSpawnIn.add(BWG4BiomeGenBase.BDbeachDunes); 
-        this.biomesToSpawnIn.add(BWG4BiomeGenBase.BDsnowpines);
-        this.biomesToSpawnIn.add(BWG4BiomeGenBase.BDsnowforest);
-        this.biomesToSpawnIn.add(BWG4BiomeGenBase.BDsnowtaiga);
-        this.biomesToSpawnIn.add(BWG4BiomeGenBase.BDsnowplains);
-        this.biomesToSpawnIn.add(BWG4BiomeGenBase.BDsnowhills);
-        this.biomesToSpawnIn.add(BWG4BiomeGenBase.BDplains);
-        this.biomesToSpawnIn.add(BWG4BiomeGenBase.BDforest);
-        this.biomesToSpawnIn.add(BWG4BiomeGenBase.BDforesthills);
-        this.biomesToSpawnIn.add(BWG4BiomeGenBase.BDforestlakes);
-        this.biomesToSpawnIn.add(BWG4BiomeGenBase.BDpines);
-        this.biomesToSpawnIn.add(BWG4BiomeGenBase.BDtaiga);
-        this.biomesToSpawnIn.add(BWG4BiomeGenBase.BDgrassland);
-        this.biomesToSpawnIn.add(BWG4BiomeGenBase.BDrainforest);
-        this.biomesToSpawnIn.add(BWG4BiomeGenBase.BDjungle);
-        this.biomesToSpawnIn.add(BWG4BiomeGenBase.BDswampland);
-        this.biomesToSpawnIn.add(BWG4BiomeGenBase.BDdesert);
-        this.biomesToSpawnIn.add(BWG4BiomeGenBase.BDsavanna);
-        this.biomesToSpawnIn.add(BWG4BiomeGenBase.BDsavannaforest);
-        this.biomesToSpawnIn.add(BWG4BiomeGenBase.BDshrubland);
-        this.biomesToSpawnIn.add(BWG4BiomeGenBase.BDshrublandHill);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDtropicalisland);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDjungleisland);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDmushroomisland);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDbeach);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDbeachDunes); 
+        this.biomesToSpawnIn.add(BiomeGenBase.BDsnowpines);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDsnowforest);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDsnowtaiga);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDsnowplains);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDsnowhills);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDplains);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDforest);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDforesthills);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDforestlakes);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDpines);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDtaiga);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDgrassland);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDrainforest);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDjungle);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDswampland);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDdesert);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDsavanna);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDsavannaforest);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDshrubland);
+        this.biomesToSpawnIn.add(BiomeGenBase.BDshrublandHill);
 	}
 
     public BWG4WorldChunkManager(long par1, WorldType par3WorldType, String GenString)
@@ -245,50 +244,50 @@ public class BWG4WorldChunkManager extends WorldChunkManager
 		f1 *= f;
 		if(f < 0.1F)
 		{
-			return BWG4BiomeGenBase.BETAtundra.biomeID; 
+			return BiomeGenBase.BETAtundra.biomeID; 
 		}
 		if(f1 < 0.2F)
 		{
 			if(f < 0.5F)
 			{
-				return BWG4BiomeGenBase.BETAtundra.biomeID;
+				return BiomeGenBase.BETAtundra.biomeID;
 			}
 			if(f < 0.95F)
 			{
-				return BWG4BiomeGenBase.BETAsavanna.biomeID;
+				return BiomeGenBase.BETAsavanna.biomeID;
 			} else
 			{
-				return BWG4BiomeGenBase.BETAdesert.biomeID;
+				return BiomeGenBase.BETAdesert.biomeID;
 			}
 		}
 		if(f1 > 0.5F && f < 0.7F)
 		{
-			return BWG4BiomeGenBase.BETAswampland.biomeID;
+			return BiomeGenBase.BETAswampland.biomeID;
 		}
 		if(f < 0.5F)
 		{
-			return BWG4BiomeGenBase.BETAtaiga.biomeID;
+			return BiomeGenBase.BETAtaiga.biomeID;
 		}
 		if(f < 0.97F)
 		{
 			if(f1 < 0.35F)
 			{
-				return BWG4BiomeGenBase.BETAshrubland.biomeID;
+				return BiomeGenBase.BETAshrubland.biomeID;
 			} else
 			{
-				return BWG4BiomeGenBase.BETAforest.biomeID;
+				return BiomeGenBase.BETAforest.biomeID;
 			}
 		}
 		if(f1 < 0.45F)
 		{
-			return BWG4BiomeGenBase.BETAplains.biomeID;
+			return BiomeGenBase.BETAplains.biomeID;
 		}
 		if(f1 < 0.9F)
 		{
-			return BWG4BiomeGenBase.BETAseasonalForest.biomeID;
+			return BiomeGenBase.BETAseasonalForest.biomeID;
 		} else
 		{
-			return BWG4BiomeGenBase.BETArainforest.biomeID;
+			return BiomeGenBase.BETArainforest.biomeID;
 		}
     }
 	
@@ -299,111 +298,111 @@ public class BWG4WorldChunkManager extends WorldChunkManager
 		{
 			if(rain < 0.1F)
 			{
-				return BWG4BiomeGenBase.BDsnowplains.biomeID; 
+				return BiomeGenBase.BDsnowplains.biomeID; 
 			}
 			else
 			{
-				return BWG4BiomeGenBase.BDsnowpines.biomeID; 
+				return BiomeGenBase.BDsnowpines.biomeID; 
 			}
 		}
 		if(temp < 0.4F)
 		{
 			if(rain < 0.1F)
 			{
-				return BWG4BiomeGenBase.BDsnowtaiga.biomeID; 
+				return BiomeGenBase.BDsnowtaiga.biomeID; 
 			}
 			if(rain < 0.2F)
 			{
-				return BWG4BiomeGenBase.BDsnowforest.biomeID; 
+				return BiomeGenBase.BDsnowforest.biomeID; 
 			}
 			else
 			{
-				return BWG4BiomeGenBase.BDsnowpines.biomeID; 
+				return BiomeGenBase.BDsnowpines.biomeID; 
 			}
 		}
 		if(temp < 0.5F)
 		{
 			if(rain < 0.1F)
 			{
-				return BWG4BiomeGenBase.BDtaiga.biomeID; 
+				return BiomeGenBase.BDtaiga.biomeID; 
 			}
 			if(rain < 0.2F)
 			{
-				return BWG4BiomeGenBase.BDforest.biomeID; 
+				return BiomeGenBase.BDforest.biomeID; 
 			}
 			else
 			{
-				return BWG4BiomeGenBase.BDpines.biomeID; 
+				return BiomeGenBase.BDpines.biomeID; 
 			} 
 		}
 		if(temp < 0.7F)
 		{
 			if(rain < 0.3F)
 			{
-				return BWG4BiomeGenBase.BDforest.biomeID; 
+				return BiomeGenBase.BDforest.biomeID; 
 			}
 			if(rain < 0.5F)
 			{
-				return BWG4BiomeGenBase.BDforesthills.biomeID; 
+				return BiomeGenBase.BDforesthills.biomeID; 
 			}
 			if(rain < 0.7F)
 			{
-				return BWG4BiomeGenBase.BDgrassland.biomeID; 
+				return BiomeGenBase.BDgrassland.biomeID; 
 			}
 			else
 			{
-				return BWG4BiomeGenBase.BDswampland_nocolor.biomeID; 
+				return BiomeGenBase.BDswampland_nocolor.biomeID; 
 			} 
 		}
 		if(temp < 0.8F)
 		{
 			if(rain < 0.2F)
 			{
-				return BWG4BiomeGenBase.BDplains.biomeID; 
+				return BiomeGenBase.BDplains.biomeID; 
 			}
 			if(rain < 0.5F)
 			{
-				return BWG4BiomeGenBase.BDforest.biomeID; 
+				return BiomeGenBase.BDforest.biomeID; 
 			}
 			if(rain < 0.7F)
 			{
-				return BWG4BiomeGenBase.BDforestlakes.biomeID; 
+				return BiomeGenBase.BDforestlakes.biomeID; 
 			}
 			else
 			{
-				return BWG4BiomeGenBase.BDswampland_nocolor.biomeID; 
+				return BiomeGenBase.BDswampland_nocolor.biomeID; 
 			}
 		}
 		if(rain < 0.2F)
 		{
 			if(temp < 0.9F)
 			{
-				return BWG4BiomeGenBase.BDshrubland.biomeID; 
+				return BiomeGenBase.BDshrubland.biomeID; 
 			}
 			else
 			{
-				return BWG4BiomeGenBase.BDdesert.biomeID; 
+				return BiomeGenBase.BDdesert.biomeID; 
 			}
 		}
 		if(rain < 0.3F)
 		{
-			return BWG4BiomeGenBase.BDsavanna.biomeID; 
+			return BiomeGenBase.BDsavanna.biomeID; 
 		}
 		if(rain < 0.4F)
 		{
-			return BWG4BiomeGenBase.BDplains.biomeID; 
+			return BiomeGenBase.BDplains.biomeID; 
 		}
 		if(rain < 0.7F)
 		{
-			return BWG4BiomeGenBase.BDforestlakes.biomeID;  
+			return BiomeGenBase.BDforestlakes.biomeID;  
 		}
 		if(rain < 0.8F)
 		{
-			return BWG4BiomeGenBase.BDrainforest.biomeID; 
+			return BiomeGenBase.BDrainforest.biomeID; 
 		}
 		else
 		{
-			return BWG4BiomeGenBase.BDjungle_nocolor.biomeID; 
+			return BiomeGenBase.BDjungle_nocolor.biomeID; 
 		}
     }
 	
@@ -412,50 +411,50 @@ public class BWG4WorldChunkManager extends WorldChunkManager
 		f1 *= f;
 		if(f < 0.1F)
 		{
-			return BWG4BiomeGenBase.ALPHAtundra.biomeID; 
+			return BiomeGenBase.ALPHAtundra.biomeID; 
 		}
 		if(f1 < 0.2F)
 		{
 			if(f < 0.5F)
 			{
-				return BWG4BiomeGenBase.ALPHAtundra.biomeID;
+				return BiomeGenBase.ALPHAtundra.biomeID;
 			}
 			if(f < 0.95F)
 			{
-				return BWG4BiomeGenBase.ALPHAsavanna.biomeID;
+				return BiomeGenBase.ALPHAsavanna.biomeID;
 			} else
 			{
-				return BWG4BiomeGenBase.ALPHAdesert.biomeID;
+				return BiomeGenBase.ALPHAdesert.biomeID;
 			}
 		}
 		if(f1 > 0.5F && f < 0.7F)
 		{
-			return BWG4BiomeGenBase.ALPHAswampland.biomeID;
+			return BiomeGenBase.ALPHAswampland.biomeID;
 		}
 		if(f < 0.5F)
 		{
-			return BWG4BiomeGenBase.ALPHAtaiga.biomeID;
+			return BiomeGenBase.ALPHAtaiga.biomeID;
 		}
 		if(f < 0.97F)
 		{
 			if(f1 < 0.35F)
 			{
-				return BWG4BiomeGenBase.ALPHAshrubland.biomeID;
+				return BiomeGenBase.ALPHAshrubland.biomeID;
 			} else
 			{
-				return BWG4BiomeGenBase.ALPHAforest.biomeID;
+				return BiomeGenBase.ALPHAforest.biomeID;
 			}
 		}
 		if(f1 < 0.45F)
 		{
-			return BWG4BiomeGenBase.ALPHAplains.biomeID;
+			return BiomeGenBase.ALPHAplains.biomeID;
 		}
 		if(f1 < 0.9F)
 		{
-			return BWG4BiomeGenBase.ALPHAseasonalForest.biomeID;
+			return BiomeGenBase.ALPHAseasonalForest.biomeID;
 		} else
 		{
-			return BWG4BiomeGenBase.ALPHArainforest.biomeID;
+			return BiomeGenBase.ALPHArainforest.biomeID;
 		}
     }
 	

@@ -16,6 +16,7 @@ import org.lwjgl.input.Keyboard;
 
 import ted80.api.DefaultBiomeList;
 
+
 @SideOnly(Side.CLIENT)
 public class GuiCreateWorld extends GuiScreen
 {
@@ -189,7 +190,7 @@ public class GuiCreateWorld extends GuiScreen
 		this.buttonCustomDefault1.drawButton = false;
 		this.buttonCustomDefault2.drawButton = false;	
 		this.buttonSkyBlock.drawButton = false;
-		this.buttonSkyBlock.enabled = false;
+		this.buttonSkyBlock.enabled = true;
 		
         this.textboxWorldName = new GuiTextField(this.fontRenderer, this.width / 2 - 100, 60, 200, 20);
         this.textboxWorldName.setFocused(true);
@@ -609,7 +610,7 @@ public class GuiCreateWorld extends GuiScreen
 			}
 			else if (par1GuiButton.id == 21)
 			{
-                if(selectSkyBlock == 0) { selectSkyBlock = 1; } else if(selectSkyBlock == 1) { selectSkyBlock = 2; } else { selectSkyBlock = 0; }
+                if(selectSkyBlock == 0) { selectSkyBlock = 1; } else if(selectSkyBlock == 1) { selectSkyBlock = 0; } else { selectSkyBlock = 0; }
 				updateButtonText();
 			}
         }

@@ -7,9 +7,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import ted80.api.DefaultBiomeList;
+
+
 import net.minecraft.world.biome.BiomeGenBase;
 
-import ted80.api.DefaultBiomeList;
 
 public class BWG4DefaultGeneratorInfo
 {

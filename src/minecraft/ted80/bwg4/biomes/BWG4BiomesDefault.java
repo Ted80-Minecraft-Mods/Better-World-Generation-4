@@ -29,7 +29,7 @@ import net.minecraft.world.gen.feature.WorldGenTallGrass;
 import net.minecraft.world.gen.feature.WorldGenTrees;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
-public class BWG4BiomesDefault extends BWG4BiomeGenBase
+public class BWG4BiomesDefault extends BiomeGenBase
 {
 	private int biomeid;
 	private int type;

@@ -3,7 +3,6 @@ package ted80.bwg4.gen.chunkproviders;
 import java.util.List;
 import java.util.Random;
 
-import ted80.bwg4.biomes.BWG4BiomeGenBase;
 import ted80.bwg4.deco.BWG4decoDungeons;
 import ted80.bwg4.deco.old.BWG4oldGenClay;
 import ted80.bwg4.noise.BWG4NoiseOctavesBeta;
@@ -27,6 +26,8 @@ import net.minecraft.world.gen.feature.WorldGenLakes;
 import net.minecraft.world.gen.structure.MapGenMineshaft;
 import net.minecraft.world.gen.structure.MapGenStronghold;
 import net.minecraft.world.gen.structure.MapGenVillage;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 
 public class BWG4ChunkProviderDefault implements IChunkProvider
 {
@@ -161,7 +162,7 @@ public class BWG4ChunkProviderDefault implements IChunkProvider
         {
             for (int var9 = 0; var9 < 16; ++var9)
             {
-            	BWG4BiomeGenBase var10 = (BWG4BiomeGenBase) par4ArrayOfBiomeGenBase[var9 + var8 * 16];
+            	BiomeGenBase var10 = par4ArrayOfBiomeGenBase[var9 + var8 * 16];
                 boolean flag = sandNoise[var8 + var9 * 16] + rand.nextDouble() * 0.20000000000000001D > 0.0D;
                 boolean flag1 = gravelNoise[var8 + var9 * 16] + rand.nextDouble() * 0.20000000000000001D > 3D;
                 float var11 = var10.getFloatTemperature();
@@ -472,12 +473,14 @@ public class BWG4ChunkProviderDefault implements IChunkProvider
         BlockSand.fallInstantly = true;
         int var4 = par2 * 16;
         int var5 = par3 * 16;
-        BWG4BiomeGenBase var6 = (BWG4BiomeGenBase) this.worldObj.getBiomeGenForCoords(var4 + 16, var5 + 16);
+        BiomeGenBase var6 = this.worldObj.getBiomeGenForCoords(var4 + 16, var5 + 16);
         this.rand.setSeed(this.worldObj.getSeed());
         long var7 = this.rand.nextLong() / 2L * 2L + 1L;
         long var9 = this.rand.nextLong() / 2L * 2L + 1L;
         this.rand.setSeed((long)par2 * var7 + (long)par3 * var9 ^ this.worldObj.getSeed());
         boolean var11 = false;
+        
+        MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Pre(par1IChunkProvider, worldObj, rand, par2, par3, var11));
 
         if (this.mapFeaturesEnabled)
         {
@@ -576,6 +579,8 @@ public class BWG4ChunkProviderDefault implements IChunkProvider
                 }
             }
         }
+        
+        MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(par1IChunkProvider, worldObj, rand, par2, par3, var11));
 
         BlockSand.fallInstantly = false;
     }
@@ -640,6 +645,8 @@ public class BWG4ChunkProviderDefault implements IChunkProvider
     {
         return 0;
     }
+
+    public void func_104112_b() {}
 
     public void recreateStructures(int par1, int par2)
     {

@@ -1,6 +1,5 @@
 package ted80.bwg4.layer;
 
-import ted80.bwg4.biomes.BWG4BiomeGenBase;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.layer.IntCache;
 
@@ -46,103 +45,103 @@ public class BWG4LayerShore extends BWG4Layer
 				
 				if(shoreID == 2 && beachdunes)
 				{
-					if (var9 != BWG4BiomeGenBase.BDocean.biomeID && var9 != BWG4BiomeGenBase.BDbeach.biomeID && var9 != BWG4BiomeGenBase.BDsnowpines.biomeID && var9 != BWG4BiomeGenBase.BDsnowforest.biomeID && var9 != BWG4BiomeGenBase.BDsnowtaiga.biomeID && var9 != BWG4BiomeGenBase.BDsnowplains.biomeID && var9 != BWG4BiomeGenBase.BDsnowhills.biomeID)
+					if (var9 != BiomeGenBase.BDocean.biomeID && var9 != BiomeGenBase.BDbeach.biomeID && var9 != BiomeGenBase.BDsnowpines.biomeID && var9 != BiomeGenBase.BDsnowforest.biomeID && var9 != BiomeGenBase.BDsnowtaiga.biomeID && var9 != BiomeGenBase.BDsnowplains.biomeID && var9 != BiomeGenBase.BDsnowhills.biomeID)
 					{
 						var10 = var5[var8 + 1 + (var7 + 1 - 1) * (par3 + 2)];
 						var11 = var5[var8 + 1 + 1 + (var7 + 1) * (par3 + 2)];
 						var12 = var5[var8 + 1 - 1 + (var7 + 1) * (par3 + 2)];
 						var13 = var5[var8 + 1 + (var7 + 1 + 1) * (par3 + 2)];
 
-						if (var10 == BWG4BiomeGenBase.BDbeach.biomeID)
+						if (var10 == BiomeGenBase.BDbeach.biomeID)
 						{
-							var6[var8 + var7 * par3] = BWG4BiomeGenBase.BDbeachDunes.biomeID;
+							var6[var8 + var7 * par3] = BiomeGenBase.BDbeachDunes.biomeID;
 						}
-						else if (var11 == BWG4BiomeGenBase.BDbeach.biomeID)
+						else if (var11 == BiomeGenBase.BDbeach.biomeID)
 						{
-							var6[var8 + var7 * par3] = BWG4BiomeGenBase.BDbeachDunes.biomeID;
+							var6[var8 + var7 * par3] = BiomeGenBase.BDbeachDunes.biomeID;
 						}
-						else if (var12 == BWG4BiomeGenBase.BDbeach.biomeID)
+						else if (var12 == BiomeGenBase.BDbeach.biomeID)
 						{
-							var6[var8 + var7 * par3] = BWG4BiomeGenBase.BDbeachDunes.biomeID;
+							var6[var8 + var7 * par3] = BiomeGenBase.BDbeachDunes.biomeID;
 						}
-						else if (var13 == BWG4BiomeGenBase.BDbeach.biomeID)
+						else if (var13 == BiomeGenBase.BDbeach.biomeID)
 						{
-							var6[var8 + var7 * par3] = BWG4BiomeGenBase.BDbeachDunes.biomeID;
+							var6[var8 + var7 * par3] = BiomeGenBase.BDbeachDunes.biomeID;
 						}
 					}	
 				}
 				else if(shoreID == 1)
 				{
-					if( var9 == BWG4BiomeGenBase.BDdesert.biomeID || var9 == BWG4BiomeGenBase.BDsavanna.biomeID || var9 == BWG4BiomeGenBase.BDsavannaforest.biomeID || var9 == BWG4BiomeGenBase.BDshrubland.biomeID || var9 == BWG4BiomeGenBase.BDswampland.biomeID || var9 == BWG4BiomeGenBase.BDjungle.biomeID || var9 == BWG4BiomeGenBase.BDrainforest.biomeID || var9 == BWG4BiomeGenBase.BDshrublandHill.biomeID)
+					if( var9 == BiomeGenBase.BDdesert.biomeID || var9 == BiomeGenBase.BDsavanna.biomeID || var9 == BiomeGenBase.BDsavannaforest.biomeID || var9 == BiomeGenBase.BDshrubland.biomeID || var9 == BiomeGenBase.BDswampland.biomeID || var9 == BiomeGenBase.BDjungle.biomeID || var9 == BiomeGenBase.BDrainforest.biomeID || var9 == BiomeGenBase.BDshrublandHill.biomeID)
 					{
 						var10 = var5[var8 + 1 + (var7 + 1 - 1) * (par3 + 2)];
 						var11 = var5[var8 + 1 + 1 + (var7 + 1) * (par3 + 2)];
 						var12 = var5[var8 + 1 - 1 + (var7 + 1) * (par3 + 2)];
 						var13 = var5[var8 + 1 + (var7 + 1 + 1) * (par3 + 2)];
 
-						if (var10 == BWG4BiomeGenBase.BDsnowpines.biomeID || var10 == BWG4BiomeGenBase.BDsnowforest.biomeID || var10 == BWG4BiomeGenBase.BDsnowtaiga.biomeID || var10 == BWG4BiomeGenBase.BDsnowplains.biomeID || var10 == BWG4BiomeGenBase.BDsnowhills.biomeID)
+						if (var10 == BiomeGenBase.BDsnowpines.biomeID || var10 == BiomeGenBase.BDsnowforest.biomeID || var10 == BiomeGenBase.BDsnowtaiga.biomeID || var10 == BiomeGenBase.BDsnowplains.biomeID || var10 == BiomeGenBase.BDsnowhills.biomeID)
 						{
-							var6[var8 + var7 * par3] = BWG4BiomeGenBase.BDforest.biomeID;
+							var6[var8 + var7 * par3] = BiomeGenBase.BDforest.biomeID;
 						}
-						else if (var11 == BWG4BiomeGenBase.BDsnowpines.biomeID || var11 == BWG4BiomeGenBase.BDsnowforest.biomeID || var11 == BWG4BiomeGenBase.BDsnowtaiga.biomeID || var11 == BWG4BiomeGenBase.BDsnowplains.biomeID || var11 == BWG4BiomeGenBase.BDsnowhills.biomeID)
+						else if (var11 == BiomeGenBase.BDsnowpines.biomeID || var11 == BiomeGenBase.BDsnowforest.biomeID || var11 == BiomeGenBase.BDsnowtaiga.biomeID || var11 == BiomeGenBase.BDsnowplains.biomeID || var11 == BiomeGenBase.BDsnowhills.biomeID)
 						{
-							var6[var8 + var7 * par3] = BWG4BiomeGenBase.BDforest.biomeID;
+							var6[var8 + var7 * par3] = BiomeGenBase.BDforest.biomeID;
 						}
-						else if (var12 == BWG4BiomeGenBase.BDsnowpines.biomeID || var12 == BWG4BiomeGenBase.BDsnowforest.biomeID || var12 == BWG4BiomeGenBase.BDsnowtaiga.biomeID || var12 == BWG4BiomeGenBase.BDsnowplains.biomeID || var12 == BWG4BiomeGenBase.BDsnowhills.biomeID)
+						else if (var12 == BiomeGenBase.BDsnowpines.biomeID || var12 == BiomeGenBase.BDsnowforest.biomeID || var12 == BiomeGenBase.BDsnowtaiga.biomeID || var12 == BiomeGenBase.BDsnowplains.biomeID || var12 == BiomeGenBase.BDsnowhills.biomeID)
 						{
-							var6[var8 + var7 * par3] = BWG4BiomeGenBase.BDforest.biomeID;
+							var6[var8 + var7 * par3] = BiomeGenBase.BDforest.biomeID;
 						}
-						else if (var13 == BWG4BiomeGenBase.BDsnowpines.biomeID || var13 == BWG4BiomeGenBase.BDsnowforest.biomeID || var13 == BWG4BiomeGenBase.BDsnowtaiga.biomeID || var13 == BWG4BiomeGenBase.BDsnowplains.biomeID || var13 == BWG4BiomeGenBase.BDsnowhills.biomeID)
+						else if (var13 == BiomeGenBase.BDsnowpines.biomeID || var13 == BiomeGenBase.BDsnowforest.biomeID || var13 == BiomeGenBase.BDsnowtaiga.biomeID || var13 == BiomeGenBase.BDsnowplains.biomeID || var13 == BiomeGenBase.BDsnowhills.biomeID)
 						{
-							var6[var8 + var7 * par3] = BWG4BiomeGenBase.BDforest.biomeID;
+							var6[var8 + var7 * par3] = BiomeGenBase.BDforest.biomeID;
 						}
 					}
-					if(var9 == BWG4BiomeGenBase.BDsnowpines.biomeID || var9 == BWG4BiomeGenBase.BDsnowforest.biomeID || var9 == BWG4BiomeGenBase.BDsnowtaiga.biomeID || var9 == BWG4BiomeGenBase.BDsnowplains.biomeID || var9 == BWG4BiomeGenBase.BDsnowhills.biomeID)
+					if(var9 == BiomeGenBase.BDsnowpines.biomeID || var9 == BiomeGenBase.BDsnowforest.biomeID || var9 == BiomeGenBase.BDsnowtaiga.biomeID || var9 == BiomeGenBase.BDsnowplains.biomeID || var9 == BiomeGenBase.BDsnowhills.biomeID)
 					{
 						var10 = var5[var8 + 1 + (var7 + 1 - 1) * (par3 + 2)];
 						var11 = var5[var8 + 1 + 1 + (var7 + 1) * (par3 + 2)];
 						var12 = var5[var8 + 1 - 1 + (var7 + 1) * (par3 + 2)];
 						var13 = var5[var8 + 1 + (var7 + 1 + 1) * (par3 + 2)];
 
-						if( var10 == BWG4BiomeGenBase.BDdesert.biomeID || var10 == BWG4BiomeGenBase.BDsavanna.biomeID || var10 == BWG4BiomeGenBase.BDsavannaforest.biomeID || var10 == BWG4BiomeGenBase.BDshrubland.biomeID || var10 == BWG4BiomeGenBase.BDswampland.biomeID || var10 == BWG4BiomeGenBase.BDjungle.biomeID || var10 == BWG4BiomeGenBase.BDrainforest.biomeID || var10 == BWG4BiomeGenBase.BDshrublandHill.biomeID)		
+						if( var10 == BiomeGenBase.BDdesert.biomeID || var10 == BiomeGenBase.BDsavanna.biomeID || var10 == BiomeGenBase.BDsavannaforest.biomeID || var10 == BiomeGenBase.BDshrubland.biomeID || var10 == BiomeGenBase.BDswampland.biomeID || var10 == BiomeGenBase.BDjungle.biomeID || var10 == BiomeGenBase.BDrainforest.biomeID || var10 == BiomeGenBase.BDshrublandHill.biomeID)		
 						{
-							var6[var8 + var7 * par3] = BWG4BiomeGenBase.BDforest.biomeID;
+							var6[var8 + var7 * par3] = BiomeGenBase.BDforest.biomeID;
 						}
-						else if( var11 == BWG4BiomeGenBase.BDdesert.biomeID || var11 == BWG4BiomeGenBase.BDsavanna.biomeID || var11 == BWG4BiomeGenBase.BDsavannaforest.biomeID || var11 == BWG4BiomeGenBase.BDshrubland.biomeID || var11 == BWG4BiomeGenBase.BDswampland.biomeID || var11 == BWG4BiomeGenBase.BDjungle.biomeID || var11 == BWG4BiomeGenBase.BDrainforest.biomeID || var11 == BWG4BiomeGenBase.BDshrublandHill.biomeID)			
+						else if( var11 == BiomeGenBase.BDdesert.biomeID || var11 == BiomeGenBase.BDsavanna.biomeID || var11 == BiomeGenBase.BDsavannaforest.biomeID || var11 == BiomeGenBase.BDshrubland.biomeID || var11 == BiomeGenBase.BDswampland.biomeID || var11 == BiomeGenBase.BDjungle.biomeID || var11 == BiomeGenBase.BDrainforest.biomeID || var11 == BiomeGenBase.BDshrublandHill.biomeID)			
 						{
-							var6[var8 + var7 * par3] = BWG4BiomeGenBase.BDforest.biomeID;
+							var6[var8 + var7 * par3] = BiomeGenBase.BDforest.biomeID;
 						}
-						else if( var12 == BWG4BiomeGenBase.BDdesert.biomeID || var12 == BWG4BiomeGenBase.BDsavanna.biomeID || var12 == BWG4BiomeGenBase.BDsavannaforest.biomeID || var12 == BWG4BiomeGenBase.BDshrubland.biomeID || var12 == BWG4BiomeGenBase.BDswampland.biomeID || var12 == BWG4BiomeGenBase.BDjungle.biomeID || var12 == BWG4BiomeGenBase.BDrainforest.biomeID || var12 == BWG4BiomeGenBase.BDshrublandHill.biomeID)			
+						else if( var12 == BiomeGenBase.BDdesert.biomeID || var12 == BiomeGenBase.BDsavanna.biomeID || var12 == BiomeGenBase.BDsavannaforest.biomeID || var12 == BiomeGenBase.BDshrubland.biomeID || var12 == BiomeGenBase.BDswampland.biomeID || var12 == BiomeGenBase.BDjungle.biomeID || var12 == BiomeGenBase.BDrainforest.biomeID || var12 == BiomeGenBase.BDshrublandHill.biomeID)			
 						{
-							var6[var8 + var7 * par3] = BWG4BiomeGenBase.BDforest.biomeID;
+							var6[var8 + var7 * par3] = BiomeGenBase.BDforest.biomeID;
 						}
-						else if( var13 == BWG4BiomeGenBase.BDdesert.biomeID || var13 == BWG4BiomeGenBase.BDsavanna.biomeID || var13 == BWG4BiomeGenBase.BDsavannaforest.biomeID || var13 == BWG4BiomeGenBase.BDshrubland.biomeID || var13 == BWG4BiomeGenBase.BDswampland.biomeID || var13 == BWG4BiomeGenBase.BDjungle.biomeID || var13 == BWG4BiomeGenBase.BDrainforest.biomeID || var13 == BWG4BiomeGenBase.BDshrublandHill.biomeID)							
+						else if( var13 == BiomeGenBase.BDdesert.biomeID || var13 == BiomeGenBase.BDsavanna.biomeID || var13 == BiomeGenBase.BDsavannaforest.biomeID || var13 == BiomeGenBase.BDshrubland.biomeID || var13 == BiomeGenBase.BDswampland.biomeID || var13 == BiomeGenBase.BDjungle.biomeID || var13 == BiomeGenBase.BDrainforest.biomeID || var13 == BiomeGenBase.BDshrublandHill.biomeID)							
 						{
-							var6[var8 + var7 * par3] = BWG4BiomeGenBase.BDforest.biomeID;
+							var6[var8 + var7 * par3] = BiomeGenBase.BDforest.biomeID;
 						}
 					}
-					if (beach && var9 != BWG4BiomeGenBase.BDmushroomisland.biomeID && var9 != BWG4BiomeGenBase.BDjungleisland.biomeID && var9 != BWG4BiomeGenBase.BDtropicalisland.biomeID && var9 != BWG4BiomeGenBase.BDocean.biomeID && var9 != BWG4BiomeGenBase.BDsnowpines.biomeID && var9 != BWG4BiomeGenBase.BDsnowforest.biomeID && var9 != BWG4BiomeGenBase.BDsnowtaiga.biomeID && var9 != BWG4BiomeGenBase.BDsnowplains.biomeID && var9 != BWG4BiomeGenBase.BDsnowhills.biomeID)
+					if (beach && var9 != BiomeGenBase.BDmushroomisland.biomeID && var9 != BiomeGenBase.BDjungleisland.biomeID && var9 != BiomeGenBase.BDtropicalisland.biomeID && var9 != BiomeGenBase.BDocean.biomeID && var9 != BiomeGenBase.BDsnowpines.biomeID && var9 != BiomeGenBase.BDsnowforest.biomeID && var9 != BiomeGenBase.BDsnowtaiga.biomeID && var9 != BiomeGenBase.BDsnowplains.biomeID && var9 != BiomeGenBase.BDsnowhills.biomeID)
 					{
 						var10 = var5[var8 + 1 + (var7 + 1 - 1) * (par3 + 2)];
 						var11 = var5[var8 + 1 + 1 + (var7 + 1) * (par3 + 2)];
 						var12 = var5[var8 + 1 - 1 + (var7 + 1) * (par3 + 2)];
 						var13 = var5[var8 + 1 + (var7 + 1 + 1) * (par3 + 2)];
 
-						if (var10 == BWG4BiomeGenBase.BDocean.biomeID)
+						if (var10 == BiomeGenBase.BDocean.biomeID)
 						{
-							var6[var8 + var7 * par3] = BWG4BiomeGenBase.BDbeach.biomeID;
+							var6[var8 + var7 * par3] = BiomeGenBase.BDbeach.biomeID;
 						}
-						else if (var11 == BWG4BiomeGenBase.BDocean.biomeID)
+						else if (var11 == BiomeGenBase.BDocean.biomeID)
 						{
-							var6[var8 + var7 * par3] = BWG4BiomeGenBase.BDbeach.biomeID;
+							var6[var8 + var7 * par3] = BiomeGenBase.BDbeach.biomeID;
 						}
-						else if (var12 == BWG4BiomeGenBase.BDocean.biomeID)
+						else if (var12 == BiomeGenBase.BDocean.biomeID)
 						{
-							var6[var8 + var7 * par3] = BWG4BiomeGenBase.BDbeach.biomeID;
+							var6[var8 + var7 * par3] = BiomeGenBase.BDbeach.biomeID;
 						}
-						else if (var13 == BWG4BiomeGenBase.BDocean.biomeID)
+						else if (var13 == BiomeGenBase.BDocean.biomeID)
 						{
-							var6[var8 + var7 * par3] = BWG4BiomeGenBase.BDbeach.biomeID;
+							var6[var8 + var7 * par3] = BiomeGenBase.BDbeach.biomeID;
 						}
 					}
 				}

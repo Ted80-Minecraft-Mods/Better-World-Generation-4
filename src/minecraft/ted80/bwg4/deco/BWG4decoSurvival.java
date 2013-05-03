@@ -425,6 +425,49 @@ public class BWG4decoSurvival extends WorldGenerator
 				} 
 			}
 		}
+		else if(survivalobject > 8 && survivalobject < 12)
+		{
+			for(int i = x - 1; i < 2 + x; i++)
+			{
+				for(int k = z - 1; k < 2 + z; k++)
+				{
+					for(int j = y; j < 3 + y; j++)
+					{
+						if(j == 2 + y) { par1World.setBlock(i, j, k, Block.grass.blockID); } else { par1World.setBlock(i, j, k, Block.dirt.blockID); }
+					}
+				}
+			}
+			par1World.setBlock(x, y + 3, z, Block.chest.blockID);
+			TileEntityChest tileentitychest = (TileEntityChest)par1World.getBlockTileEntity(x, y + 3, z);		
+			for (int c = 0; c < 20; c++) 
+			{ 
+				ItemStack itemstack = getChestList(c, survivalobject - 4, par2Random, par1World); 
+				if (tileentitychest != null && itemstack != null) 
+				{ 
+					tileentitychest.setInventorySlotContents(c, itemstack); 
+				} 
+			}
+		}
+		else if(survivalobject == 12)
+		{
+			for(int i = x - 1; i < 2 + x; i++)
+			{
+				for(int k = z - 1; k < 2 + z; k++)
+				{
+					for(int j = y; j < 4 + y; j++)
+					{
+						if(j == 3 + y) 
+						{ 
+							par1World.setBlock(i, j, k, Block.netherStalk.blockID); 
+						} 
+						else 
+						{ 
+							par1World.setBlock(i, j, k, Block.slowSand.blockID); 
+						}
+					}
+				}
+			}
+		}
 		else if(survivalobject > 19 && survivalobject < 28)
 		{
 			int ore = 0, size = 1;
@@ -484,6 +527,26 @@ public class BWG4decoSurvival extends WorldGenerator
 			if (chestid == 1) { return new ItemStack(Item.reed); }
 			if (chestid == 2) { return new ItemStack(Block.ice); }
 			if (chestid == 3) { return new ItemStack(Block.sapling, 1, 3); }
+			return null;
+		}
+		if (chesttype == 5)
+		{	
+			if (chestid == 0) { return new ItemStack(Block.sapling, 1, 1); }
+			if (chestid == 1) { return new ItemStack(Block.blockSnow, 2); }
+			return null;
+		}
+		if (chesttype == 6)
+		{	
+			if (chestid == 0) { return new ItemStack(Block.sapling, 1, 2); }
+			if (chestid == 1) { return new ItemStack(Item.reed, 1); }
+			if (chestid == 2) { return new ItemStack(Item.monsterPlacer, 2, 92); }
+			return null;
+		}
+		if (chesttype == 7)
+		{	
+			if (chestid == 0) { return new ItemStack(Item.potato, 1); }
+			if (chestid == 1) { return new ItemStack(Item.carrot, 1); }
+			if (chestid == 2) { return new ItemStack(Item.monsterPlacer, 1, 93); }
 			return null;
 		}
 		return null;

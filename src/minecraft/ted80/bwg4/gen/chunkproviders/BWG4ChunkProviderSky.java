@@ -3,7 +3,6 @@ package ted80.bwg4.gen.chunkproviders;
 import java.util.List;
 import java.util.Random;
 
-import ted80.bwg4.biomes.BWG4BiomeGenBase;
 import ted80.bwg4.deco.BWG4decoDungeons;
 import ted80.bwg4.deco.BWG4decoSurvival;
 import ted80.bwg4.deco.old.BWG4oldGenClay;
@@ -37,6 +36,8 @@ import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraft.world.gen.feature.WorldGenPumpkin;
 import net.minecraft.world.gen.feature.WorldGenTallGrass;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 
 public class BWG4ChunkProviderSky implements IChunkProvider
 {
@@ -382,6 +383,8 @@ public class BWG4ChunkProviderSky implements IChunkProvider
 			rand.setSeed((long)i * l1 + (long)j * l2 ^ worldObj.getSeed());
 			double d = 0.25D;
 			
+			MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Pre(ichunkprovider, worldObj, rand, i, j, false));
+			
 			if(rand.nextInt(4) == 0)
 			{
 				int i1 = k + rand.nextInt(16) + 8;
@@ -493,31 +496,31 @@ public class BWG4ChunkProviderSky implements IChunkProvider
 			{
 				l7++;
 			}
-			if(biomegenbase == BWG4BiomeGenBase.BETAforest)
+			if(biomegenbase == BiomeGenBase.BETAforest)
 			{
 				l7 += k4 + 5;
 			}
-			if(biomegenbase == BWG4BiomeGenBase.BETArainforest)
+			if(biomegenbase == BiomeGenBase.BETArainforest)
 			{
 				l7 += k4 + 5;
 			}
-			if(biomegenbase == BWG4BiomeGenBase.BETAseasonalForest)
+			if(biomegenbase == BiomeGenBase.BETAseasonalForest)
 			{
 				l7 += k4 + 2;
 			}
-			if(biomegenbase == BWG4BiomeGenBase.BETAtaiga)
+			if(biomegenbase == BiomeGenBase.BETAtaiga)
 			{
 				l7 += k4 + 5;
 			}
-			if(biomegenbase == BWG4BiomeGenBase.BETAdesert)
+			if(biomegenbase == BiomeGenBase.BETAdesert)
 			{
 				l7 -= 20;
 			}
-			if(biomegenbase == BWG4BiomeGenBase.BETAtundra)
+			if(biomegenbase == BiomeGenBase.BETAtundra)
 			{
 				l7 -= 20;
 			}
-			if(biomegenbase == BWG4BiomeGenBase.BETAplains)
+			if(biomegenbase == BiomeGenBase.BETAplains)
 			{
 				l7 -= 20;
 			}
@@ -531,19 +534,19 @@ public class BWG4ChunkProviderSky implements IChunkProvider
 			}
 			
 			byte byte0 = 0;
-			if(biomegenbase == BWG4BiomeGenBase.BETAforest)
+			if(biomegenbase == BiomeGenBase.BETAforest)
 			{
 				byte0 = 2;
 			}
-			if(biomegenbase == BWG4BiomeGenBase.BETAseasonalForest)
+			if(biomegenbase == BiomeGenBase.BETAseasonalForest)
 			{
 				byte0 = 4;
 			}
-			if(biomegenbase == BWG4BiomeGenBase.BETAtaiga)
+			if(biomegenbase == BiomeGenBase.BETAtaiga)
 			{
 				byte0 = 2;
 			}
-			if(biomegenbase == BWG4BiomeGenBase.BETAplains)
+			if(biomegenbase == BiomeGenBase.BETAplains)
 			{
 				byte0 = 3;
 			}
@@ -556,30 +559,30 @@ public class BWG4ChunkProviderSky implements IChunkProvider
 			}
 
 			byte byte1 = 0;
-			if(biomegenbase == BWG4BiomeGenBase.BETAforest)
+			if(biomegenbase == BiomeGenBase.BETAforest)
 			{
 				byte1 = 2;
 			}
-			if(biomegenbase == BWG4BiomeGenBase.BETArainforest)
+			if(biomegenbase == BiomeGenBase.BETArainforest)
 			{
 				byte1 = 10;
 			}
-			if(biomegenbase == BWG4BiomeGenBase.BETAseasonalForest)
+			if(biomegenbase == BiomeGenBase.BETAseasonalForest)
 			{
 				byte1 = 2;
 			}
-			if(biomegenbase == BWG4BiomeGenBase.BETAtaiga)
+			if(biomegenbase == BiomeGenBase.BETAtaiga)
 			{
 				byte1 = 1;
 			}
-			if(biomegenbase == BWG4BiomeGenBase.BETAplains)
+			if(biomegenbase == BiomeGenBase.BETAplains)
 			{
 				byte1 = 10;
 			}
 			for(int l14 = 0; l14 < byte1; l14++)
 			{
 				byte byte2 = 1;
-				if(biomegenbase == BWG4BiomeGenBase.BETArainforest && rand.nextInt(3) != 0)
+				if(biomegenbase == BiomeGenBase.BETArainforest && rand.nextInt(3) != 0)
 				{
 					byte2 = 2;
 				}
@@ -590,7 +593,7 @@ public class BWG4ChunkProviderSky implements IChunkProvider
 			}
 			
 			byte1 = 0;
-			if(biomegenbase == BWG4BiomeGenBase.BETAdesert)
+			if(biomegenbase == BiomeGenBase.BETAdesert)
 			{
 				byte1 = 2;
 			}
@@ -639,7 +642,7 @@ public class BWG4ChunkProviderSky implements IChunkProvider
 				(new WorldGenPumpkin()).generate(worldObj, rand, j16, j18, j21);
 			}
 			int k16 = 0;
-			if(biomegenbase == BWG4BiomeGenBase.BETAdesert)
+			if(biomegenbase == BiomeGenBase.BETAdesert)
 			{
 				k16 += 10;
 			}
@@ -692,6 +695,8 @@ public class BWG4ChunkProviderSky implements IChunkProvider
 				}
 
 			}
+			
+			MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(ichunkprovider, worldObj, rand, i, j, false));
 
 			BlockSand.fallInstantly = false;
 		
@@ -707,6 +712,8 @@ public class BWG4ChunkProviderSky implements IChunkProvider
 			long l2 = (rand.nextLong() / 2L) * 2L + 1L;
 			rand.setSeed((long)i * l1 + (long)j * l2 ^ worldObj.getSeed());
 			double d = 0.25D;	
+			
+			MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Pre(ichunkprovider, worldObj, rand, i, j, false));
 			
 			if(rand.nextInt(4) == 0)
 			{
@@ -766,6 +773,8 @@ public class BWG4ChunkProviderSky implements IChunkProvider
 				}
 
 			}	
+			
+			MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(ichunkprovider, worldObj, rand, i, j, false));
 
 			BlockSand.fallInstantly = false;
 		}
@@ -840,6 +849,7 @@ public class BWG4ChunkProviderSky implements IChunkProvider
 			
 			BiomeGenBase var6 = this.worldObj.getBiomeGenForCoords(var4 + 16, var5 + 16);
 			var6.decorate(this.worldObj, this.worldObj.rand, var4, var5);
+			
 			BlockSand.fallInstantly = false;
 		}	
     }
@@ -884,6 +894,8 @@ public class BWG4ChunkProviderSky implements IChunkProvider
     {
         return 0;
     }
+
+    public void func_104112_b() {}
 
     public void recreateStructures(int par1, int par2)
     {

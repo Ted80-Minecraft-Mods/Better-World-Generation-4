@@ -53,7 +53,7 @@ public class BWG4Decorator extends BiomeDecorator
     protected Random randomGenerator;
     protected int chunk_X;
     protected int chunk_Z;
-    protected BWG4BiomeGenBase biome;
+    protected BiomeGenBase biome;
 	
 	//NEW DECORATOR
 	protected boolean usebwg4deco;
@@ -131,7 +131,7 @@ public class BWG4Decorator extends BiomeDecorator
     protected int bigMushroomsPerChunk;
     public boolean generateLakes2;
 
-    public BWG4Decorator(BWG4BiomeGenBase par1BiomeGenBase)
+    public BWG4Decorator(BiomeGenBase par1BiomeGenBase)
     {
     	super(par1BiomeGenBase);
     	

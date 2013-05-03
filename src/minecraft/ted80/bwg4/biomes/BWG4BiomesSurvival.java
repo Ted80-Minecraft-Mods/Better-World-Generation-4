@@ -27,7 +27,7 @@ import net.minecraft.world.gen.feature.WorldGenTrees;
 import net.minecraft.world.gen.feature.WorldGenVines;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
-public class BWG4BiomesSurvival extends BWG4BiomeGenBase
+public class BWG4BiomesSurvival extends BiomeGenBase
 {
 	int biomeID;
 	

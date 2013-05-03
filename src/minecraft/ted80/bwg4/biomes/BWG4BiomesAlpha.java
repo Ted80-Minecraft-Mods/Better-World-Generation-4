@@ -11,7 +11,7 @@ import net.minecraft.world.ColorizerGrass;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.SpawnListEntry;
 
-public class BWG4BiomesAlpha extends BWG4BiomeGenBase
+public class BWG4BiomesAlpha extends BiomeGenBase
 {
 	private int biomeid;
 

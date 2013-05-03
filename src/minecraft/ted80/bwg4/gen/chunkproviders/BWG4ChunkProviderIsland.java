@@ -22,6 +22,8 @@ import net.minecraft.world.gen.MapGenBase;
 import net.minecraft.world.gen.MapGenCaves;
 import net.minecraft.world.gen.NoiseGeneratorOctaves;
 import net.minecraft.world.gen.structure.MapGenStronghold;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 
 public class BWG4ChunkProviderIsland implements IChunkProvider
 {
@@ -408,6 +410,8 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
         int var4 = par2 * 16;
         int var5 = par3 * 16;
 		
+        MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Pre(par1IChunkProvider, endWorld, endRNG, par2, par3, false));
+        
 		this.strongholdGenerator.generateStructuresInChunk(this.endWorld, this.endRNG, par2, par3);
 		
         for(int i2 = 0; i2 < 20; i2++)
@@ -460,7 +464,9 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
                     this.endWorld.setBlock(var12 + var7, var14, var13 + var8, Block.snow.blockID, 0, 2);
                 }
             }
-        }		
+        }	
+        
+        MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(par1IChunkProvider, endWorld, endRNG, par2, par3, false));
 		
         BlockSand.fallInstantly = false;
     }
@@ -525,6 +531,8 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
     {
         return 0;
     }
+
+    public void func_104112_b() {}
 
     public void recreateStructures(int par1, int par2)
     {

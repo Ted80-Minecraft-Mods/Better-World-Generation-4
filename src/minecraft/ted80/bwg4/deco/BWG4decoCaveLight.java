@@ -70,10 +70,10 @@ public class BWG4decoCaveLight extends WorldGenerator
 
             if (solidcount > 0 && solidcount < 4 && unsolidcount > 0 && unsolidcount < 4)
             {
-                par1World.setBlock(x, y, z, block, 0, 2);
-                par1World.scheduledUpdatesAreImmediate = true;
-                Block.blocksList[block].updateTick(par1World, x, y, z, par2Random);
-                par1World.scheduledUpdatesAreImmediate = false;
+                par1World.setBlock(x, y, z, block, 0, 4);
+                //par1World.scheduledUpdatesAreImmediate = true;
+                //Block.blocksList[block].updateTick(par1World, x, y, z, par2Random);
+                //par1World.scheduledUpdatesAreImmediate = false;
             }
             
         	return true;

@@ -3,7 +3,6 @@ package ted80.bwg4.gen.chunkproviders;
 import java.util.List;
 import java.util.Random;
 
-import ted80.bwg4.biomes.BWG4BiomeGenBase;
 import ted80.bwg4.deco.BWG4decoDungeons;
 import ted80.bwg4.deco.BWG4decoIndevHouse;
 import ted80.bwg4.deco.old.BWG4oldGenMinable;
@@ -29,6 +28,8 @@ import net.minecraft.world.gen.feature.WorldGenLiquids;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraft.world.gen.structure.MapGenMineshaft;
 import net.minecraft.world.gen.structure.MapGenStronghold;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 
 public class BWG4ChunkProviderIndev implements IChunkProvider
 {
@@ -359,6 +360,8 @@ public class BWG4ChunkProviderIndev implements IChunkProvider
         this.rand.setSeed((long)par2 * var7 + (long)par3 * var9 ^ this.worldObj.getSeed());
 		double d = 0.25D;
 		
+		MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Pre(par1IChunkProvider, worldObj, rand, par2, par3, false));
+		
         if (mapFeaturesEnabled && !floating)
         {
             mineshaftGenerator.generateStructuresInChunk(this.worldObj, this.rand, par2, par3);
@@ -581,6 +584,8 @@ public class BWG4ChunkProviderIndev implements IChunkProvider
 				}
 			}
 		}
+		
+		MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(par1IChunkProvider, worldObj, rand, par2, par3, false));
     }
 
     public boolean saveChunks(boolean par1, IProgressUpdate par2IProgressUpdate)
@@ -623,6 +628,8 @@ public class BWG4ChunkProviderIndev implements IChunkProvider
     {
         return 0;
     }
+
+    public void func_104112_b() {}
 
     public void recreateStructures(int par1, int par2)
     {

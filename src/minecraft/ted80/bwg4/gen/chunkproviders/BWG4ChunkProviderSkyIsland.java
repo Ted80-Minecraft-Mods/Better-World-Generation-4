@@ -19,6 +19,8 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.MapGenBase;
 import net.minecraft.world.gen.MapGenCaves;
 import net.minecraft.world.gen.NoiseGeneratorOctaves;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 
 public class BWG4ChunkProviderSkyIsland implements IChunkProvider
 {
@@ -375,6 +377,8 @@ public class BWG4ChunkProviderSkyIsland implements IChunkProvider
         int var5 = par3 * 16;
         BiomeGenBase var6 = this.endWorld.getBiomeGenForCoords(var4 + 16, var5 + 16);
         var6.decorate(this.endWorld, this.endRNG, var4, var5);
+        
+        MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Pre(par1IChunkProvider, endWorld, endRNG, par2, par3, false));
 		
 		if(par2 == 0 && par3 == 0)
 		{
@@ -422,6 +426,8 @@ public class BWG4ChunkProviderSkyIsland implements IChunkProvider
             }
         }			
 		
+        MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(par1IChunkProvider, endWorld, endRNG, par2, par3, false));
+        
         BlockSand.fallInstantly = false;
     }
 
@@ -485,6 +491,8 @@ public class BWG4ChunkProviderSkyIsland implements IChunkProvider
     {
         return 0;
     }
+
+    public void func_104112_b() {}
 
     public void recreateStructures(int par1, int par2) {}
 }

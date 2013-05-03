@@ -493,5 +493,7 @@ public class BWG4ChunkProviderSurvivalNether implements IChunkProvider
         return 0;
     }
 
+    public void func_104112_b() {}
+
     public void recreateStructures(int par1, int par2) {}
 }

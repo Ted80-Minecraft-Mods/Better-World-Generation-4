@@ -50,7 +50,7 @@ public class WorldType
 	//BWG4 FUN/DIMENSION WORLDTYPES
     public static final WorldType BWG4SKY1 = (new WorldType(25, "Sky Dimension")).setBWG4Worldtype(true); 
     public static final WorldType BWG4SKY2 = (new WorldType(26, "SkyDimensionBeta")).setCanBeCreated(false).setBWG4Worldtype(true);
-    public static final WorldType BWG4CAVE = (new WorldType(27, "Cave Dimension WIP")).setBWG4Worldtype(true);  
+    public static final WorldType BWG4CAVE = (new WorldType(27, "Cave Dimension")).setCanBeCreated(false).setBWG4Worldtype(true);  
     public static final WorldType BWG4HARD = (new WorldType(28, "Hardcore")).setCanBeCreated(false).setBWG4Worldtype(true);  
     public static final WorldType BWG4WASTE = (new WorldType(29, "WasteLand")).setCanBeCreated(false).setBWG4Worldtype(true);  
 
@@ -93,11 +93,6 @@ public class WorldType
         }
     }
 
-    public String getWorldTypeName()
-    {
-        return this.worldType;
-    }
-
     //BWG4=========================================
     @SideOnly(Side.CLIENT)
     public String getTranslateName()
@@ -118,6 +113,21 @@ public class WorldType
         return this;
     }
     //=============================================
+
+    public String getWorldTypeName()
+    {
+        return this.worldType;
+    }
+
+    //@SideOnly(Side.CLIENT)
+
+    /**
+     * Gets the translation key for the name of this world type.
+     */
+    //public String getTranslateName()
+    //{
+    //    return "generator." + this.worldType;
+    //}
 
     /**
      * Returns generatorVersion.

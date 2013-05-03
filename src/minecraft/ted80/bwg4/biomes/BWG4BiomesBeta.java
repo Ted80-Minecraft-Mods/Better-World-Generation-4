@@ -18,7 +18,7 @@ import net.minecraft.world.gen.feature.WorldGenTrees;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import ted80.bwg4.deco.old.*;
 
-public class BWG4BiomesBeta extends BWG4BiomeGenBase
+public class BWG4BiomesBeta extends BiomeGenBase
 {
 	private int biomeid;
 

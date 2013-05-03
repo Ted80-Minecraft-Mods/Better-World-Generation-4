@@ -29,6 +29,8 @@ import net.minecraft.world.gen.feature.WorldGenFlowers;
 import net.minecraft.world.gen.feature.WorldGenLiquids;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraft.world.gen.structure.MapGenStronghold;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 
 public class BWG4ChunkProviderInfdev implements IChunkProvider
 {
@@ -386,6 +388,8 @@ public class BWG4ChunkProviderInfdev implements IChunkProvider
         field_913_j.setSeed((long)i * l1 + (long)j * l2 ^ field_907_p.getSeed());
         double d = 0.25D;
 		
+        MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Pre(ichunkprovider, field_907_p, field_913_j, i, j, false));
+        
 		if (mapFeaturesEnabled)
         {
 			strongholdGenerator.generateStructuresInChunk(field_907_p, field_913_j, i, j);
@@ -572,6 +576,8 @@ public class BWG4ChunkProviderInfdev implements IChunkProvider
             }
         }
 		
+        MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(ichunkprovider, field_907_p, field_913_j, i, j, false));
+        
         BlockSand.fallInstantly = false;
     }
 
@@ -615,6 +621,8 @@ public class BWG4ChunkProviderInfdev implements IChunkProvider
     {
         return 0;
     }
+
+    public void func_104112_b() {}
 
     public void recreateStructures(int par1, int par2)
     {        

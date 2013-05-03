@@ -3,7 +3,8 @@ package ted80.bwg4.layer;
 import java.util.ArrayList;
 
 import ted80.api.DefaultBiomeList;
-import ted80.bwg4.biomes.BWG4BiomeGenBase;
+
+
 
 import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -63,11 +64,11 @@ public class BWG4LayerBiome extends BWG4Layer
 				{ 
 					if(ocean == true)
 					{
-						allowedBiomes.add(BWG4BiomeGenBase.BDocean); 
+						allowedBiomes.add(BiomeGenBase.BDocean); 
 					}
 					else
 					{
-						allowedBiomes.add(BWG4BiomeGenBase.BDplains); 
+						allowedBiomes.add(BiomeGenBase.BDplains); 
 					}	
 				}
 				Biomes = allowedBiomes.toArray(new BiomeGenBase[0]);
@@ -95,7 +96,7 @@ public class BWG4LayerBiome extends BWG4Layer
 
 				if (var9 == 0)
 				{
-					var6[var8 + var7 * par3] = BWG4BiomeGenBase.BDocean.biomeID;
+					var6[var8 + var7 * par3] = BiomeGenBase.BDocean.biomeID;
 				}
 				else if (var9 == BiomeGenBase.mushroomIsland.biomeID)
 				{

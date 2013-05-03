@@ -21,6 +21,8 @@ import net.minecraft.world.gen.NoiseGeneratorOctaves;
 import net.minecraft.world.gen.feature.WorldGenVines;
 import net.minecraft.world.gen.structure.MapGenMineshaft;
 import net.minecraft.world.gen.structure.MapGenStronghold;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 
 public class BWG4ChunkProviderCave implements IChunkProvider
 {
@@ -35,10 +37,8 @@ public class BWG4ChunkProviderCave implements IChunkProvider
 	
     private World worldObj;
     private double[] noiseField;
-    private double[] slowsandNoise = new double[256];
-    private double[] gravelNoise = new double[256];
     private double[] netherrackExclusivityNoise = new double[256];
-    private MapGenBase caveGenerator = new BWG4decoHugeCaves();
+    //private MapGenBase caveGenerator = new BWG4decoHugeCaves();
     private MapGenStronghold strongholdGenerator = new MapGenStronghold();
     private MapGenMineshaft mineshaftGenerator = new MapGenMineshaft();
     double[] noiseData1;
@@ -126,8 +126,6 @@ public class BWG4ChunkProviderCave implements IChunkProvider
                                 {
                                     var51 = Block.stone.blockID;
                                 }	
-                                
-                                var51 = Block.stone.blockID;
 								
                                 par3ArrayOfByte[var42] = (byte)var51;
                                 var42 += var43;
@@ -150,27 +148,18 @@ public class BWG4ChunkProviderCave implements IChunkProvider
 
     public void replaceBlocksForBiome(int par1, int par2, byte[] par3ArrayOfByte)
     {
-        byte var4 = 32;
+        byte var4 = 45;
         double var5 = 0.03125D;
-        this.slowsandNoise = this.slowsandGravelNoiseGen.generateNoiseOctaves(this.slowsandNoise, par1 * 16, par2 * 16, 0, 16, 16, 1, var5, var5, 1.0D);
-        this.gravelNoise = this.slowsandGravelNoiseGen.generateNoiseOctaves(this.gravelNoise, par1 * 16, 109, par2 * 16, 16, 1, 16, var5, 1.0D, var5);
         this.netherrackExclusivityNoise = this.netherrackExculsivityNoiseGen.generateNoiseOctaves(this.netherrackExclusivityNoise, par1 * 16, par2 * 16, 0, 16, 16, 1, var5 * 2.0D, var5 * 2.0D, var5 * 2.0D);
 
         for (int var7 = 0; var7 < 16; ++var7)
         {
             for (int var8 = 0; var8 < 16; ++var8)
             {
-                boolean var9 = this.slowsandNoise[var7 + var8 * 16] + this.hellRNG.nextDouble() * 0.2D > 0.0D;
-                boolean var10 = this.gravelNoise[var7 + var8 * 16] + this.hellRNG.nextDouble() * 0.2D > 0.0D;
                 int var11 = (int)(this.netherrackExclusivityNoise[var7 + var8 * 16] / 3.0D + 3.0D + this.hellRNG.nextDouble() * 0.25D);
                 int var12 = -1;
                 byte var13 = (byte)Block.grass.blockID;
                 byte var14 = (byte)Block.dirt.blockID;
-				
-				if( themeDEFAULT ) { var13 = (byte)Block.grass.blockID; var14 = (byte)Block.dirt.blockID; }
-				if( themeDESERT ) { var13 = (byte)Block.sand.blockID; var14 = (byte)Block.sand.blockID; }
-				if( themeSTONE ) { var13 = (byte)Block.stone.blockID; var14 = (byte)Block.stone.blockID; }
-				if( themeJUNGLE ) { var13 = (byte)Block.grass.blockID; var14 = (byte)Block.dirt.blockID; }
 
                 for (int var15 = 127; var15 >= 0; --var15)
                 {
@@ -180,43 +169,23 @@ public class BWG4ChunkProviderCave implements IChunkProvider
                     {
                         byte var17 = par3ArrayOfByte[var16];
 
-                        if (var17 == 0)
+                        if (var17 == 0 || var17 == (byte)Block.waterStill.blockID)
                         {
                             var12 = -1;
                         }
                         else if (var17 == Block.stone.blockID)
                         {
                             if (var12 == -1)
-                            {/*
-                                if (var15 >= var4 - 4 && var15 <= var4 + 1)
+                            {
+                                if (var15 >= var4 - 30 && var15 <= var4 + 1)
                                 {
-                                    var13 = (byte)Block.grass.blockID;
-                                    var14 = (byte)Block.dirt.blockID;
-
-                                    if (var10)
-                                    {
-                                        var13 = (byte)Block.gravel.blockID;
-                                    }
-
-                                    if (var10)
-                                    {
-                                        var14 = (byte)Block.gravel.blockID;
-                                    }
-
-                                    if (var9)
-                                    {
-                                        var13 = (byte)Block.slowSand.blockID;
-                                    }
-
-                                    if (var9)
-                                    {
-                                        var14 = (byte)Block.slowSand.blockID;
-                                    }
-                                }*/
+                                    var13 = (byte)Block.sand.blockID;
+                                    var14 = (byte)Block.sand.blockID;
+                                }
 
                                 if (var15 < var4 && var13 == 0)
                                 {
-                                    var13 = (byte)Block.lavaStill.blockID;
+                                    var13 = (byte)Block.waterStill.blockID;
                                 }
 
                                 var12 = var11;
@@ -256,7 +225,7 @@ public class BWG4ChunkProviderCave implements IChunkProvider
         this.hellRNG.setSeed((long)par1 * 341873128712L + (long)par2 * 132897987541L);
         byte[] var3 = new byte[32768];
         this.generateNetherTerrain(par1, par2, var3);
-        this.caveGenerator.generate(this, worldObj, par1, par2, var3);
+        //this.caveGenerator.generate(this, worldObj, par1, par2, var3);
         this.replaceBlocksForBiome(par1, par2, var3);
         //this.caveGenerator.generate(this, worldObj, par1, par2, var3);
 
@@ -285,8 +254,8 @@ public class BWG4ChunkProviderCave implements IChunkProvider
             par1ArrayOfDouble = new double[par5 * par6 * par7];
         }
 
-        double var8 = 684.412D * 4;
-        double var10 = 684.412D * -16; //2053.236D;
+        double var8 = 684.412D;
+        double var10 = 2053.236D;
         this.noiseData4 = this.netherNoiseGen6.generateNoiseOctaves(this.noiseData4, par2, par3, par4, par5, 1, par7, 1.0D, 0.0D, 1.0D);
         this.noiseData5 = this.netherNoiseGen7.generateNoiseOctaves(this.noiseData5, par2, par3, par4, par5, 1, par7, 100.0D, 0.0D, 100.0D);
         this.noiseData1 = this.netherNoiseGen3.generateNoiseOctaves(this.noiseData1, par2, par3, par4, par5, par6, par7, var8 / 80.0D, var10 / 60.0D, var8 / 80.0D);
@@ -435,12 +404,15 @@ public class BWG4ChunkProviderCave implements IChunkProvider
         this.hellRNG.setSeed((long)par2 * var77 + (long)par3 * var99 ^ this.worldObj.getSeed());
 		double d = 0.25D;
 		
+		MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Pre(par1IChunkProvider, worldObj, hellRNG, par2, par3, false));
+		
         if (mapFeaturesEnabled)
         {
             mineshaftGenerator.generateStructuresInChunk(this.worldObj, this.hellRNG, par2, par3);
             strongholdGenerator.generateStructuresInChunk(this.worldObj, this.hellRNG, par2, par3);
         }
 
+        /*
         for (int lr = 0; lr < 60*3; ++lr)
         {
             int lr1 = var4 + hellRNG.nextInt(16) + 8;
@@ -448,7 +420,6 @@ public class BWG4ChunkProviderCave implements IChunkProvider
             int lr3 = var5 + hellRNG.nextInt(16) + 8;
             (new BWG4decoCaveLight(Block.glowStone.blockID, 0)).generate(this.worldObj, this.hellRNG, lr1, lr2, lr3);
         }
-        
         for (int lr = 0; lr < 60*4; ++lr)
         {
             int lr1 = var4 + hellRNG.nextInt(16) + 8;
@@ -456,6 +427,7 @@ public class BWG4ChunkProviderCave implements IChunkProvider
             int lr3 = var5 + hellRNG.nextInt(16) + 8;
             (new BWG4decoCaveLight(Block.glowStone.blockID, Block.waterStill.blockID)).generate(this.worldObj, this.hellRNG, lr1, lr2, lr3);
         }
+        */
         
         for (int j1 = 0; j1 < 50; ++j1)
         {
@@ -464,6 +436,8 @@ public class BWG4ChunkProviderCave implements IChunkProvider
             int var9 = var5 + hellRNG.nextInt(16) + 8;
             (new WorldGenVines()).generate(worldObj, hellRNG, var7, var8, var9);
         }
+        
+        MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(par1IChunkProvider, worldObj, hellRNG, par2, par3, false));
 		
         BlockSand.fallInstantly = false;
     }
@@ -508,6 +482,8 @@ public class BWG4ChunkProviderCave implements IChunkProvider
     {
         return 0;
     }
+
+    public void func_104112_b() {}
 
     public void recreateStructures(int par1, int par2)
     {
