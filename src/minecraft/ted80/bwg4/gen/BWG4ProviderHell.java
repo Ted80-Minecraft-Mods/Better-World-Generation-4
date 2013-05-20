@@ -2,9 +2,12 @@ package ted80.bwg4.gen;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import ted80.bwg4.mod_bwg4;
+import ted80.bwg4.biomes.BWG4Biomes;
 import ted80.bwg4.gen.chunkproviders.BWG4ChunkProviderSky;
 import ted80.bwg4.gen.chunkproviders.BWG4ChunkProviderSkyBlock;
 import ted80.bwg4.gen.chunkproviders.BWG4ChunkProviderSurvivalNether;
+import ted80.bwg4.generatordata.GeneratorType;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.WorldProviderHell;
 import net.minecraft.world.WorldType;
@@ -18,13 +21,13 @@ public class BWG4ProviderHell extends WorldProviderHell
 	@Override
     public void registerWorldChunkManager()
     {	
-        if (this.worldObj.getWorldInfo().getTerrainType() == WorldType.BWG4ISLAND || this.worldObj.getWorldInfo().getTerrainType() == WorldType.BWG4SKYLAND)
+        if (GeneratorType.Current == GeneratorType.BWG4ISLAND || GeneratorType.Current == GeneratorType.BWG4SKYLAND)
         {
-			this.worldChunkMgr = new WorldChunkManagerHell(BiomeGenBase.SURVIVALnether, 1.0F, 0.0F);
+			this.worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.SURVIVALnether, 1.0F, 0.0F);
 		}
-		else if (this.worldObj.getWorldInfo().getTerrainType() == WorldType.BWG4SKY1 || this.worldObj.getWorldInfo().getTerrainType() == WorldType.BWG4SKY2)
+		else if (GeneratorType.Current == GeneratorType.BWG4SKY1 || GeneratorType.Current == GeneratorType.BWG4SKY2)
         {
-			this.worldChunkMgr = new WorldChunkManagerHell(BiomeGenBase.SURVIVALnether, 1.0F, 0.0F);
+			this.worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.SURVIVALnether, 1.0F, 0.0F);
         }
 		else
 		{
@@ -38,15 +41,15 @@ public class BWG4ProviderHell extends WorldProviderHell
 	@Override
     public IChunkProvider createChunkGenerator()
     {
-		if (this.terrainType == WorldType.BWG4ISLAND || this.terrainType == WorldType.BWG4SKYLAND)
+		if (GeneratorType.Current == GeneratorType.BWG4ISLAND || GeneratorType.Current == GeneratorType.BWG4SKYLAND)
         {
 			return new BWG4ChunkProviderSurvivalNether(this.worldObj, this.worldObj.getSeed());
 		}
-		else if (this.terrainType == WorldType.BWG4SKY1 || this.terrainType == WorldType.BWG4SKY2)
+		else if (GeneratorType.Current == GeneratorType.BWG4SKY1 || GeneratorType.Current == GeneratorType.BWG4SKY2)
         {
 			return new BWG4ChunkProviderSky(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled(), 4);
         }
-		else if (this.terrainType == WorldType.BWG4SKYBLOCK)
+		else if (GeneratorType.Current == GeneratorType.BWG4SKYBLOCK)
         {
 			//THEME GENERATOR SETTINGS
 			int themeID = 1;
@@ -69,6 +72,6 @@ public class BWG4ProviderHell extends WorldProviderHell
 	@SideOnly(Side.CLIENT)
     public Vec3 getFogColor(float par1, float par2)
     {
-        return this.worldObj.getWorldVec3Pool().getVecFromPool(1.0D, 1.0D, 1.0D);
+        return this.worldObj.getWorldVec3Pool().getVecFromPool(0.20000000298023224D, 0.029999999329447746D, 0.029999999329447746D);
     }
 }

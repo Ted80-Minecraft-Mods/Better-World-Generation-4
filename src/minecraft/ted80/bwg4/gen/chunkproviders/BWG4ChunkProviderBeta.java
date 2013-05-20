@@ -3,6 +3,8 @@ package ted80.bwg4.gen.chunkproviders;
 import java.util.List;
 import java.util.Random;
 
+import ted80.bwg4.mod_bwg4;
+import ted80.bwg4.biomes.BWG4Biomes;
 import ted80.bwg4.deco.old.BWG4oldGenClay;
 import ted80.bwg4.deco.old.BWG4oldGenLakes;
 import ted80.bwg4.deco.old.BWG4oldGenMinable;
@@ -531,31 +533,31 @@ public class BWG4ChunkProviderBeta implements IChunkProvider
 			{
 				l7++;
 			}
-			if(biomegenbase == BiomeGenBase.BETAforest)
+			if(biomegenbase == BWG4Biomes.BETAforest)
 			{
 				l7 += k4 + 5;
 			}
-			if(biomegenbase == BiomeGenBase.BETArainforest)
+			if(biomegenbase == BWG4Biomes.BETArainforest)
 			{
 				l7 += k4 + 5;
 			}
-			if(biomegenbase == BiomeGenBase.BETAseasonalForest)
+			if(biomegenbase == BWG4Biomes.BETAseasonalForest)
 			{
 				l7 += k4 + 2;
 			}
-			if(biomegenbase == BiomeGenBase.BETAtaiga)
+			if(biomegenbase == BWG4Biomes.BETAtaiga)
 			{
 				l7 += k4 + 5;
 			}
-			if(biomegenbase == BiomeGenBase.BETAdesert)
+			if(biomegenbase == BWG4Biomes.BETAdesert)
 			{
 				l7 -= 20;
 			}
-			if(biomegenbase == BiomeGenBase.BETAtundra)
+			if(biomegenbase == BWG4Biomes.BETAtundra)
 			{
 				l7 -= 20;
 			}
-			if(biomegenbase == BiomeGenBase.BETAplains)
+			if(biomegenbase == BWG4Biomes.BETAplains)
 			{
 				l7 -= 20;
 			}
@@ -569,19 +571,19 @@ public class BWG4ChunkProviderBeta implements IChunkProvider
 			}
 			
 			byte byte0 = 0;
-			if(biomegenbase == BiomeGenBase.BETAforest)
+			if(biomegenbase == BWG4Biomes.BETAforest)
 			{
 				byte0 = 2;
 			}
-			if(biomegenbase == BiomeGenBase.BETAseasonalForest)
+			if(biomegenbase == BWG4Biomes.BETAseasonalForest)
 			{
 				byte0 = 4;
 			}
-			if(biomegenbase == BiomeGenBase.BETAtaiga)
+			if(biomegenbase == BWG4Biomes.BETAtaiga)
 			{
 				byte0 = 2;
 			}
-			if(biomegenbase == BiomeGenBase.BETAplains)
+			if(biomegenbase == BWG4Biomes.BETAplains)
 			{
 				byte0 = 3;
 			}
@@ -594,30 +596,30 @@ public class BWG4ChunkProviderBeta implements IChunkProvider
 			}
 
 			byte byte1 = 0;
-			if(biomegenbase == BiomeGenBase.BETAforest)
+			if(biomegenbase == BWG4Biomes.BETAforest)
 			{
 				byte1 = 2;
 			}
-			if(biomegenbase == BiomeGenBase.BETArainforest)
+			if(biomegenbase == BWG4Biomes.BETArainforest)
 			{
 				byte1 = 10;
 			}
-			if(biomegenbase == BiomeGenBase.BETAseasonalForest)
+			if(biomegenbase == BWG4Biomes.BETAseasonalForest)
 			{
 				byte1 = 2;
 			}
-			if(biomegenbase == BiomeGenBase.BETAtaiga)
+			if(biomegenbase == BWG4Biomes.BETAtaiga)
 			{
 				byte1 = 1;
 			}
-			if(biomegenbase == BiomeGenBase.BETAplains)
+			if(biomegenbase == BWG4Biomes.BETAplains)
 			{
 				byte1 = 10;
 			}
 			for(int l14 = 0; l14 < byte1; l14++)
 			{
 				byte byte2 = 1;
-				if(biomegenbase == BiomeGenBase.BETArainforest && rand.nextInt(3) != 0)
+				if(biomegenbase == BWG4Biomes.BETArainforest && rand.nextInt(3) != 0)
 				{
 					byte2 = 2;
 				}
@@ -628,7 +630,7 @@ public class BWG4ChunkProviderBeta implements IChunkProvider
 			}
 			
 			byte1 = 0;
-			if(biomegenbase == BiomeGenBase.BETAdesert)
+			if(biomegenbase == BWG4Biomes.BETAdesert)
 			{
 				byte1 = 2;
 			}
@@ -677,7 +679,7 @@ public class BWG4ChunkProviderBeta implements IChunkProvider
 				(new WorldGenPumpkin()).generate(worldObj, rand, j16, j18, j21);
 			}
 			int k16 = 0;
-			if(biomegenbase == BiomeGenBase.BETAdesert)
+			if(biomegenbase == BWG4Biomes.BETAdesert)
 			{
 				k16 += 10;
 			}

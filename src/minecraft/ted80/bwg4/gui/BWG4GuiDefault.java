@@ -1,9 +1,17 @@
-package net.minecraft.client.gui;
+package ted80.bwg4.gui;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.GuiCreateWorld;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.StatCollector;
 
 public class BWG4GuiDefault extends GuiScreen
 {
+	protected Minecraft minecraft;
+	protected FontRenderer fr;
+	
     private final GuiCreateWorld createWorldGui;
 	private BWG4GuiDefaultList bwg4guidefaultlist;     
     private BWG4DefaultGeneratorInfo theDefaultGeneratorInfo = BWG4DefaultGeneratorInfo.defaultBiomesList(); 
@@ -23,8 +31,10 @@ public class BWG4GuiDefault extends GuiScreen
 	private boolean biomescreen;
 	private BWG4BiomeInfo biome;
 	
-    public BWG4GuiDefault(GuiCreateWorld par1, String par2Str)
+    public BWG4GuiDefault(Minecraft instance, GuiCreateWorld par1, String par2Str, FontRenderer f)
     {
+    	minecraft = instance;
+    	fr = f;
         this.createWorldGui = par1;
 		setGeneratorInfo(par2Str);
 		customize = false;

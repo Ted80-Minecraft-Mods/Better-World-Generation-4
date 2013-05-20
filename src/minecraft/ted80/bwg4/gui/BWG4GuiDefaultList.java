@@ -1,5 +1,6 @@
-package net.minecraft.client.gui;
+package ted80.bwg4.gui;
 
+import net.minecraft.client.gui.GuiSlot;
 import net.minecraft.client.renderer.Tessellator;
 
 class BWG4GuiDefaultList extends GuiSlot
@@ -9,7 +10,7 @@ class BWG4GuiDefaultList extends GuiSlot
 
     public BWG4GuiDefaultList(BWG4GuiDefault par1)
     {
-        super(par1.mc, par1.width, par1.height, 43, par1.height - 60, 24);
+        super(par1.minecraft, par1.width, par1.height, 43, par1.height - 60, 24);
         this.bwg4guidefault = par1;
 		selected = -1;
     }
@@ -46,13 +47,13 @@ class BWG4GuiDefaultList extends GuiSlot
 		//DISPLAY TEXT
 		if(enable == true)
 		{	
-			bwg4guidefault.fontRenderer.drawString(name, par2 + 1, par3 + 7, 16777215);
-			bwg4guidefault.fontRenderer.drawString("YES", par2 + 179, par3 + 7, 16777215);
+			bwg4guidefault.fr.drawString(name, par2 + 1, par3 + 7, 16777215);
+			bwg4guidefault.fr.drawString("YES", par2 + 179, par3 + 7, 16777215);
 		}
 		else
 		{
-			bwg4guidefault.fontRenderer.drawString(name, par2 + 1, par3 + 7, 10526880);
-			bwg4guidefault.fontRenderer.drawString("NO", par2 + 182, par3 + 7, 10526880);
+			bwg4guidefault.fr.drawString(name, par2 + 1, par3 + 7, 10526880);
+			bwg4guidefault.fr.drawString("NO", par2 + 182, par3 + 7, 10526880);
 		}
 	}
 

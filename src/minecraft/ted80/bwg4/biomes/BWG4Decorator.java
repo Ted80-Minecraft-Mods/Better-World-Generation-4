@@ -23,6 +23,7 @@ import static net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable.Ev
 import java.util.Random;
 
 import ted80.bwg4.deco.BWG4decoPumpkin;
+import ted80.bwg4.deco.BWG4decoSurvival;
 import ted80.bwg4.noise.BWG4NoiseOctavesBeta;
 
 import net.minecraft.block.Block;
@@ -292,7 +293,7 @@ public class BWG4Decorator extends BiomeDecorator
 					int k10 = chunk_Z + randomGenerator.nextInt(16) + 8;
 					if(currentWorld.getHeightValue(j6, k10) < tl2maxy && currentWorld.getHeightValue(j6, k10) > tl2miny && randomGenerator.nextInt(tl2chance) == 0)
 					{
-						WorldGenerator worldgenerator = biome.getRandomWorldGenForTrees2(randomGenerator);
+						WorldGenerator worldgenerator = new BWG4decoSurvival(4);
 						worldgenerator.setScale(1.0D, 1.0D, 1.0D);
 						worldgenerator.generate(currentWorld, randomGenerator, j6, currentWorld.getHeightValue(j6, k10), k10);
 					}	

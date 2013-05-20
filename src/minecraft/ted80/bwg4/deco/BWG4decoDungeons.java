@@ -388,7 +388,7 @@ public class BWG4decoDungeons extends WorldGenerator
 	
 		if(chestID == 0)//DEFAULT LOOT
 		{
-			int i = par1Random.nextInt(17 + 5);
+			int i = par1Random.nextInt(30);
 			if (i == 0 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.helmetChain); } 
 			if (i == 1 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.plateChain); }
 			if (i == 2 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.legsChain); }
@@ -407,11 +407,11 @@ public class BWG4decoDungeons extends WorldGenerator
 			if (i == 15) { return new ItemStack(Item.dyePowder, 1, 3); }
 			if (i == 16) { return Item.enchantedBook.func_92109_a(par1Random); }
 			if (i > 16 || i < 16 + 6) { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }
-			else { return null; }		
+			else { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }	
 		} 
 		else if(chestID == 1)//BETA1 LOOT
 		{
-			int i = par1Random.nextInt(16 + 5);
+			int i = par1Random.nextInt(30);
 			if (i == 0) { return new ItemStack(Item.potato, par1Random.nextInt(4) + 1); }
 			if (i == 1) { return new ItemStack(Item.carrot, par1Random.nextInt(4) + 1); }
 			if (i == 2) { return new ItemStack(Item.emerald, par1Random.nextInt(4) + 1); }
@@ -429,11 +429,11 @@ public class BWG4decoDungeons extends WorldGenerator
 			if (i == 14) { return Item.enchantedBook.func_92109_a(par1Random); }
 			if (i == 15) { return new ItemStack(Block.waterlily, par1Random.nextInt(4) + 1); }
 			if (i > 15 || i < 15 + 6) { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }
-			else { return null; }		
+			else { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }	
 		} 
 		else if(chestID == 2)//BETA2 LOOT
 		{
-			int i = par1Random.nextInt(16 + 5);
+			int i = par1Random.nextInt(30);
 			if (i == 0) { return new ItemStack(Item.potato, par1Random.nextInt(4) + 1); }
 			if (i == 1) { return new ItemStack(Item.carrot, par1Random.nextInt(4) + 1); }
 			if (i == 2 && par1Random.nextInt(3) == 0) { return new ItemStack(Block.mycelium); }
@@ -451,11 +451,11 @@ public class BWG4decoDungeons extends WorldGenerator
 			if (i == 14) { return new ItemStack(Item.ingotIron, par1Random.nextInt(4) + 1); }
 			if (i == 15) { return new ItemStack(Block.waterlily, par1Random.nextInt(4) + 1); }
 			if (i > 15 || i < 15 + 6) { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }
-			else { return null; }		
+			else { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }	
 		} 
 		else if(chestID == 3)//ALPHA LOOT
 		{
-			int i = par1Random.nextInt(19 + 5);
+			int i = par1Random.nextInt(30);
 			if (i == 0) { return new ItemStack(Item.potato, par1Random.nextInt(4) + 1); }
 			if (i == 1) { return new ItemStack(Item.carrot, par1Random.nextInt(4) + 1); }
 			if (i == 2) { return new ItemStack(Item.emerald, par1Random.nextInt(4) + 1); }
@@ -474,11 +474,11 @@ public class BWG4decoDungeons extends WorldGenerator
 			if (i == 15 || i == 16 || i == 17) { return new ItemStack(Item.seeds, par1Random.nextInt(12) + 1); }
 			if (i == 18) { return new ItemStack(Block.waterlily, par1Random.nextInt(4) + 1); }
 			if (i > 18 || i < 18 + 6) { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }
-			else { return null; }		
+			else { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }	
 		} 
 		else if(chestID == 4)//INFDEV LOOT
 		{
-			int i = par1Random.nextInt(22 + 5);
+			int i = par1Random.nextInt(30);
 			if (i == 0) { return new ItemStack(Item.potato, par1Random.nextInt(4) + 1); }
 			if (i == 1) { return new ItemStack(Item.carrot, par1Random.nextInt(4) + 1); }
 			if (i == 2) { return new ItemStack(Item.emerald, par1Random.nextInt(4) + 1); }
@@ -500,11 +500,11 @@ public class BWG4decoDungeons extends WorldGenerator
 			if (i == 20) { return new ItemStack(Item.reed, par1Random.nextInt(4) + 1); }
 			if (i == 21) { return new ItemStack(Block.blockSnow, par1Random.nextInt(12) + 1); }
 			if (i > 21 || i < 21 + 6) { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }
-			else { return null; }		
+			else { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }	
 		} 
 		else if(chestID == 5)//INDEV1 LOOT
 		{
-			int i = par1Random.nextInt(23 + 5);
+			int i = par1Random.nextInt(30);
 			if (i == 0) { return new ItemStack(Item.potato, par1Random.nextInt(4) + 1); }
 			if (i == 1) { return new ItemStack(Item.carrot, par1Random.nextInt(4) + 1); }
 			if (i == 2) { return new ItemStack(Item.emerald, par1Random.nextInt(4) + 1); }
@@ -527,11 +527,11 @@ public class BWG4decoDungeons extends WorldGenerator
 			if (i == 21) { return new ItemStack(Item.brick, par1Random.nextInt(63) + 1); }
 			if (i == 22) { return new ItemStack(Block.blockSnow, par1Random.nextInt(12) + 1); }
 			if (i > 22 || i < 22 + 6) { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }
-			else { return null; }		
+			else { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }	
 		} 
 		else if(chestID == 6)//INDEV2 LOOT
 		{
-			int i = par1Random.nextInt(23 + 5);
+			int i = par1Random.nextInt(30);
 			if (i == 0) { return new ItemStack(Item.potato, par1Random.nextInt(4) + 1); }
 			if (i == 1) { return new ItemStack(Item.carrot, par1Random.nextInt(4) + 1); }
 			if (i == 2) { return new ItemStack(Item.emerald, par1Random.nextInt(4) + 1); }
@@ -554,11 +554,11 @@ public class BWG4decoDungeons extends WorldGenerator
 			if (i == 21) { return new ItemStack(Item.brick, par1Random.nextInt(63) + 1); }
 			if (i == 22) { return new ItemStack(Block.blockSnow, par1Random.nextInt(12) + 1); }
 			if (i > 22 || i < 22 + 6) { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }
-			else { return null; }		
+			else { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }	
 		} 
 		else if(chestID == 7)//GOLD LOOT
 		{
-			int i = par1Random.nextInt(18 + 5);
+			int i = par1Random.nextInt(30);
 			if (i == 0 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.helmetChain); } 
 			if (i == 1 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.plateChain); }
 			if (i == 2 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.legsChain); }
@@ -578,11 +578,11 @@ public class BWG4decoDungeons extends WorldGenerator
 			if (i == 16) { return Item.enchantedBook.func_92109_a(par1Random); }
 			if (i == 17 && par1Random.nextInt(3) == 0) { return new ItemStack(Block.mycelium); }
 			if (i > 17 || i < 17 + 6) { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }
-			else { return null; }		
+			else { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }	
 		} 
 		else if(chestID == 8)//ISLAND LOOT
 		{
-			int i = par1Random.nextInt(19 + 5);
+			int i = par1Random.nextInt(30);
 			if (i == 0 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.helmetChain); } 
 			if (i == 1 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.plateChain); }
 			if (i == 2 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.legsChain); }
@@ -603,7 +603,7 @@ public class BWG4decoDungeons extends WorldGenerator
 			if (i == 17 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.monsterPlacer, 1, 95); }
 			if (i == 18 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.monsterPlacer, 1, 98); }
 			if (i > 18 || i < 18 + 6) { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }
-			else { return null; }		
+			else { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }		
 		} 
 		else if(chestID == 9)//ISLAND1 LOOT
 		{
@@ -630,7 +630,7 @@ public class BWG4decoDungeons extends WorldGenerator
 		} 
 		else if(chestID == 11)//SKYLAND LOOT
 		{
-			int i = par1Random.nextInt(15 + 5);
+			int i = par1Random.nextInt(30);
 			if (i == 0) { return new ItemStack(Block.cactus, par1Random.nextInt(4) + 1); }
 			if (i == 1) { return new ItemStack(Item.reed, par1Random.nextInt(4) + 1); }
 			if (i == 2) { return new ItemStack(Block.sapling, 1, par1Random.nextInt(3) + 1); }
@@ -648,11 +648,11 @@ public class BWG4decoDungeons extends WorldGenerator
 			if (i == 14) { return new ItemStack(Item.redstone, par1Random.nextInt(4) + 1); }
 			if (i == 15) { return new ItemStack(Item.saddle); }
 			if (i > 15 || i < 15 + 6) { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }
-			else { return null; }		
+			else { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }	
 		} 
 		else if(chestID == 12)//SKY1 LOOT
 		{
-			int i = par1Random.nextInt(16 + 5);
+			int i = par1Random.nextInt(30);
 			if (i == 0) { return new ItemStack(Item.potato, par1Random.nextInt(4) + 1); }
 			if (i == 1) { return new ItemStack(Item.carrot, par1Random.nextInt(4) + 1); }
 			if (i == 2) { return new ItemStack(Item.emerald, par1Random.nextInt(4) + 1); }
@@ -670,11 +670,11 @@ public class BWG4decoDungeons extends WorldGenerator
 			if (i == 14) { return Item.enchantedBook.func_92109_a(par1Random); }
 			if (i == 15) { return new ItemStack(Block.waterlily, par1Random.nextInt(4) + 1); }
 			if (i > 15 || i < 15 + 6) { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }
-			else { return null; }		
+			else { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }	
 		} 
 		else if(chestID == 13)//SKY2 LOOT
 		{
-			int i = par1Random.nextInt(16 + 5);
+			int i = par1Random.nextInt(30);
 			if (i == 0) { return new ItemStack(Item.potato, par1Random.nextInt(4) + 1); }
 			if (i == 1) { return new ItemStack(Item.carrot, par1Random.nextInt(4) + 1); }
 			if (i == 2 && par1Random.nextInt(3) == 0) { return new ItemStack(Block.mycelium); }
@@ -692,11 +692,11 @@ public class BWG4decoDungeons extends WorldGenerator
 			if (i == 14) { return new ItemStack(Item.ingotIron, par1Random.nextInt(4) + 1); }
 			if (i == 15) { return new ItemStack(Block.waterlily, par1Random.nextInt(4) + 1); }
 			if (i > 15 || i < 15 + 6) { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }
-			else { return null; }		
+			else { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }	
 		} 
 		else if(chestID == 17)//SKYNETHER
 		{
-			int i = par1Random.nextInt(17 + 5);
+			int i = par1Random.nextInt(30);
 			if (i == 0 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.helmetChain); } 
 			if (i == 1 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.plateChain); }
 			if (i == 2 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.legsChain); }
@@ -715,11 +715,11 @@ public class BWG4decoDungeons extends WorldGenerator
 			if (i == 15) { return new ItemStack(Item.dyePowder, 1, 3); }
 			if (i == 16) { return Item.enchantedBook.func_92109_a(par1Random); }
 			if (i > 16 || i < 16 + 6) { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }
-			else { return null; }		
+			else { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }		
 		} 
 		else if(chestID == 18)//SKYLAND LOOT
 		{
-			int i = par1Random.nextInt(17 + 5);
+			int i = par1Random.nextInt(30);
 			if (i == 1) { return new ItemStack(Item.brick, par1Random.nextInt(63) + 1); }
 			if (i == 2) { return new ItemStack(Block.blockSnow, par1Random.nextInt(12) + 1); }
 			if (i == 3) { return new ItemStack(Block.waterlily, par1Random.nextInt(4) + 1); }
@@ -734,11 +734,11 @@ public class BWG4decoDungeons extends WorldGenerator
 			if (i == 12 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.goldenCarrot); }
 			if (i == 13 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.appleGold); }
 			if (i > 13 || i < 13 + 6) { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }
-			else { return null; }		
+			else { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }			
 		} 
 		else
 		{
-			return new ItemStack(Item.saddle);
+			return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); 
 		}
 	}
 

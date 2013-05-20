@@ -58,7 +58,6 @@ public class BWG4BiomesDefault extends BiomeGenBase
 				bwg4decorator.yellowflowers = 2; 
 				bwg4decorator.grass = 4; 
 				bwg4decorator.tl1amount = 1;
-				beachID = 2;
 			}
 			if(id == 2)//Tropical Island
 			{
@@ -74,7 +73,6 @@ public class BWG4BiomesDefault extends BiomeGenBase
 				bwg4decorator.tl2miny = 0; 
 				bwg4decorator.tl2maxy = 75; 
 				bwg4decorator.tl2amount = 4;
-				beachID = 2;
 			}
 			if(id == 3)//Jungle Island
 			{
@@ -88,7 +86,6 @@ public class BWG4BiomesDefault extends BiomeGenBase
 				spawnableMonsterList.add(new SpawnListEntry(EntityOcelot.class, 2, 1, 1));
 				spawnableCreatureList.add(new SpawnListEntry(EntityChicken.class, 10, 4, 4));
 				bwg4decorator.tl1amount = 15;
-				beachID = 2;
 			}
 			if(id == 4)//Mushroom Island
 			{
@@ -103,7 +100,6 @@ public class BWG4BiomesDefault extends BiomeGenBase
 				spawnableCreatureList.clear();
 				spawnableWaterCreatureList.clear();
 				spawnableCreatureList.add(new SpawnListEntry(EntityMooshroom.class, 8, 4, 8));
-				beachID = 0;
 			}
 			if(id == 5)//Beach
 			{
@@ -115,8 +111,6 @@ public class BWG4BiomesDefault extends BiomeGenBase
 				bwg4decorator.tl1amount = 1;
 				topBlock = (byte)Block.sand.blockID;
 				fillerBlock = (byte)Block.sand.blockID;		
-				defaultbeach = true;
-				beachID = 2;
 			}
 			if(id == 6)//Beach Dunes
 			{
@@ -128,8 +122,6 @@ public class BWG4BiomesDefault extends BiomeGenBase
 				bwg4decorator.tl1amount = 1;
 				topBlock = (byte)Block.sand.blockID;
 				fillerBlock = (byte)Block.sand.blockID;	
-				defaultbeach = true;
-				beachID = 2;
 			}
 		}		
 		else if(type == 2)
@@ -145,7 +137,6 @@ public class BWG4BiomesDefault extends BiomeGenBase
 				bwg4decorator.brownmush = 1;
 				bwg4decorator.redmush = 1;
 				bwg4decorator.tl1amount = 12;
-				beachID = 1;
 			}
 			if(id == 2)//Snow Forest
 			{
@@ -156,7 +147,6 @@ public class BWG4BiomesDefault extends BiomeGenBase
 				bwg4decorator.redflowers = 2;
 				bwg4decorator.yellowflowers = 2;
 				bwg4decorator.tl1amount = 3; 
-				beachID = 1;
 			}
 			if(id == 3)//Snow Taiga
 			{
@@ -168,7 +158,6 @@ public class BWG4BiomesDefault extends BiomeGenBase
 				bwg4decorator.redflowers = 2;
 				bwg4decorator.yellowflowers = 1; 
 				bwg4decorator.brownmush = 1;
-				beachID = 1;
 			}
 			if(id == 4)//Snow Plains
 			{
@@ -178,7 +167,6 @@ public class BWG4BiomesDefault extends BiomeGenBase
 				bwg4decorator.grass = -10; 
 				bwg4decorator.redflowers = -10;
 				bwg4decorator.yellowflowers = -10; 
-				beachID = 1;
 			}
 			if(id == 5)//Snow Hills
 			{
@@ -188,7 +176,6 @@ public class BWG4BiomesDefault extends BiomeGenBase
 				bwg4decorator.grass = -10; 
 				bwg4decorator.redflowers = -10;
 				bwg4decorator.yellowflowers = -10; 
-				beachID = 1;
 			}
 		}		
 		else if(type == 3)
@@ -202,7 +189,6 @@ public class BWG4BiomesDefault extends BiomeGenBase
 				bwg4decorator.yellowflowers = 2;
 				bwg4decorator.tl1amount = 0;
 				bwg4decorator.tl1chance = 4; 
-				beachID = 1;
 			}
 			if(id == 2)//Forest
 			{
@@ -213,7 +199,6 @@ public class BWG4BiomesDefault extends BiomeGenBase
 				bwg4decorator.redflowers = 2;
 				bwg4decorator.yellowflowers = 2;
 				bwg4decorator.tl1amount = 3; 
-				beachID = 1;
 			}
 			if(id == 3)//Forest Hills
 			{
@@ -224,7 +209,6 @@ public class BWG4BiomesDefault extends BiomeGenBase
 				bwg4decorator.redflowers = 2;
 				bwg4decorator.yellowflowers = 2;
 				bwg4decorator.tl1amount = 2; 
-				beachID = 1;
 			}
 			if(id == 4)//Forest Lakes
 			{
@@ -235,7 +219,6 @@ public class BWG4BiomesDefault extends BiomeGenBase
 				bwg4decorator.redflowers = 2;
 				bwg4decorator.yellowflowers = 2;
 				bwg4decorator.tl1amount = 3; 
-				beachID = 1;
 			}
 			if(id == 5)//Pines
 			{
@@ -248,7 +231,6 @@ public class BWG4BiomesDefault extends BiomeGenBase
 				bwg4decorator.brownmush = 1;
 				bwg4decorator.redmush = 1;
 				bwg4decorator.tl1amount = 12;
-				beachID = 1;
 			}
 			if(id == 6)//Taiga
 			{
@@ -260,7 +242,6 @@ public class BWG4BiomesDefault extends BiomeGenBase
 				bwg4decorator.redflowers = 2;
 				bwg4decorator.yellowflowers = 1; 
 				bwg4decorator.brownmush = 1;
-				beachID = 1;
 			}
 			if(id == 7)//Grassland
 			{
@@ -269,7 +250,6 @@ public class BWG4BiomesDefault extends BiomeGenBase
 				bwg4decorator.grass = 10; 
 				bwg4decorator.redflowers = 1;
 				bwg4decorator.yellowflowers = 1; 
-				beachID = 1;
 			}
 		}		
 		else if(type == 4)
@@ -285,7 +265,6 @@ public class BWG4BiomesDefault extends BiomeGenBase
 				bwg4decorator.tl1amount = 5;
 				spawnableMonsterList.add(new SpawnListEntry(EntityOcelot.class, 2, 1, 1));
 				spawnableCreatureList.add(new SpawnListEntry(EntityChicken.class, 10, 4, 4));	
-				beachID = 0;
 			}
 			if(id == 2 || id == 4)//Jungle
 			{			
@@ -298,7 +277,6 @@ public class BWG4BiomesDefault extends BiomeGenBase
 				spawnableMonsterList.add(new SpawnListEntry(EntityOcelot.class, 2, 1, 1));
 				spawnableCreatureList.add(new SpawnListEntry(EntityChicken.class, 10, 4, 4));	
 				bwg4decorator.tl1amount = 17;
-				beachID = 0;
 			
 				if(id != 4)
 				{
@@ -318,7 +296,6 @@ public class BWG4BiomesDefault extends BiomeGenBase
 				bwg4decorator.redmush = 3; 
 				bwg4decorator.deadBush = 1;
 				spawnableMonsterList.add(new SpawnListEntry(EntitySlime.class, 1, 1, 1));
-				beachID = 0;
 			
 				if(id != 5)
 				{
@@ -336,38 +313,27 @@ public class BWG4BiomesDefault extends BiomeGenBase
 				bwg4decorator.deadBush = 2;  
 				bwg4decorator.cactus = 10;
 				spawnableCreatureList.clear();
-				lakesDisabled = true;
-				beachID = 2;
 			}
 			if(id == 2)//Savanna
 			{
 				bwg4decorator.grass = 12; 
 				bwg4decorator.tl1amount = 1; 
 				bwg4decorator.tl1chance = 4; 
-				lakesDisabled = true;
-				beachID = 0;
 			}
 			if(id == 3)//Savanna Forest
 			{
 				bwg4decorator.grass = 6; 
 				bwg4decorator.tl1amount = 5; 
-				beachID = 0;
 			}
 			if(id == 4)//Shrubland
 			{
 				bwg4decorator.grass = 3; 
 				bwg4decorator.tl1amount = 6; 
 				bwg4decorator.tl1maxy = 80; 
-				lakesDisabled = true;
-				beachID = 0;
-				isCanyon = true;
 			}
 			if(id == 5)//SandStone Hill
 			{
 				spawnableCreatureList.clear();
-				lakesDisabled = true;
-				beachID = 0;
-				isCanyon = true;
 			}
 		}
 		else if(type == 6)
@@ -624,11 +590,6 @@ public class BWG4BiomesDefault extends BiomeGenBase
 		}
 		return new WorldGenShrub(3, 0);
     }
-	
-    public WorldGenerator getRandomWorldGenForTrees2(Random par1Random)
-    {
-		return new BWG4decoSurvival(4);
-	}
 	
     public void decorate(World par1World, Random par2Random, int par3, int par4)
     {

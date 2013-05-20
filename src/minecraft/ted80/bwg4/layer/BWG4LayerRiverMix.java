@@ -1,5 +1,7 @@
 package ted80.bwg4.layer;
 
+import ted80.bwg4.mod_bwg4;
+import ted80.bwg4.biomes.BWG4Biomes;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.layer.IntCache;
 
@@ -30,27 +32,27 @@ public class BWG4LayerRiverMix extends BWG4Layer
 
         for (int var8 = 0; var8 < par3 * par4; ++var8)
         {
-            if (var5[var8] == BiomeGenBase.BDocean.biomeID || var5[var8] == BiomeGenBase.BDtropicalisland.biomeID || var5[var8] == BiomeGenBase.BDjungleisland.biomeID || var5[var8] == BiomeGenBase.BDmushroomisland.biomeID)
+            if (var5[var8] == BWG4Biomes.BDocean.biomeID || var5[var8] == BWG4Biomes.BDtropicalisland.biomeID || var5[var8] == BWG4Biomes.BDjungleisland.biomeID || var5[var8] == BWG4Biomes.BDmushroomisland.biomeID)
             {
                 var7[var8] = var5[var8];
             }
             else if (var6[var8] >= 0)
             {
-				if (var5[var8] == BiomeGenBase.BDsnowpines.biomeID || var5[var8] == BiomeGenBase.BDsnowforest.biomeID || var5[var8] == BiomeGenBase.BDsnowtaiga.biomeID || var5[var8] == BiomeGenBase.BDsnowplains.biomeID || var5[var8] == BiomeGenBase.BDsnowhills.biomeID)
+				if (var5[var8] == BWG4Biomes.BDsnowpines.biomeID || var5[var8] == BWG4Biomes.BDsnowforest.biomeID || var5[var8] == BWG4Biomes.BDsnowtaiga.biomeID || var5[var8] == BWG4Biomes.BDsnowplains.biomeID || var5[var8] == BWG4Biomes.BDsnowhills.biomeID)
 				{
-					var7[var8] = BiomeGenBase.BDiceriver.biomeID;
+					var7[var8] = BWG4Biomes.BDiceriver.biomeID;
 				}
-				else if (var5[var8] == BiomeGenBase.BDjungle.biomeID || var5[var8] == BiomeGenBase.BDswampland.biomeID)
+				else if (var5[var8] == BWG4Biomes.BDjungle.biomeID || var5[var8] == BWG4Biomes.BDswampland.biomeID)
 				{
-					var7[var8] = BiomeGenBase.BDgreenriver.biomeID;
+					var7[var8] = BWG4Biomes.BDgreenriver.biomeID;
 				}
-				else if (var5[var8] == BiomeGenBase.BDdesert.biomeID || var5[var8] == BiomeGenBase.BDocean.biomeID || var5[var8] == BiomeGenBase.BDbeach.biomeID || var5[var8] == BiomeGenBase.BDbeachDunes.biomeID) 
+				else if (var5[var8] == BWG4Biomes.BDdesert.biomeID || var5[var8] == BWG4Biomes.BDocean.biomeID || var5[var8] == BWG4Biomes.BDbeach.biomeID || var5[var8] == BWG4Biomes.BDbeachDunes.biomeID) 
 				{
-					var7[var8] = BiomeGenBase.BDsandriver.biomeID;
+					var7[var8] = BWG4Biomes.BDsandriver.biomeID;
 				}
 				else
 				{
-					var7[var8] = BiomeGenBase.BDriver.biomeID;
+					var7[var8] = BWG4Biomes.BDriver.biomeID;
 				}
 			}
             else

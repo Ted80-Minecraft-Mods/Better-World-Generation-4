@@ -1,4 +1,4 @@
-package net.minecraft.client.gui;
+package ted80.bwg4.gui;
 
 import java.util.ArrayList;
 import java.util.HashMap;

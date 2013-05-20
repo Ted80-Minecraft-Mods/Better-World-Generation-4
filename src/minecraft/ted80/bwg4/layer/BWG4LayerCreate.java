@@ -14,16 +14,13 @@ public class BWG4LayerCreate extends BWG4Layer
 		gold = true;
     }
 	
-    public BWG4LayerCreate(long par1, String[] Settings, boolean remote)
+    public BWG4LayerCreate(long par1, String[] Settings)
     {
         super(par1);
 		
-		if(remote)
+		for(int i = 0; i < Settings.length; i++)
 		{
-			for(int i = 0; i < Settings.length; i++)
-			{
-				if(Settings[i].equals("Ocean=true")) { ocean = true; }
-			}
+			if(Settings[i].equals("Ocean=true")) { ocean = true; }
 		}
     }
 

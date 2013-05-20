@@ -250,15 +250,6 @@ public class BWG4BiomesSurvival extends BiomeGenBase
 		return new BWG4oldGenTrees(2);
     }
 	
-    public WorldGenerator getRandomWorldGenForTrees2(Random par1Random)
-    {
-		if(biomeID == 110) //island_paradise
-		{
-			return new BWG4decoSurvival(4);
-		}
-		return new BWG4oldGenTrees(2);
-    }
-	
     public void decorate(World par1World, Random par2Random, int par3, int par4)
     {
         super.decorate(par1World, par2Random, par3, par4);

@@ -3,6 +3,8 @@ package ted80.bwg4.layer;
 import java.util.ArrayList;
 
 import ted80.api.DefaultBiomeList;
+import ted80.bwg4.mod_bwg4;
+import ted80.bwg4.biomes.BWG4Biomes;
 
 
 
@@ -16,7 +18,7 @@ public class BWG4LayerBiome extends BWG4Layer
 	public static ArrayList<BiomeGenBase> allowedBiomes = new ArrayList<BiomeGenBase>();
 	public int worldID;
 
-    public BWG4LayerBiome(long par1, BWG4Layer par3GenLayer, WorldType par4WorldType, String[] Settings, int world, boolean remote)
+    public BWG4LayerBiome(long par1, BWG4Layer par3GenLayer, String[] Settings, int world)
     {
         super(par1);
 		worldID = world;
@@ -27,59 +29,56 @@ public class BWG4LayerBiome extends BWG4Layer
 		boolean ocean = false;
 		if(world == 0)
 		{
-			if(remote)
+			int count = 0;
+			allowedBiomes.clear();
+			
+			ArrayList<BiomeGenBase> biomesinput = DefaultBiomeList.getBiomeList();
+			String[] biomesettingsinput = DefaultBiomeList.getStringList();
+			int[] biomeTypes = DefaultBiomeList.getTypesList();
+			
+			for(int i = 0; i < Settings.length; i++)
 			{
-				int count = 0;
-				allowedBiomes.clear();
-				
-				ArrayList<BiomeGenBase> biomesinput = DefaultBiomeList.getBiomeList();
-				String[] biomesettingsinput = DefaultBiomeList.getStringList();
-				int[] biomeTypes = DefaultBiomeList.getTypesList();
-				
-				for(int i = 0; i < Settings.length; i++)
+				for(int b = 0; b < biomesettingsinput.length; b++)
 				{
-					for(int b = 0; b < biomesettingsinput.length; b++)
+					if(biomesettingsinput[b] != null)
 					{
-						if(biomesettingsinput[b] != null)
-						{
-							if(Settings[i].equals(biomesettingsinput[b]) && biomeTypes[b] > 0 && biomeTypes[b] < 5) 
-							{ 
-								allowedBiomes.add(biomesinput.get(b));
-								count++;
-								break;
-							}
-							else if(Settings[i].equals("Ocean=true") && biomeTypes[b] == 0)
-							{
-								ocean = true;
-							}
-						}
-						else
-						{
+						if(Settings[i].equals(biomesettingsinput[b]) && biomeTypes[b] > 0 && biomeTypes[b] < 5) 
+						{ 
+							allowedBiomes.add(biomesinput.get(b));
+							count++;
 							break;
 						}
-					}
-				}
-				
-				if(count == 0) 
-				{ 
-					if(ocean == true)
-					{
-						allowedBiomes.add(BiomeGenBase.BDocean); 
+						else if(Settings[i].equals("Ocean=true") && biomeTypes[b] == 0)
+						{
+							ocean = true;
+						}
 					}
 					else
 					{
-						allowedBiomes.add(BiomeGenBase.BDplains); 
-					}	
+						break;
+					}
 				}
-				Biomes = allowedBiomes.toArray(new BiomeGenBase[0]);
 			}
-			else 
-			{
-				allowedBiomes.clear();
-				allowedBiomes.add(BiomeGenBase.plains);
-				Biomes = allowedBiomes.toArray(new BiomeGenBase[0]);
+			
+			if(count == 0) 
+			{ 
+				if(ocean == true)
+				{
+					allowedBiomes.add(BWG4Biomes.BDocean); 
+				}
+				else
+				{
+					allowedBiomes.add(BWG4Biomes.BDplains); 
+				}	
 			}
-		}	
+			Biomes = allowedBiomes.toArray(new BiomeGenBase[0]);
+		}
+		else 
+		{
+			allowedBiomes.clear();
+			allowedBiomes.add(BiomeGenBase.plains);
+			Biomes = allowedBiomes.toArray(new BiomeGenBase[0]);
+		}
 	} 
 	
     public int[] getInts(int par1, int par2, int par3, int par4)
@@ -96,7 +95,7 @@ public class BWG4LayerBiome extends BWG4Layer
 
 				if (var9 == 0)
 				{
-					var6[var8 + var7 * par3] = BiomeGenBase.BDocean.biomeID;
+					var6[var8 + var7 * par3] = BWG4Biomes.BDocean.biomeID;
 				}
 				else if (var9 == BiomeGenBase.mushroomIsland.biomeID)
 				{

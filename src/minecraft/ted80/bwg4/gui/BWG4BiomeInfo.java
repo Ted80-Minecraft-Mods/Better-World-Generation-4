@@ -1,4 +1,4 @@
-package net.minecraft.client.gui;
+package ted80.bwg4.gui;
 
 public class BWG4BiomeInfo
 {

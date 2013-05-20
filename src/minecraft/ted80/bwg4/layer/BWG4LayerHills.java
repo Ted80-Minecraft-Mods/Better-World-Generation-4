@@ -1,5 +1,7 @@
 package ted80.bwg4.layer;
 
+import ted80.bwg4.mod_bwg4;
+import ted80.bwg4.biomes.BWG4Biomes;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.layer.IntCache;
 
@@ -9,19 +11,16 @@ public class BWG4LayerHills extends BWG4Layer
 	private boolean IslandJungle = false;
 	private boolean IslandTropic = false;
 
-    public BWG4LayerHills(long par1, BWG4Layer par3GenLayer, String[] Settings, boolean remote)
+    public BWG4LayerHills(long par1, BWG4Layer par3GenLayer, String[] Settings)
     {
         super(par1);
         this.parent = par3GenLayer;
 	
-		if(remote)
+		for(int i = 0; i < Settings.length; i++)
 		{
-			for(int i = 0; i < Settings.length; i++)
-			{
-				if(Settings[i].equals("Mushroom Island=true")) { IslandMushroom = true; }
-				else if(Settings[i].equals("Jungle Island=true")) { IslandJungle = true; }
-				else if(Settings[i].equals("Tropical Island=true")) { IslandTropic = true; }
-			}
+			if(Settings[i].equals("Mushroom Island=true")) { IslandMushroom = true; }
+			else if(Settings[i].equals("Jungle Island=true")) { IslandJungle = true; }
+			else if(Settings[i].equals("Tropical Island=true")) { IslandTropic = true; }
 		}
     }
 
@@ -41,27 +40,27 @@ public class BWG4LayerHills extends BWG4Layer
                 {
                     int var10 = var9;
 
-					if (var9 == BiomeGenBase.BDsavanna.biomeID)
+					if (var9 == BWG4Biomes.BDsavanna.biomeID)
                     {
-                        var10 = BiomeGenBase.BDsavannaforest.biomeID;
+                        var10 = BWG4Biomes.BDsavannaforest.biomeID;
                     }
-					else if (var9 == BiomeGenBase.BDshrubland.biomeID)
+					else if (var9 == BWG4Biomes.BDshrubland.biomeID)
                     {
-                        var10 = BiomeGenBase.BDshrublandHill.biomeID;
+                        var10 = BWG4Biomes.BDshrublandHill.biomeID;
                     }
-					else if (var9 == BiomeGenBase.BDocean.biomeID)
+					else if (var9 == BWG4Biomes.BDocean.biomeID)
                     {
 						if (this.nextInt(30) == 0 && IslandMushroom == true)
 						{
-							var10 = BiomeGenBase.BDmushroomisland.biomeID;
+							var10 = BWG4Biomes.BDmushroomisland.biomeID;
 						}
 						else if (this.nextInt(8) == 0 && IslandJungle == true)
 						{
-							var10 = BiomeGenBase.BDjungleisland.biomeID;
+							var10 = BWG4Biomes.BDjungleisland.biomeID;
 						}
 						else if (this.nextInt(5) == 0 && IslandTropic == true)
 						{
-							var10 = BiomeGenBase.BDtropicalisland.biomeID;
+							var10 = BWG4Biomes.BDtropicalisland.biomeID;
 						}
 						else
 						{

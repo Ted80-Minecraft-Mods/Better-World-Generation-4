@@ -3,6 +3,8 @@ package ted80.bwg4.gen.chunkproviders;
 import java.util.List;
 import java.util.Random;
 
+import ted80.bwg4.mod_bwg4;
+import ted80.bwg4.biomes.BWG4Biomes;
 import ted80.bwg4.deco.old.BWG4oldGenBigTree;
 import ted80.bwg4.deco.old.BWG4oldGenClay;
 import ted80.bwg4.deco.old.BWG4oldGenLakes;
@@ -514,31 +516,31 @@ public class BWG4ChunkProviderAlpha implements IChunkProvider
         {
             j6++;
         }
-        if(biomegenbase == BiomeGenBase.ALPHAforest)
+        if(biomegenbase == BWG4Biomes.ALPHAforest)
         {
             j6 += l3 + 5;
         }
-        if(biomegenbase == BiomeGenBase.ALPHArainforest)
+        if(biomegenbase == BWG4Biomes.ALPHArainforest)
         {
             j6 += l3 + 5;
         }
-        if(biomegenbase == BiomeGenBase.ALPHAseasonalForest)
+        if(biomegenbase == BWG4Biomes.ALPHAseasonalForest)
         {
             j6 += l3 + 2;
         }
-        if(biomegenbase == BiomeGenBase.ALPHAtaiga)
+        if(biomegenbase == BWG4Biomes.ALPHAtaiga)
         {
             j6 += l3 + 5;
         }
-        if(biomegenbase == BiomeGenBase.ALPHAdesert)
+        if(biomegenbase == BWG4Biomes.ALPHAdesert)
         {
             j6 -= 20;
         }
-        if(biomegenbase == BiomeGenBase.ALPHAtundra)
+        if(biomegenbase == BWG4Biomes.ALPHAtundra)
         {
             j6 -= 20;
         }
-        if(biomegenbase == BiomeGenBase.ALPHAplains)
+        if(biomegenbase == BWG4Biomes.ALPHAplains)
         {
             j6 -= 20;
         }
@@ -547,7 +549,7 @@ public class BWG4ChunkProviderAlpha implements IChunkProvider
         {
             obj = new BWG4oldGenBigTree(1);
         }
-        if(biomegenbase == BiomeGenBase.ALPHArainforest && field_913_j.nextInt(3) == 0)
+        if(biomegenbase == BWG4Biomes.ALPHArainforest && field_913_j.nextInt(3) == 0)
         {
             obj = new BWG4oldGenBigTree(1);
         }
@@ -604,7 +606,7 @@ public class BWG4ChunkProviderAlpha implements IChunkProvider
             (new WorldGenPumpkin()).generate(worldObj_16, field_913_j, k12, k14, j17);
         }
         int l12 = 0;
-        if(biomegenbase == BiomeGenBase.ALPHAdesert)
+        if(biomegenbase == BWG4Biomes.ALPHAdesert)
         {
             l12 += 10;
         }
