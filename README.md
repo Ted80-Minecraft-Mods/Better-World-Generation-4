@@ -1,11 +1,31 @@
+Version 1.0.7 
+- Modloader/Vanilla is not suported anymore
+- Changed worldtype names
+- Changed dungeon loot
+- Added config file
+- Fixed bug in beta and alpha generator
+- Added new better default biomes
+- Added forestry support
+
+Version 1.0.6b '08-5-2013'
+- (forge)Fixed white fog in nether
+
+Version 1.0.6 '03-5-2013'
+- Updated to minecraft 1.5.2
+- (forge)Update to forge 7.8.0.684
+- Added new skyblock theme
+- Disabled cave dimension because of lighting crashes
+
 Version 1.0.5 '30-4-2013'
 - (forge)More compatibilityness
+- Added vines and glowstone to cave dimension
 
 version 1.0.4 '20-4-2013'
-- Added api
-- Removed gold gen (this will become a separate mod)
+- (forge)Update to forge 7.7.1.676
+- (forge)Added api
+- Removed gold gen
 - Started working on re-adding cave dimension
-- Fixed themes not working
+- (forge)Fixed themes not working
 
 version 1.0.3 '07-4-2013'
 - (forge)More compatibilityness
