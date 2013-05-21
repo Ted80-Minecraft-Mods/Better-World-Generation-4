@@ -26,6 +26,8 @@ public class BWG4Config
 
 		try 
 		{
+			config.load();
+			
 			//BETA BIOMES
 			biomeIDs[0] = config.get("Biome IDs", "BETArainforest", 80).getInt();
 			biomeIDs[1] = config.get("Biome IDs", "BETAswampland", 81).getInt();
@@ -116,13 +118,9 @@ public class BWG4Config
 			biomeIDs[70] = config.get("Biome IDs", "BDsandriver", 150).getInt();
 			biomeIDs[71] = config.get("Biome IDs", "BDjungle_nocolor", 151).getInt();
 			biomeIDs[72] = config.get("Biome IDs", "BDswampland_nocolor", 152).getInt();
-
-			config.load();
 		}
 		catch (Exception e) 
 		{
-			FMLLog.log(Level.SEVERE, e, "Cannot load bwg4 config!");
-			
 			for(int c = 0; c < biomeIDs.length; c++)
 			{
 				biomeIDs[c] = 80 + c;
@@ -130,7 +128,10 @@ public class BWG4Config
 		}
 		finally 
 		{
-			if (config.hasChanged()) config.save();
+			if (config.hasChanged()) 
+			{
+				config.save();
+			}
 		}
 	}
 }

@@ -12,7 +12,7 @@ public class BWG4GuiDefault extends GuiScreen
 	protected Minecraft minecraft;
 	protected FontRenderer fr;
 	
-    private final GuiCreateWorld createWorldGui;
+    private final BWG4GuiGeneratorSettings guiGeneratorSettings;
 	private BWG4GuiDefaultList bwg4guidefaultlist;     
     private BWG4DefaultGeneratorInfo theDefaultGeneratorInfo = BWG4DefaultGeneratorInfo.defaultBiomesList(); 
 	
@@ -31,11 +31,11 @@ public class BWG4GuiDefault extends GuiScreen
 	private boolean biomescreen;
 	private BWG4BiomeInfo biome;
 	
-    public BWG4GuiDefault(Minecraft instance, GuiCreateWorld par1, String par2Str, FontRenderer f)
+    public BWG4GuiDefault(Minecraft instance, BWG4GuiGeneratorSettings par1, String par2Str, FontRenderer f)
     {
     	minecraft = instance;
     	fr = f;
-        this.createWorldGui = par1;
+    	guiGeneratorSettings = par1;
 		setGeneratorInfo(par2Str);
 		customize = false;
     }
@@ -86,13 +86,13 @@ public class BWG4GuiDefault extends GuiScreen
 	
 		if (par1GuiButton.id == 0)
         {
-			this.createWorldGui.generatorOptionsToUse = this.getGeneratorInfo();
-            this.mc.displayGuiScreen(this.createWorldGui);
+			//this.createWorldGui.generatorOptionsToUse = this.getGeneratorInfo();
+            this.mc.displayGuiScreen(guiGeneratorSettings);
         }
 		else if (par1GuiButton.id == 1)
         {
-			this.createWorldGui.generatorOptionsToUse = this.getGeneratorInfo();
-            this.mc.displayGuiScreen(this.createWorldGui);
+			//this.createWorldGui.generatorOptionsToUse = this.getGeneratorInfo();
+            this.mc.displayGuiScreen(guiGeneratorSettings);
         }
 		else if (par1GuiButton.id == 2)
         {
