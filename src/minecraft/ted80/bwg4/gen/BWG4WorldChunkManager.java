@@ -83,9 +83,17 @@ public class BWG4WorldChunkManager extends WorldChunkManager
         field_4193_f = new BWG4oldNoiseGeneratorOctaves2(new Random(seed * 39811L), 4);
         field_4192_g = new BWG4oldNoiseGeneratorOctaves2(new Random(seed * 0x84a59L), 2);
 
-        BWG4Layer[] var4 = BWG4Layer.initializeAllBiomeGenerators(seed, GeneratorType.generatorinfo);
-        this.genBiomes = (BWG4Layer) var4[0];
-        this.biomeIndexLayer = (BWG4Layer) var4[1];
+        if (GeneratorType.Current == GeneratorType.BWG4SMALL || GeneratorType.Current == GeneratorType.BWG4LARGE)
+        {
+        	if(GeneratorType.generatorinfo.length() < 2)
+        	{
+        		GeneratorType.generatorinfo = "";
+        	}
+        	
+	        BWG4Layer[] var4 = BWG4Layer.initializeAllBiomeGenerators(seed, GeneratorType.generatorinfo);
+	        this.genBiomes = (BWG4Layer) var4[0];
+	        this.biomeIndexLayer = (BWG4Layer) var4[1];
+        }
     }    
     
 	public static double[] getColdTemperatures(double ad[], int i, int j, int k, int l)

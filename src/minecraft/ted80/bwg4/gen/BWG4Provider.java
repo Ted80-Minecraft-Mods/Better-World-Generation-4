@@ -29,20 +29,21 @@ public class BWG4Provider extends WorldProvider
     {
 		if(this.worldObj.getWorldInfo().getTerrainType() == mod_bwg4.BWG4DEFAULT && !worldObj.isRemote)
 		{
-			//System.out.println("======================= TRY DECODING GENERATOR STRING ========================");
+			System.out.println("======================= TRY DECODING GENERATOR STRING ========================");
 			
 			if(worldObj.getWorldInfo().getGeneratorOptions().length() > 2)
 			{
-				//System.out.println("GENERATOR STRING FOUND, DECODING NOW!");
+				System.out.println("GENERATOR STRING FOUND, DECODING NOW!");
+				System.out.println(worldObj.getWorldInfo().getGeneratorOptions());
 				DecodeGeneratorString.decode(worldObj.getWorldInfo().getGeneratorOptions());
 			}
 			else
 			{
-				//System.out.println("EMPTY STRING FOUND, GETTING A DEFAULT ONE NOW!");
+				System.out.println("EMPTY STRING FOUND, GETTING A DEFAULT ONE NOW!");
 				DecodeGeneratorString.decode("BetterDefault#" + DefaultBiomeList.getDefaultString());
 			}
 			
-			//System.out.println("==============================================================================");
+			System.out.println("==============================================================================");
 			
 			//GET BIOMES
 	        if (GeneratorType.Current == GeneratorType.BWG4INFDEV)

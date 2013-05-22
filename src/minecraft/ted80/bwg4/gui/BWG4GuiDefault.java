@@ -86,12 +86,11 @@ public class BWG4GuiDefault extends GuiScreen
 	
 		if (par1GuiButton.id == 0)
         {
-			//this.createWorldGui.generatorOptionsToUse = this.getGeneratorInfo();
+			guiGeneratorSettings.BD_biomestring = getGeneratorInfo();
             this.mc.displayGuiScreen(guiGeneratorSettings);
         }
 		else if (par1GuiButton.id == 1)
         {
-			//this.createWorldGui.generatorOptionsToUse = this.getGeneratorInfo();
             this.mc.displayGuiScreen(guiGeneratorSettings);
         }
 		else if (par1GuiButton.id == 2)

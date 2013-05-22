@@ -15,6 +15,7 @@ public class BWG4Biomes
 	public static BiomeGenBase BETAdesert;
 	public static BiomeGenBase BETAplains;
 	public static BiomeGenBase BETAtundra;
+	
 	public static BiomeGenBase ALPHArainforest;
 	public static BiomeGenBase ALPHAswampland;
 	public static BiomeGenBase ALPHAseasonalForest;
@@ -25,6 +26,7 @@ public class BWG4Biomes
 	public static BiomeGenBase ALPHAdesert;
 	public static BiomeGenBase ALPHAplains;
 	public static BiomeGenBase ALPHAtundra;
+	
 	public static BiomeGenBase INFDEVdefault;
 	public static BiomeGenBase INFDEVsnow;
 	public static BiomeGenBase INDEVnormal;
@@ -32,6 +34,7 @@ public class BWG4Biomes
 	public static BiomeGenBase INDEVparadise;
 	public static BiomeGenBase INDEVwoods;
 	public static BiomeGenBase INDEVsnow;
+	
 	public static BiomeGenBase ISLANDnormal;
 	//public static BiomeGenBase ISLANDhell;
 	//public static BiomeGenBase ISLANDice;
@@ -46,6 +49,7 @@ public class BWG4Biomes
 	//public static BiomeGenBase SKYLANDnormal;
 	public static BiomeGenBase SURVIVALnether;
 	public static BiomeGenBase SKYBLOCKworld;
+	
 	public static BiomeGenBase BDocean;
 	public static BiomeGenBase BDtropicalisland;
 	public static BiomeGenBase BDjungleisland;
@@ -91,6 +95,7 @@ public class BWG4Biomes
 		BETAdesert = (new BWG4BiomesBeta(BWG4Config.biomeIDs[7])).setColor(16421912).setBiomeName("desert").setTemperatureRainfall(0.95F, 0.1F).setDisableRain();
 		BETAplains = (new BWG4BiomesBeta(BWG4Config.biomeIDs[8])).setColor(353825).setBiomeName("plains").setTemperatureRainfall(0.95F, 0.35F);
 		BETAtundra = (new BWG4BiomesBeta(BWG4Config.biomeIDs[9])).setColor(16777215).setBiomeName("tundra").setTemperatureRainfall(0.1F, 0.1F).setEnableSnow();
+		
 		ALPHArainforest = (new BWG4BiomesAlpha(BWG4Config.biomeIDs[10])).setColor(353825).setBiomeName("rainforest").setTemperatureRainfall(0.95F, 0.95F);
 		ALPHAswampland = (new BWG4BiomesAlpha(BWG4Config.biomeIDs[11])).setColor(353825).setBiomeName("swampland").setTemperatureRainfall(0.55F, 0.65F);
 		ALPHAseasonalForest = (new BWG4BiomesAlpha(BWG4Config.biomeIDs[12])).setColor(353825).setBiomeName("seasonalForest").setTemperatureRainfall(0.95F, 0.7F);
@@ -101,6 +106,7 @@ public class BWG4Biomes
 		ALPHAdesert = (new BWG4BiomesAlpha(BWG4Config.biomeIDs[17])).setColor(353825).setBiomeName("desert").setTemperatureRainfall(0.95F, 0.1F).setDisableRain();
 		ALPHAplains = (new BWG4BiomesAlpha(BWG4Config.biomeIDs[18])).setColor(353825).setBiomeName("plains").setTemperatureRainfall(0.95F, 0.35F);
 		ALPHAtundra = (new BWG4BiomesAlpha(BWG4Config.biomeIDs[19])).setColor(353825).setBiomeName("tundra").setTemperatureRainfall(0.1F, 0.1F).setEnableSnow();
+		
 		INFDEVdefault = (new BWG4BiomesInfdev(BWG4Config.biomeIDs[20])).setColor(353825).setBiomeName("Infdev");
 		INFDEVsnow = (new BWG4BiomesInfdev(BWG4Config.biomeIDs[21])).setColor(353825).setBiomeName("Infdev Snow").setEnableSnow().setTemperatureRainfall(0.0F, 0.5F);
 		INDEVnormal = (new BWG4BiomesIndev(BWG4Config.biomeIDs[22])).setColor(353825).setBiomeName("Indev");
@@ -108,6 +114,7 @@ public class BWG4Biomes
 		INDEVparadise = (new BWG4BiomesIndev(BWG4Config.biomeIDs[24])).setColor(353825).setBiomeName("Indev");
 		INDEVwoods = (new BWG4BiomesIndev(BWG4Config.biomeIDs[25])).setColor(353825).setBiomeName("Indev");
 		INDEVsnow = (new BWG4BiomesIndev(BWG4Config.biomeIDs[26])).setColor(353825).setBiomeName("Indev").setEnableSnow().setTemperatureRainfall(0.0F, 0.5F);
+		
 		ISLANDnormal = (new BWG4BiomesSurvival(BWG4Config.biomeIDs[27])).setColor(353825).setBiomeName("Survival Island").setTemperatureRainfall(0.9F, 0.8F);
 		//ISLANDhell = (new BWG4BiomesSurvival(BWG4Config.biomeIDs[28])).setColor(353825).setBiomeName("Survival Island").setTemperatureRainfall(0.9F, 0.8F);
 		//ISLANDice = (new BWG4BiomesSurvival(BWG4Config.biomeIDs[29])).setColor(353825).setBiomeName("Survival Island").setTemperatureRainfall(0.0F, 0.5F);
@@ -122,6 +129,7 @@ public class BWG4Biomes
 		//SKYLANDnormal = (new BWG4BiomesSurvival(BWG4Config.biomeIDs[38])).setColor(353825).setBiomeName("Survival Skyland").setTemperatureRainfall(0.9F, 0.8F);
 		SURVIVALnether = (new BWG4BiomesSurvival(BWG4Config.biomeIDs[39])).setColor(353825).setBiomeName("Hell").setTemperatureRainfall(0.8F, 0.6F);
 		SKYBLOCKworld = (new BWG4BiomesSurvival(BWG4Config.biomeIDs[40])).setColor(353825).setBiomeName("Survival Skyblock").setTemperatureRainfall(0.9F, 0.8F);
+		
 		BDocean = (new BWG4BiomesDefault(BWG4Config.biomeIDs[41], 1, 1)).setColor(353825).setBiomeName("Ocean").setTemperatureRainfall(0.8F, 0.6F).setMinMaxHeight(-1.1F, 0.3F);
 		BDtropicalisland = (new BWG4BiomesDefault(BWG4Config.biomeIDs[42], 1, 2)).setColor(353825).setBiomeName("Tropical Island").setTemperatureRainfall(1.0F, 1.0F).setMinMaxHeight(0.2F, 0.3F);
 		BDjungleisland = (new BWG4BiomesDefault(BWG4Config.biomeIDs[43], 1, 3)).setColor(353825).setBiomeName("Jungle Island").setTemperatureRainfall(1.0F, 1.0F).setMinMaxHeight(0.2F, 0.3F);
