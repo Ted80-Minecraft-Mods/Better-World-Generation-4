@@ -1,11 +1,11 @@
-Version 1.0.7 
+Version 1.0.7 '25-5-2013'
 - Modloader/Vanilla is not suported anymore
 - Changed worldtype names
 - Changed dungeon loot
 - Added config file
+- Added new generator menu
 - Fixed bug in beta and alpha generator
-- Added new better default biomes
-- Added forestry support
+- Changed ore spawning in sky dimension
 
 Version 1.0.6b '08-5-2013'
 - (forge)Fixed white fog in nether
