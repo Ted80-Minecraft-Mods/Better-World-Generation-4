@@ -5,7 +5,7 @@ public class DecodeGeneratorString
 	public static void decode(String generatorString)
 	{
 		String[] genstring = generatorString.split("#");
-		GeneratorType gentype = getGeneratorFromName(generatorString);
+		GeneratorType gentype = getGeneratorFromName(genstring[0]);
 		
 		if(gentype != null)
 		{

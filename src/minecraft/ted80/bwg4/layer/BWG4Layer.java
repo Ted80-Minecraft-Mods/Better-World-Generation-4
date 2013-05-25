@@ -16,8 +16,7 @@ public abstract class BWG4Layer
 
     public static BWG4Layer[] initializeAllBiomeGenerators(long par0, String genstring)
     {
-		//System.out.println("GENSTRING: " + genstring);
-		if(genstring.length() > 3)
+		if(genstring.length() > 4)
 		{
 			String[] splitstring = genstring.split("&");
 			generatorSettings = splitstring[1].split(";");

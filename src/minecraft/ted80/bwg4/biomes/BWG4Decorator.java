@@ -73,6 +73,7 @@ public class BWG4Decorator extends BiomeDecorator
 	protected int tl2chance; //treelayer 2 spawning chance
 	
 	//ores
+	protected boolean oresenabled; //enable ore spawning
 	protected boolean shiftoreheight; //used for skylands and skydimension
 	protected boolean disableoreheight; //used for cavedimension
 	protected boolean emeralds; //enable or disable emeralds
@@ -153,6 +154,7 @@ public class BWG4Decorator extends BiomeDecorator
 		tl2chance = 1;
 		
 		//ores
+		oresenabled = true;
 		shiftoreheight = false; 
 		disableoreheight = false; 
 		emeralds = false;
@@ -238,7 +240,10 @@ public class BWG4Decorator extends BiomeDecorator
 		if(usebwg4deco == true) //NEW DECORATOR
 		{	
 			//===== GENERATE ORES =====
-			generateOres();
+			if(oresenabled)
+			{
+				generateOres();
+			}
 
 			//===== TREE LAYER 1 =====
 			double treedouble = 0.5D;

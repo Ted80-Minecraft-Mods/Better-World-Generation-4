@@ -717,6 +717,38 @@ public class BWG4ChunkProviderSky implements IChunkProvider
 			
 			MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Pre(ichunkprovider, worldObj, rand, i, j, false));
 			
+			for(int l3 = 0; l3 < 8; l3++)
+			{
+				int i7 = k + rand.nextInt(16);
+				int j10 = rand.nextInt(16) + 16;
+				int i13 = l + rand.nextInt(16);
+				(new BWG4oldGenMinable(Block.oreRedstone.blockID, 7, 2)).generate(worldObj, rand, i7, j10, i13);
+			}
+
+			for(int i4 = 0; i4 < 1; i4++)
+			{
+				int j7 = k + rand.nextInt(16);
+				int k10 = rand.nextInt(16) + 16;
+				int j13 = l + rand.nextInt(16);
+				(new BWG4oldGenMinable(Block.oreDiamond.blockID, 7, 2)).generate(worldObj, rand, j7, k10, j13);
+			}
+
+			for(int j4 = 0; j4 < 1; j4++)
+			{
+				int k7 = k + rand.nextInt(16);
+				int l10 = rand.nextInt(16) + 16;
+				int k13 = l + rand.nextInt(16);
+				(new BWG4oldGenMinable(Block.oreLapis.blockID, 6, 2)).generate(worldObj, rand, k7, l10, k13);
+			}
+			
+			for(int j24 = 0; j24 < 1; j24++)
+			{
+				int k27 = k + rand.nextInt(16);
+				int l210 = rand.nextInt(16) + 16;
+				int k213 = l + rand.nextInt(16);
+				(new BWG4oldGenMinable(Block.oreEmerald.blockID, 6, 2)).generate(worldObj, rand, k27, l210, k213);
+			}
+			
 			if(rand.nextInt(4) == 0)
 			{
 				int i1 = k + rand.nextInt(16) + 8;

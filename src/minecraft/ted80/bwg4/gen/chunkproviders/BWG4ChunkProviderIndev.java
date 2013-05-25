@@ -556,7 +556,7 @@ public class BWG4ChunkProviderIndev implements IChunkProvider
 			int m23 = rand.nextInt(rand.nextInt(rand.nextInt(112) + 8) + 8);
 			int m25 = var5 + rand.nextInt(16) + 8;
 			(new WorldGenLiquids(Block.lavaMoving.blockID)).generate(worldObj, rand, m22, m23, m25);
-		}	
+		}
 		
         SpawnerAnimals.performWorldGenSpawning(this.worldObj, var6, var4 + 8, var5 + 8, 16, 16, this.rand);
         BlockSand.fallInstantly = false;

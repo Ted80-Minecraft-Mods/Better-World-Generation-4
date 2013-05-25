@@ -6,6 +6,7 @@ public class GeneratorType
 {
 	public static GeneratorType Current;
 	public static String generatorinfo = "";
+	public static int GeneratorTheme = 0;
 	
 	public static final GeneratorType[] generatortypes = new GeneratorType[16];
 	
