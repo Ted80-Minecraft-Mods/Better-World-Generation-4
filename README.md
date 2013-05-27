@@ -1,3 +1,9 @@
+## BETTER WORLD GENERATION 4 MOD ##
+
+A world generator mod for minecraft made by ted80. 
+
+topic: [http://www.minecraftforum.net/topic/1070207](http://www.minecraftforum.net/topic/1070207-152-forge-better-world-generation-4-v107/)
+
 ## PLANNED ##
 
 **Version 1.0.8**
