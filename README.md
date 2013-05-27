@@ -1,11 +1,27 @@
+=========================== PLANNED =============================
+
+Version 1.0.8 
+- Forestry support
+- fix cave dimension lag
+- fix clay in beta(default biomes)
+
+After 1.0.8
+- wasteland generator
+- new survival island/skyland themes
+- new better default biomes
+- hardcore generator
+- fix sky dimension lag
+
+=========================== CHANGELOG ===========================
+
 Version 1.0.7 '25-5-2013'
-- Modloader/Vanilla is not suported anymore
+- Modloader/Vanilla is not supported anymore
 - Changed worldtype names
 - Changed dungeon loot
 - Added config file
 - Added new generator menu
 - Fixed bug in beta and alpha generator
-- Changed ore spawning in sky dimension
+- Fixed ore spawning in sky dimension
 
 Version 1.0.6b '08-5-2013'
 - (forge)Fixed white fog in nether
@@ -485,3 +501,5 @@ Version 0.0.1 '25-9-2012'
 - Added modloader fix
 - Added worldtypes list
 - Added translator fix
+
+=================================================================
