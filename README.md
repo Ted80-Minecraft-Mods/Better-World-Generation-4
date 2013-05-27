@@ -2,9 +2,8 @@
 
 A world generator mod for minecraft made by ted80. 
 
-**links:**
-[Minecraftforum thread](http://www.minecraftforum.net/topic/1070207-152-forge-better-world-generation-4-v107/)
-[My website](http://www.ted80.net/) 
+forum thread: [www.minecraftforum.net/topic/1070207](http://www.minecraftforum.net/topic/1070207-152-forge-better-world-generation-4-v107/)
+my website: [ted80.net](http://www.ted80.net/) 
 
 ## PLANNED ##
 
