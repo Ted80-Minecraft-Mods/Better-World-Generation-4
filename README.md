@@ -1,11 +1,11 @@
 ## PLANNED ##
 
-** Version 1.0.8 **
+**Version 1.0.8**
 - Forestry support
 - fix cave dimension lag
 - fix clay in beta(default biomes)
 
-** After 1.0.8 **
+**After 1.0.8**
 - wasteland generator
 - new survival island/skyland themes
 - new better default biomes
