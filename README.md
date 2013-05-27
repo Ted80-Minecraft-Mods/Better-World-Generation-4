@@ -1,20 +1,20 @@
-============================ PLANNED =============================
+## PLANNED ##
 
-Version 1.0.8 
+** Version 1.0.8 **
 - Forestry support
 - fix cave dimension lag
 - fix clay in beta(default biomes)
 
-After 1.0.8
+** After 1.0.8 **
 - wasteland generator
 - new survival island/skyland themes
 - new better default biomes
 - hardcore generator
 - fix sky dimension lag
 
-=========================== CHANGELOG ===========================
+## CHANGELOG ##
 
-Version 1.0.7 '25-5-2013'
+** Version 1.0.7 ** '25-5-2013'
 - Modloader/Vanilla is not supported anymore
 - Changed worldtype names
 - Changed dungeon loot
@@ -23,42 +23,42 @@ Version 1.0.7 '25-5-2013'
 - Fixed bug in beta and alpha generator
 - Fixed ore spawning in sky dimension
 
-Version 1.0.6b '08-5-2013'
+** Version 1.0.6b ** '08-5-2013'
 - (forge)Fixed white fog in nether
 
-Version 1.0.6 '03-5-2013'
+** Version 1.0.6 ** '03-5-2013'
 - Updated to minecraft 1.5.2
 - (forge)Update to forge 7.8.0.684
 - Added new skyblock theme
 - Disabled cave dimension because of lighting crashes
 
-Version 1.0.5 '30-4-2013'
+** Version 1.0.5 ** '30-4-2013'
 - (forge)More compatibilityness
 - Added vines and glowstone to cave dimension
 
-version 1.0.4 '20-4-2013'
+** version 1.0.4 ** '20-4-2013'
 - (forge)Update to forge 7.7.1.676
 - (forge)Added api
 - Removed gold gen
 - Started working on re-adding cave dimension
 - (forge)Fixed themes not working
 
-version 1.0.3 '07-4-2013'
+** version 1.0.3 ** '07-4-2013'
 - (forge)More compatibilityness
 
-Version 1.0.2 '04-4-2013'
+** Version 1.0.2 ** '04-4-2013'
 - Fixed BoP crash
 - Added better default biomes to spawn biomes list
 
-Version 1.0.1B '23-3-2013' 
+** Version 1.0.1B ** '23-3-2013' 
 - (forge)Fixed themes not working
 
-Version 1.0.1 '23-3-2013'
+** Version 1.0.1 ** '23-3-2013'
 - Updated to minecraft 1.5.1
 - Changed dungeons loot
 - Added forge version (7.7.0.605)
 
-Version 1.0.0 '17-3-2013'
+** Version 1.0.0 ** '17-3-2013'
 - Fixed betterdefault loading bug
 - Removed lilypads from jungle islands
 - Added new skyblock option
@@ -66,7 +66,7 @@ Version 1.0.0 '17-3-2013'
 - Updated SMP version
 - Added FORGE version
 
-Version 0.9.9 '16-3-2013'
+** Version 0.9.9 ** '16-3-2013' 
 - Fixed betterdefault generator bug
 - Fixed empty generator string error
 - Fixed weird rectangular tunnels caused by dungeons
@@ -82,25 +82,25 @@ Version 0.9.9 '16-3-2013'
 - Changed biome colors on betterdefault
 - Increased amount of islands on betterdefault
 
-Version 0.9.8 '13-3-2013'
+** Version 0.9.8 ** '13-3-2013'
 - Updated to minecraft 1.5
 - Some small changes to the create world gui
 - Fixed treelayers 
 - Added nether Quartz to all hell world generators
 
-Version 0.9.7 '10-3-2013'
+** Version 0.9.7 ** '10-3-2013'
 - Increased Regionpack size
 - Changed cloud height in gold
 - Changed Biomepack size
 - Fixed desert oasis
 - Changed water and sky colors in gold
 
-Version 0.9.6 '03-3-2013'
+** Version 0.9.6 ** '03-3-2013'
 - Added IceOcean, IcePlains and IceForest biome to gold
 - Renamed coldhills to snowpines
 - Changed Snowpine biomes
 
-Version 0.9.5 '03-3-2013'
+** Version 0.9.5 ** '03-3-2013'
 - Fixed grass in beachdunes biome
 
 Version 0.9.4 '03-3-2013'
