@@ -4,12 +4,7 @@ A world generator mod for minecraft made by ted80.
 
 ## PLANNED ##
 
-**Version 1.0.8**
-- Forestry support
 - fix cave dimension lag
-- fix clay in beta(default biomes)
-
-**After 1.0.8**
 - wasteland generator
 - new survival island/skyland themes
 - new better default biomes
@@ -17,6 +12,10 @@ A world generator mod for minecraft made by ted80.
 - fix sky dimension lag
 
 ## CHANGELOG ##
+
+**Version 1.0.8** 'planned'
+- Fixed exploding beds in Survival Island and Skyland worlds
+- Fixed wierd biome colors in Infdev and indev worlds
 
 **Version 1.0.7** '25-5-2013'
 - Modloader/Vanilla is not supported anymore
