@@ -91,6 +91,60 @@ public class BWG4Provider extends WorldProvider
 				worldChunkMgr = new BWG4WorldChunkManager(worldObj);
 			}
 		}
+		else if(worldObj.isRemote && GeneratorType.Current != null)
+		{
+			//GET BIOMES
+	        if (GeneratorType.Current == GeneratorType.BWG4INFDEV)
+	        {
+				int themeID = Integer.parseInt(GeneratorType.generatorinfo);
+				if(themeID == 1) { this.worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.INFDEVdefault, 0.5F, 0.5F); }
+				else { this.worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.INFDEVsnow, 0.5F, 0.5F); }
+	        }
+			else if (GeneratorType.Current == GeneratorType.BWG4INDEV1) 
+			{ 
+				int themeID = Integer.parseInt(GeneratorType.generatorinfo);
+				if(themeID == 2) { this.worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.INDEVhell, 0.5F, 0.5F); }
+				else if(themeID == 3) { this.worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.INDEVparadise, 0.5F, 0.5F); }
+				else if(themeID == 4) { this.worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.INDEVwoods, 0.5F, 0.5F); }
+				else if(themeID == 5) { this.worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.INDEVsnow, 0.5F, 0.5F); }
+				else { this.worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.INDEVnormal, 0.5F, 0.5F); }
+			}
+			else if (GeneratorType.Current == GeneratorType.BWG4INDEV2) 
+			{ 
+				int themeID = Integer.parseInt(GeneratorType.generatorinfo);
+				if(themeID == 2) { this.worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.INDEVhell, 0.5F, 0.5F); }
+				else if(themeID == 3) { this.worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.INDEVparadise, 0.5F, 0.5F); }
+				else if(themeID == 4) { this.worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.INDEVwoods, 0.5F, 0.5F); }
+				else if(themeID == 5) { this.worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.INDEVsnow, 0.5F, 0.5F); }
+				else { this.worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.INDEVnormal, 0.5F, 0.5F); }
+			} 
+			else if (GeneratorType.Current == GeneratorType.BWG4ISLAND)
+			{
+				int themeID = Integer.parseInt(GeneratorType.generatorinfo);
+				if(themeID == 1) { this.worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.ISLANDnormal, 0.5F, 0.5F); }
+				//else if(themeID == 2) { this.worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.ISLANDhell, 0.5F, 0.5F); }
+				//else if(themeID == 3) { this.worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.ISLANDice, 0.5F, 0.5F); }
+				else if(themeID == 4) { this.worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.ISLANDparadise, 0.5F, 0.5F); }
+				else { this.worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.ISLANDnormal, 0.5F, 0.5F); }
+			}
+			else if (GeneratorType.Current == GeneratorType.BWG4SKYLAND)
+			{
+				int themeID = Integer.parseInt(GeneratorType.generatorinfo);
+				if(themeID == 1) { this.worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.SKYLANDnormal, 0.5F, 0.5F); }
+				//else if(themeID == 2) { this.worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.SKYLANDhell, 0.5F, 0.5F); }
+				else if(themeID == 3) { this.worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.SKYLANDice, 0.5F, 0.5F); }
+				else if(themeID == 4) { this.worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.SKYLANDjungle, 0.5F, 0.5F); }
+				else { this.worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.SKYLANDnormal, 0.5F, 0.5F); }
+			}
+			else if (GeneratorType.Current == GeneratorType.BWG4SKYBLOCK)
+			{
+				this.worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.SKYBLOCKworld, 0.5F, 0.5F);
+			}
+			else
+			{
+				worldChunkMgr = new BWG4WorldChunkManager(worldObj);
+			}
+		}
 		else if (this.worldObj.getWorldInfo().getTerrainType() == WorldType.FLAT)
         {
             FlatGeneratorInfo var1 = FlatGeneratorInfo.createFlatGeneratorFromString(this.worldObj.getWorldInfo().getGeneratorOptions());
@@ -104,7 +158,7 @@ public class BWG4Provider extends WorldProvider
 	
 	@Override
     public IChunkProvider createChunkGenerator()
-    {
+    {		
 		if(terrainType == mod_bwg4.BWG4DEFAULT)
 		{
 	        if (GeneratorType.Current == GeneratorType.BWG4INFDEV)
@@ -170,7 +224,7 @@ public class BWG4Provider extends WorldProvider
 	@Override
     public boolean canRespawnHere()
     {
-		if(GeneratorType.Current == GeneratorType.BWG4ISLAND || GeneratorType.Current == GeneratorType.BWG4SKYLAND || GeneratorType.Current == GeneratorType.BWG4SKYBLOCK )
+		if(GeneratorType.Current == GeneratorType.BWG4SKYBLOCK )
 		{
 			return false;
 		}

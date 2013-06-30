@@ -4,8 +4,6 @@ import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
-
-
 import ted80.api.DefaultBiomeList;
 import ted80.bwg4.biomes.BWG4Biomes;
 import ted80.bwg4.biomes.BWG4BiomesAlpha;
@@ -20,6 +18,9 @@ import ted80.bwg4.gen.BWG4ProviderHell;
 import ted80.bwg4.gen.BWG4WorldType;
 import ted80.bwg4.gen.BWG4WorldTypeArray;
 import ted80.bwg4.gui.BWG4BiomeInfo;
+import ted80.bwg4.network.BWG4Connection;
+import ted80.bwg4.network.BWG4Packet;
+import net.minecraft.block.Block;
 import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.*;
 import net.minecraftforge.common.BiomeDictionary;
@@ -27,6 +28,8 @@ import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.DimensionManager;
+import net.minecraftforge.event.ForgeSubscribe;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -34,10 +37,11 @@ import cpw.mods.fml.common.Mod.PreInit;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid="BWG4", name="BetterWorldGeneration4", version="1.0.7")
-@NetworkMod(clientSideRequired=false, serverSideRequired=false)
+@Mod(modid="BWG4", name="BetterWorldGeneration4", version="1.0.8")
+@NetworkMod(clientSideRequired=true, serverSideRequired=false, channels={"BWG4channel"}, packetHandler = BWG4Packet.class)
 public class mod_bwg4
 {	
 	@Instance("BWG4")
@@ -160,6 +164,7 @@ public class mod_bwg4
 	@Init
 	public void load(FMLInitializationEvent event)
 	{
+		NetworkRegistry.instance().registerConnectionHandler(new BWG4Connection());
 		LanguageRegistry.instance().addStringLocalization("generator.BWG4", "BWG4");
 	}
 }

@@ -20,6 +20,8 @@ public class BWG4Config
 	public static Configuration config;
 	public static int[] biomeIDs = new int[73];
 	
+	public static boolean alphagrass = true;
+	
 	public static void init(File configFile) 
 	{
 		config = new Configuration(configFile);
@@ -27,6 +29,9 @@ public class BWG4Config
 		try 
 		{
 			config.load();
+			
+			//TEXTURES
+			alphagrass = config.get("Textures", "AlphaGrass", true).getBoolean(true);
 			
 			//BETA BIOMES
 			biomeIDs[0] = config.get("Biome IDs", "BETArainforest", 80).getInt();

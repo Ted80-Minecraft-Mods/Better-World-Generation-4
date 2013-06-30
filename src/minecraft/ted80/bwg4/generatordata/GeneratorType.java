@@ -48,6 +48,11 @@ public class GeneratorType
 		this(id, name, "", false, false);
 	}
 	
+	public int GetID()
+	{
+		return GeneratorTypeId;
+	}
+	
 	public String GetName()
 	{
 		return GeneratorName;
