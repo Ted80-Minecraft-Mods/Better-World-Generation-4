@@ -159,12 +159,13 @@ public class mod_bwg4
 		DefaultBiomeList.addBiome("Jungle Island", BWG4Biomes.BDjungleisland, 5);
 		DefaultBiomeList.addBiome("Tropical Island", BWG4Biomes.BDtropicalisland, 5);
 		DefaultBiomeList.addBiome("Ocean", BWG4Biomes.BDocean, 0);
+		
+		LanguageRegistry.instance().addStringLocalization("generator.BWG4", "BWG4");
 	}
 	
 	@Init
 	public void load(FMLInitializationEvent event)
 	{
 		NetworkRegistry.instance().registerConnectionHandler(new BWG4Connection());
-		LanguageRegistry.instance().addStringLocalization("generator.BWG4", "BWG4");
 	}
 }

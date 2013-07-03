@@ -61,4 +61,8 @@ class BWG4GuiDefaultList extends GuiSlot
     {
         return this.bwg4guidefault.width - 70;
     }
+
+	protected void func_130003_c() 
+	{
+	}
 }

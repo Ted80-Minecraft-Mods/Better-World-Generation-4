@@ -28,6 +28,7 @@ import net.minecraft.world.gen.feature.WorldGenCactus;
 import net.minecraft.world.gen.feature.WorldGenFlowers;
 import net.minecraft.world.gen.feature.WorldGenLiquids;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import net.minecraft.world.gen.structure.MapGenMineshaft;
 import net.minecraft.world.gen.structure.MapGenStronghold;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
@@ -52,6 +53,7 @@ public class BWG4ChunkProviderInfdev implements IChunkProvider
     private double field_903_t[];
     private BWG4MapGenBase field_902_u;
     private MapGenStronghold strongholdGenerator = new MapGenStronghold();
+    private MapGenMineshaft mineshaftGenerator = new MapGenMineshaft();
 	
     double field_919_d[];
     double field_918_e[];
@@ -259,6 +261,7 @@ public class BWG4ChunkProviderInfdev implements IChunkProvider
         if (mapFeaturesEnabled)
         {
 			strongholdGenerator.generate(this, field_907_p, i, j, abyte0);
+			mineshaftGenerator.generate(this, field_907_p, i, j, abyte0);
 		}	
 		
         Chunk chunk = new Chunk(field_907_p, abyte0, i, j);
@@ -393,6 +396,7 @@ public class BWG4ChunkProviderInfdev implements IChunkProvider
 		if (mapFeaturesEnabled)
         {
 			strongholdGenerator.generateStructuresInChunk(field_907_p, field_913_j, i, j);
+			mineshaftGenerator.generateStructuresInChunk(field_907_p, field_913_j, i, j);
 		}	
 
         for(int i1 = 0; i1 < 8; i1++)
@@ -629,6 +633,7 @@ public class BWG4ChunkProviderInfdev implements IChunkProvider
 		if (mapFeaturesEnabled)
         {
 			strongholdGenerator.generate(this, field_907_p, par1, par2, (byte[])null);
+			mineshaftGenerator.generate(this, field_907_p, par1, par2, (byte[])null);
 		}	
 	}
 }

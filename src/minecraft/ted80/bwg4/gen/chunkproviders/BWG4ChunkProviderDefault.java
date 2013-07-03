@@ -8,6 +8,7 @@ import ted80.bwg4.biomes.BWG4Biomes;
 import ted80.bwg4.deco.BWG4decoDungeons;
 import ted80.bwg4.deco.old.BWG4oldGenClay;
 import ted80.bwg4.noise.BWG4NoiseOctavesBeta;
+import ted80.bwg4.noise.BWG4NoisePerlinTest;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSand;
@@ -41,6 +42,8 @@ public class BWG4ChunkProviderDefault implements IChunkProvider
     public BWG4NoiseOctavesBeta noiseGen5;
     public BWG4NoiseOctavesBeta noiseGen6;
     public BWG4NoiseOctavesBeta mobSpawnerNoise;
+    
+    //public BWG4NoisePerlinTest perlintest;
 
     private World worldObj;
     private final boolean mapFeaturesEnabled;
@@ -76,10 +79,43 @@ public class BWG4ChunkProviderDefault implements IChunkProvider
         this.noiseGen5 = new BWG4NoiseOctavesBeta(this.rand, 10);
         this.noiseGen6 = new BWG4NoiseOctavesBeta(this.rand, 16);
         this.mobSpawnerNoise = new BWG4NoiseOctavesBeta(this.rand, 8);
+        
+        //perlintest = new BWG4NoisePerlinTest(par2);
     }
 
     public void generateTerrain(int par1, int par2, byte[] par3ArrayOfByte)
     {
+    	/*
+		int i = par1 << 4;
+		int j = par2 << 4;
+		int jj = 0;
+		
+		for (int k = i; k < i + 16; k++)
+		{
+			for (int m = j; m < j + 16; m++)
+			{
+				float h = (perlintest.turbulence2(((float) k / 300F),((float) m / 300F), 40F) * 90) + 64;
+				if(h > 127) { h = 127; } else if(h < 1) { h = 1; }
+				
+				for (int i3 = 0; i3 < 128; i3++)
+				{
+					if(i3 < h)
+					{
+						par3ArrayOfByte[jj++] = (byte)Block.stone.blockID;
+					}
+					else if(i3 < 63)
+					{
+						par3ArrayOfByte[jj++] = (byte)Block.waterStill.blockID;
+					}
+					else
+					{
+						par3ArrayOfByte[jj++] = 0;
+					}
+				}
+			}
+		}
+    	*/
+    	
         byte var4 = 4;
         byte var5 = 16;
         byte var6 = 63;
@@ -456,7 +492,6 @@ public class BWG4ChunkProviderDefault implements IChunkProvider
                 }
             }
         }
-
         return par1ArrayOfDouble;
     }
 

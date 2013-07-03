@@ -73,15 +73,18 @@ public class BWG4WorldChunkManager extends WorldChunkManager
         this.biomesToSpawnIn.add(BWG4Biomes.BDshrublandHill);
 	}
 
-    public BWG4WorldChunkManager(World par1World)
+    public BWG4WorldChunkManager(World par1World, boolean remote)
     {
         this();
         long seed = par1World.getSeed();
         
-		generateBiomeLookup();
-        field_4194_e = new BWG4oldNoiseGeneratorOctaves2(new Random(seed * 9871L), 4);
-        field_4193_f = new BWG4oldNoiseGeneratorOctaves2(new Random(seed * 39811L), 4);
-        field_4192_g = new BWG4oldNoiseGeneratorOctaves2(new Random(seed * 0x84a59L), 2);
+        if(remote)
+        {
+			generateBiomeLookup();
+	        field_4194_e = new BWG4oldNoiseGeneratorOctaves2(new Random(seed * 9871L), 4);
+	        field_4193_f = new BWG4oldNoiseGeneratorOctaves2(new Random(seed * 39811L), 4);
+	        field_4192_g = new BWG4oldNoiseGeneratorOctaves2(new Random(seed * 0x84a59L), 2);
+        }
 
         if (GeneratorType.Current == GeneratorType.BWG4SMALL || GeneratorType.Current == GeneratorType.BWG4LARGE)
         {	

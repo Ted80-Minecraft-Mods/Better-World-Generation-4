@@ -405,7 +405,6 @@ public class BWG4decoDungeons extends WorldGenerator
 			if (i == 13) { return new ItemStack(Item.bucketEmpty); }
 			if (i == 14) { return new ItemStack(Item.redstone, par1Random.nextInt(4) + 1); }
 			if (i == 15) { return new ItemStack(Item.dyePowder, 1, 3); }
-			if (i == 16) { return Item.enchantedBook.func_92109_a(par1Random); }
 			if (i > 16 || i < 16 + 6) { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }
 			else { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }	
 		} 
@@ -426,7 +425,6 @@ public class BWG4decoDungeons extends WorldGenerator
 			if (i == 11 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.legsChain); }
 			if (i == 12 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.bootsChain); }
 			if (i == 13) { return new ItemStack(Block.sapling, 1, 3); }
-			if (i == 14) { return Item.enchantedBook.func_92109_a(par1Random); }
 			if (i == 15) { return new ItemStack(Block.waterlily, par1Random.nextInt(4) + 1); }
 			if (i > 15 || i < 15 + 6) { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }
 			else { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }	
@@ -443,7 +441,6 @@ public class BWG4decoDungeons extends WorldGenerator
 			if (i == 6 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.plateChain); }
 			if (i == 7 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.legsChain); }
 			if (i == 8 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.bootsChain); }
-			if (i == 9) { return Item.enchantedBook.func_92109_a(par1Random); }
 			if (i == 10) { return new ItemStack(Item.bucketEmpty); }
 			if (i == 11) { return new ItemStack(Item.redstone, par1Random.nextInt(4) + 1); }
 			if (i == 12) { return new ItemStack(Item.wheat, par1Random.nextInt(4) + 1); }
@@ -470,7 +467,6 @@ public class BWG4decoDungeons extends WorldGenerator
 			if (i == 11 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.legsChain); }
 			if (i == 12 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.bootsChain); }
 			if (i == 13) { return new ItemStack(Block.sapling, 1, par1Random.nextInt(3) + 1); }
-			if (i == 14) { return Item.enchantedBook.func_92109_a(par1Random); }
 			if (i == 15 || i == 16 || i == 17) { return new ItemStack(Item.seeds, par1Random.nextInt(12) + 1); }
 			if (i == 18) { return new ItemStack(Block.waterlily, par1Random.nextInt(4) + 1); }
 			if (i > 18 || i < 18 + 6) { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }
@@ -493,7 +489,6 @@ public class BWG4decoDungeons extends WorldGenerator
 			if (i == 11 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.legsChain); }
 			if (i == 12 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.bootsChain); }
 			if (i == 13) { return new ItemStack(Block.sapling, 1, par1Random.nextInt(3) + 1); }
-			if (i == 14) { return Item.enchantedBook.func_92109_a(par1Random); }
 			if (i == 15 || i == 16 || i == 17) { return new ItemStack(Item.seeds, par1Random.nextInt(12) + 1); }
 			if (i == 18) { return new ItemStack(Block.waterlily, par1Random.nextInt(4) + 1); }
 			if (i == 19) { return new ItemStack(Block.cactus, par1Random.nextInt(4) + 1); }
@@ -519,7 +514,6 @@ public class BWG4decoDungeons extends WorldGenerator
 			if (i == 11 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.legsChain); }
 			if (i == 12 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.bootsChain); }
 			if (i == 13) { return new ItemStack(Block.sapling, 1, par1Random.nextInt(3) + 1); }
-			if (i == 14) { return Item.enchantedBook.func_92109_a(par1Random); }
 			if (i == 15 || i == 16 || i == 17) { return new ItemStack(Item.seeds, par1Random.nextInt(12) + 1); }
 			if (i == 18) { return new ItemStack(Block.waterlily, par1Random.nextInt(4) + 1); }
 			if (i == 19) { return new ItemStack(Block.cactus, par1Random.nextInt(4) + 1); }
@@ -546,7 +540,6 @@ public class BWG4decoDungeons extends WorldGenerator
 			if (i == 11 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.legsChain); }
 			if (i == 12 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.bootsChain); }
 			if (i == 13) { return new ItemStack(Block.sapling, 1, par1Random.nextInt(3) + 1); }
-			if (i == 14) { return Item.enchantedBook.func_92109_a(par1Random); }
 			if (i == 15 || i == 16 || i == 17) { return new ItemStack(Item.seeds, par1Random.nextInt(12) + 1); }
 			if (i == 18) { return new ItemStack(Block.waterlily, par1Random.nextInt(4) + 1); }
 			if (i == 19) { return new ItemStack(Block.cactus, par1Random.nextInt(4) + 1); }
@@ -575,7 +568,6 @@ public class BWG4decoDungeons extends WorldGenerator
 			if (i == 13) { return new ItemStack(Item.bucketEmpty); }
 			if (i == 14) { return new ItemStack(Item.redstone, par1Random.nextInt(4) + 1); }
 			if (i == 15) { return new ItemStack(Item.dyePowder, 1, 3); }
-			if (i == 16) { return Item.enchantedBook.func_92109_a(par1Random); }
 			if (i == 17 && par1Random.nextInt(3) == 0) { return new ItemStack(Block.mycelium); }
 			if (i > 17 || i < 17 + 6) { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }
 			else { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }	
@@ -599,7 +591,6 @@ public class BWG4decoDungeons extends WorldGenerator
 			if (i == 13) { return new ItemStack(Item.bucketEmpty); }
 			if (i == 14) { return new ItemStack(Item.redstone, par1Random.nextInt(4) + 1); }
 			if (i == 15) { return new ItemStack(Item.dyePowder, 1, 3); }
-			if (i == 16) { return Item.enchantedBook.func_92109_a(par1Random); }
 			if (i == 17 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.monsterPlacer, 1, 95); }
 			if (i == 18 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.monsterPlacer, 1, 98); }
 			if (i > 18 || i < 18 + 6) { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }
@@ -667,7 +658,6 @@ public class BWG4decoDungeons extends WorldGenerator
 			if (i == 11 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.legsChain); }
 			if (i == 12 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.bootsChain); }
 			if (i == 13) { return new ItemStack(Block.sapling, 1, 3); }
-			if (i == 14) { return Item.enchantedBook.func_92109_a(par1Random); }
 			if (i == 15) { return new ItemStack(Block.waterlily, par1Random.nextInt(4) + 1); }
 			if (i > 15 || i < 15 + 6) { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }
 			else { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }	
@@ -684,7 +674,6 @@ public class BWG4decoDungeons extends WorldGenerator
 			if (i == 6 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.plateChain); }
 			if (i == 7 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.legsChain); }
 			if (i == 8 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.bootsChain); }
-			if (i == 9) { return Item.enchantedBook.func_92109_a(par1Random); }
 			if (i == 10) { return new ItemStack(Item.bucketEmpty); }
 			if (i == 11) { return new ItemStack(Item.redstone, par1Random.nextInt(4) + 1); }
 			if (i == 12) { return new ItemStack(Item.wheat, par1Random.nextInt(4) + 1); }
@@ -713,7 +702,6 @@ public class BWG4decoDungeons extends WorldGenerator
 			if (i == 13) { return new ItemStack(Item.bucketEmpty); }
 			if (i == 14) { return new ItemStack(Item.redstone, par1Random.nextInt(4) + 1); }
 			if (i == 15) { return new ItemStack(Item.dyePowder, 1, 3); }
-			if (i == 16) { return Item.enchantedBook.func_92109_a(par1Random); }
 			if (i > 16 || i < 16 + 6) { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }
 			else { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }		
 		} 
@@ -723,7 +711,6 @@ public class BWG4decoDungeons extends WorldGenerator
 			if (i == 1) { return new ItemStack(Item.brick, par1Random.nextInt(63) + 1); }
 			if (i == 2) { return new ItemStack(Block.blockSnow, par1Random.nextInt(12) + 1); }
 			if (i == 3) { return new ItemStack(Block.waterlily, par1Random.nextInt(4) + 1); }
-			if (i == 4) { return Item.enchantedBook.func_92109_a(par1Random); }
 			if (i == 5 && par1Random.nextInt(3) == 0) { return new ItemStack(Block.mycelium); }
 			if (i == 6 && par1Random.nextInt(3) == 0) { return new ItemStack(Item.itemsList[Item.record13.itemID + par1Random.nextInt(10)]); }
 			if (i == 7) { return new ItemStack(Block.vine, par1Random.nextInt(4) + 1); }

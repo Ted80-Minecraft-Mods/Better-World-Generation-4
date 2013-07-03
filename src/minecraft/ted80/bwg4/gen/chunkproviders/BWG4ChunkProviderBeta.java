@@ -33,6 +33,7 @@ import net.minecraft.world.gen.feature.WorldGenLiquids;
 import net.minecraft.world.gen.feature.WorldGenPumpkin;
 import net.minecraft.world.gen.feature.WorldGenTallGrass;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import net.minecraft.world.gen.structure.MapGenMineshaft;
 import net.minecraft.world.gen.structure.MapGenStronghold;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
@@ -57,6 +58,7 @@ public class BWG4ChunkProviderBeta implements IChunkProvider
     private double stoneNoise[];
     private BWG4MapGenBase field_902_u;
     private MapGenStronghold strongholdGenerator = new MapGenStronghold();
+    private MapGenMineshaft mineshaftGenerator = new MapGenMineshaft();
     private BiomeGenBase biomesForGeneration[];
 	private int worldtype;
 	
@@ -282,6 +284,7 @@ public class BWG4ChunkProviderBeta implements IChunkProvider
         if (mapFeaturesEnabled)
         {
 			strongholdGenerator.generate(this, worldObj, i, j, abyte0);
+			mineshaftGenerator.generate(this, worldObj, i, j, abyte0);
 		}	
 		
         Chunk chunk = new Chunk(worldObj, abyte0, i, j);
@@ -427,6 +430,7 @@ public class BWG4ChunkProviderBeta implements IChunkProvider
 			if (mapFeaturesEnabled)
 			{
 				strongholdGenerator.generateStructuresInChunk(worldObj, rand, i, j);
+				mineshaftGenerator.generateStructuresInChunk(worldObj, rand, i, j);
 			}	
 			
 			if(rand.nextInt(4) == 0)
@@ -780,6 +784,14 @@ public class BWG4ChunkProviderBeta implements IChunkProvider
 				(new BWG4decoDungeons(2, true, false, false)).generate(worldObj, rand, j5, k8, j11);
 			}
 			
+			for(int i2 = 0; i2 < 10; i2++)
+			{
+				int k5 = k + rand.nextInt(16);
+				int l8 = rand.nextInt(128);
+				int k11 = l + rand.nextInt(16);
+				(new BWG4oldGenClay(32, 2)).generate(worldObj, rand, k5, l8, k11);
+			}
+			
 			biomegenbase.decorate(worldObj, rand, k, l);
 			SpawnerAnimals.performWorldGenSpawning(worldObj, biomegenbase, k + 8, l + 8, 16, 16, rand);
 			
@@ -861,6 +873,7 @@ public class BWG4ChunkProviderBeta implements IChunkProvider
 		if (mapFeaturesEnabled)
         {
 			strongholdGenerator.generate(this, worldObj, par1, par2, (byte[])null);
+			mineshaftGenerator.generate(this, worldObj, par1, par2, (byte[])null);
 		}	
 	}
 }

@@ -88,7 +88,7 @@ public class BWG4Provider extends WorldProvider
 			}
 			else
 			{
-				worldChunkMgr = new BWG4WorldChunkManager(worldObj);
+				worldChunkMgr = new BWG4WorldChunkManager(worldObj, true);
 			}
 		}
 		else if(worldObj.isRemote && GeneratorType.Current != null)
@@ -142,7 +142,7 @@ public class BWG4Provider extends WorldProvider
 			}
 			else
 			{
-				worldChunkMgr = new BWG4WorldChunkManager(worldObj);
+				worldChunkMgr = new BWG4WorldChunkManager(worldObj, false);
 			}
 		}
 		else if (this.worldObj.getWorldInfo().getTerrainType() == WorldType.FLAT)
