@@ -13,9 +13,12 @@ A world generator mod for minecraft made by ted80.
 
 ## CHANGELOG ##
 
-**Version 1.0.8** 'planned'
+**Version 1.0.8** '3-7-2013'
+- Updated to minecraft 1.6.1
 - Fixed exploding beds in Survival Island and Skyland worlds
 - Fixed wierd biome colors in Infdev and indev worlds
+- Fixed clay not generating in beta worlds
+- Fixed mineshafts not generating in beta, alpha and infde
 
 **Version 1.0.7** '25-5-2013'
 - Modloader/Vanilla is not supported anymore
