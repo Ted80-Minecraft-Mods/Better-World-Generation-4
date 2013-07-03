@@ -13,6 +13,10 @@ A world generator mod for minecraft made by ted80.
 
 ## CHANGELOG ##
 
+**Version 1.1.0** '3-7-2013'
+- Added ExtraBiomesXL support
+- Added Biomes O' Plenty support
+
 **Version 1.0.9** '3-7-2013'
 - Added horse spawning in all worldtypes
 - Fixed biomes not working after changing biome ids
