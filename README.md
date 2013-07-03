@@ -13,6 +13,12 @@ A world generator mod for minecraft made by ted80.
 
 ## CHANGELOG ##
 
+**Version 1.0.9** '3-7-2013'
+- Added horse spawning in all worldtypes
+- Fixed biomes not working after changing biome ids
+- More clay in better default worlds
+- Added underground clay spawning to sky dimension
+
 **Version 1.0.8** '3-7-2013'
 - Updated to minecraft 1.6.1
 - Fixed exploding beds in Survival Island and Skyland worlds
