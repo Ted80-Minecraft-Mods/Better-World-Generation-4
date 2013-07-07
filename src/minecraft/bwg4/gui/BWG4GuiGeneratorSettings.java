@@ -1,7 +1,8 @@
 package bwg4.gui;
 
 import bwg4.api.DefaultBiomeList;
-import bwg4.generatordata.GeneratorType;
+import bwg4.generatordata.BWG4GeneratorType;
+import bwg4.generatordata.BWG4WorldSettings;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiCreateWorld;
 import net.minecraft.client.gui.GuiMainMenu;
@@ -22,8 +23,11 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
 	private GuiButton Setting_Generator;
 	
 	//GEN OPTION BUTTONS
-	private GuiButton Setting_BD_Costumize;
+	private GuiButton Setting_BD_Biome;
+	private GuiButton Setting_BD_World;
+	
 	private GuiButton Setting_BD_Size;
+	
 	private GuiButton Setting_BETA_Biomes;
 	private GuiButton Setting_INFDEV_Snow;
 	private GuiButton Setting_INDEV_Type;
@@ -35,7 +39,10 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
 	
 	//GEN SETTINGS
 	public String BD_biomestring;
+	public String BD_worldstring;
+	
 	private int BD_size = 0;
+	
 	private int BETA_biomes = 0;
 	private int INFDEV_snow = 0;
 	private int INDEV_type = 0;
@@ -50,9 +57,9 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
         createWorldGui = gcw;
         decodeString(gs);
         
-        for(int c = 0; c < GeneratorType.generatortypes.length; c++)
+        for(int c = 0; c < BWG4GeneratorType.generatortypes.length; c++)
         {
-        	if(GeneratorType.generatortypes[c] != null && GeneratorType.generatortypes[c].CanBeCreated())
+        	if(BWG4GeneratorType.generatortypes[c] != null && BWG4GeneratorType.generatortypes[c].CanBeCreated())
         	{
         		maxgenerators++;
         	}
@@ -70,8 +77,11 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
         buttonList.add(new GuiSmallButton(3, width / 2 - 155, height - 53, 310, 20, "Copy generator-settings to Clipboard"));
         
         //GEN OPTION BUTTONS
-        buttonList.add(Setting_BD_Costumize = new GuiSmallButton(10, width / 2 - 75, 115, 150, 20, "[CUSTOMIZE]")); 
+        buttonList.add(Setting_BD_Biome = new GuiSmallButton(10, width / 2 - 75, 115, 150, 20, "[BIOME-SETTINGS]")); 
+        //buttonList.add(Setting_BD_World = new GuiSmallButton(11, width / 2 - 75, 135, 150, 20, "[WORLD-SETTINGS]"));
+        
         buttonList.add(Setting_BD_Size = new GuiSmallButton(11, width / 2 - 75, 135, 150, 20, "[BIOME-SIZE]"));
+        
         buttonList.add(Setting_BETA_Biomes = new GuiSmallButton(12, width / 2 - 75, 115, 150, 20, "[BIOMES]")); 
         buttonList.add(Setting_INFDEV_Snow = new GuiSmallButton(13, width / 2 - 75, 115, 150, 20, "[SNOW]")); 
         buttonList.add(Setting_INDEV_Type = new GuiSmallButton(14, width / 2 - 75, 115, 150, 20, "[TYPE]")); 
@@ -101,17 +111,17 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
         {
         	generatorselected++;
         	generatorcount++;
-        	if(generatorselected >= GeneratorType.generatortypes.length)
+        	if(generatorselected >= BWG4GeneratorType.generatortypes.length)
         	{
         		generatorcount = 0;
         		generatorselected = 0;
         	}
         	
-        	while(GeneratorType.generatortypes[generatorselected] == null || !GeneratorType.generatortypes[generatorselected].CanBeCreated())
+        	while(BWG4GeneratorType.generatortypes[generatorselected] == null || !BWG4GeneratorType.generatortypes[generatorselected].CanBeCreated())
         	{
         		generatorselected++;
         		
-            	if(generatorselected >= GeneratorType.generatortypes.length)
+            	if(generatorselected >= BWG4GeneratorType.generatortypes.length)
             	{
             		generatorcount = 0;
             		generatorselected = 0;
@@ -128,11 +138,13 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
         }
         else if (button.id == 10)
         {
-        	mc.displayGuiScreen(new BWG4GuiDefault(mc, this, BD_biomestring, fontRenderer));
+        	mc.displayGuiScreen(new BWG4GuiBiomeSettings(mc, this, BD_biomestring, fontRenderer));
         }
         else if (button.id == 11)
         {
         	if(BD_size == 0) { BD_size = 1; } else { BD_size = 0; }
+        	
+        	//mc.displayGuiScreen(new BWG4GuiWorldSettings(mc, this, fontRenderer, new BWG4WorldSettings()));
         }
         else if (button.id == 12)
         {
@@ -172,12 +184,15 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
     
 	public void updateButtons()
 	{
-		Setting_Generator.displayString = GeneratorType.generatortypes[generatorselected].GetScreenName();
+		Setting_Generator.displayString = BWG4GeneratorType.generatortypes[generatorselected].GetScreenName();
 		
 		//BETTER DEFAULT
-		Setting_BD_Costumize.displayString = "Customize";
+		Setting_BD_Biome.displayString = "Biome Settings";
+		//Setting_BD_World.displayString = "World Settings";
+		Setting_BD_Biome.drawButton = (generatorselected == 0);
+		//Setting_BD_World.drawButton = (generatorselected == 0);
+		
 		if(BD_size == 0) { Setting_BD_Size.displayString = "Size: Default"; } else { Setting_BD_Size.displayString = "Size: Large"; }
-		Setting_BD_Costumize.drawButton = (generatorselected == 0);
 		Setting_BD_Size.drawButton = (generatorselected == 0);
 		
 		//BETA
@@ -233,7 +248,7 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
     	drawString(fontRenderer, sizestring, width / 2 + 75 - fontRenderer.getStringWidth(sizestring), 65, 16777215);
     	
     	//SETTINGS
-    	if(GeneratorType.generatortypes[generatorselected].HasSettings())
+    	if(BWG4GeneratorType.generatortypes[generatorselected].HasSettings())
     	{
     		drawString(fontRenderer, "Settings:", width / 2 - 75 + 2, 105, 16777215);
     	}
@@ -261,7 +276,9 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
     		{
     			BD_biomestring = DefaultBiomeList.getDefaultString();
     		}
+    		
     		BD_size = 0;
+    		
     		generatorselected = 0;
     		generatorcount = 0;
     	}
@@ -275,7 +292,9 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
     		{
     			BD_biomestring = DefaultBiomeList.getDefaultString();
     		}
+    		
     		BD_size = 1;
+    		
     		generatorselected = 0;
     		generatorcount = 0;
     	}
@@ -372,7 +391,7 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
     
     public String createString()
     {
-    	//BETTER DEFAULT;
+    	//BETTER DEFAULT
     	if(generatorselected == 0 && BD_size == 0)
     	{
     		return "BetterDefault#" + BD_biomestring;

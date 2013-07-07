@@ -5,7 +5,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 
-import bwg4.generatordata.GeneratorType;
+import bwg4.generatordata.BWG4GeneratorType;
 
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.network.INetworkManager;
@@ -38,7 +38,7 @@ public class BWG4Connection implements IPacketHandler, IConnectionHandler
 			
 			try 
 			{
-				outputStream.writeInt(GeneratorType.Current.GetID());
+				outputStream.writeInt(BWG4GeneratorType.Current.GetID());
 			} 
 			catch (Exception ex) 
 			{

@@ -1,7 +1,7 @@
 package bwg4.layer;
 
 import bwg4.mod_bwg4;
-import bwg4.generatordata.GeneratorType;
+import bwg4.generatordata.BWG4GeneratorType;
 import net.minecraft.world.WorldType;
 import net.minecraftforge.common.*;
 import net.minecraftforge.event.terraingen.*;
@@ -33,7 +33,7 @@ public abstract class BWG4Layer
 		obj = new BWG4LayerAddIsland(4L, (BWG4Layer)(obj));
 		byte size = 4;
 
-		if (GeneratorType.Current == GeneratorType.BWG4LARGE)
+		if (BWG4GeneratorType.Current == BWG4GeneratorType.BWG4LARGE)
 		{
 			size = 6;
 		}

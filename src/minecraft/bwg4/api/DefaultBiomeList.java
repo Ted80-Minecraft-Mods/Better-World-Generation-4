@@ -9,7 +9,7 @@ public class DefaultBiomeList
 	public static String[] biomeList = new String[256];
 	public static int[] biomeType = new int[256];
 	public static int generatorversion = 1;
-	
+
 	public static void addBiome(String name, BiomeGenBase biome, int biometype)
 	{
 		allowedBiomes.add(biome);

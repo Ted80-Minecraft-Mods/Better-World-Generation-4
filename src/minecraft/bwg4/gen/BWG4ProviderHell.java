@@ -7,7 +7,7 @@ import bwg4.biomes.BWG4Biomes;
 import bwg4.gen.chunkproviders.BWG4ChunkProviderSky;
 import bwg4.gen.chunkproviders.BWG4ChunkProviderSkyBlock;
 import bwg4.gen.chunkproviders.BWG4ChunkProviderSurvivalNether;
-import bwg4.generatordata.GeneratorType;
+import bwg4.generatordata.BWG4GeneratorType;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.WorldProviderHell;
 import net.minecraft.world.WorldType;
@@ -21,11 +21,11 @@ public class BWG4ProviderHell extends WorldProviderHell
 	@Override
     public void registerWorldChunkManager()
     {	
-        if (GeneratorType.Current == GeneratorType.BWG4ISLAND || GeneratorType.Current == GeneratorType.BWG4SKYLAND)
+        if (BWG4GeneratorType.Current == BWG4GeneratorType.BWG4ISLAND || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4SKYLAND)
         {
 			this.worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.SURVIVALnether, 1.0F, 0.0F);
 		}
-		else if (GeneratorType.Current == GeneratorType.BWG4SKY1 || GeneratorType.Current == GeneratorType.BWG4SKY2)
+		else if (BWG4GeneratorType.Current == BWG4GeneratorType.BWG4SKY1 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4SKY2)
         {
 			this.worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.SURVIVALnether, 1.0F, 0.0F);
         }
@@ -41,15 +41,15 @@ public class BWG4ProviderHell extends WorldProviderHell
 	@Override
     public IChunkProvider createChunkGenerator()
     {
-		if (GeneratorType.Current == GeneratorType.BWG4ISLAND || GeneratorType.Current == GeneratorType.BWG4SKYLAND)
+		if (BWG4GeneratorType.Current == BWG4GeneratorType.BWG4ISLAND || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4SKYLAND)
         {
 			return new BWG4ChunkProviderSurvivalNether(this.worldObj, this.worldObj.getSeed());
 		}
-		else if (GeneratorType.Current == GeneratorType.BWG4SKY1 || GeneratorType.Current == GeneratorType.BWG4SKY2)
+		else if (BWG4GeneratorType.Current == BWG4GeneratorType.BWG4SKY1 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4SKY2)
         {
 			return new BWG4ChunkProviderSky(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled(), 4);
         }
-		else if (GeneratorType.Current == GeneratorType.BWG4SKYBLOCK)
+		else if (BWG4GeneratorType.Current == BWG4GeneratorType.BWG4SKYBLOCK)
         {
 			//THEME GENERATOR SETTINGS
 			int themeID = 1;

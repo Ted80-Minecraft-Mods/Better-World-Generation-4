@@ -3,7 +3,7 @@ package bwg4.network;
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 
-import bwg4.generatordata.GeneratorType;
+import bwg4.generatordata.BWG4GeneratorType;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import cpw.mods.fml.common.network.IPacketHandler;
@@ -29,7 +29,7 @@ public class BWG4Packet implements IPacketHandler
         try 
         {
         	type = inputStream.readInt();
-        	GeneratorType.Current = GeneratorType.generatortypes[type];
+        	BWG4GeneratorType.Current = BWG4GeneratorType.generatortypes[type];
         }
         catch (Exception e) 
         { 

@@ -3,12 +3,12 @@ package bwg4.gui;
 import net.minecraft.client.gui.GuiSlot;
 import net.minecraft.client.renderer.Tessellator;
 
-class BWG4GuiDefaultList extends GuiSlot
+class BWG4GuiBiomeSettingsList extends GuiSlot
 {
-    final BWG4GuiDefault bwg4guidefault;
+    final BWG4GuiBiomeSettings bwg4guidefault;
 	public int selected; 
 
-    public BWG4GuiDefaultList(BWG4GuiDefault par1)
+    public BWG4GuiBiomeSettingsList(BWG4GuiBiomeSettings par1)
     {
         super(par1.minecraft, par1.width, par1.height, 43, par1.height - 60, 24);
         this.bwg4guidefault = par1;
@@ -17,7 +17,7 @@ class BWG4GuiDefaultList extends GuiSlot
 
     protected int getSize()
     {
-		return BWG4GuiDefault.getBiomeArray(bwg4guidefault).theBiomesList().size();
+		return BWG4GuiBiomeSettings.getBiomeArray(bwg4guidefault).theBiomesList().size();
     }
 
     protected void elementClicked(int par1, boolean par2)
@@ -38,7 +38,7 @@ class BWG4GuiDefaultList extends GuiSlot
     protected void drawSlot(int par1, int par2, int par3, int par4, Tessellator par5Tessellator)
     {
 		//GET ARRAY LIST
-		BWG4BiomeInfo var6 = (BWG4BiomeInfo)BWG4GuiDefault.getBiomeArray(this.bwg4guidefault).theBiomesList().get(BWG4GuiDefault.getBiomeArray(this.bwg4guidefault).theBiomesList().size() - par1 - 1);
+		BWG4BiomeInfo var6 = (BWG4BiomeInfo)BWG4GuiBiomeSettings.getBiomeArray(this.bwg4guidefault).theBiomesList().get(BWG4GuiBiomeSettings.getBiomeArray(this.bwg4guidefault).theBiomesList().size() - par1 - 1);
 		
 		//GET DATA
 		String name = var6.getNAME();

@@ -13,7 +13,7 @@ import bwg4.api.DefaultBiomeList;
 import net.minecraft.world.biome.BiomeGenBase;
 
 
-public class BWG4DefaultGeneratorInfo
+public class BWG4GuiBiomeSettingsInfo
 {
     private final List Biomelist = new ArrayList();
 	
@@ -22,7 +22,7 @@ public class BWG4DefaultGeneratorInfo
         return this.Biomelist;
     }	
 	
-    public static BWG4DefaultGeneratorInfo defaultBiomesList()
+    public static BWG4GuiBiomeSettingsInfo defaultBiomesList()
     {
         return FromString(DefaultBiomeList.getDefaultString());
 	}
@@ -49,9 +49,9 @@ public class BWG4DefaultGeneratorInfo
 		return var1.toString();
 	}
 	
-	public static BWG4DefaultGeneratorInfo FromString(String par0Str)
+	public static BWG4GuiBiomeSettingsInfo FromString(String par0Str)
     {
-		BWG4DefaultGeneratorInfo var0 = new BWG4DefaultGeneratorInfo();
+		BWG4GuiBiomeSettingsInfo var0 = new BWG4GuiBiomeSettingsInfo();
         if (par0Str != "")
         {
 			String[] mainarray = par0Str.split("&");

@@ -6,8 +6,8 @@ import java.util.Random;
 
 import bwg4.mod_bwg4;
 import bwg4.biomes.BWG4Biomes;
-import bwg4.generatordata.DecodeGeneratorString;
-import bwg4.generatordata.GeneratorType;
+import bwg4.generatordata.BWG4DecodeGeneratorString;
+import bwg4.generatordata.BWG4GeneratorType;
 import bwg4.layer.BWG4Layer;
 import bwg4.noise.BWG4oldNoiseGeneratorOctaves2;
 import net.minecraft.world.ChunkPosition;
@@ -86,9 +86,9 @@ public class BWG4WorldChunkManager extends WorldChunkManager
 	        field_4192_g = new BWG4oldNoiseGeneratorOctaves2(new Random(seed * 0x84a59L), 2);
         }
 
-        if (GeneratorType.Current == GeneratorType.BWG4SMALL || GeneratorType.Current == GeneratorType.BWG4LARGE)
+        if (BWG4GeneratorType.Current == BWG4GeneratorType.BWG4SMALL || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4LARGE)
         {	
-	        BWG4Layer[] var4 = BWG4Layer.initializeAllBiomeGenerators(seed, GeneratorType.generatorinfo);
+	        BWG4Layer[] var4 = BWG4Layer.initializeAllBiomeGenerators(seed, BWG4GeneratorType.generatorinfo);
 	        this.genBiomes = (BWG4Layer) var4[0];
 	        this.biomeIndexLayer = (BWG4Layer) var4[1];
         }
@@ -181,7 +181,7 @@ public class BWG4WorldChunkManager extends WorldChunkManager
 	
     public void generateBiomeLookup()  
     {
-		if(GeneratorType.Current == GeneratorType.BWG4SKY1)
+		if(BWG4GeneratorType.Current == BWG4GeneratorType.BWG4SKY1)
 		{
 			for(int i = 0; i < 64; i++)
 			{
@@ -191,7 +191,7 @@ public class BWG4WorldChunkManager extends WorldChunkManager
 				}
 			}
 		}
-		else if(GeneratorType.Current == GeneratorType.BWG4SKY2)
+		else if(BWG4GeneratorType.Current == BWG4GeneratorType.BWG4SKY2)
 		{
 			for(int i = 0; i < 64; i++)
 			{
@@ -201,7 +201,7 @@ public class BWG4WorldChunkManager extends WorldChunkManager
 				}
 			}
 		}
-		else if(GeneratorType.Current == GeneratorType.BWG4BETA1)
+		else if(BWG4GeneratorType.Current == BWG4GeneratorType.BWG4BETA1)
 		{
 			for(int i = 0; i < 64; i++)
 			{
@@ -211,7 +211,7 @@ public class BWG4WorldChunkManager extends WorldChunkManager
 				}
 			}
 		}
-		else if(GeneratorType.Current == GeneratorType.BWG4BETA2)
+		else if(BWG4GeneratorType.Current == BWG4GeneratorType.BWG4BETA2)
 		{
 			for(int i = 0; i < 64; i++)
 			{
@@ -472,7 +472,7 @@ public class BWG4WorldChunkManager extends WorldChunkManager
         }
 
 		int var6[];
-		if(GeneratorType.Current == GeneratorType.BWG4BETA1 || GeneratorType.Current == GeneratorType.BWG4BETA2 || GeneratorType.Current == GeneratorType.BWG4SKY1 || GeneratorType.Current == GeneratorType.BWG4SKY2 || GeneratorType.Current == GeneratorType.BWG4ALPHA)
+		if(BWG4GeneratorType.Current == BWG4GeneratorType.BWG4BETA1 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4BETA2 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4SKY1 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4SKY2 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4ALPHA)
 		{	
 			var6 = getBiomesGens(par2, par3, par4, par5);
 		}
@@ -518,7 +518,7 @@ public class BWG4WorldChunkManager extends WorldChunkManager
         }
 
 		int var6[];
-		if(GeneratorType.Current == GeneratorType.BWG4BETA1 || GeneratorType.Current == GeneratorType.BWG4BETA2 || GeneratorType.Current == GeneratorType.BWG4SKY1 || GeneratorType.Current == GeneratorType.BWG4SKY2 || GeneratorType.Current == GeneratorType.BWG4ALPHA)
+		if(BWG4GeneratorType.Current == BWG4GeneratorType.BWG4BETA1 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4BETA2 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4SKY1 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4SKY2 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4ALPHA)
 		{		
 			var6 = getBiomesGens(par2, par3, par4, par5);
 		}
@@ -555,7 +555,7 @@ public class BWG4WorldChunkManager extends WorldChunkManager
         }
 
 		int var6[];
-		if(GeneratorType.Current == GeneratorType.BWG4BETA1 || GeneratorType.Current == GeneratorType.BWG4BETA2 || GeneratorType.Current == GeneratorType.BWG4SKY1 || GeneratorType.Current == GeneratorType.BWG4SKY2 || GeneratorType.Current == GeneratorType.BWG4ALPHA)
+		if(BWG4GeneratorType.Current == BWG4GeneratorType.BWG4BETA1 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4BETA2 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4SKY1 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4SKY2 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4ALPHA)
 		{	
 			var6 = getBiomesGens(par2, par3, par4, par5);
 		}
@@ -603,7 +603,7 @@ public class BWG4WorldChunkManager extends WorldChunkManager
         else
         {
 			int var7[];
-			if(GeneratorType.Current == GeneratorType.BWG4BETA1 || GeneratorType.Current == GeneratorType.BWG4BETA2 || GeneratorType.Current == GeneratorType.BWG4SKY1 || GeneratorType.Current == GeneratorType.BWG4SKY2 || GeneratorType.Current == GeneratorType.BWG4ALPHA)
+			if(BWG4GeneratorType.Current == BWG4GeneratorType.BWG4BETA1 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4BETA2 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4SKY1 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4SKY2 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4ALPHA)
 			{	
 				var7 = getBiomesGens(par2, par3, par4, par5);
 			}
@@ -635,7 +635,7 @@ public class BWG4WorldChunkManager extends WorldChunkManager
         int var10 = var8 - var6 + 1;
 		
 		int var11[];
-		if(GeneratorType.Current == GeneratorType.BWG4BETA1 || GeneratorType.Current == GeneratorType.BWG4BETA2 || GeneratorType.Current == GeneratorType.BWG4SKY1 || GeneratorType.Current == GeneratorType.BWG4SKY2 || GeneratorType.Current == GeneratorType.BWG4ALPHA)
+		if(BWG4GeneratorType.Current == BWG4GeneratorType.BWG4BETA1 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4BETA2 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4SKY1 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4SKY2 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4ALPHA)
 		{	
 			return false;
 		}
@@ -673,7 +673,7 @@ public class BWG4WorldChunkManager extends WorldChunkManager
         int var11 = var9 - var7 + 1;
 		
 		int var12[];
-		if(GeneratorType.Current == GeneratorType.BWG4BETA1 || GeneratorType.Current == GeneratorType.BWG4BETA2 || GeneratorType.Current == GeneratorType.BWG4SKY1 || GeneratorType.Current == GeneratorType.BWG4SKY2 || GeneratorType.Current == GeneratorType.BWG4ALPHA)
+		if(BWG4GeneratorType.Current == BWG4GeneratorType.BWG4BETA1 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4BETA2 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4SKY1 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4SKY2 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4ALPHA)
 		{	
 			return null;
 		}

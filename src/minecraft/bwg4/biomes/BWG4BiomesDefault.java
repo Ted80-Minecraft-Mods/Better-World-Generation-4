@@ -666,3 +666,4 @@ public class BWG4BiomesDefault extends BiomeGenBase
 		}
     }
 }
+
