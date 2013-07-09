@@ -13,6 +13,9 @@ A world generator mod for minecraft made by ted80.
 
 ## CHANGELOG ##
 
+**Version 1.1.1** '9-7-2013'
+- Updated to minecraft 1.6.2
+
 **Version 1.1.0** '3-7-2013'
 - Added ExtraBiomesXL support
 - Added Biomes O' Plenty support
