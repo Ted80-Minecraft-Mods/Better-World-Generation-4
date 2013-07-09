@@ -136,7 +136,7 @@ public class BWG4decoDungeons extends WorldGenerator
 
 				par1World.setBlock(par3, par4 + 6, par5, Block.mobSpawner.blockID);
 				TileEntityMobSpawner spawn3 = (TileEntityMobSpawner)par1World.getBlockTileEntity(par3, par4 + 6, par5);
-				if (spawn3 != null) { spawn3.func_98049_a().setMobID(this.pickMobSpawner(par2Random)); }
+				if (spawn3 != null) { spawn3.getSpawnerLogic().setMobID(this.pickMobSpawner(par2Random)); }
 			}
 			else
 			{
@@ -146,9 +146,9 @@ public class BWG4decoDungeons extends WorldGenerator
 				TileEntityMobSpawner spawn1 = (TileEntityMobSpawner)par1World.getBlockTileEntity(par3, par4 + 1, par5);
 				TileEntityMobSpawner spawn2 = (TileEntityMobSpawner)par1World.getBlockTileEntity(par3, par4 + 3, par5);
 				TileEntityMobSpawner spawn3 = (TileEntityMobSpawner)par1World.getBlockTileEntity(par3, par4 + 6, par5);
-				if (spawn1 != null) { spawn1.func_98049_a().setMobID(this.pickMobSpawner(par2Random)); }
-				if (spawn2 != null) { spawn2.func_98049_a().setMobID(this.pickMobSpawner(par2Random)); }
-				if (spawn3 != null) { spawn3.func_98049_a().setMobID(this.pickMobSpawner(par2Random)); }
+				if (spawn1 != null) { spawn1.getSpawnerLogic().setMobID(this.pickMobSpawner(par2Random)); }
+				if (spawn2 != null) { spawn2.getSpawnerLogic().setMobID(this.pickMobSpawner(par2Random)); }
+				if (spawn3 != null) { spawn3.getSpawnerLogic().setMobID(this.pickMobSpawner(par2Random)); }
 				
 				par1World.setBlock(par3, par4 + 2, par5, Block.chest.blockID);
 				TileEntityChest var16 = (TileEntityChest)par1World.getBlockTileEntity(par3, par4 + 2, par5);
@@ -346,7 +346,7 @@ public class BWG4decoDungeons extends WorldGenerator
 
 				if (var19 != null)
 				{
-					var19.func_98049_a().setMobID(this.pickMobSpawner(par2Random));
+					var19.getSpawnerLogic().setMobID(this.pickMobSpawner(par2Random));
 				}
 				else
 				{
