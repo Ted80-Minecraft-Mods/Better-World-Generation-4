@@ -13,6 +13,9 @@ A world generator mod for minecraft made by ted80.
 
 ## CHANGELOG ##
 
+**Version 1.1.2** '18-7-2013'
+- Fixed packet error
+
 **Version 1.1.1** '9-7-2013'
 - Updated to minecraft 1.6.2
 
