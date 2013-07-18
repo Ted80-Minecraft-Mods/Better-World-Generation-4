@@ -30,26 +30,29 @@ public class BWG4Connection implements IPacketHandler, IConnectionHandler
 	@Override
 	public void playerLoggedIn(Player player, NetHandler netHandler, INetworkManager manager) 
 	{
-		EntityPlayerMP p = (EntityPlayerMP) player;
-		if(!p.worldObj.isRemote)
+		if(BWG4GeneratorType.Current != null)
 		{
-			ByteArrayOutputStream bos = new ByteArrayOutputStream(8);
-			DataOutputStream outputStream = new DataOutputStream(bos);
-			
-			try 
+			EntityPlayerMP p = (EntityPlayerMP) player;
+			if(!p.worldObj.isRemote)
 			{
-				outputStream.writeInt(BWG4GeneratorType.Current.GetID());
-			} 
-			catch (Exception ex) 
-			{
+				ByteArrayOutputStream bytearray = new ByteArrayOutputStream(8);
+				DataOutputStream outputStream = new DataOutputStream(bytearray);
+				
+				try 
+				{
+					outputStream.writeInt(BWG4GeneratorType.Current.GetID());
+				} 
+				catch (Exception ex) 
+				{
+				}
+				
+		        Packet250CustomPayload packet = new Packet250CustomPayload();
+		        packet.channel = "BWG4channel";
+		        packet.data = bytearray.toByteArray();
+		        packet.length = bytearray.size();
+	
+		        ((NetServerHandler)netHandler).sendPacketToPlayer(packet);
 			}
-			
-	        Packet250CustomPayload packet = new Packet250CustomPayload();
-	        packet.channel = "BWG4channel";
-	        packet.data = bos.toByteArray();
-	        packet.length = bos.size();
-
-	        ((NetServerHandler)netHandler).sendPacketToPlayer(packet);
 		}
 	}
 

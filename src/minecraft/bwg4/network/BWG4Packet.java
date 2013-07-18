@@ -22,19 +22,20 @@ public class BWG4Packet implements IPacketHandler
 
     private void bwg4packet(Packet250CustomPayload packet) 
     {
-        DataInputStream inputStream = new DataInputStream(new ByteArrayInputStream(packet.data));
-        
-        int type = 0;
-        
-        try 
-        {
-        	type = inputStream.readInt();
-        	BWG4GeneratorType.Current = BWG4GeneratorType.generatortypes[type];
-        }
-        catch (Exception e) 
-        { 
-        }
-
-        System.out.println(type);
+    	if(packet.data != null)
+    	{
+	        DataInputStream inputStream = new DataInputStream(new ByteArrayInputStream(packet.data));
+	        
+	        int type = 0;
+	        
+	        try 
+	        {
+	        	type = inputStream.readInt();
+	        	BWG4GeneratorType.Current = BWG4GeneratorType.generatortypes[type];
+	        }
+	        catch (Exception e) 
+	        { 
+	        }
+    	}
     }	
 }

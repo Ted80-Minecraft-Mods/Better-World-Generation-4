@@ -145,15 +145,20 @@ public class BWG4Provider extends WorldProvider
 				worldChunkMgr = new BWG4WorldChunkManager(worldObj, false);
 			}
 		}
-		else if (this.worldObj.getWorldInfo().getTerrainType() == WorldType.FLAT)
-        {
-            FlatGeneratorInfo var1 = FlatGeneratorInfo.createFlatGeneratorFromString(this.worldObj.getWorldInfo().getGeneratorOptions());
-            this.worldChunkMgr = new WorldChunkManagerHell(BiomeGenBase.biomeList[var1.getBiome()], 0.5F, 0.5F);
-        }
-        else 
-        {
-			this.worldChunkMgr = this.worldObj.getWorldInfo().getTerrainType().getChunkManager(this.worldObj);
-        }
+		else 
+		{
+			BWG4GeneratorType.Current = null;
+			
+			if (this.worldObj.getWorldInfo().getTerrainType() == WorldType.FLAT)
+	        {
+	            FlatGeneratorInfo var1 = FlatGeneratorInfo.createFlatGeneratorFromString(this.worldObj.getWorldInfo().getGeneratorOptions());
+	            this.worldChunkMgr = new WorldChunkManagerHell(BiomeGenBase.biomeList[var1.getBiome()], 0.5F, 0.5F);
+	        }
+	        else 
+	        {
+				this.worldChunkMgr = this.worldObj.getWorldInfo().getTerrainType().getChunkManager(this.worldObj);
+	        }
+	    }
     }
 	
 	@Override

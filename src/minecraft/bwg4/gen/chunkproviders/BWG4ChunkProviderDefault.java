@@ -43,7 +43,10 @@ public class BWG4ChunkProviderDefault implements IChunkProvider
     public BWG4NoiseOctavesBeta noiseGen6;
     public BWG4NoiseOctavesBeta mobSpawnerNoise;
     
-    //public BWG4NoisePerlinTest perlintest;
+	//public BWG4NoisePerlinTest noise_Base;
+	//public BWG4NoisePerlinTest noise_Hill;
+	//public BWG4NoisePerlinTest noise_Mountain;
+	//public BWG4NoisePerlinTest noise_Small;
 
     private World worldObj;
     private final boolean mapFeaturesEnabled;
@@ -80,7 +83,10 @@ public class BWG4ChunkProviderDefault implements IChunkProvider
         this.noiseGen6 = new BWG4NoiseOctavesBeta(this.rand, 16);
         this.mobSpawnerNoise = new BWG4NoiseOctavesBeta(this.rand, 8);
         
-        //perlintest = new BWG4NoisePerlinTest(par2);
+    	//noise_Base = new BWG4NoisePerlinTest(par2);
+    	//noise_Hill = new BWG4NoisePerlinTest(par2 + 10L);
+    	//noise_Mountain = new BWG4NoisePerlinTest(par2 + 20L);
+    	//noise_Small = new BWG4NoisePerlinTest(par2 + 30L);
     }
 
     public void generateTerrain(int par1, int par2, byte[] par3ArrayOfByte)
@@ -94,12 +100,18 @@ public class BWG4ChunkProviderDefault implements IChunkProvider
 		{
 			for (int m = j; m < j + 16; m++)
 			{
-				float h = (perlintest.turbulence2(((float) k / 400F),((float) m / 400F), 5F) * 100) + 64;
-				if(h > 127) { h = 127; } else if(h < 1) { h = 1; }
+				float base = noise_Base.turbulence2(((float) k / 1000F),((float) m / 1000F), 5F) * 50;
+				float hill = noise_Hill.turbulence2(((float) k / 100F),((float) m / 100F), 5F) * 25;
+				float small = noise_Small.turbulence2(((float) k / 40F),((float) m / 40F), 5F) * 15;
+				
+				
+				
+				float total = 64 + base + hill + small;
+				if(total > 127) { total = 127; } else if(total < 1) { total = 1; }
 				
 				for (int i3 = 0; i3 < 128; i3++)
 				{
-					if(i3 < h)
+					if(i3 < total)
 					{
 						par3ArrayOfByte[jj++] = (byte)Block.stone.blockID;
 					}
@@ -115,7 +127,6 @@ public class BWG4ChunkProviderDefault implements IChunkProvider
 			}
 		}
     	*/
-    	
         byte var4 = 4;
         byte var5 = 16;
         byte var6 = 63;
@@ -346,6 +357,9 @@ public class BWG4ChunkProviderDefault implements IChunkProvider
         }
 
         var4.generateSkylightMap();
+        
+        //var4 = BWG4SkylightMap.generate162(var4);
+        
         return var4;
     }
 

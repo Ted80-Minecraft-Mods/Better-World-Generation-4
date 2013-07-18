@@ -4,6 +4,7 @@ import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
+
 import bwg4.api.DefaultBiomeList;
 import bwg4.biomes.BWG4Biomes;
 import bwg4.biomes.BWG4BiomesAlpha;
@@ -12,6 +13,7 @@ import bwg4.biomes.BWG4BiomesDefault;
 import bwg4.biomes.BWG4BiomesIndev;
 import bwg4.biomes.BWG4BiomesInfdev;
 import bwg4.biomes.BWG4BiomesSurvival;
+import bwg4.chunk.BWG4SkylightMap;
 import bwg4.config.BWG4Config;
 import bwg4.gen.BWG4Provider;
 import bwg4.gen.BWG4ProviderHell;

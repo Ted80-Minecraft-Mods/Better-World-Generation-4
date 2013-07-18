@@ -30,22 +30,21 @@ import java.util.Random;
  */
 public class BWG4NoisePerlinTest
 {
+	private Random rand;
+	
     // Constants for setting up the Perlin-1 noise functions
-    private static final int B = 0x1000;
-    private static final int BM = 0xff;
+    private final int B = 0x1000;
+    private final int BM = 0xff;
 
-    private static final int N = 0x1000;
-    private static final int NP = 12;   /* 2^N */
-    private static final int NM = 0xfff;
-
-    /** Default seed to use for the random number generation */
-    private static final int DEFAULT_SEED = 100;
+    private final int N = 0x1000;
+    private final int NP = 12;   /* 2^N */
+    private final int NM = 0xfff;
 
     /** Default sample size to work with */
-    private static final int DEFAULT_SAMPLE_SIZE = 256;
+    private final int DEFAULT_SAMPLE_SIZE = 256;
 
     /** The log of 1/2 constant. Used Everywhere */
-    private static final float LOG_HALF = (float)Math.log(0.5);
+    private final float LOG_HALF = (float)Math.log(0.5);
 
     /** Permutation array for the improved noise function */
     private int[] p_imp;
@@ -62,7 +61,7 @@ public class BWG4NoisePerlinTest
      */
     public BWG4NoisePerlinTest()
     {
-        this(DEFAULT_SEED);
+        this(100);
     }
 
     /**
@@ -75,7 +74,7 @@ public class BWG4NoisePerlinTest
         p_imp = new int[DEFAULT_SAMPLE_SIZE << 1];
 
         int i, j, k;
-        Random rand = new Random(seed);
+        rand = new Random(seed);
 
         // Calculate the table of psuedo-random coefficients.
         for(i = 0; i < DEFAULT_SAMPLE_SIZE; i++)
@@ -600,21 +599,21 @@ public class BWG4NoisePerlinTest
         {
             p[i] = i;
 
-            g1[i] = (float)(((Math.random() * Integer.MAX_VALUE) % (B + B)) - B) / B;
+            g1[i] = (float)(((rand.nextDouble() * Integer.MAX_VALUE) % (B + B)) - B) / B;
 
             for(j = 0; j < 2; j++)
-                g2[i][j] = (float)(((Math.random() * Integer.MAX_VALUE) % (B + B)) - B) / B;
+                g2[i][j] = (float)(((rand.nextDouble() * Integer.MAX_VALUE) % (B + B)) - B) / B;
             normalize2(g2[i]);
 
             for(j = 0; j < 3; j++)
-                g3[i][j] = (float)(((Math.random() * Integer.MAX_VALUE) % (B + B)) - B) / B;
+                g3[i][j] = (float)(((rand.nextDouble() * Integer.MAX_VALUE) % (B + B)) - B) / B;
             normalize3(g3[i]);
         }
 
         while(--i > 0)
         {
             k = p[i];
-            j = (int)((Math.random() * Integer.MAX_VALUE) % B);
+            j = (int)((rand.nextDouble() * Integer.MAX_VALUE) % B);
             p[i] = p[j];
             p[j] = k;
         }
