@@ -13,6 +13,10 @@ A world generator mod for minecraft made by ted80.
 
 ## CHANGELOG ##
 
+**Version 1.1.3** '20-7-2013'
+- Fixed server join error
+- Rivers can now be turned off
+
 **Version 1.1.2** '18-7-2013'
 - Fixed packet error
 
