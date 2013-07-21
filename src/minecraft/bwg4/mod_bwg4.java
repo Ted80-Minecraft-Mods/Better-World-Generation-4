@@ -44,7 +44,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid="BWG4", name="BetterWorldGeneration4", version="1.1.1")
+@Mod(modid="BWG4", name="BetterWorldGeneration4", version="1.1.3")
 @NetworkMod(clientSideRequired=true, serverSideRequired=false, channels={"BWG4channel"}, packetHandler = BWG4Packet.class)
 public class mod_bwg4
 {	
@@ -155,6 +155,7 @@ public class mod_bwg4
 		DefaultBiomeList.addBiome("Snow Pines", BWG4Biomes.BDsnowpines, 1);
 		DefaultBiomeList.addBiome("Beach Dunes", BWG4Biomes.BDbeachDunes, 0);
 		DefaultBiomeList.addBiome("Beach", BWG4Biomes.BDbeach, 0);
+		DefaultBiomeList.addBiome("River", BWG4Biomes.BDriver, 0);
 		DefaultBiomeList.addBiome("Mushroom Island", BWG4Biomes.BDmushroomisland, 5);
 		DefaultBiomeList.addBiome("Jungle Island", BWG4Biomes.BDjungleisland, 5);
 		DefaultBiomeList.addBiome("Tropical Island", BWG4Biomes.BDtropicalisland, 5);

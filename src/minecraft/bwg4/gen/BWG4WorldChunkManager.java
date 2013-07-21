@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import bwg4.mod_bwg4;
+import bwg4.api.DefaultBiomeList;
 import bwg4.biomes.BWG4Biomes;
 import bwg4.generatordata.BWG4DecodeGeneratorString;
 import bwg4.generatordata.BWG4GeneratorType;
@@ -88,6 +89,10 @@ public class BWG4WorldChunkManager extends WorldChunkManager
 
         if (BWG4GeneratorType.Current == BWG4GeneratorType.BWG4SMALL || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4LARGE)
         {	
+            if(BWG4GeneratorType.generatorinfo == null)
+            {
+            	BWG4GeneratorType.generatorinfo = DefaultBiomeList.getDefaultString();
+            }
 	        BWG4Layer[] var4 = BWG4Layer.initializeAllBiomeGenerators(seed, BWG4GeneratorType.generatorinfo);
 	        this.genBiomes = (BWG4Layer) var4[0];
 	        this.biomeIndexLayer = (BWG4Layer) var4[1];

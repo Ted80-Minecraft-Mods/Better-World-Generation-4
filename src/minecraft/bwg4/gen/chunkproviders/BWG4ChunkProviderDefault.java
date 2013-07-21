@@ -418,7 +418,14 @@ public class BWG4ChunkProviderDefault implements IChunkProvider
                             var24 /= 2.0F;
                         }
 
-                        var16 += var23.maxHeight * var24;
+                        float maxheight = var23.maxHeight;
+                        
+                        if(maxheight > 2.0F) 
+                        {
+                        	maxheight = 2.0F; 
+                        }
+                        
+                        var16 += maxheight * var24;
                         var17 += var23.minHeight * var24;
                         var18 += var24;
                     }

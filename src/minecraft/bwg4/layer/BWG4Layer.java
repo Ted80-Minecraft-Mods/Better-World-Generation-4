@@ -12,10 +12,11 @@ public abstract class BWG4Layer
     protected BWG4Layer parent;
     private long chunkSeed;
     private long baseSeed;
-	private static String[] generatorSettings;
 
     public static BWG4Layer[] initializeAllBiomeGenerators(long par0, String genstring)
     {
+    	String[] generatorSettings = new String[0];
+    	
 		if(genstring.length() > 4)
 		{
 			String[] splitstring = genstring.split("&");
@@ -40,7 +41,7 @@ public abstract class BWG4Layer
 		
 		BWG4Layer obj1 = obj;
 		obj1 = BWG4LayerZoom.func_75915_a(1000L, ((BWG4Layer)(obj1)), 0);
-		obj1 = new BWG4LayerRiverInit(100L, ((BWG4Layer)(obj1)));
+		obj1 = new BWG4LayerRiverInit(100L, ((BWG4Layer)(obj1)), generatorSettings);
 		obj1 = BWG4LayerZoom.func_75915_a(1000L, ((BWG4Layer)(obj1)), size + 2);
 		obj1 = new BWG4LayerRiver(1L, ((BWG4Layer)(obj1)));
 		obj1 = new BWG4LayerSmooth(1000L, ((BWG4Layer)(obj1)));
