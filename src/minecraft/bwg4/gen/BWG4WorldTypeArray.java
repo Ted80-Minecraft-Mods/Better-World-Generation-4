@@ -7,7 +7,8 @@ import net.minecraft.world.WorldType;
 
 public class BWG4WorldTypeArray 
 {
-	public BWG4WorldTypeArray()
+	/*
+	public static void changeArraySize()
 	{
 		try 
 		{
@@ -24,4 +25,5 @@ public class BWG4WorldTypeArray
 			System.out.println("cannot change worldtypes list length");
 		}	
 	}
+	*/
 }

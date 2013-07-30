@@ -42,22 +42,22 @@ public class BWG4BiomesSurvival extends BiomeGenBase
         
 		biomeID = id;
 		
-		if(biomeID == 107) //island_normal
+		if(biomeID == 0) //island_normal
 		{
 			bwg4decorator.usebwg4deco = true;
 			bwg4decorator.tl1amount = -20; 
 		}
-		else if(biomeID == 108) //island_hell
+		else if(biomeID == 1) //island_hell
 		{
 			bwg4decorator.usebwg4deco = true;
 			bwg4decorator.tl1amount = -20; 
 		}
-		else if(biomeID == 109) //island_ice
+		else if(biomeID == 2) //island_ice
 		{
 			bwg4decorator.usebwg4deco = true;
 			bwg4decorator.tl1amount = -20; 
 		}
-		else if(biomeID == 110) //island_paradise
+		else if(biomeID == 3) //island_paradise
 		{
 			spawnableCreatureList.add(new SpawnListEntry(EntityWolf.class, 5, 2, 6));
 			spawnableMonsterList.add(new SpawnListEntry(EntityOcelot.class, 2, 1, 1));
@@ -83,17 +83,17 @@ public class BWG4BiomesSurvival extends BiomeGenBase
 			bwg4decorator.waterliquid = 50;
 			bwg4decorator.lavaliquid = 20;
 		}/*
-		else if(biomeID == 111) //island_normal
+		else if(biomeID == 4) //island_normal
 		{
 			bwg4decorator.usebwg4deco = true;
 			bwg4decorator.tl1amount = -20; 
 		}
-		else if(biomeID == 112) //island_normal
+		else if(biomeID == 5) //island_normal
 		{
 			bwg4decorator.usebwg4deco = true;
 			bwg4decorator.tl1amount = -20; 
 		}*/
-		else if(biomeID == 113) //skyland_normal
+		else if(biomeID == 6) //skyland_normal
 		{
 			spawnableCreatureList.add(new SpawnListEntry(EntityWolf.class, 5, 2, 6));
 			spawnableMonsterList.add(new SpawnListEntry(EntityOcelot.class, 2, 1, 1));
@@ -108,11 +108,11 @@ public class BWG4BiomesSurvival extends BiomeGenBase
 			bwg4decorator.melon = 8;
 			bwg4decorator.pumpkin = 8; 
 		}/*
-		else if(biomeID == 114) //skyland_hell
+		else if(biomeID == 7) //skyland_hell
 		{
 			bwg4decorator.usebwg4deco = true;
 		}*/
-		else if(biomeID == 115) //skyland_ice
+		else if(biomeID == 8) //skyland_ice
 		{
 			bwg4decorator.usebwg4deco = true;
 			bwg4decorator.mayrandtrees = true;
@@ -122,7 +122,7 @@ public class BWG4BiomesSurvival extends BiomeGenBase
 			bwg4decorator.grass = 4;	
 			spawnableCreatureList.add(new SpawnListEntry(EntityWolf.class, 5, 4, 4));
 		}
-		else if(biomeID == 116) //skyland_jungle
+		else if(biomeID == 9) //skyland_jungle
 		{
 			bwg4decorator.usebwg4deco = true;
 			bwg4decorator.mayrandtrees = false;
@@ -138,15 +138,15 @@ public class BWG4BiomesSurvival extends BiomeGenBase
 			spawnableMonsterList.add(new SpawnListEntry(EntityOcelot.class, 2, 1, 1));
 			spawnableCreatureList.add(new SpawnListEntry(EntityHorse.class, 5, 2, 6));
 		}/*
-		else if(biomeID == 117) //island_normal
+		else if(biomeID == 10) //island_normal
 		{
 			bwg4decorator.usebwg4deco = true;
 		}
-		else if(biomeID == 118) //island_normal
+		else if(biomeID == 11) //island_normal
 		{
 			bwg4decorator.usebwg4deco = true;
 		}*/
-		else if(biomeID == 119) //survival_nether
+		else if(biomeID == 12) //survival_nether
 		{
 			this.spawnableMonsterList.clear();
 			this.spawnableCreatureList.clear();
@@ -158,23 +158,23 @@ public class BWG4BiomesSurvival extends BiomeGenBase
 			this.spawnableMonsterList.add(new SpawnListEntry(EntityMagmaCube.class, 1, 4, 4));
 			spawnableMonsterList.add(new SpawnListEntry(EntityBlaze.class, 25, 4, 4));
 		}
-		else if(biomeID == 120) //skyblock_world
+		else if(biomeID == 13) //skyblock_world
 		{
 		}
     }
 	
     public WorldGenerator getRandomWorldGenForTrees(Random par1Random)
     {
-		if(biomeID == 107) //island_normal
+		if(biomeID == 0) //island_normal
 		{
 		}
-		else if(biomeID == 108) //island_hell
+		else if(biomeID == 1) //island_hell
 		{
 		}
-		else if(biomeID == 109) //island_ice
+		else if(biomeID == 2) //island_ice
 		{
 		}
-		else if(biomeID == 110) //island_paradise
+		else if(biomeID == 3) //island_paradise
 		{
 			if(par1Random.nextInt(5) == 0)
 			{
@@ -189,13 +189,13 @@ public class BWG4BiomesSurvival extends BiomeGenBase
 				return new BWG4oldGenTrees(2);
 			}
 		}/*
-		else if(biomeID == 111) //island_normal
+		else if(biomeID == 4) //island_normal
 		{
 		}
-		else if(biomeID == 112) //island_normal
+		else if(biomeID == 5) //island_normal
 		{
 		}*/
-		else if(biomeID == 113) //skyland_normal
+		else if(biomeID == 6) //skyland_normal
 		{
 			if(par1Random.nextInt(5) == 0)
 			{
@@ -210,10 +210,10 @@ public class BWG4BiomesSurvival extends BiomeGenBase
 				return new BWG4oldGenTrees(2);
 			}
 		}/*
-		else if(biomeID == 114) //skyland_hell
+		else if(biomeID == 7) //skyland_hell
 		{
 		}*/
-		else if(biomeID == 115) //skyland_ice
+		else if(biomeID == 8) //skyland_ice
 		{
 			if (par1Random.nextInt(5) == 0) 
 			{ 
@@ -232,7 +232,7 @@ public class BWG4BiomesSurvival extends BiomeGenBase
 				return worldGeneratorTrees; 
 			}
 		}
-		else if(biomeID == 116) //skyland_jungle
+		else if(biomeID == 9) //skyland_jungle
 		{
 			if (par1Random.nextInt(8) == 0) 
 			{ 
@@ -251,10 +251,10 @@ public class BWG4BiomesSurvival extends BiomeGenBase
 				return new WorldGenTrees(false, 4 + par1Random.nextInt(7), 3, 3, true); 
 			}
 		}/*
-		else if(biomeID == 117) //island_normal
+		else if(biomeID == 10) //island_normal
 		{
 		}
-		else if(biomeID == 118) //island_normal
+		else if(biomeID == 11) //island_normal
 		{
 		}*/
 		return new BWG4oldGenTrees(2);
@@ -263,7 +263,7 @@ public class BWG4BiomesSurvival extends BiomeGenBase
     public void decorate(World par1World, Random par2Random, int par3, int par4)
     {
         super.decorate(par1World, par2Random, par3, par4);
-		if(biomeID == 116)
+		if(biomeID == 9)
 		{
 			WorldGenVines var5 = new WorldGenVines();
 			for (int var6 = 0; var6 < 50; ++var6)
@@ -278,7 +278,7 @@ public class BWG4BiomesSurvival extends BiomeGenBase
 
     public int getBiomeGrassColor()
     { 
-		if(biomeID == 109 || biomeID == 115)
+		if(biomeID == 2 || biomeID == 8)
 		{
 			return ColorizerGrass.getGrassColor(0.6F, 0.6F);
 		}
@@ -292,7 +292,7 @@ public class BWG4BiomesSurvival extends BiomeGenBase
 
     public int getBiomeFoliageColor()
     {  
-		if(biomeID == 109 || biomeID == 115)
+		if(biomeID == 2 || biomeID == 8)
 		{
 			return ColorizerFoliage.getFoliageColor(0.6F, 0.6F);
 		}
@@ -303,30 +303,4 @@ public class BWG4BiomesSurvival extends BiomeGenBase
 			return ColorizerFoliage.getFoliageColor(d, d1);
 		}	
     } 
-
-	/*
-    public int getSkyColorByTemp(float par1)
-    {
-		if(biomeID == 147 || biomeID == 153)
-		{
-			return 0x210800; 
-		}
-		else 
-		{
-			par1 /= 3.0F;
-
-			if (par1 < -1.0F)
-			{
-				par1 = -1.0F;
-			}
-
-			if (par1 > 1.0F)
-			{
-				par1 = 1.0F;
-			}
-
-			return Color.getHSBColor(0.62222224F - par1 * 0.05F, 0.5F + par1 * 0.1F, 1.0F).getRGB();
-		}
-	}
-	*/
 }

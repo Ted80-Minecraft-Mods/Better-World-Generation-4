@@ -22,29 +22,29 @@ import bwg4.deco.old.*;
 
 public class BWG4BiomesBeta extends BiomeGenBase
 {
-	private int biomeid;
+	private int id;
 
-    public BWG4BiomesBeta(int par1, int id)
+    public BWG4BiomesBeta(int par1, int i)
     {
         super(par1);
-		biomeid = id;
+		id = i;
 
-		if(par1 == 80 || par1 == 90)
+		if(id == 0 || id == 0)
 		{
 			spawnableMonsterList.add(new SpawnListEntry(EntityOcelot.class, 2, 1, 1));
 		}
-		
-		if(par1 == 81 || par1 == 82 || par1 == 83 || par1 == 86)
+	
+		if(id == 1 || id == 2 || id == 3 || id == 6)
 		{
 			spawnableCreatureList.add(new SpawnListEntry(EntityWolf.class, 8, 4, 4));
 		}
 		
-		if(par1 == 81 || par1 == 82 || par1 == 83 || par1 == 86)
+		if(id == 1 || id == 2 || id == 3 || id == 6)
 		{
 			spawnableCreatureList.add(new SpawnListEntry(EntityHorse.class, 5, 2, 6));
 		}
 		
-		if(par1 == 87)
+		if(id == 7)
 		{
 			spawnableCreatureList.clear();
 			topBlock = (byte)Block.sand.blockID;
@@ -54,7 +54,7 @@ public class BWG4BiomesBeta extends BiomeGenBase
 	
     public WorldGenerator getRandomWorldGenForTrees(Random par1Random)
     {
-		if (biomeid == 80)
+		if (id == 0)
 		{
 			if(par1Random.nextInt(3) == 0)
 			{
@@ -64,7 +64,7 @@ public class BWG4BiomesBeta extends BiomeGenBase
 				return new BWG4oldGenTrees(2);
 			}
 		}
-		else if (biomeid == 83) 
+		else if (id == 3) 
 		{
 			if(par1Random.nextInt(5) == 0)
 			{
@@ -78,7 +78,7 @@ public class BWG4BiomesBeta extends BiomeGenBase
 				return new BWG4oldGenTrees(2);
 			}
 		}
-		else if (biomeid == 86)
+		else if (id == 6)
 		{
 			if (par1Random.nextInt(3) == 0)
 			{
@@ -89,7 +89,7 @@ public class BWG4BiomesBeta extends BiomeGenBase
 				return new WorldGenTaiga2(false);
 			}
 		}	
-		else if (biomeid == 90)
+		else if (id == 10)
 		{
 			if (par1Random.nextInt(10) == 0)
 			{
@@ -130,11 +130,11 @@ public class BWG4BiomesBeta extends BiomeGenBase
 	
     public int getBiomeGrassColor()
     {
-		if( biomeid == 86 || biomeid == 89 )
+		if( id == 6 || id == 9 )
 		{
 			return ColorizerGrass.getGrassColor(0.6F, 0.6F);
 		}
-		else if( biomeid == 87 )
+		else if( id == 7 )
 		{
 			return ColorizerFoliage.getFoliageColor(0.8F, 0.2F);
 		}
@@ -148,11 +148,11 @@ public class BWG4BiomesBeta extends BiomeGenBase
 
     public int getBiomeFoliageColor()
     {
-		if( biomeid == 86 || biomeid == 89 )
+		if( id == 6 || id == 9 )
 		{
 			return ColorizerFoliage.getFoliageColor(0.6F, 0.6F);
 		}
-		else if( biomeid == 87 )
+		else if( id == 7 )
 		{
 			return ColorizerFoliage.getFoliageColor(0.8F, 0.2F);
 		}

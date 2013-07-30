@@ -6,6 +6,7 @@ public class Support
 {
 	public static void init()
 	{
+		//Try ExtraBiomesXL support
 		try
 		{
 			if (Loader.isModLoaded("ExtrabiomesXL"))
@@ -22,6 +23,7 @@ public class Support
 			System.out.println("BWG4: Failed to load ExtraBiomesXL!");
 		}
 		
+		//Try Biomes 'O Plenty support
 		try
 		{
 			if (Loader.isModLoaded("BiomesOPlenty"))

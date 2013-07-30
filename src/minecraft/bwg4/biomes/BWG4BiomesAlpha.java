@@ -14,29 +14,29 @@ import net.minecraft.world.biome.SpawnListEntry;
 
 public class BWG4BiomesAlpha extends BiomeGenBase
 {
-	private int biomeid;
+	private int id;
 
-    public BWG4BiomesAlpha(int par1, int id)
+    public BWG4BiomesAlpha(int par1, int i)
     {
         super(par1);
-		biomeid = id;
+		id = i;
 		
-		if(par1 == 90)
+		if(id == 0)
 		{
 			spawnableMonsterList.add(new SpawnListEntry(EntityOcelot.class, 2, 1, 1));
 		}
 		
-		if(par1 == 91 || par1 == 92 || par1 == 93 || par1 == 96)
+		if(id == 1 || id == 2 || id == 3 || id == 6)
 		{
 			spawnableCreatureList.add(new SpawnListEntry(EntityWolf.class, 8, 4, 4));
 		}
 		
-		if(par1 == 91 || par1 == 92 || par1 == 93 || par1 == 96)
+		if(id == 1 || id == 2 || id == 3 || id == 6)
 		{
 			spawnableCreatureList.add(new SpawnListEntry(EntityHorse.class, 5, 2, 6));
 		}
 		
-		if(par1 == 98)
+		if(id == 8)
 		{
 			spawnableCreatureList.clear();
 			topBlock = (byte)Block.sand.blockID;
@@ -46,11 +46,11 @@ public class BWG4BiomesAlpha extends BiomeGenBase
 	
     public int getBiomeGrassColor()
     {
-		if( biomeid == 96 || biomeid == 99 ) 
+		if( id == 6 || id == 9 ) 
 		{
 			return ColorizerGrass.getGrassColor(0.6F, 0.6F);
 		}
-		else if( biomeid == 97 )
+		else if( id == 7 )
 		{
 			return ColorizerGrass.getGrassColor(1.0F, 0.4F);
 		}
@@ -64,11 +64,11 @@ public class BWG4BiomesAlpha extends BiomeGenBase
 
     public int getBiomeFoliageColor()
     {
-		if( biomeid == 96 || biomeid == 99 )
+		if( id == 6 || id == 9 )
 		{
 			return ColorizerFoliage.getFoliageColor(0.6F, 0.6F);
 		}
-		else if( biomeid == 97 )
+		else if( id == 7 )
 		{
 			return ColorizerFoliage.getFoliageColor(1.0F, 0.4F);
 		}

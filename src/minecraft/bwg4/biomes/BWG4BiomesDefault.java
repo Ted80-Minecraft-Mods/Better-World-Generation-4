@@ -32,7 +32,6 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class BWG4BiomesDefault extends BiomeGenBase
 {
-	private int biomeid;
 	private int type;
 	private int id;
 	
@@ -44,7 +43,6 @@ public class BWG4BiomesDefault extends BiomeGenBase
         theBiomeDecorator = new BWG4Decorator(this);
         bwg4decorator = (BWG4Decorator) theBiomeDecorator;
         
-		biomeid = par1;	
 		type = vartype;
 		id = varid;
 		bwg4decorator.usebwg4deco = true;
@@ -638,7 +636,8 @@ public class BWG4BiomesDefault extends BiomeGenBase
 		}
 		return new WorldGenTallGrass(Block.tallGrass.blockID, 1);
     }
-	    public int getBiomeGrassColor()
+    
+	public int getBiomeGrassColor()
     {
 		if(type == 2)
 		{
