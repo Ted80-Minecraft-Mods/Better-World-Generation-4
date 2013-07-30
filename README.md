@@ -13,6 +13,19 @@ A world generator mod for minecraft made by ted80.
 
 ## CHANGELOG ##
 
+**Version 1.1.4** '30-7-2013'
+- Added new trees to rainforest biome
+- Added trees to grassland biome
+- Fixed slime spawning
+- Tweaked shrubland biome
+- Tweaked swamp trees
+- Tweaked pines biome
+- Tweaked taiga biome
+- Tweaked plains biome
+- Disabled river option
+- Removed shrublandhill biome
+- Removed skyblock extended type
+
 **Version 1.1.3** '20-7-2013'
 - Fixed server join error
 - Rivers can now be turned off
