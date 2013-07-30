@@ -116,13 +116,12 @@ public class BWG4Config
 			biomeIDs[63] = config.get("Biome IDs", "BDsavanna", 143).getInt();
 			biomeIDs[64] = config.get("Biome IDs", "BDsavannaforest", 144).getInt();
 			biomeIDs[65] = config.get("Biome IDs", "BDshrubland", 145).getInt();
-			biomeIDs[66] = config.get("Biome IDs", "BDshrublandHill", 146).getInt();
-			biomeIDs[67] = config.get("Biome IDs", "BDiceriver", 147).getInt();
-			biomeIDs[68] = config.get("Biome IDs", "BDriver", 148).getInt();
-			biomeIDs[69] = config.get("Biome IDs", "BDgreenriver", 149).getInt();
-			biomeIDs[70] = config.get("Biome IDs", "BDsandriver", 150).getInt();
-			biomeIDs[71] = config.get("Biome IDs", "BDjungle_nocolor", 151).getInt();
-			biomeIDs[72] = config.get("Biome IDs", "BDswampland_nocolor", 152).getInt();
+			biomeIDs[67] = config.get("Biome IDs", "BDiceriver", 146).getInt();
+			biomeIDs[68] = config.get("Biome IDs", "BDriver", 147).getInt();
+			biomeIDs[69] = config.get("Biome IDs", "BDgreenriver", 148).getInt();
+			biomeIDs[70] = config.get("Biome IDs", "BDsandriver", 149).getInt();
+			biomeIDs[71] = config.get("Biome IDs", "BDjungle_nocolor", 150).getInt();
+			biomeIDs[72] = config.get("Biome IDs", "BDswampland_nocolor", 151).getInt();
 		}
 		catch (Exception e) 
 		{

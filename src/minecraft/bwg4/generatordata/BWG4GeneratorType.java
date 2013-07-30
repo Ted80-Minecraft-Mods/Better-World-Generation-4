@@ -21,7 +21,7 @@ public class BWG4GeneratorType
 	public static final BWG4GeneratorType BWG4INDEV2 = new BWG4GeneratorType(7, "Indev_floating");  
     public static final BWG4GeneratorType BWG4ISLAND = new BWG4GeneratorType(8, "Survival_Island", "Survival Island", true, true);  
     public static final BWG4GeneratorType BWG4SKYLAND = new BWG4GeneratorType(9, "Survival_Skyland", "Survival Skyland", true, true);  
-    public static final BWG4GeneratorType BWG4SKYBLOCK = new BWG4GeneratorType(10, "Skyblock", "SkyBlock Survival", true, true);  
+    public static final BWG4GeneratorType BWG4SKYBLOCK = new BWG4GeneratorType(10, "Skyblock", "SkyBlock Survival", true, false);  
     public static final BWG4GeneratorType BWG4SKY1 = new BWG4GeneratorType(11, "Sky_Default", "Sky Dimension", true, true);  
     public static final BWG4GeneratorType BWG4SKY2 = new BWG4GeneratorType(12, "Sky_Beta");
     public static final BWG4GeneratorType BWG4CAVE = new BWG4GeneratorType(13, "CaveDimension");  

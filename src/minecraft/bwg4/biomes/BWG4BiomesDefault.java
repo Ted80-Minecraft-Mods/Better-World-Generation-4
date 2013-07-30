@@ -5,10 +5,10 @@ import java.util.Random;
 import bwg4.deco.BWG4decoBigTree;
 import bwg4.deco.BWG4decoDefault;
 import bwg4.deco.BWG4decoGold1;
+import bwg4.deco.BWG4decoGold3;
 import bwg4.deco.BWG4decoGold4;
 import bwg4.deco.BWG4decoSurvival;
 import bwg4.deco.BWG4decoSwampTrees;
-
 import net.minecraft.block.Block;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.passive.EntityChicken;
@@ -69,6 +69,7 @@ public class BWG4BiomesDefault extends BiomeGenBase
 				bwg4decorator.tl1amount = 5; 
 				bwg4decorator.cactus = 1;
 				bwg4decorator.usetl2 = true;
+				bwg4decorator.tl2tree = new BWG4decoSurvival(4);
 				bwg4decorator.tl2miny = 0; 
 				bwg4decorator.tl2maxy = 75; 
 				bwg4decorator.tl2amount = 4;
@@ -250,9 +251,17 @@ public class BWG4BiomesDefault extends BiomeGenBase
 			if(id == 7)//Grassland
 			{
 				spawnableCreatureList.add(new SpawnListEntry(EntityHorse.class, 5, 2, 6));
+				bwg4decorator.mayrandtrees = true;
+				bwg4decorator.tl1amount = 1; 
+				bwg4decorator.tl1chance = 2;
+				bwg4decorator.tl1maxy = 85;
+				bwg4decorator.usetl2 = true;
+				bwg4decorator.tl2amount = 1;
+				bwg4decorator.tl2chance = 4;
+				bwg4decorator.tl2maxy = 72;
+				bwg4decorator.tl2tree = new BWG4decoBigTree();
 				bwg4decorator.emeralds = true;
-				bwg4decorator.tl1amount = -20;
-				bwg4decorator.grass = 10; 
+				bwg4decorator.grass = 15; 
 				bwg4decorator.redflowers = 1;
 				bwg4decorator.yellowflowers = 1; 
 			}
@@ -332,13 +341,8 @@ public class BWG4BiomesDefault extends BiomeGenBase
 			}
 			if(id == 4)//Shrubland
 			{
-				bwg4decorator.grass = 3; 
-				bwg4decorator.tl1amount = 6; 
-				bwg4decorator.tl1maxy = 80; 
-			}
-			if(id == 5)//SandStone Hill
-			{
-				spawnableCreatureList.clear();
+				bwg4decorator.grass = 5; 
+				bwg4decorator.tl1amount = 3; 
 			}
 		}
 		else if(type == 6)
@@ -520,15 +524,31 @@ public class BWG4BiomesDefault extends BiomeGenBase
 			}
 			if(id == 7)//Grassland
 			{
+				if (par1Random.nextInt(8) == 0) 
+				{ 
+					return worldGeneratorForest; 
+				}
+				else
+				{
+					return worldGeneratorTrees;
+				}
 			}
 		}		
 		else if(type == 4)
 		{
 			if(id == 1)//Rainforest
 			{
-				if (par1Random.nextInt(4) == 0) 
+				if (par1Random.nextInt(7) == 0) 
 				{ 
 					return new BWG4decoBigTree(4 + par1Random.nextInt(11), 0); 
+				}
+				else if (par1Random.nextInt(3) == 0) 
+				{ 
+					return new WorldGenShrub(3, 0); 
+				}
+				else if (par1Random.nextInt(3) != 0) 
+				{ 
+					return new BWG4decoGold3(2);
 				}
 				else
 				{
@@ -590,6 +610,10 @@ public class BWG4BiomesDefault extends BiomeGenBase
 			}
 			if(id == 4)//Shrubland
 			{
+				if (par1Random.nextInt(17) == 0)
+				{
+					return new BWG4decoGold4(2);
+				}	
 				return new WorldGenShrub(3, 0);
 			}
 		}
@@ -615,7 +639,7 @@ public class BWG4BiomesDefault extends BiomeGenBase
 		{
 			if(id == 4)//Shrubland
 			{
-				for (int cacti = 0; cacti < 8; ++cacti)
+				for (int cacti = 0; cacti < 4; ++cacti)
 				{
 					int cacti1 = par3 + par2Random.nextInt(16) + 8;
 					int cacti3 = par4 + par2Random.nextInt(16) + 8;

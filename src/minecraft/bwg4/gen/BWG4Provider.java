@@ -211,8 +211,7 @@ public class BWG4Provider extends WorldProvider
 	        }
 			else if (BWG4GeneratorType.Current == BWG4GeneratorType.BWG4SKYBLOCK)
 	        {
-				int themeID = Integer.parseInt(BWG4GeneratorType.generatorinfo);
-				return new BWG4ChunkProviderSkyBlock(this.worldObj, this.worldObj.getSeed(), false, themeID);
+				return new BWG4ChunkProviderSkyBlock(this.worldObj, this.worldObj.getSeed(), false);
 	        }
 	        else
 	        {

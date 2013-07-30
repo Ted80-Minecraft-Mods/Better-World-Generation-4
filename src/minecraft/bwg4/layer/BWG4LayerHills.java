@@ -44,10 +44,6 @@ public class BWG4LayerHills extends BWG4Layer
                     {
                         var10 = BWG4Biomes.BDsavannaforest.biomeID;
                     }
-					else if (var9 == BWG4Biomes.BDshrubland.biomeID)
-                    {
-                        var10 = BWG4Biomes.BDshrublandHill.biomeID;
-                    }
 					else if (var9 == BWG4Biomes.BDocean.biomeID)
                     {
 						if (this.nextInt(30) == 0 && IslandMushroom == true)

@@ -79,7 +79,6 @@ public class BWG4Biomes
 	public static BiomeGenBase BDsavanna;
 	public static BiomeGenBase BDsavannaforest;
 	public static BiomeGenBase BDshrubland;
-	public static BiomeGenBase BDshrublandHill;
 	public static BiomeGenBase BDiceriver;
 	public static BiomeGenBase BDriver;
 	public static BiomeGenBase BDgreenriver;
@@ -152,13 +151,13 @@ public class BWG4Biomes
 		BDsnowtaiga = (new BWG4BiomesDefault(BWG4Config.biomeIDs[49], 2, 3)).setColor(353825).setBiomeName("Snow Taiga").setTemperatureRainfall(0.0F, 0.0F).setMinMaxHeight(0.2F, 0.9F).setEnableSnow();
 		BDsnowplains = (new BWG4BiomesDefault(BWG4Config.biomeIDs[50], 2, 4)).setColor(353825).setBiomeName("Snow Plains").setTemperatureRainfall(0.0F, 0.0F).setMinMaxHeight(0.3F, 0.3F).setEnableSnow();
 		BDsnowhills = (new BWG4BiomesDefault(BWG4Config.biomeIDs[51], 2, 5)).setColor(353825).setBiomeName("Snow Hills").setTemperatureRainfall(0.0F, 0.0F).setMinMaxHeight(0.3F, 1.3F).setEnableSnow();
-		BDplains = (new BWG4BiomesDefault(BWG4Config.biomeIDs[52], 3, 1)).setColor(353825).setBiomeName("Plains").setTemperatureRainfall(0.8F, 0.6F).setMinMaxHeight(0.2F, 0.3F);
+		BDplains = (new BWG4BiomesDefault(BWG4Config.biomeIDs[52], 3, 1)).setColor(353825).setBiomeName("Plains").setTemperatureRainfall(0.8F, 0.6F).setMinMaxHeight(0.3F, 0.3F);
 		BDforest = (new BWG4BiomesDefault(BWG4Config.biomeIDs[53], 3, 2)).setColor(353825).setBiomeName("Forest").setTemperatureRainfall(0.8F, 0.6F).setMinMaxHeight(0.2F, 1.0F);
 		BDforesthills = (new BWG4BiomesDefault(BWG4Config.biomeIDs[54], 3, 3)).setColor(353825).setBiomeName("Forest Hills").setTemperatureRainfall(0.8F, 0.6F).setMinMaxHeight(0.3F, 1.5F);
 		BDforestlakes = (new BWG4BiomesDefault(BWG4Config.biomeIDs[55], 3, 4)).setColor(353825).setBiomeName("Forest Lakes").setTemperatureRainfall(0.8F, 0.6F).setMinMaxHeight(-0.2F, 0.9F);
-		BDpines = (new BWG4BiomesDefault(BWG4Config.biomeIDs[56], 3, 5)).setColor(353825).setBiomeName("Pines").setTemperatureRainfall(0.8F, 0.6F).setMinMaxHeight(0.2F, 0.9F);
-		BDtaiga = (new BWG4BiomesDefault(BWG4Config.biomeIDs[57], 3, 6)).setColor(353825).setBiomeName("Taiga").setTemperatureRainfall(0.8F, 0.6F).setMinMaxHeight(0.2F, 0.9F);
-		BDgrassland = (new BWG4BiomesDefault(BWG4Config.biomeIDs[58], 3, 7)).setColor(353825).setBiomeName("Grassland").setTemperatureRainfall(0.8F, 0.6F).setMinMaxHeight(0.2F, 1.3F);
+		BDpines = (new BWG4BiomesDefault(BWG4Config.biomeIDs[56], 3, 5)).setColor(353825).setBiomeName("Pines").setTemperatureRainfall(0.8F, 0.6F).setMinMaxHeight(0.3F, 0.9F);
+		BDtaiga = (new BWG4BiomesDefault(BWG4Config.biomeIDs[57], 3, 6)).setColor(353825).setBiomeName("Taiga").setTemperatureRainfall(0.8F, 0.6F).setMinMaxHeight(0.4F, 0.9F);
+		BDgrassland = (new BWG4BiomesDefault(BWG4Config.biomeIDs[58], 3, 7)).setColor(353825).setBiomeName("Grassland").setTemperatureRainfall(0.8F, 0.6F).setMinMaxHeight(0.5F, 1.2F);
 		BDrainforest = (new BWG4BiomesDefault(BWG4Config.biomeIDs[59], 4, 1)).setColor(353825).setBiomeName("Rainforest").setMinMaxHeight(0.3F, 1.2F).setTemperatureRainfall(0.8F, 1.0F);
 		BDjungle = (new BWG4BiomesDefault(BWG4Config.biomeIDs[60], 4, 2)).setColor(353825).setBiomeName("Jungle").setMinMaxHeight(0.2F, 1.2F).setTemperatureRainfall(1.0F, 1.0F);
 		BDswampland = (new BWG4BiomesDefault(BWG4Config.biomeIDs[61], 4, 3)).setColor(353825).setBiomeName("Swampland").setMinMaxHeight(-0.2F, 0.3F).setTemperatureRainfall(0.9F, 1.0F);
@@ -166,13 +165,12 @@ public class BWG4Biomes
 		BDsavanna = (new BWG4BiomesDefault(BWG4Config.biomeIDs[63], 5, 2)).setColor(353825).setBiomeName("Savanna").setMinMaxHeight(0.3F, 0.2F).setTemperatureRainfall(1.0F, 0.2F);
 		BDsavannaforest = (new BWG4BiomesDefault(BWG4Config.biomeIDs[64], 5, 3)).setColor(353825).setBiomeName("Savanna Forest").setMinMaxHeight(0.3F, 0.6F).setTemperatureRainfall(1.0F, 0.2F);
 		BDshrubland = (new BWG4BiomesDefault(BWG4Config.biomeIDs[65], 5, 4)).setColor(353825).setBiomeName("Shrubland").setMinMaxHeight(0.3F, 0.2F).setTemperatureRainfall(0.9F, 0.0F);
-		BDshrublandHill = (new BWG4BiomesDefault(BWG4Config.biomeIDs[66], 5, 5)).setColor(353825).setBiomeName("SandStone Hill").setMinMaxHeight(2.5F, 0.2F).setTemperatureRainfall(0.9F, 0.0F);
-		BDiceriver = (new BWG4BiomesDefault(BWG4Config.biomeIDs[67], 6, 1)).setColor(353825).setBiomeName("River_ice").setTemperatureRainfall(0.0F, 0.5F).setMinMaxHeight(-0.8F, 0.0F).setEnableSnow();
-		BDriver = (new BWG4BiomesDefault(BWG4Config.biomeIDs[68], 6, 2)).setColor(353825).setBiomeName("River_normal").setTemperatureRainfall(0.8F, 0.6F).setMinMaxHeight(-0.8F, 0.0F);
-		BDgreenriver = (new BWG4BiomesDefault(BWG4Config.biomeIDs[69], 6, 3)).setColor(353825).setBiomeName("River_green").setTemperatureRainfall(0.8F, 1.0F).setMinMaxHeight(-0.8F, 0.0F);
-		BDsandriver = (new BWG4BiomesDefault(BWG4Config.biomeIDs[70], 6, 4)).setColor(353825).setBiomeName("River_sand").setTemperatureRainfall(0.9F, 0.1F).setMinMaxHeight(-0.8F, 0.0F);
-		BDjungle_nocolor = (new BWG4BiomesDefault(BWG4Config.biomeIDs[71], 4, 4)).setColor(353825).setBiomeName("Jungle").setMinMaxHeight(0.2F, 0.8F).setTemperatureRainfall(1.0F, 1.0F);
-		BDswampland_nocolor = (new BWG4BiomesDefault(BWG4Config.biomeIDs[72], 4, 5)).setColor(353825).setBiomeName("Swampland").setMinMaxHeight(-0.2F, 0.3F).setTemperatureRainfall(0.9F, 1.0F);
+		BDiceriver = (new BWG4BiomesDefault(BWG4Config.biomeIDs[66], 6, 1)).setColor(353825).setBiomeName("River_ice").setTemperatureRainfall(0.0F, 0.5F).setMinMaxHeight(-0.8F, 0.0F).setEnableSnow();
+		BDriver = (new BWG4BiomesDefault(BWG4Config.biomeIDs[67], 6, 2)).setColor(353825).setBiomeName("River_normal").setTemperatureRainfall(0.8F, 0.6F).setMinMaxHeight(-0.8F, 0.0F);
+		BDgreenriver = (new BWG4BiomesDefault(BWG4Config.biomeIDs[68], 6, 3)).setColor(353825).setBiomeName("River_green").setTemperatureRainfall(0.8F, 1.0F).setMinMaxHeight(-0.8F, 0.0F);
+		BDsandriver = (new BWG4BiomesDefault(BWG4Config.biomeIDs[69], 6, 4)).setColor(353825).setBiomeName("River_sand").setTemperatureRainfall(0.9F, 0.1F).setMinMaxHeight(-0.8F, 0.0F);
+		BDjungle_nocolor = (new BWG4BiomesDefault(BWG4Config.biomeIDs[70], 4, 4)).setColor(353825).setBiomeName("Jungle").setMinMaxHeight(0.2F, 0.8F).setTemperatureRainfall(1.0F, 1.0F);
+		BDswampland_nocolor = (new BWG4BiomesDefault(BWG4Config.biomeIDs[71], 4, 5)).setColor(353825).setBiomeName("Swampland").setMinMaxHeight(-0.2F, 0.3F).setTemperatureRainfall(0.9F, 1.0F);
 
 		//village biomes
 		BiomeManager.addVillageBiome(BiomeGenBase.plains, true);

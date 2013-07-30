@@ -11,10 +11,11 @@ public class BWG4LayerRiverInit extends BWG4Layer
         super(par1);
         this.parent = par3GenLayer;
 		
-		for(int i = 0; i < Settings.length; i++)
-		{
-			if(Settings[i].equals("River=true")) { rivers = true; }
-		}
+        rivers = true;
+		//for(int i = 0; i < Settings.length; i++)
+		//{
+		//	if(Settings[i].equals("River=true")) { rivers = true; }
+		//}
     }
 
     /**

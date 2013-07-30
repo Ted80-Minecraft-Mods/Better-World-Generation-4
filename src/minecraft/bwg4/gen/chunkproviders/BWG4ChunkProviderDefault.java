@@ -245,17 +245,6 @@ public class BWG4ChunkProviderDefault implements IChunkProvider
                                     var14 = 0;
                                     var15 = (byte)Block.stone.blockID;
                                 }
-                                
-								if(var10 == BWG4Biomes.BDshrubland || var10 == BWG4Biomes.BDshrublandHill)
-								{
-									if(var16 == 85) { if(rand.nextInt(4) == 0) { var14 = (byte)Block.sand.blockID; var15 = (byte)Block.sand.blockID; } else { var14 = var10.topBlock; var15 = var10.fillerBlock; } }
-									else if(var16 == 86) { if(rand.nextInt(3) == 0) { var14 = (byte)Block.sand.blockID; var15 = (byte)Block.sand.blockID; } else { var14 = var10.topBlock; var15 = var10.fillerBlock; } }
-									else if(var16 == 87) { if(rand.nextInt(2) == 0) { var14 = (byte)Block.sand.blockID; var15 = (byte)Block.sand.blockID; } else { var14 = var10.topBlock; var15 = var10.fillerBlock; } }
-									else if(var16 == 88) { if(rand.nextInt(3) != 0) { var14 = (byte)Block.sand.blockID; var15 = (byte)Block.sand.blockID; } else { var14 = var10.topBlock; var15 = var10.fillerBlock; } }
-									else if(var16 == 89) { if(rand.nextInt(5) != 0) { var14 = (byte)Block.sand.blockID; var15 = (byte)Block.sand.blockID; } else { var14 = var10.topBlock; var15 = var10.fillerBlock; } }
-									else if(var16 > 89) { var14 = (byte)Block.sand.blockID; var15 = (byte)Block.sand.blockID; }
-								}
-								
 								if((var10 == BWG4Biomes.BDbeach || var10 == BWG4Biomes.BDbeachDunes) && var16 > 74) 
 								{
 									var14 = (byte)Block.grass.blockID;
@@ -269,7 +258,7 @@ public class BWG4ChunkProviderDefault implements IChunkProvider
 										var14 = (byte)Block.sand.blockID;
 										var15 = (byte)Block.sand.blockID;
 									}
-									else if(var10 != BWG4Biomes.BDmushroomisland && var10 != BWG4Biomes.BDrainforest && var10 != BWG4Biomes.BDswampland && var10 != BWG4Biomes.BDjungle && var10 != BWG4Biomes.BDsavanna && var10 != BWG4Biomes.BDsavannaforest && var10 != BWG4Biomes.BDshrubland && var10 != BWG4Biomes.BDshrublandHill )
+									else if(var10 != BWG4Biomes.BDmushroomisland && var10 != BWG4Biomes.BDrainforest && var10 != BWG4Biomes.BDswampland && var10 != BWG4Biomes.BDjungle && var10 != BWG4Biomes.BDsavanna && var10 != BWG4Biomes.BDsavannaforest && var10 != BWG4Biomes.BDshrubland )
 									{
 										if(flag1)
 										{
@@ -547,7 +536,7 @@ public class BWG4ChunkProviderDefault implements IChunkProvider
         int var13;
         int var14;
 
-		if(var6 == BWG4Biomes.BDshrubland || var6 == BWG4Biomes.BDshrublandHill || var6 == BWG4Biomes.BDsavanna || var6 == BWG4Biomes.BDdesert)
+		if(var6 == BWG4Biomes.BDshrubland || var6 == BWG4Biomes.BDsavanna || var6 == BWG4Biomes.BDdesert)
 		{
 			if (!var11 && this.rand.nextInt(10) == 0)
 			{

@@ -71,7 +71,6 @@ public class BWG4WorldChunkManager extends WorldChunkManager
         this.biomesToSpawnIn.add(BWG4Biomes.BDsavanna);
         this.biomesToSpawnIn.add(BWG4Biomes.BDsavannaforest);
         this.biomesToSpawnIn.add(BWG4Biomes.BDshrubland);
-        this.biomesToSpawnIn.add(BWG4Biomes.BDshrublandHill);
 	}
 
     public BWG4WorldChunkManager(World par1World, boolean remote)

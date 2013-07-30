@@ -22,20 +22,12 @@ public class BWG4ChunkProviderSkyBlock implements IChunkProvider
     int[][] field_73203_h = new int[32][32];
 	int getSize = 1;
 	private boolean isNether = false;
-	private boolean themeClassic = false;
-	private boolean themeExtended = false;
-	private boolean themeEndless = false;
 
-    public BWG4ChunkProviderSkyBlock(World par1World, long par2, boolean nether, int theme)
+    public BWG4ChunkProviderSkyBlock(World par1World, long par2, boolean nether)
     {
         this.endWorld = par1World;
         this.endRNG = new Random(par2);
         isNether = nether;
-        	
-        if(theme == 1) { themeClassic = true; }
-        else if(theme == 2) { themeExtended = true; }
-        else if(theme == 3) { themeEndless = true; }
-        else { themeClassic = true; }
     }
 
     public Chunk loadChunk(int par1, int par2)
@@ -72,56 +64,19 @@ public class BWG4ChunkProviderSkyBlock implements IChunkProvider
         int var5 = par3 * 16;
         BiomeGenBase var6 = this.endWorld.getBiomeGenForCoords(var4 + 16, var5 + 16);
         var6.decorate(this.endWorld, this.endWorld.rand, var4, var5);
-		
-        if(themeEndless)
+        
+        if(par2 == 0 && par3 == 0)
         {
-        	if(par2 == 0 && par3 == 0)
-        	{
-        		(new BWG4decoSurvival(6)).generate(endWorld, endRNG, 0, 70, 0);
-        	}
-        	else
-        	{
-        		if(endRNG.nextInt(8) == 0) { (new BWG4decoSurvival(20 + endRNG.nextInt(2))).generate(endWorld, endRNG, var4 + endRNG.nextInt(16), 5 + endRNG.nextInt(240), var5 + endRNG.nextInt(16)); }
-        		if(endRNG.nextInt(15) == 0) { (new BWG4decoSurvival(20 + endRNG.nextInt(4))).generate(endWorld, endRNG, var4 + endRNG.nextInt(16), 5 + endRNG.nextInt(60), var5 + endRNG.nextInt(16)); }
-        		if(endRNG.nextInt(30) == 0) { (new BWG4decoSurvival(24 + endRNG.nextInt(3))).generate(endWorld, endRNG, var4 + endRNG.nextInt(16), 5 + endRNG.nextInt(40), var5 + endRNG.nextInt(16)); }
-        	}
-        }
-        else if(par2 == 0 && par3 == 0)
-		{
 			if(isNether)
 			{
-				if(themeClassic)
-				{
-					(new BWG4decoSurvival(8)).generate(endWorld, endRNG, 10, 80, 0);
-				}	
-				if(themeExtended)
-				{
-					(new BWG4decoSurvival(8)).generate(endWorld, endRNG, 10, 80, 0);
-					(new BWG4decoSurvival(12)).generate(endWorld, endRNG, 30, 80, 20);
-				}
+				(new BWG4decoSurvival(8)).generate(endWorld, endRNG, 10, 80, 0);
 			}
 			else
 			{
-				if(themeClassic)
-				{
-					(new BWG4decoSurvival(6)).generate(endWorld, endRNG, 0, 70, 0);
-					(new BWG4decoSurvival(7)).generate(endWorld, endRNG, 0, 80, 60);
-				}	
-				if(themeExtended)
-				{
-					//main
-					(new BWG4decoSurvival(6)).generate(endWorld, endRNG, 0, 70, 0);
-					
-					//desert
-					(new BWG4decoSurvival(7)).generate(endWorld, endRNG, 0, 80, 60);
-					
-					//trees
-					(new BWG4decoSurvival(9)).generate(endWorld, endRNG, 0, 78, -80);
-					(new BWG4decoSurvival(10)).generate(endWorld, endRNG, 80, 78, 0);
-					(new BWG4decoSurvival(11)).generate(endWorld, endRNG, -80, 78, 0);
-				}
+				(new BWG4decoSurvival(6)).generate(endWorld, endRNG, 0, 70, 0);
+				(new BWG4decoSurvival(7)).generate(endWorld, endRNG, 0, 80, 60);
 			}
-		}	
+        }
     }
 
     public boolean saveChunks(boolean par1, IProgressUpdate par2IProgressUpdate)

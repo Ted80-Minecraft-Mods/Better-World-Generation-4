@@ -32,6 +32,11 @@ public class BWG4decoBigTree extends WorldGenerator
         size = sizeinput;
 		type = typeinput;
     }
+    
+    public BWG4decoBigTree()
+    {
+    	this(7 + ((int) Math.floor(Math.random() * 7)), 0);
+    }
 	
     void generateLeafNodeList()
     {

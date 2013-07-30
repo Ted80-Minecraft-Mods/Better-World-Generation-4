@@ -67,6 +67,7 @@ public class BWG4Decorator extends BiomeDecorator
 	protected int tl1amount; //treelayer 1 amount of trees
 	protected int tl1chance; //treelayer 1 spawning chance
 	protected boolean usetl2; //use second tree layer?
+	protected WorldGenerator tl2tree; //second tree layer tree
 	protected int tl2miny; //treelayer 2 minY
 	protected int tl2maxy; //treelayer 2 maxY
 	protected int tl2amount; //treelayer 2 amount of trees
@@ -296,9 +297,9 @@ public class BWG4Decorator extends BiomeDecorator
 				{
 					int j6 = chunk_X + randomGenerator.nextInt(16) + 8;
 					int k10 = chunk_Z + randomGenerator.nextInt(16) + 8;
-					if(currentWorld.getHeightValue(j6, k10) < tl2maxy && currentWorld.getHeightValue(j6, k10) > tl2miny && randomGenerator.nextInt(tl2chance) == 0)
+					if(tl2tree != null && currentWorld.getHeightValue(j6, k10) < tl2maxy && currentWorld.getHeightValue(j6, k10) > tl2miny && randomGenerator.nextInt(tl2chance) == 0)
 					{
-						WorldGenerator worldgenerator = new BWG4decoSurvival(4);
+						WorldGenerator worldgenerator = tl2tree;
 						worldgenerator.setScale(1.0D, 1.0D, 1.0D);
 						worldgenerator.generate(currentWorld, randomGenerator, j6, currentWorld.getHeightValue(j6, k10), k10);
 					}	

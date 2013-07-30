@@ -34,7 +34,6 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
 	private GuiButton Setting_INDEV_Theme;
 	private GuiButton Setting_ISLAND_Theme;
 	private GuiButton Setting_SKYLAND_Theme;
-	private GuiButton Setting_SKYBLOCK_Theme;
 	private GuiButton Setting_SKY_Biomes;
 	
 	//GEN SETTINGS
@@ -49,7 +48,6 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
 	private int INDEV_theme = 0;
 	private int ISLAND_theme = 0;
 	private int SKYLAND_theme = 0;
-	private int SKYBLOCK_type = 0;
 	private int SKY_biomes = 0;
 
     public BWG4GuiGeneratorSettings(GuiCreateWorld gcw, String gs)
@@ -88,7 +86,6 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
         buttonList.add(Setting_INDEV_Theme = new GuiSmallButton(15, width / 2 - 75, 135, 150, 20, "[THEME]")); 
         buttonList.add(Setting_ISLAND_Theme = new GuiSmallButton(16, width / 2 - 75, 115, 150, 20, "[THEME]")); 
         buttonList.add(Setting_SKYLAND_Theme = new GuiSmallButton(17, width / 2 - 75, 115, 150, 20, "[THEME]")); 
-        buttonList.add(Setting_SKYBLOCK_Theme = new GuiSmallButton(18, width / 2 - 75, 115, 150, 20, "[TYPE]")); 
         buttonList.add(Setting_SKY_Biomes = new GuiSmallButton(19, width / 2 - 75, 115, 150, 20, "[BIOMES]")); 
         
         updateButtons();
@@ -170,10 +167,6 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
         {
         	if(SKYLAND_theme == 0) { SKYLAND_theme = 2; } else if(SKYLAND_theme == 2) { SKYLAND_theme = 3; } else { SKYLAND_theme = 0; }
         }
-        else if (button.id == 18)
-        {
-        	if(SKYBLOCK_type == 0) { SKYBLOCK_type = 1; } else { SKYBLOCK_type = 0; }
-        }
         else if (button.id == 19)
         {
         	if(SKY_biomes == 0) { SKY_biomes = 1; } else { SKY_biomes = 0; }
@@ -216,11 +209,7 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
 		//SKYLAND
 		if(SKYLAND_theme == 0) { Setting_SKYLAND_Theme.displayString = "Theme: Normal"; } else if(SKYLAND_theme == 1) { Setting_SKYLAND_Theme.displayString = "Theme: [NAME]"; } else if(SKYLAND_theme == 2) { Setting_SKYLAND_Theme.displayString = "Theme: Snow"; } else if(SKYLAND_theme == 3) { Setting_SKYLAND_Theme.displayString = "Theme: Jungle"; } else if(SKYLAND_theme == 4) { Setting_SKYLAND_Theme.displayString = "Theme: [NAME]"; } else { Setting_SKYLAND_Theme.displayString = "Theme: [NAME]"; }
 		Setting_SKYLAND_Theme.drawButton = (generatorselected == 9);
-		
-		//SKYBLOCK
-		if(SKYBLOCK_type == 0) { Setting_SKYBLOCK_Theme.displayString = "Type: Classic"; } else { Setting_SKYBLOCK_Theme.displayString = "Type: Extended"; }
-		Setting_SKYBLOCK_Theme.drawButton = (generatorselected == 10);
-		
+
 		//SKY DIMENSION
 		if(SKY_biomes == 0) { Setting_SKY_Biomes.displayString = "Biomes: Default"; } else { Setting_SKY_Biomes.displayString = "Biomes: Beta"; }
 		Setting_SKY_Biomes.drawButton = (generatorselected == 11);
@@ -367,9 +356,8 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
     	}
     	
     	//SKYBLOCK SURVIVAL
-    	if(input.equals("Skyblock#1") || input.equals("Skyblock#2"))
+    	if(input.equals("Skyblock"))
     	{
-    		SKYBLOCK_type = Integer.parseInt(genstring[1]) - 1;
     		generatorselected = 10;
     		generatorcount = 7;
     	}
@@ -452,7 +440,7 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
     	//SKYBLOCK
     	if(generatorselected == 10)
     	{
-    		return "Skyblock#" + (SKYBLOCK_type + 1);
+    		return "Skyblock";
     	}
     	
     	//SKYDIMENSION

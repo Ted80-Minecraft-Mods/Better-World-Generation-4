@@ -71,6 +71,7 @@ public class BWG4BiomesSurvival extends BiomeGenBase
 			bwg4decorator.tl2miny = 0; 
 			bwg4decorator.tl2maxy = 75; 
 			bwg4decorator.tl2amount = 1;
+			bwg4decorator.tl2tree = new BWG4decoSurvival(4);
 			
 			bwg4decorator.redflowers = 3;
 			bwg4decorator.yellowflowers = 3; 

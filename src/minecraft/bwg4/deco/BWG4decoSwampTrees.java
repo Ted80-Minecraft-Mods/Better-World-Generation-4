@@ -58,10 +58,10 @@ public class BWG4decoSwampTrees extends WorldGenerator
 
                         if (j3 == Block.waterStill.blockID || j3 == Block.waterMoving.blockID)
                         {
-                            //if (j > par4)
-                            //{
-                            //    flag = false;
-                            //}
+                            if (j > par4 && par2Random.nextInt(8) == 0)
+                            {
+                                flag = false;
+                            }
                         }
                         else
                         {

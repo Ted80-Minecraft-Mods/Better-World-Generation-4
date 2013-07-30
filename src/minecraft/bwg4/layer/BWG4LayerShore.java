@@ -71,7 +71,7 @@ public class BWG4LayerShore extends BWG4Layer
 				}
 				else if(shoreID == 1)
 				{
-					if( var9 == BWG4Biomes.BDdesert.biomeID || var9 == BWG4Biomes.BDsavanna.biomeID || var9 == BWG4Biomes.BDsavannaforest.biomeID || var9 == BWG4Biomes.BDshrubland.biomeID || var9 == BWG4Biomes.BDswampland.biomeID || var9 == BWG4Biomes.BDjungle.biomeID || var9 == BWG4Biomes.BDrainforest.biomeID || var9 == BWG4Biomes.BDshrublandHill.biomeID)
+					if( var9 == BWG4Biomes.BDdesert.biomeID || var9 == BWG4Biomes.BDsavanna.biomeID || var9 == BWG4Biomes.BDsavannaforest.biomeID || var9 == BWG4Biomes.BDshrubland.biomeID || var9 == BWG4Biomes.BDswampland.biomeID || var9 == BWG4Biomes.BDjungle.biomeID || var9 == BWG4Biomes.BDrainforest.biomeID)
 					{
 						var10 = var5[var8 + 1 + (var7 + 1 - 1) * (par3 + 2)];
 						var11 = var5[var8 + 1 + 1 + (var7 + 1) * (par3 + 2)];
@@ -102,19 +102,19 @@ public class BWG4LayerShore extends BWG4Layer
 						var12 = var5[var8 + 1 - 1 + (var7 + 1) * (par3 + 2)];
 						var13 = var5[var8 + 1 + (var7 + 1 + 1) * (par3 + 2)];
 
-						if( var10 == BWG4Biomes.BDdesert.biomeID || var10 == BWG4Biomes.BDsavanna.biomeID || var10 == BWG4Biomes.BDsavannaforest.biomeID || var10 == BWG4Biomes.BDshrubland.biomeID || var10 == BWG4Biomes.BDswampland.biomeID || var10 == BWG4Biomes.BDjungle.biomeID || var10 == BWG4Biomes.BDrainforest.biomeID || var10 == BWG4Biomes.BDshrublandHill.biomeID)		
+						if( var10 == BWG4Biomes.BDdesert.biomeID || var10 == BWG4Biomes.BDsavanna.biomeID || var10 == BWG4Biomes.BDsavannaforest.biomeID || var10 == BWG4Biomes.BDshrubland.biomeID || var10 == BWG4Biomes.BDswampland.biomeID || var10 == BWG4Biomes.BDjungle.biomeID || var10 == BWG4Biomes.BDrainforest.biomeID)		
 						{
 							var6[var8 + var7 * par3] = BWG4Biomes.BDforest.biomeID;
 						}
-						else if( var11 == BWG4Biomes.BDdesert.biomeID || var11 == BWG4Biomes.BDsavanna.biomeID || var11 == BWG4Biomes.BDsavannaforest.biomeID || var11 == BWG4Biomes.BDshrubland.biomeID || var11 == BWG4Biomes.BDswampland.biomeID || var11 == BWG4Biomes.BDjungle.biomeID || var11 == BWG4Biomes.BDrainforest.biomeID || var11 == BWG4Biomes.BDshrublandHill.biomeID)			
+						else if( var11 == BWG4Biomes.BDdesert.biomeID || var11 == BWG4Biomes.BDsavanna.biomeID || var11 == BWG4Biomes.BDsavannaforest.biomeID || var11 == BWG4Biomes.BDshrubland.biomeID || var11 == BWG4Biomes.BDswampland.biomeID || var11 == BWG4Biomes.BDjungle.biomeID || var11 == BWG4Biomes.BDrainforest.biomeID)			
 						{
 							var6[var8 + var7 * par3] = BWG4Biomes.BDforest.biomeID;
 						}
-						else if( var12 == BWG4Biomes.BDdesert.biomeID || var12 == BWG4Biomes.BDsavanna.biomeID || var12 == BWG4Biomes.BDsavannaforest.biomeID || var12 == BWG4Biomes.BDshrubland.biomeID || var12 == BWG4Biomes.BDswampland.biomeID || var12 == BWG4Biomes.BDjungle.biomeID || var12 == BWG4Biomes.BDrainforest.biomeID || var12 == BWG4Biomes.BDshrublandHill.biomeID)			
+						else if( var12 == BWG4Biomes.BDdesert.biomeID || var12 == BWG4Biomes.BDsavanna.biomeID || var12 == BWG4Biomes.BDsavannaforest.biomeID || var12 == BWG4Biomes.BDshrubland.biomeID || var12 == BWG4Biomes.BDswampland.biomeID || var12 == BWG4Biomes.BDjungle.biomeID || var12 == BWG4Biomes.BDrainforest.biomeID)			
 						{
 							var6[var8 + var7 * par3] = BWG4Biomes.BDforest.biomeID;
 						}
-						else if( var13 == BWG4Biomes.BDdesert.biomeID || var13 == BWG4Biomes.BDsavanna.biomeID || var13 == BWG4Biomes.BDsavannaforest.biomeID || var13 == BWG4Biomes.BDshrubland.biomeID || var13 == BWG4Biomes.BDswampland.biomeID || var13 == BWG4Biomes.BDjungle.biomeID || var13 == BWG4Biomes.BDrainforest.biomeID || var13 == BWG4Biomes.BDshrublandHill.biomeID)							
+						else if( var13 == BWG4Biomes.BDdesert.biomeID || var13 == BWG4Biomes.BDsavanna.biomeID || var13 == BWG4Biomes.BDsavannaforest.biomeID || var13 == BWG4Biomes.BDshrubland.biomeID || var13 == BWG4Biomes.BDswampland.biomeID || var13 == BWG4Biomes.BDjungle.biomeID || var13 == BWG4Biomes.BDrainforest.biomeID)							
 						{
 							var6[var8 + var7 * par3] = BWG4Biomes.BDforest.biomeID;
 						}

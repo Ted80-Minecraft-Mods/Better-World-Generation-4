@@ -51,17 +51,7 @@ public class BWG4ProviderHell extends WorldProviderHell
         }
 		else if (BWG4GeneratorType.Current == BWG4GeneratorType.BWG4SKYBLOCK)
         {
-			//THEME GENERATOR SETTINGS
-			int themeID = 1;
-			String zer = "", one = "1", two = "2", thr = "3", fou = "4", fiv = "5", theme = worldObj.getWorldInfo().getGeneratorOptions();
-			if(theme.equals(zer)) { themeID = 1; }
-			if(theme.equals(one)) { themeID = 1; }
-			if(theme.equals(two)) { themeID = 2; }
-			if(theme.equals(thr)) { themeID = 3; }
-			if(theme.equals(fou)) { themeID = 4; }
-			if(theme.equals(fiv)) { themeID = 5; }		
-			
-			return new BWG4ChunkProviderSkyBlock(this.worldObj, this.worldObj.getSeed(), true, themeID);
+			return new BWG4ChunkProviderSkyBlock(this.worldObj, this.worldObj.getSeed(), true);
         }
 		else
 		{
