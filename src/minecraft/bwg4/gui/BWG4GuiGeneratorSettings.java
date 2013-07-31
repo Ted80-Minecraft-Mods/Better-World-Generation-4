@@ -153,7 +153,7 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
         }
         else if (button.id == 14)
         {
-        	if(INDEV_type == 0) { INDEV_type = 1; } else { INDEV_type = 0; }
+        	if(INDEV_type == 0) { INDEV_type = 1; } else if(INDEV_type == 1) { INDEV_type = 2; } else { INDEV_type = 0; }
         }
         else if (button.id == 15)
         {
@@ -197,7 +197,7 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
 		Setting_INFDEV_Snow.drawButton = (generatorselected == 5);
 		
 		//INDEV
-		if(INDEV_type == 0) { Setting_INDEV_Type.displayString = "Type: Inland"; } else { Setting_INDEV_Type.displayString = "Type: Floating"; }
+		if(INDEV_type == 0) { Setting_INDEV_Type.displayString = "Type: Island"; } else if(INDEV_type == 1) { Setting_INDEV_Type.displayString = "Type: Floating"; } else if(INDEV_type == 2) { Setting_INDEV_Type.displayString = "Type: Inland"; } else { Setting_INDEV_Type.displayString = "Type: Finite"; }
 		if(INDEV_theme == 0) { Setting_INDEV_Theme.displayString = "Theme: Normal"; } else if(INDEV_theme == 1) { Setting_INDEV_Theme.displayString = "Theme: Hell"; } else if(INDEV_theme == 2) { Setting_INDEV_Theme.displayString = "Theme: Paradise"; } else if(INDEV_theme == 3) { Setting_INDEV_Theme.displayString = "Theme: Woods"; } else { Setting_INDEV_Theme.displayString = "Theme: Snow"; }
 		Setting_INDEV_Type.drawButton = (generatorselected == 6);
 		Setting_INDEV_Theme.drawButton = (generatorselected == 6);
@@ -324,14 +324,25 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
     	}
     	
     	//INDEV
-    	if(input.equals("Indev_inland#1") || input.equals("Indev_inland#2") || input.equals("Indev_inland#3") || input.equals("Indev_inland#4") || input.equals("Indev_inland#5"))
+    	if(genstring[0].equals("Indev"))
     	{
-    		INDEV_type = 0;
+    		String[] indevsettings = genstring[1].split("&");
+    		
+    		INDEV_type = Integer.parseInt(indevsettings[0]) - 1;
+    		INDEV_theme = Integer.parseInt(indevsettings[1]) - 1;
+    		generatorselected = 6;
+    		generatorcount = 4;
+    	}
+    	
+    	//OLD INDEV
+    	if(genstring[0].equals("Indev_inland"))
+    	{
+    		INDEV_type = 2;
     		INDEV_theme = Integer.parseInt(genstring[1]) - 1;
     		generatorselected = 6;
     		generatorcount = 4;
     	}
-    	if(input.equals("Indev_floating#1") || input.equals("Indev_floating#2") || input.equals("Indev_floating#3") || input.equals("Indev_floating#4") || input.equals("Indev_floating#5"))
+    	if(genstring[0].equals("Indev_floating"))
     	{
     		INDEV_type = 1;
     		INDEV_theme = Integer.parseInt(genstring[1]) - 1;
@@ -340,7 +351,7 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
     	}
     	
     	//SURVIVAL ISLAND
-    	if(input.equals("Survival_Island#1") || input.equals("Survival_Island#2") || input.equals("Survival_Island#3") || input.equals("Survival_Island#4"))
+    	if(genstring[0].equals("Survival_Island"))
     	{
     		ISLAND_theme = Integer.parseInt(genstring[1]) - 1;
     		generatorselected = 8;
@@ -348,7 +359,7 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
     	}
     	
     	//SURVIVAL SKYLAND
-    	if(input.equals("Survival_Skyland#1") || input.equals("Survival_Skyland#2") || input.equals("Survival_Skyland#3") || input.equals("Survival_Skyland#4"))
+    	if(genstring[0].equals("Survival_Skyland"))
     	{
     		SKYLAND_theme = Integer.parseInt(genstring[1]) - 1;
     		generatorselected = 9;
@@ -416,13 +427,9 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
     	}
     	
     	//INDEV
-    	if(generatorselected == 6 && INDEV_type == 0)
+    	if(generatorselected == 6)
     	{
-    		return "Indev_inland#" + (INDEV_theme + 1);
-    	}
-    	if(generatorselected == 6 && INDEV_type == 1)
-    	{
-    		return "Indev_floating#" + (INDEV_theme + 1);
+    		return "Indev#" + (INDEV_type + 1) + "&" + (INDEV_theme + 1);
     	}
     	
     	//SURVIVAL ISLAND

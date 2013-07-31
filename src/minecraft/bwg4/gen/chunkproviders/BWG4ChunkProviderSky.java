@@ -5,6 +5,7 @@ import java.util.Random;
 
 import bwg4.mod_bwg4;
 import bwg4.biomes.BWG4Biomes;
+import bwg4.chunk.BWG4SkylightMap;
 import bwg4.deco.BWG4decoDungeons;
 import bwg4.deco.BWG4decoSurvival;
 import bwg4.deco.old.BWG4oldGenClay;
@@ -15,7 +16,6 @@ import bwg4.gen.BWG4WorldChunkManager;
 import bwg4.map.BWG4MapGenBase;
 import bwg4.map.BWG4oldMapGenCaves;
 import bwg4.noise.BWG4NoiseOctavesBeta;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSand;
 import net.minecraft.block.material.Material;
@@ -252,7 +252,7 @@ public class BWG4ChunkProviderSky implements IChunkProvider
         }
 
         chunk.generateSkylightMap();
-        return chunk;		
+        return chunk;
     }
 
     private double[] func_4061_a(double ad[], int i, int j, int k, int l, int i1, int j1)

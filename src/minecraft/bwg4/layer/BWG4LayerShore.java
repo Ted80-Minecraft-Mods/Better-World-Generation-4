@@ -1,6 +1,7 @@
 package bwg4.layer;
 
 import bwg4.mod_bwg4;
+import bwg4.api.DefaultBiomeList;
 import bwg4.biomes.BWG4Biomes;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.layer.IntCache;
@@ -19,8 +20,8 @@ public class BWG4LayerShore extends BWG4Layer
 		
 		for(int i = 0; i < Settings.length; i++)
 		{
-			if(Settings[i].equals("Beach Dunes=true")) { beachdunes = true; }
-			else if(Settings[i].equals("Beach=true")) { beach = true; }
+			if(Settings[i].equals("Beach Dunes") || Settings[i].equals("Beach Dunes=true")) { beachdunes = true; }
+			else if(Settings[i].equals("Beach") || Settings[i].equals("Beach=true")) { beach = true; }
 		}
     }
 
@@ -44,7 +45,7 @@ public class BWG4LayerShore extends BWG4Layer
 				
 				if(shoreID == 2 && beachdunes)
 				{
-					if (var9 != BWG4Biomes.BDocean.biomeID && var9 != BWG4Biomes.BDbeach.biomeID && var9 != BWG4Biomes.BDsnowpines.biomeID && var9 != BWG4Biomes.BDsnowforest.biomeID && var9 != BWG4Biomes.BDsnowtaiga.biomeID && var9 != BWG4Biomes.BDsnowplains.biomeID && var9 != BWG4Biomes.BDsnowhills.biomeID)
+					if (DefaultBiomeList.biomeType[var9] != 0 && DefaultBiomeList.biomeType[var9] != 1)
 					{
 						var10 = var5[var8 + 1 + (var7 + 1 - 1) * (par3 + 2)];
 						var11 = var5[var8 + 1 + 1 + (var7 + 1) * (par3 + 2)];
@@ -71,55 +72,55 @@ public class BWG4LayerShore extends BWG4Layer
 				}
 				else if(shoreID == 1)
 				{
-					if( var9 == BWG4Biomes.BDdesert.biomeID || var9 == BWG4Biomes.BDsavanna.biomeID || var9 == BWG4Biomes.BDsavannaforest.biomeID || var9 == BWG4Biomes.BDshrubland.biomeID || var9 == BWG4Biomes.BDswampland.biomeID || var9 == BWG4Biomes.BDjungle.biomeID || var9 == BWG4Biomes.BDrainforest.biomeID)
+					if (DefaultBiomeList.biomeType[var9] == 4)
 					{
 						var10 = var5[var8 + 1 + (var7 + 1 - 1) * (par3 + 2)];
 						var11 = var5[var8 + 1 + 1 + (var7 + 1) * (par3 + 2)];
 						var12 = var5[var8 + 1 - 1 + (var7 + 1) * (par3 + 2)];
 						var13 = var5[var8 + 1 + (var7 + 1 + 1) * (par3 + 2)];
 
-						if (var10 == BWG4Biomes.BDsnowpines.biomeID || var10 == BWG4Biomes.BDsnowforest.biomeID || var10 == BWG4Biomes.BDsnowtaiga.biomeID || var10 == BWG4Biomes.BDsnowplains.biomeID || var10 == BWG4Biomes.BDsnowhills.biomeID)
+						if (DefaultBiomeList.biomeType[var10] == 1)
 						{
 							var6[var8 + var7 * par3] = BWG4Biomes.BDforest.biomeID;
 						}
-						else if (var11 == BWG4Biomes.BDsnowpines.biomeID || var11 == BWG4Biomes.BDsnowforest.biomeID || var11 == BWG4Biomes.BDsnowtaiga.biomeID || var11 == BWG4Biomes.BDsnowplains.biomeID || var11 == BWG4Biomes.BDsnowhills.biomeID)
+						else if (DefaultBiomeList.biomeType[var11] == 1)
 						{
 							var6[var8 + var7 * par3] = BWG4Biomes.BDforest.biomeID;
 						}
-						else if (var12 == BWG4Biomes.BDsnowpines.biomeID || var12 == BWG4Biomes.BDsnowforest.biomeID || var12 == BWG4Biomes.BDsnowtaiga.biomeID || var12 == BWG4Biomes.BDsnowplains.biomeID || var12 == BWG4Biomes.BDsnowhills.biomeID)
+						else if (DefaultBiomeList.biomeType[var12] == 1)
 						{
 							var6[var8 + var7 * par3] = BWG4Biomes.BDforest.biomeID;
 						}
-						else if (var13 == BWG4Biomes.BDsnowpines.biomeID || var13 == BWG4Biomes.BDsnowforest.biomeID || var13 == BWG4Biomes.BDsnowtaiga.biomeID || var13 == BWG4Biomes.BDsnowplains.biomeID || var13 == BWG4Biomes.BDsnowhills.biomeID)
+						else if (DefaultBiomeList.biomeType[var13] == 1)
 						{
 							var6[var8 + var7 * par3] = BWG4Biomes.BDforest.biomeID;
 						}
 					}
-					if(var9 == BWG4Biomes.BDsnowpines.biomeID || var9 == BWG4Biomes.BDsnowforest.biomeID || var9 == BWG4Biomes.BDsnowtaiga.biomeID || var9 == BWG4Biomes.BDsnowplains.biomeID || var9 == BWG4Biomes.BDsnowhills.biomeID)
+					if(DefaultBiomeList.biomeType[var9] == 1)
 					{
 						var10 = var5[var8 + 1 + (var7 + 1 - 1) * (par3 + 2)];
 						var11 = var5[var8 + 1 + 1 + (var7 + 1) * (par3 + 2)];
 						var12 = var5[var8 + 1 - 1 + (var7 + 1) * (par3 + 2)];
 						var13 = var5[var8 + 1 + (var7 + 1 + 1) * (par3 + 2)];
 
-						if( var10 == BWG4Biomes.BDdesert.biomeID || var10 == BWG4Biomes.BDsavanna.biomeID || var10 == BWG4Biomes.BDsavannaforest.biomeID || var10 == BWG4Biomes.BDshrubland.biomeID || var10 == BWG4Biomes.BDswampland.biomeID || var10 == BWG4Biomes.BDjungle.biomeID || var10 == BWG4Biomes.BDrainforest.biomeID)		
+						if(DefaultBiomeList.biomeType[var10] == 4)	
 						{
 							var6[var8 + var7 * par3] = BWG4Biomes.BDforest.biomeID;
 						}
-						else if( var11 == BWG4Biomes.BDdesert.biomeID || var11 == BWG4Biomes.BDsavanna.biomeID || var11 == BWG4Biomes.BDsavannaforest.biomeID || var11 == BWG4Biomes.BDshrubland.biomeID || var11 == BWG4Biomes.BDswampland.biomeID || var11 == BWG4Biomes.BDjungle.biomeID || var11 == BWG4Biomes.BDrainforest.biomeID)			
+						else if(DefaultBiomeList.biomeType[var11] == 4)		
 						{
 							var6[var8 + var7 * par3] = BWG4Biomes.BDforest.biomeID;
 						}
-						else if( var12 == BWG4Biomes.BDdesert.biomeID || var12 == BWG4Biomes.BDsavanna.biomeID || var12 == BWG4Biomes.BDsavannaforest.biomeID || var12 == BWG4Biomes.BDshrubland.biomeID || var12 == BWG4Biomes.BDswampland.biomeID || var12 == BWG4Biomes.BDjungle.biomeID || var12 == BWG4Biomes.BDrainforest.biomeID)			
+						else if(DefaultBiomeList.biomeType[var12] == 4)	
 						{
 							var6[var8 + var7 * par3] = BWG4Biomes.BDforest.biomeID;
 						}
-						else if( var13 == BWG4Biomes.BDdesert.biomeID || var13 == BWG4Biomes.BDsavanna.biomeID || var13 == BWG4Biomes.BDsavannaforest.biomeID || var13 == BWG4Biomes.BDshrubland.biomeID || var13 == BWG4Biomes.BDswampland.biomeID || var13 == BWG4Biomes.BDjungle.biomeID || var13 == BWG4Biomes.BDrainforest.biomeID)							
+						else if(DefaultBiomeList.biomeType[var13] == 4)							
 						{
 							var6[var8 + var7 * par3] = BWG4Biomes.BDforest.biomeID;
 						}
 					}
-					if (beach && var9 != BWG4Biomes.BDmushroomisland.biomeID && var9 != BWG4Biomes.BDjungleisland.biomeID && var9 != BWG4Biomes.BDtropicalisland.biomeID && var9 != BWG4Biomes.BDocean.biomeID && var9 != BWG4Biomes.BDsnowpines.biomeID && var9 != BWG4Biomes.BDsnowforest.biomeID && var9 != BWG4Biomes.BDsnowtaiga.biomeID && var9 != BWG4Biomes.BDsnowplains.biomeID && var9 != BWG4Biomes.BDsnowhills.biomeID)
+					if (beach && DefaultBiomeList.biomeType[var9] != 1 && DefaultBiomeList.biomeType[var9] != 5)
 					{
 						var10 = var5[var8 + 1 + (var7 + 1 - 1) * (par3 + 2)];
 						var11 = var5[var8 + 1 + 1 + (var7 + 1) * (par3 + 2)];

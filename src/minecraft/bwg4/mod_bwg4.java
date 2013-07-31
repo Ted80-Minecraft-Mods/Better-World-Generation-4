@@ -13,6 +13,7 @@ import bwg4.biomes.BWG4BiomesDefault;
 import bwg4.biomes.BWG4BiomesIndev;
 import bwg4.biomes.BWG4BiomesInfdev;
 import bwg4.biomes.BWG4BiomesSurvival;
+import bwg4.chunk.BWG4SkylightMap;
 import bwg4.config.BWG4Config;
 import bwg4.gen.BWG4Provider;
 import bwg4.gen.BWG4ProviderHell;
@@ -43,7 +44,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid="BWG4", name="BetterWorldGeneration4", version="1.1.4")
+@Mod(modid="BWG4", name="BetterWorldGeneration4", version="1.1.5")
 @NetworkMod(clientSideRequired=true, serverSideRequired=false, channels={"BWG4channel"}, packetHandler = BWG4Packet.class)
 public class mod_bwg4
 {	

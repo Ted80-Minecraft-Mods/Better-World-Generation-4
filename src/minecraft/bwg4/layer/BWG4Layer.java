@@ -16,11 +16,13 @@ public abstract class BWG4Layer
     public static BWG4Layer[] initializeAllBiomeGenerators(long par0, String genstring)
     {
     	String[] generatorSettings = new String[0];
+    	int genversion = 2;
     	
 		if(genstring.length() > 4)
 		{
 			String[] splitstring = genstring.split("&");
 			generatorSettings = splitstring[1].split(";");
+			genversion = Integer.parseInt(splitstring[0]);
 		}
 		
 		BWG4Layer obj = new BWG4LayerCreate(1L, generatorSettings);
@@ -47,7 +49,7 @@ public abstract class BWG4Layer
 		obj1 = new BWG4LayerSmooth(1000L, ((BWG4Layer)(obj1)));
 		BWG4Layer obj2 = obj;
 		obj2 = BWG4LayerZoom.func_75915_a(1000L, ((BWG4Layer)(obj2)), 0);
-		obj2 = new BWG4LayerBiome(200L, ((BWG4Layer)(obj2)), generatorSettings, 0);
+		obj2 = new BWG4LayerBiome(200L, ((BWG4Layer)(obj2)), generatorSettings, 0, genversion);
 		obj2 = BWG4LayerZoom.func_75915_a(1000L, ((BWG4Layer)(obj2)), 2);
 		obj2 = new BWG4LayerHills(1000L, ((BWG4Layer)(obj2)), generatorSettings);
 		obj2 = new BWG4LayerZoom(1000, ((BWG4Layer)(obj2)));

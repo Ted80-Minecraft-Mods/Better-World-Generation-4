@@ -9,7 +9,7 @@
  * purpose. Use it at your own risk. If there's a problem you get to fix it.
  *
  ****************************************************************************/
-package bwg4.noise;
+package bwg4.util;
 
 import java.util.Random;
 
@@ -28,7 +28,7 @@ import java.util.Random;
  * @author Justin Couch
  * @version $Revision: 1.4 $
  */
-public class BWG4NoisePerlinTest
+public class PerlinNoise
 {
 	private Random rand;
 	
@@ -59,7 +59,7 @@ public class BWG4NoisePerlinTest
     /**
      * Create a new noise creator with the default seed value
      */
-    public BWG4NoisePerlinTest()
+    public PerlinNoise()
     {
         this(100);
     }
@@ -69,7 +69,7 @@ public class BWG4NoisePerlinTest
      *
      * @param seed The seed value to use
      */
-    public BWG4NoisePerlinTest(long seed)
+    public PerlinNoise(long seed)
     {
         p_imp = new int[DEFAULT_SAMPLE_SIZE << 1];
 

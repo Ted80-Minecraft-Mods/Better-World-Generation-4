@@ -5,10 +5,10 @@ import net.minecraft.world.biome.BiomeGenBase;
 
 public class DefaultBiomeList 
 {
-	public static ArrayList<BiomeGenBase> biomeList = new ArrayList<BiomeGenBase>();
+	public static BiomeGenBase[] biomeList = new BiomeGenBase[256];
 	public static String[] biomeNames = new String[256];
 	public static int[] biomeType = new int[256];
-	public static int generatorversion = 1;
+	public static int generatorversion = 2;
 
 	/**
 	 * Adds a new biome to the biome list.
@@ -19,16 +19,11 @@ public class DefaultBiomeList
 	 */
 	public static void addBiome(String name, BiomeGenBase biome, int biometype)
 	{
-		biomeList.add(biome);
-		
-		for(int i = 0; i < biomeNames.length; i++)
+		if(biomeNames[biome.biomeID] == null)
 		{
-			if(biomeNames[i] == null)
-			{
-				biomeNames[i] = name;
-				biomeType[i] = biometype;
-				break;
-			}
+			biomeList[biome.biomeID] = biome;
+			biomeNames[biome.biomeID] = name;
+			biomeType[biome.biomeID] = biometype;
 		}
 	}
 	
@@ -37,7 +32,7 @@ public class DefaultBiomeList
 	 * 
 	 * @return a ArrayList with all biomes
 	 */
-	public static ArrayList<BiomeGenBase> getBiomeList()
+	public static BiomeGenBase[] getBiomeList()
 	{
 		return biomeList;
 	}
@@ -60,15 +55,28 @@ public class DefaultBiomeList
 	public static String[] getStringList()
 	{
 		String[] newbiomelist = new String[biomeNames.length];
-		for(int i = 0; i < biomeNames.length; i++)
+		int i = 0; 
+		for(i = 0; i < biomeNames.length; i++)
+		{
+			if(biomeNames[i] != null)
+			{
+				newbiomelist[i] = biomeNames[i];
+			}
+		}
+		
+		return newbiomelist;
+	}
+	
+
+	public static String[] getOldStringList()
+	{
+		String[] newbiomelist = new String[biomeNames.length];
+		int i = 0; 
+		for(i = 0; i < biomeNames.length; i++)
 		{
 			if(biomeNames[i] != null)
 			{
 				newbiomelist[i] = biomeNames[i] + "=true";
-			}
-			else
-			{
-				break;
 			}
 		}
 		
@@ -84,22 +92,20 @@ public class DefaultBiomeList
 	{
 		String genstring = generatorversion + "&";
 		
+		boolean first = true;
 		for(int i = 0; i < biomeNames.length; i++)
 		{
 			if(biomeNames[i] != null)
 			{
-				if(i != 0)
+				if(!first)
 				{
-					genstring += ";" + biomeNames[i] + "=true";
+					genstring += ";" + biomeNames[i];
 				}
 				else
 				{
-					genstring += biomeNames[i] + "=true";
+					genstring += biomeNames[i];
+					first = false;
 				}
-			}
-			else
-			{
-				break;
 			}
 		}
 		return genstring;

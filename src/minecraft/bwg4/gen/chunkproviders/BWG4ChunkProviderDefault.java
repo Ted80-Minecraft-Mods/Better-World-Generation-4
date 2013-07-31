@@ -8,8 +8,7 @@ import bwg4.biomes.BWG4Biomes;
 import bwg4.deco.BWG4decoDungeons;
 import bwg4.deco.old.BWG4oldGenClay;
 import bwg4.noise.BWG4NoiseOctavesBeta;
-import bwg4.noise.BWG4NoisePerlinTest;
-
+import bwg4.util.PerlinNoise;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSand;
 import net.minecraft.entity.EnumCreatureType;
@@ -43,10 +42,10 @@ public class BWG4ChunkProviderDefault implements IChunkProvider
     public BWG4NoiseOctavesBeta noiseGen6;
     public BWG4NoiseOctavesBeta mobSpawnerNoise;
     
-	//public BWG4NoisePerlinTest noise_Base;
-	//public BWG4NoisePerlinTest noise_Hill;
-	//public BWG4NoisePerlinTest noise_Mountain;
-	//public BWG4NoisePerlinTest noise_Small;
+	//public BWG4PerlinNoise noise_Base;
+	//public BWG4PerlinNoise noise_Hill;
+	//public BWG4PerlinNoise noise_Mountain;
+	//public BWG4PerlinNoise noise_Small;
 
     private World worldObj;
     private final boolean mapFeaturesEnabled;
@@ -83,10 +82,10 @@ public class BWG4ChunkProviderDefault implements IChunkProvider
         this.noiseGen6 = new BWG4NoiseOctavesBeta(this.rand, 16);
         this.mobSpawnerNoise = new BWG4NoiseOctavesBeta(this.rand, 8);
         
-    	//noise_Base = new BWG4NoisePerlinTest(par2);
-    	//noise_Hill = new BWG4NoisePerlinTest(par2 + 10L);
-    	//noise_Mountain = new BWG4NoisePerlinTest(par2 + 20L);
-    	//noise_Small = new BWG4NoisePerlinTest(par2 + 30L);
+    	//noise_Base = new BWG4PerlinNoise(par2);
+    	//noise_Hill = new BWG4PerlinNoise(par2 + 10L);
+    	//noise_Mountain = new BWG4PerlinNoise(par2 + 20L);
+    	//noise_Small = new BWG4PerlinNoise(par2 + 30L);
     }
 
     public void generateTerrain(int par1, int par2, byte[] par3ArrayOfByte)
@@ -106,7 +105,7 @@ public class BWG4ChunkProviderDefault implements IChunkProvider
 				
 				
 				
-				float total = 64 + base + hill + small;
+				float total = 64 + base;// + hill + small;
 				if(total > 127) { total = 127; } else if(total < 1) { total = 1; }
 				
 				for (int i3 = 0; i3 < 128; i3++)

@@ -5,18 +5,10 @@ public class BWG4BiomeInfo
     private String Setting;
 	private boolean enabled;
 	
-	//private float minHeight;
-	//private float maxHeight;
-	//private int dungeonsPerChunk;
-	
-    public BWG4BiomeInfo(String name, boolean enable)//, float min, float max, int dungeon)
+    public BWG4BiomeInfo(String name, boolean enable)
     {
 		Setting = name;
 		enabled = enable;
-		
-		//minHeight = min;
-		//maxHeight = max;
-		//dungeonsPerChunk = dungeon;
 	}
 	
     public String getNAME()
@@ -39,15 +31,8 @@ public class BWG4BiomeInfo
         String var1 = "";
 		if(enabled == true)
 		{
-			var1 = Setting + "=true";
+			var1 = Setting;
 		}
-		else
-		{
-			var1 = Setting + "=false";
-		}
-		
-		//var1 = var1 + "." + minHeight + "." + maxHeight + "." + dungeonsPerChunk;
-		
         return var1;
     }
 }

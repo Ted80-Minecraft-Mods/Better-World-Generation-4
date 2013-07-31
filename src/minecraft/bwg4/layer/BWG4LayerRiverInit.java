@@ -14,7 +14,7 @@ public class BWG4LayerRiverInit extends BWG4Layer
         rivers = true;
 		//for(int i = 0; i < Settings.length; i++)
 		//{
-		//	if(Settings[i].equals("River=true")) { rivers = true; }
+		//	if(Settings[i].equals("River") || Settings[i].equals("River=true")) { rivers = true; }
 		//}
     }
 

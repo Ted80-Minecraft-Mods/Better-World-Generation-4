@@ -18,7 +18,7 @@ public class BWG4LayerBiome extends BWG4Layer
 	public static ArrayList<BiomeGenBase> allowedBiomes = new ArrayList<BiomeGenBase>();
 	public int worldID;
 
-    public BWG4LayerBiome(long par1, BWG4Layer par3GenLayer, String[] Settings, int world)
+    public BWG4LayerBiome(long par1, BWG4Layer par3GenLayer, String[] Settings, int world, int genversion)
     {
         super(par1);
 		worldID = world;
@@ -32,30 +32,55 @@ public class BWG4LayerBiome extends BWG4Layer
 			int count = 0;
 			allowedBiomes.clear();
 			
-			ArrayList<BiomeGenBase> biomesinput = DefaultBiomeList.getBiomeList();
-			String[] biomesettingsinput = DefaultBiomeList.getStringList();
-			int[] biomeTypes = DefaultBiomeList.getTypesList();
-			
-			for(int i = 0; i < Settings.length; i++)
+			if(genversion == 1)
 			{
-				for(int b = 0; b < biomesettingsinput.length; b++)
+				BiomeGenBase[] biomesinput = DefaultBiomeList.getBiomeList();
+				String[] biomesettingsinput = DefaultBiomeList.getOldStringList();
+				int[] biomeTypes = DefaultBiomeList.getTypesList();
+				
+				for(int i = 0; i < Settings.length; i++)
 				{
-					if(biomesettingsinput[b] != null)
+					for(int b = 0; b < biomesettingsinput.length; b++)
 					{
-						if(Settings[i].equals(biomesettingsinput[b]) && biomeTypes[b] > 0 && biomeTypes[b] < 5) 
-						{ 
-							allowedBiomes.add(biomesinput.get(b));
-							count++;
-							break;
-						}
-						else if(Settings[i].equals("Ocean=true") && biomeTypes[b] == 0)
+						if(biomesettingsinput[b] != null)
 						{
-							ocean = true;
+							if(Settings[i].equals(biomesettingsinput[b]) && biomeTypes[b] > 0 && biomeTypes[b] < 5) 
+							{ 
+								allowedBiomes.add(biomesinput[b]);
+								count++;
+								break;
+							}
+							else if(Settings[i].equals("Ocean=true") && biomeTypes[b] == 0)
+							{
+								ocean = true;
+							}
 						}
 					}
-					else
+				}
+			}
+			else
+			{
+				BiomeGenBase[] biomesinput = DefaultBiomeList.getBiomeList();
+				String[] biomesettingsinput = DefaultBiomeList.getStringList();
+				int[] biomeTypes = DefaultBiomeList.getTypesList();
+
+				for(int i = 0; i < Settings.length; i++)
+				{
+					for(int b = 0; b < biomesettingsinput.length; b++)
 					{
-						break;
+						if(biomesettingsinput[b] != null)
+						{
+							if(Settings[i].equals(biomesettingsinput[b]) && biomeTypes[b] > 0 && biomeTypes[b] < 5) 
+							{ 
+								allowedBiomes.add(biomesinput[b]);
+								count++;
+								break;
+							}
+							else if(Settings[i].equals("Ocean") && biomeTypes[b] == 0)
+							{
+								ocean = true;
+							}
+						}
 					}
 				}
 			}

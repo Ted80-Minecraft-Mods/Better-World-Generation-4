@@ -240,30 +240,30 @@ public class BWG4Biomes
 		BiomeDictionary.registerBiomeType(BWG4Biomes.SURVIVALnether, Type.NETHER);
 		
 		//add biomes to bwg4 api
-		DefaultBiomeList.addBiome("Shrubland", BWG4Biomes.BDshrubland, 4);
-		DefaultBiomeList.addBiome("Savanna", BWG4Biomes.BDsavanna, 4);
-		DefaultBiomeList.addBiome("Desert", BWG4Biomes.BDdesert, 4);
-		DefaultBiomeList.addBiome("Swampland", BWG4Biomes.BDswampland, 3);
-		DefaultBiomeList.addBiome("Jungle", BWG4Biomes.BDjungle, 3);
-		DefaultBiomeList.addBiome("RainForest", BWG4Biomes.BDrainforest, 3);
-		DefaultBiomeList.addBiome("Grassland", BWG4Biomes.BDgrassland, 2);
-		DefaultBiomeList.addBiome("Taiga", BWG4Biomes.BDtaiga, 2);
-		DefaultBiomeList.addBiome("Pines", BWG4Biomes.BDpines, 2);
-		DefaultBiomeList.addBiome("Forest Lakes", BWG4Biomes.BDforestlakes, 2);
-		DefaultBiomeList.addBiome("Forest Hills", BWG4Biomes.BDforesthills, 2);
-		DefaultBiomeList.addBiome("Forest", BWG4Biomes.BDforest, 2);
-		DefaultBiomeList.addBiome("Plains", BWG4Biomes.BDplains, 2);
-		DefaultBiomeList.addBiome("Snow Hills", BWG4Biomes.BDsnowhills, 1);
-		DefaultBiomeList.addBiome("Snow Plains", BWG4Biomes.BDsnowplains, 1);
-		DefaultBiomeList.addBiome("Snow Taiga", BWG4Biomes.BDsnowtaiga, 1);
-		DefaultBiomeList.addBiome("Snow Forest", BWG4Biomes.BDsnowforest, 1);
-		DefaultBiomeList.addBiome("Snow Pines", BWG4Biomes.BDsnowpines, 1);
-		DefaultBiomeList.addBiome("Beach Dunes", BWG4Biomes.BDbeachDunes, 0);
-		DefaultBiomeList.addBiome("Beach", BWG4Biomes.BDbeach, 0);
-		DefaultBiomeList.addBiome("River", BWG4Biomes.BDriver, 0);
-		DefaultBiomeList.addBiome("Mushroom Island", BWG4Biomes.BDmushroomisland, 5);
-		DefaultBiomeList.addBiome("Jungle Island", BWG4Biomes.BDjungleisland, 5);
-		DefaultBiomeList.addBiome("Tropical Island", BWG4Biomes.BDtropicalisland, 5);
 		DefaultBiomeList.addBiome("Ocean", BWG4Biomes.BDocean, 0);
+		DefaultBiomeList.addBiome("Tropical Island", BWG4Biomes.BDtropicalisland, 5);
+		DefaultBiomeList.addBiome("Jungle Island", BWG4Biomes.BDjungleisland, 5);
+		DefaultBiomeList.addBiome("Mushroom Island", BWG4Biomes.BDmushroomisland, 5);
+		//DefaultBiomeList.addBiome("River", BWG4Biomes.BDriver, 0);
+		DefaultBiomeList.addBiome("Beach", BWG4Biomes.BDbeach, 0);
+		DefaultBiomeList.addBiome("Beach Dunes", BWG4Biomes.BDbeachDunes, 0);
+		DefaultBiomeList.addBiome("Snow Pines", BWG4Biomes.BDsnowpines, 1);
+		DefaultBiomeList.addBiome("Snow Forest", BWG4Biomes.BDsnowforest, 1);
+		DefaultBiomeList.addBiome("Snow Taiga", BWG4Biomes.BDsnowtaiga, 1);
+		DefaultBiomeList.addBiome("Snow Plains", BWG4Biomes.BDsnowplains, 1);
+		DefaultBiomeList.addBiome("Snow Hills", BWG4Biomes.BDsnowhills, 1);
+		DefaultBiomeList.addBiome("Plains", BWG4Biomes.BDplains, 2);
+		DefaultBiomeList.addBiome("Forest", BWG4Biomes.BDforest, 2);
+		DefaultBiomeList.addBiome("Forest Hills", BWG4Biomes.BDforesthills, 2);
+		DefaultBiomeList.addBiome("Forest Lakes", BWG4Biomes.BDforestlakes, 2);
+		DefaultBiomeList.addBiome("Pines", BWG4Biomes.BDpines, 2);
+		DefaultBiomeList.addBiome("Taiga", BWG4Biomes.BDtaiga, 2);
+		DefaultBiomeList.addBiome("Grassland", BWG4Biomes.BDgrassland, 2);
+		DefaultBiomeList.addBiome("RainForest", BWG4Biomes.BDrainforest, 3);
+		DefaultBiomeList.addBiome("Jungle", BWG4Biomes.BDjungle, 3);
+		DefaultBiomeList.addBiome("Swampland", BWG4Biomes.BDswampland, 3);
+		DefaultBiomeList.addBiome("Desert", BWG4Biomes.BDdesert, 4);
+		DefaultBiomeList.addBiome("Savanna", BWG4Biomes.BDsavanna, 4);
+		DefaultBiomeList.addBiome("Shrubland", BWG4Biomes.BDshrubland, 4);
 	}
 }

@@ -20,7 +20,7 @@ public class BWG4LayerCreate extends BWG4Layer
 		
 		for(int i = 0; i < Settings.length; i++)
 		{
-			if(Settings[i].equals("Ocean=true")) { ocean = true; }
+			if(Settings[i].equals("Ocean") || Settings[i].equals("Ocean=true")) { ocean = true; }
 		}
     }
 

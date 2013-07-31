@@ -6,7 +6,7 @@ import java.util.Random;
 import bwg4.deco.BWG4decoDungeons;
 import bwg4.deco.BWG4decoSurvival;
 import bwg4.deco.old.BWG4oldGenClay;
-
+import bwg4.util.PerlinNoise;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSand;
 import net.minecraft.entity.EnumCreatureType;
@@ -48,6 +48,9 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
     private MapGenStronghold strongholdGenerator = new MapGenStronghold();
 	int THEMEID = 1;
 	
+	public PerlinNoise perlin1;
+	public PerlinNoise perlin2;
+	
     public BWG4ChunkProviderIsland(World par1World, long par2, int theme)
     {
         this.endWorld = par1World;
@@ -58,92 +61,135 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
         this.noiseGen4 = new NoiseGeneratorOctaves(this.endRNG, 10);
         this.noiseGen5 = new NoiseGeneratorOctaves(this.endRNG, 16);
 		THEMEID = theme;
+		
+		perlin1 = new PerlinNoise(par2);
+		perlin2 = new PerlinNoise(par2 + 100L);
     }
 
     public void generateTerrain(int par1, int par2, byte[] par3ArrayOfByte, BiomeGenBase[] par4ArrayOfBiomeGenBase)
     {
-        byte var5 = 2;
-        int var6 = var5 + 1;
-        byte var7 = 33;
-        int var8 = var5 + 1;
-        this.densities = this.initializeNoiseField(this.densities, par1 * var5, 0, par2 * var5, var6, var7, var8);
-
-        for (int var9 = 0; var9 < var5; ++var9)
-        {
-            for (int var10 = 0; var10 < var5; ++var10)
-            {
-                for (int var11 = 0; var11 < 32; ++var11)
-                {
-                    double var12 = 0.25D;
-                    double var14 = this.densities[((var9 + 0) * var8 + var10 + 0) * var7 + var11 + 0];
-                    double var16 = this.densities[((var9 + 0) * var8 + var10 + 1) * var7 + var11 + 0];
-                    double var18 = this.densities[((var9 + 1) * var8 + var10 + 0) * var7 + var11 + 0];
-                    double var20 = this.densities[((var9 + 1) * var8 + var10 + 1) * var7 + var11 + 0];
-                    double var22 = (this.densities[((var9 + 0) * var8 + var10 + 0) * var7 + var11 + 1] - var14) * var12;
-                    double var24 = (this.densities[((var9 + 0) * var8 + var10 + 1) * var7 + var11 + 1] - var16) * var12;
-                    double var26 = (this.densities[((var9 + 1) * var8 + var10 + 0) * var7 + var11 + 1] - var18) * var12;
-                    double var28 = (this.densities[((var9 + 1) * var8 + var10 + 1) * var7 + var11 + 1] - var20) * var12;
-
-                    for (int var30 = 0; var30 < 4; ++var30)
-                    {
-                        double var31 = 0.125D;
-                        double var33 = var14;
-                        double var35 = var16;
-                        double var37 = (var18 - var14) * var31;
-                        double var39 = (var20 - var16) * var31;
-
-                        for (int var41 = 0; var41 < 8; ++var41)
-                        {
-                            int var42 = var41 + var9 * 8 << 11 | 0 + var10 * 8 << 7 | var11 * 4 + var30;
-                            short var43 = 128;
-                            double var44 = 0.125D;
-                            double var46 = var33;
-                            double var48 = (var35 - var33) * var44;
-
-                            for (int var50 = 0; var50 < 8; ++var50)
-                            {
-                                int var51 = 0;
-
-                                if (var46 > 0.0D)
-                                {
-                                    var51 = Block.stone.blockID;
-                                }	
-								else if (var11 * 4 + var30 < 63)
-                                {
-									if (var11 * 4 + var30 < 55)
-									{
-										var51 = Block.stone.blockID;
-									}
-									else
-									{
-										//if(THEMEID == 2)
-										//{
-										//	var51 = Block.lavaStill.blockID;
-										//}
-										//else
-										//{
-											var51 = Block.waterStill.blockID;
-										//}	
-									}	
-                                } 
-
-                                par3ArrayOfByte[var42] = (byte)var51;
-                                var42 += var43;
-                                var46 += var48;
-                            }
-
-                            var33 += var37;
-                            var35 += var39;
-                        }
-
-                        var14 += var22;
-                        var16 += var24;
-                        var18 += var26;
-                        var20 += var28;
-                    }
-                }
-            }
-        }
+    	if(THEMEID == 1)
+    	{
+    		int jj = 0;
+    		int i = par1 << 4;
+    		int j = par2 << 4;
+			for (int k = i; k < i + 16; k++)
+			{
+				for (int m = j; m < j + 16; m++)
+				{
+					int i2 = 70;
+					i2 -= (int) Math.floor((Math.sqrt((0D-k)*(0D-k) + (0D-m)*(0D-m)) / 5D) + (perlin1.turbulence2(k / 60F, m / 60F, 4F) * 5F));
+					if(i2 < 50) { i2 = 50; }
+					
+					for (int i3 = 0; i3 < 128; i3++)
+					{
+						int i4 = 0;
+						if(i3 < i2 - 6)
+						{
+							i4 = Block.stone.blockID;
+						}
+						if(i3 < i2 - 5)
+						{
+							i4 = Block.sandStone.blockID;
+						}
+						else if(i3 < i2)
+						{
+							i4 = Block.sand.blockID;
+						}
+						else if(i3 <= 64)
+						{
+							i4 = Block.waterStill.blockID;
+						}
+						par3ArrayOfByte[jj++] = (byte)i4;
+					}
+				}
+			}
+    	}
+    	else
+    	{
+	        byte var5 = 2;
+	        int var6 = var5 + 1;
+	        byte var7 = 33;
+	        int var8 = var5 + 1;
+	        this.densities = this.initializeNoiseField(this.densities, par1 * var5, 0, par2 * var5, var6, var7, var8);
+	
+	        for (int var9 = 0; var9 < var5; ++var9)
+	        {
+	            for (int var10 = 0; var10 < var5; ++var10)
+	            {
+	                for (int var11 = 0; var11 < 32; ++var11)
+	                {
+	                    double var12 = 0.25D;
+	                    double var14 = this.densities[((var9 + 0) * var8 + var10 + 0) * var7 + var11 + 0];
+	                    double var16 = this.densities[((var9 + 0) * var8 + var10 + 1) * var7 + var11 + 0];
+	                    double var18 = this.densities[((var9 + 1) * var8 + var10 + 0) * var7 + var11 + 0];
+	                    double var20 = this.densities[((var9 + 1) * var8 + var10 + 1) * var7 + var11 + 0];
+	                    double var22 = (this.densities[((var9 + 0) * var8 + var10 + 0) * var7 + var11 + 1] - var14) * var12;
+	                    double var24 = (this.densities[((var9 + 0) * var8 + var10 + 1) * var7 + var11 + 1] - var16) * var12;
+	                    double var26 = (this.densities[((var9 + 1) * var8 + var10 + 0) * var7 + var11 + 1] - var18) * var12;
+	                    double var28 = (this.densities[((var9 + 1) * var8 + var10 + 1) * var7 + var11 + 1] - var20) * var12;
+	
+	                    for (int var30 = 0; var30 < 4; ++var30)
+	                    {
+	                        double var31 = 0.125D;
+	                        double var33 = var14;
+	                        double var35 = var16;
+	                        double var37 = (var18 - var14) * var31;
+	                        double var39 = (var20 - var16) * var31;
+	
+	                        for (int var41 = 0; var41 < 8; ++var41)
+	                        {
+	                            int var42 = var41 + var9 * 8 << 11 | 0 + var10 * 8 << 7 | var11 * 4 + var30;
+	                            short var43 = 128;
+	                            double var44 = 0.125D;
+	                            double var46 = var33;
+	                            double var48 = (var35 - var33) * var44;
+	
+	                            for (int var50 = 0; var50 < 8; ++var50)
+	                            {
+	                                int var51 = 0;
+	
+	                                if (var46 > 0.0D)
+	                                {
+	                                    var51 = Block.stone.blockID;
+	                                }	
+									else if (var11 * 4 + var30 < 63)
+	                                {
+										if (var11 * 4 + var30 < 55)
+										{
+											var51 = Block.stone.blockID;
+										}
+										else
+										{
+											//if(THEMEID == 2)
+											//{
+											//	var51 = Block.lavaStill.blockID;
+											//}
+											//else
+											//{
+												var51 = Block.waterStill.blockID;
+											//}	
+										}	
+	                                } 
+	
+	                                par3ArrayOfByte[var42] = (byte)var51;
+	                                var42 += var43;
+	                                var46 += var48;
+	                            }
+	
+	                            var33 += var37;
+	                            var35 += var39;
+	                        }
+	
+	                        var14 += var22;
+	                        var16 += var24;
+	                        var18 += var26;
+	                        var20 += var28;
+	                    }
+	                }
+	            }
+	        }
+    	}
     }
 
     public void replaceBlocksForBiome(int par1, int par2, byte[] par3ArrayOfByte, BiomeGenBase[] par4ArrayOfBiomeGenBase)

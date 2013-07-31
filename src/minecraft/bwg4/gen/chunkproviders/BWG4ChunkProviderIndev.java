@@ -3,6 +3,7 @@ package bwg4.gen.chunkproviders;
 import java.util.List;
 import java.util.Random;
 
+import bwg4.chunk.BWG4SkylightMap;
 import bwg4.deco.BWG4decoDungeons;
 import bwg4.deco.BWG4decoIndevHouse;
 import bwg4.deco.old.BWG4oldGenMinable;
@@ -10,7 +11,6 @@ import bwg4.deco.old.BWG4oldGenTrees;
 import bwg4.noise.BWG4NoiseOctavesIndev;
 import bwg4.noise.BWG4NoiseOctavesInfdev;
 import bwg4.noise.BWG4NoisePerlinIndev;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSand;
 import net.minecraft.entity.EnumCreatureType;
@@ -67,9 +67,12 @@ public class BWG4ChunkProviderIndev implements IChunkProvider
 	boolean themePARADISE = false;
 	boolean themeWOODS = false;
 	boolean themeSNOW = false;
-	boolean floating = false;
+	boolean typeIsland = false;
+	boolean typeFloating = false;
+	boolean typeInland = false;
+	boolean typeFinite = false;
 
-    public BWG4ChunkProviderIndev(World par1World, long par2, boolean par4, int isFloating, int theme)
+    public BWG4ChunkProviderIndev(World par1World, long par2, boolean par4, int type, int theme)
     {
         this.worldObj = par1World;
         this.mapFeaturesEnabled = par4;
@@ -89,7 +92,10 @@ public class BWG4ChunkProviderIndev implements IChunkProvider
 		if(theme == 3) { themePARADISE = true; }
 		if(theme == 4) { themeWOODS = true; }
 		if(theme == 5) { themeSNOW = true; }
-		if(isFloating == 2) { floating = true; }
+		if(type == 1) { typeIsland = true; }
+		if(type == 2) { typeFloating = true; }
+		if(type == 3) { typeInland = true; }
+		if(type == 4) { typeFinite = true; } 
     }
 
 	public void generateTerrain(int par1, int par2, byte[] par3ArrayOfByte)
@@ -103,190 +109,232 @@ public class BWG4ChunkProviderIndev implements IChunkProvider
 		int jj = 0;
 		int lx = 0; int lz = 0;
 
-		for (int k = i; k < i + 16; k++)
+		/*if(typeFinite && (par1 < -7 || par1 > 7 || par2 < -7 || par2 > 7))
 		{
-			for (int m = j; m < j + 16; m++)
+			for (int k = i; k < i + 16; k++)
 			{
-				int n = k / 1024;
-				int i1 = m / 1024;
-				float f1 = (float)(this.noiseGen1.a(k / 0.03125F, 0.0D, m / 0.03125F) - this.noiseGen2.a(k / 0.015625F, 0.0D, m / 0.015625F)) / 512.0F / 4.0F;
-				float f2 = (float)this.noiseGen5.a(k / 4.0F, m / 4.0F);
-				float f3 = (float)this.noiseGen6.a(k / 8.0F, m / 8.0F) / 8.0F;
-				f2 = f2 > 0.0F ? (float)(this.noiseGen3.a(k * 0.2571428F * 2.0F, m * 0.2571428F * 2.0F) * f3 / 4.0D) : (float)(this.noiseGen4.a(k * 0.2571428F, m * 0.2571428F) * f3);
-				int i2 = (int)(f1 + 64.0F + f2);
-				
-				if ((float)this.noiseGen5.a(k, m) < 0.0F)
+				for (int m = j; m < j + 16; m++)
 				{
-					i2 = i2 / 2 << 1;
-					if ((float)this.noiseGen5.a(k / 5, m / 5) < 0.0F)
+					for (int i3 = 0; i3 < 128; i3++)
 					{
-						i2++;
-					}	
+						int i4 = 0;
+						if(i3 < 63)
+						{
+							i4 = Block.stone.blockID;
+						}
+						else if(i3 <= 64)
+						{
+							i4 = Block.waterStill.blockID;
+						}
+						par3ArrayOfByte[jj++] = (byte)i4;
+					}
 				}
-
-				//BEACH SETTINGS
-				boolean flagSand = noiseGen3.a(k, m) > 8D;
-				boolean flagGravel = noiseGen11.a(k, m) > 18D; //12D
-				if(floating)
-				{ 
-					flagSand = noiseGen3.a(k, m) > 25D; 
-					flagGravel = noiseGen11.a(k, m) > 50D; 
-				}
-				else if(themePARADISE)
-				{ 
-					flagSand = noiseGen3.a(k, m) > -32D; 
-				}
-				else if(themeHELL || themeWOODS)
-				{ 
-					flagSand = noiseGen3.a(k, m) > -8D; 
-				}
-		
-				double ovar32 = clamp(getNoise(8, k, m, 70.3, 70.3, 0));
-				int var77 = (int) ((ovar32 * (seaLevel / 2)) * 2) + seaLevel;
-				//if (var77 > seaLevel)
-				//{
-				//	var77 = height;
-				//}			
-		
-				//CREATE WORLD
-				for (int i3 = 0; i3 < 128; i3++)
+			}
+		}
+		else
+		{*/
+			for (int k = i; k < i + 16; k++)
+			{
+				for (int m = j; m < j + 16; m++)
 				{
-					int i4 = 0;
-					int beachHeight = seaLevel + 1;
-					if(themePARADISE){ beachHeight = seaLevel + 3; }
+					int n = k / 1024;
+					int i1 = m / 1024;
 					
-					//GENERATE BEDROCK
-					if(!floating && i3 == 0)
+					int i2 = 64;
+					if(typeIsland)
 					{
-						i4 = Block.bedrock.blockID;
+						float f2 = (float)this.noiseGen5.a(k / 4.0F, m / 4.0F);
+						i2 = 74 - ((int) Math.floor(Math.sqrt((0D-k)*(0D-k) + (0D-m)*(0D-m)) / 5D));
+						if(i2 < 50) { i2 = 50; }
+						i2 += ((int) f2);
+					}
+					else
+					{
+						float f1 = (float)(this.noiseGen1.a(k / 0.03125F, 0.0D, m / 0.03125F) - this.noiseGen2.a(k / 0.015625F, 0.0D, m / 0.015625F)) / 512.0F / 4.0F;
+						float f2 = (float)this.noiseGen5.a(k / 4.0F, m / 4.0F);
+						float f3 = (float)this.noiseGen6.a(k / 8.0F, m / 8.0F) / 8.0F;
+						f2 = f2 > 0.0F ? (float)(this.noiseGen3.a(k * 0.2571428F * 2.0F, m * 0.2571428F * 2.0F) * f3 / 4.0D) : (float)(this.noiseGen4.a(k * 0.2571428F, m * 0.2571428F) * f3);
+						i2 = (int)(f1 + 64.0F + f2);
 					}
 					
-					//GENERATE GRASS
-					else if ((i3 == i2) && i2 >= beachHeight) 
+					if ((float)this.noiseGen5.a(k, m) < 0.0F)
 					{
-						if(themeHELL)
+						i2 = i2 / 2 << 1;
+						if ((float)this.noiseGen5.a(k / 5, m / 5) < 0.0F)
 						{
-							i4 = Block.dirt.blockID;
-						}
-						else
-						{
-							i4 = Block.grass.blockID;
+							i2++;
 						}	
 					}
+	
+					//BEACH SETTINGS
+					boolean flagSand = noiseGen3.a(k, m) > 8D;
+					boolean flagGravel = noiseGen11.a(k, m) > 18D;
+					if(typeFloating)
+					{ 
+						flagSand = noiseGen3.a(k, m) > 25D; 
+						flagGravel = noiseGen11.a(k, m) > 50D; 
+					}
+					else if(themePARADISE)
+					{ 
+						flagSand = noiseGen3.a(k, m) > -32D; 
+					}
+					else if(themeHELL || themeWOODS)
+					{ 
+						flagSand = noiseGen3.a(k, m) > -8D; 
+					}
 					
-					//BEACH GEN
-					else if (i3 == i2)
+					if(typeIsland)
 					{
-						if(flagGravel)
+						flagSand = true;
+					}
+			
+					double ovar32 = clamp(getNoise(8, k, m, 70.3, 70.3, 0));
+					int var77 = (int) ((ovar32 * (seaLevel / 2)) * 2) + seaLevel;
+					//if (var77 > seaLevel)
+					//{
+					//	var77 = height;
+					//}			
+			
+					//CREATE WORLD
+					for (int i3 = 0; i3 < 128; i3++)
+					{
+						int i4 = 0;
+						int beachHeight = seaLevel + 1;
+						if(themePARADISE){ beachHeight = seaLevel + 3; }
+						
+						//GENERATE BEDROCK
+						if(!typeFloating && i3 == 0)
 						{
-							i4 = Block.gravel.blockID;
+							i4 = Block.bedrock.blockID;
+						}
+						
+						//GENERATE GRASS
+						else if ((i3 == i2) && i2 >= beachHeight) 
+						{
 							if(themeHELL)
 							{
-								i4 = Block.grass.blockID;
-							}
-						}
-						else if(flagSand)
-						{
-							i4 = Block.sand.blockID;
-							if(themeHELL)
-							{
-								i4 = Block.grass.blockID;
-							}
-						}
-						else if (i2 > seaLevel - 1)
-						{
-							i4 = Block.grass.blockID;
-						}
-						else if (floating)
-						{
-							i4 = Block.grass.blockID;
-						}
-						else
-						{
-							i4 = Block.dirt.blockID;
-						}
-					}
-					
-					//GENERATE STONE
-					else if (i3 <= i2 - 2)
-					{
-						i4 = Block.stone.blockID;
-					}
-					
-					//GENERATE DIRT
-					else if (i3 < i2)
-					{
-						i4 = Block.dirt.blockID;
-					}
-
-					//GENERATE LIQUIDS
-					else if (i3 <= 64 && !floating)
-					{
-						if(themeHELL)
-						{
-							if (i3 == 64)
-							{
-								i4 = Block.lavaMoving.blockID;
+								i4 = Block.dirt.blockID;
 							}
 							else
 							{
-								i4 = Block.lavaStill.blockID;
+								i4 = Block.grass.blockID;
+							}	
+						}
+						
+						//BEACH GEN
+						else if (i3 == i2)
+						{
+							if(flagGravel)
+							{
+								i4 = Block.gravel.blockID;
+								if(themeHELL)
+								{
+									i4 = Block.dirt.blockID;
+								}
+							}
+							else if(flagSand)
+							{
+								i4 = Block.sand.blockID;
+								if(themeHELL)
+								{
+									i4 = Block.dirt.blockID;
+								}
+							}
+							else if (i2 > seaLevel - 1)
+							{
+								i4 = Block.grass.blockID;
+							}
+							else if (typeFloating)
+							{
+								i4 = Block.grass.blockID;
+							}
+							else
+							{
+								i4 = Block.dirt.blockID;
 							}
 						}
-						else
+						
+						//GENERATE STONE
+						else if (i3 <= i2 - 2)
 						{
-							i4 = Block.waterStill.blockID;
+							i4 = Block.stone.blockID;
+						}
+						
+						//GENERATE DIRT
+						else if (i3 < i2)
+						{
+							i4 = Block.dirt.blockID;
+						}
+	
+						//GENERATE LIQUIDS
+						else if (i3 <= 64 && !typeFloating)
+						{
+							if(themeHELL)
+							{
+								if (i3 == 64)
+								{
+									i4 = Block.lavaMoving.blockID;
+								}
+								else
+								{
+									i4 = Block.lavaStill.blockID;
+								}
+							}
+							else
+							{
+								i4 = Block.waterStill.blockID;
+							}	
 						}	
-					}	
-
-					if (floating && i3 < var77 && i4 != 0)
-					{
-						if((i3 > 60) && i4 == Block.gravel.blockID ) { }
-						else if((i3 > 60) && i4 == Block.sand.blockID ) { }
-						else
+	
+						if (typeFloating && i3 < var77 && i4 != 0)
+						{
+							if((i3 > 60) && i4 == Block.gravel.blockID ) { }
+							else if((i3 > 60) && i4 == Block.sand.blockID ) { }
+							else
+							{
+								i4 = 0;
+							}	
+						}
+				
+						rand.setSeed(n + i1 * 13871);
+						int i5 = (n << 10) + 128 + rand.nextInt(512);
+						int i6 = (i1 << 10) + 128 + rand.nextInt(512);
+						i5 = k - i5;
+						int i7 = m - i6;
+						if (i5 < 0)
+						{
+							i5 = -i5;
+						}	
+						if (i7 < 0)
+						{
+							i7 = -i7;
+						}
+						if (i7 > i5)
+						{
+							i5 = i7;
+						}	
+						if ((i5 = 127 - i5) == 255)
+						{
+							i5 = 1;
+						}	
+						if (i5 < i2)
+						{
+							i5 = i2;
+						}	
+						if (!typeFloating && (i3 <= i5) && ((i4 == 0) || (i4 == Block.waterStill.blockID) || (i4 == Block.lavaStill.blockID)))
+						{
+							i4 = Block.brick.blockID;
+						}
+						if (i4 < 0)
 						{
 							i4 = 0;
-						}	
+						}
+						
+						par3ArrayOfByte[jj++] = (byte)i4;
 					}
-			
-					rand.setSeed(n + i1 * 13871);
-					int i5 = (n << 10) + 128 + rand.nextInt(512);
-					int i6 = (i1 << 10) + 128 + rand.nextInt(512);
-					i5 = k - i5;
-					int i7 = m - i6;
-					if (i5 < 0)
-					{
-						i5 = -i5;
-					}	
-					if (i7 < 0)
-					{
-						i7 = -i7;
-					}
-					if (i7 > i5)
-					{
-						i5 = i7;
-					}	
-					if ((i5 = 127 - i5) == 255)
-					{
-						i5 = 1;
-					}	
-					if (i5 < i2)
-					{
-						i5 = i2;
-					}	
-					if (!floating && (i3 <= i5) && ((i4 == 0) || (i4 == Block.waterStill.blockID) || (i4 == Block.lavaStill.blockID)))
-					{
-						i4 = Block.brick.blockID;
-					}
-					if (i4 < 0)
-					{
-						i4 = 0;
-					}
-					
-					par3ArrayOfByte[jj++] = (byte)i4;
-				}
-			}	
-		}
+				}	
+			}
+		//}
 	}
 	
     private double clamp(double input)
@@ -325,7 +373,7 @@ public class BWG4ChunkProviderIndev implements IChunkProvider
         this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, par1 * 16, par2 * 16, 16, 16);
         this.caveGenerator.generate(this, this.worldObj, par1, par2, var3);
 
-        if (mapFeaturesEnabled && !floating)
+        if (mapFeaturesEnabled && !typeFloating)
         {
             mineshaftGenerator.generate(this, this.worldObj, par1, par2, var3);
             strongholdGenerator.generate(this, this.worldObj, par1, par2, var3);
@@ -362,7 +410,7 @@ public class BWG4ChunkProviderIndev implements IChunkProvider
 		
 		MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Pre(par1IChunkProvider, worldObj, rand, par2, par3, false));
 		
-        if (mapFeaturesEnabled && !floating)
+        if (mapFeaturesEnabled && !typeFloating)
         {
             mineshaftGenerator.generateStructuresInChunk(this.worldObj, this.rand, par2, par3);
             strongholdGenerator.generateStructuresInChunk(this.worldObj, this.rand, par2, par3);
@@ -378,7 +426,7 @@ public class BWG4ChunkProviderIndev implements IChunkProvider
     	}
 		
 		//ORES
-		if(floating)
+		if(typeFloating)
 		{
 			if(rand.nextInt(30) == 0)
 			{
@@ -431,7 +479,7 @@ public class BWG4ChunkProviderIndev implements IChunkProvider
 		}
 		
 		int floatingore = 0;
-		if(floating) { floatingore = 16; }
+		if(typeFloating) { floatingore = 16; }
 
 		for(int k3 = 0; k3 < 2; k3++)
 		{
@@ -477,6 +525,7 @@ public class BWG4ChunkProviderIndev implements IChunkProvider
             l333++;
         }
 		if(themeWOODS){ l333 += 8; }
+		else if(typeIsland){ l333 += 2; }
 		Object obj = new BWG4oldGenTrees(0);
         for(int k88 = 0; k88 < l333; k88++)
         {
@@ -633,7 +682,7 @@ public class BWG4ChunkProviderIndev implements IChunkProvider
 
     public void recreateStructures(int par1, int par2)
     {
-        if (this.mapFeaturesEnabled && !floating)
+        if (this.mapFeaturesEnabled && !typeFloating)
         {
             this.mineshaftGenerator.generate(this, this.worldObj, par1, par2, (byte[])null);
             this.strongholdGenerator.generate(this, this.worldObj, par1, par2, (byte[])null);

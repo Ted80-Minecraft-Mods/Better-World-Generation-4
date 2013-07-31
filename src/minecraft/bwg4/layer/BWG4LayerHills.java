@@ -18,9 +18,9 @@ public class BWG4LayerHills extends BWG4Layer
 	
 		for(int i = 0; i < Settings.length; i++)
 		{
-			if(Settings[i].equals("Mushroom Island=true")) { IslandMushroom = true; }
-			else if(Settings[i].equals("Jungle Island=true")) { IslandJungle = true; }
-			else if(Settings[i].equals("Tropical Island=true")) { IslandTropic = true; }
+			if(Settings[i].equals("Mushroom Island") || Settings[i].equals("Mushroom Island=true")) { IslandMushroom = true; }
+			else if(Settings[i].equals("Jungle Island") || Settings[i].equals("Jungle Island=true")) { IslandJungle = true; }
+			else if(Settings[i].equals("Tropical Island") || Settings[i].equals("Tropical Island=true")) { IslandTropic = true; }
 		}
     }
 
