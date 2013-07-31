@@ -13,6 +13,13 @@ A world generator mod for minecraft made by ted80.
 
 ## CHANGELOG ##
 
+**Version 1.1.5** '31-7-2013'
+- Added new indev type
+- Changed survival island generator
+- Fixed beta and alpha spawn points
+- Disabled river option again
+- Added biome borders to Biome o' plenty and extrabiomexl biomes
+
 **Version 1.1.4** '30-7-2013'
 - Added new trees to rainforest biome
 - Added trees to grassland biome
