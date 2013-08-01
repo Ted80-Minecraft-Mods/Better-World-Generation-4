@@ -4,12 +4,9 @@ A world generator mod for minecraft made by ted80.
 
 ## PLANNED ##
 
-- fix cave dimension lag
 - wasteland generator
 - new survival island/skyland themes
 - new better default biomes
-- hardcore generator
-- fix sky dimension lag
 
 ## CHANGELOG ##
 
