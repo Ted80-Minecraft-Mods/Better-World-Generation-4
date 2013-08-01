@@ -200,7 +200,7 @@ public class BWG4Provider extends WorldProvider
 	        else if (BWG4GeneratorType.Current == BWG4GeneratorType.BWG4INDEV1) 
 			{ 
 				int themeID = Integer.parseInt(BWG4GeneratorType.generatorinfo);
-				return new BWG4ChunkProviderIndev(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled(), 1, themeID); 
+				return new BWG4ChunkProviderIndev(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled(), 3, themeID); 
 			}
 	        else if (BWG4GeneratorType.Current == BWG4GeneratorType.BWG4INDEV2) 
 			{ 

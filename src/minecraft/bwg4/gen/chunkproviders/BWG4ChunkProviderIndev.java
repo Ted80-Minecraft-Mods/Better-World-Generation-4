@@ -144,7 +144,7 @@ public class BWG4ChunkProviderIndev implements IChunkProvider
 					if(typeIsland)
 					{
 						float f2 = (float)this.noiseGen5.a(k / 4.0F, m / 4.0F);
-						i2 = 74 - ((int) Math.floor(Math.sqrt((0D-k)*(0D-k) + (0D-m)*(0D-m)) / 5D));
+						i2 = 74 - ((int) Math.floor(Math.sqrt((0D-k)*(0D-k) + (0D-m)*(0D-m)) / 7D));
 						if(i2 < 50) { i2 = 50; }
 						i2 += ((int) f2);
 					}
@@ -525,7 +525,7 @@ public class BWG4ChunkProviderIndev implements IChunkProvider
             l333++;
         }
 		if(themeWOODS){ l333 += 8; }
-		else if(typeIsland){ l333 += 2; }
+		else if(typeIsland){ l333 += 1; }
 		Object obj = new BWG4oldGenTrees(0);
         for(int k88 = 0; k88 < l333; k88++)
         {
@@ -536,8 +536,8 @@ public class BWG4ChunkProviderIndev implements IChunkProvider
         }
 		
 		//FLOWERS
-		int amount1 = 1; 
-		if(themePARADISE){ amount1 = 5; }
+		int amount1 = 2; 
+		if(themePARADISE){ amount1 = 8; }
 		for(int i34 = 0; i34 < amount1; i34++)
 		{
 			for(int i14 = 0; i14 < 2; i14++)
@@ -588,23 +588,6 @@ public class BWG4ChunkProviderIndev implements IChunkProvider
 				int l20 = var5 + rand.nextInt(16) + 8;
 				(new WorldGenFlowers(Block.mushroomRed.blockID)).generate(worldObj, rand, l15, l17, l20);
 			} 
-		}
-
-		//WATER AND LAVA
-		for(int h19 = 0; h19 < 40; h19++)
-		{
-			int h21 = var4 + rand.nextInt(16) + 8;
-			int h23 = rand.nextInt(rand.nextInt(120) + 8);
-			int h24 = var5 + rand.nextInt(16) + 8;
-			(new WorldGenLiquids(Block.waterMoving.blockID)).generate(worldObj, rand, h21, h23, h24);
-		}
-
-		for(int m19 = 0; m19 < 15; m19++)
-		{
-			int m22 = var4 + rand.nextInt(16) + 8;
-			int m23 = rand.nextInt(rand.nextInt(rand.nextInt(112) + 8) + 8);
-			int m25 = var5 + rand.nextInt(16) + 8;
-			(new WorldGenLiquids(Block.lavaMoving.blockID)).generate(worldObj, rand, m22, m23, m25);
 		}
 		
         SpawnerAnimals.performWorldGenSpawning(this.worldObj, var6, var4 + 8, var5 + 8, 16, 16, this.rand);
