@@ -2,13 +2,13 @@
 
 A world generator mod for minecraft made by ted80. 
 
-## PLANNED ##
-
-- wasteland generator
-- new survival island/skyland themes
-- new better default biomes
-
 ## CHANGELOG ##
+
+**Version 1.1.6** '3-8-2013'
+- Added new Survival island theme
+- Tweaked indev generator
+- Fixed survival island sandstone bug
+- Fixed BigTrees compatibility
 
 **Version 1.1.5** '31-7-2013'
 - Added new indev type
