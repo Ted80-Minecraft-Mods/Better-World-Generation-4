@@ -6,6 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntityChest;
+import net.minecraft.util.Direction;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
@@ -20,71 +21,7 @@ public class BWG4decoSurvival extends WorldGenerator
 
     public boolean generate(World par1World, Random par2Random, int x, int y, int z)
     {
-		if(survivalobject == 1)//SURVIVAL ISLAND DIRT BLOCK WITH CHEST
-		{
-			//DIRT BLOCK
-			for (int x1 = 0 + x; x1 <= 2 + x; x1++) 
-			{
-				for (int z1 = 0 + z; z1 <= 2 + z; z1++)
-				{			
-					for (int y1 = -2 + y; y1 <= 0 + y; y1++)
-					{
-						if(y1 == 0 + y)
-						{
-							par1World.setBlock(x1, y1, z1, Block.grass.blockID);
-						}
-						else
-						{
-							par1World.setBlock(x1, y1, z1, Block.dirt.blockID);
-						}	
-					}
-				}
-			}
-			
-			//TREE
-			int xx = x + 1;
-			int yy = y + 1;
-			int zz = z + 1;
-			for (int x3 = xx - 2; x3 <= xx + 2; x3++) //Leaves layer 1
-			{
-				for (int z3 = zz - 2; z3 <= zz + 2; z3++)
-				{			
-					for (int y3 = yy + 2; y3 <= yy + 3; y3++)
-					{
-						par1World.setBlock(x3, y3, z3, Block.leaves.blockID);
-					}
-				}	
-			}		
-			for (int x4 = xx - 1; x4 <= xx + 1; x4++) //Leaves layer 2
-			{
-				for (int z4 = zz - 1; z4 <= zz + 1; z4++)
-				{			
-					par1World.setBlock(x4, yy + 4, z4, Block.leaves.blockID);
-				}	
-			}		
-			for (int y2 = yy; y2 <= yy + 4; y2++) //LOG
-			{
-				par1World.setBlock(xx, y2, zz, Block.wood.blockID);
-			}
-			par1World.setBlock(xx + 1, yy + 5, zz, Block.leaves.blockID);
-			par1World.setBlock(xx - 1, yy + 5, zz, Block.leaves.blockID);
-			par1World.setBlock(xx, yy + 5, zz + 1, Block.leaves.blockID);
-			par1World.setBlock(xx, yy + 5, zz - 1, Block.leaves.blockID);
-			par1World.setBlock(xx, yy + 5, zz, Block.leaves.blockID);
-			
-			//CHEST
-			par1World.setBlock(xx - 1, yy, zz, Block.chest.blockID);
-			TileEntityChest tileentitychest = (TileEntityChest)par1World.getBlockTileEntity(xx - 1, yy, zz);		
-			for (int c = 0; c < 20; c++) 
-			{ 
-				ItemStack itemstack = getChestList(c, 1, par2Random, par1World); 
-				if (tileentitychest != null && itemstack != null) 
-				{ 
-					tileentitychest.setInventorySlotContents(c, itemstack); 
-				} 
-			}
-		}	
-		else if(survivalobject == 2)//NETHER TREE
+		if(survivalobject == 2)//NETHER TREE
 		{
 			int var6 = par2Random.nextInt(4) + 6;
 			int var7 = 1 + par2Random.nextInt(2);
@@ -237,25 +174,48 @@ public class BWG4decoSurvival extends WorldGenerator
 				return false;
 			}
 			
-			int treeheight = par2Random.nextInt(5) + 6;
+			int treeheight = par2Random.nextInt(8) + 10;
 		
 			for(int s = 0 + y; s < treeheight + y; s++)
 			{
 				if (par1World.isAirBlock(x, s, z)) { par1World.setBlock(x, s, z, Block.wood.blockID, 3, 0); }
 			}
-			if (par1World.isAirBlock(x, y + treeheight, z)) { par1World.setBlock(x, y + treeheight, z, Block.leaves.blockID, 3, 0); }
-			if (par1World.isAirBlock(x, y + treeheight - 1, z + 1)) { par1World.setBlock(x, y + treeheight - 1, z + 1, Block.leaves.blockID, 3, 0); }
-			if (par1World.isAirBlock(x, y + treeheight - 1, z - 1)) { par1World.setBlock(x, y + treeheight - 1, z - 1, Block.leaves.blockID, 3, 0); }
-			if (par1World.isAirBlock(x + 1, y + treeheight - 1, z)) { par1World.setBlock(x + 1, y + treeheight - 1, z, Block.leaves.blockID, 3, 0); }
-			if (par1World.isAirBlock(x - 1, y + treeheight - 1, z)) { par1World.setBlock(x - 1, y + treeheight - 1, z, Block.leaves.blockID, 3, 0); }
-			if (par1World.isAirBlock(x, y + treeheight - 1, z + 2)) { par1World.setBlock(x, y + treeheight - 1, z + 2, Block.leaves.blockID, 3, 0); }
-			if (par1World.isAirBlock(x, y + treeheight - 1, z - 2)) { par1World.setBlock(x, y + treeheight - 1, z - 2, Block.leaves.blockID, 3, 0); }
-			if (par1World.isAirBlock(x + 2, y + treeheight - 1, z)) { par1World.setBlock(x + 2, y + treeheight - 1, z, Block.leaves.blockID, 3, 0); }
-			if (par1World.isAirBlock(x - 2, y + treeheight - 1, z)) { par1World.setBlock(x - 2, y + treeheight - 1, z, Block.leaves.blockID, 3, 0); }
-			if (par1World.isAirBlock(x, y + treeheight - 2, z + 3)) { par1World.setBlock(x, y + treeheight - 2, z + 3, Block.leaves.blockID, 3, 0); }
-			if (par1World.isAirBlock(x, y + treeheight - 2, z - 3)) { par1World.setBlock(x, y + treeheight - 2, z - 3, Block.leaves.blockID, 3, 0); }
-			if (par1World.isAirBlock(x + 3, y + treeheight - 2, z)) { par1World.setBlock(x + 3, y + treeheight - 2, z, Block.leaves.blockID, 3, 0); }
-			if (par1World.isAirBlock(x - 3, y + treeheight - 2, z)) { par1World.setBlock(x - 3, y + treeheight - 2, z, Block.leaves.blockID, 3, 0); }
+			
+            if (par2Random.nextInt(6) == 0)
+            {
+                for (int k1 = 0; k1 < 4; ++k1)
+                {
+                    if (par2Random.nextInt(3) == 0)
+                    {
+                        int i2 = par2Random.nextInt(3);
+                        this.setBlockAndMetadata(par1World, x + Direction.offsetX[Direction.rotateOpposite[k1]], y + treeheight - 2, z + Direction.offsetZ[Direction.rotateOpposite[k1]], Block.cocoaPlant.blockID, i2 << 2 | k1);
+                    }
+                }
+            }
+			
+			int[] leaves = new int[]{
+				x, y + treeheight, z,
+				x, y + treeheight - 1, z + 1,
+				x, y + treeheight - 1, z - 1,
+				x + 1, y + treeheight - 1, z,
+				x - 1, y + treeheight - 1, z,
+				x, y + treeheight - 1, z + 2,
+				x, y + treeheight - 1, z - 2,
+				x + 2, y + treeheight - 1, z,
+				x - 2, y + treeheight - 1, z,
+				x, y + treeheight - 2, z + 3,
+				x, y + treeheight - 2, z - 3,
+				x + 3, y + treeheight - 2, z,
+				x - 3, y + treeheight - 2, z
+			};
+			
+			for(int i = 0; i < leaves.length; i+=3)
+			{
+				if (par1World.isAirBlock(leaves[i], leaves[i + 1], leaves[i + 2])) 
+				{ 
+					par1World.setBlock(leaves[i], leaves[i + 1], leaves[i + 2], Block.leaves.blockID, 3, 0); 
+				}
+			}
 			
 			return true;
 		}

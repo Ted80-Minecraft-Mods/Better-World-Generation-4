@@ -44,18 +44,32 @@ public class BWG4BiomesSurvival extends BiomeGenBase
 		
 		if(biomeID == 0) //island_normal
 		{
+			spawnableCreatureList.clear();
 			bwg4decorator.usebwg4deco = true;
 			bwg4decorator.tl1amount = -20; 
+			bwg4decorator.sugarcane = 0;
 		}
-		else if(biomeID == 1) //island_hell
+		else if(biomeID == 1) //island_tropical
 		{
+			spawnableCreatureList.clear();
 			bwg4decorator.usebwg4deco = true;
-			bwg4decorator.tl1amount = -20; 
+			bwg4decorator.tl1amount = 5; 
+			bwg4decorator.tl1miny = 67;
+			bwg4decorator.usetl2 = true;
+			bwg4decorator.tl2miny = 0; 
+			bwg4decorator.tl2maxy = 75; 
+			bwg4decorator.tl2amount = 3;
+			bwg4decorator.tl2tree = new WorldGenShrub(3, 0);
+			bwg4decorator.redflowers = 3;
+			bwg4decorator.yellowflowers = 3; 
+			bwg4decorator.grass = 4; 
 		}
-		else if(biomeID == 2) //island_ice
+		else if(biomeID == 2) //island_iceberg
 		{
+			spawnableCreatureList.clear();
 			bwg4decorator.usebwg4deco = true;
 			bwg4decorator.tl1amount = -20; 
+			bwg4decorator.sugarcane = 0;
 		}
 		else if(biomeID == 3) //island_paradise
 		{
@@ -66,7 +80,7 @@ public class BWG4BiomesSurvival extends BiomeGenBase
 			bwg4decorator.usebwg4deco = true;
 			
 			bwg4decorator.mayrandtrees = true; 
-			bwg4decorator.tl1amount = 4; 
+			bwg4decorator.tl1amount = 5; 
 			bwg4decorator.usetl2 = true;
 			bwg4decorator.tl2miny = 0; 
 			bwg4decorator.tl2maxy = 75; 
@@ -88,11 +102,13 @@ public class BWG4BiomesSurvival extends BiomeGenBase
 		{
 			bwg4decorator.usebwg4deco = true;
 			bwg4decorator.tl1amount = -20; 
+			bwg4decorator.sugarcane = 0;
 		}
 		else if(biomeID == 5) //island_normal
 		{
 			bwg4decorator.usebwg4deco = true;
 			bwg4decorator.tl1amount = -20; 
+			bwg4decorator.sugarcane = 0;
 		}*/
 		else if(biomeID == 6) //skyland_normal
 		{
@@ -169,10 +185,22 @@ public class BWG4BiomesSurvival extends BiomeGenBase
 		if(biomeID == 0) //island_normal
 		{
 		}
-		else if(biomeID == 1) //island_hell
+		else if(biomeID == 1) //island_tropical
 		{
+			if(par1Random.nextInt(5) == 0)
+			{
+				return new BWG4decoBigTree(par1Random.nextInt(5) + 9, 0); 
+			}
+			if(par1Random.nextInt(2) == 0)
+			{
+				return new BWG4oldGenTrees(2); 
+			} 
+			else
+			{
+				return new BWG4decoSurvival(4);
+			}
 		}
-		else if(biomeID == 2) //island_ice
+		else if(biomeID == 2) //island_iceberg
 		{
 		}
 		else if(biomeID == 3) //island_paradise

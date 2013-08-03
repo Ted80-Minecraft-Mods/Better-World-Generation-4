@@ -161,7 +161,7 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
         }
         else if (button.id == 16)
         {
-        	if(ISLAND_theme == 0) { ISLAND_theme = 3; } else { ISLAND_theme = 0; }
+        	if(ISLAND_theme == 0) { ISLAND_theme = 1; } else if(ISLAND_theme == 1) { ISLAND_theme = 3; } else { ISLAND_theme = 0; }
         }
         else if (button.id == 17)
         {
@@ -203,7 +203,7 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
 		Setting_INDEV_Theme.drawButton = (generatorselected == 6);
 		
 		//ISLAND
-		if(ISLAND_theme == 0) { Setting_ISLAND_Theme.displayString = "Theme: Normal"; } else if(ISLAND_theme == 1) { Setting_ISLAND_Theme.displayString = "Theme: [NAME]"; } else if(ISLAND_theme == 2) { Setting_ISLAND_Theme.displayString = "Theme: [NAME]"; } else if(ISLAND_theme == 3) { Setting_ISLAND_Theme.displayString = "Theme: Paradise"; } else if(ISLAND_theme == 4) { Setting_ISLAND_Theme.displayString = "Theme: [NAME]"; } else { Setting_ISLAND_Theme.displayString = "Theme: [NAME]"; }
+		if(ISLAND_theme == 0) { Setting_ISLAND_Theme.displayString = "Theme: Normal"; } else if(ISLAND_theme == 1) { Setting_ISLAND_Theme.displayString = "Theme: Tropical"; } else if(ISLAND_theme == 2) { Setting_ISLAND_Theme.displayString = "Theme: Iceberg"; } else if(ISLAND_theme == 3) { Setting_ISLAND_Theme.displayString = "Theme: Paradise"; } else if(ISLAND_theme == 4) { Setting_ISLAND_Theme.displayString = "Theme: [NAME]"; } else { Setting_ISLAND_Theme.displayString = "Theme: [NAME]"; }
 		Setting_ISLAND_Theme.drawButton = (generatorselected == 8);
 		
 		//SKYLAND

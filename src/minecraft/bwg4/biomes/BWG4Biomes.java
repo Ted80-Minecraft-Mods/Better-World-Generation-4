@@ -40,8 +40,8 @@ public class BWG4Biomes
 	public static BiomeGenBase INDEVsnow;
 	
 	public static BiomeGenBase ISLANDnormal;
-	//public static BiomeGenBase ISLANDhell;
-	//public static BiomeGenBase ISLANDice;
+	public static BiomeGenBase ISLANDtropical;
+	public static BiomeGenBase ISLANDiceberg;
 	public static BiomeGenBase ISLANDparadise;
 	//public static BiomeGenBase ISLANDnormal;
 	//public static BiomeGenBase ISLANDnormal;
@@ -125,8 +125,8 @@ public class BWG4Biomes
 		
 		//island,skyland,skyblock
 		ISLANDnormal = (new BWG4BiomesSurvival(BWG4Config.biomeIDs[27], 0)).setColor(353825).setBiomeName("Survival Island").setTemperatureRainfall(0.9F, 0.8F);
-		//ISLANDhell = (new BWG4BiomesSurvival(BWG4Config.biomeIDs[28], 1)).setColor(353825).setBiomeName("Survival Island").setTemperatureRainfall(0.9F, 0.8F);
-		//ISLANDice = (new BWG4BiomesSurvival(BWG4Config.biomeIDs[29], 2)).setColor(353825).setBiomeName("Survival Island").setTemperatureRainfall(0.0F, 0.5F);
+		ISLANDtropical = (new BWG4BiomesSurvival(BWG4Config.biomeIDs[28], 1)).setColor(353825).setBiomeName("Survival Island").setTemperatureRainfall(0.9F, 0.8F);
+		ISLANDiceberg = (new BWG4BiomesSurvival(BWG4Config.biomeIDs[29], 2)).setColor(353825).setBiomeName("Survival Island").setTemperatureRainfall(0.0F, 0.5F);
 		ISLANDparadise = (new BWG4BiomesSurvival(BWG4Config.biomeIDs[30], 3)).setColor(353825).setBiomeName("Survival Island").setTemperatureRainfall(0.9F, 0.8F);
 		//ISLANDnormal = (new BWG4BiomesSurvival(BWG4Config.biomeIDs[31], 4)).setColor(353825).setBiomeName("Survival Island").setTemperatureRainfall(0.9F, 0.8F);
 		//ISLANDnormal = (new BWG4BiomesSurvival(BWG4Config.biomeIDs[32], 5)).setColor(353825).setBiomeName("Survival Island").setTemperatureRainfall(0.9F, 0.8F);

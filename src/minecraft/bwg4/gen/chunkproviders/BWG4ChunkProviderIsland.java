@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import bwg4.deco.BWG4decoDungeons;
+import bwg4.deco.BWG4decoIsland;
 import bwg4.deco.BWG4decoSurvival;
 import bwg4.deco.old.BWG4oldGenClay;
 import bwg4.util.PerlinNoise;
@@ -77,18 +78,18 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
 			{
 				for (int m = j; m < j + 16; m++)
 				{
-					int i2 = 70;
+					int i2 = 67;
 					i2 -= (int) Math.floor((Math.sqrt((0D-k)*(0D-k) + (0D-m)*(0D-m)) / 5D) + (perlin1.turbulence2(k / 60F, m / 60F, 4F) * 5F));
 					if(i2 < 50) { i2 = 50; }
 					
 					for (int i3 = 0; i3 < 128; i3++)
 					{
 						int i4 = 0;
-						if(i3 < i2 - 6)
+						if(i3 < i2 - 6 + endRNG.nextInt(3))
 						{
 							i4 = Block.stone.blockID;
 						}
-						if(i3 < i2 - 5)
+						else if(i3 < i2 - 3)
 						{
 							i4 = Block.sandStone.blockID;
 						}
@@ -99,6 +100,61 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
 						else if(i3 <= 64)
 						{
 							i4 = Block.waterStill.blockID;
+						}
+						par3ArrayOfByte[jj++] = (byte)i4;
+					}
+				}
+			}
+    	}
+    	else if(THEMEID == 2)
+    	{
+    		int jj = 0;
+    		int i = par1 << 4;
+    		int j = par2 << 4;
+			for (int k = i; k < i + 16; k++)
+			{
+				for (int m = j; m < j + 16; m++)
+				{
+					int i2 = 78;
+					i2 -= (int) Math.floor((Math.sqrt((0D-k)*(0D-k) + (0D-m)*(0D-m)) / 3D) + (perlin1.turbulence2(k / 60F, m / 60F, 4F) * 5F));
+					if(i2 < 50) { i2 = 50; }
+					
+					for (int i3 = 0; i3 < 128; i3++)
+					{
+						int i4 = 0;
+						if(i2 > 67)
+						{
+							if(i3 < i2 - 3)
+							{
+								i4 = Block.stone.blockID;
+							}
+							else if(i3 < i2 - 1)
+							{
+								i4 = Block.dirt.blockID;
+							}
+							else if(i3 < i2)
+							{
+								i4 = Block.grass.blockID;
+							}
+						}
+						else
+						{
+							if(i3 < i2 - 6 + endRNG.nextInt(3))
+							{
+								i4 = Block.stone.blockID;
+							}
+							else if(i3 < i2 - 3)
+							{
+								i4 = Block.sandStone.blockID;
+							}
+							else if(i3 < i2)
+							{
+								i4 = Block.sand.blockID;
+							}
+							else if(i3 <= 64)
+							{
+								i4 = Block.waterStill.blockID;
+							}
 						}
 						par3ArrayOfByte[jj++] = (byte)i4;
 					}
@@ -224,7 +280,7 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
 							var9 = (byte)Block.sand.blockID;
 							var10 = (byte)Block.sand.blockID;
 							
-							if(var11 > 67 && THEMEID == 4) 
+							if(var11 > 67) 
 							{ 
 								var9 = (byte)Block.grass.blockID;
 								var10 = (byte)Block.dirt.blockID;
@@ -276,7 +332,12 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
         byte[] var3 = new byte[32768];
         this.biomesForGeneration = this.endWorld.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, par1 * 16, par2 * 16, 16, 16);
         this.generateTerrain(par1, par2, var3, this.biomesForGeneration);
-        this.replaceBlocksForBiome(par1, par2, var3, this.biomesForGeneration);
+        
+        if(THEMEID == 4)
+        {
+        	this.replaceBlocksForBiome(par1, par2, var3, this.biomesForGeneration);
+        }
+        
         this.caveGenerator.generate(this, this.endWorld, par1, par2, var3);
 		this.strongholdGenerator.generate(this, this.endWorld, par1, par2, var3);
 		
@@ -292,10 +353,6 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
         return var4;
     }
 
-    /**
-     * generates a subset of the level's terrain data. Takes 7 arguments: the [empty] noise array, the position, and the
-     * size.
-     */
     private double[] initializeNoiseField(double[] par1ArrayOfDouble, int par2, int par3, int par4, int par5, int par6, int par7)
     {
         if (par1ArrayOfDouble == null)
@@ -307,9 +364,7 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
 		float maxHeight = 64.0F;
 		double extremenes = -3000.0D;
 		double weight = 8000.0D;
-		if(THEMEID == 1) { maxHeight = 80.0F; extremenes = -2500.0D; }
-		//if(THEMEID == 2) { maxHeight = 80.0F; extremenes = -2500.0D; }
-		if(THEMEID == 4) { extremenes = -400.0D; }		
+		extremenes = -400.0D;
 		
         double var8 = 684.412D;
         double var10 = 684.412D;
@@ -470,9 +525,13 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
 		
 		if(par2 == 0 && par3 == 0 && THEMEID != 4)
 		{
+			if(THEMEID == 1 || THEMEID == 2)
+			{
+				(new BWG4decoIsland(THEMEID)).generate(endWorld, endRNG, 0, endWorld.getHeightValue(0, 0), 0);			
+			}
+			
 			if (!(new BWG4decoDungeons(9, false, false, false)).generate(this.endWorld, this.endRNG, -15 + endRNG.nextInt(30), 40, -15 + endRNG.nextInt(30))) { ; }		
 			if (!(new BWG4decoDungeons(10, false, false, false)).generate(this.endWorld, this.endRNG, -15 + endRNG.nextInt(30), 20, -15 + endRNG.nextInt(30))) { ; }	
-			(new BWG4decoSurvival(1)).generate(endWorld, endRNG, 0, endWorld.getHeightValue(0, 0), 0);			
 		}	
 		
 		for (int var42 = 0; var42 < 20; ++var42)
@@ -490,7 +549,10 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
         BiomeGenBase var6 = this.endWorld.getBiomeGenForCoords(var4 + 16, var5 + 16);
         var6.decorate(this.endWorld, this.endWorld.rand, var4, var5);
 		
-        if(THEMEID == 4) { SpawnerAnimals.performWorldGenSpawning(this.endWorld, var6, var4 + 8, var5 + 8, 16, 16, this.endWorld.rand); }
+        if(THEMEID == 4) 
+        { 
+        	SpawnerAnimals.performWorldGenSpawning(this.endWorld, var6, var4 + 8, var5 + 8, 16, 16, this.endWorld.rand); 
+        }
 		
         int var7 = var4 + 8;
         int var8 = var5 + 8;

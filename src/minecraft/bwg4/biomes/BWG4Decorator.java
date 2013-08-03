@@ -246,36 +246,37 @@ public class BWG4Decorator extends BiomeDecorator
 				generateOres();
 			}
 
-			//===== TREE LAYER 1 =====
 			double treedouble = 0.5D;
-			int l = (int)((TreeNoise.func_806_a((double)chunk_X * treedouble, (double)chunk_Z * treedouble) / 8D + randomGenerator.nextDouble() * 4D + 4D) / 3D);
-			if(l < 0)
+			if(TerrainGen.decorate(currentWorld, randomGenerator, chunk_X, chunk_Z, TREE))
 			{
-				l = 0;
-			}
-			l = l + tl1amount;
-			if(mayrandtrees == false)
-			{
-				l = tl1amount;
-			}
-			if (randomGenerator.nextInt(10) == 0)
-			{
-				l++;
-			}
-			
-			for (int l1 = 0; l1 < l; l1++)
-			{
-				int j6 = chunk_X + randomGenerator.nextInt(16) + 8;
-				int k10 = chunk_Z + randomGenerator.nextInt(16) + 8;
-				if(currentWorld.getHeightValue(j6, k10) < tl1maxy && currentWorld.getHeightValue(j6, k10) > tl1miny && randomGenerator.nextInt(tl1chance) == 0)
+				int l = (int)((TreeNoise.func_806_a((double)chunk_X * treedouble, (double)chunk_Z * treedouble) / 8D + randomGenerator.nextDouble() * 4D + 4D) / 3D);
+				if(l < 0)
 				{
-					WorldGenerator worldgenerator = biome.getRandomWorldGenForTrees(randomGenerator);
-					worldgenerator.setScale(1.0D, 1.0D, 1.0D);
-					worldgenerator.generate(currentWorld, randomGenerator, j6, currentWorld.getHeightValue(j6, k10), k10);
-				}	
+					l = 0;
+				}
+				l = l + tl1amount;
+				if(mayrandtrees == false)
+				{
+					l = tl1amount;
+				}
+				if (randomGenerator.nextInt(10) == 0)
+				{
+					l++;
+				}
+				
+				for (int l1 = 0; l1 < l; l1++)
+				{
+					int j6 = chunk_X + randomGenerator.nextInt(16) + 8;
+					int k10 = chunk_Z + randomGenerator.nextInt(16) + 8;
+					if(currentWorld.getHeightValue(j6, k10) < tl1maxy && currentWorld.getHeightValue(j6, k10) > tl1miny && randomGenerator.nextInt(tl1chance) == 0)
+					{
+						WorldGenerator worldgenerator = biome.getRandomWorldGenForTrees(randomGenerator);
+						worldgenerator.setScale(1.0D, 1.0D, 1.0D);
+						worldgenerator.generate(currentWorld, randomGenerator, j6, currentWorld.getHeightValue(j6, k10), k10);
+					}	
+				}
 			}
 			
-			//===== TREE LAYER 2 =====
 			if(usetl2 == true)
 			{
 				int l2 = (int)((TreeNoise.func_806_a((double)chunk_X * treedouble, (double)chunk_Z * treedouble) / 8D + randomGenerator.nextDouble() * 4D + 4D) / 3D);
@@ -305,8 +306,6 @@ public class BWG4Decorator extends BiomeDecorator
 					}	
 				}
 			}
-			
-			//===== SURFACE =====
 		
 			for (int bm = 0; bm < bigMushrooms; ++bm)
 			{
