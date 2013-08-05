@@ -4,6 +4,10 @@ A world generator mod for minecraft made by ted80.
 
 ## CHANGELOG ##
 
+**Version 1.1.7** '5-8-2013'
+- Fixed beta generator error
+- Fixed exploding beds
+
 **Version 1.1.6** '3-8-2013'
 - Added new Survival island theme
 - Tweaked indev generator
