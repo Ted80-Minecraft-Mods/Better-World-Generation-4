@@ -12,7 +12,7 @@ import bwg4.deco.old.BWG4oldGenClay;
 import bwg4.deco.old.BWG4oldGenLakes;
 import bwg4.deco.old.BWG4oldGenMinable;
 import bwg4.deco.old.BWG4oldGenReed;
-import bwg4.gen.BWG4WorldChunkManager;
+import bwg4.gen.BWG4ChunkManagerBeta;
 import bwg4.map.BWG4MapGenBase;
 import bwg4.map.BWG4oldMapGenCaves;
 import bwg4.noise.BWG4NoiseOctavesBeta;
@@ -238,7 +238,7 @@ public class BWG4ChunkProviderSky implements IChunkProvider
         rand.setSeed((long)i * 0x4f9939f508L + (long)j * 0x1ef1565bd5L);
         byte abyte0[] = new byte[32768];
         biomesForGeneration = worldObj.getWorldChunkManager().loadBlockGeneratorData(biomesForGeneration, i * 16, j * 16, 16, 16);
-        double ad[] = BWG4WorldChunkManager.temperature;
+        double ad[] = BWG4ChunkManagerBeta.temperature;
         generateTerrain(i, j, abyte0, biomesForGeneration, ad);
         replaceBlocksForBiome(i, j, abyte0, biomesForGeneration);
         field_902_u.generate(this, worldObj, i, j, abyte0);
@@ -263,8 +263,8 @@ public class BWG4ChunkProviderSky implements IChunkProvider
         }
         double d = 684.41200000000003D;
         double d1 = 684.41200000000003D;
-        double ad1[] = BWG4WorldChunkManager.temperature;
-        double ad2[] = BWG4WorldChunkManager.humidity;
+        double ad1[] = BWG4ChunkManagerBeta.temperature;
+        double ad2[] = BWG4ChunkManagerBeta.humidity;
         field_4182_g = field_922_a.generateNoiseOctaves(field_4182_g, i, k, l, j1, 1.121D, 1.121D, 0.5D);
         field_4181_h = field_921_b.generateNoiseOctaves(field_4181_h, i, k, l, j1, 200D, 200D, 0.5D);
         d *= 2D;
@@ -682,7 +682,7 @@ public class BWG4ChunkProviderSky implements IChunkProvider
 
 			SpawnerAnimals.performWorldGenSpawning(worldObj, biomegenbase, k + 8, l + 8, 16, 16, rand);
 			
-			generatedTemperatures = BWG4WorldChunkManager.getColdTemperatures(generatedTemperatures, k + 8, l + 8, 16, 16);
+			generatedTemperatures = BWG4ChunkManagerBeta.getColdTemperatures(generatedTemperatures, k + 8, l + 8, 16, 16);
 			for(int j19 = k + 8; j19 < k + 8 + 16; j19++)
 			{
 				for(int j22 = l + 8; j22 < l + 8 + 16; j22++)
@@ -800,7 +800,7 @@ public class BWG4ChunkProviderSky implements IChunkProvider
 			biomegenbase.decorate(worldObj, rand, k, l);
 			SpawnerAnimals.performWorldGenSpawning(worldObj, biomegenbase, k + 8, l + 8, 16, 16, rand);
 			
-			generatedTemperatures = BWG4WorldChunkManager.getColdTemperatures(generatedTemperatures, k + 8, l + 8, 16, 16);
+			generatedTemperatures = BWG4ChunkManagerBeta.getColdTemperatures(generatedTemperatures, k + 8, l + 8, 16, 16);
 			for(int j19 = k + 8; j19 < k + 8 + 16; j19++)
 			{
 				for(int j22 = l + 8; j22 < l + 8 + 16; j22++)

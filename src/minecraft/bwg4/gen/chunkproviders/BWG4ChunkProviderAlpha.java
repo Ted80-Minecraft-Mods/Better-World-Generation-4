@@ -11,12 +11,11 @@ import bwg4.deco.old.BWG4oldGenLakes;
 import bwg4.deco.old.BWG4oldGenMinable;
 import bwg4.deco.old.BWG4oldGenReed;
 import bwg4.deco.old.BWG4oldGenTrees;
-import bwg4.gen.BWG4WorldChunkManager;
 import bwg4.map.BWG4MapGenBase;
 import bwg4.map.BWG4oldMapGenCaves;
 import bwg4.noise.BWG4NoiseOctavesAlpha;
 import bwg4.deco.BWG4decoDungeons;
-
+import bwg4.gen.BWG4ChunkManagerBeta;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSand;
 import net.minecraft.block.material.Material;
@@ -268,7 +267,7 @@ public class BWG4ChunkProviderAlpha implements IChunkProvider
         field_913_j.setSeed((long)i * 0x4f9939f508L + (long)j * 0x1ef1565bd5L);
         byte abyte0[] = new byte[32768];
         field_4179_v = worldObj_16.getWorldChunkManager().loadBlockGeneratorData(field_4179_v, i * 16, j * 16, 16, 16);
-        double ad[] = BWG4WorldChunkManager.temperature;
+        double ad[] = BWG4ChunkManagerBeta.temperature;
         generateTerrain(i, j, abyte0, field_4179_v, ad);
         replaceBlocksForBiome(i, j, abyte0, field_4179_v);
         field_902_u.generate(this, worldObj_16, i, j, abyte0);
@@ -299,8 +298,8 @@ public class BWG4ChunkProviderAlpha implements IChunkProvider
         }
         double d = 684.41200000000003D;
         double d1 = 684.41200000000003D;
-        double ad1[] = BWG4WorldChunkManager.temperature;
-        double ad2[] = BWG4WorldChunkManager.humidity;
+        double ad1[] = BWG4ChunkManagerBeta.temperature;
+        double ad2[] = BWG4ChunkManagerBeta.humidity;
         field_4182_g = field_922_a.func_4109_a(field_4182_g, i, k, l, j1, 1.121D, 1.121D, 0.5D);
         field_4181_h = field_921_b.func_4109_a(field_4181_h, i, k, l, j1, 200D, 200D, 0.5D);
         field_4185_d = field_910_m.func_807_a(field_4185_d, i, j, k, l, i1, j1, d / 80D, d1 / 160D, d / 80D);
@@ -640,7 +639,7 @@ public class BWG4ChunkProviderAlpha implements IChunkProvider
 
 		SpawnerAnimals.performWorldGenSpawning(worldObj_16, biomegenbase, k + 8, l + 8, 16, 16, field_913_j);
 		
-        field_4178_w = BWG4WorldChunkManager.getColdTemperatures(field_4178_w, k + 8, l + 8, 16, 16);
+        field_4178_w = BWG4ChunkManagerBeta.getColdTemperatures(field_4178_w, k + 8, l + 8, 16, 16);
         for(int k15 = k + 8; k15 < k + 8 + 16; k15++)
         {
             for(int j18 = l + 8; j18 < l + 8 + 16; j18++)

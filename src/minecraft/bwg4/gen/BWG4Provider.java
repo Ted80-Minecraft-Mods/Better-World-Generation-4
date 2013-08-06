@@ -96,9 +96,13 @@ public class BWG4Provider extends WorldProvider
 			{
 				this.worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.SKYBLOCKworld, 0.5F, 0.5F);
 			}
+			else if (BWG4GeneratorType.Current == BWG4GeneratorType.BWG4ALPHA || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4BETA1 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4BETA2)
+			{
+				worldChunkMgr = new BWG4ChunkManagerBeta(worldObj, true);
+			}
 			else
 			{
-				worldChunkMgr = new BWG4WorldChunkManager(worldObj, true);
+				worldChunkMgr = new BWG4ChunkManagerDefault(worldObj, true);
 			}
 		}
 		else if(worldObj.isRemote && BWG4GeneratorType.Current != null)
@@ -160,9 +164,13 @@ public class BWG4Provider extends WorldProvider
 			{
 				this.worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.SKYBLOCKworld, 0.5F, 0.5F);
 			}
+			else if (BWG4GeneratorType.Current == BWG4GeneratorType.BWG4ALPHA || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4BETA1 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4BETA2)
+			{
+				worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.BETAplains, 0.5F, 0.5F);
+			}
 			else
 			{
-				worldChunkMgr = new BWG4WorldChunkManager(worldObj, false);
+				worldChunkMgr = new BWG4ChunkManagerDefault(worldObj, false);
 			}
 		}
 		else 
@@ -255,10 +263,6 @@ public class BWG4Provider extends WorldProvider
 	@Override
     public boolean canRespawnHere()
     {
-		if(BWG4GeneratorType.Current == BWG4GeneratorType.BWG4SKYBLOCK )
-		{
-			return false;
-		}
         return true;
     }
 	
@@ -402,8 +406,8 @@ public class BWG4Provider extends WorldProvider
         {
 			if(BWG4GeneratorType.Current == BWG4GeneratorType.BWG4ISLAND || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4SKYLAND || typeID == 1)
 			{
-				chunkcoordinates.posX = 0;
-				chunkcoordinates.posZ = 0;
+				chunkcoordinates.posX = this.worldObj.rand.nextInt(spawnFuzz) - spawnFuzzHalf;
+				chunkcoordinates.posZ = this.worldObj.rand.nextInt(spawnFuzz) - spawnFuzzHalf;
 				chunkcoordinates.posY = worldObj.getTopSolidOrLiquidBlock(0, 0) + 1;
 			}
 			else if(BWG4GeneratorType.Current == BWG4GeneratorType.BWG4INDEV || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4INDEV1 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4INDEV2)
