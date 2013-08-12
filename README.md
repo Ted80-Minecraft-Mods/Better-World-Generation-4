@@ -1,9 +1,15 @@
 ## BETTER WORLD GENERATION 4 MOD ##
 
 A world generator mod for minecraft made by ted80. 
-http://www.minecraftforum.net/topic/1070207-162-forge-better-world-generation-4-v117/
+
+forum thread: http://www.minecraftforum.net/topic/1070207-162-forge-better-world-generation-4-v117/
 
 ## CHANGELOG ##
+
+**Version 1.1.8** '12-8-2013'
+- Added highlands support
+- Fixed Sky dimension crash
+- Fixed ocelot spawning
 
 **Version 1.1.7** '5-8-2013'
 - Fixed beta generator error
