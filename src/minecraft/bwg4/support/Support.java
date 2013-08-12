@@ -13,14 +13,10 @@ public class Support
 			{
 				SupportExtraBiomesXL.init();
 			}
-			else
-			{
-				System.out.println("BWG4: ExtraBiomesXL was not found!");
-			}
 		}
 		catch(Exception e)
 		{
-			System.out.println("BWG4: Failed to load ExtraBiomesXL!");
+			System.out.println("[BWG4] Cannot load ExtraBiomesXL support!");
 		}
 		
 		//Try Biomes 'O Plenty support
@@ -30,14 +26,23 @@ public class Support
 			{
 				SupportBiomesOPlenty.init();
 			}
-			else
+		}
+		catch(Exception e)
+		{
+			System.out.println("[BWG4] Cannot load Biomes 'O Plenty support!");
+		}
+		
+		//Try Highlands support
+		try
+		{
+			if(Loader.isModLoaded("Highlands"))
 			{
-				System.out.println("BWG4: Biomes O' plenty was not found!");
+				SupportHighLands.init();
 			}
 		}
 		catch(Exception e)
 		{
-			System.out.println("BWG4: Failed to load Biomes O' plenty!");
+			System.out.println("[BWG4] Cannot load Highlands support!");
 		}
 	}
 }

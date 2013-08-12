@@ -1,6 +1,7 @@
 package bwg4.api;
 
 import java.util.ArrayList;
+
 import net.minecraft.world.biome.BiomeGenBase;
 
 public class DefaultBiomeList 
@@ -11,7 +12,7 @@ public class DefaultBiomeList
 	public static int generatorversion = 2;
 
 	/**
-	 * Adds a new biome to the biome list.
+	 * Add a new biome to the biome list.
 	 * 
 	 * @param name = name in the biome list gui, example: "YOURMODNAME: biome name"
 	 * @param biome = the biome

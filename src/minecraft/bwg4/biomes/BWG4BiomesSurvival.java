@@ -74,7 +74,7 @@ public class BWG4BiomesSurvival extends BiomeGenBase
 		else if(biomeID == 3) //island_paradise
 		{
 			spawnableCreatureList.add(new SpawnListEntry(EntityWolf.class, 5, 2, 6));
-			spawnableMonsterList.add(new SpawnListEntry(EntityOcelot.class, 2, 1, 1));
+			spawnableCreatureList.add(new SpawnListEntry(EntityOcelot.class, 2, 1, 1));
 			spawnableCreatureList.add(new SpawnListEntry(EntityHorse.class, 5, 2, 6));
 			
 			bwg4decorator.usebwg4deco = true;
@@ -113,7 +113,7 @@ public class BWG4BiomesSurvival extends BiomeGenBase
 		else if(biomeID == 6) //skyland_normal
 		{
 			spawnableCreatureList.add(new SpawnListEntry(EntityWolf.class, 5, 2, 6));
-			spawnableMonsterList.add(new SpawnListEntry(EntityOcelot.class, 2, 1, 1));
+			spawnableCreatureList.add(new SpawnListEntry(EntityOcelot.class, 2, 1, 1));
 			spawnableCreatureList.add(new SpawnListEntry(EntityHorse.class, 5, 2, 6));
 			
 			bwg4decorator.usebwg4deco = true;

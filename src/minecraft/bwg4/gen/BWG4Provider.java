@@ -96,7 +96,7 @@ public class BWG4Provider extends WorldProvider
 			{
 				this.worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.SKYBLOCKworld, 0.5F, 0.5F);
 			}
-			else if (BWG4GeneratorType.Current == BWG4GeneratorType.BWG4ALPHA || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4BETA1 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4BETA2)
+			else if (BWG4GeneratorType.Current == BWG4GeneratorType.BWG4ALPHA || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4BETA1 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4BETA2 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4SKY1 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4SKY2)
 			{
 				worldChunkMgr = new BWG4ChunkManagerBeta(worldObj, true);
 			}
@@ -164,7 +164,7 @@ public class BWG4Provider extends WorldProvider
 			{
 				this.worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.SKYBLOCKworld, 0.5F, 0.5F);
 			}
-			else if (BWG4GeneratorType.Current == BWG4GeneratorType.BWG4ALPHA || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4BETA1 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4BETA2)
+			else if (BWG4GeneratorType.Current == BWG4GeneratorType.BWG4ALPHA || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4BETA1 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4BETA2 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4SKY1 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4SKY2)
 			{
 				worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.BETAplains, 0.5F, 0.5F);
 			}

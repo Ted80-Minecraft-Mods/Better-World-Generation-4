@@ -15,7 +15,7 @@ public class BWG4BiomesInfdev extends BiomeGenBase
     {
         super(par1);
 		spawnableCreatureList.add(new SpawnListEntry(EntityWolf.class, 2, 1, 1));
-		spawnableMonsterList.add(new SpawnListEntry(EntityOcelot.class, 2, 1, 1));
+		spawnableCreatureList.add(new SpawnListEntry(EntityOcelot.class, 2, 1, 1));
 		spawnableCreatureList.add(new SpawnListEntry(EntityHorse.class, 2, 1, 1));
     }
 	
