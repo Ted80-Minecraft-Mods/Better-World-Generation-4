@@ -30,7 +30,7 @@ forum thread: http://www.minecraftforum.net/topic/1070207-162-forge-better-world
 11. Paste the generator settings at "generator-settings=".
 12. Start your server.
 
-## CHANGELOG ##
+## CHANGELOG 
 
 **Version 1.1.8** '12-8-2013'
 - Added highlands support
