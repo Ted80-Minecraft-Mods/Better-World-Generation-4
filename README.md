@@ -6,31 +6,31 @@ forum thread: http://www.minecraftforum.net/topic/1070207-162-forge-better-world
 ## Installation ##
 
 **Client**
-1. Backup your worlds!
-2. Install the recommended version of Minecraft Forge.
-3. Place the zip file into your .minecraft/mod folder.
-4. Start Minecraft and create a new world.
-5. Select the bwg4 worldtype.
-6. Click on the customize button.
-7. Select a generatortype you like.
-8. Click on done.
-9. Click on create new world.
+1.  Backup your worlds!
+2.  Install the recommended version of Minecraft Forge.
+3.  Place the zip file into your .minecraft/mod folder.
+4.  Start Minecraft and create a new world.
+5.  Select the bwg4 worldtype.
+6.  Click on the customize button.
+7.  Select a generatortype you like.
+8.  Click on done.
+9.  Click on create new world.
 
 **Server**
-1. Install the client version. (see above)
-2. Install the recommended version of Minecraft Forge on your server.
-3. Place the zip file into your YourServerFolder/mod folder.
-4. Start Minecraft(client) and create a new world.
-5. Select the bwg4 worldtype.
-6. Click on the customize button.
-7. Select a generatortype you like.
-8. Click on "Copy generator-settings to Clipboard".
-9. Open the server.properties file.
-10. Set level-type to "BWG4".
-11. Paste the generator settings at "generator-settings=".
-12. Start your server.
+1.  Install the client version. (see above)
+2.  Install the recommended version of Minecraft Forge on your server.
+3.  Place the zip file into your YourServerFolder/mod folder.
+4.  Start Minecraft(client) and create a new world.
+5.  Select the bwg4 worldtype.
+6.  Click on the customize button.
+7.  Select a generatortype you like.
+8.  Click on "Copy generator-settings to Clipboard".
+9.  Open the server.properties file.
+10.  Set level-type to "BWG4".
+11.  Paste the generator settings at "generator-settings=".
+12.  Start your server.
 
-## CHANGELOG 
+## CHANGELOG ##
 
 **Version 1.1.8** '12-8-2013'
 - Added highlands support
