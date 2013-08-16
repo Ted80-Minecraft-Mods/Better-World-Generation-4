@@ -371,6 +371,8 @@ public class BWG4BiomesDefault extends BiomeGenBase
 				bwg4decorator.cactus = 10;
 			}
 		}
+
+		bwg4decorator.treesPerChunk = bwg4decorator.tl1amount;
     }
 	
     public WorldGenerator getRandomWorldGenForTrees(Random par1Random)

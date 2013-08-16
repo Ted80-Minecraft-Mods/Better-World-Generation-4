@@ -178,6 +178,8 @@ public class BWG4BiomesSurvival extends BiomeGenBase
 		else if(biomeID == 13) //skyblock_world
 		{
 		}
+
+		bwg4decorator.treesPerChunk = bwg4decorator.tl1amount;
     }
 	
     public WorldGenerator getRandomWorldGenForTrees(Random par1Random)

@@ -45,7 +45,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid="BWG4", name="BetterWorldGeneration4", version="1.1.8")
+@Mod(modid="BWG4", name="BetterWorldGeneration4", version="1.1.9")
 @NetworkMod(clientSideRequired=true, serverSideRequired=false, channels={"BWG4channel"}, packetHandler = BWG4Packet.class)
 public class mod_bwg4
 {	
