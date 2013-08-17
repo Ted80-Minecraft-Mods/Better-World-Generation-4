@@ -14,7 +14,7 @@ public class DefaultBiomeList
 	/**
 	 * Add a new biome to the biome list.
 	 * 
-	 * @param name = name in the biome list gui, example: "YOURMODNAME: biome name"
+	 * @param name = name in the biome list gui, example: "MODNAME: biome name"
 	 * @param biome = the biome
 	 * @param biometype 1 = cold, 2 = normal, 3 = wet, 4 = hot, 5 = island
 	 */
@@ -64,11 +64,9 @@ public class DefaultBiomeList
 				newbiomelist[i] = biomeNames[i];
 			}
 		}
-		
 		return newbiomelist;
 	}
 	
-
 	public static String[] getOldStringList()
 	{
 		String[] newbiomelist = new String[biomeNames.length];
@@ -80,7 +78,6 @@ public class DefaultBiomeList
 				newbiomelist[i] = biomeNames[i] + "=true";
 			}
 		}
-		
 		return newbiomelist;
 	}
 

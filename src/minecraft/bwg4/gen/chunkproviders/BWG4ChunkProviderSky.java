@@ -5,7 +5,6 @@ import java.util.Random;
 
 import bwg4.mod_bwg4;
 import bwg4.biomes.BWG4Biomes;
-import bwg4.chunk.BWG4SkylightMap;
 import bwg4.deco.BWG4decoDungeons;
 import bwg4.deco.BWG4decoSurvival;
 import bwg4.deco.old.BWG4oldGenClay;

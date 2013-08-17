@@ -1,43 +1,17 @@
 package bwg4;
 
-import java.lang.reflect.Array;
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
-import java.util.Arrays;
-
-import bwg4.api.DefaultBiomeList;
+import net.minecraftforge.common.DimensionManager;
 import bwg4.biomes.BWG4Biomes;
-import bwg4.biomes.BWG4BiomesAlpha;
-import bwg4.biomes.BWG4BiomesBeta;
-import bwg4.biomes.BWG4BiomesDefault;
-import bwg4.biomes.BWG4BiomesIndev;
-import bwg4.biomes.BWG4BiomesInfdev;
-import bwg4.biomes.BWG4BiomesSurvival;
-import bwg4.chunk.BWG4SkylightMap;
 import bwg4.config.BWG4Config;
 import bwg4.gen.BWG4Provider;
 import bwg4.gen.BWG4ProviderHell;
 import bwg4.gen.BWG4WorldType;
-import bwg4.gen.BWG4WorldTypeArray;
-import bwg4.gui.BWG4BiomeInfo;
 import bwg4.network.BWG4Connection;
-import bwg4.network.BWG4Packet;
 import bwg4.support.Support;
-import net.minecraft.block.Block;
-import net.minecraft.world.WorldType;
-import net.minecraft.world.biome.*;
-import net.minecraftforge.common.BiomeDictionary;
-import net.minecraftforge.common.BiomeDictionary.Type;
-import net.minecraftforge.common.BiomeManager;
-import net.minecraftforge.common.Configuration;
-import net.minecraftforge.common.DimensionManager;
-import net.minecraftforge.event.ForgeSubscribe;
-import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import bwg4.network.BWG4Packet;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
-import cpw.mods.fml.common.Mod.PreInit;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -59,27 +33,33 @@ public class mod_bwg4
 	{
 		instance = this;
 		
+		//load config
 		BWG4Config.init(event.getSuggestedConfigurationFile());
 		
+		//load biomes
 		BWG4Biomes.init();
 		
+		//load providers
 		DimensionManager.unregisterProviderType(0);
 		DimensionManager.registerProviderType(0, BWG4Provider.class, true);
 		DimensionManager.unregisterProviderType(-1);
 		DimensionManager.registerProviderType(-1, BWG4ProviderHell.class, true);
 
+		//register worldtype name
 		LanguageRegistry.instance().addStringLocalization("generator.BWG4", "BWG4");
 	}
 	
 	@EventHandler
 	public void Init(FMLInitializationEvent event)
 	{
+		//register bwg4 packets
 		NetworkRegistry.instance().registerConnectionHandler(new BWG4Connection());
 	}
 	
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) 
 	{
+		//try support
 		Support.init();
 	}
 }

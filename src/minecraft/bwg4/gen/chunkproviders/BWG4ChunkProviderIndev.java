@@ -3,7 +3,6 @@ package bwg4.gen.chunkproviders;
 import java.util.List;
 import java.util.Random;
 
-import bwg4.chunk.BWG4SkylightMap;
 import bwg4.deco.BWG4decoDungeons;
 import bwg4.deco.BWG4decoIndevHouse;
 import bwg4.deco.old.BWG4oldGenMinable;
