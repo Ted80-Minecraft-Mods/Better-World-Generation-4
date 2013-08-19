@@ -9,12 +9,14 @@ public class BWG4LayerRiverMix extends BWG4Layer
 {
     private BWG4Layer biomePatternGeneratorChain;
     private BWG4Layer riverPatternGeneratorChain;
+    private boolean wasteland = false;
 
-    public BWG4LayerRiverMix(long par1, BWG4Layer par3GenLayer, BWG4Layer par4GenLayer)
+    public BWG4LayerRiverMix(long par1, BWG4Layer par3GenLayer, BWG4Layer par4GenLayer, boolean waste)
     {
         super(par1);
         this.biomePatternGeneratorChain = par3GenLayer;
         this.riverPatternGeneratorChain = par4GenLayer;
+        wasteland = waste;
     }
 
     public void initWorldGenSeed(long par1)
@@ -38,22 +40,29 @@ public class BWG4LayerRiverMix extends BWG4Layer
             }
             else if (var6[var8] >= 0)
             {
-				if (var5[var8] == BWG4Biomes.BDsnowpines.biomeID || var5[var8] == BWG4Biomes.BDsnowforest.biomeID || var5[var8] == BWG4Biomes.BDsnowtaiga.biomeID || var5[var8] == BWG4Biomes.BDsnowplains.biomeID || var5[var8] == BWG4Biomes.BDsnowhills.biomeID)
-				{
-					var7[var8] = BWG4Biomes.BDiceriver.biomeID;
-				}
-				else if (var5[var8] == BWG4Biomes.BDjungle.biomeID || var5[var8] == BWG4Biomes.BDswampland.biomeID)
-				{
-					var7[var8] = BWG4Biomes.BDgreenriver.biomeID;
-				}
-				else if (var5[var8] == BWG4Biomes.BDdesert.biomeID || var5[var8] == BWG4Biomes.BDocean.biomeID || var5[var8] == BWG4Biomes.BDbeach.biomeID || var5[var8] == BWG4Biomes.BDbeachDunes.biomeID) 
-				{
-					var7[var8] = BWG4Biomes.BDsandriver.biomeID;
-				}
-				else
-				{
-					var7[var8] = BWG4Biomes.BDriver.biomeID;
-				}
+            	if(wasteland)
+            	{
+					var7[var8] = BWG4Biomes.WASTELANDriver.biomeID;
+            	}
+            	else
+            	{
+					if (var5[var8] == BWG4Biomes.BDsnowpines.biomeID || var5[var8] == BWG4Biomes.BDsnowforest.biomeID || var5[var8] == BWG4Biomes.BDsnowtaiga.biomeID || var5[var8] == BWG4Biomes.BDsnowplains.biomeID || var5[var8] == BWG4Biomes.BDsnowhills.biomeID)
+					{
+						var7[var8] = BWG4Biomes.BDiceriver.biomeID;
+					}
+					else if (var5[var8] == BWG4Biomes.BDjungle.biomeID || var5[var8] == BWG4Biomes.BDswampland.biomeID)
+					{
+						var7[var8] = BWG4Biomes.BDgreenriver.biomeID;
+					}
+					else if (var5[var8] == BWG4Biomes.BDdesert.biomeID || var5[var8] == BWG4Biomes.BDocean.biomeID || var5[var8] == BWG4Biomes.BDbeach.biomeID || var5[var8] == BWG4Biomes.BDbeachDunes.biomeID) 
+					{
+						var7[var8] = BWG4Biomes.BDsandriver.biomeID;
+					}
+					else
+					{
+						var7[var8] = BWG4Biomes.BDriver.biomeID;
+					}
+            	}
 			}
             else
             {

@@ -386,6 +386,13 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
     		generatorselected = 11;
     		generatorcount = 8;
     	}
+    	
+    	//WASTELAND
+    	if(input.equals("Sky_Default"))
+    	{
+    		generatorselected = 15;
+    		generatorcount = 9;
+    	}
     }
     
     public String createString()
@@ -458,6 +465,12 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
     	if(generatorselected == 11 && SKY_biomes == 1)
     	{
     		return "Sky_Beta";
+    	}
+    	
+    	//WASTELAND
+    	if(generatorselected == 15)
+    	{
+    		return "Wasteland";
     	}
     	
     	return "";

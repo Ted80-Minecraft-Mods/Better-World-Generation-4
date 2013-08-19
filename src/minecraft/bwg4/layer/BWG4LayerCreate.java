@@ -6,17 +6,18 @@ import net.minecraft.world.gen.layer.IntCache;
 public class BWG4LayerCreate extends BWG4Layer
 {
 	private boolean ocean = false;
-	private boolean gold = false;
+	private boolean wasteland = false;
 
     public BWG4LayerCreate(long par1)
     {
         super(par1);
-		gold = true;
+        wasteland = true;
     }
 	
     public BWG4LayerCreate(long par1, String[] Settings)
     {
         super(par1);
+        wasteland = false;
 		
 		for(int i = 0; i < Settings.length; i++)
 		{
@@ -33,13 +34,9 @@ public class BWG4LayerCreate extends BWG4Layer
             for (int var7 = 0; var7 < par3; ++var7)
             {
                 this.initChunkSeed((long)(par1 + var7), (long)(par2 + var6));
-				if(ocean)
+				if(ocean && !wasteland)
 				{
 					var5[var7 + var6 * par3] = this.nextInt(10) == 0 ? 1 : 0;
-				}
-				else if(gold)
-				{
-					var5[var7 + var6 * par3] = 5;
 				}
 				else
 				{
@@ -48,7 +45,7 @@ public class BWG4LayerCreate extends BWG4Layer
             }
         }
 		
-		if(ocean)
+		if(ocean && !wasteland)
 		{
 			if (par1 > -par3 && par1 <= 0 && par2 > -par4 && par2 <= 0)
 			{

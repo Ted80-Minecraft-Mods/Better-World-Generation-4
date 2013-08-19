@@ -1,14 +1,18 @@
 package bwg4.layer;
 
+import bwg4.biomes.BWG4Biomes;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.layer.IntCache;
 
 public class BWG4LayerRiver extends BWG4Layer
 {
-    public BWG4LayerRiver(long par1, BWG4Layer par3GenLayer)
+	private boolean wasteland = false;
+	
+    public BWG4LayerRiver(long par1, BWG4Layer par3GenLayer, boolean wl)
     {
         super(par1);
         super.parent = par3GenLayer;
+        wasteland = wl;
     }
 
     public int[] getInts(int par1, int par2, int par3, int par4)
@@ -36,7 +40,14 @@ public class BWG4LayerRiver extends BWG4Layer
                 }
                 else
                 {
-                    aint1[j2 + i2 * par3] = BiomeGenBase.river.biomeID;
+                	if(wasteland)
+                	{
+                		aint1[j2 + i2 * par3] = BWG4Biomes.WASTELANDriver.biomeID;
+                	}
+                	else
+                	{
+                		aint1[j2 + i2 * par3] = BiomeGenBase.river.biomeID;
+                	}
                 }
             }
         }

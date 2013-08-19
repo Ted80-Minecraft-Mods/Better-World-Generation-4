@@ -45,7 +45,7 @@ public abstract class BWG4Layer
 		obj1 = BWG4LayerZoom.func_75915_a(1000L, ((BWG4Layer)(obj1)), 0);
 		obj1 = new BWG4LayerRiverInit(100L, ((BWG4Layer)(obj1)), generatorSettings);
 		obj1 = BWG4LayerZoom.func_75915_a(1000L, ((BWG4Layer)(obj1)), size + 2);
-		obj1 = new BWG4LayerRiver(1L, ((BWG4Layer)(obj1)));
+		obj1 = new BWG4LayerRiver(1L, ((BWG4Layer)(obj1)), false);
 		obj1 = new BWG4LayerSmooth(1000L, ((BWG4Layer)(obj1)));
 		BWG4Layer obj2 = obj;
 		obj2 = BWG4LayerZoom.func_75915_a(1000L, ((BWG4Layer)(obj2)), 0);
@@ -62,7 +62,50 @@ public abstract class BWG4Layer
 		}
 
 		obj2 = new BWG4LayerSmooth(1000L, ((BWG4Layer)(obj2)));
-		obj2 = new BWG4LayerRiverMix(100L, ((BWG4Layer)(obj2)), ((BWG4Layer)(obj1)));
+		obj2 = new BWG4LayerRiverMix(100L, ((BWG4Layer)(obj2)), ((BWG4Layer)(obj1)), false);
+		BWG4LayerRiverMix bwg4layerrivermix = ((BWG4LayerRiverMix)(obj2));
+		BWG4LayerVoronoiZoom genlayervoronoizoom = new BWG4LayerVoronoiZoom(10L, ((BWG4Layer)(obj2)));
+		((BWG4Layer)(obj2)).initWorldGenSeed(par0);
+		genlayervoronoizoom.initWorldGenSeed(par0);
+		return (new BWG4Layer[]
+				{
+					obj2, genlayervoronoizoom, bwg4layerrivermix
+				});	
+    }
+    
+    public static BWG4Layer[] initializeWastelandGenerators(long par0)
+    {	
+		BWG4Layer obj = new BWG4LayerCreate(1L);
+		obj = new BWG4LayerFuzzyZoom(2000L, (BWG4Layer)(obj));
+		obj = new BWG4LayerAddIsland(1L, (BWG4Layer)(obj));
+		obj = new BWG4LayerZoom(2001L, (BWG4Layer)(obj));
+		obj = new BWG4LayerAddIsland(2L, (BWG4Layer)(obj));
+		obj = new BWG4LayerZoom(2002L, (BWG4Layer)(obj));
+		obj = new BWG4LayerAddIsland(3L, (BWG4Layer)(obj));
+		obj = new BWG4LayerZoom(2003L, (BWG4Layer)(obj));
+		obj = new BWG4LayerAddIsland(4L, (BWG4Layer)(obj));
+		byte size = 4;
+		
+		BWG4Layer obj1 = obj;
+		obj1 = BWG4LayerZoom.func_75915_a(1000L, ((BWG4Layer)(obj1)), 0);
+		obj1 = new BWG4LayerRiverInit(100L, ((BWG4Layer)(obj1)));
+		obj1 = BWG4LayerZoom.func_75915_a(1000L, ((BWG4Layer)(obj1)), size + 2);
+		obj1 = new BWG4LayerRiver(1L, ((BWG4Layer)(obj1)), true);
+		obj1 = new BWG4LayerSmooth(1000L, ((BWG4Layer)(obj1)));
+		BWG4Layer obj2 = obj;
+		obj2 = BWG4LayerZoom.func_75915_a(1000L, ((BWG4Layer)(obj2)), 0);
+		obj2 = new BWG4LayerBiome(200L, ((BWG4Layer)(obj2)));
+		obj2 = BWG4LayerZoom.func_75915_a(1000L, ((BWG4Layer)(obj2)), 2);
+		obj2 = new BWG4LayerHills(1000L, ((BWG4Layer)(obj2)));
+		obj2 = new BWG4LayerZoom(1000, ((BWG4Layer)(obj2)));
+
+		for (int i = 0 + 1; i < size; i++)
+		{
+			obj2 = new BWG4LayerZoom(1000 + i, ((BWG4Layer)(obj2)));
+		}
+
+		obj2 = new BWG4LayerSmooth(1000L, ((BWG4Layer)(obj2)));
+		obj2 = new BWG4LayerRiverMix(100L, ((BWG4Layer)(obj2)), ((BWG4Layer)(obj1)), true);
 		BWG4LayerRiverMix bwg4layerrivermix = ((BWG4LayerRiverMix)(obj2));
 		BWG4LayerVoronoiZoom genlayervoronoizoom = new BWG4LayerVoronoiZoom(10L, ((BWG4Layer)(obj2)));
 		((BWG4Layer)(obj2)).initWorldGenSeed(par0);

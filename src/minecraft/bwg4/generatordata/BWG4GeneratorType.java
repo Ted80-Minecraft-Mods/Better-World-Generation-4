@@ -25,7 +25,7 @@ public class BWG4GeneratorType
 	public static final BWG4GeneratorType BWG4SKY2 = new BWG4GeneratorType(12, "Sky_Beta");
 	public static final BWG4GeneratorType BWG4CAVE = new BWG4GeneratorType(13, "CaveDimension");  
 	public static final BWG4GeneratorType BWG4HARD = new BWG4GeneratorType(14, "Hardcore");  
-	public static final BWG4GeneratorType BWG4WASTE = new BWG4GeneratorType(15, "Wasteland");  	
+	public static final BWG4GeneratorType BWG4WASTE = new BWG4GeneratorType(15, "Wasteland", "Wasteland", true, false);  	
     
 	//old generator types
 	public static final BWG4GeneratorType BWG4INDEV1 = new BWG4GeneratorType(16, "Indev_inland");  

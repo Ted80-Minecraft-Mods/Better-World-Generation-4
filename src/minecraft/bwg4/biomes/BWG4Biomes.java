@@ -86,6 +86,13 @@ public class BWG4Biomes
 	public static BiomeGenBase BDjungle_nocolor;
 	public static BiomeGenBase BDswampland_nocolor;
 	
+	public static BiomeGenBase WASTELANDriver;
+	public static BiomeGenBase WASTELANDpines;
+	public static BiomeGenBase WASTELANDplains;
+	public static BiomeGenBase WASTELANDforest;
+	public static BiomeGenBase WASTELANDdesert;
+	public static BiomeGenBase WASTELANDmountains;
+	
 	public static void init()
 	{
 		//create biomes
@@ -172,6 +179,13 @@ public class BWG4Biomes
 		BDjungle_nocolor = (new BWG4BiomesDefault(BWG4Config.biomeIDs[70], 4, 4)).setColor(353825).setBiomeName("Jungle").setMinMaxHeight(0.2F, 0.8F).setTemperatureRainfall(1.0F, 1.0F);
 		BDswampland_nocolor = (new BWG4BiomesDefault(BWG4Config.biomeIDs[71], 4, 5)).setColor(353825).setBiomeName("Swampland").setMinMaxHeight(-0.2F, 0.3F).setTemperatureRainfall(0.9F, 1.0F);
 
+		WASTELANDriver = (new BWG4BiomesWasteland(BWG4Config.biomeIDs[72], 1)).setColor(353825).setBiomeName("Dry River").setMinMaxHeight(0.0F, 0.0F);
+		WASTELANDpines = (new BWG4BiomesWasteland(BWG4Config.biomeIDs[73], 2)).setColor(353825).setBiomeName("Dead Pine Forest").setMinMaxHeight(0.8F, 0.2F);
+		WASTELANDplains = (new BWG4BiomesWasteland(BWG4Config.biomeIDs[74], 3)).setColor(353825).setBiomeName("Wasteland").setMinMaxHeight(0.8F, 0.1F);
+		WASTELANDforest = (new BWG4BiomesWasteland(BWG4Config.biomeIDs[75], 4)).setColor(353825).setBiomeName("Forest").setMinMaxHeight(0.8F, 0.3F);
+		WASTELANDdesert = (new BWG4BiomesWasteland(BWG4Config.biomeIDs[76], 5)).setColor(353825).setBiomeName("Desert").setMinMaxHeight(0.8F, 0.7F);
+		WASTELANDmountains = (new BWG4BiomesWasteland(BWG4Config.biomeIDs[77], 6)).setColor(353825).setBiomeName("Cold Mountains").setMinMaxHeight(0.9F, 1.4F);
+		
 		//village biomes
 		BiomeManager.addVillageBiome(BiomeGenBase.plains, true);
 		BiomeManager.addVillageBiome(BiomeGenBase.desert, true);

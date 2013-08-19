@@ -17,7 +17,17 @@ public class BWG4LayerBiome extends BWG4Layer
     public static BiomeGenBase[] Biomes;
 	public static ArrayList<BiomeGenBase> allowedBiomes = new ArrayList<BiomeGenBase>();
 	public int worldID;
+	private boolean wasteland = false;
 
+    public BWG4LayerBiome(long par1, BWG4Layer par3GenLayer)
+    {
+        super(par1);
+		parent = par3GenLayer;
+		wasteland = true;
+		Biomes = (new BiomeGenBase[]{BWG4Biomes.WASTELANDplains});
+		//BWG4Biomes.WASTELANDdesert, BWG4Biomes.WASTELANDmountains, BWG4Biomes.WASTELANDpines, BWG4Biomes.WASTELANDplains
+    }
+    
     public BWG4LayerBiome(long par1, BWG4Layer par3GenLayer, String[] Settings, int world, int genversion)
     {
         super(par1);
@@ -118,18 +128,25 @@ public class BWG4LayerBiome extends BWG4Layer
                 this.initChunkSeed((long)(var8 + par1), (long)(var7 + par2));
                 int var9 = var5[var8 + var7 * par3];
 
-				if (var9 == 0)
-				{
-					var6[var8 + var7 * par3] = BWG4Biomes.BDocean.biomeID;
-				}
-				else if (var9 == BiomeGenBase.mushroomIsland.biomeID)
-				{
-					var6[var8 + var7 * par3] = BiomeGenBase.mushroomIsland.biomeID;
-				}
-				else 
-				{
-					var6[var8 + var7 * par3] = this.Biomes[this.nextInt(this.Biomes.length)].biomeID;
-				}
+                if(wasteland)
+                {
+                	var6[var8 + var7 * par3] = this.Biomes[this.nextInt(this.Biomes.length)].biomeID;
+                }
+                else
+                {
+					if (var9 == 0)
+					{
+						var6[var8 + var7 * par3] = BWG4Biomes.BDocean.biomeID;
+					}
+					else if (var9 == BiomeGenBase.mushroomIsland.biomeID)
+					{
+						var6[var8 + var7 * par3] = BiomeGenBase.mushroomIsland.biomeID;
+					}
+					else 
+					{
+						var6[var8 + var7 * par3] = this.Biomes[this.nextInt(this.Biomes.length)].biomeID;
+					}
+                }
             }
         }
 

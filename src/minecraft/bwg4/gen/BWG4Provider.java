@@ -100,6 +100,10 @@ public class BWG4Provider extends WorldProvider
 			{
 				worldChunkMgr = new BWG4ChunkManagerBeta(worldObj, true);
 			}
+			else if (BWG4GeneratorType.Current == BWG4GeneratorType.BWG4WASTE)
+			{
+				worldChunkMgr = new BWG4ChunkManagerWasteland(worldObj);
+			}
 			else
 			{
 				worldChunkMgr = new BWG4ChunkManagerDefault(worldObj, true);
@@ -167,6 +171,10 @@ public class BWG4Provider extends WorldProvider
 			else if (BWG4GeneratorType.Current == BWG4GeneratorType.BWG4ALPHA || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4BETA1 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4BETA2 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4SKY1 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4SKY2)
 			{
 				worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.BETAplains, 0.5F, 0.5F);
+			}
+			else if (BWG4GeneratorType.Current == BWG4GeneratorType.BWG4WASTE)
+			{
+				worldChunkMgr = new BWG4ChunkManagerWasteland(worldObj);
 			}
 			else
 			{
@@ -248,6 +256,10 @@ public class BWG4Provider extends WorldProvider
 	        {
 				return new BWG4ChunkProviderSkyBlock(this.worldObj, this.worldObj.getSeed(), false);
 	        }
+			else if (BWG4GeneratorType.Current == BWG4GeneratorType.BWG4WASTE)
+			{
+				return new BWG4ChunkProviderWasteland(this.worldObj, this.worldObj.getSeed());
+			}
 	        else
 	        {
 				return new BWG4ChunkProviderDefault(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled());
@@ -376,7 +388,11 @@ public class BWG4Provider extends WorldProvider
     {
         int k = this.worldObj.getFirstUncoveredBlock(par1, par2);
         
-        if(BWG4GeneratorType.Current == BWG4GeneratorType.BWG4BETA1 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4BETA1 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4ALPHA || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4INFDEV)
+        if(BWG4GeneratorType.Current == BWG4GeneratorType.BWG4WASTE)
+        {
+        	return true;
+        }
+        else if(BWG4GeneratorType.Current == BWG4GeneratorType.BWG4BETA1 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4BETA1 || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4ALPHA || BWG4GeneratorType.Current == BWG4GeneratorType.BWG4INFDEV)
         {
         	if(k == Block.sand.blockID) { return true; } else { return false; }
         }

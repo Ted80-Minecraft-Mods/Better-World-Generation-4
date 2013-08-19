@@ -18,7 +18,7 @@ import net.minecraftforge.common.Configuration;
 public class BWG4Config 
 {
 	public static Configuration config;
-	public static int[] biomeIDs = new int[73];
+	public static int[] biomeIDs = new int[79];
 	
 	public static boolean alphagrass = true;
 	
@@ -116,12 +116,24 @@ public class BWG4Config
 			biomeIDs[63] = config.get("Biome IDs", "BDsavanna", 143).getInt();
 			biomeIDs[64] = config.get("Biome IDs", "BDsavannaforest", 144).getInt();
 			biomeIDs[65] = config.get("Biome IDs", "BDshrubland", 145).getInt();
-			biomeIDs[67] = config.get("Biome IDs", "BDiceriver", 146).getInt();
-			biomeIDs[68] = config.get("Biome IDs", "BDriver", 147).getInt();
-			biomeIDs[69] = config.get("Biome IDs", "BDgreenriver", 148).getInt();
-			biomeIDs[70] = config.get("Biome IDs", "BDsandriver", 149).getInt();
-			biomeIDs[71] = config.get("Biome IDs", "BDjungle_nocolor", 150).getInt();
-			biomeIDs[72] = config.get("Biome IDs", "BDswampland_nocolor", 151).getInt();
+			biomeIDs[66] = config.get("Biome IDs", "BDiceriver", 146).getInt();
+			biomeIDs[67] = config.get("Biome IDs", "BDriver", 147).getInt();
+			biomeIDs[68] = config.get("Biome IDs", "BDgreenriver", 148).getInt();
+			biomeIDs[69] = config.get("Biome IDs", "BDsandriver", 149).getInt();
+			biomeIDs[70] = config.get("Biome IDs", "BDjungle_nocolor", 150).getInt();
+			biomeIDs[71] = config.get("Biome IDs", "BDswampland_nocolor", 151).getInt();
+			
+			//WASTELAND BIOMES
+			biomeIDs[72] = config.get("Biome IDs", "WASTELAND_river", 152).getInt();
+			biomeIDs[73] = config.get("Biome IDs", "WASTELAND_pineforest", 153).getInt();
+			biomeIDs[74] = config.get("Biome IDs", "WASTELAND_plains", 154).getInt();
+			biomeIDs[75] = config.get("Biome IDs", "WASTELAND_forest", 155).getInt();
+			biomeIDs[76] = config.get("Biome IDs", "WASTELAND_desert", 156).getInt();
+			biomeIDs[77] = config.get("Biome IDs", "WASTELAND_mountains", 157).getInt();
+			biomeIDs[78] = config.get("Biome IDs", "WASTELAND_swamp", 158).getInt();
+			
+			//160 - 169
+					
 		}
 		catch (Exception e) 
 		{
