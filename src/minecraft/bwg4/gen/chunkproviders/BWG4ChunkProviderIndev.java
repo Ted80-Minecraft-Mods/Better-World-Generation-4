@@ -70,8 +70,9 @@ public class BWG4ChunkProviderIndev implements IChunkProvider
 	boolean typeFloating = false;
 	boolean typeInland = false;
 	boolean typeFinite = false;
+	int size = 0;
 
-    public BWG4ChunkProviderIndev(World par1World, long par2, boolean par4, int type, int theme)
+    public BWG4ChunkProviderIndev(World par1World, long par2, boolean par4, int type, int theme, int s)
     {
         this.worldObj = par1World;
         this.mapFeaturesEnabled = par4;
@@ -95,6 +96,7 @@ public class BWG4ChunkProviderIndev implements IChunkProvider
 		if(type == 2) { typeFloating = true; }
 		if(type == 3) { typeInland = true; }
 		if(type == 4) { typeFinite = true; } 
+		size = s;
     }
 
 	public void generateTerrain(int par1, int par2, byte[] par3ArrayOfByte)

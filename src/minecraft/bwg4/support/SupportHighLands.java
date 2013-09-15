@@ -37,5 +37,7 @@ public class SupportHighLands
 		if(HighlandsBiomes.tundra != null) { DefaultBiomeList.addBiome("HL: Tundra", HighlandsBiomes.tundra, 1); }
 		if(HighlandsBiomes.woodlands != null) { DefaultBiomeList.addBiome("HL: Woodlands", HighlandsBiomes.woodlands, 2); }
 		if(HighlandsBiomes.woodsMountains != null) { DefaultBiomeList.addBiome("HL: Woodland Mountains", HighlandsBiomes.woodsMountains, 2); }
+		
+		Support.highlands = true;
 	}
 }

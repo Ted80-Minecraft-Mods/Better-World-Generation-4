@@ -9,14 +9,11 @@ import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.SpawnListEntry;
 
-public class BWG4BiomesIndev extends BiomeGenBase
+public class BWG4BiomesClassic extends BiomeGenBase
 {
-	private int indevID;
-
-    public BWG4BiomesIndev(int par1, int id)
+    public BWG4BiomesClassic(int par1)
     {
         super(par1);
-		indevID = id;
 		spawnableCreatureList.add(new SpawnListEntry(EntityWolf.class, 2, 1, 1));
 		spawnableCreatureList.add(new SpawnListEntry(EntityOcelot.class, 2, 1, 1));
 		spawnableCreatureList.add(new SpawnListEntry(EntityHorse.class, 2, 1, 1));
@@ -34,21 +31,6 @@ public class BWG4BiomesIndev extends BiomeGenBase
 	
     public int getSkyColorByTemp(float par1)
     {
-		if(indevID == 2)
-		{
-			return 0x210800; 
-		}
-		else if(indevID == 3)
-		{
-			return 0xC6DEFF; 
-		}
-		else if(indevID == 4)
-		{
-			return 0x757d87; 
-		}
-		else 
-		{
-			return 0x99CCFF; 
-		}
+		return 0xC6DEFF; 
 	}
 }

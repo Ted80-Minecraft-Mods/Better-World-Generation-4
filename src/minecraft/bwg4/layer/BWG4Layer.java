@@ -34,11 +34,11 @@ public abstract class BWG4Layer
 		obj = new BWG4LayerAddIsland(3L, (BWG4Layer)(obj));
 		obj = new BWG4LayerZoom(2003L, (BWG4Layer)(obj));
 		obj = new BWG4LayerAddIsland(4L, (BWG4Layer)(obj));
+		
 		byte size = 4;
-
-		if (BWG4GeneratorType.Current == BWG4GeneratorType.BWG4LARGE)
+		if (BWG4GeneratorType.currentGenerator == BWG4GeneratorType.DEFAULT && BWG4GeneratorType.currentSettings != null)
 		{
-			size = 6;
+			size = (byte) BWG4GeneratorType.currentSettings[0];
 		}
 		
 		BWG4Layer obj1 = obj;

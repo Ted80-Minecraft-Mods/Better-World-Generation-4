@@ -139,43 +139,61 @@ public class BWG4ChunkManagerBeta extends WorldChunkManager
 	
     public void generateBiomeLookup()  
     {
-		if(BWG4GeneratorType.Current == BWG4GeneratorType.BWG4SKY1)
+    	int biome = 0;
+    	if(BWG4GeneratorType.currentSettings != null)
+    	{
+    		if(BWG4GeneratorType.currentSettings.length > 0)
+    		{
+    			biome = BWG4GeneratorType.currentSettings[0];
+    			if(biome > 1)
+    			{
+    				biome = 0;
+    			}
+    		}
+    	}
+		if(BWG4GeneratorType.currentGenerator == BWG4GeneratorType.SKYLANDS)
 		{
-			for(int i = 0; i < 64; i++)
+			if(biome == 0)
 			{
-				for(int j = 0; j < 64; j++)
+				for(int i = 0; i < 64; i++)
 				{
-					biomeLookupTable[i + j * 64] = getDefaultBiomes((float)i / 63F, (float)j / 63F);
+					for(int j = 0; j < 64; j++)
+					{
+						biomeLookupTable[i + j * 64] = getDefaultBiomes((float)i / 63F, (float)j / 63F);
+					}
+				}
+			}
+			else
+			{
+				for(int i = 0; i < 64; i++)
+				{
+					for(int j = 0; j < 64; j++)
+					{
+						biomeLookupTable[i + j * 64] = getBetaBiomes((float)i / 63F, (float)j / 63F);
+					}
 				}
 			}
 		}
-		else if(BWG4GeneratorType.Current == BWG4GeneratorType.BWG4SKY2)
+		else if(BWG4GeneratorType.currentGenerator == BWG4GeneratorType.BETA)
 		{
-			for(int i = 0; i < 64; i++)
+			if(biome == 0)
 			{
-				for(int j = 0; j < 64; j++)
+				for(int i = 0; i < 64; i++)
 				{
-					biomeLookupTable[i + j * 64] = getBetaBiomes((float)i / 63F, (float)j / 63F);
+					for(int j = 0; j < 64; j++)
+					{
+						biomeLookupTable[i + j * 64] = getBetaBiomes((float)i / 63F, (float)j / 63F);
+					}
 				}
 			}
-		}
-		else if(BWG4GeneratorType.Current == BWG4GeneratorType.BWG4BETA1)
-		{
-			for(int i = 0; i < 64; i++)
+			else
 			{
-				for(int j = 0; j < 64; j++)
+				for(int i = 0; i < 64; i++)
 				{
-					biomeLookupTable[i + j * 64] = getBetaBiomes((float)i / 63F, (float)j / 63F);
-				}
-			}
-		}
-		else if(BWG4GeneratorType.Current == BWG4GeneratorType.BWG4BETA2)
-		{
-			for(int i = 0; i < 64; i++)
-			{
-				for(int j = 0; j < 64; j++)
-				{
-					biomeLookupTable[i + j * 64] = getDefaultBiomes((float)i / 63F, (float)j / 63F);
+					for(int j = 0; j < 64; j++)
+					{
+						biomeLookupTable[i + j * 64] = getDefaultBiomes((float)i / 63F, (float)j / 63F);
+					}
 				}
 			}
 		}
@@ -185,7 +203,7 @@ public class BWG4ChunkManagerBeta extends WorldChunkManager
 			{
 				for(int j = 0; j < 64; j++)
 				{
-					biomeLookupTable[i + j * 64] = getAlphaBiomes((float)i / 63F, (float)j / 63F);
+					biomeLookupTable[i + j * 64] = getBetaBiomes((float)i / 63F, (float)j / 63F);
 				}
 			}
 		}
@@ -357,59 +375,7 @@ public class BWG4ChunkManagerBeta extends WorldChunkManager
 			return BWG4Biomes.BDjungle_nocolor.biomeID; 
 		}
     }
-	
-    public int getAlphaBiomes(float f, float f1) 
-    {
-		f1 *= f;
-		if(f < 0.1F)
-		{
-			return BWG4Biomes.ALPHAtundra.biomeID; 
-		}
-		if(f1 < 0.2F)
-		{
-			if(f < 0.5F)
-			{
-				return BWG4Biomes.ALPHAtundra.biomeID;
-			}
-			if(f < 0.95F)
-			{
-				return BWG4Biomes.ALPHAsavanna.biomeID;
-			} else
-			{
-				return BWG4Biomes.ALPHAdesert.biomeID;
-			}
-		}
-		if(f1 > 0.5F && f < 0.7F)
-		{
-			return BWG4Biomes.ALPHAswampland.biomeID;
-		}
-		if(f < 0.5F)
-		{
-			return BWG4Biomes.ALPHAtaiga.biomeID;
-		}
-		if(f < 0.97F)
-		{
-			if(f1 < 0.35F)
-			{
-				return BWG4Biomes.ALPHAshrubland.biomeID;
-			} else
-			{
-				return BWG4Biomes.ALPHAforest.biomeID;
-			}
-		}
-		if(f1 < 0.45F)
-		{
-			return BWG4Biomes.ALPHAplains.biomeID;
-		}
-		if(f1 < 0.9F)
-		{
-			return BWG4Biomes.ALPHAseasonalForest.biomeID;
-		} else
-		{
-			return BWG4Biomes.ALPHArainforest.biomeID;
-		}
-    }
-	
+    
     public List getBiomesToSpawnIn()
     {
         return this.biomesToSpawnIn;

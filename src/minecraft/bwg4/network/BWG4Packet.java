@@ -31,7 +31,7 @@ public class BWG4Packet implements IPacketHandler
 	        try 
 	        {
 	        	type = inputStream.readInt();
-	        	BWG4GeneratorType.Current = BWG4GeneratorType.generatortypes[type];
+	        	BWG4GeneratorType.currentGenerator = BWG4GeneratorType.generatortypes[type];
 	        }
 	        catch (Exception e) 
 	        { 

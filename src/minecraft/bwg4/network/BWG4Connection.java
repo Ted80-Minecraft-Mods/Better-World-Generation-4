@@ -30,7 +30,7 @@ public class BWG4Connection implements IPacketHandler, IConnectionHandler
 	@Override
 	public void playerLoggedIn(Player player, NetHandler netHandler, INetworkManager manager) 
 	{
-		if(BWG4GeneratorType.Current != null)
+		if(BWG4GeneratorType.currentGenerator != null)
 		{
 			EntityPlayerMP p = (EntityPlayerMP) player;
 			if(!p.worldObj.isRemote)
@@ -40,7 +40,7 @@ public class BWG4Connection implements IPacketHandler, IConnectionHandler
 				
 				try 
 				{
-					outputStream.writeInt(BWG4GeneratorType.Current.GetID());
+					outputStream.writeInt(BWG4GeneratorType.currentGenerator.GetID());
 				} 
 				catch (Exception ex) 
 				{

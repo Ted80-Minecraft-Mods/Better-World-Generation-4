@@ -519,31 +519,31 @@ public class BWG4ChunkProviderAlpha implements IChunkProvider
         {
             j6++;
         }
-        if(biomegenbase == BWG4Biomes.ALPHAforest)
+        if(biomegenbase == BWG4Biomes.BETAforest)
         {
             j6 += l3 + 5;
         }
-        if(biomegenbase == BWG4Biomes.ALPHArainforest)
+        if(biomegenbase == BWG4Biomes.BETArainforest)
         {
             j6 += l3 + 5;
         }
-        if(biomegenbase == BWG4Biomes.ALPHAseasonalForest)
+        if(biomegenbase == BWG4Biomes.BETAseasonalForest)
         {
             j6 += l3 + 2;
         }
-        if(biomegenbase == BWG4Biomes.ALPHAtaiga)
+        if(biomegenbase == BWG4Biomes.BETAtaiga)
         {
             j6 += l3 + 5;
         }
-        if(biomegenbase == BWG4Biomes.ALPHAdesert)
+        if(biomegenbase == BWG4Biomes.BETAdesert)
         {
             j6 -= 20;
         }
-        if(biomegenbase == BWG4Biomes.ALPHAtundra)
+        if(biomegenbase == BWG4Biomes.BETAtundra)
         {
             j6 -= 20;
         }
-        if(biomegenbase == BWG4Biomes.ALPHAplains)
+        if(biomegenbase == BWG4Biomes.BETAplains)
         {
             j6 -= 20;
         }
@@ -552,7 +552,7 @@ public class BWG4ChunkProviderAlpha implements IChunkProvider
         {
             obj = new BWG4oldGenBigTree(1);
         }
-        if(biomegenbase == BWG4Biomes.ALPHArainforest && field_913_j.nextInt(3) == 0)
+        if(biomegenbase == BWG4Biomes.BETArainforest && field_913_j.nextInt(3) == 0)
         {
             obj = new BWG4oldGenBigTree(1);
         }
@@ -609,7 +609,7 @@ public class BWG4ChunkProviderAlpha implements IChunkProvider
             (new WorldGenPumpkin()).generate(worldObj_16, field_913_j, k12, k14, j17);
         }
         int l12 = 0;
-        if(biomegenbase == BWG4Biomes.ALPHAdesert)
+        if(biomegenbase == BWG4Biomes.BETAdesert)
         {
             l12 += 10;
         }

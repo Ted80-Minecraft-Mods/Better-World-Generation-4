@@ -6,6 +6,8 @@ import java.util.Random;
 import bwg4.biomes.BWG4Biomes;
 import bwg4.deco.BWG4decoWasteland;
 import bwg4.deco.old.BWG4oldGenMinable;
+import bwg4.map.BWG4MapGenBase;
+import bwg4.map.BWG4MapGenPocket;
 import bwg4.structure.BWG4ScatteredFeature;
 import bwg4.util.PerlinNoise;
 import net.minecraft.block.Block;
@@ -59,6 +61,8 @@ public class BWG4ChunkProviderWasteland implements IChunkProvider
     private MapGenBase ravineGenerator = new MapGenRavine();
     private BWG4ScatteredFeature scatteredFeatureGenerator = new BWG4ScatteredFeature();
     private BiomeGenBase[] biomesForGeneration;
+    
+    private BWG4MapGenBase pocketGenerator = new BWG4MapGenPocket();
 
     double[] noise3;
     double[] noise1;
@@ -89,11 +93,12 @@ public class BWG4ChunkProviderWasteland implements IChunkProvider
         this.rand.setSeed((long)par1 * 341873128712L + (long)par2 * 132897987541L);
         byte[] abyte = new byte[32768];
         this.generateSurface(par1, par2, abyte);
-        this.generateCaveLayer(par1, par2, abyte);
+        //this.generateCaveLayer(par1, par2, abyte);
         this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, par1 * 16, par2 * 16, 16, 16);
         this.replaceBlocksForBiome(par1, par2, abyte, this.biomesForGeneration);
         //this.caveGenerator.generate(this, this.worldObj, par1, par2, abyte);
         //this.ravineGenerator.generate(this, this.worldObj, par1, par2, abyte);
+        pocketGenerator.generate(this, this.worldObj, par1, par2, abyte);
         this.strongholdGenerator.generate(this, this.worldObj, par1, par2, abyte);
         this.scatteredFeatureGenerator.generate(this, this.worldObj, par1, par2, abyte);
 
@@ -111,6 +116,30 @@ public class BWG4ChunkProviderWasteland implements IChunkProvider
 
     public void generateSurface(int par1, int par2, byte[] par3ArrayOfByte)
     {
+		int i = par1 << 4;
+		int j = par2 << 4;
+		int jj = 0;
+		
+		biomesForGeneration = this.worldObj.getWorldChunkManager().getBiomesForGeneration(this.biomesForGeneration, par1 * 4 - 2, par2 * 4 - 2, 16, 16);
+		double[][] noisevalues = getNoiseValues(par1, par2);
+		
+		for (int k = 0; k < 16; k++)
+		{
+			for (int m = 0; m < 16; m++)
+			{
+				double height = noisevalues[k + m * 16][0];
+				
+				for (int i3 = 0; i3 < 128; i3++)
+				{
+					jj++;
+					if(i3 < height)
+					{
+						par3ArrayOfByte[jj] = (byte)Block.stone.blockID;
+					}
+				}
+			}
+		}
+    	/*
         byte b0 = 4;
         byte b1 = 16;
         byte b2 = 72;
@@ -184,6 +213,7 @@ public class BWG4ChunkProviderWasteland implements IChunkProvider
                 }
             }
         }
+        */
     }
 
     public void generateCaveLayer(int par1, int par2, byte[] blocks)
@@ -361,12 +391,31 @@ public class BWG4ChunkProviderWasteland implements IChunkProvider
         return this.provideChunk(par1, par2);
     }
 
+    private double[][] getNoiseValues(int x, int z)
+    {
+    	double[][] noiseValues = new double[256][1];
+    	
+        for (int k = 0; k < 16; ++k)
+        {
+            for (int l = 0; l < 16; ++l)
+            {
+            	BiomeGenBase biomegenbase = biomesForGeneration[l + k * 16];
+            	if(biomegenbase == BWG4Biomes.WASTELANDforest)
+            	{
+            		noiseValues[l + k * 16][0] = 70;
+            	}
+            	else
+            	{
+            		noiseValues[l + k * 16][0] = 80;
+            	}
+    		}
+    	}
+    	
+    	return noiseValues;
+    }
+    
     private double[] initializeNoiseField(double[] par1ArrayOfDouble, int par2, int par3, int par4, int par5, int par6, int par7)
     {
-        ChunkProviderEvent.InitNoiseField event = new ChunkProviderEvent.InitNoiseField(this, par1ArrayOfDouble, par2, par3, par4, par5, par6, par7);
-        MinecraftForge.EVENT_BUS.post(event);
-        if (event.getResult() == Result.DENY) return event.noisefield;
-
         if (par1ArrayOfDouble == null)
         {
             par1ArrayOfDouble = new double[par5 * par6 * par7];
@@ -531,6 +580,8 @@ public class BWG4ChunkProviderWasteland implements IChunkProvider
 
 		MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Pre(par1IChunkProvider, worldObj, rand, par2, par3, false));
 		
+        pocketGenerator.populate(worldObj, par2, par3);
+        
         this.strongholdGenerator.generateStructuresInChunk(this.worldObj, this.rand, par2, par3);
         this.scatteredFeatureGenerator.generateStructuresInChunk(this.worldObj, this.rand, par2, par3);
         
@@ -553,13 +604,13 @@ public class BWG4ChunkProviderWasteland implements IChunkProvider
 		}
         
         //stalactites and stalagmites
-        if(rand.nextInt(2) == 0)
-        {
-            int dx1 = k + this.rand.nextInt(16) + 8;
-            int dy1 = 35;
-            int dz1 = l + this.rand.nextInt(16) + 8;
-        	(new BWG4decoWasteland(1)).generate(this.worldObj, this.rand, dx1, dy1, dz1);
-        }
+        //if(rand.nextInt(2) == 0)
+        //{
+        //    int dx1 = k + this.rand.nextInt(16) + 8;
+        //    int dy1 = 35;
+        //    int dz1 = l + this.rand.nextInt(16) + 8;
+        //	(new BWG4decoWasteland(1)).generate(this.worldObj, this.rand, dx1, dy1, dz1);
+        //}
         
         //lava
         int dx2 = k + this.rand.nextInt(16) + 8;
@@ -661,31 +712,7 @@ public class BWG4ChunkProviderWasteland implements IChunkProvider
 		}
 
         biomegenbase.decorate(this.worldObj, this.rand, k, l);
-		
-        /*
-        SpawnerAnimals.performWorldGenSpawning(this.worldObj, biomegenbase, k + 8, l + 8, 16, 16, this.rand);
-        k += 8;
-        l += 8;
 
-        doGen = TerrainGen.populate(par1IChunkProvider, worldObj, rand, par2, par3, flag, ICE);
-        for (k1 = 0; doGen && k1 < 16; ++k1)
-        {
-            for (l1 = 0; l1 < 16; ++l1)
-            {
-                i2 = this.worldObj.getPrecipitationHeight(k + k1, l + l1);
-
-                if (this.worldObj.isBlockFreezable(k1 + k, i2 - 1, l1 + l))
-                {
-                    this.worldObj.setBlock(k1 + k, i2 - 1, l1 + l, Block.ice.blockID, 0, 2);
-                }
-
-                if (this.worldObj.canSnowAt(k1 + k, i2, l1 + l))
-                {
-                    this.worldObj.setBlock(k1 + k, i2, l1 + l, Block.snow.blockID, 0, 2);
-                }
-            }
-        }
-        */
 		MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(par1IChunkProvider, worldObj, rand, par2, par3, false));
 		
         BlockSand.fallInstantly = false;

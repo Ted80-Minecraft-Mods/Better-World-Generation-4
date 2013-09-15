@@ -41,5 +41,7 @@ public class SupportExtraBiomesXL
 		if(BiomeManager.tundra.isPresent()) { DefaultBiomeList.addBiome("EBXL: Tundra", BiomeManager.tundra.get(), 1); }
 		if(BiomeManager.wasteland.isPresent()) { DefaultBiomeList.addBiome("EBXL: Wasteland", BiomeManager.wasteland.get(), 4); }
 		if(BiomeManager.woodlands.isPresent()) { DefaultBiomeList.addBiome("EBXL: Woodlands", BiomeManager.woodlands.get(), 2); }
+		
+		Support.extraBiomesXL = true;
 	}
 }

@@ -70,11 +70,15 @@ public class BWG4ChunkManagerDefault extends WorldChunkManager
         this();
         long seed = par1World.getSeed();
 
-        if(BWG4GeneratorType.generatorinfo == null)
+        if(BWG4GeneratorType.biomestring == null)
         {
-        	BWG4GeneratorType.generatorinfo = DefaultBiomeList.getDefaultString();
+        	BWG4GeneratorType.biomestring = DefaultBiomeList.getDefaultString();
         }
-        BWG4Layer[] var4 = BWG4Layer.initializeAllBiomeGenerators(seed, BWG4GeneratorType.generatorinfo);
+        if(BWG4GeneratorType.biomestring.length() < 3)
+        {
+        	BWG4GeneratorType.biomestring = DefaultBiomeList.getDefaultString();
+        }
+        BWG4Layer[] var4 = BWG4Layer.initializeAllBiomeGenerators(seed, BWG4GeneratorType.biomestring);
         this.genBiomes = (BWG4Layer) var4[0];
         this.biomeIndexLayer = (BWG4Layer) var4[1];
     }    

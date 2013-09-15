@@ -71,7 +71,7 @@ public class BWG4ChunkProviderSky implements IChunkProvider
     private double generatedTemperatures[];
 	private boolean nether;
 	
-    public BWG4ChunkProviderSky(World world, long l, boolean par4, int worldID)
+    public BWG4ChunkProviderSky(World world, long l, boolean par4, int worldID, int noiseStyle)
     {
         sandNoise = new double[256];
         gravelNoise = new double[256];
