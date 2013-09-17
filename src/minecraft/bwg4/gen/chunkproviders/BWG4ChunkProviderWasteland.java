@@ -10,6 +10,7 @@ import bwg4.map.BWG4MapGenBase;
 import bwg4.map.BWG4MapGenPocket;
 import bwg4.structure.BWG4ScatteredFeature;
 import bwg4.util.PerlinNoise;
+import bwg4.util.Coords;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSand;
 import net.minecraft.entity.EnumCreatureType;
@@ -50,6 +51,8 @@ public class BWG4ChunkProviderWasteland implements IChunkProvider
     public NoiseGeneratorOctaves noiseGen6;
     public NoiseGeneratorOctaves mobSpawnerNoise;
     
+    public PerlinNoise noisetest;
+    
     public PerlinNoise cavenoise_1;
     public PerlinNoise cavenoise_2;
 
@@ -86,19 +89,21 @@ public class BWG4ChunkProviderWasteland implements IChunkProvider
         
         cavenoise_1 = new PerlinNoise(par2 + 1L);
         cavenoise_2 = new PerlinNoise(par2 + 2L);
+        
+        noisetest = new PerlinNoise(par2);
     }
     
     public Chunk provideChunk(int par1, int par2)
     {
         this.rand.setSeed((long)par1 * 341873128712L + (long)par2 * 132897987541L);
         byte[] abyte = new byte[32768];
+        this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, par1 * 16, par2 * 16, 16, 16);
         this.generateSurface(par1, par2, abyte);
         //this.generateCaveLayer(par1, par2, abyte);
-        this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, par1 * 16, par2 * 16, 16, 16);
         this.replaceBlocksForBiome(par1, par2, abyte, this.biomesForGeneration);
         //this.caveGenerator.generate(this, this.worldObj, par1, par2, abyte);
         //this.ravineGenerator.generate(this, this.worldObj, par1, par2, abyte);
-        pocketGenerator.generate(this, this.worldObj, par1, par2, abyte);
+        //pocketGenerator.generate(this, this.worldObj, par1, par2, abyte);
         this.strongholdGenerator.generate(this, this.worldObj, par1, par2, abyte);
         this.scatteredFeatureGenerator.generate(this, this.worldObj, par1, par2, abyte);
 
@@ -114,31 +119,110 @@ public class BWG4ChunkProviderWasteland implements IChunkProvider
         return chunk;
     }
 
-    public void generateSurface(int par1, int par2, byte[] par3ArrayOfByte)
+    private double[][] getNoiseValues(int x, int y)
     {
-		int i = par1 << 4;
-		int j = par2 << 4;
-		int jj = 0;
-		
-		biomesForGeneration = this.worldObj.getWorldChunkManager().getBiomesForGeneration(this.biomesForGeneration, par1 * 4 - 2, par2 * 4 - 2, 16, 16);
-		double[][] noisevalues = getNoiseValues(par1, par2);
-		
-		for (int k = 0; k < 16; k++)
+    	double[][] values = new double[24][24];
+    	
+        for (int k = -4; k < 20; ++k)
+        {
+            for (int l = -4; l < 20; ++l)
+            {
+    			BiomeGenBase biomegenbase = worldObj.getWorldChunkManager().getBiomeGenAt((x * 16) + l, (y * 16) + k);
+            	if(biomegenbase == BWG4Biomes.WASTELANDforest)
+            	{
+            		values[l + 4][k + 4] = 15;
+            	}
+            	else
+            	{
+            		values[l + 4][k + 4] = 0;
+            	}
+    		}
+    	}
+    	
+    	return values;
+    }
+
+    public void generateSurface(int i, int j, byte[] blockarray)
+    {
+    	int jj = 0;
+    	int a = i * 16;
+    	int b = j * 16;
+    	
+    	double[][] noise = getNoiseValues(i, j);
+
+		for (int x = a; x < a + 16; x++)
 		{
-			for (int m = 0; m < 16; m++)
+			for (int z = b; z < b + 16; z++)
 			{
-				double height = noisevalues[k + m * 16][0];
+				byte height = (byte) noise[x - a + 4][z - b + 4];
+				double h = height;
 				
-				for (int i3 = 0; i3 < 128; i3++)
+				for(int k = x - a - 4; k < x - a + 4; k++)
+				{
+					for(int l = z - b - 4; l < z - b + 4; l++)
+					{
+						if(x - a != k && z - b != l)
+						{
+							double diff = height - noise[k + 4][l + 4];
+							h += -(0.05 * diff) / Coords.getDistance(x - a, z - b, k, l);
+						}
+					}
+				}
+				if(h != 0)
+				{
+					height = (byte) (60 + Math.floor(noisetest.turbulence2(((float) x / 40F),((float) z / 40F), 5F) * h));				
+				}
+				else
+				{
+					height = 60;
+				}
+				for (int y = 0; y < 128; y++)
 				{
 					jj++;
-					if(i3 < height)
+					if(y < height)
 					{
-						par3ArrayOfByte[jj] = (byte)Block.stone.blockID;
+						blockarray[jj] = (byte)Block.stone.blockID;
 					}
 				}
 			}
 		}
+    	/*
+    	int jj = 0;
+    	
+    	double[] noise = getNoiseValues(i, j);
+
+		for (int x = 0; x < 16; x++)
+		{
+			for (int z = 0; z < 16; z++)
+			{
+				byte height = (byte) noise[(x + 8) + (z + 8) * 16];
+				double h = height;
+				
+				for(int k = x - 8; k < x + 8; k++)
+				{
+					for(int l = z - 8; l < z + 8; l++)
+					{
+						if(x != k && z != l)
+						{
+							double diff = height - noise[(k + 8) + (l + 8) * 16];
+							//h += -(0.03 * diff) / Coords.getDistance(x, z, k, l);
+						}
+					}
+				}
+				
+				height = (byte) Math.floor(h);
+				for (int y = 0; y < 128; y++)
+				{
+					jj++;
+					if(y < height)
+					{
+						blockarray[jj] = (byte)Block.stone.blockID;
+					}
+				}
+			}
+		}
+		*/
+		
     	/*
         byte b0 = 4;
         byte b1 = 16;
@@ -389,29 +473,6 @@ public class BWG4ChunkProviderWasteland implements IChunkProvider
     public Chunk loadChunk(int par1, int par2)
     {
         return this.provideChunk(par1, par2);
-    }
-
-    private double[][] getNoiseValues(int x, int z)
-    {
-    	double[][] noiseValues = new double[256][1];
-    	
-        for (int k = 0; k < 16; ++k)
-        {
-            for (int l = 0; l < 16; ++l)
-            {
-            	BiomeGenBase biomegenbase = biomesForGeneration[l + k * 16];
-            	if(biomegenbase == BWG4Biomes.WASTELANDforest)
-            	{
-            		noiseValues[l + k * 16][0] = 70;
-            	}
-            	else
-            	{
-            		noiseValues[l + k * 16][0] = 80;
-            	}
-    		}
-    	}
-    	
-    	return noiseValues;
     }
     
     private double[] initializeNoiseField(double[] par1ArrayOfDouble, int par2, int par3, int par4, int par5, int par6, int par7)
