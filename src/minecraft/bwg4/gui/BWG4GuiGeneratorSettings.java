@@ -31,12 +31,14 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
 	public String BD_worldstring;
 	
 	public boolean decodebool;
+	public boolean setremember;
 	public int[] rememberSettings;
 	
 	public BWG4GuiGeneratorSettings(GuiCreateWorld gcw, String gs)
 	{
     	createWorldGui = gcw;
     	decodebool = true;
+    	setremember = true;
 	}
 
 	public void initGui()
@@ -67,9 +69,13 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
         	}
 			selectGenerator();
 
-			for(int s = 0; s < settings.size(); s++)
+			if(setremember)
 			{
-				settings.get(s).setOldValue(rememberSettings[s]);
+				for(int s = 0; s < settings.size(); s++)
+				{
+					settings.get(s).setOldValue(rememberSettings[s]);
+				}
+				setremember = false;
 			}
 		}
 	}
@@ -135,6 +141,7 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
         			settings.get(i).click();
         		}
         	}
+        	dependencies();
         }
 	}
 	
@@ -191,6 +198,24 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
 		}
 	}
 	
+	public void dependencies()
+	{
+		for(int i = 0; i < settings.size(); i++)
+		{
+    		if(settings.get(i).dependencie > -1)
+    		{
+    			settings.get(i).button.drawButton = false;
+    			for(int p = 0; p < settings.get(i).depvalues.length; p++)
+    			{
+    				if(settings.get(settings.get(i).dependencie - 20).selected == settings.get(i).depvalues[p])
+    				{
+    					settings.get(i).button.drawButton = true;
+    				}
+    			}
+    		}
+		}
+	}
+	
 	public void selectGenerator()
 	{
 		if(generatorSelected > -1)
@@ -230,7 +255,8 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
 		{ 
 			settings.add(new BWG4GuiSettingsButton(new String[]{"Theme: Normal", "Theme: Hell", "Theme: Paradise", "Theme: Woods", "Theme: Snow"}, new int[]{0, 1, 2, 3, 4}, 20, 90, width));
 			settings.add(new BWG4GuiSettingsButton(new String[]{"Type: Island", "Type: Floating", "Type: Inland"}, new int[]{0, 1, 2}, 21, 110, width));
-			settings.add(new BWG4GuiSettingsButton(new String[]{"Size: Infinite", "Size: Large", "Size: Normal", "Size: Small"}, new int[]{0, 1, 2, 3}, 22, 130, width));
+			settings.add(new BWG4GuiSettingsButton(new String[]{"Size: Small", "Size: Normal", "Size: Large"}, new int[]{0, 1, 2}, 22, 130, width, 21, new int[]{0, 1}));
+			settings.add(new BWG4GuiSettingsButton(new String[]{"Layers: 1", "Layers: 2", "Layers: 3", "Layers: 4", "Layers: 5"}, new int[]{0, 1, 2, 3, 4}, 23, 150, width, 21, new int[]{1}));
 		}
 		else if(generatorSelected == BWG4GeneratorType.ISLAND.GetID()) 
 		{ 
@@ -243,17 +269,19 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
 		else if(generatorSelected == BWG4GeneratorType.SKYLANDS.GetID()) 
 		{ 
 			settings.add(new BWG4GuiSettingsButton(new String[]{"Biomes: Default", "Biomes: Beta 1.7.3"}, new int[]{0, 1}, 20, 90, width));
-			settings.add(new BWG4GuiSettingsButton(new String[]{"Noise: Default", "Noise: Indev"}, new int[]{0, 1}, 21, 110, width));
+			//settings.add(new BWG4GuiSettingsButton(new String[]{"Noise: Default", "Noise: Indev"}, new int[]{0, 1}, 21, 110, width));
 		}
 		else if(generatorSelected == BWG4GeneratorType.CAVE.GetID()) 
 		{ 
-			settings.add(new BWG4GuiSettingsButton(new String[]{"Theme: Normal", "Theme: Ice Caves", "Theme: Black Desert", "Theme: Jungle Caves"}, new int[]{0, 1, 2, 3}, 20, 90, width));
+			settings.add(new BWG4GuiSettingsButton(new String[]{"Theme: Cold Caves", "Theme: Desert Caves"}, new int[]{0, 1}, 20, 90, width));
 		}
 
 		for(int s = 0; s < settings.size(); s++)
 		{
 			buttonList.add(settings.get(s).button);
 		}
+		
+		dependencies();
 	}
 	
 	public void decodeString(String decodestring)

@@ -28,9 +28,4 @@ public class BWG4BiomesClassic extends BiomeGenBase
     {  
         return 0x4FFF2B;
     } 
-	
-    public int getSkyColorByTemp(float par1)
-    {
-		return 0xC6DEFF; 
-	}
 }

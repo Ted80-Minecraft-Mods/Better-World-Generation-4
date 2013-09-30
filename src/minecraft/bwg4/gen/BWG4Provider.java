@@ -95,6 +95,11 @@ public class BWG4Provider extends WorldProvider
 			{
 				worldChunkMgr = new BWG4ChunkManagerWasteland(worldObj);
 			}
+	        else if (BWG4GeneratorType.currentGenerator == BWG4GeneratorType.CAVE)
+	        {
+	        	hasNoSky = true;
+				this.worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.SKYBLOCKworld, 0.5F, 0.5F);
+	        }
 			else
 			{
 				worldChunkMgr = new BWG4ChunkManagerDefault(worldObj, true);
@@ -126,6 +131,11 @@ public class BWG4Provider extends WorldProvider
 			{
 				worldChunkMgr = new BWG4ChunkManagerWasteland(worldObj);
 			}
+	        else if (BWG4GeneratorType.currentGenerator == BWG4GeneratorType.CAVE)
+	        {
+	        	hasNoSky = true;
+				this.worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.SKYBLOCKworld, 0.5F, 0.5F);
+	        }
 			else
 			{
 				worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.BETAplains, 0.5F, 0.5F);
@@ -162,8 +172,9 @@ public class BWG4Provider extends WorldProvider
 			{ 
 				int themeID = trySetting(0, 4) + 1;
 				int typeID = trySetting(1, 2) + 1;
-				int size = trySetting(2, 3) + 1;
-				return new BWG4ChunkProviderIndev(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled(), typeID, themeID, size); 
+				int size = trySetting(2, 2) + 1;
+				int layers = trySetting(3, 4) + 1;
+				return new BWG4ChunkProviderIndev(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled(), typeID, themeID, size, layers); 
 			}
 	        else if (BWG4GeneratorType.currentGenerator == BWG4GeneratorType.ALPHA)
 	        {
@@ -179,7 +190,7 @@ public class BWG4Provider extends WorldProvider
 	        }
 	        else if (BWG4GeneratorType.currentGenerator == BWG4GeneratorType.CAVE)
 	        {
-	            return new BWG4ChunkProviderCave(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled(), trySetting(0, 3) + 1);
+	            return new BWG4ChunkProviderCave(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled(), trySetting(0, 1) + 1);
 	        }
 			else if (BWG4GeneratorType.currentGenerator == BWG4GeneratorType.ISLAND)
 	        {
@@ -256,10 +267,10 @@ public class BWG4Provider extends WorldProvider
 	@Override
     public boolean isSurfaceWorld()
     {
-		//if (BWG4GeneratorType.Current == BWG4GeneratorType.BWG4CAVE)
-		//{
-		//	return false;
-		//}
+		if (BWG4GeneratorType.currentGenerator == BWG4GeneratorType.CAVE)
+		{
+			return false;
+		}
         return true;
     }
 	
@@ -303,11 +314,7 @@ public class BWG4Provider extends WorldProvider
 				return -5F;
 			}
 		}
-		else
-		{
-			return 128.0F;
-		}	
-		
+
 		if (BWG4GeneratorType.currentGenerator == BWG4GeneratorType.SKYISLAND || BWG4GeneratorType.currentGenerator == BWG4GeneratorType.SKYBLOCK || BWG4GeneratorType.currentGenerator == BWG4GeneratorType.SKYLANDS)
 		{
 			return -5F;
@@ -362,18 +369,18 @@ public class BWG4Provider extends WorldProvider
         int spawnFuzz = terrainType.getSpawnFuzz();
         int spawnFuzzHalf = spawnFuzz / 2;
         
-        boolean indevIsland = false;
+        boolean indevcenter = false;
         if(BWG4GeneratorType.currentGenerator == BWG4GeneratorType.INDEV)
         {
-			if (trySetting(1, 2) == 0)
+			if (trySetting(1, 2) == 0 || (trySetting(1, 2) == 1 && trySetting(2, 3) != 0))
 			{
-				indevIsland = true;
+				indevcenter = true;
 			}
         }
         
         if (!worldObj.provider.hasNoSky && worldObj.getWorldInfo().getGameType() != EnumGameType.ADVENTURE)
         {
-			if(BWG4GeneratorType.currentGenerator == BWG4GeneratorType.ISLAND || BWG4GeneratorType.currentGenerator == BWG4GeneratorType.SKYISLAND || indevIsland)
+			if(BWG4GeneratorType.currentGenerator == BWG4GeneratorType.ISLAND || BWG4GeneratorType.currentGenerator == BWG4GeneratorType.SKYISLAND || indevcenter)
 			{
 				chunkcoordinates.posX = this.worldObj.rand.nextInt(spawnFuzz) - spawnFuzzHalf;
 				chunkcoordinates.posZ = this.worldObj.rand.nextInt(spawnFuzz) - spawnFuzzHalf;
@@ -410,10 +417,6 @@ public class BWG4Provider extends WorldProvider
 				return 0.0D;
 			}
 		}
-		else
-		{
-			return this.terrainType.getHorizon(worldObj);
-		}	
 		
 		if(BWG4GeneratorType.currentGenerator == BWG4GeneratorType.SKYISLAND || BWG4GeneratorType.currentGenerator == BWG4GeneratorType.SKYBLOCK || BWG4GeneratorType.currentGenerator == BWG4GeneratorType.SKYLANDS)
 		{

@@ -9,6 +9,8 @@ public class BWG4GuiSettingsButton
 	public String[] textarray;
 	public int[] valuearray;
 	public int selected;
+	public int dependencie;
+	public int[] depvalues;
 	
 	public BWG4GuiSettingsButton(String[] text, int[] values, int buttonID, int posY, int width)
 	{
@@ -16,6 +18,18 @@ public class BWG4GuiSettingsButton
 		textarray = text;
 		valuearray = values;
 		selected = 0;
+		dependencie = -1;
+		depvalues = new int[0];
+	}
+
+	public BWG4GuiSettingsButton(String[] text, int[] values, int buttonID, int posY, int width, int dep, int[] vel)
+	{
+		button = new GuiSmallButton(buttonID, width / 2 + 5, posY, 150, 20, text[0]);
+		textarray = text;
+		valuearray = values;
+		selected = 0;
+		dependencie = dep;
+		depvalues = vel;
 	}
 	
 	public void click()
