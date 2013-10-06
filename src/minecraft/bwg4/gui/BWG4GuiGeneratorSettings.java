@@ -47,8 +47,8 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
         buttonList.add(new GuiSmallButton(1, width / 2 + 5, height - 24, 150, 20, StatCollector.translateToLocal("gui.cancel")));
         buttonList.add(new GuiSmallButton(3, width / 2 - 155, height - 48, 310, 20, "Copy generator-settings to Clipboard"));
 		
-		buttonList.add(BUTTON_CATEGORY = new GuiSmallButton(2, width / 2 - 155, 45, 150, 20, categories[CATEGORY]));
-		buttonList.add(BUTTON_BIOMELIST = new GuiSmallButton(4, width / 2 + 5, 90, 150, 20, "Biome Settings"));
+		buttonList.add(BUTTON_CATEGORY = new GuiSmallButton(2, width / 2 - 155, 40, 150, 20, categories[CATEGORY]));
+		buttonList.add(BUTTON_BIOMELIST = new GuiSmallButton(4, width / 2 + 5, 80, 150, 20, "Biome Settings"));
 		
 		if(decodebool)
 		{
@@ -154,16 +154,16 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
 		drawString(fontRenderer, title, (int) Math.floor(width / 2) - (int) Math.floor(fontRenderer.getStringWidth(title) / 2), 10, 16777215);
 		
 		//category
-		drawString(fontRenderer, "Choose a category:", width / 2 - 155 + 1, 35, 10526880);
-		drawString(fontRenderer, "Select a world generator:", width / 2 - 155 + 1, 80, 10526880);
+		drawString(fontRenderer, "Choose a category:", width / 2 - 155 + 1, 30, 10526880);
+		drawString(fontRenderer, "Select a world generator:", width / 2 - 155 + 1, 70, 10526880);
     	String catpos = "(" + (CATEGORY + 1) + "/4)";
-    	drawString(fontRenderer, catpos, width / 2 - 5 - fontRenderer.getStringWidth(catpos), 35, 10526880);
+    	drawString(fontRenderer, catpos, width / 2 - 5 - fontRenderer.getStringWidth(catpos), 30, 10526880);
 
 		if(generatorSelected != -1)
 		{
 	    	if(BWG4GeneratorType.generatortypes[generatorSelected].HasSettings())
 	    	{
-	    		drawString(fontRenderer, "Generator settings:", width / 2 + 5 + 1, 80, 10526880);
+	    		drawString(fontRenderer, "Generator settings:", width / 2 + 5 + 1, 70, 10526880);
 	    	}
 		}
 		
@@ -190,7 +190,7 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
 			{
 				if(BWG4GeneratorType.generatortypes[g].GetCategory() == CATEGORY && BWG4GeneratorType.generatortypes[g].CanBeCreated())
 				{
-					generators.add(new BWG4GuiGeneratorButton(BWG4GeneratorType.generatortypes[g].GetScreenName(), g, count + 10, 90 + (20 * count), width));
+					generators.add(new BWG4GuiGeneratorButton(BWG4GeneratorType.generatortypes[g].GetScreenName(), g, count + 10, 80 + (20 * count), width));
 					buttonList.add(generators.get(generators.size() - 1).button);
 					count++;
 				}
@@ -240,40 +240,40 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
 		if(generatorSelected == BWG4GeneratorType.DEFAULT.GetID())
 		{
 			BUTTON_BIOMELIST.drawButton = true;
-			settings.add(new BWG4GuiSettingsButton(new String[]{"Size: Default", "Size: Large", "Size: Small"}, new int[]{4,6,2}, 20, 110, width));
-			settings.add(new BWG4GuiSettingsButton(new String[]{"Amplified: OFF", "Amplified: ON"}, new int[]{0,1}, 21, 130, width));
+			settings.add(new BWG4GuiSettingsButton(new String[]{"Size: Default", "Size: Large", "Size: Small"}, new int[]{4,6,2}, 20, 100, width));
+			settings.add(new BWG4GuiSettingsButton(new String[]{"Amplified: OFF", "Amplified: ON"}, new int[]{0,1}, 21, 120, width));
 		}
-		else if(generatorSelected == BWG4GeneratorType.BETA.GetID()) 
+		else if(generatorSelected == BWG4GeneratorType.BETA173.GetID()) 
 		{
-			settings.add(new BWG4GuiSettingsButton(new String[]{"Biomes: Beta", "Biomes: Default"}, new int[]{0, 1}, 20, 90, width));
+			settings.add(new BWG4GuiSettingsButton(new String[]{"Biomes: Beta", "Biomes: Default"}, new int[]{0, 1}, 20, 80, width));
 		}
-		else if(generatorSelected == BWG4GeneratorType.INFDEV.GetID()) 
+		else if(generatorSelected == BWG4GeneratorType.INFDEV.GetID() || generatorSelected == BWG4GeneratorType.ALPHA11.GetID()) 
 		{
-			settings.add(new BWG4GuiSettingsButton(new String[]{"Snow World: OFF", "Snow World: ON"}, new int[]{0, 1}, 20, 90, width));
+			settings.add(new BWG4GuiSettingsButton(new String[]{"Snow World: OFF", "Snow World: ON"}, new int[]{0, 1}, 20, 80, width));
 		}
 		else if(generatorSelected == BWG4GeneratorType.INDEV.GetID()) 
 		{ 
-			settings.add(new BWG4GuiSettingsButton(new String[]{"Theme: Normal", "Theme: Hell", "Theme: Paradise", "Theme: Woods", "Theme: Snow"}, new int[]{0, 1, 2, 3, 4}, 20, 90, width));
-			settings.add(new BWG4GuiSettingsButton(new String[]{"Type: Island", "Type: Floating", "Type: Inland"}, new int[]{0, 1, 2}, 21, 110, width));
-			settings.add(new BWG4GuiSettingsButton(new String[]{"Size: Small", "Size: Normal", "Size: Large"}, new int[]{0, 1, 2}, 22, 130, width, 21, new int[]{0, 1}));
-			settings.add(new BWG4GuiSettingsButton(new String[]{"Layers: 1", "Layers: 2", "Layers: 3", "Layers: 4", "Layers: 5"}, new int[]{0, 1, 2, 3, 4}, 23, 150, width, 21, new int[]{1}));
+			settings.add(new BWG4GuiSettingsButton(new String[]{"Theme: Normal", "Theme: Hell", "Theme: Paradise", "Theme: Woods", "Theme: Snow"}, new int[]{0, 1, 2, 3, 4}, 20, 80, width));
+			settings.add(new BWG4GuiSettingsButton(new String[]{"Type: Island", "Type: Floating", "Type: Inland"}, new int[]{0, 1, 2}, 21, 100, width));
+			settings.add(new BWG4GuiSettingsButton(new String[]{"Size: Small", "Size: Normal", "Size: Large"}, new int[]{0, 1, 2}, 22, 120, width, 21, new int[]{0, 1}));
+			settings.add(new BWG4GuiSettingsButton(new String[]{"Layers: 1", "Layers: 2", "Layers: 3", "Layers: 4", "Layers: 5"}, new int[]{0, 1, 2, 3, 4}, 23, 140, width, 21, new int[]{1}));
 		}
 		else if(generatorSelected == BWG4GeneratorType.ISLAND.GetID()) 
 		{ 
-			settings.add(new BWG4GuiSettingsButton(new String[]{"Theme: Normal", "Theme: Tropical", "Theme: Hell", "Theme: Iceberg", "Theme: Paradise"}, new int[]{0, 1, 2, 3, 4}, 20, 90, width));
+			settings.add(new BWG4GuiSettingsButton(new String[]{"Theme: Normal", "Theme: Tropical"}, new int[]{0, 1}, 20, 80, width)); //, "Theme: Hell", "Theme: Iceberg", "Theme: Paradise" , 2, 3, 4
 		}
 		else if(generatorSelected == BWG4GeneratorType.SKYISLAND.GetID()) 
 		{ 
-			settings.add(new BWG4GuiSettingsButton(new String[]{"Theme: Normal", "Theme: Snow", "Theme: Jungle"}, new int[]{0, 1, 2}, 20, 90, width));
+			settings.add(new BWG4GuiSettingsButton(new String[]{"Theme: Normal"}, new int[]{0}, 20, 80, width)); //, "Theme: Snow", "Theme: Jungle" , 1, 2
 		}
 		else if(generatorSelected == BWG4GeneratorType.SKYLANDS.GetID()) 
 		{ 
-			settings.add(new BWG4GuiSettingsButton(new String[]{"Biomes: Default", "Biomes: Beta 1.7.3"}, new int[]{0, 1}, 20, 90, width));
-			//settings.add(new BWG4GuiSettingsButton(new String[]{"Noise: Default", "Noise: Indev"}, new int[]{0, 1}, 21, 110, width));
+			settings.add(new BWG4GuiSettingsButton(new String[]{"Biomes: Default", "Biomes: Beta 1.7.3"}, new int[]{0, 1}, 20, 80, width));
+			//settings.add(new BWG4GuiSettingsButton(new String[]{"Noise: Default", "Noise: Indev"}, new int[]{0, 1}, 21, 100, width));
 		}
 		else if(generatorSelected == BWG4GeneratorType.CAVE.GetID()) 
 		{ 
-			settings.add(new BWG4GuiSettingsButton(new String[]{"Theme: Cold Caves", "Theme: Desert Caves"}, new int[]{0, 1}, 20, 90, width));
+			settings.add(new BWG4GuiSettingsButton(new String[]{"Theme: Cold Caves", "Theme: Desert Caves"}, new int[]{0, 1}, 20, 80, width));
 		}
 
 		for(int s = 0; s < settings.size(); s++)

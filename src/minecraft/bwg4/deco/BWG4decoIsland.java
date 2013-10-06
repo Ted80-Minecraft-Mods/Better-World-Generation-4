@@ -7,6 +7,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntityChest;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
@@ -70,7 +71,7 @@ public class BWG4decoIsland extends WorldGenerator
 			world.setBlock(xx, yy + 5, zz + 1, Block.leaves.blockID);
 			world.setBlock(xx, yy + 5, zz - 1, Block.leaves.blockID);
 			world.setBlock(xx, yy + 5, zz, Block.leaves.blockID);
-	
+
 			//GEN CACTI
 			for(int i = 0; i < 60; i++)
 			{
@@ -163,6 +164,40 @@ public class BWG4decoIsland extends WorldGenerator
 		            {
 		            	count++;
 						world.setBlock(var7, var8, var9, Block.melon.blockID, 0, 0);
+						done = true;
+						
+						if(count > 4)
+						{
+							break;
+						}
+		            }
+		        }
+		        
+		        if(done)
+		        {
+		        	break;
+		        }
+			}
+			
+			//GEN PUMPKIN
+			done = false;
+			for(int m = 0; m < 60; m++)
+			{
+				int px = -20 + rand.nextInt(40);
+				int pz = -20 + rand.nextInt(40);
+				int py = world.getHeightValue(px, pz);
+				
+				int count = 0;
+		        for (int var6 = 0; var6 < 100; ++var6)
+		        {
+		            int var7 = px + rand.nextInt(8) - rand.nextInt(8);
+		            int var8 = py + rand.nextInt(4) - rand.nextInt(4);
+		            int var9 = pz + rand.nextInt(8) - rand.nextInt(8);
+	
+		            if (world.isAirBlock(var7, var8, var9) && world.getBlockId(var7, var8 - 1, var9) == Block.grass.blockID && Block.pumpkin.canPlaceBlockAt(world, var7, var8, var9))
+		            {
+		            	count++;
+						world.setBlock(var7, var8, var9, Block.pumpkin.blockID, 0, 0);
 						done = true;
 						
 						if(count > 4)

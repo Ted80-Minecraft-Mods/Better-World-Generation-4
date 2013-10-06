@@ -61,8 +61,10 @@ public class BWG4ChunkProviderInfdev implements IChunkProvider
     double field_916_g[];
     double field_915_h[];
     int field_914_i[][];
+    
+    private final boolean alpha;
 
-    public BWG4ChunkProviderInfdev(World world, long l, boolean par4)
+    public BWG4ChunkProviderInfdev(World world, long l, boolean par4, boolean a)
     {
         field_905_r = new double[256];
         field_904_s = new double[256];
@@ -71,6 +73,8 @@ public class BWG4ChunkProviderInfdev implements IChunkProvider
         field_914_i = new int[32][32];
         field_907_p = world;
         mapFeaturesEnabled = par4;
+        alpha = a;
+        
         field_913_j = new Random(l);
         field_912_k = new BWG4NoiseOctavesInfdev(field_913_j, 16);
         field_911_l = new BWG4NoiseOctavesInfdev(field_913_j, 16);
@@ -165,7 +169,7 @@ public class BWG4ChunkProviderInfdev implements IChunkProvider
             for(int l = 0; l < 16; l++)
             {
                 boolean flag = field_905_r[k + l * 16] + field_913_j.nextDouble() * 0.20000000000000001D > 0.0D;
-                //boolean flag1 = field_904_s[k + l * 16] + field_913_j.nextDouble() * 0.20000000000000001D > 3D;
+                boolean flag1 = field_904_s[k + l * 16] + field_913_j.nextDouble() * 0.20000000000000001D > 3D;
                 int i1 = (int)(field_903_t[k + l * 16] / 3D + 3D + field_913_j.nextDouble() * 0.25D);
                 int j1 = -1;
                 byte byte1 = (byte)Block.grass.blockID;
@@ -199,7 +203,6 @@ public class BWG4ChunkProviderInfdev implements IChunkProvider
                         {
                             byte1 = (byte)Block.grass.blockID;
                             byte2 = (byte)Block.dirt.blockID;
-							/*
                             if(flag1)
                             {
                                 byte1 = 0;
@@ -208,7 +211,6 @@ public class BWG4ChunkProviderInfdev implements IChunkProvider
                             {
                                 byte2 = (byte)Block.gravel.blockID;
                             }
-							*/
                             if(flag)
                             {
                                 byte1 = (byte)Block.sand.blockID;
@@ -406,13 +408,16 @@ public class BWG4ChunkProviderInfdev implements IChunkProvider
             int i11 = l + field_913_j.nextInt(16) + 8;
             (new BWG4decoDungeons(4, true, false, false)).generate(field_907_p, field_913_j, i4, j6, i11);
         }
-		
-        for(int j1 = 0; j1 < 10; j1++)
+        
+        if(alpha)
         {
-            int j4 = k + field_913_j.nextInt(16);
-            int k6 = field_913_j.nextInt(128);
-            int j11 = l + field_913_j.nextInt(16);
-            (new BWG4oldGenClay(32, 0)).generate(field_907_p, field_913_j, j4, k6, j11);
+	        for(int j1 = 0; j1 < 10; j1++)
+	        {
+	            int j4 = k + field_913_j.nextInt(16);
+	            int k6 = field_913_j.nextInt(128);
+	            int j11 = l + field_913_j.nextInt(16);
+	            (new BWG4oldGenClay(32, 0)).generate(field_907_p, field_913_j, j4, k6, j11);
+	        }
         }
 		
         for(int k1 = 0; k1 < 20; k1++)
@@ -482,7 +487,7 @@ public class BWG4ChunkProviderInfdev implements IChunkProvider
             l3++;
         }
 		Object obj = new BWG4oldGenTrees(0);
-        if(field_913_j.nextInt(10) == 0)
+        if(field_913_j.nextInt(10) == 0 && alpha)
         {
             obj = new BWG4oldGenBigTree(0);
         }
@@ -512,34 +517,62 @@ public class BWG4ChunkProviderInfdev implements IChunkProvider
             int j16 = l + field_913_j.nextInt(16) + 8;
             (new WorldGenFlowers(Block.plantRed.blockID)).generate(field_907_p, field_913_j, i9, l13, j16);
         }
-        if(field_913_j.nextInt(4) == 0)
+
+        if(alpha)
         {
-            int j9 = k + field_913_j.nextInt(16) + 8;
-            int i14 = field_913_j.nextInt(128);
-            int k16 = l + field_913_j.nextInt(16) + 8;
-            (new WorldGenFlowers(Block.mushroomBrown.blockID)).generate(field_907_p, field_913_j, j9, i14, k16);
+	        if(field_913_j.nextInt(4) == 0)
+	        {
+	            int j9 = k + field_913_j.nextInt(16) + 8;
+	            int i14 = field_913_j.nextInt(128);
+	            int k16 = l + field_913_j.nextInt(16) + 8;
+	            (new WorldGenFlowers(Block.mushroomBrown.blockID)).generate(field_907_p, field_913_j, j9, i14, k16);
+	        }
+	        if(field_913_j.nextInt(8) == 0)
+	        {
+	            int k9 = k + field_913_j.nextInt(16) + 8;
+	            int j14 = field_913_j.nextInt(128);
+	            int l16 = l + field_913_j.nextInt(16) + 8;
+	            (new WorldGenFlowers(Block.mushroomRed.blockID)).generate(field_907_p, field_913_j, k9, j14, l16);
+	        }
         }
-        if(field_913_j.nextInt(8) == 0)
+        else
         {
-            int k9 = k + field_913_j.nextInt(16) + 8;
-            int j14 = field_913_j.nextInt(128);
-            int l16 = l + field_913_j.nextInt(16) + 8;
-            (new WorldGenFlowers(Block.mushroomRed.blockID)).generate(field_907_p, field_913_j, k9, j14, l16);
-        }
-        for(int l9 = 0; l9 < 10; l9++)
-        {
-            int k14 = k + field_913_j.nextInt(16) + 8;
-            int i17 = field_913_j.nextInt(128);
-            int k18 = l + field_913_j.nextInt(16) + 8;
-            (new BWG4oldGenReed()).generate(field_907_p, field_913_j, k14, i17, k18);
+	        if(field_913_j.nextInt(6) == 0)
+	        {
+	            int j9 = k + field_913_j.nextInt(16) + 8;
+	            int i14 = field_913_j.nextInt(64);
+	            int k16 = l + field_913_j.nextInt(16) + 8;
+	            (new WorldGenFlowers(Block.mushroomBrown.blockID)).generate(field_907_p, field_913_j, j9, i14, k16);
+	        }
+	        if(field_913_j.nextInt(12) == 0)
+	        {
+	            int k9 = k + field_913_j.nextInt(16) + 8;
+	            int j14 = field_913_j.nextInt(64);
+	            int l16 = l + field_913_j.nextInt(16) + 8;
+	            (new WorldGenFlowers(Block.mushroomRed.blockID)).generate(field_907_p, field_913_j, k9, j14, l16);
+	        }
         }
 
-        for(int i10 = 0; i10 < 1; i10++)
+        if(alpha)
         {
-            int l14 = k + field_913_j.nextInt(16) + 8;
-            int j17 = field_913_j.nextInt(128);
-            int l18 = l + field_913_j.nextInt(16) + 8;
-            (new WorldGenCactus()).generate(field_907_p, field_913_j, l14, j17, l18);
+	        for(int l9 = 0; l9 < 10; l9++)
+	        {
+	            int k14 = k + field_913_j.nextInt(16) + 8;
+	            int i17 = field_913_j.nextInt(128);
+	            int k18 = l + field_913_j.nextInt(16) + 8;
+	            (new BWG4oldGenReed()).generate(field_907_p, field_913_j, k14, i17, k18);
+	        }
+        }
+
+        if(alpha)
+        {
+	        for(int i10 = 0; i10 < 1; i10++)
+	        {
+	            int l14 = k + field_913_j.nextInt(16) + 8;
+	            int j17 = field_913_j.nextInt(128);
+	            int l18 = l + field_913_j.nextInt(16) + 8;
+	            (new WorldGenCactus()).generate(field_907_p, field_913_j, l14, j17, l18);
+	        }
         }
 
         for(int j10 = 0; j10 < 50; j10++)

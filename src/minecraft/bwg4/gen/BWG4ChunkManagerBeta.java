@@ -174,7 +174,7 @@ public class BWG4ChunkManagerBeta extends WorldChunkManager
 				}
 			}
 		}
-		else if(BWG4GeneratorType.currentGenerator == BWG4GeneratorType.BETA)
+		else if(BWG4GeneratorType.currentGenerator == BWG4GeneratorType.BETA173)
 		{
 			if(biome == 0)
 			{
