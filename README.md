@@ -32,6 +32,10 @@ forum thread: http://www.minecraftforum.net/topic/1070207-162-forge-better-world
 
 ## CHANGELOG ##
 
+    Version 1.1.9 '21-9-2013'
+    - Updated to minecraft 1.6.4
+    - Fixed BigTrees compatibility
+
     Version 1.1.8 '12-8-2013'
     - Added highlands support
     - Fixed Sky dimension crash
