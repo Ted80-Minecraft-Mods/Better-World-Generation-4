@@ -36,7 +36,9 @@ forum thread: http://www.minecraftforum.net/topic/1070207-162-forge-better-world
     - Added wasteland generator
     - Added Survival Cave generator
     - Added alpha 1.1.0 generator
-    - Added ruins
+    - Added a new generator menu
+    - Added ruins gen
+    - Added Size and Amplified option to better default
     - Less Biome ids :)
 
     Version 1.1.9 '21-9-2013'
