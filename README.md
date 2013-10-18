@@ -33,6 +33,7 @@ forum thread: http://www.minecraftforum.net/topic/1070207-162-forge-better-world
 ## CHANGELOG ##
 
     Version 1.2.0 'planned'
+    - Updated to minecraft 1.7
     - Added wasteland generator
     - Added Survival Cave generator
     - Added alpha 1.1.0 generator
