@@ -32,6 +32,13 @@ forum thread: http://www.minecraftforum.net/topic/1070207-162-forge-better-world
 
 ## CHANGELOG ##
 
+    Version 1.2.0 'planned'
+    - Added wasteland generator
+    - Added Survival Cave generator
+    - Added alpha 1.1.0 generator
+    - Added ruins
+    - Less Biome ids :)
+
     Version 1.1.9 '21-9-2013'
     - Updated to minecraft 1.6.4
     - Fixed BigTrees compatibility
