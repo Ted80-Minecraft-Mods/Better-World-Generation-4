@@ -32,6 +32,24 @@ forum thread: http://www.minecraftforum.net/topic/1070207-162-forge-better-world
 
 ## CHANGELOG ##
 
+    Version 1.2.0 'planned'
+    - Updated to minecraft 1.7
+    - Added Cave generator
+    - Added Wasteland generator
+    - Added Deadly Desert generator
+    - Added Survival Cave generator
+    - Added alpha 1.1.0 generator
+    - Added Size option and new themes to Survival island and skyland
+    - Added new generator menu
+    - Added size and layer option to indev
+    - Added size and amplified option to better default
+    - Changed dungeon loot
+    - Less biome ids :)
+    
+    Version 1.1.9 '21-9-2013'
+    - Updated to minecraft 1.6.4
+    - Fixed BigTrees compatibility
+
     Version 1.1.8 '12-8-2013'
     - Added highlands support
     - Fixed Sky dimension crash
