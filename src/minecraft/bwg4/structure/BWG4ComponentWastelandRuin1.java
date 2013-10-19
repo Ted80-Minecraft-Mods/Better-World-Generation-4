@@ -47,17 +47,17 @@ public class BWG4ComponentWastelandRuin1 extends BWG4ComponentScattered
     				{
 	    				if(getBlockIdAtCurrentPosition(w, x1, y1, z1, s) != 0)
 	    				{
-	    					placeBlockAtCurrentPosition(w, Block.cobblestone.blockID, 0, x1, y1, z1, s);
+	    					placeBlockAtCurrentPosition(w, Block.stoneBrick.blockID, r.nextInt(3), x1, y1, z1, s);
 	    				}
-	    				else if(getBlockIdAtCurrentPosition(w, x1, y1 - 1, z1, s) != 0 && r.nextInt(2) == 0)
+	    				else if(getBlockIdAtCurrentPosition(w, x1, y1 - 1, z1, s) != 0 && r.nextInt(3) == 0)
 	    				{
-	    					placeBlockAtCurrentPosition(w, Block.cobblestoneMossy.blockID, 0, x1, y1, z1, s);
+	    					placeBlockAtCurrentPosition(w, Block.stoneBrick.blockID, r.nextInt(3), x1, y1, z1, s);
 	    				}
     				}
     			}
     		}
     	}
 
-    	//fillWithAir(w, s, sx1 + 1, sy1 + 1, sz1 + 1, sx2 - 1, sy2 - 1, sz2 - 1);
+    	fillWithAir(w, s, sx1 + 1, sy1 + 1, sz1 + 1, sx2 - 1, sy2 - 1, sz2 - 1);
     }
 }

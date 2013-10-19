@@ -57,6 +57,9 @@ public class BWG4Config
 			biomeIDs[14] = config.get("3 - Extreme Survival", "SurvivalSnow", 64).getInt();
 			biomeIDs[15] = config.get("3 - Extreme Survival", "SurvivalNether", 65).getInt();
 			
+			//ADVENTURE
+			biomeIDs[16] = config.get("4 - Adventure", "DeadlyDesert", 66).getInt();
+			
 			//CAVEDIMENSION
 			//biomeIDs[15] = config.get("Cave Dimension", "CaveDimension", 67).getInt();
 			

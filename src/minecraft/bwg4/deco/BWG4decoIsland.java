@@ -90,10 +90,10 @@ public class BWG4decoIsland extends WorldGenerator
 			}
 			
 			//GEN SUGARCANE
-			for(int j = 0; j < 80; j++)
+			for(int j = 0; j < 200; j++)
 			{
-				int px = -20 + rand.nextInt(40);
-				int pz = -20 + rand.nextInt(40);
+				int px = -50 + rand.nextInt(100);
+				int pz = -50 + rand.nextInt(100);
 	
 	            if (world.isAirBlock(px, 65, pz))
 	            {
@@ -231,10 +231,10 @@ public class BWG4decoIsland extends WorldGenerator
 			}
 			
 			//GEN SUGARCANE
-			for(int j = 0; j < 80; j++)
+			for(int j = 0; j < 200; j++)
 			{
-				int px = -40 + rand.nextInt(80);
-				int pz = -40 + rand.nextInt(80);
+				int px = -60 + rand.nextInt(120);
+				int pz = -60 + rand.nextInt(120);
 	
 	            if (world.isAirBlock(px, 65, pz))
 	            {

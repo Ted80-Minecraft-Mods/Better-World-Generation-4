@@ -14,17 +14,17 @@ public class BWG4GuiSettingsButton
 	
 	public BWG4GuiSettingsButton(String[] text, int[] values, int buttonID, int posY, int width)
 	{
-		button = new GuiSmallButton(buttonID, width / 2 + 5, posY, 150, 20, text[0]);
-		textarray = text;
-		valuearray = values;
-		selected = 0;
-		dependencie = -1;
-		depvalues = new int[0];
+		this(new GuiSmallButton(buttonID, width / 2 + 5, posY, 150, 20, text[0]), text, values, buttonID, -1, new int[0]);
 	}
 
 	public BWG4GuiSettingsButton(String[] text, int[] values, int buttonID, int posY, int width, int dep, int[] vel)
 	{
-		button = new GuiSmallButton(buttonID, width / 2 + 5, posY, 150, 20, text[0]);
+		this(new GuiSmallButton(buttonID, width / 2 + 5, posY, 150, 20, text[0]), text, values, buttonID, dep, vel);
+	}
+	
+	public BWG4GuiSettingsButton(GuiButton b, String[] text, int[] values, int buttonID, int dep, int[] vel)
+	{
+		button = b;
 		textarray = text;
 		valuearray = values;
 		selected = 0;

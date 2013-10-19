@@ -36,7 +36,7 @@ public class BWG4GuiWorldSettings extends GuiScreen
 		fr = f;
 		oldsettings = s;
 	}
-
+	/*
 	public void initGui()
 	{
     	buttonList.clear();
@@ -93,5 +93,5 @@ public class BWG4GuiWorldSettings extends GuiScreen
     	updateSliders(false);
     	
     	super.drawScreen(par1, par2, par3);
-    }
+    }*/
 }

@@ -28,7 +28,7 @@ public class BWG4MapGenPocket extends BWG4MapGenBase
         int y = chunkY * 16;
         
         PerlinNoise noise = new PerlinNoise(par1);
-        
+
         int jj = 0;
         for(int i = x; i < x + 16; i++)
         {

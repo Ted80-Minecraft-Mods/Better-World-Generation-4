@@ -11,6 +11,7 @@ import bwg4.deco.old.BWG4oldGenClay;
 import bwg4.deco.old.BWG4oldGenMinable;
 import bwg4.deco.old.BWG4oldGenTrees;
 import bwg4.noise.BWG4NoiseOctavesBeta;
+import bwg4.util.Coords;
 import bwg4.util.PerlinNoise;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSand;
@@ -55,12 +56,17 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
     int[][] field_73203_h = new int[32][32];
     private MapGenBase caveGenerator = new MapGenCaves();
     private MapGenStronghold strongholdGenerator = new MapGenStronghold();
-	int THEMEID = 1;
+	public int THEMEID = 1;
+	public double width;
+	public int height;
 	
 	public PerlinNoise perlin1;
 	public PerlinNoise perlin2;
 	
-    public BWG4ChunkProviderIsland(World par1World, long par2, int theme)
+	public int volcanoX;
+	public int volcanoY;
+	
+    public BWG4ChunkProviderIsland(World par1World, long par2, int theme, int s)
     {
         world = par1World;
         rand = new Random(par2);
@@ -75,6 +81,44 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
 		
 		perlin1 = new PerlinNoise(par2);
 		perlin2 = new PerlinNoise(par2 + 100L);
+		
+		if(THEMEID == 1)
+		{
+			switch (s)
+			{
+				case 1: width = 3.3D; height = 67; break;
+				case 2: width = 5.0D; height = 68; break;
+				case 3: width = 7.0D; height = 70; break;
+			}
+		}
+		else if(THEMEID == 2)
+		{
+			switch (s)
+			{
+				case 1: width = 3.3D; height = 72; break;
+				case 2: width = 5.0D; height = 74; break;
+				case 3: width = 7.0D; height = 80; break;
+			}
+		}
+		else if(THEMEID == 3)
+		{
+		}
+		else if(THEMEID == 4)
+		{
+			switch (s)
+			{
+				case 1: width = 2.5D; height = 5; break;
+				case 2: width = 3.8D; height = 7; break;
+				case 3: width = 4.9D; height = 10; break;
+			}
+		}
+		else if(THEMEID == 5)
+		{
+			volcanoX = -80 + rand.nextInt(160);
+			volcanoY = -80 + rand.nextInt(160);
+			
+			
+		}
     }
 
     public void generateTerrain(int par1, int par2, byte[] par3ArrayOfByte, BiomeGenBase[] par4ArrayOfBiomeGenBase)
@@ -88,8 +132,8 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
 			{
 				for (int m = j; m < j + 16; m++)
 				{
-					int i2 = 67;
-					i2 -= (int) Math.floor((Math.sqrt((0D-k)*(0D-k) + (0D-m)*(0D-m)) / 5D) + (perlin1.turbulence2(k / 60F, m / 60F, 4F) * 5F));
+					int i2 = height;
+					i2 -= (int) Math.floor((Math.sqrt((0D-k)*(0D-k) + (0D-m)*(0D-m)) / width) + (perlin1.turbulence2(k / 60F, m / 60F, 4F) * 5F));
 					if(i2 < 50) { i2 = 50; }
 					
 					for (int i3 = 0; i3 < 128; i3++)
@@ -125,8 +169,8 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
 			{
 				for (int m = j; m < j + 16; m++)
 				{
-					int i2 = 78;
-					i2 -= (int) Math.floor((Math.sqrt((0D-k)*(0D-k) + (0D-m)*(0D-m)) / 3D) + (perlin1.turbulence2(k / 60F, m / 60F, 4F) * 5F));
+					int i2 = height;
+					i2 -= (int) Math.floor((Math.sqrt((0D-k)*(0D-k) + (0D-m)*(0D-m)) / width) + (perlin1.turbulence2(k / 60F, m / 60F, 4F) * 5F));
 					if(i2 < 50) { i2 = 50; }
 					
 					for (int i3 = 0; i3 < 128; i3++)
@@ -171,90 +215,149 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
 				}
 			}
     	}
+    	else if(THEMEID == 3)
+    	{
+    		
+    	}
+    	else if(THEMEID == 4)
+    	{
+    		int jj = 0;
+    		int i = par1 << 4;
+    		int j = par2 << 4;
+			for (int k = i; k < i + 16; k++)
+			{
+				for (int m = j; m < j + 16; m++)
+				{
+					int surface = height;
+					float dis = (float) (Math.sqrt((0D-k)*(0D-k) + (0D-m)*(0D-m)) / width);
+					surface -= (int) Math.floor(dis + (perlin1.turbulence2(k / 60F, m / 60F, 4F) * 5F));
+					float ice = (perlin2.turbulence2(k / 20F, m / 20F, 4F) * 10F);
+					ice = 1 -(2 *(ice * ice)); 
+					
+					for (int i3 = 0; i3 < 128; i3++)
+					{
+						int i4 = 0;
+						
+						if(i3 < 63)
+						{
+							i4 = Block.waterStill.blockID;
+						}
+						if(i3 == 63)
+						{
+							if(surface > -2)
+							{
+								i4 = Block.ice.blockID;
+							}
+							else if(ice < -1f)
+							{
+								i4 = Block.ice.blockID;
+							}
+							else
+							{
+								i4 = Block.waterStill.blockID;
+							}
+						}
+						if(surface > -1)
+						{
+							if(i3 < surface + 70 && i3 > -(surface * 5) + 62)
+							{
+								i4 = Block.blockSnow.blockID;
+							}
+						}
+						
+						par3ArrayOfByte[jj++] = (byte)i4;
+					}
+				}
+			}
+    	}
     	else
     	{
-	        byte var5 = 2;
-	        int var6 = var5 + 1;
-	        byte var7 = 33;
-	        int var8 = var5 + 1;
-	        this.densities = this.initializeNoiseField(this.densities, par1 * var5, 0, par2 * var5, var6, var7, var8);
-	
-	        for (int var9 = 0; var9 < var5; ++var9)
-	        {
-	            for (int var10 = 0; var10 < var5; ++var10)
-	            {
-	                for (int var11 = 0; var11 < 32; ++var11)
-	                {
-	                    double var12 = 0.25D;
-	                    double var14 = this.densities[((var9 + 0) * var8 + var10 + 0) * var7 + var11 + 0];
-	                    double var16 = this.densities[((var9 + 0) * var8 + var10 + 1) * var7 + var11 + 0];
-	                    double var18 = this.densities[((var9 + 1) * var8 + var10 + 0) * var7 + var11 + 0];
-	                    double var20 = this.densities[((var9 + 1) * var8 + var10 + 1) * var7 + var11 + 0];
-	                    double var22 = (this.densities[((var9 + 0) * var8 + var10 + 0) * var7 + var11 + 1] - var14) * var12;
-	                    double var24 = (this.densities[((var9 + 0) * var8 + var10 + 1) * var7 + var11 + 1] - var16) * var12;
-	                    double var26 = (this.densities[((var9 + 1) * var8 + var10 + 0) * var7 + var11 + 1] - var18) * var12;
-	                    double var28 = (this.densities[((var9 + 1) * var8 + var10 + 1) * var7 + var11 + 1] - var20) * var12;
-	
-	                    for (int var30 = 0; var30 < 4; ++var30)
-	                    {
-	                        double var31 = 0.125D;
-	                        double var33 = var14;
-	                        double var35 = var16;
-	                        double var37 = (var18 - var14) * var31;
-	                        double var39 = (var20 - var16) * var31;
-	
-	                        for (int var41 = 0; var41 < 8; ++var41)
-	                        {
-	                            int var42 = var41 + var9 * 8 << 11 | 0 + var10 * 8 << 7 | var11 * 4 + var30;
-	                            short var43 = 128;
-	                            double var44 = 0.125D;
-	                            double var46 = var33;
-	                            double var48 = (var35 - var33) * var44;
-	
-	                            for (int var50 = 0; var50 < 8; ++var50)
-	                            {
-	                                int var51 = 0;
-	
-	                                if (var46 > 0.0D)
-	                                {
-	                                    var51 = Block.stone.blockID;
-	                                }	
-									else if (var11 * 4 + var30 < 63)
-	                                {
-										if (var11 * 4 + var30 < 55)
-										{
-											var51 = Block.stone.blockID;
-										}
-										else
-										{
-											//if(THEMEID == 2)
-											//{
-											//	var51 = Block.lavaStill.blockID;
-											//}
-											//else
-											//{
-												var51 = Block.waterStill.blockID;
-											//}	
-										}	
-	                                } 
-	
-	                                par3ArrayOfByte[var42] = (byte)var51;
-	                                var42 += var43;
-	                                var46 += var48;
-	                            }
-	
-	                            var33 += var37;
-	                            var35 += var39;
-	                        }
-	
-	                        var14 += var22;
-	                        var16 += var24;
-	                        var18 += var26;
-	                        var20 += var28;
-	                    }
-	                }
-	            }
-	        }
+    		int jj = 0;
+    		int i = par1 << 4;
+    		int j = par2 << 4;
+    		
+    		int volcanoground = 0;
+    		int volcanoair = 0;
+    		int volcanograss = 0;
+			for (int k = i; k < i + 16; k++)
+			{
+				for (int m = j; m < j + 16; m++)
+				{
+					int i1 = 0;
+					float dis = (float) Math.sqrt((0D-k)*(0D-k) + (0D-m)*(0D-m));
+					float stength = -(100F / 300f) * dis + 100F;
+					dis /= 7f;
+					
+					double volcanodis = Coords.getDistance(k, m, volcanoX, volcanoY) - 8;
+	        		if(volcanodis + 8 < 100)
+	        		{
+	        			int noise = (int) Math.floor(perlin2.turbulence2(k / 30f, m / 30f, 4f) * 7f);
+		        		if(volcanodis > 0)
+		        		{
+		        			volcanoground = 128 + noise - (int) Math.floor(volcanodis);
+		        			volcanoair = 128 + noise - (int) Math.floor(volcanodis / 0.25D);
+		        			volcanograss = 165 + (-noise * 2) - (int) Math.floor(volcanodis / 0.5D);
+		        		}
+		        		else
+		        		{
+		        			volcanoair = 128;
+		        			volcanoground = 128;
+		        			volcanograss = 128;
+		        		}
+	        		}
+					
+					for (int i3 = 0; i3 < 128; i3++)
+					{
+						float n = 0;
+						if(i3 > 50 && stength > 0f)
+						{
+							n += perlin1.turbulence3(k / 90f, m / 82f, i3 / 90f, 4f) * stength;
+							n += perlin2.turbulence3(k / 40f, m / 34f, i3 / 40f, 4f) * (stength / 2f);
+						}
+						int i2 = (int) Math.floor(-100 + i3 + i1 + n + dis);
+
+						int i4 = 0;
+						if(i2 > 0)
+						{
+							i4 = 0;
+
+							if(i3 < 64)
+							{
+								i4 = Block.waterStill.blockID;
+							}
+						}
+						else
+						{
+							i4 = Block.stone.blockID;
+						}
+						
+						if(i2 > -10 && i3 < volcanoground)
+						{
+							if(i2 > -8 && i3 < volcanoair)
+							{
+								if(i3 < 90)
+								{
+									i4 = Block.lavaStill.blockID;
+								}
+								else
+								{
+									i4 = 0;
+								}
+							}
+							else if(i3 > volcanograss)
+							{
+								i4 = Block.stone.blockID;
+							}
+							else
+							{
+								i4 = Block.obsidian.blockID;
+							}
+						}
+						
+						par3ArrayOfByte[jj++] = (byte)i4;
+					}
+				}
+			}
     	}
     }
 
@@ -290,7 +393,7 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
 							var9 = (byte)Block.sand.blockID;
 							var10 = (byte)Block.sand.blockID;
 							
-							if(var11 > 67) 
+							if(var11 > 66) 
 							{ 
 								var9 = (byte)Block.grass.blockID;
 								var10 = (byte)Block.dirt.blockID;
@@ -324,18 +427,11 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
         }
     }
 
-    /**
-     * loads or generates the chunk at the chunk location specified
-     */
     public Chunk loadChunk(int par1, int par2)
     {
         return this.provideChunk(par1, par2);
     }
 
-    /**
-     * Will return back a chunk, if it doesn't exist and its not a MP client it will generates all the blocks for the
-     * specified chunk from the map seed and chunk seed
-     */
     public Chunk provideChunk(int par1, int par2)
     {
         this.rand.setSeed((long)par1 * 341873128712L + (long)par2 * 132897987541L);
@@ -343,7 +439,7 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
         this.biomesForGeneration = this.world.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, par1 * 16, par2 * 16, 16, 16);
         this.generateTerrain(par1, par2, var3, this.biomesForGeneration);
         
-        if(THEMEID == 4)
+        if(THEMEID == 5)
         {
         	this.replaceBlocksForBiome(par1, par2, var3, this.biomesForGeneration);
         }
@@ -363,158 +459,11 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
         return var4;
     }
 
-    private double[] initializeNoiseField(double[] par1ArrayOfDouble, int par2, int par3, int par4, int par5, int par6, int par7)
-    {
-        if (par1ArrayOfDouble == null)
-        {
-            par1ArrayOfDouble = new double[par5 * par6 * par7];
-        }
-		
-		//SETTINGS
-		float maxHeight = 64.0F;
-		double extremenes = -3000.0D;
-		double weight = 8000.0D;
-		extremenes = -400.0D;
-		
-        double var8 = 684.412D;
-        double var10 = 684.412D;
-        this.noiseData4 = this.noiseGen4.generateNoiseOctaves(this.noiseData4, par2, par4, par5, par7, 1.121D, 1.121D, 0.5D);
-        this.noiseData5 = this.noiseGen5.generateNoiseOctaves(this.noiseData5, par2, par4, par5, par7, 200.0D, 200.0D, 0.5D);
-        var8 *= 2.0D;
-        this.noiseData1 = this.noiseGen3.generateNoiseOctaves(this.noiseData1, par2, par3, par4, par5, par6, par7, var8 / 80.0D, var10 / 160.0D, var8 / 80.0D);
-        this.noiseData2 = this.noiseGen1.generateNoiseOctaves(this.noiseData2, par2, par3, par4, par5, par6, par7, var8, var10, var8);
-        this.noiseData3 = this.noiseGen2.generateNoiseOctaves(this.noiseData3, par2, par3, par4, par5, par6, par7, var8, var10, var8);
-        int var12 = 0;
-        int var13 = 0;
-
-        for (int var14 = 0; var14 < par5; ++var14)
-        {
-            for (int var15 = 0; var15 < par7; ++var15)
-            {
-                double var16 = (this.noiseData4[var13] + 256.0D) / 512.0D;
-
-                if (var16 > 1.0D)
-                {
-                    var16 = 1.0D;
-                }
-
-                double var18 = this.noiseData5[var13] / weight;
-
-                if (var18 < 0.0D)
-                {
-                    var18 = -var18 * 0.3D;
-                }
-
-                var18 = var18 * 3.0D - 2.0D;
-                float var20 = (float)(var14 + par2 - 0) / 1.0F;
-                float var21 = (float)(var15 + par4 - 0) / 1.0F;
-                float var22 = 100.0F - MathHelper.sqrt_float(var20 * var20 + var21 * var21) * 8.0F;
-
-                if (var22 > 80.0F)
-                {
-                    var22 = 80.0F;
-                }
-
-                if (var22 < -100.0F)
-                {
-                    var22 = -100.0F;
-                }
-
-                if (var18 > 1.0D)
-                {
-                    var18 = 1.0D;
-                }
-
-                var18 /= 8.0D;
-                var18 = 0.0D;
-
-                if (var16 < 0.0D)
-                {
-                    var16 = 0.0D;
-                }
-
-                var16 += 0.5D;
-                var18 = var18 * (double)par6 / 16.0D;
-                ++var13;
-                double var23 = (double)par6 / 2.0D;
-
-                for (int var25 = 0; var25 < par6; ++var25)
-                {
-                    double var26 = 0.0D;
-                    double var28 = ((double)var25 - var23) * 8.0D / var16;
-
-                    if (var28 < 0.0D)
-                    {
-                        var28 *= -1.0D;
-                    }
-
-                    double var30 = this.noiseData2[var12] / 512.0D;
-                    double var32 = this.noiseData3[var12] / 512.0D;
-                    double var34 = (this.noiseData1[var12] / 10.0D + 1.0D) / 2.0D;
-
-                    if (var34 < 0.0D)
-                    {
-                        var26 = var30;
-                    }
-                    else if (var34 > 1.0D)
-                    {
-                        var26 = var32;
-                    }
-                    else
-                    {
-                        var26 = var30 + (var32 - var30) * var34;
-                    }
-
-                    var26 -= 8.0D;
-                    var26 += (double)var22;
-                    byte var36 = 2;
-                    double var37;
-
-                    if (var25 > par6 / 2 - var36)
-                    {
-                        var37 = (double)((float)(var25 - (par6 / 2 - var36)) / maxHeight);
-
-                        if (var37 < 0.0D)
-                        {
-                            var37 = 0.0D;
-                        }
-
-                        if (var37 > 1.0D)
-                        {
-                            var37 = 1.0D;
-                        }
-						
-                        var26 = var26 * (1.0D - var37) + extremenes * var37;
-                    }
-
-                    var36 = 8;
-
-                    if (var25 < var36)
-                    {
-                        var37 = (double)((float)(var36 - var25) / ((float)var36 - 1.0F));
-                        var26 = var26 * (1.0D - var37) + -30.0D * var37;
-                    }
-
-                    par1ArrayOfDouble[var12] = var26;
-                    ++var12;
-                }
-            }
-        }
-
-        return par1ArrayOfDouble;
-    }
-
-    /**
-     * Checks to see if a chunk exists at x, y
-     */
     public boolean chunkExists(int par1, int par2)
     {
         return true;
     }
 
-    /**
-     * Populates chunk with ores etc etc
-     */
     public void populate(IChunkProvider par1IChunkProvider, int par2, int par3)
     {
         BlockSand.fallInstantly = true;
@@ -537,6 +486,8 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
 		byte deco_dungeon = 0;
 		byte deco_tree = 0;
 		boolean mayrandtrees = false;
+		int mintree = 0;
+		int maxtree = 128;
 		
 		//========================= THEME SETTINGS ======================
 		
@@ -566,6 +517,25 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
 			deco_flowerYellow = 3;
 			deco_grass = 4;
 			deco_tree = 10;
+			mintree = 70;
+		}
+		else if(THEMEID == 3) //HELL ISLAND
+		{
+			
+		}
+		else if(THEMEID == 4) //ICEBERG ISLAND
+		{
+			
+		}
+		else if(THEMEID == 5) //PARADISE ISLAND
+		{
+			deco_clay = 20;
+			deco_dungeon = 20;
+			deco_flowerRed = 3;
+			deco_flowerYellow = 3;
+			deco_grass = 4;
+			deco_tree = 10;
+			mintree = 69;
 		}
 		
 		//======================== DECO =================================
@@ -678,11 +648,15 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
 		{
 			int j6 = var4 + rand.nextInt(16) + 8;
 			int k10 = var5 + rand.nextInt(16) + 8;
-			WorldGenerator worldgenerator = getRandomWorldGenForTrees(rand);
-			worldgenerator.setScale(1.0D, 1.0D, 1.0D);
-			worldgenerator.generate(world, rand, j6, world.getHeightValue(j6, k10), k10);
+			int z52 = world.getHeightValue(j6, k10);
+			if(z52 >= mintree && z52 <= maxtree)
+			{
+				WorldGenerator worldgenerator = getRandomWorldGenForTrees(rand);
+				worldgenerator.setScale(1.0D, 1.0D, 1.0D);
+				worldgenerator.generate(world, rand, j6, z52, k10);
+			}
 		}
-        
+		
 		for (int yf = 0; yf < deco_flowerYellow; ++yf)
 		{
 			int yf1 = var4 + rand.nextInt(16) + 8;
@@ -741,7 +715,7 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
 
 	public WorldGenerator getRandomWorldGenForTrees(Random par1Random)
 	{
-		if(THEMEID == 2) //island_tropical
+		if(THEMEID == 2 || THEMEID == 5) //island_tropical
 		{
 			if(par1Random.nextInt(5) == 0)
 			{
@@ -770,43 +744,27 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
         return false;
     }
 
-    /**
-     * Unloads the 100 oldest chunks from memory, due to a bug with chunkSet.add() never being called it thinks the list
-     * is always empty and will not remove any chunks.
-     */
     public boolean unload100OldestChunks()
     {
         return false;
     }
 
-    /**
-     * Returns if the IChunkProvider supports saving.
-     */
     public boolean canSave()
     {
         return true;
     }
 
-    /**
-     * Converts the instance data to a readable string.
-     */
     public String makeString()
     {
         return "RandomLevelSource";
     }
 
-    /**
-     * Returns a list of creatures of the specified type that can spawn at the given location.
-     */
     public List getPossibleCreatures(EnumCreatureType par1EnumCreatureType, int par2, int par3, int par4)
     {
         BiomeGenBase var5 = this.world.getBiomeGenForCoords(par2, par4);
         return var5 == null ? null : var5.getSpawnableList(par1EnumCreatureType);
     }
 
-    /**
-     * Returns the location of the closest structure of the specified type. If not found returns null.
-     */
     public ChunkPosition findClosestStructure(World par1World, String par2Str, int par3, int par4, int par5)
     {
         return "Stronghold".equals(par2Str) && this.strongholdGenerator != null ? this.strongholdGenerator.getNearestInstance(par1World, par3, par4, par5) : null;

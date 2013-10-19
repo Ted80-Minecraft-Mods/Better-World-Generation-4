@@ -6,6 +6,7 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.BiomeDictionary.Type;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BWG4Biomes 
 {
@@ -27,6 +28,8 @@ public class BWG4Biomes
 	public static BiomeGenBase SURVIVALnormal2;
 	public static BiomeGenBase SURVIVALsnow;
 	public static BiomeGenBase SURVIVALnether;
+	
+	public static BiomeGenBase ADVENTUREdesert;
 	
 	public static BiomeGenBase BDocean;
 	public static BiomeGenBase BDtropicalisland;
@@ -90,6 +93,9 @@ public class BWG4Biomes
 		SURVIVALnormal2 = (new BWG4BiomesSurvival(BWG4Config.biomeIDs[13], 1)).setColor(353825).setBiomeName("Extreme Survival").setTemperatureRainfall(0.9F, 0.8F);
 		SURVIVALsnow = (new BWG4BiomesSurvival(BWG4Config.biomeIDs[14], 2)).setColor(353825).setBiomeName("Extreme Survival").setTemperatureRainfall(0.0F, 0.5F);
 		SURVIVALnether = (new BWG4BiomesSurvival(BWG4Config.biomeIDs[15], 3)).setColor(353825).setBiomeName("Hell").setTemperatureRainfall(0.8F, 0.6F);
+		
+		//adventure
+		ADVENTUREdesert = (new BWG4BiomesAdventure(BWG4Config.biomeIDs[16], 0)).setColor(353825).setBiomeName("Deadly Desert").setTemperatureRainfall(0.8F, 0.6F); 
 		
 		//ISLANDnormal = (new BWG4BiomesSurvival(BWG4Config.biomeIDs[27], 0)).setColor(353825).setBiomeName("Survival Island").setTemperatureRainfall(0.9F, 0.8F);
 		//ISLANDtropical = (new BWG4BiomesSurvival(BWG4Config.biomeIDs[28], 1)).setColor(353825).setBiomeName("Survival Island").setTemperatureRainfall(0.9F, 0.8F);
@@ -171,6 +177,7 @@ public class BWG4Biomes
 		BiomeDictionary.registerBiomeType(SURVIVALnormal2, Type.PLAINS);
 		BiomeDictionary.registerBiomeType(SURVIVALsnow, Type.PLAINS, Type.FROZEN);
 		BiomeDictionary.registerBiomeType(SURVIVALnether, Type.NETHER);
+		BiomeDictionary.registerBiomeType(ADVENTUREdesert, Type.WASTELAND, Type.DESERT);
 		
 		//add biomes to bwg4 api
 		//DefaultBiomeList.addBiome("Ocean", BWG4Biomes.BDocean, 0);

@@ -8,6 +8,7 @@ import bwg4.deco.BWG4decoWasteland;
 import bwg4.deco.old.BWG4oldGenMinable;
 import bwg4.map.BWG4MapGenBase;
 import bwg4.map.BWG4MapGenPocket;
+import bwg4.map.BWG4MapGenVolcano;
 import bwg4.structure.BWG4ScatteredFeature;
 import bwg4.util.PerlinNoise;
 import bwg4.util.Coords;
@@ -66,6 +67,7 @@ public class BWG4ChunkProviderWasteland implements IChunkProvider
     private BiomeGenBase[] biomesForGeneration;
     
     private BWG4MapGenBase pocketGenerator = new BWG4MapGenPocket();
+    private BWG4MapGenBase volcanoGenerator = new BWG4MapGenVolcano();
 
     double[] noise3;
     double[] noise1;
@@ -91,6 +93,11 @@ public class BWG4ChunkProviderWasteland implements IChunkProvider
         cavenoise_2 = new PerlinNoise(par2 + 2L);
         
         noisetest = new PerlinNoise(par2);
+        
+        //BWG4MapGenVolcano.randompos = false;
+        //BWG4MapGenVolcano.posX = 20;
+        //BWG4MapGenVolcano.posY = 64;
+        //BWG4MapGenVolcano.posZ = 20;
     }
     
     public Chunk provideChunk(int par1, int par2)
@@ -104,6 +111,7 @@ public class BWG4ChunkProviderWasteland implements IChunkProvider
         //this.caveGenerator.generate(this, this.worldObj, par1, par2, abyte);
         //this.ravineGenerator.generate(this, this.worldObj, par1, par2, abyte);
         //pocketGenerator.generate(this, this.worldObj, par1, par2, abyte);
+        //volcanoGenerator.generate(this, this.worldObj, par1, par2, abyte);
         this.strongholdGenerator.generate(this, this.worldObj, par1, par2, abyte);
         this.scatteredFeatureGenerator.generate(this, this.worldObj, par1, par2, abyte);
 
@@ -560,7 +568,7 @@ public class BWG4ChunkProviderWasteland implements IChunkProvider
 
 		MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Pre(par1IChunkProvider, worldObj, rand, par2, par3, false));
 		
-        pocketGenerator.populate(worldObj, par2, par3);
+        //pocketGenerator.populate(worldObj, par2, par3);
         
         this.strongholdGenerator.generateStructuresInChunk(this.worldObj, this.rand, par2, par3);
         this.scatteredFeatureGenerator.generateStructuresInChunk(this.worldObj, this.rand, par2, par3);

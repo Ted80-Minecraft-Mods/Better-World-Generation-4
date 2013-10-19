@@ -301,7 +301,7 @@ public class BWG4ChunkProviderCave implements IChunkProvider
 	            int dx1 = var4 + this.rand.nextInt(16) + 8;
 	            int dy1 = 64;
 	            int dz1 = var5 + this.rand.nextInt(16) + 8;
-	        	(new BWG4decoMites(1, 10 + rand.nextInt(15))).generate(this.worldObj, this.rand, dx1, dy1, dz1);
+	        	(new BWG4decoMites(1, 10 + rand.nextInt(15), 120)).generate(this.worldObj, this.rand, dx1, dy1, dz1);
 	        }
         }
         else
@@ -312,7 +312,7 @@ public class BWG4ChunkProviderCave implements IChunkProvider
 	            int dx1 = var4 + this.rand.nextInt(16) + 8;
 	            int dy1 = 64;
 	            int dz1 = var5 + this.rand.nextInt(16) + 8;
-	        	(new BWG4decoMites(2, 20 + rand.nextInt(10))).generate(this.worldObj, this.rand, dx1, dy1, dz1);
+	        	(new BWG4decoMites(2, 20 + rand.nextInt(10), 120)).generate(this.worldObj, this.rand, dx1, dy1, dz1);
 	        }
 	        
 	        int ca = (int) Math.floor(cactusnoise.turbulence2(var4 / 140F, var5 / 140F, 5F) * 40F) - 3;

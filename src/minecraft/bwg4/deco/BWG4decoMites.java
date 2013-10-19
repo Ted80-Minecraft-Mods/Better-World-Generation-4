@@ -12,11 +12,13 @@ public class BWG4decoMites extends WorldGenerator
 {
 	public int size;
 	public int type;
+	public int max;
 	
-	public BWG4decoMites(int t, int s)
+	public BWG4decoMites(int t, int s, int m)
 	{
 		size = s;
 		type = t;
+		max = m;
 	}
 	
 	public boolean generate(World world, Random random, int i, int j, int k) 
@@ -27,15 +29,15 @@ public class BWG4decoMites extends WorldGenerator
 			if(world.getBlockMaterial(i, h1, k) == Material.rock)
 			{
 				j2 = h1 + size;
-				generateStalagmite(size, i, h1 - 3, k, world, random);
+				generateStalagmite(size, i, h1 - 4, k, world, random);
 				break;
 			}
 		}
-		for(int h2 = j2; h2 < 120; h2++)
+		for(int h2 = j2; h2 < max; h2++)
 		{
 			if(world.getBlockMaterial(i, h2, k) == Material.rock)
 			{
-				generateStalactite(size, i, h2 + 3, k, world, random);
+				generateStalactite(size, i, h2 + 6, k, world, random);
 				break;
 			}
 		}

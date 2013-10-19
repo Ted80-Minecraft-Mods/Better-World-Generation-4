@@ -3,8 +3,10 @@ package bwg4.gui;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.settings.EnumOptions;
+
 import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
@@ -13,10 +15,30 @@ public class BWG4GuiSlider extends GuiButton
     public float sliderValue = 1.0F;
     public boolean dragging;
 
-    public BWG4GuiSlider(int id, int x, int y, String text, float par6)
+    public BWG4GuiSettingsSlider settings;
+	public int max;
+	public int selected;
+
+    public BWG4GuiSlider(int id, int x, int y)
     {
-        super(id, x, y, 150, 20, text);
-        this.sliderValue = par6;
+        super(id, x, y, 150, 20, "");
+    }
+    
+    public void setSlider(BWG4GuiSettingsSlider s, int def)
+    {
+    	settings = s;
+    	max = settings.valuearray.length - 1;
+    	sliderValue = Math.round(def) / (float) max;
+    	
+    	setText();
+    }
+    
+    public void setText()
+    {
+    	int pos = Math.round(sliderValue * max);
+    	
+    	displayString = settings.textarray[pos];
+    	settings.selected = settings.valuearray[pos];
     }
 
     protected int getHoverState(boolean par1)
@@ -41,10 +63,9 @@ public class BWG4GuiSlider extends GuiButton
                 {
                     this.sliderValue = 1.0F;
                 }
-
-                //par1Minecraft.gameSettings.setOptionFloatValue(this.idFloat, this.sliderValue);
-                //this.displayString = par1Minecraft.gameSettings.getKeyBinding(this.idFloat);
             }
+            
+            setText();
 
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
             this.drawTexturedModalRect(this.xPosition + (int)(this.sliderValue * (float)(this.width - 8)), this.yPosition, 0, 66, 4, 20);
@@ -57,7 +78,7 @@ public class BWG4GuiSlider extends GuiButton
         if (super.mousePressed(par1Minecraft, par2, par3))
         {
             this.sliderValue = (float)(par2 - (this.xPosition + 4)) / (float)(this.width - 8);
-
+            
             if (this.sliderValue < 0.0F)
             {
                 this.sliderValue = 0.0F;
@@ -67,9 +88,7 @@ public class BWG4GuiSlider extends GuiButton
             {
                 this.sliderValue = 1.0F;
             }
-
-            //par1Minecraft.gameSettings.setOptionFloatValue(this.idFloat, this.sliderValue);
-            //this.displayString = par1Minecraft.gameSettings.getKeyBinding(this.idFloat);
+            
             this.dragging = true;
             return true;
         }
@@ -82,5 +101,13 @@ public class BWG4GuiSlider extends GuiButton
     public void mouseReleased(int par1, int par2)
     {
         this.dragging = false;
+        
+        sliderValue = Math.round(sliderValue * max) / (float) max;
+        
+        setText();
+
+        GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+        this.drawTexturedModalRect(this.xPosition + (int)(this.sliderValue * (float)(this.width - 8)), this.yPosition, 0, 66, 4, 20);
+        this.drawTexturedModalRect(this.xPosition + (int)(this.sliderValue * (float)(this.width - 8)) + 4, this.yPosition, 196, 66, 4, 20);
     }
 }

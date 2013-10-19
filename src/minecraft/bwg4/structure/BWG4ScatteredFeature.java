@@ -19,7 +19,7 @@ import net.minecraft.world.gen.structure.StructureStart;
 
 public class BWG4ScatteredFeature extends MapGenStructure
 {
-    private static List biomelist = Arrays.asList(new BiomeGenBase[] {BWG4Biomes.WASTELANDplains});
+    private static List biomelist = Arrays.asList(new BiomeGenBase[] {BWG4Biomes.WASTELANDplains, BWG4Biomes.ADVENTUREdesert});
 
     private List scatteredFeatureSpawnList;
     private int maxDistanceBetweenScatteredFeatures;
@@ -28,8 +28,8 @@ public class BWG4ScatteredFeature extends MapGenStructure
     public BWG4ScatteredFeature()
     {
         this.scatteredFeatureSpawnList = new ArrayList();
-        this.maxDistanceBetweenScatteredFeatures = 8; //32
-        this.minDistanceBetweenScatteredFeatures = 2; //8
+        this.maxDistanceBetweenScatteredFeatures = 20; //32
+        this.minDistanceBetweenScatteredFeatures = 18; //8
         this.scatteredFeatureSpawnList.add(new SpawnListEntry(EntityWitch.class, 1, 1, 1));
     }
 

@@ -18,6 +18,11 @@ public class BWG4ScatteredFeatureStart extends StructureStart
         	BWG4ComponentWastelandRuin1 wastelandruin1 = new BWG4ComponentWastelandRuin1(par2Random, par3 * 16, par4 * 16);
             this.components.add(wastelandruin1);
         }
+        if(biomegenbase == BWG4Biomes.ADVENTUREdesert)
+        {
+        	BWG4ComponentPyramid pyramid = new BWG4ComponentPyramid(par2Random, par3 * 16, par4 * 16);
+        	components.add(pyramid);
+        }
         
         /*if (biomegenbase != BiomeGenBase.jungle && biomegenbase != BiomeGenBase.jungleHills)
         {
