@@ -39,13 +39,16 @@ forum thread: http://www.minecraftforum.net/topic/1070207-162-forge-better-world
     - Added Deadly Desert generator
     - Added Survival Cave generator
     - Added alpha 1.1.0 generator
-    - Added Size option and new themes to Survival island and skyland
+    - Added Size option to Survival island, Survival skyland and skyblock
+    - Added new themes to Survival island and Survival skyland
     - Added new generator menu
     - Added size and layer option to indev
     - Added size and amplified option to better default
+    - Added ruins
+    - Added volcanoes
     - Changed dungeon loot
     - Less biome ids :)
-    
+        
     Version 1.1.9 '21-9-2013'
     - Updated to minecraft 1.6.4
     - Fixed BigTrees compatibility
