@@ -178,7 +178,7 @@ public class BWG4decoSurvival extends WorldGenerator
 		
 			for(int s = 0 + y; s < treeheight + y; s++)
 			{
-				if (par1World.isAirBlock(x, s, z)) { par1World.setBlock(x, s, z, Block.wood.blockID, 3, 0); }
+				if (par1World.isAirBlock(x, s, z)) { par1World.setBlock(x, s, z, Block.wood.blockID, 3, 2); }
 			}
 			
             if (par2Random.nextInt(6) == 0)
@@ -247,6 +247,9 @@ public class BWG4decoSurvival extends WorldGenerator
 		else if(survivalobject == 6)//SURVIVAL SKYBLOCK MAIN
 		{
 			//CREATE TREE
+			int size = x;
+			x = 0;
+			
 			int xx = x + 5;
 			int yy = y + 13;
 			int zz = z + 1;
@@ -282,38 +285,66 @@ public class BWG4decoSurvival extends WorldGenerator
 			int by = y + 10;
 			int bz = z - 5;
 			int blx, bly, blz;
-			for(blx = 0 + bx; blx <= bx + 6 ; blx++)
+
+			if(size == 1)
 			{
-				for(bly = 0 + by; bly <= by + 2; bly++)
+				for(blx = 1 + bx; blx <= bx + 6; blx++)
 				{
-					for(blz = 0 + bz; blz <= bz + 6 ; blz++)
+					for(bly = 0 + by; bly <= by + 2; bly++)
 					{
-						if(bly == 2 + by)
+						for(blz = 4 + bz; blz <= bz + 6; blz++)
 						{
-							par1World.setBlock(blx, bly, blz, Block.grass.blockID);
+							if(bly == 2 + by)
+							{
+								par1World.setBlock(blx, bly, blz, Block.grass.blockID);
+							}
+							else
+							{
+								par1World.setBlock(blx, bly, blz, Block.dirt.blockID);
+							}	
 						}
-						else
-						{
-							par1World.setBlock(blx, bly, blz, Block.dirt.blockID);
-						}	
 					}
 				}
 			}
-			for(blx = 0 + bx + 3; blx <= bx + 6 ; blx++)
+			else
 			{
-				for(bly = 0 + by; bly <= by + 2; bly++)
+				for(blx = 0 + bx; blx <= bx + 6 ; blx++)
 				{
-					for(blz = 0 + bz; blz <= bz + 3 ; blz++)
+					for(bly = 0 + by; bly <= by + 2; bly++)
 					{
-						par1World.setBlock(blx, bly, blz, 0);
+						for(blz = 0 + bz; blz <= bz + 6 ; blz++)
+						{
+							if(bly == 2 + by)
+							{
+								par1World.setBlock(blx, bly, blz, Block.grass.blockID);
+							}
+							else
+							{
+								par1World.setBlock(blx, bly, blz, Block.dirt.blockID);
+							}	
+						}
+					}
+				}
+				if(size != 3)
+				{
+					for(blx = 0 + bx + 3; blx <= bx + 6 ; blx++)
+					{
+						for(bly = 0 + by; bly <= by + 2; bly++)
+						{
+							for(blz = 0 + bz; blz <= bz + 3 ; blz++)
+							{
+								par1World.setBlock(blx, bly, blz, 0);
+							}
+						}
 					}
 				}
 			}
 			
 			//ADD CHEST AND BEDROCK
+			int cz = bz; if(size == 1) { cz += 4; }
 			par1World.setBlock(bx + 1, by, bz + 5, Block.bedrock.blockID);
-			par1World.setBlock(bx + 1, by + 3, bz, Block.chest.blockID);
-			TileEntityChest tileentitychest = (TileEntityChest)par1World.getBlockTileEntity(bx + 1, by + 3, bz);
+			par1World.setBlock(bx + 1, by + 3, cz, Block.chest.blockID);
+			TileEntityChest tileentitychest = (TileEntityChest)par1World.getBlockTileEntity(bx + 1, by + 3, cz);
 			for (int c = 0; c < 20; c++) 
 			{ 
 				ItemStack itemstack = getChestList(c, 2, par2Random, par1World); 
@@ -385,29 +416,6 @@ public class BWG4decoSurvival extends WorldGenerator
 				} 
 			}
 		}
-		else if(survivalobject > 8 && survivalobject < 12)
-		{
-			for(int i = x - 1; i < 2 + x; i++)
-			{
-				for(int k = z - 1; k < 2 + z; k++)
-				{
-					for(int j = y; j < 3 + y; j++)
-					{
-						if(j == 2 + y) { par1World.setBlock(i, j, k, Block.grass.blockID); } else { par1World.setBlock(i, j, k, Block.dirt.blockID); }
-					}
-				}
-			}
-			par1World.setBlock(x, y + 3, z, Block.chest.blockID);
-			TileEntityChest tileentitychest = (TileEntityChest)par1World.getBlockTileEntity(x, y + 3, z);		
-			for (int c = 0; c < 20; c++) 
-			{ 
-				ItemStack itemstack = getChestList(c, survivalobject - 4, par2Random, par1World); 
-				if (tileentitychest != null && itemstack != null) 
-				{ 
-					tileentitychest.setInventorySlotContents(c, itemstack); 
-				} 
-			}
-		}
 		else if(survivalobject == 12)
 		{
 			for(int i = x - 1; i < 2 + x; i++)
@@ -428,26 +436,26 @@ public class BWG4decoSurvival extends WorldGenerator
 				}
 			}
 		}
-		else if(survivalobject > 19 && survivalobject < 28)
+		else if(survivalobject == 13) //SURVIVAL CAVE CHEST
 		{
-			int ore = 0, size = 1;
-			if(survivalobject == 20) { ore = Block.oreCoal.blockID; size = 3; }
-			if(survivalobject == 21) { ore = Block.oreIron.blockID; size = 3; }
-			if(survivalobject == 22) { ore = Block.oreLapis.blockID; size = 2; }
-			if(survivalobject == 23) { ore = Block.oreGold.blockID; size = 2; }
-			if(survivalobject == 24) { ore = Block.oreRedstone.blockID; size = 3; }
-			if(survivalobject == 26) { ore = Block.oreDiamond.blockID; size = 2; }
-			if(survivalobject == 27) { ore = Block.oreEmerald.blockID; size = 2; }
-			
-			for(int oreX = x; oreX < size + x; oreX++) {
-				for(int oreY = y; oreY < size + y; oreY++) {
-					for(int oreZ = z; oreZ < size + z; oreZ++) {
-						if(par2Random.nextInt(3) != 0) {
-							par1World.setBlock(oreX, oreY, oreZ, Block.stone.blockID, 0, 2);
-						} else {
-							par1World.setBlock(oreX, oreY, oreZ, ore, 0, 2);
-						}
-					}
+			for(int i = 63; i > 1; i--)
+			{
+				if(par1World.getBlockId(x, i, z) != 0)
+				{
+					par1World.setBlock(x, i + 1, z, Block.chest.blockID); 
+					par1World.setBlock(x, i, z, Block.torchWood.blockID, 0, 3); 
+					par1World.setBlock(x, i - 1, z, Block.stone.blockID); 
+					
+					TileEntityChest tileentitychest = (TileEntityChest)par1World.getBlockTileEntity(x, i + 1, z);
+					for (int c = 0; c < 20; c++) 
+					{ 
+						ItemStack itemstack = getChestList(c, 8, par2Random, par1World); 
+						if (tileentitychest != null && itemstack != null) 
+						{ 
+							tileentitychest.setInventorySlotContents(c, itemstack); 
+						} 
+					}	
+					break;
 				}
 			}
 		}
@@ -507,6 +515,16 @@ public class BWG4decoSurvival extends WorldGenerator
 			if (chestid == 0) { return new ItemStack(Item.potato, 1); }
 			if (chestid == 1) { return new ItemStack(Item.carrot, 1); }
 			if (chestid == 2) { return new ItemStack(Item.monsterPlacer, 1, 93); }
+			return null;
+		}
+		if (chesttype == 8)
+		{	
+			if (chestid == 0) { return new ItemStack(Item.swordWood, 1); }
+			if (chestid == 1) { return new ItemStack(Block.sapling, 1); }
+			if (chestid == 2) { return new ItemStack(Block.torchWood, 8); }
+			if (chestid == 3) { return new ItemStack(Item.pickaxeWood, 1); }
+			if (chestid == 4) { return new ItemStack(Block.wood, 4); }
+			if (chestid == 5) { return new ItemStack(Item.seeds, 8); }
 			return null;
 		}
 		return null;

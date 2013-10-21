@@ -22,12 +22,14 @@ public class BWG4ChunkProviderSkyBlock implements IChunkProvider
     int[][] field_73203_h = new int[32][32];
 	int getSize = 1;
 	private boolean isNether = false;
-
-    public BWG4ChunkProviderSkyBlock(World par1World, long par2, boolean nether)
+	private int size = 1;
+	
+    public BWG4ChunkProviderSkyBlock(World par1World, long par2, boolean nether, int s)
     {
         this.endWorld = par1World;
         this.endRNG = new Random(par2);
         isNether = nether;
+        size = s;
     }
 
     public Chunk loadChunk(int par1, int par2)
@@ -73,7 +75,7 @@ public class BWG4ChunkProviderSkyBlock implements IChunkProvider
 			}
 			else
 			{
-				(new BWG4decoSurvival(6)).generate(endWorld, endRNG, 0, 70, 0);
+				(new BWG4decoSurvival(6)).generate(endWorld, endRNG, size, 70, 0);
 				(new BWG4decoSurvival(7)).generate(endWorld, endRNG, 0, 80, 60);
 			}
         }

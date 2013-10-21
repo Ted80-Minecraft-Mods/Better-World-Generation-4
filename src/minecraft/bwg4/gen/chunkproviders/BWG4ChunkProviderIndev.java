@@ -114,6 +114,7 @@ public class BWG4ChunkProviderIndev implements IChunkProvider
 			if(s == 3) { size = 7; }
 		}
 		layers = l;
+		System.out.println(layers);
     }
 
 	public void generateSkylands(int par1, int par2, byte[] par3ArrayOfByte)
@@ -596,11 +597,11 @@ public class BWG4ChunkProviderIndev implements IChunkProvider
 				int j11 = var5 + rand.nextInt(16) + 8;
 				if(rand.nextInt(8) == 0)
 				{
-					(new BWG4decoDungeons(6, false, false, true)).generate(worldObj, rand, j5, k88, j11);
+					(new BWG4decoDungeons(2, false, false, false, true)).generate(worldObj, rand, j5, k88, j11);
 				}
 				else
 				{
-					(new BWG4decoDungeons(6, false, true, false)).generate(worldObj, rand, j5, k88, j11);
+					(new BWG4decoDungeons(2, false, false, true, false)).generate(worldObj, rand, j5, k88, j11);
 				}
 			}
 		}
@@ -611,7 +612,7 @@ public class BWG4ChunkProviderIndev implements IChunkProvider
 				int j5 = var4 + rand.nextInt(16) + 8;
 				int k88 = rand.nextInt(128);
 				int j11 = var5 + rand.nextInt(16) + 8;
-				(new BWG4decoDungeons(5, true, false, false)).generate(worldObj, rand, j5, k88, j11);
+				(new BWG4decoDungeons(1, false, true, false, false)).generate(worldObj, rand, j5, k88, j11);
 			}
 		}
 		

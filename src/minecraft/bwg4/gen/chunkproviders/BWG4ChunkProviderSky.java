@@ -410,11 +410,11 @@ public class BWG4ChunkProviderSky implements IChunkProvider
 				int j11 = l + rand.nextInt(16) + 8;
 				if(rand.nextInt(8) == 0)
 				{
-					(new BWG4decoDungeons(12, false, false, true)).generate(worldObj, rand, j5, k8, j11);
+					(new BWG4decoDungeons(1, false, false, false, true)).generate(worldObj, rand, j5, k8, j11);
 				}
 				else
 				{
-					(new BWG4decoDungeons(12, false, true, false)).generate(worldObj, rand, j5, k8, j11);
+					(new BWG4decoDungeons(1, false, false, true, false)).generate(worldObj, rand, j5, k8, j11);
 				}
 			}
 			
@@ -788,11 +788,11 @@ public class BWG4ChunkProviderSky implements IChunkProvider
 				int j11 = l + rand.nextInt(16) + 8;
 				if(rand.nextInt(8) == 0)
 				{
-					(new BWG4decoDungeons(13, false, false, true)).generate(worldObj, rand, j5, k8, j11);
+					(new BWG4decoDungeons(2, false, false, false, true)).generate(worldObj, rand, j5, k8, j11);
 				}
 				else
 				{
-					(new BWG4decoDungeons(13, false, true, false)).generate(worldObj, rand, j5, k8, j11);
+					(new BWG4decoDungeons(2, false, false, true, false)).generate(worldObj, rand, j5, k8, j11);
 				}
 			}
 			
@@ -838,7 +838,7 @@ public class BWG4ChunkProviderSky implements IChunkProvider
 				int j5 = var4 + rand.nextInt(16) + 8;
 				int k8 = rand.nextInt(15);
 				int j11 = var5 + rand.nextInt(16) + 8;
-				(new BWG4decoDungeons(17, true, true, false)).generate(worldObj, rand, j5, k8, j11);
+				(new BWG4decoDungeons(3, false, true, true, false)).generate(worldObj, rand, j5, k8, j11);
 			}		
 
 			for (int lr = 0; lr < 15; ++lr)

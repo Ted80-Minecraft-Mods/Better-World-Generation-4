@@ -19,12 +19,12 @@ public class BWG4GeneratorType
 	public static final BWG4GeneratorType WASTELAND = new BWG4GeneratorType(8, 2, "WASTELAND", "Wasteland", true, false);
 	public static final BWG4GeneratorType ISLAND = new BWG4GeneratorType(9, 2, "ISLAND", "Survival Island", true, true);
 	public static final BWG4GeneratorType SKYISLAND = new BWG4GeneratorType(10, 2, "SKYISLAND", "Survival Skyland", true, true);
-	public static final BWG4GeneratorType CAVESURV = new BWG4GeneratorType(11, 2, "CAVESURV", "Cave Survival", true, true);
+	public static final BWG4GeneratorType CAVESURV = new BWG4GeneratorType(11, 2, "CAVESURV", "Cave Survival", true, false);
 	public static final BWG4GeneratorType SKYBLOCK = new BWG4GeneratorType(12, 2, "SKYBLOCK", "Skyblock", true, true);
 	public static final BWG4GeneratorType SKYLANDS = new BWG4GeneratorType(13, 3, "SKYLANDS", "Skylands", true, true);
 	public static final BWG4GeneratorType CAVE = new BWG4GeneratorType(14, 3, "CAVE", "Cave world", true, true);
-	public static final BWG4GeneratorType DEADLYDESERT = new BWG4GeneratorType(15, 4, "DEADLYDESERT", "Deadly Desert", true, false);
-	public static final BWG4GeneratorType EXTREMEJUNGLE = new BWG4GeneratorType(16, 4, "EXTREMEJUNGLE", "Extreme Jungle", true, false);
+	public static final BWG4GeneratorType DEADLYDESERT = new BWG4GeneratorType(15, 5, "DEADLYDESERT", "Deadly Desert", true, false);
+	public static final BWG4GeneratorType EXTREMEJUNGLE = new BWG4GeneratorType(16, 5, "EXTREMEJUNGLE", "Extreme Jungle", true, false);
 	
 	private final int GeneratorTypeId;
 	private final String GeneratorName;

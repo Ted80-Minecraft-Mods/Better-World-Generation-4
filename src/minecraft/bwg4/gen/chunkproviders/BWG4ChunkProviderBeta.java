@@ -454,7 +454,7 @@ public class BWG4ChunkProviderBeta implements IChunkProvider
 				int j5 = k + rand.nextInt(16) + 8;
 				int k8 = rand.nextInt(128);
 				int j11 = l + rand.nextInt(16) + 8;
-				(new BWG4decoDungeons(1, true, false, false)).generate(worldObj, rand, j5, k8, j11);
+				(new BWG4decoDungeons(1)).generate(worldObj, rand, j5, k8, j11);
 			}
 			
 			for(int i2 = 0; i2 < 10; i2++)
@@ -780,7 +780,7 @@ public class BWG4ChunkProviderBeta implements IChunkProvider
 				int j5 = k + rand.nextInt(16) + 8;
 				int k8 = rand.nextInt(128);
 				int j11 = l + rand.nextInt(16) + 8;
-				(new BWG4decoDungeons(2, true, false, false)).generate(worldObj, rand, j5, k8, j11);
+				(new BWG4decoDungeons(2)).generate(worldObj, rand, j5, k8, j11);
 			}
 			
 			for(int i2 = 0; i2 < 10; i2++)

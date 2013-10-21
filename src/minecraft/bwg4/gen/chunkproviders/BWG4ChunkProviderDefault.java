@@ -592,7 +592,7 @@ public class BWG4ChunkProviderDefault implements IChunkProvider
             var14 = this.rand.nextInt(128);
             int var15 = var5 + this.rand.nextInt(16) + 8;
 
-            if ((new BWG4decoDungeons(0, true, false, false)).generate(this.worldObj, this.rand, var13, var14, var15))
+            if ((new BWG4decoDungeons()).generate(this.worldObj, this.rand, var13, var14, var15))
             {
                 ;
             }

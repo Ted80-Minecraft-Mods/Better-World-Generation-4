@@ -406,7 +406,7 @@ public class BWG4ChunkProviderInfdev implements IChunkProvider
             int i4 = k + field_913_j.nextInt(16) + 8;
             int j6 = field_913_j.nextInt(128);
             int i11 = l + field_913_j.nextInt(16) + 8;
-            (new BWG4decoDungeons(4, true, false, false)).generate(field_907_p, field_913_j, i4, j6, i11);
+            (new BWG4decoDungeons()).generate(field_907_p, field_913_j, i4, j6, i11);
         }
         
         if(alpha)

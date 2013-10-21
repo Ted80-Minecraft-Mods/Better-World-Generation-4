@@ -445,7 +445,7 @@ public class BWG4ChunkProviderAlpha implements IChunkProvider
             int i4 = k + field_913_j.nextInt(16) + 8;
             int k6 = field_913_j.nextInt(128);
             int l8 = l + field_913_j.nextInt(16) + 8;
-            (new BWG4decoDungeons(3, true, false, false)).generate(worldObj_16, field_913_j, i4, k6, l8);
+            (new BWG4decoDungeons()).generate(worldObj_16, field_913_j, i4, k6, l8);
         }
 
         for(int j1 = 0; j1 < 10; j1++)

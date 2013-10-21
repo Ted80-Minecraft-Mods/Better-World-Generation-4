@@ -15,23 +15,38 @@ import net.minecraftforge.common.ChestGenHooks;
 
 public class BWG4decoDungeons extends WorldGenerator
 {
-	public int chestID = 0; 
 	public boolean checkpos = true;
 	public boolean isSkyDungeon = false;
 	public boolean isEndDungeon = false;
-	public boolean specialChest = false;
+	public boolean randomChest = false;
+	public int chestID = 0;
 	
-    public BWG4decoDungeons(int chest, boolean check, boolean sky, boolean end)
+    public BWG4decoDungeons(int id, boolean random, boolean check, boolean sky, boolean end)
     {
-		chestID = chest;
 		checkpos = check;
 		isSkyDungeon = sky;
 		isEndDungeon = end;
+		chestID = id;
 		
-		if(chest == 9 || chest == 10)
+		if(random) // 9 10
 		{
-			specialChest = true;
+			randomChest = true;
 		}
+    }
+    
+    public BWG4decoDungeons(int id, boolean random)
+    {
+    	this(0, random, false, false, false);
+    }
+    
+    public BWG4decoDungeons(int id)
+    {
+    	this(id, false, true, false, false);
+    }
+    
+    public BWG4decoDungeons()
+    {
+    	this(0, false, true, false, false);
     }
 
     public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5)
@@ -154,7 +169,7 @@ public class BWG4decoDungeons extends WorldGenerator
 				par1World.setBlock(par3, par4 + 2, par5, Block.chest.blockID);
 				TileEntityChest var16 = (TileEntityChest)par1World.getBlockTileEntity(par3, par4 + 2, par5);
 				
-				if(specialChest == true)
+				if(randomChest == true)
 				{
 					for (int var17 = 0; var17 < 20; ++var17)
 					{
@@ -251,7 +266,7 @@ public class BWG4decoDungeons extends WorldGenerator
 				}
 
 				var10 = 0;
-				if(specialChest == true) { var10 = 1; }
+				if(randomChest == true) { var10 = 1; }
 
 				while (var10 < 2)
 				{
@@ -290,7 +305,7 @@ public class BWG4decoDungeons extends WorldGenerator
 										++var15;
 									}
 									
-									if(specialChest == true) 
+									if(randomChest == true) 
 									{
 										var15 = 1;
 									}
@@ -302,7 +317,7 @@ public class BWG4decoDungeons extends WorldGenerator
 
 										if (var16 != null)
 										{
-											if(specialChest == true)
+											if(randomChest == true)
 											{
 												for (int var17 = 0; var17 < 20; ++var17)
 												{

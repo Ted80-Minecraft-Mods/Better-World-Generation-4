@@ -161,6 +161,11 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
 		drawString(fontRenderer, "Select a world generator:", width / 2 - 155 + 1, 70, 10526880);
     	String catpos = "(" + (CATEGORY + 1) + "/5)";
     	drawString(fontRenderer, catpos, width / 2 - 5 - fontRenderer.getStringWidth(catpos), 30, 10526880);
+    	
+    	if(CATEGORY == 4)
+    	{
+    		drawString(fontRenderer, "Coming soon!", width / 2 - 110 + 1, 110, 10526880);
+    	}
 
 		if(generatorSelected != -1)
 		{
@@ -250,7 +255,7 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
 		}
 		else if(generatorSelected == BWG4GeneratorType.BETA173.GetID()) 
 		{
-			settings.add(new BWG4GuiSettingsButton(new String[]{"Biomes: Beta", "Biomes: Default"}, new int[]{0, 1}, 20, 80, width));
+			settings.add(new BWG4GuiSettingsButton(new String[]{"Biomes: Beta", "Biomes: Better Default"}, new int[]{0, 1}, 20, 80, width));
 		}
 		else if(generatorSelected == BWG4GeneratorType.INFDEV.GetID() || generatorSelected == BWG4GeneratorType.ALPHA11.GetID()) 
 		{
@@ -270,12 +275,7 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
 		}
 		else if(generatorSelected == BWG4GeneratorType.SKYISLAND.GetID()) 
 		{ 
-			settings.add(new BWG4GuiSettingsButton(new String[]{"Theme: Default"}, new int[]{0}, 20, 80, width)); //, "Theme: Snow", "Theme: Jungle" , 1, 2
-			settings.add(new BWG4GuiSettingsSlider(new String[]{"Size: Small", "Size: Default", "Size: Large"}, new int[]{0, 1, 2}, 1, 21, 100, width));
-		}
-		else if(generatorSelected == BWG4GeneratorType.CAVESURV.GetID())
-		{
-			settings.add(new BWG4GuiSettingsSlider(new String[]{"Size: Small", "Size: Default", "Size: Large"}, new int[]{0, 1, 2}, 1, 20, 80, width));
+			settings.add(new BWG4GuiSettingsButton(new String[]{"Theme: Default", "Theme: Snow", "Theme: Jungle"}, new int[]{0, 1, 2}, 20, 80, width)); 
 		}
 		else if(generatorSelected == BWG4GeneratorType.SKYBLOCK.GetID())
 		{
@@ -283,12 +283,11 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
 		}
 		else if(generatorSelected == BWG4GeneratorType.SKYLANDS.GetID()) 
 		{ 
-			settings.add(new BWG4GuiSettingsButton(new String[]{"Biomes: Default", "Biomes: Beta 1.7.3"}, new int[]{0, 1}, 20, 80, width));
-			//settings.add(new BWG4GuiSettingsButton(new String[]{"Noise: Default", "Noise: Indev"}, new int[]{0, 1}, 21, 100, width));
+			settings.add(new BWG4GuiSettingsButton(new String[]{"Biomes: Better Default", "Biomes: Beta 1.7.3"}, new int[]{0, 1}, 20, 80, width));
 		}
 		else if(generatorSelected == BWG4GeneratorType.CAVE.GetID()) 
 		{ 
-			settings.add(new BWG4GuiSettingsButton(new String[]{"Theme: Cold Caves", "Theme: Desert Caves"}, new int[]{0, 1}, 20, 80, width));
+			settings.add(new BWG4GuiSettingsButton(new String[]{"TED PLZ REMOVE ME"}, new int[]{0}, 20, 80, width));
 		}
 		else if(generatorSelected == BWG4GeneratorType.DEADLYDESERT.GetID()) 
 		{ 

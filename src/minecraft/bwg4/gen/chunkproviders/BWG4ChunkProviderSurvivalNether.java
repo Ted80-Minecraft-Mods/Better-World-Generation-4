@@ -351,7 +351,7 @@ public class BWG4ChunkProviderSurvivalNether implements IChunkProvider
 			int j5 = var4 + endRNG.nextInt(16) + 8;
 			int k8 = endRNG.nextInt(15);
 			int j11 = var5 + endRNG.nextInt(16) + 8;
-			(new BWG4decoDungeons(18, true, true, false)).generate(endWorld, endRNG, j5, k8, j11);
+			(new BWG4decoDungeons(2, false, true, true, false)).generate(endWorld, endRNG, j5, k8, j11);
 		}
 
         for (int lr = 0; lr < 15; ++lr)

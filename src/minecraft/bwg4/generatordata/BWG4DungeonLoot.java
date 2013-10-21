@@ -58,7 +58,7 @@ public class BWG4DungeonLoot
 				if (i == 8) { return new ItemStack(Block.waterlily, par1Random.nextInt(4) + 1); }
 				else { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }	
     		}
-    		else
+    		else if(chestID == 2)
     		{
     			int i = par1Random.nextInt(12);
     			if (i == 0) { return new ItemStack(Item.potato, par1Random.nextInt(4) + 1); }
@@ -74,7 +74,7 @@ public class BWG4DungeonLoot
     	}
     	else if(BWG4GeneratorType.currentGenerator == BWG4GeneratorType.INDEV)
     	{
-    		if(chestID == 5)
+    		if(chestID == 1)
     		{
     			int i = par1Random.nextInt(22);
     			if (i == 0) { return new ItemStack(Item.potato, par1Random.nextInt(4) + 1); }
@@ -136,7 +136,7 @@ public class BWG4DungeonLoot
     	}
     	else if(BWG4GeneratorType.currentGenerator == BWG4GeneratorType.ISLAND)
     	{ 
-    		if(chestID == 9)
+    		if(chestID == 1)
     		{
     			if(listitem == 0) { return new ItemStack(Item.melonSeeds, par1Random.nextInt(2) + 1); }
     			if(listitem == 1) { return new ItemStack(Item.pumpkinSeeds, par1Random.nextInt(2) + 1); }
@@ -148,7 +148,7 @@ public class BWG4DungeonLoot
     			if(listitem == 7) { return new ItemStack(Item.monsterPlacer, 2, 91); }
     			else { return null; }		
     		} 
-    		else if(chestID == 10)
+    		else if(chestID == 2)
     		{
     			if(listitem == 0) { return new ItemStack(Item.potato, par1Random.nextInt(2) + 1); }
     			if(listitem == 1) { return new ItemStack(Item.carrot, par1Random.nextInt(2) + 1); }
@@ -169,7 +169,7 @@ public class BWG4DungeonLoot
     	}
     	else if(BWG4GeneratorType.currentGenerator == BWG4GeneratorType.SKYISLAND)
     	{
-    		if(chestID == 18)
+    		if(chestID == 2)
     		{
     			int i = par1Random.nextInt(30);
     			if (i == 1) { return new ItemStack(Item.brick, par1Random.nextInt(63) + 1); }
@@ -201,7 +201,7 @@ public class BWG4DungeonLoot
     	}
     	else if(BWG4GeneratorType.currentGenerator == BWG4GeneratorType.SKYLANDS)
     	{
-        	if(chestID == 12)
+        	if(chestID == 1)
     		{
     			int i = par1Random.nextInt(21);
     			if (i == 0) { return new ItemStack(Item.potato, par1Random.nextInt(4) + 1); }
@@ -217,7 +217,7 @@ public class BWG4DungeonLoot
     			if (i == 12 || i == 13 || i == 14) { return new ItemStack(Item.bucketLava, par1Random.nextInt(2) + 1); }
     			else { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }	
     		} 
-    		if(chestID == 17)
+    		if(chestID == 3)
     		{
     			return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random);
     		} 

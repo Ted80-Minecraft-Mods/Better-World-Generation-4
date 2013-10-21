@@ -28,7 +28,9 @@ import net.minecraft.world.gen.MapGenBase;
 import net.minecraft.world.gen.MapGenCaves;
 import net.minecraft.world.gen.NoiseGeneratorOctaves;
 import net.minecraft.world.gen.feature.WorldGenFlowers;
+import net.minecraft.world.gen.feature.WorldGenHugeTrees;
 import net.minecraft.world.gen.feature.WorldGenShrub;
+import net.minecraft.world.gen.feature.WorldGenTrees;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraft.world.gen.structure.MapGenStronghold;
 import net.minecraftforge.common.MinecraftForge;
@@ -63,8 +65,8 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
 	public PerlinNoise perlin1;
 	public PerlinNoise perlin2;
 	
-	public int volcanoX;
-	public int volcanoY;
+	public double volcanoX;
+	public double volcanoY;
 	
     public BWG4ChunkProviderIsland(World par1World, long par2, int theme, int s)
     {
@@ -97,7 +99,7 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
 			{
 				case 1: width = 3.3D; height = 72; break;
 				case 2: width = 5.0D; height = 74; break;
-				case 3: width = 7.0D; height = 80; break;
+				case 3: width = 6.5D; height = 76; break;
 			}
 		}
 		else if(THEMEID == 3)
@@ -114,10 +116,9 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
 		}
 		else if(THEMEID == 5)
 		{
-			volcanoX = -80 + rand.nextInt(160);
-			volcanoY = -80 + rand.nextInt(160);
-			
-			
+			int dir = rand.nextInt(360);
+			volcanoX = Coords.getNextX(0, dir, 150);
+			volcanoY = Coords.getNextY(0, dir, 150);
 		}
     }
 
@@ -132,9 +133,9 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
 			{
 				for (int m = j; m < j + 16; m++)
 				{
-					int i2 = height;
-					i2 -= (int) Math.floor((Math.sqrt((0D-k)*(0D-k) + (0D-m)*(0D-m)) / width) + (perlin1.turbulence2(k / 60F, m / 60F, 4F) * 5F));
-					if(i2 < 50) { i2 = 50; }
+					float i2 = height;
+					i2 -= (Math.sqrt((0D-k)*(0D-k) + (0D-m)*(0D-m)) / width) + (perlin1.turbulence2(k / 60F, m / 60F, 4F) * 5F);
+					if(i2 < 50f) { i2 = 50f; }
 					
 					for (int i3 = 0; i3 < 128; i3++)
 					{
@@ -169,9 +170,9 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
 			{
 				for (int m = j; m < j + 16; m++)
 				{
-					int i2 = height;
-					i2 -= (int) Math.floor((Math.sqrt((0D-k)*(0D-k) + (0D-m)*(0D-m)) / width) + (perlin1.turbulence2(k / 60F, m / 60F, 4F) * 5F));
-					if(i2 < 50) { i2 = 50; }
+					float i2 = height;
+					i2 -= (Math.sqrt((0D-k)*(0D-k) + (0D-m)*(0D-m)) / width) + (perlin1.turbulence2(k / 60F, m / 60F, 4F) * 5F);
+					if(i2 < 50f) { i2 = 50f; }
 					
 					for (int i3 = 0; i3 < 128; i3++)
 					{
@@ -228,9 +229,9 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
 			{
 				for (int m = j; m < j + 16; m++)
 				{
-					int surface = height;
+					float surface = height;
 					float dis = (float) (Math.sqrt((0D-k)*(0D-k) + (0D-m)*(0D-m)) / width);
-					surface -= (int) Math.floor(dis + (perlin1.turbulence2(k / 60F, m / 60F, 4F) * 5F));
+					surface -= dis + (perlin1.turbulence2(k / 60F, m / 60F, 4F) * 5F);
 					float ice = (perlin2.turbulence2(k / 20F, m / 20F, 4F) * 10F);
 					ice = 1 -(2 *(ice * ice)); 
 					
@@ -244,11 +245,7 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
 						}
 						if(i3 == 63)
 						{
-							if(surface > -2)
-							{
-								i4 = Block.ice.blockID;
-							}
-							else if(ice < -1f)
+							if(ice < -1f)
 							{
 								i4 = Block.ice.blockID;
 							}
@@ -259,7 +256,7 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
 						}
 						if(surface > -1)
 						{
-							if(i3 < surface + 70 && i3 > -(surface * 5) + 62)
+							if(i3 < surface + 65 && i3 > -(surface * 8) + 61)
 							{
 								i4 = Block.blockSnow.blockID;
 							}
@@ -276,9 +273,9 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
     		int i = par1 << 4;
     		int j = par2 << 4;
     		
-    		int volcanoground = 0;
-    		int volcanoair = 0;
-    		int volcanograss = 0;
+    		float volcanoground = 0f;
+    		float volcanoair = 0f;
+    		float volcanograss = 0f;
 			for (int k = i; k < i + 16; k++)
 			{
 				for (int m = j; m < j + 16; m++)
@@ -288,15 +285,15 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
 					float stength = -(100F / 300f) * dis + 100F;
 					dis /= 7f;
 					
-					double volcanodis = Coords.getDistance(k, m, volcanoX, volcanoY) - 8;
+					float volcanodis = (float) Coords.getDistance(k, m, volcanoX, volcanoY) - 8;
 	        		if(volcanodis + 8 < 100)
 	        		{
-	        			int noise = (int) Math.floor(perlin2.turbulence2(k / 30f, m / 30f, 4f) * 7f);
+	        			float noise = perlin2.turbulence2(k / 30f, m / 30f, 4f) * 7f;
 		        		if(volcanodis > 0)
 		        		{
-		        			volcanoground = 128 + noise - (int) Math.floor(volcanodis);
-		        			volcanoair = 128 + noise - (int) Math.floor(volcanodis / 0.25D);
-		        			volcanograss = 165 + (-noise * 2) - (int) Math.floor(volcanodis / 0.5D);
+		        			volcanoground = 128 + noise - volcanodis;
+		        			volcanoair = 128 + noise - (volcanodis / 0.25f);
+		        			volcanograss = 165 + (-noise * 2) - (volcanodis / 0.5f);
 		        		}
 		        		else
 		        		{
@@ -314,7 +311,7 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
 							n += perlin1.turbulence3(k / 90f, m / 82f, i3 / 90f, 4f) * stength;
 							n += perlin2.turbulence3(k / 40f, m / 34f, i3 / 40f, 4f) * (stength / 2f);
 						}
-						int i2 = (int) Math.floor(-100 + i3 + i1 + n + dis);
+						float i2 = -100 + i3 + i1 + n + dis;
 
 						int i4 = 0;
 						if(i2 > 0)
@@ -335,7 +332,7 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
 						{
 							if(i2 > -8 && i3 < volcanoair)
 							{
-								if(i3 < 90)
+								if(i3 < 105)
 								{
 									i4 = Block.lavaStill.blockID;
 								}
@@ -386,7 +383,7 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
 					{
 						var8 = -1;
 					}
-					else if (var13 == Block.stone.blockID)
+					else if (var13 == Block.stone.blockID || var13 == Block.obsidian.blockID)
 					{
 						if (var8 == -1)
 						{
@@ -397,6 +394,11 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
 							{ 
 								var9 = (byte)Block.grass.blockID;
 								var10 = (byte)Block.dirt.blockID;
+							}
+							if(var13 == Block.obsidian.blockID)
+							{
+								var9 = (byte)Block.stone.blockID;
+								var10 = (byte)Block.stone.blockID;
 							}
 
 							var8 = var7;
@@ -479,6 +481,7 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
         
 		this.strongholdGenerator.generateStructuresInChunk(this.world, this.rand, par2, par3);
 		
+		double dis = Math.sqrt((0D-var4)*(0D-var4) + (0D-var5)*(0D-var5));
 		byte deco_clay = 0;
 		byte deco_flowerRed = 0;
 		byte deco_flowerYellow = 0;
@@ -496,8 +499,8 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
 			if(par2 == 0 && par3 == 0)
 			{
 				(new BWG4decoIsland(THEMEID)).generate(world, rand, 0, world.getHeightValue(0, 0), 0);
-				if (!(new BWG4decoDungeons(9, false, false, false)).generate(this.world, this.rand, -15 + rand.nextInt(30), 40, -15 + rand.nextInt(30))) { ; }		
-				if (!(new BWG4decoDungeons(10, false, false, false)).generate(this.world, this.rand, -15 + rand.nextInt(30), 20, -15 + rand.nextInt(30))) { ; }	
+				if (!(new BWG4decoDungeons(1, true)).generate(this.world, this.rand, -15 + rand.nextInt(30), 40, -15 + rand.nextInt(30))) { ; }		
+				if (!(new BWG4decoDungeons(2, true)).generate(this.world, this.rand, -15 + rand.nextInt(30), 20, -15 + rand.nextInt(30))) { ; }	
 			}
 			
 			deco_clay = 20;
@@ -508,8 +511,8 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
 			if(par2 == 0 && par3 == 0)
 			{
 				(new BWG4decoIsland(THEMEID)).generate(world, rand, 0, world.getHeightValue(0, 0), 0);
-				if (!(new BWG4decoDungeons(9, false, false, false)).generate(this.world, this.rand, -15 + rand.nextInt(30), 40, -15 + rand.nextInt(30))) { ; }		
-				if (!(new BWG4decoDungeons(10, false, false, false)).generate(this.world, this.rand, -15 + rand.nextInt(30), 20, -15 + rand.nextInt(30))) { ; }	
+				if (!(new BWG4decoDungeons(1, true)).generate(this.world, this.rand, -15 + rand.nextInt(30), 40, -15 + rand.nextInt(30))) { ; }		
+				if (!(new BWG4decoDungeons(2, true)).generate(this.world, this.rand, -15 + rand.nextInt(30), 20, -15 + rand.nextInt(30))) { ; }	
 			}
 			deco_clay = 20;
 			deco_dungeon = 20;
@@ -535,6 +538,9 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
 			deco_flowerYellow = 3;
 			deco_grass = 4;
 			deco_tree = 10;
+			if(dis < 65D) { deco_tree = 20; }
+			else if(dis < 130D) { deco_tree = 15; }
+			else { deco_tree = 10; }
 			mintree = 69;
 		}
 		
@@ -546,7 +552,7 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
 			int var67 = this.rand.nextInt(128);
 			int var68 = var5 + this.rand.nextInt(16) + 8;
 
-			if ((new BWG4decoDungeons(8, true, false, false)).generate(this.world, this.rand, var66, var67, var68))
+			if ((new BWG4decoDungeons()).generate(this.world, this.rand, var66, var67, var68))
 			{
 				;
 			}
@@ -560,10 +566,10 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
             (new BWG4oldGenClay(32, 2)).generate(world, rand, k5, l8, k11);
         }	
         
-		for(int j2 = 0; j2 < 20; j2++)
+		for(int j2 = 0; j2 < 16; j2++)
 		{
 			int l5 = var4 + rand.nextInt(16);
-			int i9 = rand.nextInt(128);
+			int i9 = rand.nextInt(90);
 			int l11 = var5 + rand.nextInt(16);
 			(new BWG4oldGenMinable(Block.dirt.blockID, 32, 2)).generate(world, rand, l5, i9, l11);
 		}
@@ -651,7 +657,10 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
 			int z52 = world.getHeightValue(j6, k10);
 			if(z52 >= mintree && z52 <= maxtree)
 			{
-				WorldGenerator worldgenerator = getRandomWorldGenForTrees(rand);
+				WorldGenerator worldgenerator;
+				if(dis < 65D) { worldgenerator = getRandomWorldGenForTrees(rand, 2); }
+				else if(dis < 130D) { worldgenerator = getRandomWorldGenForTrees(rand, 1); }
+				else { worldgenerator = getRandomWorldGenForTrees(rand, 0); }
 				worldgenerator.setScale(1.0D, 1.0D, 1.0D);
 				worldgenerator.generate(world, rand, j6, z52, k10);
 			}
@@ -681,8 +690,24 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
 			WorldGenerator grr = var6.getRandomWorldGenForGrass(rand);
 			grr.generate(world, rand, gr1, gr2, gr3);
 		}
+
+		if (rand.nextInt(4) == 0)
+		{
+			int nbm1 = var4 + rand.nextInt(16) + 8;
+			int nbm2 = rand.nextInt(128);
+			int nbm3 = var5 + rand.nextInt(16) + 8;
+			(new WorldGenFlowers(Block.mushroomBrown.blockID)).generate(world, rand, nbm1, nbm2, nbm3);
+		}
+
+		if (rand.nextInt(8) == 0)
+		{
+			int nrm1 = var4 + rand.nextInt(16) + 8;
+			int nrm2 = rand.nextInt(128);
+			int nrm3 = var5 + rand.nextInt(16) + 8;
+			(new WorldGenFlowers(Block.mushroomRed.blockID)).generate(world, rand, nrm1, nrm2, nrm3);
+		}
 		
-      //======================== SNOW AND ANIMALS =======================
+		//======================== SNOW AND ANIMALS =======================
         if(THEMEID == 4) 
         { 
         	SpawnerAnimals.performWorldGenSpawning(this.world, var6, var4 + 8, var5 + 8, 16, 16, this.world.rand); 
@@ -713,13 +738,13 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
         BlockSand.fallInstantly = false;
     }
 
-	public WorldGenerator getRandomWorldGenForTrees(Random par1Random)
+	public WorldGenerator getRandomWorldGenForTrees(Random par1Random, int distance)
 	{
-		if(THEMEID == 2 || THEMEID == 5) //island_tropical
+		if(THEMEID == 2 || (THEMEID == 5 && distance == 0)) //island_tropical
 		{
 			if(par1Random.nextInt(5) == 0)
 			{
-				return new BWG4decoBigTree(par1Random.nextInt(5) + 9, 0); 
+				return new BWG4decoBigTree(par1Random.nextInt(4) + 8, 0); 
 			}
 			if(par1Random.nextInt(2) == 0)
 			{
@@ -730,6 +755,48 @@ public class BWG4ChunkProviderIsland implements IChunkProvider
 				return new WorldGenShrub(3, 0);
 			} 
 			return new BWG4decoSurvival(4);
+		}
+		else if(THEMEID == 5 && distance == 1)
+		{
+			if (par1Random.nextInt(8) == 0) 
+			{ 
+				return new BWG4decoBigTree(8 + par1Random.nextInt(7), 0); 
+			}
+			if (par1Random.nextInt(4) == 0) 
+			{ 
+				return new WorldGenShrub(3, 0); 
+			}
+			if (par1Random.nextInt(3) != 0) 
+			{ 
+				return new WorldGenHugeTrees(false, 12 + par1Random.nextInt(10), 3, 3); 
+			} 
+			if (par1Random.nextInt(2) == 0) 
+			{ 
+				return new WorldGenTrees(false, 4 + par1Random.nextInt(7), 3, 3, true); 
+			}
+			else 
+			{ 
+				return new BWG4decoSurvival(4);
+			}
+		}
+		else if(THEMEID == 5 && distance == 2)
+		{
+			if (par1Random.nextInt(8) == 0) 
+			{ 
+				return new BWG4decoBigTree(8 + par1Random.nextInt(7), 0); 
+			}
+			if (par1Random.nextInt(4) == 0) 
+			{ 
+				return new WorldGenShrub(3, 0); 
+			}
+			if (par1Random.nextInt(3) != 0) 
+			{ 
+				return new WorldGenHugeTrees(false, 25 + par1Random.nextInt(15), 3, 3); 
+			} 
+			else 
+			{ 
+				return new WorldGenTrees(false, 4 + par1Random.nextInt(7), 3, 3, true); 
+			}
 		}
 		return new BWG4oldGenTrees(2);
 	}
