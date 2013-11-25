@@ -24,14 +24,14 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 public class mod_bwg4
 {	
 	@Instance("BWG4")
-	public static mod_bwg4 instance;
+	public static mod_bwg4 _instance;
 	
-	public static final BWG4WorldType BWG4DEFAULT = (new BWG4WorldType(12, "BWG4"));  
+	public static final BWG4WorldType _BWG4DEFAULT = (new BWG4WorldType(12, "BWG4"));  
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) 
 	{
-		instance = this;
+		_instance = this;
 		
 		//load config
 		BWG4Config.init(event.getSuggestedConfigurationFile());
