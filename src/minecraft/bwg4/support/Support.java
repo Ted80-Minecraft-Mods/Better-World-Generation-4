@@ -5,9 +5,9 @@ import cpw.mods.fml.common.Loader;
 public class Support 
 {
 	
-	public static boolean biomesOPlenty = false;
-	public static boolean extraBiomesXL = false;
-	public static boolean highlands = false;
+	public static boolean _biomesOPlenty = false;
+	public static boolean _biomesOPlenty = false;
+	public static boolean _biomesOPlenty = false;
 	
 	public static void init()
 	{

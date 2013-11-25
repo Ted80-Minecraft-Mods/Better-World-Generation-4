@@ -90,6 +90,6 @@ public class SupportBiomesOPlenty
 		if(Biomes.desertNew.isPresent()) { DefaultBiomeList.addBiome("BoP: Desert", Biomes.desertNew.get(), 1); }
 		if(Biomes.plainsNew.isPresent()) { DefaultBiomeList.addBiome("BoP: Plains", Biomes.plainsNew.get(), 1); }
 		
-		Support.biomesOPlenty = true;
+		Support._biomesOPlenty = true;
 	}
 }
