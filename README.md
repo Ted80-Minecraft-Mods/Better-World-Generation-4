@@ -36,11 +36,10 @@ forum thread: http://www.minecraftforum.net/topic/1070207-162-forge-better-world
     - Updated to minecraft 1.7
     - Added Cave generator
     - Added Wasteland generator
-    - Added Deadly Desert generator
-    - Added Survival Cave generator
+    - Added Survival Cave generator (dungeon loot)
     - Added alpha 1.1.0 generator
-    - Added Size option to Survival island, Survival skyland and skyblock
-    - Added new themes to Survival island and Survival skyland
+    - Added Size option to Survival island and skyblock
+    - Added new themes to Survival island
     - Added new generator menu
     - Added size and layer option to indev
     - Added size and amplified option to better default
