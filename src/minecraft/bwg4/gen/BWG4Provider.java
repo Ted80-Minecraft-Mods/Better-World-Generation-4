@@ -110,6 +110,10 @@ public class BWG4Provider extends WorldProvider
 	        	hasNoSky = true;
 				this.worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.SURVIVALnormal1, 0.5F, 0.5F);
 	        }
+	        else if (BWG4GeneratorType.currentGenerator == BWG4GeneratorType.CITY)
+	        {
+				this.worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.SURVIVALnormal1, 0.5F, 0.5F);
+	        }
 	        else if (BWG4GeneratorType.currentGenerator == BWG4GeneratorType.DEADLYDESERT)
 	        {
 				this.worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.ADVENTUREdesert, 0.5F, 0.5F);
@@ -153,6 +157,10 @@ public class BWG4Provider extends WorldProvider
 	        else if (BWG4GeneratorType.currentGenerator == BWG4GeneratorType.CAVE)
 	        {
 	        	hasNoSky = true;
+				this.worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.SURVIVALnormal1, 0.5F, 0.5F);
+	        }
+	        else if (BWG4GeneratorType.currentGenerator == BWG4GeneratorType.CITY)
+	        {
 				this.worldChunkMgr = new WorldChunkManagerHell(BWG4Biomes.SURVIVALnormal1, 0.5F, 0.5F);
 	        }
 	        else if (BWG4GeneratorType.currentGenerator == BWG4GeneratorType.DEADLYDESERT)
@@ -217,7 +225,7 @@ public class BWG4Provider extends WorldProvider
 	        }
 	        else if (BWG4GeneratorType.currentGenerator == BWG4GeneratorType.CAVE)
 	        {
-	            return new BWG4ChunkProviderCave(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled(), trySetting(0, 1) + 1);
+	            return new BWG4ChunkProviderCave(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled());
 	        }
 	        else if (BWG4GeneratorType.currentGenerator == BWG4GeneratorType.DEADLYDESERT)
 	        {
@@ -246,6 +254,10 @@ public class BWG4Provider extends WorldProvider
 			else if (BWG4GeneratorType.currentGenerator == BWG4GeneratorType.WASTELAND)
 			{
 				return new BWG4ChunkProviderWasteland(this.worldObj, this.worldObj.getSeed());
+			}
+			else if (BWG4GeneratorType.currentGenerator == BWG4GeneratorType.CITY)
+			{
+				return new BWG4ChunkProviderCity(this.worldObj, this.worldObj.getSeed());
 			}
 	        else
 	        {

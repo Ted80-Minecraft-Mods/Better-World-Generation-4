@@ -88,6 +88,7 @@ public class BWG4Biomes
 		CLASSICnormal = (new BWG4BiomesClassic(BWG4Config.biomeIDs[10])).setColor(353825).setBiomeName("Classic");
 		CLASSICsnow = (new BWG4BiomesClassic(BWG4Config.biomeIDs[11])).setColor(353825).setBiomeName("Classic").setEnableSnow().setTemperatureRainfall(0.0F, 0.5F);
 		
+		//COMMON
 		//island,skyland,skyblock
 		SURVIVALnormal1 = (new BWG4BiomesSurvival(BWG4Config.biomeIDs[12], 0)).setColor(353825).setBiomeName("Extreme Survival").setTemperatureRainfall(0.9F, 0.8F);
 		SURVIVALnormal2 = (new BWG4BiomesSurvival(BWG4Config.biomeIDs[13], 1)).setColor(353825).setBiomeName("Extreme Survival").setTemperatureRainfall(0.9F, 0.8F);

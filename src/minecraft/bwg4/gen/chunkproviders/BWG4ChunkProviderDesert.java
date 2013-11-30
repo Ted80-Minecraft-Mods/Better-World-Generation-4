@@ -5,7 +5,7 @@ import java.util.Random;
 
 import bwg4.mod_bwg4;
 import bwg4.biomes.BWG4Biomes;
-import bwg4.deco.BWG4decoDesertCaves;
+import bwg4.deco.BWG4decoCaves;
 import bwg4.deco.BWG4decoDungeons;
 import bwg4.deco.BWG4decoMites;
 import bwg4.deco.old.BWG4oldGenClay;
@@ -586,7 +586,7 @@ public class BWG4ChunkProviderDesert implements IChunkProvider
             int dx2 = var4 + this.rand.nextInt(16) + 8;
             int dy2 = 38;
             int dz2 = var5 + this.rand.nextInt(16) + 8;
-        	(new BWG4decoDesertCaves(1)).generate(this.worldObj, this.rand, dx2, dy2, dz2);
+        	(new BWG4decoCaves(1)).generate(this.worldObj, this.rand, dx2, dy2, dz2);
         }
 		
 		//DEAD BUSH ====================================================

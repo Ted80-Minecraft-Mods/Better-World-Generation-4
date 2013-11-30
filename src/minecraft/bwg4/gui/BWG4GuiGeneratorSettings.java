@@ -22,7 +22,7 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
 	private GuiButton BUTTON_WORLDSETTINGS;
 	
 	private int CATEGORY = 0;
-	private String[] categories = new String[]{"Enhanced", "Old", "Extreme Survival", "Fun", "Adventure"};
+	private String[] categories = new String[]{"Enhanced", "Old", "Extreme Survival", "Fun"};//, "Adventure"};
 	
 	private int generatorSelected = -1;
 	private ArrayList<BWG4GuiGeneratorButton> generators;
@@ -158,8 +158,12 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
 		
 		//category
 		drawString(fontRenderer, "Choose a category:", width / 2 - 155 + 1, 30, 10526880);
-		drawString(fontRenderer, "Select a world generator:", width / 2 - 155 + 1, 70, 10526880);
-    	String catpos = "(" + (CATEGORY + 1) + "/5)";
+    	if(CATEGORY != 4)
+    	{
+    		drawString(fontRenderer, "Select a world generator:", width / 2 - 155 + 1, 70, 10526880);
+    	}
+		
+    	String catpos = "(" + (CATEGORY + 1) + "/4)";
     	drawString(fontRenderer, catpos, width / 2 - 5 - fontRenderer.getStringWidth(catpos), 30, 10526880);
     	
     	if(CATEGORY == 4)
@@ -270,8 +274,8 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
 		}
 		else if(generatorSelected == BWG4GeneratorType.ISLAND.GetID()) 
 		{ 
-			settings.add(new BWG4GuiSettingsButton(new String[]{"Theme: Default", "Theme: Tropical", "Theme: Hell", "Theme: Iceberg", "Theme: Paradise"}, new int[]{0, 1, 2, 3, 4}, 20, 80, width));
-			settings.add(new BWG4GuiSettingsSlider(new String[]{"Size: Small", "Size: Default", "Size: Large"}, new int[]{0, 1, 2}, 1, 21, 100, width, 20, new int[]{0, 1, 2, 3}));
+			settings.add(new BWG4GuiSettingsButton(new String[]{"Theme: Default", "Theme: Tropical", "Theme: Paradise"}, new int[]{0, 1, 4}, 20, 80, width)); //"Theme: Hell", "Theme: Iceberg",   2, 3,
+			settings.add(new BWG4GuiSettingsSlider(new String[]{"Size: Small", "Size: Default", "Size: Large"}, new int[]{0, 1, 2}, 1, 21, 100, width, 20, new int[]{0, 1})); //, 2, 3
 		}
 		else if(generatorSelected == BWG4GeneratorType.SKYISLAND.GetID()) 
 		{ 
@@ -284,10 +288,6 @@ public class BWG4GuiGeneratorSettings extends GuiScreen
 		else if(generatorSelected == BWG4GeneratorType.SKYLANDS.GetID()) 
 		{ 
 			settings.add(new BWG4GuiSettingsButton(new String[]{"Biomes: Better Default", "Biomes: Beta 1.7.3"}, new int[]{0, 1}, 20, 80, width));
-		}
-		else if(generatorSelected == BWG4GeneratorType.CAVE.GetID()) 
-		{ 
-			settings.add(new BWG4GuiSettingsButton(new String[]{"TED PLZ REMOVE ME"}, new int[]{0}, 20, 80, width));
 		}
 		else if(generatorSelected == BWG4GeneratorType.DEADLYDESERT.GetID()) 
 		{ 

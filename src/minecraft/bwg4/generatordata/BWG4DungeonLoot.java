@@ -199,6 +199,18 @@ public class BWG4DungeonLoot
 				else { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }	
     		}
     	}
+    	else if(BWG4GeneratorType.currentGenerator == BWG4GeneratorType.CAVESURV)
+    	{
+    		int i = par1Random.nextInt(15);
+    		if (i == 0) { return new ItemStack(Block.blockClay, par1Random.nextInt(12) + 4); }
+    		if (i == 1) { return new ItemStack(Item.reed, 1); }
+    		if (i == 2) { return new ItemStack(Item.carrot, par1Random.nextInt(3) + 1); }
+    		if (i == 3) { return new ItemStack(Item.potato, par1Random.nextInt() + 1); }
+    		if (i == 4) { return new ItemStack(Item.pumpkinSeeds, par1Random.nextInt(3) + 1); }
+    		if (i == 5) { return new ItemStack(Item.melonSeeds, par1Random.nextInt(3) + 1); }
+    		if (i == 6) { return new ItemStack(Block.blockSnow, par1Random.nextInt(8) + 1); }
+    		else { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }
+    	}
     	else if(BWG4GeneratorType.currentGenerator == BWG4GeneratorType.SKYLANDS)
     	{
         	if(chestID == 1)

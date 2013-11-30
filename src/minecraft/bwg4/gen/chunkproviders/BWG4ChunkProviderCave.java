@@ -3,14 +3,19 @@ package bwg4.gen.chunkproviders;
 import java.util.List;
 import java.util.Random;
 
-import bwg4.deco.BWG4decoCaveLight;
-import bwg4.deco.BWG4decoDesertCaves;
-import bwg4.deco.BWG4decoHugeCaves;
+import bwg4.biomes.BWG4Biomes;
+import bwg4.deco.BWG4decoCaves;
 import bwg4.deco.BWG4decoMites;
 import bwg4.deco.BWG4decoWasteland;
+import bwg4.deco.old.BWG4oldGenBigTree;
+import bwg4.deco.old.BWG4oldGenTrees;
+import bwg4.map.BWG4MapGenBase;
+import bwg4.map.BWG4oldMapGenCaves;
+import bwg4.noise.BWG4NoiseOctavesBeta;
 import bwg4.util.PerlinNoise;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSand;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.util.IProgressUpdate;
 import net.minecraft.world.ChunkPosition;
@@ -22,7 +27,11 @@ import net.minecraft.world.gen.MapGenBase;
 import net.minecraft.world.gen.MapGenCaves;
 import net.minecraft.world.gen.NoiseGeneratorOctaves;
 import net.minecraft.world.gen.feature.WorldGenFlowers;
+import net.minecraft.world.gen.feature.WorldGenForest;
+import net.minecraft.world.gen.feature.WorldGenLiquids;
+import net.minecraft.world.gen.feature.WorldGenTaiga1;
 import net.minecraft.world.gen.feature.WorldGenVines;
+import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraft.world.gen.structure.MapGenMineshaft;
 import net.minecraft.world.gen.structure.MapGenStronghold;
 import net.minecraftforge.common.MinecraftForge;
@@ -36,30 +45,24 @@ public class BWG4ChunkProviderCave implements IChunkProvider
     private double[] netherrackExclusivityNoise = new double[256];
     private MapGenStronghold strongholdGenerator = new MapGenStronghold();
     private final boolean mapFeaturesEnabled;
+    private BWG4MapGenBase cavegen;
 
     public PerlinNoise cavenoise_top;
     public PerlinNoise cavenoise_1;
     public PerlinNoise cavenoise_2;
     public PerlinNoise cavenoise_3;
-    public PerlinNoise cactusnoise;
-    
-	boolean themeCOLD = false;
-	boolean themeDESERT = false;	
 	
-    public BWG4ChunkProviderCave(World par1World, long par2, boolean par4, int theme)
+    public BWG4ChunkProviderCave(World par1World, long par2, boolean par4)
     {
         this.worldObj = par1World;
         this.rand = new Random(par2);
         this.mapFeaturesEnabled = par4;
-
-		if(theme == 1) { themeCOLD = true; }
-		if(theme == 2) { themeDESERT = true; }
+        cavegen = new BWG4oldMapGenCaves();
 		
         cavenoise_top = new PerlinNoise(par2 + 1L);
         cavenoise_1 = new PerlinNoise(par2 + 2L);
         cavenoise_2 = new PerlinNoise(par2 + 3L);
         cavenoise_3 = new PerlinNoise(par2 + 4L);
-        cactusnoise = new PerlinNoise(par2);
     }
 
     public Chunk provideChunk(int par1, int par2)
@@ -68,6 +71,7 @@ public class BWG4ChunkProviderCave implements IChunkProvider
         byte[] blocks = new byte[32768];
         generateWorld(par1, par2, blocks);
         replaceBlocks(par1, par2, blocks);
+        cavegen.generate(this, worldObj, par1, par2, blocks);
         
         if (mapFeaturesEnabled)
         {
@@ -88,6 +92,7 @@ public class BWG4ChunkProviderCave implements IChunkProvider
     
     public void generateWorld(int par1, int par2, byte[] blocks)
     {
+        byte var5 = 48;
 		int i = par1 << 4;
 		int j = par2 << 4;
 		int jj = 0;
@@ -98,64 +103,51 @@ public class BWG4ChunkProviderCave implements IChunkProvider
 			for (int m = j; m < j + 16; m++)
 			{
 				float t = 100 + cavenoise_top.turbulence2(((float) k / 80F),((float) m / 80F), 5F) * 20;
-				float b;
-				if(themeDESERT)
+				float b = cavenoise_2.turbulence2(((float) k / 300F),((float) m / 300F), 5F) * 25;
+				float strength = 1.6F + cavenoise_1.turbulence2(((float) k / 300F),((float) m / 300F), 5F) * 2F;
+				
+				if(strength < 0.5F) 
 				{
-					b = 50 + cavenoise_1.turbulence2(((float) k / 200F),((float) m / 200F), 5F) * 30;
-					float strength = (float) Math.floor(cavenoise_3.turbulence2(((float) k / 150F),((float) m / 150F), 5F) * 130F);
-					if(strength < 0) { strength = 0; }
-					if(!p)
-					{
-						System.out.println(strength);
-						p = true;
-					}
-					b += (cavenoise_2.turbulence2(((float) k / 60F),((float) m / 60F), 5F) * strength);
-				}
-				else
-				{
-					b = 50 + cavenoise_1.turbulence2(((float) k / 80F),((float) m / 80F), 5F) * 20;
+					strength = 0.5F; 
 				}
 
 				for (int i3 = 0; i3 < 128; i3++)
 				{
+					float s;
+					if(i3 < b + 50 - (20 * strength))
+					{
+						s = -1;
+					}
+					else if(i3 > b + 50 + (20 * strength))
+					{
+						s = 1;
+					}
+					else
+					{
+						s = (i3 - 50 + b) + (cavenoise_3.turbulence3(((float) k / 30F), ((float) i3 / 30F), ((float) m / 30F), 3F) * (15 * strength)) + (cavenoise_3.turbulence3(((float) k / 100F), ((float) i3 / 100F), ((float) m / 100F), 3F) * (25 * strength));
+					}
+					
+					
 					if(i3 == 0 || i3 == 127)
 					{
 						blocks[jj] = (byte)Block.bedrock.blockID;
 					}
 					else
 					{
-						if(i3 <= t && i3 >= b)
+						if(s < 0 || i3 > t)
 						{
-							if(themeDESERT)
-							{
-								if(i3 == 42)
-								{
-									blocks[jj] = (byte)Block.lavaMoving.blockID;
-								}
-								else if(i3 < 42)
-								{
-									blocks[jj] = (byte)Block.lavaStill.blockID;
-								}
-								else
-								{
-									blocks[jj] = 0;
-								}
-							}
-							else
-							{
-								if(i3 < 50)
-								{
-									blocks[jj] = (byte)Block.ice.blockID;
-								}
-								else
-								{
-									blocks[jj] = 0;
-								}
-							}
+							blocks[jj] = (byte)Block.stone.blockID;
 						}
 						else
 						{
-							blocks[jj] = (byte)Block.stone.blockID;
+							if(i3 > var5)
+							{
+								blocks[jj] = 0;
+							}
+							else
+							{
+								blocks[jj] = (byte)Block.waterStill.blockID;
+							}
 						}
 					}
 					jj++;
@@ -164,105 +156,54 @@ public class BWG4ChunkProviderCave implements IChunkProvider
 		}
     }
     
-	public void replaceBlocks(int par1, int par2, byte[] blocks)
-	{
-		int jj = 0;
-		
-		for (int x = 0; x < 16; x++)
-		{
-			for (int z = 0; z < 16; z++)
-			{
-				int t = -1;
-				
-				jj+=128;
-				for (int y = 127; y > -1; y--)
-				{
-					byte b = 0;
-					
-					int l1 = (x * 16 + z) * 128 + y;
-					if(blocks[l1] == 0)
-					{
-						t = -1;
-					}
-					else if(blocks[l1] == 1)
-					{
-						t++;
-						if(themeCOLD)
-						{
-							if(y > 85)
-							{
-								if(rand.nextInt(2) == 0)
-								{
-									b = (byte)Block.cobblestone.blockID;
-								}
-								else
-								{
-									b = (byte)Block.stone.blockID;
-								}
-							}
-							else if(t < 10 + rand.nextInt(5))
-							{
-								if(rand.nextInt(2) == 0)
-								{
-									b = (byte)Block.cobblestone.blockID;
-								}
-								else
-								{
-									b = (byte)Block.stone.blockID;
-								}
-							}
-							else
-							{
-								b = (byte)Block.stone.blockID;
-							}
-						}
-						else if(themeDESERT)
-						{
-							if(y > 85)
-							{
-								b = (byte)Block.sandStone.blockID;
-							}
-							else if(t < 8)
-							{
-								b = (byte)Block.sand.blockID;
-							}
-							else if(t < 10 + rand.nextInt(5))
-							{
-								b = (byte)Block.sandStone.blockID;
-							}
-							else
-							{
-								b = (byte)Block.stone.blockID;
-							}
-						}
-						else
-						{
-							if(t == 0)
-							{
-								b = (byte)Block.grass.blockID;
-							}
-							else if(t < 3)
-							{
-								b = (byte)Block.dirt.blockID;
-							}
-							else
-							{
-								b = (byte)Block.stone.blockID;
-							}
-						}
-					}
-					else
-					{
-						t++;
-						b = blocks[l1];
-					}
-					jj--;
-					blocks[jj] = b;
-				}
-				jj+=128;
-			}
-		}
-	}
+    public void replaceBlocks(int par1, int par2, byte[] par3ArrayOfByte)
+    {
+        byte var5 = 48;
+        double var6 = 0.03125D;
+        for (int var8 = 0; var8 < 16; ++var8)
+        {
+            for (int var9 = 0; var9 < 16; ++var9)
+            {
+                int var13 = 0;
+                for (int var16 = 127; var16 >= 0; --var16)
+                {
+                    int var17 = (var9 * 16 + var8) * 128 + var16;
+                    byte var18 = par3ArrayOfByte[var17];
+
+                    if (var18 == 0)
+                    {
+                        var13 = 0;
+                    }
+                    else if (var18 == Block.stone.blockID)
+                    {
+                    	if	(var16 > var5 + 1)
+                    	{
+                            if (var13 == 0)
+                            {
+								par3ArrayOfByte[var17] = (byte)Block.grass.blockID;
+                            }
+                            else if (var13 > -1 && var13 < 4)
+                            {
+                                par3ArrayOfByte[var17] = (byte)Block.dirt.blockID;
+                            }
+                    	}
+                    	else if(var13 > -1 && var13 < 6)
+                    	{
+                        	if(var13 > 2 && rand.nextInt(3) == 0)
+                        	{
+                                par3ArrayOfByte[var17] = (byte)Block.sandStone.blockID;
+                        	}
+                        	else if(var13 < 4)
+                        	{
+                        		par3ArrayOfByte[var17] = (byte)Block.sand.blockID;
+                        	}
+                    	}
+                        var13++;
+                    }
+                }
+            }
+        }
+    }
 
     public Chunk loadChunk(int par1, int par2)
     {
@@ -293,64 +234,119 @@ public class BWG4ChunkProviderCave implements IChunkProvider
             strongholdGenerator.generateStructuresInChunk(this.worldObj, this.rand, par2, par3);
         }
 
-        if(themeCOLD)
-	    {
-	        //stalactites and stalagmites
-	        if(rand.nextInt(1) == 0)
-	        {
-	            int dx1 = var4 + this.rand.nextInt(16) + 8;
-	            int dy1 = 64;
-	            int dz1 = var5 + this.rand.nextInt(16) + 8;
-	        	(new BWG4decoMites(1, 10 + rand.nextInt(15), 120)).generate(this.worldObj, this.rand, dx1, dy1, dz1);
-	        }
-        }
-        else
+        //stalactites and stalagmites
+        if(rand.nextInt(4) == 0)
         {
-	        //stalactites and stalagmites
-	        if(rand.nextInt(4) == 0)
-	        {
-	            int dx1 = var4 + this.rand.nextInt(16) + 8;
-	            int dy1 = 64;
-	            int dz1 = var5 + this.rand.nextInt(16) + 8;
-	        	(new BWG4decoMites(2, 20 + rand.nextInt(10), 120)).generate(this.worldObj, this.rand, dx1, dy1, dz1);
-	        }
-	        
-	        int ca = (int) Math.floor(cactusnoise.turbulence2(var4 / 140F, var5 / 140F, 5F) * 40F) - 3;
-			for(int cg = 0; cg < ca; cg++)
-			{
-	            int dx2 = var4 + this.rand.nextInt(16) + 8;
-	            int dy2 = 75;
-	            int dz2 = var5 + this.rand.nextInt(16) + 8;
-	        	(new BWG4decoDesertCaves(1)).generate(this.worldObj, this.rand, dx2, dy2, dz2);
-	        }
-
-			if(rand.nextInt(7) == 0)
-			{
-	            int dx3 = var4 + this.rand.nextInt(16) + 8;
-	            int dy3 = 75;
-	            int dz3 = var5 + this.rand.nextInt(16) + 8;
-	        	(new BWG4decoDesertCaves(1)).generate(this.worldObj, this.rand, dx3, dy3, dz3);
-			}
-	        
-			if(rand.nextInt(7) == 0)
-			{
-				int k15 = var4 + rand.nextInt(16) + 8;
-				int k17 = rand.nextInt(40) + 40;
-				int k20 = var5 + rand.nextInt(16) + 8;
-				(new WorldGenFlowers(Block.mushroomBrown.blockID)).generate(worldObj, rand, k15, k17, k20);
-			}
-			if(rand.nextInt(7) == 0)
-			{
-				int l15 = var4 + rand.nextInt(16) + 8;
-				int l17 = rand.nextInt(40) + 40;
-				int l20 = var5 + rand.nextInt(16) + 8;
-				(new WorldGenFlowers(Block.mushroomRed.blockID)).generate(worldObj, rand, l15, l17, l20);
-			} 
+            int dx1 = var4 + this.rand.nextInt(16) + 8;
+            int dy1 = 75;
+            int dz1 = var5 + this.rand.nextInt(16) + 8;
+        	(new BWG4decoMites(3, 22 + rand.nextInt(6), 120)).generate(this.worldObj, this.rand, dx1, dy1, dz1);
         }
+        
+        //trees
+		for(int i11 = 0; i11 < 4; i11++)
+		{
+			int l13 = var4 + rand.nextInt(16) + 8;
+			int j14 = var5 + rand.nextInt(16) + 8;
+			WorldGenerator worldgenerator = getRandomWorldGenForTrees(rand);
+			worldgenerator.setScale(1.0D, 1.0D, 1.0D);
+			int h = getGrassPos(worldObj, l13, j14, 15);
+			if(h > 0)
+			{
+				worldgenerator.generate(worldObj, rand, l13, h, j14);
+			}
+		}
+        
+        //mushrooms
+		if(rand.nextInt(6) == 0)
+		{
+			int k15 = var4 + rand.nextInt(16) + 8;
+			int k17 = rand.nextInt(40) + 40;
+			int k20 = var5 + rand.nextInt(16) + 8;
+			(new WorldGenFlowers(Block.mushroomBrown.blockID)).generate(worldObj, rand, k15, k17, k20);
+		}
+		if(rand.nextInt(6) == 0)
+		{
+			int l15 = var4 + rand.nextInt(16) + 8;
+			int l17 = rand.nextInt(40) + 40;
+			int l20 = var5 + rand.nextInt(16) + 8;
+			(new WorldGenFlowers(Block.mushroomRed.blockID)).generate(worldObj, rand, l15, l17, l20);
+		}
+		
+		//water and lava
+		for (int lqw = 0; lqw < 20; ++lqw)
+		{
+			int lqw1 = var4 + rand.nextInt(16) + 8;
+			int lqw2 = rand.nextInt(rand.nextInt(64) + 8);
+			int lqw3 = var5 + rand.nextInt(16) + 8;
+			(new WorldGenLiquids(Block.waterMoving.blockID)).generate(worldObj, rand, lqw1, lqw2, lqw3);
+		}
+		for (int lql = 0; lql < 10; ++lql)
+		{
+			int lql1 = var4 + rand.nextInt(16) + 8;
+			int lql2 = rand.nextInt(rand.nextInt(64) + 8);
+			int lql3 = var5 + rand.nextInt(16) + 8;
+			(new WorldGenLiquids(Block.lavaMoving.blockID)).generate(worldObj, rand, lql1, lql2, lql3);
+		}
+		if(rand.nextInt(2) == 0)
+		{
+			int lqw1 = var4 + rand.nextInt(16) + 8;
+			int lqw2 = rand.nextInt(20) + 90;
+			int lqw3 = var5 + rand.nextInt(16) + 8;
+			(new BWG4decoCaves(2)).generate(worldObj, rand, lqw1, lqw2, lqw3);
+		}
+		if(rand.nextInt(3) == 0)
+		{
+			int lql1 = var4 + rand.nextInt(16) + 8;
+			int lql2 = rand.nextInt(20) + 90;
+			int lql3 = var5 + rand.nextInt(16) + 8;
+			(new BWG4decoCaves(3)).generate(worldObj, rand, lql1, lql2, lql3);
+		}
         
         MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(par1IChunkProvider, worldObj, rand, par2, par3, false));
 		
         BlockSand.fallInstantly = false;
+    }
+
+    public WorldGenerator getRandomWorldGenForTrees(Random par1Random)
+    {
+		if(par1Random.nextInt(8) == 0)
+		{
+			return new BWG4oldGenBigTree(2);
+		} 
+		if(par1Random.nextInt(18) == 0)
+		{
+			return new WorldGenTaiga1();
+		} 
+		if(par1Random.nextInt(10) == 0)
+		{
+			return new WorldGenForest(false);
+		} 
+		return new BWG4oldGenTrees(2);
+    }
+    
+    public int getGrassPos(World world, int x, int z, int req)
+    {
+    	int h = 0;
+    	for(int i = 105; i > 40; i--)
+    	{
+    		if(world.getBlockMaterial(x, i, z) == Material.grass)
+    		{
+    			if(h >= req)
+    			{
+    				return i + 1;
+    			}
+    		}
+    		else if(world.getBlockMaterial(x, i, z) == Material.air)
+    		{
+    			h++;
+    		}
+    		else
+    		{
+    			h = 0;
+    		}
+    	}
+    	return -1;
     }
 
     public boolean saveChunks(boolean par1, IProgressUpdate par2IProgressUpdate)
@@ -375,7 +371,7 @@ public class BWG4ChunkProviderCave implements IChunkProvider
 
     public String makeString()
     {
-        return "HellRandomLevelSource";
+        return "RandomLevelSource";
     }
 
     public List getPossibleCreatures(EnumCreatureType par1EnumCreatureType, int par2, int par3, int par4)

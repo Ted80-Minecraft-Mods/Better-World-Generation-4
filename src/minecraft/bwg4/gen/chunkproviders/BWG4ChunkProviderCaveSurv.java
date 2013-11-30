@@ -5,6 +5,7 @@ import java.util.Random;
 
 import bwg4.deco.BWG4decoDungeons;
 import bwg4.deco.BWG4decoSurvival;
+import bwg4.deco.old.BWG4oldGenLakes;
 import bwg4.deco.old.BWG4oldGenMinable;
 import bwg4.util.PerlinNoise;
 import net.minecraft.block.Block;
@@ -20,6 +21,7 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.MapGenBase;
 import net.minecraft.world.gen.MapGenCaves;
 import net.minecraft.world.gen.feature.WorldGenFlowers;
+import net.minecraft.world.gen.feature.WorldGenLiquids;
 import net.minecraft.world.gen.structure.MapGenStronghold;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
@@ -140,6 +142,24 @@ public class BWG4ChunkProviderCaveSurv implements IChunkProvider
 			(new BWG4decoSurvival(13)).generate(world, rand, 0, 0, 0);
 		}
 		
+		if(rand.nextInt(4) == 0)
+		{
+			int i1 = var4 + rand.nextInt(16) + 8;
+			int l4 = rand.nextInt(128);
+			int i8 = var5 + rand.nextInt(16) + 8;
+			(new BWG4oldGenLakes(Block.waterStill.blockID)).generate(world, rand, i1, l4, i8);
+		}
+		if(rand.nextInt(8) == 0)
+		{
+			int j1 = var4 + rand.nextInt(16) + 8;
+			int i5 = rand.nextInt(rand.nextInt(120) + 8);
+			int j8 = var5 + rand.nextInt(16) + 8;
+			if(i5 < 64 || rand.nextInt(10) == 0)
+			{
+				(new BWG4oldGenLakes(Block.lavaStill.blockID)).generate(world, rand, j1, i5, j8);
+			}
+		} 
+		
 		for (int var42 = 0; var42 < 30; ++var42)
 		{
 			int var66 = var4 + this.rand.nextInt(16) + 8;
@@ -228,6 +248,22 @@ public class BWG4ChunkProviderCaveSurv implements IChunkProvider
             	world.setBlock(i1, j1, k1, Block.oreEmerald.blockID, 0, 2);
             }
         }
+
+		for (int lqw = 0; lqw < 50; ++lqw)
+		{
+			int lqw1 = var4 + rand.nextInt(16) + 8;
+			int lqw2 = rand.nextInt(rand.nextInt(120) + 8);
+			int lqw3 = var5 + rand.nextInt(16) + 8;
+			(new WorldGenLiquids(Block.waterMoving.blockID)).generate(world, rand, lqw1, lqw2, lqw3);
+		}
+
+		for (int lql = 0; lql < 20; ++lql)
+		{
+			int lql1 = var4 + rand.nextInt(16) + 8;
+			int lql2 = rand.nextInt(rand.nextInt(rand.nextInt(112) + 8) + 8);
+			int lql3 = var5 + rand.nextInt(16) + 8;
+			(new WorldGenLiquids(Block.lavaMoving.blockID)).generate(world, rand, lql1, lql2, lql3);
+		}
 
 		if (rand.nextInt(4) == 0)
 		{

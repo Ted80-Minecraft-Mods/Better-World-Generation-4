@@ -44,13 +44,6 @@ import net.minecraftforge.event.terraingen.*;
 public class BWG4ChunkProviderWasteland implements IChunkProvider
 {
     private Random rand;
-    private NoiseGeneratorOctaves noiseGen1;
-    private NoiseGeneratorOctaves noiseGen2;
-    private NoiseGeneratorOctaves noiseGen3;
-    private NoiseGeneratorOctaves noiseGen4;
-    public NoiseGeneratorOctaves noiseGen5;
-    public NoiseGeneratorOctaves noiseGen6;
-    public NoiseGeneratorOctaves mobSpawnerNoise;
     
     public PerlinNoise noisetest;
     
@@ -69,11 +62,6 @@ public class BWG4ChunkProviderWasteland implements IChunkProvider
     private BWG4MapGenBase pocketGenerator = new BWG4MapGenPocket();
     private BWG4MapGenBase volcanoGenerator = new BWG4MapGenVolcano();
 
-    double[] noise3;
-    double[] noise1;
-    double[] noise2;
-    double[] noise5;
-    double[] noise6;
     float[] parabolicField;
     int[][] field_73219_j = new int[32][32];
 
@@ -81,23 +69,11 @@ public class BWG4ChunkProviderWasteland implements IChunkProvider
     {
         this.worldObj = par1World;
         this.rand = new Random(par2);
-        this.noiseGen1 = new NoiseGeneratorOctaves(this.rand, 16);
-        this.noiseGen2 = new NoiseGeneratorOctaves(this.rand, 16);
-        this.noiseGen3 = new NoiseGeneratorOctaves(this.rand, 8);
-        this.noiseGen4 = new NoiseGeneratorOctaves(this.rand, 4);
-        this.noiseGen5 = new NoiseGeneratorOctaves(this.rand, 10);
-        this.noiseGen6 = new NoiseGeneratorOctaves(this.rand, 16);
-        this.mobSpawnerNoise = new NoiseGeneratorOctaves(this.rand, 8);
         
         cavenoise_1 = new PerlinNoise(par2 + 1L);
         cavenoise_2 = new PerlinNoise(par2 + 2L);
         
         noisetest = new PerlinNoise(par2);
-        
-        //BWG4MapGenVolcano.randompos = false;
-        //BWG4MapGenVolcano.posX = 20;
-        //BWG4MapGenVolcano.posY = 64;
-        //BWG4MapGenVolcano.posZ = 20;
     }
     
     public Chunk provideChunk(int par1, int par2)
@@ -105,7 +81,7 @@ public class BWG4ChunkProviderWasteland implements IChunkProvider
         this.rand.setSeed((long)par1 * 341873128712L + (long)par2 * 132897987541L);
         byte[] abyte = new byte[32768];
         this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, par1 * 16, par2 * 16, 16, 16);
-        this.generateSurface(par1, par2, abyte);
+        //this.generateSurface(par1, par2, abyte);
         //this.generateCaveLayer(par1, par2, abyte);
         this.replaceBlocksForBiome(par1, par2, abyte, this.biomesForGeneration);
         //this.caveGenerator.generate(this, this.worldObj, par1, par2, abyte);
@@ -150,121 +126,12 @@ public class BWG4ChunkProviderWasteland implements IChunkProvider
     	return values;
     }
 
-    public void generateSurface(int i, int j, byte[] par3ArrayOfByte)
-    {
-        byte b0 = 4;
-        byte b1 = 16;
-        byte b2 = 72;
-        int k = b0 + 1;
-        byte b3 = 17;
-        int l = b0 + 1;
-        this.biomesForGeneration = this.worldObj.getWorldChunkManager().getBiomesForGeneration(this.biomesForGeneration, i * 4 - 2, j * 4 - 2, k + 5, l + 5);
-        this.noiseArray = this.initializeNoiseField(this.noiseArray, i * b0, 0, j * b0, k, b3, l);
 
-        for (int i1 = 0; i1 < b0; ++i1)
-        {
-            for (int j1 = 0; j1 < b0; ++j1)
-            {
-                for (int k1 = 0; k1 < b1; ++k1)
-                {
-                    double d0 = 0.125D;
-                    double d1 = this.noiseArray[((i1 + 0) * l + j1 + 0) * b3 + k1 + 0];
-                    double d2 = this.noiseArray[((i1 + 0) * l + j1 + 1) * b3 + k1 + 0];
-                    double d3 = this.noiseArray[((i1 + 1) * l + j1 + 0) * b3 + k1 + 0];
-                    double d4 = this.noiseArray[((i1 + 1) * l + j1 + 1) * b3 + k1 + 0];
-                    double d5 = (this.noiseArray[((i1 + 0) * l + j1 + 0) * b3 + k1 + 1] - d1) * d0;
-                    double d6 = (this.noiseArray[((i1 + 0) * l + j1 + 1) * b3 + k1 + 1] - d2) * d0;
-                    double d7 = (this.noiseArray[((i1 + 1) * l + j1 + 0) * b3 + k1 + 1] - d3) * d0;
-                    double d8 = (this.noiseArray[((i1 + 1) * l + j1 + 1) * b3 + k1 + 1] - d4) * d0;
-
-                    for (int l1 = 0; l1 < 8; ++l1)
-                    {
-                        double d9 = 0.25D;
-                        double d10 = d1;
-                        double d11 = d2;
-                        double d12 = (d3 - d1) * d9;
-                        double d13 = (d4 - d2) * d9;
-
-                        for (int i2 = 0; i2 < 4; ++i2)
-                        {
-                            int j2 = i2 + i1 * 4 << 11 | 0 + j1 * 4 << 7 | k1 * 8 + l1;
-                            short short1 = 128;
-                            j2 -= short1;
-                            double d14 = 0.25D;
-                            double d15 = (d11 - d10) * d14;
-                            double d16 = d10 - d15;
-
-                            for (int k2 = 0; k2 < 4; ++k2)
-                            {
-                                if ((d16 += d15) > 0.0D)
-                                {
-                                	if(rand.nextInt(2) == 0)
-                                	{
-                                		par3ArrayOfByte[j2 += short1] = (byte)Block.stone.blockID;
-                                	}
-                                	else
-                                	{
-                                		par3ArrayOfByte[j2 += short1] = (byte)Block.cobblestone.blockID;
-                                	}
-                                }
-                                else
-                                {
-                                    par3ArrayOfByte[j2 += short1] = 0;
-                                }
-                            }
-
-                            d10 += d12;
-                            d11 += d13;
-                        }
-
-                        d1 += d5;
-                        d2 += d6;
-                        d3 += d7;
-                        d4 += d8;
-                    }
-                }
-            }
-        }
-    }
-
-    public void generateCaveLayer(int par1, int par2, byte[] blocks)
-    {
-		int i = par1 << 4;
-		int j = par2 << 4;
-		int jj = 0;
-		
-		for (int k = i; k < i + 16; k++)
-		{
-			for (int m = j; m < j + 16; m++)
-			{
-				float t = 50 + cavenoise_1.turbulence2(((float) k / 80F),((float) m / 80F), 5F) * 20;
-				float b = 20 + cavenoise_2.turbulence2(((float) k / 80F),((float) m / 80F), 5F) * 20;
-
-				for (int i3 = 0; i3 < 128; i3++)
-				{
-					jj++;
-					
-					if(i3 <= t && i3 >= b)
-					{
-						if(i3 < 15)
-						{
-							blocks[jj] = (byte)Block.lavaStill.blockID;
-						}
-						else
-						{
-							blocks[jj] = 0;
-						}
-					}
-				}
-			}
-		}
-    }
-    
     public void replaceBlocksForBiome(int par1, int par2, byte[] par3ArrayOfByte, BiomeGenBase[] par4ArrayOfBiomeGenBase)
     {
         byte b0 = 63;
         double d0 = 0.03125D;
-        this.stoneNoise = this.noiseGen4.generateNoiseOctaves(this.stoneNoise, par1 * 16, par2 * 16, 0, 16, 16, 1, d0 * 2.0D, d0 * 2.0D, d0 * 2.0D);
+        //this.stoneNoise = this.noiseGen4.generateNoiseOctaves(this.stoneNoise, par1 * 16, par2 * 16, 0, 16, 16, 1, d0 * 2.0D, d0 * 2.0D, d0 * 2.0D);
 
         for (int k = 0; k < 16; ++k)
         {
@@ -401,154 +268,7 @@ public class BWG4ChunkProviderWasteland implements IChunkProvider
     {
         return this.provideChunk(par1, par2);
     }
-    
-    private double[] initializeNoiseField(double[] par1ArrayOfDouble, int par2, int par3, int par4, int par5, int par6, int par7)
-    {
-        if (par1ArrayOfDouble == null)
-        {
-            par1ArrayOfDouble = new double[par5 * par6 * par7];
-        }
 
-        if (this.parabolicField == null)
-        {
-            this.parabolicField = new float[25];
-
-            for (int k1 = -2; k1 <= 2; ++k1)
-            {
-                for (int l1 = -2; l1 <= 2; ++l1)
-                {
-                    float f = 10.0F / MathHelper.sqrt_float((float)(k1 * k1 + l1 * l1) + 0.2F);
-                    this.parabolicField[k1 + 2 + (l1 + 2) * 5] = f;
-                }
-            }
-        }
-
-        double d0 = 684.412D;
-        double d1 = 684.412D;
-        this.noise5 = this.noiseGen5.generateNoiseOctaves(this.noise5, par2, par4, par5, par7, 1.121D, 1.121D, 0.5D);
-        this.noise6 = this.noiseGen6.generateNoiseOctaves(this.noise6, par2, par4, par5, par7, 200.0D, 200.0D, 0.5D);
-        this.noise3 = this.noiseGen3.generateNoiseOctaves(this.noise3, par2, par3, par4, par5, par6, par7, d0 / 80.0D, d1 / 160.0D, d0 / 80.0D);
-        this.noise1 = this.noiseGen1.generateNoiseOctaves(this.noise1, par2, par3, par4, par5, par6, par7, d0, d1, d0);
-        this.noise2 = this.noiseGen2.generateNoiseOctaves(this.noise2, par2, par3, par4, par5, par6, par7, d0, d1, d0);
-        boolean flag = false;
-        boolean flag1 = false;
-        int i2 = 0;
-        int j2 = 0;
-
-        for (int k2 = 0; k2 < par5; ++k2)
-        {
-            for (int l2 = 0; l2 < par7; ++l2)
-            {
-                float f1 = 0.0F;
-                float f2 = 0.0F;
-                float f3 = 0.0F;
-                byte b0 = 2;
-                BiomeGenBase biomegenbase = this.biomesForGeneration[k2 + 2 + (l2 + 2) * (par5 + 5)];
-
-                for (int i3 = -b0; i3 <= b0; ++i3)
-                {
-                    for (int j3 = -b0; j3 <= b0; ++j3)
-                    {
-                        BiomeGenBase biomegenbase1 = this.biomesForGeneration[k2 + i3 + 2 + (l2 + j3 + 2) * (par5 + 5)];
-                        float f4 = this.parabolicField[i3 + 2 + (j3 + 2) * 5] / (biomegenbase1.minHeight + 2.0F);
-
-                        if (biomegenbase1.minHeight > biomegenbase.minHeight)
-                        {
-                            f4 /= 2.0F;
-                        }
-
-                        f1 += biomegenbase1.maxHeight * f4;
-                        f2 += biomegenbase1.minHeight * f4;
-                        f3 += f4;
-                    }
-                }
-
-                f1 /= f3;
-                f2 /= f3;
-                f1 = f1 * 0.9F + 0.1F;
-                f2 = (f2 * 4.0F - 1.0F) / 8.0F;
-                double d2 = this.noise6[j2] / 8000.0D;
-
-                if (d2 < 0.0D)
-                {
-                    d2 = -d2 * 0.3D;
-                }
-
-                d2 = d2 * 3.0D - 2.0D;
-
-                if (d2 < 0.0D)
-                {
-                    d2 /= 2.0D;
-
-                    if (d2 < -1.0D)
-                    {
-                        d2 = -1.0D;
-                    }
-
-                    d2 /= 1.4D;
-                    d2 /= 2.0D;
-                }
-                else
-                {
-                    if (d2 > 1.0D)
-                    {
-                        d2 = 1.0D;
-                    }
-
-                    d2 /= 8.0D;
-                }
-
-                ++j2;
-
-                for (int k3 = 0; k3 < par6; ++k3)
-                {
-                    double d3 = (double)f2;
-                    double d4 = (double)f1;
-                    d3 += d2 * 0.2D;
-                    d3 = d3 * (double)par6 / 16.0D;
-                    double d5 = (double)par6 / 2.0D + d3 * 4.0D;
-                    double d6 = 0.0D;
-                    double d7 = ((double)k3 - d5) * 12.0D * 128.0D / 128.0D / d4;
-
-                    if (d7 < 0.0D)
-                    {
-                        d7 *= 4.0D;
-                    }
-
-                    double d8 = this.noise1[i2] / 512.0D;
-                    double d9 = this.noise2[i2] / 512.0D;
-                    double d10 = (this.noise3[i2] / 10.0D + 1.0D) / 2.0D;
-
-                    if (d10 < 0.0D)
-                    {
-                        d6 = d8;
-                    }
-                    else if (d10 > 1.0D)
-                    {
-                        d6 = d9;
-                    }
-                    else
-                    {
-                        d6 = d8 + (d9 - d8) * d10;
-                    }
-
-                    d6 -= d7;
-
-                    if (k3 > par6 - 4)
-                    {
-                        double d11 = (double)((float)(k3 - (par6 - 4)) / 3.0F);
-                        d6 = d6 * (1.0D - d11) + -10.0D * d11;
-                    }
-
-                    par1ArrayOfDouble[i2] = d6;
-                    ++i2;
-                }
-            }
-        }
-
-        return par1ArrayOfDouble;
-    }
-    
     public boolean chunkExists(int par1, int par2)
     {
         return true;
