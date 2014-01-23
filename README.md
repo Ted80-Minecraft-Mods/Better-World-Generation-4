@@ -1,15 +1,4 @@
 
-
-
-## DISCONTINUED ##
-
-
-
-
-
-
-
-
 ## BETTER WORLD GENERATION 4 MOD ##
 
 A world generator mod for minecraft made by ted80. 
