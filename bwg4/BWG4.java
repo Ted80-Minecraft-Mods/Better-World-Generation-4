@@ -31,10 +31,10 @@ public class BWG4
 		
 		BiomeLoader.load();
 		
-		//DimensionManager.unregisterProviderType(0);
-		//DimensionManager.registerProviderType(0, ProviderBWG4.class, true);
-		//DimensionManager.unregisterProviderType(-1);
-		//DimensionManager.registerProviderType(-1, ProviderBWG4Hell.class, true);
+		DimensionManager.unregisterProviderType(0);
+		DimensionManager.registerProviderType(0, ProviderBWG4.class, true);
+		DimensionManager.unregisterProviderType(-1);
+		DimensionManager.registerProviderType(-1, ProviderBWG4Hell.class, true);
 	}
 	
 	@EventHandler

@@ -1,6 +1,7 @@
 package bwg4.biomes;
 
 import bwg4.api.biome.BiomeList;
+import bwg4.api.biome.BiomeManager;
 import net.minecraft.world.biome.BiomeGenBase;
 
 public class BiomeLoader 
@@ -25,5 +26,7 @@ public class BiomeLoader
 		BiomeList.COMMONnormal2 = (new BiomeCommon(73, 0)).setColor(353825).setBiomeName("BWG4 com_nom2").setTemperatureRainfall(0.9F, 0.8F);
 		BiomeList.COMMONsnow = (new BiomeCommon(74, 0)).setColor(353825).setBiomeName("BWG4 com_snow").setTemperatureRainfall(0.0F, 0.5F);
 		BiomeList.COMMONnether = (new BiomeCommon(75, 0)).setColor(353825).setBiomeName("BWG4 Hell").setTemperatureRainfall(0.8F, 0.6F);
+		
+		BiomeManager.addBiome("test", BiomeList.OLDdesert, 1);
 	}
 }

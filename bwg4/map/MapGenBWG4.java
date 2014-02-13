@@ -2,6 +2,7 @@ package bwg4.map;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 
@@ -17,7 +18,7 @@ public class MapGenBWG4
         rand = new Random();
     }
 
-    public void generate(IChunkProvider ichunkprovider, World world, int i, int j, byte abyte0[])
+    public void generate(IChunkProvider ichunkprovider, World world, int i, int j, Block blocks[])
     {
         int k = range;
 		worldObj = world;
@@ -29,7 +30,7 @@ public class MapGenBWG4
             for(int j1 = j - k; j1 <= j + k; j1++)
             {
                 rand.setSeed((long)i1 * l + (long)j1 * l1 ^ worldObj.getSeed());
-                recursiveGenerate(worldObj, i1, j1, i, j, abyte0);
+                recursiveGenerate(worldObj, i1, j1, i, j, blocks);
             }
         }
     }
@@ -55,7 +56,7 @@ public class MapGenBWG4
         }
     }
     
-    protected void recursiveGenerate(World world, int i, int j, int k, int l, byte abyte0[])
+    protected void recursiveGenerate(World world, int i, int j, int k, int l, Block blocks[])
     {
     }
     

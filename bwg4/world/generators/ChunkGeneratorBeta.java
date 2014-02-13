@@ -3,6 +3,12 @@ package bwg4.world.generators;
 import java.util.List;
 import java.util.Random;
 
+import bwg4.api.biome.BiomeList;
+import bwg4.deco.DecoDungeons;
+import bwg4.deco.old.OldGenClay;
+import bwg4.deco.old.OldGenLakes;
+import bwg4.deco.old.OldGenMinable;
+import bwg4.deco.old.OldGenReed;
 import bwg4.map.MapGenBWG4;
 import bwg4.map.MapGenBWG4Caves;
 import bwg4.noise.NoiseOctavesBeta;
@@ -269,12 +275,11 @@ public class ChunkGeneratorBeta implements IChunkProvider
     {
         rand.setSeed((long)i * 0x4f9939f508L + (long)j * 0x1ef1565bd5L);
         Block[] blocks = new Block[32768];
-        byte abyte0[] = new byte[32768];
         biomesForGeneration = worldObj.getWorldChunkManager().loadBlockGeneratorData(biomesForGeneration, i * 16, j * 16, 16, 16);
         double ad[] = ChunkManagerOld.temperature;
         generateTerrain(i, j, blocks, biomesForGeneration, ad);
         replaceBlocksForBiome(i, j, blocks, biomesForGeneration);
-        field_902_u.generate(this, worldObj, i, j, abyte0);
+        field_902_u.generate(this, worldObj, i, j, blocks);
 		
         if (mapFeaturesEnabled)
         {
@@ -408,7 +413,6 @@ public class ChunkGeneratorBeta implements IChunkProvider
 
     public void populate(IChunkProvider ichunkprovider, int i, int j)
     {
-    	/*
 		if (worldtype == 1)
 		{
 	        BlockFalling.field_149832_M = true;
@@ -434,96 +438,96 @@ public class ChunkGeneratorBeta implements IChunkProvider
 				int i1 = k + rand.nextInt(16) + 8;
 				int l4 = rand.nextInt(128);
 				int i8 = l + rand.nextInt(16) + 8;
-				(new BWG4oldGenLakes(Block.waterStill.blockID)).generate(worldObj, rand, i1, l4, i8);
+				(new OldGenLakes(Blocks.water)).generate(worldObj, rand, i1, l4, i8);
 			}
-			if(rand.nextInt(8) == 0)
+			if(rand.nextInt(8) == 0) 
 			{
 				int j1 = k + rand.nextInt(16) + 8;
 				int i5 = rand.nextInt(rand.nextInt(120) + 8);
 				int j8 = l + rand.nextInt(16) + 8;
 				if(i5 < 64 || rand.nextInt(10) == 0)
 				{
-					(new BWG4oldGenLakes(Block.lavaStill.blockID)).generate(worldObj, rand, j1, i5, j8);
+					(new OldGenLakes(Blocks.lava)).generate(worldObj, rand, j1, i5, j8);
 				}
 			} 
-			for(int k1 = 0; k1 < 8; k1++)
+			for(int k1 = 0; k1 < 8; k1++) //GOOD
 			{
 				int j5 = k + rand.nextInt(16) + 8;
 				int k8 = rand.nextInt(128);
 				int j11 = l + rand.nextInt(16) + 8;
-				(new BWG4decoDungeons(1)).generate(worldObj, rand, j5, k8, j11);
+				(new DecoDungeons(1)).generate(worldObj, rand, j5, k8, j11);
 			}
 			
-			for(int i2 = 0; i2 < 10; i2++)
+			for(int i2 = 0; i2 < 10; i2++) //GOOD
 			{
 				int k5 = k + rand.nextInt(16);
 				int l8 = rand.nextInt(128);
 				int k11 = l + rand.nextInt(16);
-				(new BWG4oldGenClay(32, 2)).generate(worldObj, rand, k5, l8, k11);
+				(new OldGenClay(32, 2)).generate(worldObj, rand, k5, l8, k11);
 			}
 			
-			for(int j2 = 0; j2 < 20; j2++)
+			for(int j2 = 0; j2 < 20; j2++) //GOOD
 			{
 				int l5 = k + rand.nextInt(16);
 				int i9 = rand.nextInt(128);
 				int l11 = l + rand.nextInt(16);
-				(new BWG4oldGenMinable(Block.dirt.blockID, 32, 2)).generate(worldObj, rand, l5, i9, l11);
+				(new OldGenMinable(Blocks.dirt, 32, 2)).generate(worldObj, rand, l5, i9, l11);
 			}
 
-			for(int k2 = 0; k2 < 10; k2++)
+			for(int k2 = 0; k2 < 10; k2++) //GOOD
 			{
 				int i6 = k + rand.nextInt(16);
 				int j9 = rand.nextInt(128);
 				int i12 = l + rand.nextInt(16);
-				(new BWG4oldGenMinable(Block.gravel.blockID, 32, 2)).generate(worldObj, rand, i6, j9, i12);
+				(new OldGenMinable(Blocks.gravel, 32, 2)).generate(worldObj, rand, i6, j9, i12);
 			}
 
-			for(int i3 = 0; i3 < 20; i3++)
+			for(int i3 = 0; i3 < 20; i3++) //GOOD
 			{
 				int j6 = k + rand.nextInt(16);
 				int k9 = rand.nextInt(128);
 				int j12 = l + rand.nextInt(16);
-				(new BWG4oldGenMinable(Block.oreCoal.blockID, 16, 2)).generate(worldObj, rand, j6, k9, j12);
+				(new OldGenMinable(Blocks.coal_ore, 16, 2)).generate(worldObj, rand, j6, k9, j12);
 			}
 
-			for(int j3 = 0; j3 < 20; j3++)
+			for(int j3 = 0; j3 < 20; j3++) //GOOD
 			{
 				int k6 = k + rand.nextInt(16);
 				int l9 = rand.nextInt(64);
 				int k12 = l + rand.nextInt(16);
-				(new BWG4oldGenMinable(Block.oreIron.blockID, 8, 2)).generate(worldObj, rand, k6, l9, k12);
+				(new OldGenMinable(Blocks.iron_ore, 8, 2)).generate(worldObj, rand, k6, l9, k12);
 			}
 
-			for(int k3 = 0; k3 < 2; k3++)
+			for(int k3 = 0; k3 < 2; k3++) //GOOD
 			{
 				int l6 = k + rand.nextInt(16);
 				int i10 = rand.nextInt(32);
 				int l12 = l + rand.nextInt(16);
-				(new BWG4oldGenMinable(Block.oreGold.blockID, 8, 2)).generate(worldObj, rand, l6, i10, l12);
+				(new OldGenMinable(Blocks.gold_block, 8, 2)).generate(worldObj, rand, l6, i10, l12);
 			}
 
-			for(int l3 = 0; l3 < 8; l3++)
+			for(int l3 = 0; l3 < 8; l3++) //GOOD
 			{
 				int i7 = k + rand.nextInt(16);
 				int j10 = rand.nextInt(16);
 				int i13 = l + rand.nextInt(16);
-				(new BWG4oldGenMinable(Block.oreRedstone.blockID, 7, 2)).generate(worldObj, rand, i7, j10, i13);
+				(new OldGenMinable(Blocks.redstone_ore, 7, 2)).generate(worldObj, rand, i7, j10, i13);
 			}
 
-			for(int i4 = 0; i4 < 1; i4++)
+			for(int i4 = 0; i4 < 1; i4++) //GOOD
 			{
 				int j7 = k + rand.nextInt(16);
 				int k10 = rand.nextInt(16);
 				int j13 = l + rand.nextInt(16);
-				(new BWG4oldGenMinable(Block.oreDiamond.blockID, 7, 2)).generate(worldObj, rand, j7, k10, j13);
+				(new OldGenMinable(Blocks.diamond_ore, 7, 2)).generate(worldObj, rand, j7, k10, j13);
 			}
 
-			for(int j4 = 0; j4 < 1; j4++)
+			for(int j4 = 0; j4 < 1; j4++) //GOOD
 			{
 				int k7 = k + rand.nextInt(16);
 				int l10 = rand.nextInt(16) + rand.nextInt(16);
 				int k13 = l + rand.nextInt(16);
-				(new BWG4oldGenMinable(Block.oreLapis.blockID, 6, 2)).generate(worldObj, rand, k7, l10, k13);
+				(new OldGenMinable(Blocks.lapis_ore, 6, 2)).generate(worldObj, rand, k7, l10, k13);
 			}
 			
 			d = 0.5D;
@@ -533,31 +537,31 @@ public class ChunkGeneratorBeta implements IChunkProvider
 			{
 				l7++;
 			}
-			if(biomegenbase == BWG4Biomes.BETAforest)
+			if(biomegenbase == BiomeList.OLDforest)
 			{
 				l7 += k4 + 5;
 			}
-			if(biomegenbase == BWG4Biomes.BETArainforest)
+			if(biomegenbase == BiomeList.OLDrainforest)
 			{
 				l7 += k4 + 5;
 			}
-			if(biomegenbase == BWG4Biomes.BETAseasonalForest)
+			if(biomegenbase == BiomeList.OLDseasonalForest)
 			{
 				l7 += k4 + 2;
 			}
-			if(biomegenbase == BWG4Biomes.BETAtaiga)
+			if(biomegenbase == BiomeList.OLDtaiga)
 			{
 				l7 += k4 + 5;
 			}
-			if(biomegenbase == BWG4Biomes.BETAdesert)
+			if(biomegenbase == BiomeList.OLDdesert)
 			{
 				l7 -= 20;
 			}
-			if(biomegenbase == BWG4Biomes.BETAtundra)
+			if(biomegenbase == BiomeList.OLDtundra)
 			{
 				l7 -= 20;
 			}
-			if(biomegenbase == BWG4Biomes.BETAplains)
+			if(biomegenbase == BiomeList.OLDplains)
 			{
 				l7 -= 20;
 			}
@@ -565,113 +569,113 @@ public class ChunkGeneratorBeta implements IChunkProvider
 			{
 				int l13 = k + rand.nextInt(16) + 8;
 				int j14 = l + rand.nextInt(16) + 8;
-				WorldGenerator worldgenerator = biomegenbase.getRandomWorldGenForTrees(rand);
+				WorldGenerator worldgenerator = biomegenbase.func_150567_a(rand);
 				worldgenerator.setScale(1.0D, 1.0D, 1.0D);
 				worldgenerator.generate(worldObj, rand, l13, worldObj.getHeightValue(l13, j14), j14);
 			}
 			
 			byte byte0 = 0;
-			if(biomegenbase == BWG4Biomes.BETAforest)
+			if(biomegenbase == BiomeList.OLDforest)
 			{
 				byte0 = 2;
 			}
-			if(biomegenbase == BWG4Biomes.BETAseasonalForest)
+			if(biomegenbase == BiomeList.OLDseasonalForest)
 			{
 				byte0 = 4;
 			}
-			if(biomegenbase == BWG4Biomes.BETAtaiga)
+			if(biomegenbase == BiomeList.OLDtaiga)
 			{
 				byte0 = 2;
 			}
-			if(biomegenbase == BWG4Biomes.BETAplains)
+			if(biomegenbase == BiomeList.OLDplains)
 			{
 				byte0 = 3;
 			}
-			for(int i14 = 0; i14 < byte0; i14++)
+			for(int i14 = 0; i14 < byte0; i14++) //GOOD
 			{
 				int k14 = k + rand.nextInt(16) + 8;
 				int l16 = rand.nextInt(128);
 				int k19 = l + rand.nextInt(16) + 8;
-				(new WorldGenFlowers(Block.plantYellow.blockID)).generate(worldObj, rand, k14, l16, k19);
+				(new WorldGenFlowers(Blocks.yellow_flower)).generate(worldObj, rand, k14, l16, k19);
 			}
 
 			byte byte1 = 0;
-			if(biomegenbase == BWG4Biomes.BETAforest)
+			if(biomegenbase == BiomeList.OLDforest)
 			{
 				byte1 = 2;
 			}
-			if(biomegenbase == BWG4Biomes.BETArainforest)
+			if(biomegenbase == BiomeList.OLDrainforest)
 			{
 				byte1 = 10;
 			}
-			if(biomegenbase == BWG4Biomes.BETAseasonalForest)
+			if(biomegenbase == BiomeList.OLDseasonalForest)
 			{
 				byte1 = 2;
 			}
-			if(biomegenbase == BWG4Biomes.BETAtaiga)
+			if(biomegenbase == BiomeList.OLDtaiga)
 			{
 				byte1 = 1;
 			}
-			if(biomegenbase == BWG4Biomes.BETAplains)
+			if(biomegenbase == BiomeList.OLDplains)
 			{
 				byte1 = 10;
 			}
-			for(int l14 = 0; l14 < byte1; l14++)
+			for(int l14 = 0; l14 < byte1; l14++) //GOOD
 			{
 				byte byte2 = 1;
-				if(biomegenbase == BWG4Biomes.BETArainforest && rand.nextInt(3) != 0)
+				if(biomegenbase == BiomeList.OLDrainforest && rand.nextInt(3) != 0)
 				{
 					byte2 = 2;
 				}
 				int l19 = k + rand.nextInt(16) + 8;
 				int k22 = rand.nextInt(128);
 				int j24 = l + rand.nextInt(16) + 8;
-				(new WorldGenTallGrass(Block.tallGrass.blockID, byte2)).generate(worldObj, rand, l19, k22, j24);
+				(new WorldGenTallGrass(Blocks.tallgrass, byte2)).generate(worldObj, rand, l19, k22, j24);
 			}
 			
 			byte1 = 0;
-			if(biomegenbase == BWG4Biomes.BETAdesert)
+			if(biomegenbase == BiomeList.OLDdesert)
 			{
 				byte1 = 2;
 			}
-			for(int i15 = 0; i15 < byte1; i15++)
+			for(int i15 = 0; i15 < byte1; i15++) //GOOD
 			{
 				int i17 = k + rand.nextInt(16) + 8;
 				int i20 = rand.nextInt(128);
 				int l22 = l + rand.nextInt(16) + 8;
-				(new WorldGenDeadBush(Block.deadBush.blockID)).generate(worldObj, rand, i17, i20, l22);
+				(new WorldGenDeadBush(Blocks.deadbush)).generate(worldObj, rand, i17, i20, l22);
 			}
 
-			if(rand.nextInt(2) == 0)
+			if(rand.nextInt(2) == 0) //GOOD
 			{
 				int j15 = k + rand.nextInt(16) + 8;
 				int j17 = rand.nextInt(128);
 				int j20 = l + rand.nextInt(16) + 8;
-				(new WorldGenFlowers(Block.plantRed.blockID)).generate(worldObj, rand, j15, j17, j20);
+				(new WorldGenFlowers(Blocks.red_flower)).generate(worldObj, rand, j15, j17, j20);
 			}
-			if(rand.nextInt(4) == 0)
+			if(rand.nextInt(4) == 0)  //GOOD
 			{
 				int k15 = k + rand.nextInt(16) + 8;
 				int k17 = rand.nextInt(128);
 				int k20 = l + rand.nextInt(16) + 8;
-				(new WorldGenFlowers(Block.mushroomBrown.blockID)).generate(worldObj, rand, k15, k17, k20);
+				(new WorldGenFlowers(Blocks.brown_mushroom)).generate(worldObj, rand, k15, k17, k20);
 			}
-			if(rand.nextInt(8) == 0)
+			if(rand.nextInt(8) == 0) //GOOD
 			{
 				int l15 = k + rand.nextInt(16) + 8;
 				int l17 = rand.nextInt(128);
 				int l20 = l + rand.nextInt(16) + 8;
-				(new WorldGenFlowers(Block.mushroomRed.blockID)).generate(worldObj, rand, l15, l17, l20);
+				(new WorldGenFlowers(Blocks.red_mushroom)).generate(worldObj, rand, l15, l17, l20);
 			} 
-			for(int i16 = 0; i16 < 10; i16++)
+			for(int i16 = 0; i16 < 10; i16++) 
 			{
 				int i18 = k + rand.nextInt(16) + 8;
 				int i21 = rand.nextInt(128);
 				int i23 = l + rand.nextInt(16) + 8;
-				(new BWG4oldGenReed()).generate(worldObj, rand, i18, i21, i23);
+				(new OldGenReed()).generate(worldObj, rand, i18, i21, i23);
 			}
 
-			if(rand.nextInt(32) == 0)
+			if(rand.nextInt(32) == 0) //GOOD
 			{
 				int j16 = k + rand.nextInt(16) + 8;
 				int j18 = rand.nextInt(128);
@@ -679,11 +683,11 @@ public class ChunkGeneratorBeta implements IChunkProvider
 				(new WorldGenPumpkin()).generate(worldObj, rand, j16, j18, j21);
 			}
 			int k16 = 0;
-			if(biomegenbase == BWG4Biomes.BETAdesert)
+			if(biomegenbase == BiomeList.OLDdesert)
 			{
 				k16 += 10;
 			}
-			for(int k18 = 0; k18 < k16; k18++)
+			for(int k18 = 0; k18 < k16; k18++) //GOOD
 			{
 				int k21 = k + rand.nextInt(16) + 8;
 				int j23 = rand.nextInt(128);
@@ -691,25 +695,25 @@ public class ChunkGeneratorBeta implements IChunkProvider
 				(new WorldGenCactus()).generate(worldObj, rand, k21, j23, k24);
 			}
 			
-			for(int l18 = 0; l18 < 50; l18++)
+			for(int l18 = 0; l18 < 50; l18++) //GOOD
 			{
 				int l21 = k + rand.nextInt(16) + 8;
 				int k23 = rand.nextInt(rand.nextInt(120) + 8);
 				int l24 = l + rand.nextInt(16) + 8;
-				(new WorldGenLiquids(Block.waterMoving.blockID)).generate(worldObj, rand, l21, k23, l24);
+				(new WorldGenLiquids(Blocks.flowing_water)).generate(worldObj, rand, l21, k23, l24);
 			}
 
-			for(int i19 = 0; i19 < 20; i19++)
+			for(int i19 = 0; i19 < 20; i19++) //GOOD
 			{
 				int i22 = k + rand.nextInt(16) + 8;
 				int l23 = rand.nextInt(rand.nextInt(rand.nextInt(112) + 8) + 8);
 				int i25 = l + rand.nextInt(16) + 8;
-				(new WorldGenLiquids(Block.lavaMoving.blockID)).generate(worldObj, rand, i22, l23, i25);
+				(new WorldGenLiquids(Blocks.flowing_lava)).generate(worldObj, rand, i22, l23, i25);
 			}
 
 			SpawnerAnimals.performWorldGenSpawning(worldObj, biomegenbase, k + 8, l + 8, 16, 16, rand);
 			
-			generatedTemperatures = BWG4ChunkManagerBeta.getColdTemperatures(generatedTemperatures, k + 8, l + 8, 16, 16);
+			generatedTemperatures = ChunkManagerOld.getColdTemperatures(generatedTemperatures, k + 8, l + 8, 16, 16);
 			for(int j19 = k + 8; j19 < k + 8 + 16; j19++)
 			{
 				for(int j22 = l + 8; j22 < l + 8 + 16; j22++)
@@ -718,15 +722,15 @@ public class ChunkGeneratorBeta implements IChunkProvider
 					int j25 = j22 - (l + 8);
 					int k25 = worldObj.getPrecipitationHeight(j19, j22);
 					double d1 = generatedTemperatures[i24 * 16 + j25] - ((double)(k25 - 64) / 64D) * 0.29999999999999999D;
-					if(d1 < 0.5D && k25 > 0 && k25 < 128 && worldObj.isAirBlock(j19, k25, j22))
+					if(d1 < 0.5D && k25 > 0 && k25 < 128 && worldObj.func_147437_c(j19, k25, j22))
 					{
-						if( worldObj.getBlockMaterial(j19, k25 - 1, j22).blocksMovement() && worldObj.getBlockMaterial(j19, k25 - 1, j22) != Material.ice )
+						if( worldObj.func_147439_a(j19, k25 - 1, j22).func_149688_o().blocksMovement() && worldObj.func_147439_a(j19, k25 - 1, j22).func_149688_o() != Material.field_151596_z )
 						{
-							worldObj.setBlock(j19, k25, j22, Block.snow.blockID, 0, 2);
+							worldObj.func_147465_d(j19, k25, j22, Blocks.snow_layer, 0, 2);
 						}
-						else if ( worldObj.getBlockMaterial(j19, 63, j22) == Material.water )
+						else if ( worldObj.func_147439_a(j19, 63, j22).func_149688_o() == Material.field_151586_h )
 						{
-							worldObj.setBlock(j19, 63, j22, Block.ice.blockID, 0, 2);					
+							worldObj.func_147465_d(j19, 63, j22, Blocks.ice, 0, 2);					
 						}
 					}	
 				}
@@ -736,10 +740,10 @@ public class ChunkGeneratorBeta implements IChunkProvider
 			MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(ichunkprovider, worldObj, rand, i, j, false));
 
 			BlockFalling.field_149832_M = false;
-		
 		}
 		else
-		{
+		{	
+			/*
 			BlockFalling.field_149832_M = true; 
 			int k = i * 16;
 			int l = j * 16;
@@ -817,9 +821,8 @@ public class ChunkGeneratorBeta implements IChunkProvider
 
 			MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(ichunkprovider, worldObj, rand, i, j, false));
 			
-			BlockSand.fallInstantly = false;
+			BlockSand.fallInstantly = false;*/
 		}
-		*/
     }
 
     public boolean saveChunks(boolean par1, IProgressUpdate par2IProgressUpdate)

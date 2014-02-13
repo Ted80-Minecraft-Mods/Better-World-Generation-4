@@ -5,6 +5,7 @@ import bwg4.api.biome.BiomeList;
 import bwg4.api.biome.BiomeManager;
 import bwg4.api.gen.GeneratorType;
 import bwg4.data.DecodeGeneratorString;
+import bwg4.world.generators.ChunkGeneratorAlpha;
 import bwg4.world.generators.ChunkGeneratorBeta;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -191,8 +192,15 @@ public class ProviderBWG4 extends WorldProvider
     {		
   		if(terrainType == BWG4.BWG4DEFAULT)
 		{
-  			return new ChunkGeneratorBeta(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled(), trySetting(0, 1) + 1);
-			/*
+  			if(GeneratorType.currentGenerator == GeneratorType.ALPHA12)
+  			{
+  				return new ChunkGeneratorAlpha(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled());
+  			}
+  			else
+  			{
+  				return new ChunkGeneratorBeta(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled(), trySetting(0, 1) + 1);
+  			}
+  			/*
 	        if (BWG4GeneratorType.currentGenerator == BWG4GeneratorType.INFDEV)
 	        {
 	            return new BWG4ChunkProviderInfdev(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled(), false);
