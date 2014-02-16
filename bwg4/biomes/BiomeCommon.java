@@ -1,5 +1,7 @@
 package bwg4.biomes;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.monster.EntityGhast;
 import net.minecraft.entity.monster.EntityMagmaCube;
@@ -48,8 +50,9 @@ public class BiomeCommon extends BiomeGenBase
 			spawnableMonsterList.add(new SpawnListEntry(EntityBlaze.class, 25, 4, 4));
 		}
     }
-
-    public int getBiomeGrassColor(int p_150558_1_, int p_150558_2_, int p_150558_3_)
+    
+    @SideOnly(Side.CLIENT)
+    public int func_150558_b(int p_150558_1_, int p_150558_2_, int p_150558_3_)
     { 
 		if(snow)
 		{
@@ -62,8 +65,9 @@ public class BiomeCommon extends BiomeGenBase
 			return ColorizerGrass.getGrassColor(d, d1);
 		}	
     } 
-
-    public int getBiomeFoliageColor(int p_150558_1_, int p_150558_2_, int p_150558_3_)
+    
+    @SideOnly(Side.CLIENT)
+    public int func_150571_c(int p_150558_1_, int p_150558_2_, int p_150558_3_)
     {  
 		if(snow)
 		{
@@ -76,7 +80,8 @@ public class BiomeCommon extends BiomeGenBase
 			return ColorizerFoliage.getFoliageColor(d, d1);
 		}	
     } 
-    
+
+    @SideOnly(Side.CLIENT)
     public float getFTemp(int p_150564_1_, int p_150564_2_, int p_150564_3_)
     {
         if (p_150564_2_ > 64)

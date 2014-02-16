@@ -103,7 +103,8 @@ public class OldGenLakes extends WorldGenerator
 
             }
 
-        }*/
+        }
+        */
 
         for(int l1 = 0; l1 < 16; l1++)
         {
@@ -141,6 +142,7 @@ public class OldGenLakes extends WorldGenerator
             }
 
         }
+        
         return true;
     }
 }

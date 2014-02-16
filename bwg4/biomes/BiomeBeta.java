@@ -2,6 +2,8 @@ package bwg4.biomes;
 
 import java.util.Random;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import bwg4.deco.old.OldGenBigTree;
 import bwg4.deco.old.OldGenTrees;
 import net.minecraft.entity.passive.EntityHorse;
@@ -102,9 +104,10 @@ public class BiomeBeta extends BiomeGenBase
 				return new OldGenTrees(2);
 			}
 		}	
-    }
+    } 
 
-    public int getBiomeGrassColor(int p_150558_1_, int p_150558_2_, int p_150558_3_)
+    @SideOnly(Side.CLIENT)
+    public int func_150558_b(int p_150558_1_, int p_150558_2_, int p_150558_3_)
     {
 		if( id == 6 || id == 9 )
 		{
@@ -122,7 +125,8 @@ public class BiomeBeta extends BiomeGenBase
 		}
     }
 
-    public int getBiomeFoliageColor(int p_150558_1_, int p_150558_2_, int p_150558_3_)
+    @SideOnly(Side.CLIENT)
+    public int func_150571_c(int p_150558_1_, int p_150558_2_, int p_150558_3_)
     {
 		if( id == 6 || id == 9 )
 		{
@@ -134,14 +138,13 @@ public class BiomeBeta extends BiomeGenBase
 		}
 		else
 		{
-			this.getBiomeFoliageColor(p_150558_1_, p_150558_2_, p_150558_3_);
-			
 			double d = MathHelper.clamp_float(getFTemp(p_150558_1_, p_150558_2_, p_150558_3_), 0.0F, 1.0F);
 			double d1 = MathHelper.clamp_float(getFloatRainfall(), 0.0F, 1.0F);
 			return ColorizerFoliage.getFoliageColor(d, d1);
 		}
     }    
-    
+
+    @SideOnly(Side.CLIENT)
     public float getFTemp(int p_150564_1_, int p_150564_2_, int p_150564_3_)
     {
         if (p_150564_2_ > 64)

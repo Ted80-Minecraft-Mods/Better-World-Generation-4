@@ -7,6 +7,8 @@ import bwg4.api.gen.GeneratorType;
 import bwg4.data.DecodeGeneratorString;
 import bwg4.world.generators.ChunkGeneratorAlpha;
 import bwg4.world.generators.ChunkGeneratorBeta;
+import bwg4.world.generators.ChunkGeneratorIndev;
+import bwg4.world.generators.ChunkGeneratorInfdev;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.ChunkCoordinates;
@@ -26,9 +28,6 @@ public class ProviderBWG4 extends WorldProvider
     {
 		if(this.worldObj.getWorldInfo().getTerrainType() == BWG4.BWG4DEFAULT && !worldObj.isRemote)
 		{
-			worldChunkMgr = new ChunkManagerOld(worldObj, true);
-			
-			/*
 			System.out.println("BWG4 GENERATORSTRING: " + worldObj.getWorldInfo().getGeneratorOptions());
 			if(worldObj.getWorldInfo().getGeneratorOptions().length() > 2)
 			{
@@ -52,6 +51,23 @@ public class ProviderBWG4 extends WorldProvider
 			{
 				DecodeGeneratorString.decode("BetterDefault#4&0#" + BiomeManager.getDefaultString());
 			}
+			
+	        if (GeneratorType.currentGenerator == GeneratorType.INFDEV || GeneratorType.currentGenerator == GeneratorType.ALPHA11)
+	        {
+				int themeID = trySetting(0, 1);
+				if(themeID == 0) { this.worldChunkMgr = new WorldChunkManagerHell(BiomeList.CLASSICnormal, 0.5F); }
+				else { this.worldChunkMgr = new WorldChunkManagerHell(BiomeList.CLASSICsnow, 0.5F); }
+	        }
+			else if (GeneratorType.currentGenerator == GeneratorType.ALPHA12 || GeneratorType.currentGenerator == GeneratorType.BETA173 || GeneratorType.currentGenerator == GeneratorType.SKYLANDS)
+			{
+				worldChunkMgr = new ChunkManagerOld(worldObj, true);
+			}
+			else
+			{
+				worldChunkMgr = new ChunkManagerOld(worldObj, true);
+			}
+			
+			/*
 			
 	        if (GeneratorType.currentGenerator == GeneratorType.INFDEV || GeneratorType.currentGenerator == GeneratorType.ALPHA11)
 	        {
@@ -119,26 +135,16 @@ public class ProviderBWG4 extends WorldProvider
 				worldChunkMgr = new WorldChunkManagerHell(BiomeList.CLASSICnormal, 0.5F);
 			}
 	        *//*
+	        
+	        */
 		}
 		else if(worldObj.isRemote && GeneratorType.currentGenerator != null)
 		{
-	        if (GeneratorType.currentGenerator == GeneratorType.INFDEV || GeneratorType.currentGenerator == GeneratorType.ALPHA11)
+	        if (GeneratorType.currentGenerator == GeneratorType.INFDEV || GeneratorType.currentGenerator == GeneratorType.ALPHA11 || GeneratorType.currentGenerator == GeneratorType.INDEV)
 	        {
 				this.worldChunkMgr = new WorldChunkManagerHell(BiomeList.CLASSICnormal, 0.5F);
 	        }
-	        else if (GeneratorType.currentGenerator == GeneratorType.INDEV)
-	        {
-				this.worldChunkMgr = new WorldChunkManagerHell(BiomeList.CLASSICnormal, 0.5F);
-	        }
-			else if (GeneratorType.currentGenerator == GeneratorType.ISLAND)
-			{
-				this.worldChunkMgr = new WorldChunkManagerHell(BiomeList.COMMONnormal1, 0.5F);
-			}
-			else if (GeneratorType.currentGenerator == GeneratorType.SKYISLAND)
-			{
-				this.worldChunkMgr = new WorldChunkManagerHell(BiomeList.COMMONnormal1, 0.5F);
-			}
-			else if (GeneratorType.currentGenerator == GeneratorType.SKYBLOCK)
+			else if (GeneratorType.currentGenerator == GeneratorType.ISLAND || GeneratorType.currentGenerator == GeneratorType.SKYISLAND || GeneratorType.currentGenerator == GeneratorType.SKYBLOCK)
 			{
 				this.worldChunkMgr = new WorldChunkManagerHell(BiomeList.COMMONnormal1, 0.5F);
 			}
@@ -146,7 +152,7 @@ public class ProviderBWG4 extends WorldProvider
 			{
 	        	hasNoSky = true;
 				this.worldChunkMgr = new WorldChunkManagerHell(BiomeList.COMMONnormal1, 0.5F);
-			}*/
+			}
 			/*else if (GeneratorType.currentGenerator == GeneratorType.WASTELAND)
 			{
 				worldChunkMgr = new BWG4ChunkManagerWasteland(worldObj);
@@ -163,11 +169,11 @@ public class ProviderBWG4 extends WorldProvider
 	        /*else if (GeneratorType.currentGenerator == GeneratorType.DEADLYDESERT)
 	        {
 	        	this.worldChunkMgr = new WorldChunkManagerHell(BiomeList.ADVENTUREdesert, 0.5F);
-	        }*//*
+	        }*/
 			else
 			{
 				worldChunkMgr = new WorldChunkManagerHell(BiomeList.OLDplains, 0.5F);
-			}*/
+			}
 		}
 		else 
 		{
@@ -192,10 +198,30 @@ public class ProviderBWG4 extends WorldProvider
     {		
   		if(terrainType == BWG4.BWG4DEFAULT)
 		{
-  			if(GeneratorType.currentGenerator == GeneratorType.ALPHA12)
-  			{
-  				return new ChunkGeneratorAlpha(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled());
-  			}
+	        if (GeneratorType.currentGenerator == GeneratorType.INFDEV)
+	        {
+	            return new ChunkGeneratorInfdev(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled(), false);
+	        }
+	        else if (GeneratorType.currentGenerator == GeneratorType.INDEV) 
+			{ 
+				int themeID = trySetting(0, 4) + 1;
+				int typeID = trySetting(1, 2) + 1;
+				int size = trySetting(2, 2) + 1;
+				int layers = trySetting(3, 4) + 1;
+				return new ChunkGeneratorIndev(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled(), typeID, themeID, size, layers); 
+			}
+	        else if (GeneratorType.currentGenerator == GeneratorType.ALPHA12)
+	        {
+	            return new ChunkGeneratorAlpha(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled());
+	        }
+	        else if (GeneratorType.currentGenerator == GeneratorType.ALPHA11)
+	        {
+	        	return new ChunkGeneratorInfdev(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled(), true);
+	        }
+	        else if (GeneratorType.currentGenerator == GeneratorType.BETA173)
+	        {
+	            return new ChunkGeneratorBeta(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled(), trySetting(0, 1) + 1);
+	        }
   			else
   			{
   				return new ChunkGeneratorBeta(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled(), trySetting(0, 1) + 1);

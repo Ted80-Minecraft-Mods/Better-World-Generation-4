@@ -647,7 +647,7 @@ public class ChunkGeneratorAlpha implements IChunkProvider
                 {
 					if( worldObj_16.func_147439_a(k15, i21 - 1, j18).func_149688_o().blocksMovement() && worldObj_16.func_147439_a(k15, i21 - 1, j18).func_149688_o() != Material.field_151596_z )
 					{
-						worldObj_16.func_147465_d(k15, i21, j18, Blocks.snow, 0, 2);
+						worldObj_16.func_147465_d(k15, i21, j18, Blocks.snow_layer, 0, 2);
 					}
 					else if ( worldObj_16.func_147439_a(k15, i21 - 1, j18).func_149688_o() == Material.field_151586_h )
 					{
