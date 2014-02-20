@@ -385,27 +385,31 @@ public class DecoDungeons extends WorldGenerator
     	return DungeonLoot.pickCheckLootItem(par1Random, listitem, chestID);
 	}
 
-    private String pickMobSpawner(Random par1Random)
+    private String pickMobSpawner(Random rand)
     {
-        int randvar = par1Random.nextInt(5);
+        int r = rand.nextInt(5);
 		
-		if(randvar == 0)
+        if(rand.nextInt(49) == 0)
+        {
+        	return "Enderman";
+        }
+        else if(r == 0)
 		{
 			return "Skeleton";
 		}
-		else if(randvar == 1)
+		else if(r == 1)
 		{
 			return "Zombie";
 		}
-		else if(randvar == 2)
+		else if(r == 2)
 		{
 			return "Zombie";
 		}
-		else if(randvar == 3)
+		else if(r == 3)
 		{
 			return "Spider";
 		}
-		else if(randvar == 4)
+		else if(r == 4)
 		{
 			return "Creeper";
 		}
