@@ -387,7 +387,8 @@ public class DecoDungeons extends WorldGenerator
 
     private String pickMobSpawner(Random par1Random)
     {
-        int randvar = par1Random.nextInt(5);
+        int randvar = par1Random.nextInt(6);
+        int randvarUnlik = par1Random.nextInt(49);
 		
 		if(randvar == 0)
 		{
@@ -409,9 +410,15 @@ public class DecoDungeons extends WorldGenerator
 		{
 			return "Creeper";
 		}
+		else if(randvar == 5 && randvarUnlik == 0)
+		{
+			return "Enderman";	
+		}
 		else
 		{
 			return "";
 		}
+
+
     }
 }
