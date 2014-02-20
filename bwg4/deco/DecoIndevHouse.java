@@ -23,21 +23,21 @@ public class DecoIndevHouse extends WorldGenerator
 		{
 			for(int flz = -3 + z; flz < 4 + z; flz++)
 			{
-				par1World.func_147449_b(flx, y - 1, flz, Blocks.stone);
+				par1World.func_147449_b(flx, y - 1, flz, Blocks.cobblestone);
 			}
 		}
 		for(int flx = -3 + x; flx < 4 + x; flx++)
 		{
 			for(int flz = -3 + z; flz < 4 + z; flz++)
 			{
-				par1World.func_147449_b(flx, y - 2, flz, Blocks.stone);
+				par1World.func_147449_b(flx, y - 2, flz, Blocks.cobblestone);
 			}
 		}
 		for(int flx = -3 + x; flx < 4 + x; flx++)
 		{
 			for(int flz = -3 + z; flz < 4 + z; flz++)
 			{
-				par1World.func_147449_b(flx, y - 3, flz, Blocks.stone);
+				par1World.func_147449_b(flx, y - 3, flz, Blocks.cobblestone);
 			}
 		}
 		
