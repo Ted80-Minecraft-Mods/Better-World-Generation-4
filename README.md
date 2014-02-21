@@ -44,6 +44,7 @@ forum thread: http://www.minecraftforum.net/topic/1070207-162-forge-better-world
     - Added size and amplified option to better default
     - Added ruins
     - Added volcanoes
+    - Added rare secret ;)
     - Changed Survival Island paradise theme
     - Changed dungeon loot
     - Less biome ids :)
