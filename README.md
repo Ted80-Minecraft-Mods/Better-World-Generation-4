@@ -1,4 +1,3 @@
-
 ## BETTER WORLD GENERATION 4 MOD ##
 
 A world generator mod for minecraft made by ted80. 
@@ -48,6 +47,7 @@ forum thread: http://www.minecraftforum.net/topic/1070207-162-forge-better-world
     - Changed Survival Island paradise theme
     - Changed dungeon loot
     - Less biome ids :)
+    - Fixed ice ocean bug
         
     Version 1.1.9 '21-9-2013'
     - Updated to minecraft 1.6.4
