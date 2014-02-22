@@ -517,6 +517,31 @@ public class ChunkGeneratorIndev implements IChunkProvider
             var5[var6] = (byte)this.biomesForGeneration[var6].biomeID;
         }
         
+        for (int k = 0; k < 16; k++)
+        {
+            for (int l = 0; l < 16; l++)
+            {
+                for (int i1 = 0; i1 < 256; i1++)
+                {
+                    Block b = var3[k << 12 | l << 8 | i1];
+                    
+                    if(b == null)
+                    {
+                    	b = Blocks.air;
+                    }
+                    
+                    int j1 = i1 >> 4;
+
+                    if (aextendedblockstorage[j1] == null)
+                    {
+                        aextendedblockstorage[j1] = new ExtendedBlockStorage(j1 << 4, true);
+                    }
+                    
+                    aextendedblockstorage[j1].func_150818_a(k, i1 & 0xf, l, b);
+                }
+            }
+        }
+        
         var4.generateSkylightMap();
         return var4;
     }
