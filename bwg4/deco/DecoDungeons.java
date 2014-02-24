@@ -383,17 +383,31 @@ public class DecoDungeons extends WorldGenerator
     private ItemStack pickCheckLootItem(Random par1Random, int listitem)
     {
     	return DungeonLoot.pickCheckLootItem(par1Random, listitem, chestID);
-	}
+    }
 
     private String pickMobSpawner(Random rand)
     {
-        int r = rand.nextInt(4);
-		
-        if(rand.nextInt(49) == 0)
+        int r = rand.nextInt(3);
+        int r1 = rand.nextInt(49);
+
+	//Rare spawns
+        if(r1 == 0)
         {
         	return "Enderman";
         }
-        else if(r == 0)
+        else if(r1 == 1)
+        {
+        	return "Creeper"; //Creeper needs to be rarer as a gunpowder farm will be abused ;)
+        }
+        else if (r1 == 2)
+        {
+        	return "Silverfish";
+        }
+        else { return ""; }
+        if(r1 != 0 || r1 != 1 || r1 != 2)
+        {
+        	//Regular Spawns
+        	if(r == 0)
 		{
 			return "Skeleton";
 		}
@@ -405,13 +419,8 @@ public class DecoDungeons extends WorldGenerator
 		{
 			return "Spider";
 		}
-		else if(r == 3)
-		{
-			return "Creeper";
-		}
-		else
-		{
-			return "";
-		}
+		else { return ""; }
+        }
+        else { return ""; }
     }
 }
