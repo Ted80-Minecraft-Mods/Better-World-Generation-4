@@ -21,13 +21,13 @@ public class BiomeClassic extends BiomeGenBase
     }
     
     @SideOnly(Side.CLIENT)
-    public int func_150558_b(int a, int b, int c)
+    public int getBiomeGrassColor(int a, int b, int c)
     {
         return 0xABFF67;
     }
     
     @SideOnly(Side.CLIENT)
-    public int func_150571_c(int a, int b, int c)
+    public int getBiomeFoliageColor(int a, int b, int c)
     {
         return 0x4FFF2B;
     }  

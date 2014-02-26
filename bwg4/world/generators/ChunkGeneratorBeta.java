@@ -415,7 +415,7 @@ public class ChunkGeneratorBeta implements IChunkProvider
     {
 		if (worldtype == 1)
 		{
-	        BlockFalling.field_149832_M = true;
+	        BlockFalling.fallInstantly = true;
 			int k = i * 16;
 			int l = j * 16;
 			BiomeGenBase biomegenbase = worldObj.getWorldChunkManager().getBiomeGenAt(k + 16, l + 16);
@@ -722,15 +722,15 @@ public class ChunkGeneratorBeta implements IChunkProvider
 					int j25 = j22 - (l + 8);
 					int k25 = worldObj.getPrecipitationHeight(j19, j22);
 					double d1 = generatedTemperatures[i24 * 16 + j25] - ((double)(k25 - 64) / 64D) * 0.29999999999999999D;
-					if(d1 < 0.5D && k25 > 0 && k25 < 128 && worldObj.func_147437_c(j19, k25, j22))
+					if(d1 < 0.5D && k25 > 0 && k25 < 128 && worldObj.isAirBlock(j19, k25, j22))
 					{
-						if( worldObj.func_147439_a(j19, k25 - 1, j22).func_149688_o().blocksMovement() && worldObj.func_147439_a(j19, k25 - 1, j22).func_149688_o() != Material.field_151596_z )
+						if( worldObj.getBlock(j19, k25 - 1, j22).getMaterial().blocksMovement() && worldObj.getBlock(j19, k25 - 1, j22).getMaterial() != Material.water )
 						{
-							worldObj.func_147465_d(j19, k25, j22, Blocks.snow_layer, 0, 2);
+							worldObj.setBlock(j19, k25, j22, Blocks.snow_layer, 0, 2);
 						}
-						else if ( worldObj.func_147439_a(j19, 63, j22).func_149688_o() == Material.field_151586_h )
+						else if ( worldObj.getBlock(j19, 63, j22).getMaterial() == Material.water )
 						{
-							worldObj.func_147465_d(j19, 63, j22, Blocks.ice, 0, 2);					
+							worldObj.setBlock(j19, 63, j22, Blocks.ice, 0, 2);					
 						}
 					}	
 				}
@@ -739,7 +739,7 @@ public class ChunkGeneratorBeta implements IChunkProvider
 			
 			MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(ichunkprovider, worldObj, rand, i, j, false));
 
-			BlockFalling.field_149832_M = false;
+			BlockFalling.fallInstantly = false;
 		}
 		else
 		{	

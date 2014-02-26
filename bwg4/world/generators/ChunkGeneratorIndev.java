@@ -553,7 +553,7 @@ public class ChunkGeneratorIndev implements IChunkProvider
 
     public void populate(IChunkProvider par1IChunkProvider, int par2, int par3)
     {
-        BlockSand.field_149832_M = true;
+        BlockSand.fallInstantly = true;
         int var4 = par2 * 16;
         int var5 = par3 * 16; 
         BiomeGenBase var6 = worldObj.getBiomeGenForCoords(var4 + 16, var5 + 16);
@@ -754,7 +754,7 @@ public class ChunkGeneratorIndev implements IChunkProvider
 		}
 		
         SpawnerAnimals.performWorldGenSpawning(this.worldObj, var6, var4 + 8, var5 + 8, 16, 16, this.rand);
-        BlockSand.field_149832_M = false;
+        BlockSand.fallInstantly = false;
 		
 		if(themeSNOW)
 		{
@@ -769,12 +769,12 @@ public class ChunkGeneratorIndev implements IChunkProvider
 					
 					if (this.worldObj.isBlockFreezable(var85 + var4, var87 - 1, var86 + var5))
 					{
-						this.worldObj.func_147465_d(var85 + var4, var87 - 1, var86 + var5, Blocks.ice, 0, 2);
+						this.worldObj.setBlock(var85 + var4, var87 - 1, var86 + var5, Blocks.ice, 0, 2);
 					}
 
 					if (this.worldObj.func_147478_e(var85 + var4, var87, var86 + var5, false))
 					{
-						this.worldObj.func_147465_d(var85 + var4, var87, var86 + var5, Blocks.snow_layer, 0, 2);
+						this.worldObj.setBlock(var85 + var4, var87, var86 + var5, Blocks.snow_layer, 0, 2);
 					}
 				}
 			}

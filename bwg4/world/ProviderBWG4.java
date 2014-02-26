@@ -52,6 +52,9 @@ public class ProviderBWG4 extends WorldProvider
 				DecodeGeneratorString.decode("BetterDefault#4&0#" + BiomeManager.getDefaultString());
 			}
 			
+			this.worldChunkMgr = GeneratorType.currentGenerator.getServerWorldChunkManager(this, this.worldObj);
+
+			/*
 	        if (GeneratorType.currentGenerator == GeneratorType.INFDEV || GeneratorType.currentGenerator == GeneratorType.ALPHA11)
 	        {
 				int themeID = trySetting(0, 1);
@@ -62,6 +65,12 @@ public class ProviderBWG4 extends WorldProvider
 			{
 				worldChunkMgr = new ChunkManagerOld(worldObj, true);
 			}
+	        else if (GeneratorType.currentGenerator == GeneratorType.INDEV)
+	        {
+				int themeID = trySetting(0, 4);
+				if(themeID == 4) { this.worldChunkMgr = new WorldChunkManagerHell(BiomeList.CLASSICsnow, 0.5F); }
+				else { this.worldChunkMgr = new WorldChunkManagerHell(BiomeList.CLASSICnormal, 0.5F); }
+	        }
 			else
 			{
 				worldChunkMgr = new ChunkManagerOld(worldObj, true);
@@ -140,6 +149,9 @@ public class ProviderBWG4 extends WorldProvider
 		}
 		else if(worldObj.isRemote && GeneratorType.currentGenerator != null)
 		{
+			this.worldChunkMgr = GeneratorType.currentGenerator.getClientWorldChunkManager(this);
+			
+			/*
 	        if (GeneratorType.currentGenerator == GeneratorType.INFDEV || GeneratorType.currentGenerator == GeneratorType.ALPHA11 || GeneratorType.currentGenerator == GeneratorType.INDEV)
 	        {
 				this.worldChunkMgr = new WorldChunkManagerHell(BiomeList.CLASSICnormal, 0.5F);
@@ -153,7 +165,7 @@ public class ProviderBWG4 extends WorldProvider
 	        	hasNoSky = true;
 				this.worldChunkMgr = new WorldChunkManagerHell(BiomeList.COMMONnormal1, 0.5F);
 			}
-			/*else if (GeneratorType.currentGenerator == GeneratorType.WASTELAND)
+			else if (GeneratorType.currentGenerator == GeneratorType.WASTELAND)
 			{
 				worldChunkMgr = new BWG4ChunkManagerWasteland(worldObj);
 			}*//*
@@ -169,11 +181,11 @@ public class ProviderBWG4 extends WorldProvider
 	        /*else if (GeneratorType.currentGenerator == GeneratorType.DEADLYDESERT)
 	        {
 	        	this.worldChunkMgr = new WorldChunkManagerHell(BiomeList.ADVENTUREdesert, 0.5F);
-	        }*/
+	        }
 			else
 			{
 				worldChunkMgr = new WorldChunkManagerHell(BiomeList.OLDplains, 0.5F);
-			}
+			}*/
 		}
 		else 
 		{
@@ -184,7 +196,7 @@ public class ProviderBWG4 extends WorldProvider
 	        if (this.worldObj.getWorldInfo().getTerrainType() == WorldType.FLAT)
 	        {
 	            FlatGeneratorInfo var1 = FlatGeneratorInfo.createFlatGeneratorFromString(this.worldObj.getWorldInfo().getGeneratorOptions());
-	            this.worldChunkMgr = new WorldChunkManagerHell(BiomeGenBase.func_150568_d(var1.getBiome()), 0.5F);
+	            this.worldChunkMgr = new WorldChunkManagerHell(BiomeGenBase.getBiome(var1.getBiome()), 0.5F);
 	        }
 	        else
 	        {
@@ -196,6 +208,13 @@ public class ProviderBWG4 extends WorldProvider
 	@Override
     public IChunkProvider createChunkGenerator()
     {		
+		if(terrainType == BWG4.BWG4DEFAULT)
+		{
+			return GeneratorType.currentGenerator.getChunkGenerator(this, this.worldObj);
+		}
+		return this.terrainType.getChunkGenerator(this.worldObj, worldObj.getWorldInfo().getGeneratorOptions());
+		
+		/*
   		if(terrainType == BWG4.BWG4DEFAULT)
 		{
 	        if (GeneratorType.currentGenerator == GeneratorType.INFDEV)
@@ -226,7 +245,8 @@ public class ProviderBWG4 extends WorldProvider
   			{
   				return new ChunkGeneratorBeta(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled(), trySetting(0, 1) + 1);
   			}
-  			/*
+  			
+  			
 	        if (BWG4GeneratorType.currentGenerator == BWG4GeneratorType.INFDEV)
 	        {
 	            return new BWG4ChunkProviderInfdev(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled(), false);
@@ -295,12 +315,12 @@ public class ProviderBWG4 extends WorldProvider
 	        {
 				return new BWG4ChunkProviderDefault(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled());
 	        }
-			 */
 		}
 		else
 		{
 			return this.terrainType.getChunkGenerator(this.worldObj, worldObj.getWorldInfo().getGeneratorOptions());
 		}
+		*/
     }
 	
 	@Override
@@ -311,82 +331,59 @@ public class ProviderBWG4 extends WorldProvider
 	
 	public boolean mayRandSpawn()
 	{	
-		if(GeneratorType.currentGenerator == GeneratorType.ISLAND || GeneratorType.currentGenerator == GeneratorType.SKYISLAND || GeneratorType.currentGenerator == GeneratorType.SKYBLOCK )
-		{
-			return false;
-		}
-		return true;
+		return GeneratorType.currentGenerator.getRandSpawn(this);
 	}
 	
 	@Override
     public float calculateCelestialAngle(long par1, float par3)
     {
-        float var5 = 0f;
-        if (GeneratorType.currentGenerator == GeneratorType.CAVE || GeneratorType.currentGenerator == GeneratorType.CAVESURV) 
-        {
-        	var5 = 0.8f;
-        }
-        else 
-        {
-        	var5 = super.calculateCelestialAngle(par1, par3);
-        }
-        return var5;
+		if(terrainType == BWG4.BWG4DEFAULT)
+		{
+			if(GeneratorType.currentGenerator.customCelestialAngle)
+			{
+				return GeneratorType.currentGenerator.getCalculateCelestialAngle(this, par1, par3);
+			}
+		}
+		return super.calculateCelestialAngle(par1, par3);
     }
 
 	@Override
     public boolean isSurfaceWorld()
     {
-		if (GeneratorType.currentGenerator == GeneratorType.CAVE || GeneratorType.currentGenerator == GeneratorType.CAVESURV)
-		{
-			return false;
-		}
-        return true;
+		return GeneratorType.currentGenerator.isSurfaceWorld(this);
     }
 	
 	@Override
     public Vec3 getFogColor(float par1, float par2)
     {
-		if (GeneratorType.currentGenerator == GeneratorType.CAVE)
+		if(terrainType == BWG4.BWG4DEFAULT)
 		{
-			return worldObj.getWorldVec3Pool().getVecFromPool(0.0D, 0.0D, 0.0D);
+			if(GeneratorType.currentGenerator.customFogColor)
+			{
+				return GeneratorType.currentGenerator.getFogColor(this, worldObj, par1, par2);
+			}
 		}
-		else if(GeneratorType.currentGenerator == GeneratorType.DEADLYDESERT)
-		{
-			return worldObj.getWorldVec3Pool().getVecFromPool(0.25D, 0.25D, 0.25D);
-		}
-		
-        return super.getFogColor(par1, par2);
+		return super.getFogColor(par1, par2);
     }
 	
 	@Override
     public float getCloudHeight()
     {
-		if (GeneratorType.currentGenerator == GeneratorType.INDEV) 
+		if(terrainType == BWG4.BWG4DEFAULT)
 		{
-			if (trySetting(1, 2) == 1)
-			{
-				return -5F;
-			}
+			return GeneratorType.currentGenerator.getCloudHeight(this);
 		}
-
-		if (GeneratorType.currentGenerator == GeneratorType.SKYISLAND || GeneratorType.currentGenerator == GeneratorType.SKYBLOCK || GeneratorType.currentGenerator == GeneratorType.SKYLANDS)
-		{
-			return -5F;
-		}
-		else
-		{
-			return super.getCloudHeight();
-		}	
+		return super.getCloudHeight();
     }
 
 	@Override
     public int getAverageGroundLevel()
     {
-		if (GeneratorType.currentGenerator == GeneratorType.CAVE)
+		if(terrainType == BWG4.BWG4DEFAULT)
 		{
-			return 50;
+			return GeneratorType.currentGenerator.getAverageGroundLevel(this);
 		}
-        return super.getAverageGroundLevel();
+		return super.getAverageGroundLevel();
     }
 	
 	@Override
@@ -473,47 +470,21 @@ public class ProviderBWG4 extends WorldProvider
 	@Override
     public double getHorizon()
     {
-		if (GeneratorType.currentGenerator == GeneratorType.INDEV) 
+		if(terrainType == BWG4.BWG4DEFAULT)
 		{
-			if (trySetting(1, 2) == 1)
-			{
-				return 0.0D;
-			}
+			return GeneratorType.currentGenerator.getHorizon(this);
 		}
-
-		if(GeneratorType.currentGenerator == GeneratorType.DEADLYDESERT)
-		{
-			return 77D;
-		}
-		if(GeneratorType.currentGenerator == GeneratorType.SKYISLAND || GeneratorType.currentGenerator == GeneratorType.SKYBLOCK || GeneratorType.currentGenerator == GeneratorType.SKYLANDS)
-		{
-			return 0.0D;
-		}
-		else
-		{
-			return super.getHorizon();
-		}
+		return super.getHorizon();
     }
 	
     @Override
     public boolean getWorldHasVoidParticles()
     {
-		if (GeneratorType.currentGenerator == GeneratorType.INDEV) 
+		if(terrainType == BWG4.BWG4DEFAULT)
 		{
-			if (trySetting(1, 2) == 1)
-			{
-				return false;
-			}
+			return GeneratorType.currentGenerator.getWorldHasVoidParticles(this);
 		}
-		
-		if(GeneratorType.currentGenerator == GeneratorType.SKYISLAND || GeneratorType.currentGenerator == GeneratorType.SKYBLOCK || GeneratorType.currentGenerator == GeneratorType.SKYLANDS || GeneratorType.currentGenerator == GeneratorType.DEADLYDESERT)
-		{
-			return false;
-		}
-		else
-		{
-			return super.getWorldHasVoidParticles();
-		}
+		return super.getWorldHasVoidParticles();
     }
 	
 	public int trySetting(int pos, int max)

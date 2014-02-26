@@ -394,7 +394,7 @@ public class ChunkManagerOld extends WorldChunkManager
 
         for (int var7 = 0; var7 < par4 * par5; ++var7)
         {
-            float var8 = (float)BiomeGenBase.func_150568_d(var6[var7]).getIntRainfall() / 65536.0F;
+            float var8 = (float)BiomeGenBase.getBiome(var6[var7]).getIntRainfall() / 65536.0F;
 
             if (var8 > 1.0F)
             {
@@ -451,7 +451,7 @@ public class ChunkManagerOld extends WorldChunkManager
 
         for (int var7 = 0; var7 < par4 * par5; ++var7)
         {
-            par1ArrayOfBiomeGenBase[var7] = BiomeGenBase.func_150568_d(var6[var7]);
+            par1ArrayOfBiomeGenBase[var7] = BiomeGenBase.getBiome(var6[var7]);
         }
 
         return par1ArrayOfBiomeGenBase;
@@ -483,7 +483,7 @@ public class ChunkManagerOld extends WorldChunkManager
 
             for (int var8 = 0; var8 < par4 * par5; ++var8)
             {
-                par1ArrayOfBiomeGenBase[var8] = BiomeGenBase.func_150568_d(var7[var8]);
+                par1ArrayOfBiomeGenBase[var8] = BiomeGenBase.getBiome(var7[var8]);
             }
 
             return par1ArrayOfBiomeGenBase;

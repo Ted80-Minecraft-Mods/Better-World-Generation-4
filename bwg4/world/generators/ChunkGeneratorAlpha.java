@@ -399,7 +399,7 @@ public class ChunkGeneratorAlpha implements IChunkProvider
 
     public void populate(IChunkProvider ichunkprovider, int i, int j)
     {
-        BlockSand.field_149832_M = true;
+        BlockSand.fallInstantly = true;
         int k = i * 16;
         int l = j * 16;
         BiomeGenBase biomegenbase = worldObj_16.getWorldChunkManager().getBiomeGenAt(k + 16, l + 16);
@@ -643,15 +643,15 @@ public class ChunkGeneratorAlpha implements IChunkProvider
                 int l20 = j18 - (l + 8);
                 int i21 = worldObj_16.getPrecipitationHeight(k15, j18);
                 double d1 = field_4178_w[l19 * 16 + l20] - ((double)(i21 - 64) / 64D) * 0.29999999999999999D;
-                if(d1 < 0.5D && i21 > 0 && i21 < 128 && worldObj_16.func_147437_c(k15, i21, j18))
+                if(d1 < 0.5D && i21 > 0 && i21 < 128 && worldObj_16.isAirBlock(k15, i21, j18))
                 {
-					if( worldObj_16.func_147439_a(k15, i21 - 1, j18).func_149688_o().blocksMovement() && worldObj_16.func_147439_a(k15, i21 - 1, j18).func_149688_o() != Material.field_151596_z )
+					if( worldObj_16.getBlock(k15, i21 - 1, j18).getMaterial().blocksMovement() && worldObj_16.getBlock(k15, i21 - 1, j18).getMaterial() != Material.water )
 					{
-						worldObj_16.func_147465_d(k15, i21, j18, Blocks.snow_layer, 0, 2);
+						worldObj_16.setBlock(k15, i21, j18, Blocks.snow_layer, 0, 2);
 					}
-					else if ( worldObj_16.func_147439_a(k15, i21 - 1, j18).func_149688_o() == Material.field_151586_h )
+					else if ( worldObj_16.getBlock(k15, i21 - 1, j18).getMaterial() == Material.water )
 					{
-						worldObj_16.func_147465_d(k15, i21 - 1, j18, Blocks.ice, 0, 2);					
+						worldObj_16.setBlock(k15, i21 - 1, j18, Blocks.ice, 0, 2);					
 					}
                 }
             }
@@ -660,7 +660,7 @@ public class ChunkGeneratorAlpha implements IChunkProvider
         
         MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(ichunkprovider, worldObj_16, field_913_j, i, j, false));
 
-        BlockSand.field_149832_M = false;
+        BlockSand.fallInstantly = false;
     }
 
     public boolean saveChunks(boolean par1, IProgressUpdate par2IProgressUpdate)

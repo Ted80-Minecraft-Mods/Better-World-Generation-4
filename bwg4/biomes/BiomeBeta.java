@@ -107,7 +107,7 @@ public class BiomeBeta extends BiomeGenBase
     } 
 
     @SideOnly(Side.CLIENT)
-    public int func_150558_b(int p_150558_1_, int p_150558_2_, int p_150558_3_)
+    public int getBiomeGrassColor(int p_150558_1_, int p_150558_2_, int p_150558_3_)
     {
 		if( id == 6 || id == 9 )
 		{
@@ -126,7 +126,7 @@ public class BiomeBeta extends BiomeGenBase
     }
 
     @SideOnly(Side.CLIENT)
-    public int func_150571_c(int p_150558_1_, int p_150558_2_, int p_150558_3_)
+    public int getBiomeFoliageColor(int p_150558_1_, int p_150558_2_, int p_150558_3_)
     {
 		if( id == 6 || id == 9 )
 		{
@@ -149,7 +149,7 @@ public class BiomeBeta extends BiomeGenBase
     {
         if (p_150564_2_ > 64)
         {
-            float var4 = (float)field_150605_ac.func_151601_a((double)p_150564_1_ * 1.0D / 8.0D, (double)p_150564_3_ * 1.0D / 8.0D) * 4.0F;
+            float var4 = (float)temperatureNoise.func_151601_a((double)p_150564_1_ * 1.0D / 8.0D, (double)p_150564_3_ * 1.0D / 8.0D) * 4.0F;
             return this.temperature - (var4 + (float)p_150564_2_ - 64.0F) * 0.05F / 30.0F;
         }
         else

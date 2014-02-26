@@ -383,7 +383,7 @@ public class ChunkGeneratorInfdev implements IChunkProvider
 
     public void populate(IChunkProvider ichunkprovider, int i, int j)
     {
-        BlockSand.field_149832_M = true;
+        BlockSand.fallInstantly = true;
         int k = i * 16;
         int l = j * 16;
 		BiomeGenBase biomegenbase = field_907_p.getWorldChunkManager().getBiomeGenAt(k + 16, l + 16);
@@ -603,19 +603,19 @@ public class ChunkGeneratorInfdev implements IChunkProvider
 
                 if (field_907_p.isBlockFreezable(sn1 + k, sn3 - 1, sn2 + l))
                 {
-                    field_907_p.func_147465_d(sn1 + k, sn3 - 1, sn2 + l, Blocks.ice, 0, 2);
+                    field_907_p.setBlock(sn1 + k, sn3 - 1, sn2 + l, Blocks.ice, 0, 2);
                 }
 
                 if (field_907_p.func_147478_e(sn1 + k, sn3, sn2 + l, false))
                 {
-                    field_907_p.func_147465_d(sn1 + k, sn3, sn2 + l, Blocks.snow_layer, 0, 2);
+                    field_907_p.setBlock(sn1 + k, sn3, sn2 + l, Blocks.snow_layer, 0, 2);
                 }
             }
         }
 		
         MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(ichunkprovider, field_907_p, field_913_j, i, j, false));
         
-        BlockSand.field_149832_M = false;
+        BlockSand.fallInstantly = false;
     }
 
     public boolean saveChunks(boolean par1, IProgressUpdate par2IProgressUpdate)
