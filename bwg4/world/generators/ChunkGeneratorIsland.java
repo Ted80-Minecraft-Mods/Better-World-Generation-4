@@ -10,6 +10,8 @@ import bwg4.deco.DecoSurvival;
 import bwg4.deco.old.OldGenClay;
 import bwg4.deco.old.OldGenMinable;
 import bwg4.deco.old.OldGenTrees;
+import bwg4.map.MapGenBWG4;
+import bwg4.map.MapGenBWG4Caves;
 import bwg4.noise.NoiseOctavesBeta;
 import bwg4.util.PerlinNoise;
 import bwg4.util.TerrainMath;
@@ -58,7 +60,7 @@ public class ChunkGeneratorIsland implements IChunkProvider
     double[] noiseData4;
     double[] noiseData5;
     int[][] field_73203_h = new int[32][32];
-    private MapGenBase caveGenerator = new MapGenCaves();
+    private MapGenBWG4 caveGenerator = new MapGenBWG4Caves();
     private MapGenStronghold strongholdGenerator = new MapGenStronghold();
 	public int THEMEID = 1;
 	public double width;
@@ -448,7 +450,7 @@ public class ChunkGeneratorIsland implements IChunkProvider
         	this.replaceBlocksForBiome(par1, par2, var3, this.biomesForGeneration);
         }
         
-        this.caveGenerator.func_151539_a(this, this.world, par1, par2, var3);
+        this.caveGenerator.generate(this, this.world, par1, par2, var3);
 		this.strongholdGenerator.func_151539_a(this, this.world, par1, par2, var3);
 		
         Chunk var4 = new Chunk(this.world, var3, par1, par2);
