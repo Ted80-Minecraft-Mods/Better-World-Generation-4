@@ -2,6 +2,7 @@ package bwg4.world;
 
 import bwg4.api.biome.BiomeList;
 import bwg4.api.gen.GeneratorType;
+import bwg4.world.generators.ChunkGeneratorSkyBlock;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.util.Vec3;
@@ -36,6 +37,15 @@ public class ProviderBWG4Hell extends WorldProviderHell
 	@Override
     public IChunkProvider createChunkGenerator()
     {
+		 if (GeneratorType.currentGenerator == GeneratorType.SKYBLOCK)
+		 {
+			 return new ChunkGeneratorSkyBlock(this.worldObj, this.worldObj.getSeed(), true, 1);
+		 }
+		 else
+		 {
+			 return new ChunkProviderHell(this.worldObj, this.worldObj.getSeed());
+		 }
+		
 		/*if (BWG4GeneratorType.currentGenerator == BWG4GeneratorType.ISLAND || BWG4GeneratorType.currentGenerator == BWG4GeneratorType.SKYISLAND)
         {
 			return new BWG4ChunkProviderSurvivalNether(this.worldObj, this.worldObj.getSeed());
@@ -68,10 +78,10 @@ public class ProviderBWG4Hell extends WorldProviderHell
 				return new ChunkProviderBOPhell(this.worldObj, this.worldObj.getSeed());
 			}
 			else
-			{*/
+			{
 				return new ChunkProviderHell(this.worldObj, this.worldObj.getSeed());
-			//}
-		//}	
+			}
+		}	*/
     }
 	
 	@SideOnly(Side.CLIENT)

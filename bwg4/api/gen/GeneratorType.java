@@ -26,7 +26,7 @@ public class GeneratorType
 	public static final GeneratorType ISLAND = new GeneratorTypeIsland(9, 2, "ISLAND", "Survival Island", true, true);
 	public static final GeneratorType SKYISLAND = new GeneratorTypeSkyIsland(10, 2, "SKYISLAND", "Survival Skyland", true, true);
 	public static final GeneratorType CAVESURV = new GeneratorTypeCaveSurvival(11, 2, "CAVESURV", "Cave Survival", true, false);
-	public static final GeneratorType SKYBLOCK = new GeneratorTypeSkyblock(12, 2, "SKYBLOCK", "Skyblock", false, true);
+	public static final GeneratorType SKYBLOCK = new GeneratorTypeSkyblock(12, 2, "SKYBLOCK", "Skyblock", true, true);
 	public static final GeneratorType SKYLANDS = new GeneratorTypeSkyland(13, 3, "SKYLANDS", "Skylands", false, true);
 	public static final GeneratorType CAVE = new GeneratorTypeCave(14, 3, "CAVE", "Cave world", false, false);
 	public static final GeneratorType CITY = new GeneratorType(15, 3, "CITY", "Endless City", false, false);
