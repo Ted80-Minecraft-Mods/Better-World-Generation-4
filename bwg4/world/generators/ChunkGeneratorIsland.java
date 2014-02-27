@@ -3,7 +3,13 @@ package bwg4.world.generators;
 import java.util.List;
 import java.util.Random;
 
+import bwg4.deco.DecoBigTree;
 import bwg4.deco.DecoDungeons;
+import bwg4.deco.DecoIsland;
+import bwg4.deco.DecoSurvival;
+import bwg4.deco.old.OldGenClay;
+import bwg4.deco.old.OldGenMinable;
+import bwg4.deco.old.OldGenTrees;
 import bwg4.noise.NoiseOctavesBeta;
 import bwg4.util.PerlinNoise;
 import bwg4.util.TerrainMath;
@@ -24,6 +30,7 @@ import net.minecraft.world.gen.MapGenCaves;
 import net.minecraft.world.gen.NoiseGeneratorOctaves;
 import net.minecraft.world.gen.feature.WorldGenFlowers;
 import net.minecraft.world.gen.feature.WorldGenHugeTrees;
+import net.minecraft.world.gen.feature.WorldGenMegaJungle;
 import net.minecraft.world.gen.feature.WorldGenShrub;
 import net.minecraft.world.gen.feature.WorldGenTrees;
 import net.minecraft.world.gen.feature.WorldGenerator;
@@ -463,7 +470,7 @@ public class ChunkGeneratorIsland implements IChunkProvider
 
     public void populate(IChunkProvider par1IChunkProvider, int par2, int par3)
     {
-        BlockSand.field_149832_M = true;
+        BlockSand.fallInstantly = true;
         int var4 = par2 * 16;
         int var5 = par3 * 16;
         BiomeGenBase var6 = this.world.getBiomeGenForCoords(var4 + 16, var5 + 16);
@@ -547,7 +554,7 @@ public class ChunkGeneratorIsland implements IChunkProvider
 			int var67 = this.rand.nextInt(128);
 			int var68 = var5 + this.rand.nextInt(16) + 8;
 
-			if ((new BWG4decoDungeons()).generate(this.world, this.rand, var66, var67, var68))
+			if ((new DecoDungeons()).generate(this.world, this.rand, var66, var67, var68))
 			{
 				;
 			}
@@ -558,7 +565,7 @@ public class ChunkGeneratorIsland implements IChunkProvider
             int k5 = var4 + rand.nextInt(16);
             int l8 = rand.nextInt(128);
             int k11 = var5 + rand.nextInt(16);
-            (new BWG4oldGenClay(32, 2)).generate(world, rand, k5, l8, k11);
+            (new OldGenClay(32, 2)).generate(world, rand, k5, l8, k11);
         }	
         
 		for(int j2 = 0; j2 < 16; j2++)
@@ -566,7 +573,7 @@ public class ChunkGeneratorIsland implements IChunkProvider
 			int l5 = var4 + rand.nextInt(16);
 			int i9 = rand.nextInt(90);
 			int l11 = var5 + rand.nextInt(16);
-			(new BWG4oldGenMinable(Block.dirt.blockID, 32, 2)).generate(world, rand, l5, i9, l11);
+			(new OldGenMinable(Blocks.dirt, 32, 2)).generate(world, rand, l5, i9, l11);
 		}
 
 		for(int k2 = 0; k2 < 10; k2++)
@@ -574,7 +581,7 @@ public class ChunkGeneratorIsland implements IChunkProvider
 			int i6 = var4 + rand.nextInt(16);
 			int j9 = rand.nextInt(128);
 			int i12 = var5 + rand.nextInt(16);
-			(new BWG4oldGenMinable(Block.gravel.blockID, 32, 2)).generate(world, rand, i6, j9, i12);
+			(new OldGenMinable(Blocks.gravel, 32, 2)).generate(world, rand, i6, j9, i12);
 		}
 
 		for(int i3 = 0; i3 < 20; i3++)
@@ -582,7 +589,7 @@ public class ChunkGeneratorIsland implements IChunkProvider
 			int j6 = var4 + rand.nextInt(16);
 			int k9 = rand.nextInt(128);
 			int j12 = var5 + rand.nextInt(16);
-			(new BWG4oldGenMinable(Block.oreCoal.blockID, 16, 2)).generate(world, rand, j6, k9, j12);
+			(new OldGenMinable(Blocks.coal_ore, 16, 2)).generate(world, rand, j6, k9, j12);
 		}
 
 		for(int j3 = 0; j3 < 20; j3++)
@@ -590,7 +597,7 @@ public class ChunkGeneratorIsland implements IChunkProvider
 			int k6 = var4 + rand.nextInt(16);
 			int l9 = rand.nextInt(64);
 			int k12 = var5 + rand.nextInt(16);
-			(new BWG4oldGenMinable(Block.oreIron.blockID, 8, 2)).generate(world, rand, k6, l9, k12);
+			(new OldGenMinable(Blocks.iron_ore, 8, 2)).generate(world, rand, k6, l9, k12);
 		}
 
 		for(int k3 = 0; k3 < 2; k3++)
@@ -598,7 +605,7 @@ public class ChunkGeneratorIsland implements IChunkProvider
 			int l6 = var4 + rand.nextInt(16);
 			int i10 = rand.nextInt(32);
 			int l12 = var5 + rand.nextInt(16);
-			(new BWG4oldGenMinable(Block.oreGold.blockID, 8, 2)).generate(world, rand, l6, i10, l12);
+			(new OldGenMinable(Blocks.gold_ore, 8, 2)).generate(world, rand, l6, i10, l12);
 		}
 
 		for(int l3 = 0; l3 < 8; l3++)
@@ -606,7 +613,7 @@ public class ChunkGeneratorIsland implements IChunkProvider
 			int i7 = var4 + rand.nextInt(16);
 			int j10 = rand.nextInt(16);
 			int i13 = var5 + rand.nextInt(16);
-			(new BWG4oldGenMinable(Block.oreRedstone.blockID, 7, 2)).generate(world, rand, i7, j10, i13);
+			(new OldGenMinable(Blocks.redstone_ore, 7, 2)).generate(world, rand, i7, j10, i13);
 		}
 
 		for(int i4 = 0; i4 < 1; i4++)
@@ -614,7 +621,7 @@ public class ChunkGeneratorIsland implements IChunkProvider
 			int j7 = var4 + rand.nextInt(16);
 			int k10 = rand.nextInt(16);
 			int j13 = var5 + rand.nextInt(16);
-			(new BWG4oldGenMinable(Block.oreDiamond.blockID, 7, 2)).generate(world, rand, j7, k10, j13);
+			(new OldGenMinable(Blocks.diamond_ore, 7, 2)).generate(world, rand, j7, k10, j13);
 		}
 
 		for(int j4 = 0; j4 < 1; j4++)
@@ -622,7 +629,7 @@ public class ChunkGeneratorIsland implements IChunkProvider
 			int k7 = var4 + rand.nextInt(16);
 			int l10 = rand.nextInt(16) + rand.nextInt(16);
 			int k13 = var5 + rand.nextInt(16);
-			(new BWG4oldGenMinable(Block.oreLapis.blockID, 6, 2)).generate(world, rand, k7, l10, k13);
+			(new OldGenMinable(Blocks.lapis_ore, 6, 2)).generate(world, rand, k7, l10, k13);
 		}
 		
         for (int l5 = 0; l5 < 3 + rand.nextInt(6); ++l5)
@@ -630,11 +637,11 @@ public class ChunkGeneratorIsland implements IChunkProvider
             int i1 = var4 + rand.nextInt(16);
             int j1 = rand.nextInt(28) + 4;
             int k1 = var5 + rand.nextInt(16);
-            int s1 = world.getBlockId(i1, j1, k1);
+            Block s1 = world.getBlock(i1, j1, k1);
 
-            if (s1 == Block.stone.blockID)
+            if (s1 == Blocks.stone)
             {
-            	world.setBlock(i1, j1, k1, Block.oreEmerald.blockID, 0, 2);
+            	world.setBlock(i1, j1, k1, Blocks.emerald_ore, 0, 2);
             }
         }
         
@@ -666,7 +673,7 @@ public class ChunkGeneratorIsland implements IChunkProvider
 			int yf1 = var4 + rand.nextInt(16) + 8;
 			int yf2 = rand.nextInt(128);
 			int yf3 = var5 + rand.nextInt(16) + 8;
-			(new WorldGenFlowers(Block.plantYellow.blockID)).generate(world, rand, yf1, yf2, yf3);
+			(new WorldGenFlowers(Blocks.yellow_flower)).generate(world, rand, yf1, yf2, yf3);
 		}	
 
 		for (int rf = 0; rf < deco_flowerRed; ++rf)
@@ -674,7 +681,7 @@ public class ChunkGeneratorIsland implements IChunkProvider
 			int rf1 = var4 + rand.nextInt(16) + 8;
 			int rf2 = rand.nextInt(128);
 			int rf3 = var5 + rand.nextInt(16) + 8;
-			(new WorldGenFlowers(Block.plantRed.blockID)).generate(world, rand, rf1, rf2, rf3);
+			(new WorldGenFlowers(Blocks.red_flower)).generate(world, rand, rf1, rf2, rf3);
 		}	
 
 		for (int gr = 0; gr < deco_grass; ++gr)
@@ -691,7 +698,7 @@ public class ChunkGeneratorIsland implements IChunkProvider
 			int nbm1 = var4 + rand.nextInt(16) + 8;
 			int nbm2 = rand.nextInt(128);
 			int nbm3 = var5 + rand.nextInt(16) + 8;
-			(new WorldGenFlowers(Block.mushroomBrown.blockID)).generate(world, rand, nbm1, nbm2, nbm3);
+			(new WorldGenFlowers(Blocks.brown_mushroom)).generate(world, rand, nbm1, nbm2, nbm3);
 		}
 
 		if (rand.nextInt(8) == 0)
@@ -699,7 +706,7 @@ public class ChunkGeneratorIsland implements IChunkProvider
 			int nrm1 = var4 + rand.nextInt(16) + 8;
 			int nrm2 = rand.nextInt(128);
 			int nrm3 = var5 + rand.nextInt(16) + 8;
-			(new WorldGenFlowers(Block.mushroomRed.blockID)).generate(world, rand, nrm1, nrm2, nrm3);
+			(new WorldGenFlowers(Blocks.red_mushroom)).generate(world, rand, nrm1, nrm2, nrm3);
 		}
 		
 		//======================== SNOW AND ANIMALS =======================
@@ -718,19 +725,19 @@ public class ChunkGeneratorIsland implements IChunkProvider
 
                 if (this.world.isBlockFreezable(var12 + var7, var14 - 1, var13 + var8))
                 {
-                    this.world.setBlock(var12 + var7, var14 - 1, var13 + var8, Block.ice.blockID, 0, 2);
+                    this.world.setBlock(var12 + var7, var14 - 1, var13 + var8, Blocks.ice, 0, 2);
                 }
 
-                if (this.world.canSnowAt(var12 + var7, var14, var13 + var8))
+                if (this.world.func_147478_e(var12 + var7, var14, var13 + var8, false))
                 {
-                    this.world.setBlock(var12 + var7, var14, var13 + var8, Block.snow.blockID, 0, 2);
+                    this.world.setBlock(var12 + var7, var14, var13 + var8, Blocks.snow, 0, 2);
                 }
             }
         }	
         
         MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(par1IChunkProvider, world, rand, par2, par3, false));
 		
-        BlockSand.field_149832_M = false;
+        BlockSand.fallInstantly = false;
     }
 
 	public WorldGenerator getRandomWorldGenForTrees(Random par1Random, int distance)
@@ -739,23 +746,23 @@ public class ChunkGeneratorIsland implements IChunkProvider
 		{
 			if(par1Random.nextInt(5) == 0)
 			{
-				return new BWG4decoBigTree(par1Random.nextInt(4) + 8, 0); 
+				return new DecoBigTree(par1Random.nextInt(4) + 8, 0); 
 			}
 			if(par1Random.nextInt(2) == 0)
 			{
-				return new BWG4oldGenTrees(2); 
+				return new OldGenTrees(2); 
 			} 
 			if(par1Random.nextInt(4) == 0)
 			{
 				return new WorldGenShrub(3, 0);
 			} 
-			return new BWG4decoSurvival(4);
+			return new DecoSurvival(4);
 		}
 		else if(THEMEID == 5 && distance == 1)
 		{
 			if (par1Random.nextInt(8) == 0) 
 			{ 
-				return new BWG4decoBigTree(8 + par1Random.nextInt(7), 0); 
+				return new DecoBigTree(8 + par1Random.nextInt(7), 0); 
 			}
 			if (par1Random.nextInt(4) == 0) 
 			{ 
@@ -763,7 +770,8 @@ public class ChunkGeneratorIsland implements IChunkProvider
 			}
 			if (par1Random.nextInt(3) != 0) 
 			{ 
-				return new WorldGenHugeTrees(false, 12 + par1Random.nextInt(10), 3, 3); 
+				WorldGenMegaJungle lal;
+				return new WorldGenMegaJungle(false, 12 + par1Random.nextInt(10), 3, 3, 3); 
 			} 
 			if (par1Random.nextInt(2) == 0) 
 			{ 
@@ -771,14 +779,14 @@ public class ChunkGeneratorIsland implements IChunkProvider
 			}
 			else 
 			{ 
-				return new BWG4decoSurvival(4);
+				return new DecoSurvival(4);
 			}
 		}
 		else if(THEMEID == 5 && distance == 2)
 		{
 			if (par1Random.nextInt(8) == 0) 
 			{ 
-				return new BWG4decoBigTree(8 + par1Random.nextInt(7), 0); 
+				return new DecoBigTree(8 + par1Random.nextInt(7), 0); 
 			}
 			if (par1Random.nextInt(4) == 0) 
 			{ 
@@ -786,14 +794,14 @@ public class ChunkGeneratorIsland implements IChunkProvider
 			}
 			if (par1Random.nextInt(3) != 0) 
 			{ 
-				return new WorldGenHugeTrees(false, 25 + par1Random.nextInt(15), 3, 3); 
+				return new WorldGenMegaJungle(false, 25 + par1Random.nextInt(15), 3, 3, 3); 
 			} 
 			else 
 			{ 
 				return new WorldGenTrees(false, 4 + par1Random.nextInt(7), 3, 3, true); 
 			}
 		}
-		return new BWG4oldGenTrees(2);
+		return new OldGenTrees(2);
 	}
 
     public boolean saveChunks(boolean par1, IProgressUpdate par2IProgressUpdate)
@@ -827,9 +835,9 @@ public class ChunkGeneratorIsland implements IChunkProvider
         return var5 == null ? null : var5.getSpawnableList(par1EnumCreatureType);
     }
 
-    public ChunkPosition findClosestStructure(World par1World, String par2Str, int par3, int par4, int par5)
+    public ChunkPosition func_147416_a(World par1World, String par2Str, int par3, int par4, int par5)
     {
-        return "Stronghold".equals(par2Str) && this.strongholdGenerator != null ? this.strongholdGenerator.getNearestInstance(par1World, par3, par4, par5) : null;
+        return "Stronghold".equals(par2Str) && this.strongholdGenerator != null ? this.strongholdGenerator.func_151545_a(par1World, par3, par4, par5) : null;
     }
 
     public int getLoadedChunkCount()
@@ -837,23 +845,10 @@ public class ChunkGeneratorIsland implements IChunkProvider
         return 0;
     }
 
-    public void func_104112_b() {}
+    public void saveExtraData() {}
 
     public void recreateStructures(int par1, int par2)
     {
-		this.strongholdGenerator.generate(this, this.world, par1, par2, (byte[])null);
+		this.strongholdGenerator.func_151539_a(this, this.world, par1, par2, (Block[])null);
     }
-
-	@Override
-	public ChunkPosition func_147416_a(World var1, String var2, int var3,
-			int var4, int var5) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void saveExtraData() {
-		// TODO Auto-generated method stub
-		
-	}
 }

@@ -35,11 +35,11 @@ public class DecoIsland extends WorldGenerator
 					{
 						if(y1 == 0 + y)
 						{
-							world.func_147449_b(x1, y1, z1, Blocks.grass);
+							world.setBlock(x1, y1, z1, Blocks.grass);
 						}
 						else
 						{
-							world.func_147449_b(x1, y1, z1, Blocks.dirt);
+							world.setBlock(x1, y1, z1, Blocks.dirt);
 						}	
 					}
 				}
@@ -53,7 +53,7 @@ public class DecoIsland extends WorldGenerator
 				{			
 					for (int y3 = yy + 2; y3 <= yy + 3; y3++)
 					{
-						world.func_147449_b(x3, y3, z3, Blocks.leaves);
+						world.setBlock(x3, y3, z3, Blocks.leaves);
 					}
 				}	
 			}		
@@ -61,18 +61,18 @@ public class DecoIsland extends WorldGenerator
 			{
 				for (int z4 = zz - 1; z4 <= zz + 1; z4++)
 				{			
-					world.func_147449_b(x4, yy + 4, z4, Blocks.leaves);
+					world.setBlock(x4, yy + 4, z4, Blocks.leaves);
 				}	
 			}		
 			for (int y2 = yy; y2 <= yy + 4; y2++)
 			{
-				world.func_147449_b(xx, y2, zz, Blocks.log);
+				world.setBlock(xx, y2, zz, Blocks.log);
 			}
-			world.func_147449_b(xx + 1, yy + 5, zz, Blocks.leaves);
-			world.func_147449_b(xx - 1, yy + 5, zz, Blocks.leaves);
-			world.func_147449_b(xx, yy + 5, zz + 1, Blocks.leaves);
-			world.func_147449_b(xx, yy + 5, zz - 1, Blocks.leaves);
-			world.func_147449_b(xx, yy + 5, zz, Blocks.leaves);
+			world.setBlock(xx + 1, yy + 5, zz, Blocks.leaves);
+			world.setBlock(xx - 1, yy + 5, zz, Blocks.leaves);
+			world.setBlock(xx, yy + 5, zz + 1, Blocks.leaves);
+			world.setBlock(xx, yy + 5, zz - 1, Blocks.leaves);
+			world.setBlock(xx, yy + 5, zz, Blocks.leaves);
 
 			//GEN CACTI
 			for(int i = 0; i < 60; i++)
@@ -81,11 +81,11 @@ public class DecoIsland extends WorldGenerator
 				int pz = -20 + rand.nextInt(40);
 				int py = world.getHeightValue(px, pz);
 				
-	            if (world.func_147437_c(px, py, pz))
+	            if (world.isAirBlock(px, py, pz))
 	            {
-	                if (Blocks.cactus.func_149718_j(world, px, py, pz))
+	                if (Blocks.cactus.canBlockStay(world, px, py, pz))
 	                {
-	                	world.func_147465_d(px, py, pz, Blocks.cactus, 0, 2);
+	                	world.setBlock(px, py, pz, Blocks.cactus, 0, 2);
 	                	break;
 	                }
 	            }
@@ -97,11 +97,11 @@ public class DecoIsland extends WorldGenerator
 				int px = -50 + rand.nextInt(100);
 				int pz = -50 + rand.nextInt(100);
 	
-	            if (world.func_147437_c(px, 65, pz))
+	            if (world.isAirBlock(px, 65, pz))
 	            {
-	                if (Blocks.reeds.func_149718_j(world, px, 65, pz))
+	                if (Blocks.reeds.canBlockStay(world, px, 65, pz))
 	                {
-	                	world.func_147465_d(px, 65, pz, Blocks.reeds, 0, 2);
+	                	world.setBlock(px, 65, pz, Blocks.reeds, 0, 2);
 	                	break;
 	                }
 	            }
@@ -117,20 +117,20 @@ public class DecoIsland extends WorldGenerator
 				}
 				else
 				{
-					Material b = world.func_147439_a(px, 64, pz).func_149688_o();
+					Material b = world.getBlock(px, 64, pz).getMaterial();
 					
-					if(b == Material.field_151596_z)
+					if(b == Material.water)
 					{
 						for(int k = 0; k < 15; k++)
 						{
 							int ex = -4 + rand.nextInt(8);
 							int ez = -4 + rand.nextInt(8);
-							world.func_147465_d(px + ex, 64, pz + ez, Blocks.planks, 0, 2);
+							world.setBlock(px + ex, 64, pz + ez, Blocks.planks, 0, 2);
 						}
 						
-						world.func_147465_d(px, 64, pz, Blocks.planks, 0, 2);
-						world.func_147449_b(px, 65, pz, Blocks.chest);
-						TileEntityChest tileentitychest = (TileEntityChest)world.func_147438_o(px, 65, pz);		
+						world.setBlock(px, 64, pz, Blocks.planks, 0, 2);
+						world.setBlock(px, 65, pz, Blocks.chest);
+						TileEntityChest tileentitychest = (TileEntityChest)world.getTileEntity(px, 65, pz);		
 						for (int c = 0; c < 5; c++) 
 						{ 
 							ItemStack itemstack = getItem(c, rand, world); 
@@ -162,10 +162,10 @@ public class DecoIsland extends WorldGenerator
 		            int var8 = py + rand.nextInt(4) - rand.nextInt(4);
 		            int var9 = pz + rand.nextInt(8) - rand.nextInt(8);
 	
-		            if (world.func_147437_c(var7, var8, var9) && world.func_147439_a(var7, var8 - 1, var9) == Blocks.grass && Blocks.pumpkin.canPlaceBlockAt(world, var7, var8, var9))
+		            if (world.isAirBlock(var7, var8, var9) && world.getBlock(var7, var8 - 1, var9) == Blocks.grass && Blocks.pumpkin.canPlaceBlockAt(world, var7, var8, var9))
 		            {
 		            	count++;
-						world.func_147465_d(var7, var8, var9, Blocks.melon_block, 0, 0);
+						world.setBlock(var7, var8, var9, Blocks.melon_block, 0, 0);
 						done = true;
 						
 						if(count > 4)
@@ -196,10 +196,10 @@ public class DecoIsland extends WorldGenerator
 		            int var8 = py + rand.nextInt(4) - rand.nextInt(4);
 		            int var9 = pz + rand.nextInt(8) - rand.nextInt(8);
 	
-		            if (world.func_147437_c(var7, var8, var9) && world.func_147439_a(var7, var8 - 1, var9) == Blocks.grass && Blocks.pumpkin.canPlaceBlockAt(world, var7, var8, var9))
+		            if (world.isAirBlock(var7, var8, var9) && world.getBlock(var7, var8 - 1, var9) == Blocks.grass && Blocks.pumpkin.canPlaceBlockAt(world, var7, var8, var9))
 		            {
 		            	count++;
-						world.func_147465_d(var7, var8, var9, Blocks.pumpkin, 0, 0);
+						world.setBlock(var7, var8, var9, Blocks.pumpkin, 0, 0);
 						done = true;
 						
 						if(count > 4)
@@ -222,11 +222,11 @@ public class DecoIsland extends WorldGenerator
 				int pz = -40 + rand.nextInt(80);
 				int py = world.getHeightValue(px, pz);
 				
-	            if (world.func_147437_c(px, py, pz))
+	            if (world.isAirBlock(px, py, pz))
 	            {
-	                if (Blocks.cactus.func_149718_j(world, px, py, pz))
+	                if (Blocks.cactus.canBlockStay(world, px, py, pz))
 	                {
-	                	world.func_147465_d(px, py, pz, Blocks.cactus, 0, 2);
+	                	world.setBlock(px, py, pz, Blocks.cactus, 0, 2);
 	                	break;
 	                }
 	            }
@@ -238,11 +238,11 @@ public class DecoIsland extends WorldGenerator
 				int px = -60 + rand.nextInt(120);
 				int pz = -60 + rand.nextInt(120);
 	
-	            if (world.func_147437_c(px, 65, pz))
+	            if (world.isAirBlock(px, 65, pz))
 	            {
-	                if (Blocks.reeds.func_149718_j(world, px, 65, pz))
+	                if (Blocks.reeds.canBlockStay(world, px, 65, pz))
 	                {
-	                	world.func_147465_d(px, 65, pz, Blocks.reeds, 0, 2);
+	                	world.setBlock(px, 65, pz, Blocks.reeds, 0, 2);
 	                	break;
 	                }
 	            }

@@ -26,7 +26,7 @@ public class OldGenClay extends WorldGenerator
     {
 		if(generatortype == 0 || generatortype == 1)
 		{
-			if (world.func_147439_a(i, j, k).func_149688_o() != Material.field_151586_h)
+			if (world.getBlock(i, j, k).getMaterial() != Material.water)
 			{
 				return false;
 			}
@@ -58,10 +58,10 @@ public class OldGenClay extends WorldGenerator
 							{
 								continue;
 							}
-							Block l1 = world.func_147439_a(i1, j1, k1);
+							Block l1 = world.getBlock(i1, j1, k1);
 							if(l1 == Blocks.sand)
 							{
-								world.func_147449_b(i1, j1, k1, clayBlock);
+								world.setBlock(i1, j1, k1, clayBlock);
 							}
 						}
 
@@ -75,7 +75,7 @@ public class OldGenClay extends WorldGenerator
 		}
 		else if(generatortype == 2)
 		{
-			if (world.func_147439_a(i, j, k).func_149688_o() != Material.field_151586_h)
+			if (world.getBlock(i, j, k).getMaterial() != Material.water)
 			{
 				return false;
 			}
@@ -113,10 +113,10 @@ public class OldGenClay extends WorldGenerator
 							{
 								continue;
 							}
-							Block j3 = world.func_147439_a(k2, l2, i3);
+							Block j3 = world.getBlock(k2, l2, i3);
 							if(j3 == Blocks.sand)
 							{
-								world.func_147449_b(k2, l2, i3, clayBlock);
+								world.setBlock(k2, l2, i3, clayBlock);
 							}
 						}
 
@@ -164,10 +164,10 @@ public class OldGenClay extends WorldGenerator
 							{
 								continue;
 							}
-							Block j3 = world.func_147439_a(k2, l2, i3);
+							Block j3 = world.getBlock(k2, l2, i3);
 							if(j3 == Blocks.sand)
 							{
-								world.func_147449_b(k2, l2, i3, clayBlock);
+								world.setBlock(k2, l2, i3, clayBlock);
 							}
 						}
 					}

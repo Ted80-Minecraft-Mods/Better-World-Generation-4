@@ -154,13 +154,13 @@ public class OldGenBigTree extends WorldGenAbstractTree
                 } else
                 {
                     ai1[byte2] = ai[byte2] + l1;
-                    Block i2 = worldObj.func_147439_a(ai1[0], ai1[1], ai1[2]);
+                    Block i2 = worldObj.getBlock(ai1[0], ai1[1], ai1[2]);
                     if(i2 != Blocks.air && i2 != Blocks.leaves && i2 != Blocks.leaves2)
                     {
                         l1++;
                     } else
                     {
-                        worldObj.func_147449_b(ai1[0], ai1[1], ai1[2], l);
+                        worldObj.setBlock(ai1[0], ai1[1], ai1[2], l);
                         l1++;
                     }
                 }
@@ -255,7 +255,7 @@ public class OldGenBigTree extends WorldGenAbstractTree
             ai3[j] = MathHelper.floor_double((double)(ai[j] + k) + 0.5D);
             ai3[byte1] = MathHelper.floor_double((double)ai[byte1] + (double)k * d + 0.5D);
             ai3[byte2] = MathHelper.floor_double((double)ai[byte2] + (double)k * d1 + 0.5D);
-            worldObj.func_147449_b(ai3[0], ai3[1], ai3[2], i);
+            worldObj.setBlock(ai3[0], ai3[1], ai3[2], i);
         }
 
     }
@@ -383,7 +383,7 @@ public class OldGenBigTree extends WorldGenAbstractTree
 				ai3[byte1] = MathHelper.floor_double((double)ai[byte1] + (double)j * d);
 				ai3[byte2] = MathHelper.floor_double((double)ai[byte2] + (double)j * d1);
 			}
-            Block l = worldObj.func_147439_a(ai3[0], ai3[1], ai3[2]);
+            Block l = worldObj.getBlock(ai3[0], ai3[1], ai3[2]);
             if(l != Blocks.air && l != Blocks.leaves && l != Blocks.leaves2)
             {
                 break;
@@ -407,7 +407,7 @@ public class OldGenBigTree extends WorldGenAbstractTree
         int ai1[] = {
             basePos[0], (basePos[1] + field_878_e) - 1, basePos[2]
         };
-        Block i = worldObj.func_147439_a(basePos[0], basePos[1] - 1, basePos[2]);
+        Block i = worldObj.getBlock(basePos[0], basePos[1] - 1, basePos[2]);
         if(i != Blocks.grass && i != Blocks.dirt)
         {
             return false;

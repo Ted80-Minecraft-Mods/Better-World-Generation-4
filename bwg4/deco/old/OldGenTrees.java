@@ -46,7 +46,7 @@ public class OldGenTrees extends WorldGenAbstractTree
 					{
 						if(i1 >= 0 && i1 < 128)
 						{
-							Block j3 = world.func_147439_a(i2, i1, l2);
+							Block j3 = world.getBlock(i2, i1, l2);
 							if(j3 != Blocks.air && j3 != Blocks.leaves && j3 != Blocks.leaves2)
 							{
 								flag = false;
@@ -65,12 +65,12 @@ public class OldGenTrees extends WorldGenAbstractTree
 			{
 				return false;
 			}
-			Block j1 = world.func_147439_a(i, j - 1, k);
+			Block j1 = world.getBlock(i, j - 1, k);
 			if(j1 != Blocks.grass && j1 != Blocks.dirt || j >= 128 - l - 1)
 			{
 				return false;
 			}
-			world.func_147449_b(i, j - 1, k, Blocks.dirt);
+			world.setBlock(i, j - 1, k, Blocks.dirt);
 			for(int k1 = (j - 3) + l; k1 <= j + l; k1++)
 			{
 				int j2 = k1 - (j + l);
@@ -81,9 +81,9 @@ public class OldGenTrees extends WorldGenAbstractTree
 					for(int i4 = k - i3; i4 <= k + i3; i4++)
 					{
 						int j4 = i4 - k;
-						if((Math.abs(l3) != i3 || Math.abs(j4) != i3 || random.nextInt(2) != 0 && j2 != 0) && !world.func_147439_a(k3, k1, i4).func_149662_c())
+						if((Math.abs(l3) != i3 || Math.abs(j4) != i3 || random.nextInt(2) != 0 && j2 != 0) && !world.getBlock(k3, k1, i4).isOpaqueCube())
 						{
-							world.func_147449_b(k3, k1, i4, Blocks.leaves);
+							world.setBlock(k3, k1, i4, Blocks.leaves);
 						}
 					}
 
@@ -93,10 +93,10 @@ public class OldGenTrees extends WorldGenAbstractTree
 
 			for(int l1 = 0; l1 < l; l1++)
 			{
-				Block k2 = world.func_147439_a(i, j + l1, k);
+				Block k2 = world.getBlock(i, j + l1, k);
 				if(k2 == Blocks.air || k2 == Blocks.leaves || k2 == Blocks.leaves2)
 				{
-					world.func_147449_b(i, j + l1, k, Blocks.log);
+					world.setBlock(i, j + l1, k, Blocks.log);
 				}
 			}
 
@@ -127,7 +127,7 @@ public class OldGenTrees extends WorldGenAbstractTree
 					{
 						if(i1 >= 0 && i1 < 128)
 						{
-							Block j3 = world.func_147439_a(i2, i1, l2);
+							Block j3 = world.getBlock(i2, i1, l2);
 							if(j3 != Blocks.air && j3 != Blocks.leaves && j3 != Blocks.leaves2)
 							{
 								flag = false;
@@ -146,12 +146,12 @@ public class OldGenTrees extends WorldGenAbstractTree
 			{
 				return false;
 			}
-			Block j1 = world.func_147439_a(i, j - 1, k);
+			Block j1 = world.getBlock(i, j - 1, k);
 			if(j1 != Blocks.grass && j1 != Blocks.dirt || j >= 128 - l - 1)
 			{
 				return false;
 			}
-			world.func_147449_b(i, j - 1, k, Blocks.dirt);
+			world.setBlock(i, j - 1, k, Blocks.dirt);
 			for(int k1 = (j - 3) + l; k1 <= j + l; k1++)
 			{
 				int j2 = k1 - (j + l);
@@ -162,9 +162,9 @@ public class OldGenTrees extends WorldGenAbstractTree
 					for(int i4 = k - i3; i4 <= k + i3; i4++)
 					{
 						int j4 = i4 - k;
-						if((Math.abs(l3) != i3 || Math.abs(j4) != i3 || random.nextInt(2) != 0 && j2 != 0) && !world.func_147439_a(k3, k1, i4).func_149662_c())
+						if((Math.abs(l3) != i3 || Math.abs(j4) != i3 || random.nextInt(2) != 0 && j2 != 0) && !world.getBlock(k3, k1, i4).isOpaqueCube())
 						{
-							world.func_147449_b(k3, k1, i4, Blocks.leaves);
+							world.setBlock(k3, k1, i4, Blocks.leaves);
 						}
 					}
 
@@ -174,10 +174,10 @@ public class OldGenTrees extends WorldGenAbstractTree
 
 			for(int l1 = 0; l1 < l; l1++)
 			{
-				Block k2 = world.func_147439_a(i, j + l1, k);
+				Block k2 = world.getBlock(i, j + l1, k);
 				if(k2 == Blocks.air || k2 == Blocks.leaves || k2 == Blocks.leaves2)
 				{
-					world.func_147449_b(i, j + l1, k, Blocks.log);
+					world.setBlock(i, j + l1, k, Blocks.log);
 				}
 			}
 

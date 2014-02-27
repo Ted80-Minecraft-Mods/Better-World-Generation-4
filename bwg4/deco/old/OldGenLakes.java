@@ -21,7 +21,7 @@ public class OldGenLakes extends WorldGenerator
     public boolean generate(World world, Random random, int i, int j, int k)
     {
         i -= 8;
-        for(k -= 8; j > 0 && world.func_147437_c(i, j, k); j--) { }
+        for(k -= 8; j > 0 && world.isAirBlock(i, j, k); j--) { }
         j -= 4;
         boolean aflag[] = new boolean[2048];
         int l = random.nextInt(4) + 4;
@@ -66,12 +66,12 @@ public class OldGenLakes extends WorldGenerator
                     {
                         continue;
                     }
-                    Material material = world.func_147439_a(i + j1, j + j3, k + j2).func_149688_o();
+                    Material material = world.getBlock(i + j1, j + j3, k + j2).getMaterial();
                     if(j3 >= 4 && material.isLiquid())
                     {
                         return false;
                     }
-                    if(j3 < 4 && !material.isSolid() && world.func_147439_a(i + j1, j + j3, k + j2) != field_15235_a)
+                    if(j3 < 4 && !material.isSolid() && world.getBlock(i + j1, j + j3, k + j2) != field_15235_a)
                     {
                         return false;
                     }
@@ -81,7 +81,6 @@ public class OldGenLakes extends WorldGenerator
 
         }
 
-        /*
         for(int k1 = 0; k1 < 16; k1++)
         {
             for(int k2 = 0; k2 < 16; k2++)
@@ -92,11 +91,11 @@ public class OldGenLakes extends WorldGenerator
                     {
                     	if(k3 < 4)
                     	{
-                            world.func_147449_b(i + k1, j + k3, k + k2, Blocks.air); //field_15235_a
+                            world.setBlock(i + k1, j + k3, k + k2, Blocks.air); 
                     	}
                     	else
                     	{
-                            world.func_147449_b(i + k1, j + k3, k + k2, Blocks.air);
+                            world.setBlock(i + k1, j + k3, k + k2, Blocks.air);
                     	}
                     }
                 }
@@ -104,7 +103,6 @@ public class OldGenLakes extends WorldGenerator
             }
 
         }
-        */
 
         for(int l1 = 0; l1 < 16; l1++)
         {
@@ -112,9 +110,9 @@ public class OldGenLakes extends WorldGenerator
             {
                 for(int l3 = 4; l3 < 8; l3++)
                 {
-                    if(aflag[(l1 * 16 + l2) * 8 + l3] && world.func_147439_a(i + l1, (j + l3) - 1, k + l2) == Blocks.dirt && world.getSavedLightValue(EnumSkyBlock.Sky, i + l1, j + l3, k + l2) > 0)
+                    if(aflag[(l1 * 16 + l2) * 8 + l3] && world.getBlock(i + l1, (j + l3) - 1, k + l2) == Blocks.dirt && world.getSavedLightValue(EnumSkyBlock.Sky, i + l1, j + l3, k + l2) > 0)
                     {
-                        world.func_147449_b(i + l1, (j + l3) - 1, k + l2, Blocks.grass);
+                        world.setBlock(i + l1, (j + l3) - 1, k + l2, Blocks.grass);
                     }
                 }
 
@@ -122,7 +120,7 @@ public class OldGenLakes extends WorldGenerator
 
         }
         
-        if(field_15235_a.func_149688_o() == Material.field_151574_g)
+        if(field_15235_a.getMaterial() == Material.water)
         {
             for(int i2 = 0; i2 < 16; i2++)
             {
@@ -131,9 +129,9 @@ public class OldGenLakes extends WorldGenerator
                     for(int i4 = 0; i4 < 8; i4++)
                     {
                         boolean flag1 = !aflag[(i2 * 16 + i3) * 8 + i4] && (i2 < 15 && aflag[((i2 + 1) * 16 + i3) * 8 + i4] || i2 > 0 && aflag[((i2 - 1) * 16 + i3) * 8 + i4] || i3 < 15 && aflag[(i2 * 16 + (i3 + 1)) * 8 + i4] || i3 > 0 && aflag[(i2 * 16 + (i3 - 1)) * 8 + i4] || i4 < 7 && aflag[(i2 * 16 + i3) * 8 + (i4 + 1)] || i4 > 0 && aflag[(i2 * 16 + i3) * 8 + (i4 - 1)]);
-                        if(flag1 && (i4 < 4 || random.nextInt(2) != 0) && world.func_147439_a(i + i2, j + i4, k + i3).func_149688_o().isSolid())
+                        if(flag1 && (i4 < 4 || random.nextInt(2) != 0) && world.getBlock(i + i2, j + i4, k + i3).getMaterial().isSolid())
                         {
-                            world.func_147449_b(i + i2, j + i4, k + i3, Blocks.stone); 
+                            world.setBlock(i + i2, j + i4, k + i3, Blocks.stone); 
                         }
                     }
 

@@ -49,9 +49,9 @@ public class OldGenMinable extends WorldGenerator
 							double d12 = (((double)i1 + 0.5D) - d6) / (d10 / 2D);
 							double d13 = (((double)j1 + 0.5D) - d7) / (d11 / 2D);
 							double d14 = (((double)k1 + 0.5D) - d8) / (d10 / 2D);
-							if(d12 * d12 + d13 * d13 + d14 * d14 < 1.0D && world.func_147439_a(i1, j1, k1) == Blocks.stone)
+							if(d12 * d12 + d13 * d13 + d14 * d14 < 1.0D && world.getBlock(i1, j1, k1) == Blocks.stone)
 							{
-								world.func_147449_b(i1, j1, k1, minableBlock);
+								world.setBlock(i1, j1, k1, minableBlock);
 							}
 						}
 
@@ -103,9 +103,9 @@ public class OldGenMinable extends WorldGenerator
 						for(int i3 = k1; i3 <= j2; i3++)
 						{
 							double d14 = (((double)i3 + 0.5D) - d8) / (d10 / 2D);
-							if(d12 * d12 + d13 * d13 + d14 * d14 < 1.0D && world.func_147439_a(k2, l2, i3) == Blocks.stone)
+							if(d12 * d12 + d13 * d13 + d14 * d14 < 1.0D && world.getBlock(k2, l2, i3) == Blocks.stone)
 							{
-								world.func_147449_b(k2, l2, i3, minableBlock);
+								world.setBlock(k2, l2, i3, minableBlock);
 							}
 						}
 

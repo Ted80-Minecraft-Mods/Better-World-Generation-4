@@ -23,21 +23,21 @@ public class DecoIndevHouse extends WorldGenerator
 		{
 			for(int flz = -3 + z; flz < 4 + z; flz++)
 			{
-				par1World.func_147449_b(flx, y - 1, flz, Blocks.cobblestone);
+				par1World.setBlock(flx, y - 1, flz, Blocks.cobblestone);
 			}
 		}
 		for(int flx = -3 + x; flx < 4 + x; flx++)
 		{
 			for(int flz = -3 + z; flz < 4 + z; flz++)
 			{
-				par1World.func_147449_b(flx, y - 2, flz, Blocks.cobblestone);
+				par1World.setBlock(flx, y - 2, flz, Blocks.cobblestone);
 			}
 		}
 		for(int flx = -3 + x; flx < 4 + x; flx++)
 		{
 			for(int flz = -3 + z; flz < 4 + z; flz++)
 			{
-				par1World.func_147449_b(flx, y - 3, flz, Blocks.cobblestone);
+				par1World.setBlock(flx, y - 3, flz, Blocks.cobblestone);
 			}
 		}
 		
@@ -50,7 +50,7 @@ public class DecoIndevHouse extends WorldGenerator
 				{
 					for(int frz = -3 + z; frz < 4 + z; frz++)
 					{
-						par1World.func_147449_b(frx, fry, frz, Blocks.mossy_cobblestone);
+						par1World.setBlock(frx, fry, frz, Blocks.mossy_cobblestone);
 					}
 				}	
 			}
@@ -63,7 +63,7 @@ public class DecoIndevHouse extends WorldGenerator
 				{
 					for(int frz = -3 + z; frz < 4 + z; frz++)
 					{
-						par1World.func_147449_b(frx, fry, frz, Blocks.planks);
+						par1World.setBlock(frx, fry, frz, Blocks.planks);
 					}
 				}	
 			}
@@ -76,56 +76,56 @@ public class DecoIndevHouse extends WorldGenerator
 			{
 				for(int airz = -2 + z; airz < 3 + z; airz++)
 				{
-					par1World.func_147449_b(airx, airy, airz, Blocks.air);
+					par1World.setBlock(airx, airy, airz, Blocks.air);
 				}
 			}	
 		}
 		
 		//CREATE DOOR AND TORCHES
-		if(par1World.func_147437_c(x - 4, y + 1, z) && !par1World.func_147437_c(x - 4, y - 1, z) || !par1World.func_147437_c(x - 4, y - 2, z))
+		if(par1World.isAirBlock(x - 4, y + 1, z) && !par1World.isAirBlock(x - 4, y - 1, z) || !par1World.isAirBlock(x - 4, y - 2, z))
 		{
-			par1World.func_147449_b(x - 3, y, z, Blocks.air);
-			par1World.func_147449_b(x - 3, y + 1, z, Blocks.air);
-			par1World.func_147449_b(x - 4, y, z, Blocks.air);
-			par1World.func_147449_b(x - 4, y + 1, z, Blocks.air);
-			par1World.func_147449_b(x, y + 1, z + 2, Blocks.torch);
-			par1World.func_147449_b(x, y + 1, z - 2, Blocks.torch);
+			par1World.setBlock(x - 3, y, z, Blocks.air);
+			par1World.setBlock(x - 3, y + 1, z, Blocks.air);
+			par1World.setBlock(x - 4, y, z, Blocks.air);
+			par1World.setBlock(x - 4, y + 1, z, Blocks.air);
+			par1World.setBlock(x, y + 1, z + 2, Blocks.torch);
+			par1World.setBlock(x, y + 1, z - 2, Blocks.torch);
 		}
-		else if(par1World.func_147437_c(x + 4, y + 1, z) && !par1World.func_147437_c(x + 4, y - 1, z) || !par1World.func_147437_c(x + 4, y - 2, z))
+		else if(par1World.isAirBlock(x + 4, y + 1, z) && !par1World.isAirBlock(x + 4, y - 1, z) || !par1World.isAirBlock(x + 4, y - 2, z))
 		{
-			par1World.func_147449_b(x + 3, y, z, Blocks.air);
-			par1World.func_147449_b(x + 3, y + 1, z, Blocks.air);
-			par1World.func_147449_b(x + 4, y, z, Blocks.air);
-			par1World.func_147449_b(x + 4, y + 1, z, Blocks.air);
-			par1World.func_147449_b(x, y + 1, z + 2, Blocks.torch);
-			par1World.func_147449_b(x, y + 1, z - 2, Blocks.torch);
+			par1World.setBlock(x + 3, y, z, Blocks.air);
+			par1World.setBlock(x + 3, y + 1, z, Blocks.air);
+			par1World.setBlock(x + 4, y, z, Blocks.air);
+			par1World.setBlock(x + 4, y + 1, z, Blocks.air);
+			par1World.setBlock(x, y + 1, z + 2, Blocks.torch);
+			par1World.setBlock(x, y + 1, z - 2, Blocks.torch);
 		}
-		else if(par1World.func_147437_c(x, y + 1, z - 4) && !par1World.func_147437_c(x, y - 1, z - 4) || !par1World.func_147437_c(x, y - 2, z - 4))
+		else if(par1World.isAirBlock(x, y + 1, z - 4) && !par1World.isAirBlock(x, y - 1, z - 4) || !par1World.isAirBlock(x, y - 2, z - 4))
 		{
-			par1World.func_147449_b(x, y, z - 3, Blocks.air);
-			par1World.func_147449_b(x, y + 1, z - 3, Blocks.air);
-			par1World.func_147449_b(x, y, z - 4, Blocks.air);
-			par1World.func_147449_b(x, y + 1, z - 4, Blocks.air);
-			par1World.func_147449_b(x + 2, y + 1, z, Blocks.torch);
-			par1World.func_147449_b(x - 2, y + 1, z, Blocks.torch);
+			par1World.setBlock(x, y, z - 3, Blocks.air);
+			par1World.setBlock(x, y + 1, z - 3, Blocks.air);
+			par1World.setBlock(x, y, z - 4, Blocks.air);
+			par1World.setBlock(x, y + 1, z - 4, Blocks.air);
+			par1World.setBlock(x + 2, y + 1, z, Blocks.torch);
+			par1World.setBlock(x - 2, y + 1, z, Blocks.torch);
 		}
-		else if(par1World.func_147437_c(x, y + 1, z + 4) && !par1World.func_147437_c(x, y - 1, z + 4) || !par1World.func_147437_c(x, y - 2, z + 4))
+		else if(par1World.isAirBlock(x, y + 1, z + 4) && !par1World.isAirBlock(x, y - 1, z + 4) || !par1World.isAirBlock(x, y - 2, z + 4))
 		{
-			par1World.func_147449_b(x, y, z + 3, Blocks.air);
-			par1World.func_147449_b(x, y + 1, z + 3, Blocks.air);
-			par1World.func_147449_b(x, y, z + 4, Blocks.air);
-			par1World.func_147449_b(x, y + 1, z + 4, Blocks.air);
-			par1World.func_147449_b(x + 2, y + 1, z, Blocks.torch);
-			par1World.func_147449_b(x - 2, y + 1, z, Blocks.torch);
+			par1World.setBlock(x, y, z + 3, Blocks.air);
+			par1World.setBlock(x, y + 1, z + 3, Blocks.air);
+			par1World.setBlock(x, y, z + 4, Blocks.air);
+			par1World.setBlock(x, y + 1, z + 4, Blocks.air);
+			par1World.setBlock(x + 2, y + 1, z, Blocks.torch);
+			par1World.setBlock(x - 2, y + 1, z, Blocks.torch);
 		}
 		else 
 		{
-			par1World.func_147449_b(x - 3, y, z, Blocks.air);
-			par1World.func_147449_b(x - 3, y + 1, z, Blocks.air);
-			par1World.func_147449_b(x - 4, y, z, Blocks.air);
-			par1World.func_147449_b(x - 4, y + 1, z, Blocks.air);
-			par1World.func_147449_b(x, y + 1, z + 2, Blocks.torch);
-			par1World.func_147449_b(x, y + 1, z - 2, Blocks.torch);
+			par1World.setBlock(x - 3, y, z, Blocks.air);
+			par1World.setBlock(x - 3, y + 1, z, Blocks.air);
+			par1World.setBlock(x - 4, y, z, Blocks.air);
+			par1World.setBlock(x - 4, y + 1, z, Blocks.air);
+			par1World.setBlock(x, y + 1, z + 2, Blocks.torch);
+			par1World.setBlock(x, y + 1, z - 2, Blocks.torch);
 		}
 		return true;
     }
