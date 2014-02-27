@@ -38,7 +38,7 @@ public class GuiSettingsButton
 		{
 			selected = 0;
 		}
-		button.field_146126_j = textarray[selected];
+		button.displayString = textarray[selected];
 	}
 	
 	public void setOldValue(int oldValue)
@@ -49,7 +49,7 @@ public class GuiSettingsButton
 			if(valuearray[i] == oldValue)
 			{
 				selected = i;
-				button.field_146126_j = textarray[selected];
+				button.displayString = textarray[selected];
 				break;
 			}
 		}

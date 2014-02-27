@@ -1,7 +1,6 @@
 package bwg4.gui;
 
 import java.util.ArrayList;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
@@ -12,23 +11,23 @@ public class GuiWorldSettings extends GuiScreen
 	/*
 	protected Minecraft minecraft;
 	protected FontRenderer fr;
-    private final BWG4GuiGeneratorSettings guiGeneratorSettings;
-    private BWG4WorldSettings oldsettings;
+    private final GuiGeneratorSettings guiGeneratorSettings;
+    private WorldSettings oldsettings;
 
-	private BWG4GuiSlider Slider_ORES;
-	private BWG4GuiSlider Slider_PLANTS;
-	private BWG4GuiSlider Slider_TREES;
-	private BWG4GuiSlider Slider_PONDS;
-	private BWG4GuiSlider Slider_DUNGEONS;
-	private BWG4GuiSlider Slider_CLAY;
-	private BWG4GuiSlider Slider_HEIGHT;
-	private BWG4GuiSlider Slider_CAVES;
-	private BWG4GuiSlider Slider_RAVINES;
-	private BWG4GuiSlider Slider_VILLAGES;
-	private BWG4GuiSlider Slider_SCATTERED;
-	private BWG4GuiSlider Slider_SIZE;
+	private GuiSlider Slider_ORES;
+	private GuiSlider Slider_PLANTS;
+	private GuiSlider Slider_TREES; 
+	private GuiSlider Slider_PONDS;
+	private GuiSlider Slider_DUNGEONS;
+	private GuiSlider Slider_CLAY;
+	private GuiSlider Slider_HEIGHT;
+	private GuiSlider Slider_CAVES;
+	private GuiSlider Slider_RAVINES;
+	private GuiSlider Slider_VILLAGES;
+	private GuiSlider Slider_SCATTERED;
+	private GuiSlider Slider_SIZE;
 	
-	public BWG4GuiWorldSettings(Minecraft instance, BWG4GuiGeneratorSettings gengui, FontRenderer f, BWG4WorldSettings s)
+	public GuiWorldSettings(Minecraft instance, GuiGeneratorSettings gengui, FontRenderer f, WorldSettings s)
 	{
 		minecraft = instance;
 		guiGeneratorSettings = gengui;

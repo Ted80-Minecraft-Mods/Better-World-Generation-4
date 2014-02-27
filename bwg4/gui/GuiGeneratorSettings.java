@@ -1,7 +1,6 @@
 package bwg4.gui;
 
 import java.util.ArrayList;
-
 import bwg4.api.biome.BiomeManager;
 import bwg4.api.gen.GeneratorType;
 import bwg4.data.DecodeGeneratorString;
@@ -42,14 +41,14 @@ public class GuiGeneratorSettings extends GuiScreen
 
 	public void initGui()
 	{
-		field_146292_n.add(BUTTON_DONE = new GuiButton(0, field_146294_l / 2 - 155, field_146295_m - 24, 150, 20, StatCollector.translateToLocal("gui.done")));
-		field_146292_n.add(new GuiButton(1, field_146294_l / 2 + 5, field_146295_m - 24, 150, 20, StatCollector.translateToLocal("gui.cancel")));
-		field_146292_n.add(new GuiButton(3, field_146294_l / 2 - 155, field_146295_m - 48, 310, 20, "Copy generator-settings to Clipboard"));
+        buttonList.add(BUTTON_DONE = new GuiButton(0, width / 2 - 155, height - 24, 150, 20, StatCollector.translateToLocal("gui.done")));
+        buttonList.add(new GuiButton(1, width / 2 + 5, height - 24, 150, 20, StatCollector.translateToLocal("gui.cancel")));
+        buttonList.add(new GuiButton(3, width / 2 - 155, height - 48, 310, 20, "Copy generator-settings to Clipboard"));
 		
-		field_146292_n.add(BUTTON_CATEGORY = new GuiButton(2, field_146294_l / 2 - 155, 40, 150, 20, categories[CATEGORY]));
-		field_146292_n.add(BUTTON_BIOMELIST = new GuiButton(4, field_146294_l / 2 + 5, 80, 150, 20, "Biome Settings"));
-		field_146292_n.add(BUTTON_WORLDSETTINGS = new GuiButton(5, field_146294_l / 2 + 5, 100, 150, 20, "World Settings"));
-		BUTTON_WORLDSETTINGS.field_146124_l = false;
+		buttonList.add(BUTTON_CATEGORY = new GuiButton(2, width / 2 - 155, 40, 150, 20, categories[CATEGORY]));
+		buttonList.add(BUTTON_BIOMELIST = new GuiButton(4, width / 2 + 5, 80, 150, 20, "Biome Settings"));
+		buttonList.add(BUTTON_WORLDSETTINGS = new GuiButton(5, width / 2 + 5, 100, 150, 20, "World Settings"));
+		BUTTON_WORLDSETTINGS.enabled = false;
 		
 		if(decodebool)
 		{
@@ -61,11 +60,11 @@ public class GuiGeneratorSettings extends GuiScreen
         	switchCategory();
         	for(int i = 0; i < generators.size(); i++)
         	{
-        		generators.get(i).button.field_146124_l = true;
+        		generators.get(i).button.enabled = true;
         		if(generators.get(i).generatorID == generatorSelected)
         		{
         			System.out.println(generatorSelected);
-            		generators.get(i).button.field_146124_l = false;
+            		generators.get(i).button.enabled = false;
         		}
         	}
 			selectGenerator();
@@ -81,18 +80,18 @@ public class GuiGeneratorSettings extends GuiScreen
 		}
 	}
 
-	protected void func_146284_a(GuiButton button)
+	protected void actionPerformed(GuiButton button)
 	{
-        if (button.field_146127_k == 0) //DONE
+        if (button.id == 0) //DONE
         {
         	createWorldGui.field_146334_a = createString();
-        	field_146297_k.func_147108_a(this.createWorldGui); 
+        	mc.displayGuiScreen(this.createWorldGui); 
         }
-        else if (button.field_146127_k == 1) //CANCEL
+        else if (button.id == 1) //CANCEL
         {
-        	field_146297_k.func_147108_a(this.createWorldGui);
+        	mc.displayGuiScreen(this.createWorldGui);
         }
-        else if (button.field_146127_k == 2) //CATEGORY
+        else if (button.id == 2) //CATEGORY
         {
         	BD_biomestring = "";
         	CATEGORY++;
@@ -104,15 +103,15 @@ public class GuiGeneratorSettings extends GuiScreen
     		generatorSelected = -1;
     		selectGenerator();
         }
-        else if (button.field_146127_k == 3) //COPY SETTINGS
+        else if (button.id == 3) //COPY SETTINGS
         {
         	String copy = createString();
         	System.out.println(copy);
-        	func_146275_d(copy);
+        	setClipboardString(copy);
         }
-        else if (button.field_146127_k == 4) //COSTUMIZE BIOME LIST
+        else if (button.id == 4) //COSTUMIZE BIOME LIST
         {
-        	field_146297_k.func_147108_a(new GuiBiomeSettings(field_146297_k, this, BD_biomestring, field_146289_q));
+        	mc.displayGuiScreen(new GuiBiomeSettings(mc, this, BD_biomestring, fontRendererObj));
         	
         	setremember = true;
         	rememberSettings = new int[settings.size()];
@@ -121,24 +120,24 @@ public class GuiGeneratorSettings extends GuiScreen
 				rememberSettings[s] = settings.get(s).valuearray[settings.get(s).selected];
 			}
         }
-        else if (button.field_146127_k >= 10 && button.field_146127_k < 20)
+        else if (button.id >= 10 && button.id < 20)
         {
         	for(int i = 0; i < generators.size(); i++)
         	{
-        		generators.get(i).button.field_146124_l = true;
-        		if(generators.get(i).button.field_146127_k == button.field_146127_k)
+        		generators.get(i).button.enabled = true;
+        		if(generators.get(i).button.id == button.id)
         		{
-            		generators.get(i).button.field_146124_l = false;
+            		generators.get(i).button.enabled = false;
         			generatorSelected = generators.get(i).generatorID;
         		}
         	}
     		selectGenerator();
         }
-        else if (button.field_146127_k >= 20 && button.field_146127_k < 30)
+        else if (button.id >= 20 && button.id < 30)
         {
         	for(int i = 0; i < settings.size(); i++)
         	{
-        		if(settings.get(i).button.field_146127_k == button.field_146127_k)
+        		if(settings.get(i).button.id == button.id)
         		{
         			settings.get(i).click();
         		}
@@ -149,32 +148,32 @@ public class GuiGeneratorSettings extends GuiScreen
 	
 	public void drawScreen(int par1, int par2, float par3)
 	{
-		func_146276_q_();
+		drawDefaultBackground();
 		
 		//title
 		String title = "Better World Generation 4";
-		drawString(field_146289_q, title, (int) Math.floor(field_146294_l / 2) - (int) Math.floor(field_146289_q.getStringWidth(title) / 2), 10, 16777215);
+		drawString(fontRendererObj, title, (int) Math.floor(width / 2) - (int) Math.floor(fontRendererObj.getStringWidth(title) / 2), 10, 16777215);
 		
 		//category
-		drawString(field_146289_q, "Choose a category:", field_146294_l / 2 - 155 + 1, 30, 10526880);
+		drawString(fontRendererObj, "Choose a category:", width / 2 - 155 + 1, 30, 10526880);
     	if(CATEGORY != 4)
     	{
-    		drawString(field_146289_q, "Select a world generator:", field_146294_l / 2 - 155 + 1, 70, 10526880);
+    		drawString(fontRendererObj, "Select a world generator:", width / 2 - 155 + 1, 70, 10526880);
     	}
 		
     	String catpos = "(" + (CATEGORY + 1) + "/4)";
-    	drawString(field_146289_q, catpos, field_146294_l / 2 - 5 - field_146289_q.getStringWidth(catpos), 30, 10526880);
+    	drawString(fontRendererObj, catpos, width / 2 - 5 - fontRendererObj.getStringWidth(catpos), 30, 10526880);
     	
     	if(CATEGORY == 4)
     	{
-    		drawString(field_146289_q, "Coming soon!", field_146294_l / 2 - 110 + 1, 110, 10526880);
+    		drawString(fontRendererObj, "Coming soon!", width / 2 - 110 + 1, 110, 10526880);
     	}
 
 		if(generatorSelected != -1)
 		{
 	    	if(GeneratorType.generatortypes[generatorSelected].HasSettings())
 	    	{
-	    		drawString(field_146289_q, "Generator settings:", field_146294_l / 2 + 5 + 1, 70, 10526880);
+	    		drawString(fontRendererObj, "Generator settings:", width / 2 + 5 + 1, 70, 10526880);
 	    	}
 		}
 		
@@ -183,13 +182,13 @@ public class GuiGeneratorSettings extends GuiScreen
 	
 	public void switchCategory()
 	{
-		BUTTON_CATEGORY.field_146126_j = categories[CATEGORY];
+		BUTTON_CATEGORY.displayString = categories[CATEGORY];
 
 		if(generators != null)
 		{
 			for(int i = 0; i < generators.size(); i++)
 			{
-				field_146292_n.remove(generators.get(i).button);
+				buttonList.remove(generators.get(i).button);
 			}
 		}
 		
@@ -201,8 +200,8 @@ public class GuiGeneratorSettings extends GuiScreen
 			{
 				if(GeneratorType.generatortypes[g].GetCategory() == CATEGORY && GeneratorType.generatortypes[g].CanBeCreated())
 				{
-					generators.add(new GuiGeneratorButton(GeneratorType.generatortypes[g].GetScreenName(), g, count + 10, 80 + (20 * count), field_146294_l));
-					field_146292_n.add(generators.get(generators.size() - 1).button);
+					generators.add(new GuiGeneratorButton(GeneratorType.generatortypes[g].GetScreenName(), g, count + 10, 80 + (20 * count), width));
+					buttonList.add(generators.get(generators.size() - 1).button);
 					count++;
 				}
 			}
@@ -215,12 +214,12 @@ public class GuiGeneratorSettings extends GuiScreen
 		{
     		if(settings.get(i).dependencie > -1)
     		{
-    			settings.get(i).button.field_146125_m = false;
+    			settings.get(i).button.visible = false;
     			for(int p = 0; p < settings.get(i).depvalues.length; p++)
     			{
     				if(settings.get(settings.get(i).dependencie - 20).selected == settings.get(i).depvalues[p])
     				{
-    					settings.get(i).button.field_146125_m = true;
+    					settings.get(i).button.visible = true;
     				}
     			}
     		}
@@ -231,71 +230,71 @@ public class GuiGeneratorSettings extends GuiScreen
 	{
 		if(generatorSelected > -1)
 		{
-			BUTTON_DONE.field_146124_l = true;
+			BUTTON_DONE.enabled = true;
 		}
 		else
 		{
-			BUTTON_DONE.field_146124_l = false;
+			BUTTON_DONE.enabled = false;
 		}
 		
 		if(settings != null)
 		{
 			for(int i = 0; i < settings.size(); i++)
 			{
-				field_146292_n.remove(settings.get(i).button);
+				buttonList.remove(settings.get(i).button);
 			}
 		}
 		settings = new ArrayList<GuiSettingsButton>();
 
-		BUTTON_BIOMELIST.field_146125_m = false;
-		BUTTON_WORLDSETTINGS.field_146125_m = false;
+		BUTTON_BIOMELIST.visible = false;
+		BUTTON_WORLDSETTINGS.visible = false;
 		if(generatorSelected == GeneratorType.DEFAULT.GetID())
 		{
-			BUTTON_BIOMELIST.field_146125_m = true;
-			BUTTON_WORLDSETTINGS.field_146125_m = true;
-			settings.add(new GuiSettingsSlider(new String[]{"Biome size: 1", "Biome size: 2", "Biome size: 3", "Biome size: 4 (default)", "Biome size: 5", "Biome size: 6 (Large)", "Biome size: 7", "Biome size: 8"}, new int[]{1,2,3,4,5,6,7,8}, 3, 20, 120, field_146294_l));
-			settings.add(new GuiSettingsButton(new String[]{"Amplified: OFF", "Amplified: ON"}, new int[]{0,1}, 21, 140, field_146294_l));
+			BUTTON_BIOMELIST.visible = true;
+			BUTTON_WORLDSETTINGS.visible = true;
+			settings.add(new GuiSettingsSlider(new String[]{"Biome size: 1", "Biome size: 2", "Biome size: 3", "Biome size: 4 (default)", "Biome size: 5", "Biome size: 6 (Large)", "Biome size: 7", "Biome size: 8"}, new int[]{1,2,3,4,5,6,7,8}, 3, 20, 120, width));
+			settings.add(new GuiSettingsButton(new String[]{"Amplified: OFF", "Amplified: ON"}, new int[]{0,1}, 21, 140, width));
 		}
 		else if(generatorSelected == GeneratorType.BETA173.GetID()) 
 		{
-			settings.add(new GuiSettingsButton(new String[]{"Biomes: Beta", "Biomes: Better Default"}, new int[]{0, 1}, 20, 80, field_146294_l));
+			settings.add(new GuiSettingsButton(new String[]{"Biomes: Beta", "Biomes: Better Default"}, new int[]{0, 1}, 20, 80, width));
 		}
 		else if(generatorSelected == GeneratorType.INFDEV.GetID() || generatorSelected == GeneratorType.ALPHA11.GetID()) 
 		{
-			settings.add(new GuiSettingsButton(new String[]{"Snow World: OFF", "Snow World: ON"}, new int[]{0, 1}, 20, 80, field_146294_l));
+			settings.add(new GuiSettingsButton(new String[]{"Snow World: OFF", "Snow World: ON"}, new int[]{0, 1}, 20, 80, width));
 		}
 		else if(generatorSelected == GeneratorType.INDEV.GetID()) 
 		{ 
-			settings.add(new GuiSettingsButton(new String[]{"Theme: Default", "Theme: Hell", "Theme: Paradise", "Theme: Woods", "Theme: Snow"}, new int[]{0, 1, 2, 3, 4}, 20, 80, field_146294_l));
-			settings.add(new GuiSettingsButton(new String[]{"Type: Island", "Type: Floating", "Type: Inland"}, new int[]{0, 1, 2}, 21, 100, field_146294_l));
-			settings.add(new GuiSettingsSlider(new String[]{"Size: Small", "Size: Default", "Size: Large"}, new int[]{0, 1, 2}, 1, 22, 120, field_146294_l, 21, new int[]{0, 1}));
-			settings.add(new GuiSettingsSlider(new String[]{"Layers: 1", "Layers: 2", "Layers: 3", "Layers: 4", "Layers: 5"}, new int[]{0, 1, 2, 3, 4}, 1, 23, 140, field_146294_l, 21, new int[]{1}));
+			settings.add(new GuiSettingsButton(new String[]{"Theme: Default", "Theme: Hell", "Theme: Paradise", "Theme: Woods", "Theme: Snow"}, new int[]{0, 1, 2, 3, 4}, 20, 80, width));
+			settings.add(new GuiSettingsButton(new String[]{"Type: Island", "Type: Floating", "Type: Inland"}, new int[]{0, 1, 2}, 21, 100, width));
+			settings.add(new GuiSettingsSlider(new String[]{"Size: Small", "Size: Default", "Size: Large"}, new int[]{0, 1, 2}, 1, 22, 120, width, 21, new int[]{0, 1}));
+			settings.add(new GuiSettingsSlider(new String[]{"Layers: 1", "Layers: 2", "Layers: 3", "Layers: 4", "Layers: 5"}, new int[]{0, 1, 2, 3, 4}, 1, 23, 140, width, 21, new int[]{1}));
 		}
 		else if(generatorSelected == GeneratorType.ISLAND.GetID()) 
 		{ 
-			settings.add(new GuiSettingsButton(new String[]{"Theme: Default", "Theme: Tropical", "Theme: Paradise"}, new int[]{0, 1, 4}, 20, 80, field_146294_l)); //"Theme: Hell", "Theme: Iceberg",   2, 3,
-			settings.add(new GuiSettingsSlider(new String[]{"Size: Small", "Size: Default", "Size: Large"}, new int[]{0, 1, 2}, 1, 21, 100, field_146294_l, 20, new int[]{0, 1})); //, 2, 3
+			settings.add(new GuiSettingsButton(new String[]{"Theme: Default", "Theme: Tropical", "Theme: Paradise"}, new int[]{0, 1, 4}, 20, 80, width)); //"Theme: Hell", "Theme: Iceberg",   2, 3,
+			settings.add(new GuiSettingsSlider(new String[]{"Size: Small", "Size: Default", "Size: Large"}, new int[]{0, 1, 2}, 1, 21, 100, width, 20, new int[]{0, 1})); //, 2, 3
 		}
 		else if(generatorSelected == GeneratorType.SKYISLAND.GetID()) 
 		{ 
-			settings.add(new GuiSettingsButton(new String[]{"Theme: Default", "Theme: Snow", "Theme: Jungle"}, new int[]{0, 1, 2}, 20, 80, field_146294_l)); 
+			settings.add(new GuiSettingsButton(new String[]{"Theme: Default", "Theme: Snow", "Theme: Jungle"}, new int[]{0, 1, 2}, 20, 80, width)); 
 		}
 		else if(generatorSelected == GeneratorType.SKYBLOCK.GetID())
 		{
-			settings.add(new GuiSettingsSlider(new String[]{"Size: Small", "Size: Default", "Size: Large"}, new int[]{0, 1, 2}, 1, 20, 80, field_146294_l));
+			settings.add(new GuiSettingsSlider(new String[]{"Size: Small", "Size: Default", "Size: Large"}, new int[]{0, 1, 2}, 1, 20, 80, width));
 		}
 		else if(generatorSelected == GeneratorType.SKYLANDS.GetID()) 
 		{ 
-			settings.add(new GuiSettingsButton(new String[]{"Biomes: Better Default", "Biomes: Beta 1.7.3"}, new int[]{0, 1}, 20, 80, field_146294_l));
+			settings.add(new GuiSettingsButton(new String[]{"Biomes: Better Default", "Biomes: Beta 1.7.3"}, new int[]{0, 1}, 20, 80, width));
 		}
 		else if(generatorSelected == GeneratorType.DEADLYDESERT.GetID()) 
 		{ 
-			settings.add(new GuiSettingsButton(new String[]{"Extremely hard: OFF", "Extremely hard: ON"}, new int[]{0, 1}, 20, 80, field_146294_l));
+			settings.add(new GuiSettingsButton(new String[]{"Extremely hard: OFF", "Extremely hard: ON"}, new int[]{0, 1}, 20, 80, width));
 		}
 
 		for(int s = 0; s < settings.size(); s++)
 		{
-			field_146292_n.add(settings.get(s).button);
+			buttonList.add(settings.get(s).button);
 		}
 		
 		dependencies();
@@ -327,10 +326,10 @@ public class GuiGeneratorSettings extends GuiScreen
 			
         	for(int i = 0; i < generators.size(); i++)
         	{
-        		generators.get(i).button.field_146124_l = true;
+        		generators.get(i).button.enabled = true;
         		if(generators.get(i).generatorID == generatorSelected)
         		{
-            		generators.get(i).button.field_146124_l = false;
+            		generators.get(i).button.enabled = false;
         		}
         	}
 			selectGenerator();

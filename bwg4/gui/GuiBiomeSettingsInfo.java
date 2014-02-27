@@ -6,10 +6,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-
 import bwg4.api.biome.BiomeManager;
 import net.minecraft.world.biome.BiomeGenBase;
-
 
 public class GuiBiomeSettingsInfo
 {
