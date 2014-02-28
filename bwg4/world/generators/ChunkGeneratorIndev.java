@@ -26,6 +26,7 @@ import net.minecraft.world.gen.MapGenBase;
 import net.minecraft.world.gen.MapGenCaves;
 import net.minecraft.world.gen.feature.WorldGenFlowers;
 import net.minecraft.world.gen.feature.WorldGenLiquids;
+import net.minecraft.world.gen.feature.WorldGenTrees;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraft.world.gen.structure.MapGenMineshaft;
 import net.minecraft.world.gen.structure.MapGenStronghold;
@@ -209,8 +210,9 @@ public class ChunkGeneratorIndev implements IChunkProvider
 					Block b = Blocks.air;
 					
 					int l1 = (x * 16 + z) * 256 + y;
-					if(blocks[l1] == Blocks.air)
+					if(blocks[l1] == null)
 					{
+						b = Blocks.air;
 						t = -1;
 					}
 					else if(blocks[l1] == Blocks.stone)
@@ -689,7 +691,7 @@ public class ChunkGeneratorIndev implements IChunkProvider
         }
 		if(themeWOODS){ l333 += 8; }
 		else if(typeIsland){ l333 += 1; }
-		Object obj = new OldGenTrees(0);
+		Object obj = new WorldGenTrees(false, 5, 0, 0, false);
         for(int k88 = 0; k88 < l333; k88++)
         {
             int j133 = var4 + rand.nextInt(16) + 8;
