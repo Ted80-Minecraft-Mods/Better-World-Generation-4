@@ -7,6 +7,7 @@ import net.minecraft.world.chunk.IChunkProvider;
 import bwg4.api.biome.BiomeList;
 import bwg4.world.ProviderBWG4;
 import bwg4.world.generators.ChunkGeneratorAlpha;
+import bwg4.world.generators.ChunkGeneratorInfdev;
 import net.minecraft.world.biome.WorldChunkManagerHell;
 
 public class GeneratorTypeAlpha11 extends GeneratorType
@@ -35,7 +36,7 @@ public class GeneratorTypeAlpha11 extends GeneratorType
 	@Override
     public IChunkProvider getChunkGenerator(ProviderBWG4 provider, World worldObj)
     {	
-		return new ChunkGeneratorAlpha(worldObj, worldObj.getSeed(), worldObj.getWorldInfo().isMapFeaturesEnabled());
+		return new ChunkGeneratorInfdev(worldObj, worldObj.getSeed(), worldObj.getWorldInfo().isMapFeaturesEnabled(), true);
     }
 
 	@Override

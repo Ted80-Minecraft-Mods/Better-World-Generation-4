@@ -295,6 +295,7 @@ public class ChunkGeneratorAlpha implements IChunkProvider
         double d1 = 684.41200000000003D;
         double ad1[] = ChunkManagerOld.temperature;
         double ad2[] = ChunkManagerOld.humidity;
+        
         field_4182_g = field_922_a.func_4109_a(field_4182_g, i, k, l, j1, 1.121D, 1.121D, 0.5D);
         field_4181_h = field_921_b.func_4109_a(field_4181_h, i, k, l, j1, 200D, 200D, 0.5D);
         field_4185_d = field_910_m.func_807_a(field_4185_d, i, j, k, l, i1, j1, d / 80D, d1 / 160D, d / 80D);
@@ -645,13 +646,18 @@ public class ChunkGeneratorAlpha implements IChunkProvider
                 double d1 = field_4178_w[l19 * 16 + l20] - ((double)(i21 - 64) / 64D) * 0.29999999999999999D;
                 if(d1 < 0.5D && i21 > 0 && i21 < 128 && worldObj_16.isAirBlock(k15, i21, j18))
                 {
-					if( worldObj_16.getBlock(k15, i21 - 1, j18).getMaterial().blocksMovement() && worldObj_16.getBlock(k15, i21 - 1, j18).getMaterial() != Material.water )
-					{
-						worldObj_16.setBlock(k15, i21, j18, Blocks.snow_layer, 0, 2);
-					}
-					else if ( worldObj_16.getBlock(k15, i21 - 1, j18).getMaterial() == Material.water )
+					if ( worldObj_16.isBlockFreezable(k15, i21 - 1, j18))
 					{
 						worldObj_16.setBlock(k15, i21 - 1, j18, Blocks.ice, 0, 2);					
+					}		
+					
+					Block b = worldObj_16.getBlock(k15, i21 - 1, j18);
+					if (worldObj_16.func_147478_e(k15, i21, j18, false) && b != Blocks.ice && b != Blocks.water)
+					{
+						if(Blocks.snow_layer.canBlockStay(worldObj_16, k15, i21, j18))
+						{
+							worldObj_16.setBlock(k15, i21, j18, Blocks.snow_layer, 0, 2);
+						}
 					}
                 }
             }

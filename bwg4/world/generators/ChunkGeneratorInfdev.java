@@ -27,6 +27,7 @@ import net.minecraft.world.gen.MapGenBase;
 import net.minecraft.world.gen.feature.WorldGenCactus;
 import net.minecraft.world.gen.feature.WorldGenFlowers;
 import net.minecraft.world.gen.feature.WorldGenLiquids;
+import net.minecraft.world.gen.feature.WorldGenTrees;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraft.world.gen.structure.MapGenMineshaft;
 import net.minecraft.world.gen.structure.MapGenStronghold;
@@ -486,7 +487,8 @@ public class ChunkGeneratorInfdev implements IChunkProvider
         {
             l3++;
         }
-		Object obj = new OldGenTrees(0);
+		//Object obj = new OldGenTrees(0);
+		Object obj = new WorldGenTrees(false, 5, 0, 0, false);
         if(field_913_j.nextInt(10) == 0 && alpha)
         {
             obj = new OldGenBigTree(0);
@@ -606,7 +608,8 @@ public class ChunkGeneratorInfdev implements IChunkProvider
                     field_907_p.setBlock(sn1 + k, sn3 - 1, sn2 + l, Blocks.ice, 0, 2);
                 }
 
-                if (field_907_p.func_147478_e(sn1 + k, sn3, sn2 + l, false))
+                Block b = field_907_p.getBlock(sn1 + k, sn3 - 1, sn2 + l);
+                if (field_907_p.func_147478_e(sn1 + k, sn3, sn2 + l, false) && b != Blocks.ice && b != Blocks.water)
                 {
                     field_907_p.setBlock(sn1 + k, sn3, sn2 + l, Blocks.snow_layer, 0, 2);
                 }

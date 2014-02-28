@@ -91,7 +91,7 @@ public class OldGenLakes extends WorldGenerator
                     {
                     	if(k3 < 4)
                     	{
-                            world.setBlock(i + k1, j + k3, k + k2, Blocks.air); 
+                            world.setBlock(i + k1, j + k3, k + k2, field_15235_a);
                     	}
                     	else
                     	{
@@ -128,8 +128,9 @@ public class OldGenLakes extends WorldGenerator
                 {
                     for(int i4 = 0; i4 < 8; i4++)
                     {
+                    	Block b = world.getBlock(i + i2, j + i4, k + i3);
                         boolean flag1 = !aflag[(i2 * 16 + i3) * 8 + i4] && (i2 < 15 && aflag[((i2 + 1) * 16 + i3) * 8 + i4] || i2 > 0 && aflag[((i2 - 1) * 16 + i3) * 8 + i4] || i3 < 15 && aflag[(i2 * 16 + (i3 + 1)) * 8 + i4] || i3 > 0 && aflag[(i2 * 16 + (i3 - 1)) * 8 + i4] || i4 < 7 && aflag[(i2 * 16 + i3) * 8 + (i4 + 1)] || i4 > 0 && aflag[(i2 * 16 + i3) * 8 + (i4 - 1)]);
-                        if(flag1 && (i4 < 4 || random.nextInt(2) != 0) && world.getBlock(i + i2, j + i4, k + i3).getMaterial().isSolid())
+                        if(flag1 && (i4 < 4 || random.nextInt(2) != 0) && b.getMaterial().isSolid() && b != Blocks.ice)
                         {
                             world.setBlock(i + i2, j + i4, k + i3, Blocks.stone); 
                         }

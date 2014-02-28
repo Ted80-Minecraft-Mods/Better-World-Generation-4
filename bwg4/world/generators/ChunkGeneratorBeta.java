@@ -724,17 +724,18 @@ public class ChunkGeneratorBeta implements IChunkProvider
 					double d1 = generatedTemperatures[i24 * 16 + j25] - ((double)(k25 - 64) / 64D) * 0.29999999999999999D;
 					if(d1 < 0.5D && k25 > 0 && k25 < 128 && worldObj.isAirBlock(j19, k25, j22))
 					{
-						if( worldObj.getBlock(j19, k25 - 1, j22).getMaterial().blocksMovement() && worldObj.getBlock(j19, k25 - 1, j22).getMaterial() != Material.water )
+						if ( worldObj.isBlockFreezable(j19, 63, j22))
+						{
+							worldObj.setBlock(j19, 63, j22, Blocks.ice, 0, 2);					
+						}		
+						
+						Block b = worldObj.getBlock(j19, k25 - 1, j22);
+						if (worldObj.func_147478_e(j19, k25, j22, false) && b != Blocks.ice && b != Blocks.water)
 						{
 							worldObj.setBlock(j19, k25, j22, Blocks.snow_layer, 0, 2);
 						}
-						else if ( worldObj.getBlock(j19, 63, j22).getMaterial() == Material.water )
-						{
-							worldObj.setBlock(j19, 63, j22, Blocks.ice, 0, 2);					
-						}
 					}	
 				}
-
 			}
 			
 			MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(ichunkprovider, worldObj, rand, i, j, false));

@@ -774,7 +774,8 @@ public class ChunkGeneratorIndev implements IChunkProvider
 						this.worldObj.setBlock(var85 + var4, var87 - 1, var86 + var5, Blocks.ice, 0, 2);
 					}
 
-					if (this.worldObj.func_147478_e(var85 + var4, var87, var86 + var5, false))
+					Block b = worldObj.getBlock(var85 + var4, var87 - 1, var86 + var5);
+					if (this.worldObj.func_147478_e(var85 + var4, var87, var86 + var5, false) && b != Blocks.ice && b != Blocks.water)
 					{
 						this.worldObj.setBlock(var85 + var4, var87, var86 + var5, Blocks.snow_layer, 0, 2);
 					}

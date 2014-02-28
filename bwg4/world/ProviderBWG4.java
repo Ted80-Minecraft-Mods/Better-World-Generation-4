@@ -350,7 +350,11 @@ public class ProviderBWG4 extends WorldProvider
 	@Override
     public boolean isSurfaceWorld()
     {
-		return GeneratorType.currentGenerator.isSurfaceWorld(this);
+		if(terrainType == BWG4.BWG4DEFAULT)
+		{
+			return GeneratorType.currentGenerator.isSurfaceWorld(this);
+		}
+		return true;
     }
 	
 	@Override
