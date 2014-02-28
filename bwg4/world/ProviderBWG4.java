@@ -395,9 +395,6 @@ public class ProviderBWG4 extends WorldProvider
 	@Override
     public boolean canCoordinateBeSpawn(int par1, int par2)
     {
-		return true;
-		
-		/*
         Block k = this.worldObj.getTopBlock(par1, par2);
         
         if(GeneratorType.currentGenerator == GeneratorType.WASTELAND || GeneratorType.currentGenerator == GeneratorType.CAVESURV || (GeneratorType.currentGenerator == GeneratorType.ISLAND && (trySetting(0, 4) == 2 || trySetting(0, 4) == 3)))
@@ -411,7 +408,7 @@ public class ProviderBWG4 extends WorldProvider
         else
         {
         	if(k == Blocks.grass || k == Blocks.dirt || k == Blocks.sand) { return true; } else { return false; }
-        }*/
+        }
     }
 	
 	@Override
