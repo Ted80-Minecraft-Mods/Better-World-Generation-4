@@ -3,8 +3,11 @@ package bwg4.api.gen;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.WorldChunkManager;
+import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.IChunkProvider;
+import bwg4.api.biome.BiomeList;
 import bwg4.world.ProviderBWG4;
+import bwg4.world.generators.ChunkGeneratorSkyIsland;
 
 public class GeneratorTypeSkyIsland extends GeneratorType
 {
@@ -16,19 +19,25 @@ public class GeneratorTypeSkyIsland extends GeneratorType
 	@Override
 	public WorldChunkManager getServerWorldChunkManager(ProviderBWG4 provider, World worldObj)
     {
-		return null;
+		int themeID = provider.trySetting(0, 2) + 1; 
+		switch (themeID) 
+		{
+			case 2: return new WorldChunkManagerHell(BiomeList.COMMONsnow, 0.5F);
+			default: return new WorldChunkManagerHell(BiomeList.COMMONnormal2, 0.5F);
+		}
     }
 
 	@Override
 	public WorldChunkManager getClientWorldChunkManager(ProviderBWG4 provider)
     {
-		return null;
+		return new WorldChunkManagerHell(BiomeList.COMMONnormal1, 0.5F);
     }
 
 	@Override
     public IChunkProvider getChunkGenerator(ProviderBWG4 provider, World worldObj)
     {	
-    	return null;
+		int themeID = provider.trySetting(0, 2) + 1; 
+        return new ChunkGeneratorSkyIsland(worldObj, worldObj.getSeed(), themeID);
     }
 
 	@Override
