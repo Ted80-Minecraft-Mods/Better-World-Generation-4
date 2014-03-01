@@ -224,15 +224,22 @@ public class DungeonLoot
     	}
     	else if(GeneratorType.currentGenerator == GeneratorType.CAVESURV)
     	{
-    		int i = par1Random.nextInt(15);
-    		if (i == 0) { return new ItemStack(Blocks.clay, par1Random.nextInt(12) + 4); }
-    		if (i == 1) { return new ItemStack(Items.reeds, 1); }
-    		if (i == 2) { return new ItemStack(Items.carrot, par1Random.nextInt(3) + 1); }
-    		if (i == 3) { return new ItemStack(Items.potato, par1Random.nextInt() + 1); }
-    		if (i == 4) { return new ItemStack(Items.pumpkin_seeds, par1Random.nextInt(3) + 1); }
-    		if (i == 5) { return new ItemStack(Items.melon_seeds, par1Random.nextInt(3) + 1); }
-    		if (i == 6) { return new ItemStack(Blocks.snow, par1Random.nextInt(8) + 1); }
-    		else { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }
+    		if(chestID == 0)
+    		{
+	    		int i = par1Random.nextInt(15);
+	    		if (i == 0) { return new ItemStack(Blocks.clay, par1Random.nextInt(12) + 4); }
+	    		if (i == 1) { return new ItemStack(Items.reeds, 1); }
+	    		if (i == 2) { return new ItemStack(Items.carrot, par1Random.nextInt(3) + 1); }
+	    		if (i == 3) { return new ItemStack(Items.potato, par1Random.nextInt() + 1); }
+	    		if (i == 4) { return new ItemStack(Items.pumpkin_seeds, par1Random.nextInt(3) + 1); }
+	    		if (i == 5) { return new ItemStack(Items.melon_seeds, par1Random.nextInt(3) + 1); }
+	    		if (i == 6) { return new ItemStack(Blocks.snow, par1Random.nextInt(8) + 1); }
+	    		else { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }
+    		}
+    		else
+    		{
+    			return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random);
+    		}
     	}
     	else if(GeneratorType.currentGenerator == GeneratorType.SKYLANDS)
     	{
