@@ -60,7 +60,7 @@ public class ChunkGeneratorIsland implements IChunkProvider
     double[] noiseData4;
     double[] noiseData5;
     int[][] field_73203_h = new int[32][32];
-    private MapGenBWG4 caveGenerator = new MapGenBWG4Caves();
+    private MapGenBase caveGenerator = new MapGenCaves();
     private MapGenStronghold strongholdGenerator = new MapGenStronghold();
 	public int THEMEID = 1;
 	public double width;
@@ -141,7 +141,7 @@ public class ChunkGeneratorIsland implements IChunkProvider
 					i2 -= (Math.sqrt((0D-k)*(0D-k) + (0D-m)*(0D-m)) / width) + (perlin1.turbulence2(k / 60F, m / 60F, 4F) * 5F);
 					if(i2 < 50f) { i2 = 50f; }
 					
-					for (int i3 = 0; i3 < 128; i3++)
+					for (int i3 = 0; i3 < 256; i3++)
 					{
 						Block i4 = Blocks.air;
 						if(i3 < i2 - 6 + rand.nextInt(3))
@@ -178,7 +178,7 @@ public class ChunkGeneratorIsland implements IChunkProvider
 					i2 -= (Math.sqrt((0D-k)*(0D-k) + (0D-m)*(0D-m)) / width) + (perlin1.turbulence2(k / 60F, m / 60F, 4F) * 5F);
 					if(i2 < 50f) { i2 = 50f; }
 					
-					for (int i3 = 0; i3 < 128; i3++)
+					for (int i3 = 0; i3 < 256; i3++)
 					{
 						Block i4 = Blocks.air;
 						if(i2 > 67)
@@ -239,7 +239,7 @@ public class ChunkGeneratorIsland implements IChunkProvider
 					float ice = (perlin2.turbulence2(k / 20F, m / 20F, 4F) * 10F);
 					ice = 1 -(2 *(ice * ice)); 
 					
-					for (int i3 = 0; i3 < 128; i3++)
+					for (int i3 = 0; i3 < 256; i3++)
 					{
 						Block i4 = Blocks.air;
 						
@@ -307,7 +307,7 @@ public class ChunkGeneratorIsland implements IChunkProvider
 		        		}
 	        		}
 					
-					for (int i3 = 0; i3 < 128; i3++)
+					for (int i3 = 0; i3 < 256; i3++)
 					{
 						float n = 0;
 						if(i3 > 50 && stength > 0f)
@@ -373,7 +373,7 @@ public class ChunkGeneratorIsland implements IChunkProvider
                 Block var9 = Blocks.sand;
                 Block var10 = Blocks.sand;
 
-                for (int var11 = 127; var11 >= 0; --var11)
+                for (int var11 = 255; var11 >= 0; --var11)
                 {
                     int var12 = (var6 * 16 + var5) * 128 + var11;
                     if(var11 <= 0 + rand.nextInt(5))
@@ -441,7 +441,8 @@ public class ChunkGeneratorIsland implements IChunkProvider
     public Chunk provideChunk(int par1, int par2)
     {
         this.rand.setSeed((long)par1 * 341873128712L + (long)par2 * 132897987541L);
-        Block[] var3 = new Block[32768];
+        Block[] var3 = new Block[65536];
+        byte[] metadata = new byte[65536];
         this.biomesForGeneration = this.world.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, par1 * 16, par2 * 16, 16, 16);
         this.generateTerrain(par1, par2, var3, this.biomesForGeneration);
         
@@ -450,10 +451,10 @@ public class ChunkGeneratorIsland implements IChunkProvider
         	this.replaceBlocksForBiome(par1, par2, var3, this.biomesForGeneration);
         }
         
-        this.caveGenerator.generate(this, this.world, par1, par2, var3);
+        this.caveGenerator.func_151539_a(this, this.world, par1, par2, var3);
 		this.strongholdGenerator.func_151539_a(this, this.world, par1, par2, var3);
 		
-        Chunk var4 = new Chunk(this.world, var3, par1, par2);
+        Chunk var4 = new Chunk(this.world, var3, metadata, par1, par2);
         byte[] var5 = var4.getBiomeArray();
 
         for (int var6 = 0; var6 < var5.length; ++var6)

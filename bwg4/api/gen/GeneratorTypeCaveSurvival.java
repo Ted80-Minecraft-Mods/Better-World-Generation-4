@@ -4,31 +4,36 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.chunk.IChunkProvider;
+import bwg4.api.biome.BiomeList;
 import bwg4.world.ProviderBWG4;
+import bwg4.world.generators.ChunkGeneratorCaveSurv;
+import net.minecraft.world.biome.WorldChunkManagerHell;
 
 public class GeneratorTypeCaveSurvival extends GeneratorType
 {
 	public GeneratorTypeCaveSurvival(int id, int cat, String name, String screen, boolean c, boolean s) 
 	{
-		super(id, cat, name, screen, c, s, false, true);
+		super(id, cat, name, screen, c, s, true, true);
 	}
 	
 	@Override
 	public WorldChunkManager getServerWorldChunkManager(ProviderBWG4 provider, World worldObj)
     {
-		return null;
+		provider.hasNoSky = true;
+		return new WorldChunkManagerHell(BiomeList.COMMONnormal1, 0.5F);
     }
 
 	@Override
 	public WorldChunkManager getClientWorldChunkManager(ProviderBWG4 provider)
     {
-		return null;
+		provider.hasNoSky = true;
+		return new WorldChunkManagerHell(BiomeList.COMMONnormal1, 0.5F);
     }
 
 	@Override
     public IChunkProvider getChunkGenerator(ProviderBWG4 provider, World worldObj)
     {	
-    	return null;
+    	return new ChunkGeneratorCaveSurv(worldObj, worldObj.getSeed());
     }
 
 	@Override
@@ -40,19 +45,19 @@ public class GeneratorTypeCaveSurvival extends GeneratorType
 	@Override
     public float getCalculateCelestialAngle(ProviderBWG4 provider, long par1, float par3)
     {
-    	return 0F;
+    	return 0.8f;
     }
 
 	@Override
     public boolean isSurfaceWorld(ProviderBWG4 provider)
     {
-    	return true;
+    	return false;
     }
 
 	@Override
     public Vec3 getFogColor(ProviderBWG4 provider, World worldObj, float par1, float par2)
     {
-    	return null;
+    	return worldObj.getWorldVec3Pool().getVecFromPool(0.0D, 0.0D, 0.0D);
     }
 
 	@Override

@@ -485,65 +485,41 @@ public class ChunkGeneratorIndev implements IChunkProvider
         return this.provideChunk(par1, par2);
     }
 
-    public Chunk provideChunk(int par1, int par2)
+    public Chunk provideChunk(int cx, int cy)
     {
-        this.rand.setSeed((long)par1 * 341873128712L + (long)par2 * 132897987541L);
-        Block[] var3 = new Block[0x65536];
+    	this.rand.setSeed((long)cx * 341873128712L + (long)cy * 132897987541L);
+    	Block[] var3 = new Block[65536];
+    	byte[] metadata = new byte[65536];
+    	
         if(typeFloating)
         {
-        	generateSkylands(par1, par2, var3);
-        	generateSurface(par1, par2, var3);
+        	generateSkylands(cx, cy, var3);
+        	generateSurface(cx, cy, var3);
         }
         else
         {
-        	generateTerrain(par1, par2, var3);
+        	generateTerrain(cx, cy, var3);
         }
-        this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, par1 * 16, par2 * 16, 16, 16);
+        this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, cx * 16, cy * 16, 16, 16);
 
         if(!typeFloating)
         {
-	        caveGenerator.func_151539_a(this, this.worldObj, par1, par2, var3);
+	        caveGenerator.func_151539_a(this, this.worldObj, cx, cy, var3);
 	        if (mapFeaturesEnabled)
 	        {
-	            mineshaftGenerator.func_151539_a(this, this.worldObj, par1, par2, var3);
-	            strongholdGenerator.func_151539_a(this, this.worldObj, par1, par2, var3);
+	            mineshaftGenerator.func_151539_a(this, this.worldObj, cx, cy, var3);
+	            strongholdGenerator.func_151539_a(this, this.worldObj, cx, cy, var3);
 	        }
         }
-
-        Chunk var4 = new Chunk(this.worldObj, par1, par2);
-        ExtendedBlockStorage aextendedblockstorage[] = var4.getBlockStorageArray();
+        
+        Chunk var4 = new Chunk(worldObj, var3, metadata, cx, cy);
         byte[] var5 = var4.getBiomeArray();
 
         for (int var6 = 0; var6 < var5.length; ++var6)
         {
             var5[var6] = (byte)this.biomesForGeneration[var6].biomeID;
         }
-        
-        for (int k = 0; k < 16; k++)
-        {
-            for (int l = 0; l < 16; l++)
-            {
-                for (int i1 = 0; i1 < 256; i1++)
-                {
-                    Block b = var3[k << 12 | l << 8 | i1];
-                    
-                    if(b == null)
-                    {
-                    	b = Blocks.air;
-                    }
-                    
-                    int j1 = i1 >> 4;
 
-                    if (aextendedblockstorage[j1] == null)
-                    {
-                        aextendedblockstorage[j1] = new ExtendedBlockStorage(j1 << 4, true);
-                    }
-                    
-                    aextendedblockstorage[j1].func_150818_a(k, i1 & 0xf, l, b);
-                }
-            }
-        }
-        
         var4.generateSkylightMap();
         return var4;
     }
