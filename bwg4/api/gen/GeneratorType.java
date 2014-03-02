@@ -14,6 +14,9 @@ public class GeneratorType
 	public static String biomestring;
 	public static int[] currentSettings;
 	
+	public static long seed;
+	public static String genString;
+	
 	public static final GeneratorType[] generatortypes = new GeneratorType[40];
 	public static final GeneratorType DEFAULT = new GeneratorTypeDefault(1, 0, "BETTERDEFAULT", "Better Default", false, true);
 	public static final GeneratorType FLAT = new GeneratorType(2, 0, "EXTRFLAT", "Extremeflat", false, true);
