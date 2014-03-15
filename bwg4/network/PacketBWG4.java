@@ -39,12 +39,14 @@ public class PacketBWG4
     /* Handle a packet on the client side. Note this occurs after decoding has completed. */
     public void handleClientSide(EntityPlayer player)
     {
+    	System.out.println("===============================================================");
+    	
     	GeneratorType.seed = worldseed;
     	
     	if(genSettings != null)
     	{
     		GeneratorType.genString = genSettings;
-        	System.out.println("[BWG4]: seed=" + worldseed + " genString=" + genSettings);
+        	System.out.println("[BWG4]: seed=" + worldseed + " genString=" + genSettings + " ============================================================");
     	}
     }
 

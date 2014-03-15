@@ -1,24 +1,3 @@
-/*
-*
-*
-*
-*      NOTE TO SELF: 
-*
-*
-*      connect event:
-*   https://github.com/MinecraftForge/FML/blob/master/src/main/java/cpw/mods/fml/common/network/FMLNetworkEvent.java
-*
-*   http://www.minecraftforge.net/forum/index.php?topic=15641.0
-*
-*
-*
-*
-*
-*
-*
-*/
-
-
 package bwg4.network;
 
 import java.util.*;
