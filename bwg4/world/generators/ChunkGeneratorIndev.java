@@ -657,14 +657,18 @@ public class ChunkGeneratorIndev implements IChunkProvider
 		//TREES
         d = 0.5D;
         int l333 = (int)((mobSpawnerNoise.func_806_a((double)var4 * d, (double)var5 * d) / 8D + rand.nextDouble() * 4D + 4D) / 3D);
-        if(l333 < 0)
+        if(l333 != null)
         {
-            l333 = 0;
+            if(l333 < 0)
+            {
+                l333 = 0;
+            }
+      	    if(rand.nextInt(10) == 0)
+       	    {
+                l333++;
+            }	
         }
-        if(rand.nextInt(10) == 0)
-        {
-            l333++;
-        }
+
 		if(themeWOODS){ l333 += 8; }
 		else if(typeIsland){ l333 += 1; }
 		Object obj = new WorldGenTrees(false, 5, 0, 0, false);
