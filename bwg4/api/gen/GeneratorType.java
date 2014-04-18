@@ -25,7 +25,7 @@ public class GeneratorType
 	public static final GeneratorType ALPHA11 = new GeneratorTypeAlpha11(5, 1, "ALPHA11", "Alpha 1.1.0", true, true);
 	public static final GeneratorType INFDEV = new GeneratorTypeInfdev(6, 1, "INFDEV", "Infdev", true, true);
 	public static final GeneratorType INDEV = new GeneratorTypeIndev(7, 1, "INDEV", "Indev", true, true);
-	public static final GeneratorType WASTELAND = new GeneratorTypeWasteland(8, 2, "WASTELAND", "Wasteland (WIP)", true, false);
+	public static final GeneratorType WASTELAND = new GeneratorTypeWasteland(8, 2, "WASTELAND", "Wasteland (WIP)", false, false);
 	public static final GeneratorType ISLAND = new GeneratorTypeIsland(9, 2, "ISLAND", "Survival Island", true, true);
 	public static final GeneratorType SKYISLAND = new GeneratorTypeSkyIsland(10, 2, "SKYISLAND", "Survival Skyland", true, true);
 	public static final GeneratorType CAVESURV = new GeneratorTypeCaveSurvival(11, 2, "CAVESURV", "Cave Survival", true, false);
