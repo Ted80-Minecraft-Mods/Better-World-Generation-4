@@ -18,7 +18,7 @@ public class GeneratorType
 	public static String genString;
 	
 	public static final GeneratorType[] generatortypes = new GeneratorType[40];
-	public static final GeneratorType DEFAULT = new GeneratorTypeDefault(1, 0, "BETTERDEFAULT", "Better Default", false, true);
+	public static final GeneratorType DEFAULT = new GeneratorTypeDefault(1, 0, "BETTERDEFAULT", "Better Default", true, true);
 	public static final GeneratorType FLAT = new GeneratorType(2, 0, "EXTRFLAT", "Extremeflat", false, true);
 	public static final GeneratorType BETA173 = new GeneratorTypeBeta(3, 1, "BETA173", "Beta 1.7.3", true, true);
 	public static final GeneratorType ALPHA12 = new GeneratorTypeAlpha12(4, 1, "ALPHA12", "Alpha 1.2.0", true, false);
@@ -30,8 +30,8 @@ public class GeneratorType
 	public static final GeneratorType SKYISLAND = new GeneratorTypeSkyIsland(10, 2, "SKYISLAND", "Survival Skyland", true, true);
 	public static final GeneratorType CAVESURV = new GeneratorTypeCaveSurvival(11, 2, "CAVESURV", "Cave Survival", true, false);
 	public static final GeneratorType SKYBLOCK = new GeneratorTypeSkyblock(12, 2, "SKYBLOCK", "Skyblock", true, true);
-	public static final GeneratorType SKYLANDS = new GeneratorTypeSkyland(13, 3, "SKYLANDS", "Skylands", false, true);
-	public static final GeneratorType CAVE = new GeneratorTypeCave(14, 3, "CAVE", "Cave world", false, false);
+	public static final GeneratorType SKYLANDS = new GeneratorTypeSkyland(13, 3, "SKYLANDS", "Skylands", true, true);
+	public static final GeneratorType CAVE = new GeneratorTypeCave(14, 3, "CAVE", "Cave world", true, false);
 	public static final GeneratorType CITY = new GeneratorType(15, 3, "CITY", "Endless City", false, false);
 	public static final GeneratorType DEADLYDESERT = new GeneratorType(16, 5, "DEADLYDESERT", "Deadly Desert", false, false);
 	public static final GeneratorType EXTREMEJUNGLE = new GeneratorType(17, 5, "EXTREMEJUNGLE", "Extreme Jungle", false, false);

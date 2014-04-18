@@ -3,9 +3,13 @@ package bwg4.api.gen;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.WorldChunkManager;
+import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.IChunkProvider;
+import bwg4.api.biome.BiomeList;
 import bwg4.world.ChunkManagerOld;
 import bwg4.world.ProviderBWG4;
+import bwg4.world.generators.ChunkGeneratorBeta;
+import bwg4.world.generators.ChunkGeneratorSky;
 
 public class GeneratorTypeSkyland extends GeneratorType
 {
@@ -23,13 +27,13 @@ public class GeneratorTypeSkyland extends GeneratorType
 	@Override
 	public WorldChunkManager getClientWorldChunkManager(ProviderBWG4 provider)
     {
-		return null;
+		return new WorldChunkManagerHell(BiomeList.CLASSICnormal, 0.5F);
     }
 
 	@Override
     public IChunkProvider getChunkGenerator(ProviderBWG4 provider, World worldObj)
     {	
-    	return null;
+		return new ChunkGeneratorSky(worldObj, worldObj.getSeed(), worldObj.getWorldInfo().isMapFeaturesEnabled(), provider.trySetting(0, 1) + 1, 0);
     }
 
 	@Override
