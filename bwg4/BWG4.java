@@ -2,6 +2,7 @@ package bwg4;
 
 import bwg4.biomes.BiomeLoader;
 import bwg4.network.ConnectionManager;
+import bwg4.network.PacketBWG4generatorInfo;
 import bwg4.network.PacketManager;
 import bwg4.support.Support;
 import bwg4.world.ProviderBWG4;
@@ -39,6 +40,7 @@ public class BWG4
 		BiomeLoader.load();
 		
 		FMLCommonHandler.instance().bus().register(new ConnectionManager());
+		packetmanager.registerPacket(PacketBWG4generatorInfo.class);
 		
 		DimensionManager.unregisterProviderType(0);
 		DimensionManager.registerProviderType(0, ProviderBWG4.class, true);

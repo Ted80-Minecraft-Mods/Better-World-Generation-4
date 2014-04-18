@@ -19,7 +19,7 @@ public class GuiGeneratorSettings extends GuiScreen
 	private GuiButton BUTTON_BIOMELIST;
 	private GuiButton BUTTON_WORLDSETTINGS;
 	
-	private int CATEGORY = 0;
+	private int CATEGORY = 1;
 	private String[] categories = new String[]{"Enhanced", "Old", "Extreme Survival", "Fun"};//, "Adventure"};
 	
 	private int generatorSelected = -1;
