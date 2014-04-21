@@ -744,8 +744,7 @@ public class ChunkGeneratorBeta implements IChunkProvider
 		}
 		else
 		{	
-			/*
-			BlockFalling.field_149832_M = true; 
+			BlockFalling.fallInstantly = true; 
 			int k = i * 16;
 			int l = j * 16;
 			BiomeGenBase biomegenbase = worldObj.getWorldChunkManager().getBiomeGenAt(k + 16, l + 16);
@@ -764,7 +763,7 @@ public class ChunkGeneratorBeta implements IChunkProvider
 				int i1 = k + rand.nextInt(16) + 8;
 				int l4 = rand.nextInt(128);
 				int i8 = l + rand.nextInt(16) + 8;
-				(new BWG4oldGenLakes(Block.waterStill.blockID)).generate(worldObj, rand, i1, l4, i8);
+				(new OldGenLakes(Blocks.water)).generate(worldObj, rand, i1, l4, i8);
 			}
 			if(rand.nextInt(8) == 0)
 			{
@@ -773,7 +772,7 @@ public class ChunkGeneratorBeta implements IChunkProvider
 				int j8 = l + rand.nextInt(16) + 8;
 				if(i5 < 64 || rand.nextInt(10) == 0)
 				{
-					(new BWG4oldGenLakes(Block.lavaStill.blockID)).generate(worldObj, rand, j1, i5, j8);
+					(new OldGenLakes(Blocks.lava)).generate(worldObj, rand, j1, i5, j8);
 				}
 			} 
 			
@@ -782,7 +781,7 @@ public class ChunkGeneratorBeta implements IChunkProvider
 				int j5 = k + rand.nextInt(16) + 8;
 				int k8 = rand.nextInt(128);
 				int j11 = l + rand.nextInt(16) + 8;
-				(new BWG4decoDungeons(2)).generate(worldObj, rand, j5, k8, j11);
+				(new DecoDungeons(2)).generate(worldObj, rand, j5, k8, j11);
 			}
 			
 			for(int i2 = 0; i2 < 10; i2++)
@@ -790,13 +789,13 @@ public class ChunkGeneratorBeta implements IChunkProvider
 				int k5 = k + rand.nextInt(16);
 				int l8 = rand.nextInt(128);
 				int k11 = l + rand.nextInt(16);
-				(new BWG4oldGenClay(32, 2)).generate(worldObj, rand, k5, l8, k11);
+				(new OldGenClay(32, 2)).generate(worldObj, rand, k5, l8, k11);
 			}
 			
 			biomegenbase.decorate(worldObj, rand, k, l);
 			SpawnerAnimals.performWorldGenSpawning(worldObj, biomegenbase, k + 8, l + 8, 16, 16, rand);
 			
-			generatedTemperatures = BWG4ChunkManagerBeta.getColdTemperatures(generatedTemperatures, k + 8, l + 8, 16, 16);
+			generatedTemperatures = ChunkManagerOld.getColdTemperatures(generatedTemperatures, k + 8, l + 8, 16, 16);
 			for(int j19 = k + 8; j19 < k + 8 + 16; j19++)
 			{
 				for(int j22 = l + 8; j22 < l + 8 + 16; j22++)
@@ -807,22 +806,23 @@ public class ChunkGeneratorBeta implements IChunkProvider
 					double d1 = generatedTemperatures[i24 * 16 + j25] - ((double)(k25 - 64) / 64D) * 0.29999999999999999D;
 					if(d1 < 0.5D && k25 > 0 && k25 < 128 && worldObj.isAirBlock(j19, k25, j22))
 					{
-						if( worldObj.getBlockMaterial(j19, k25 - 1, j22).blocksMovement() && worldObj.getBlockMaterial(j19, k25 - 1, j22) != Material.ice )
+						if ( worldObj.isBlockFreezable(j19, 63, j22))
 						{
-							worldObj.setBlock(j19, k25, j22, Block.snow.blockID, 0, 2);
-						}
-						else if ( worldObj.getBlockMaterial(j19, 63, j22) == Material.water )
+							worldObj.setBlock(j19, 63, j22, Blocks.ice, 0, 2);					
+						}		
+						
+						Block b = worldObj.getBlock(j19, k25 - 1, j22);
+						if (worldObj.func_147478_e(j19, k25, j22, false) && b != Blocks.ice && b != Blocks.water)
 						{
-							worldObj.setBlock(j19, 63, j22, Block.ice.blockID, 0, 2);					
+							worldObj.setBlock(j19, k25, j22, Blocks.snow_layer, 0, 2);
 						}
 					}	
 				}
-
 			}
 
 			MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(ichunkprovider, worldObj, rand, i, j, false));
 			
-			BlockSand.fallInstantly = false;*/
+			BlockSand.fallInstantly = false;
 		}
     }
 

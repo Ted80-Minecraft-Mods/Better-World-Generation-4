@@ -257,7 +257,7 @@ public class GuiGeneratorSettings extends GuiScreen
 		}
 		else if(generatorSelected == GeneratorType.BETA173.GetID()) 
 		{
-			settings.add(new GuiSettingsButton(new String[]{"Biomes: Beta", "Biomes: Better Default"}, new int[]{0, 1}, 20, 80, width));
+			//settings.add(new GuiSettingsButton(new String[]{"Biomes: Beta", "Biomes: Better Default"}, new int[]{0, 1}, 20, 80, width));
 		}
 		else if(generatorSelected == GeneratorType.INFDEV.GetID() || generatorSelected == GeneratorType.ALPHA11.GetID()) 
 		{
@@ -285,7 +285,7 @@ public class GuiGeneratorSettings extends GuiScreen
 		}
 		else if(generatorSelected == GeneratorType.SKYLANDS.GetID()) 
 		{ 
-			settings.add(new GuiSettingsButton(new String[]{"Biomes: Better Default", "Biomes: Beta 1.7.3"}, new int[]{0, 1}, 20, 80, width));
+			//settings.add(new GuiSettingsButton(new String[]{"Biomes: Beta 1.7.3", "Biomes: Better Default"}, new int[]{1, 0}, 20, 80, width));
 		}
 		else if(generatorSelected == GeneratorType.DEADLYDESERT.GetID()) 
 		{ 

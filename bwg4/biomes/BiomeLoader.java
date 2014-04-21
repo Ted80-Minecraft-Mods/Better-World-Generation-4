@@ -3,6 +3,23 @@ package bwg4.biomes;
 import bwg4.api.biome.BiomeList;
 import bwg4.api.biome.BiomeManager;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.biome.BiomeGenBeach;
+import net.minecraft.world.biome.BiomeGenDesert;
+import net.minecraft.world.biome.BiomeGenEnd;
+import net.minecraft.world.biome.BiomeGenForest;
+import net.minecraft.world.biome.BiomeGenHell;
+import net.minecraft.world.biome.BiomeGenHills;
+import net.minecraft.world.biome.BiomeGenJungle;
+import net.minecraft.world.biome.BiomeGenMesa;
+import net.minecraft.world.biome.BiomeGenMushroomIsland;
+import net.minecraft.world.biome.BiomeGenOcean;
+import net.minecraft.world.biome.BiomeGenPlains;
+import net.minecraft.world.biome.BiomeGenRiver;
+import net.minecraft.world.biome.BiomeGenSavanna;
+import net.minecraft.world.biome.BiomeGenSnow;
+import net.minecraft.world.biome.BiomeGenStoneBeach;
+import net.minecraft.world.biome.BiomeGenSwamp;
+import net.minecraft.world.biome.BiomeGenTaiga;
 
 public class BiomeLoader 
 {
@@ -27,6 +44,41 @@ public class BiomeLoader
 		BiomeList.COMMONsnow = (new BiomeCommon(74, 0)).setColor(353825).setBiomeName("BWG4 com_snow").setTemperatureRainfall(0.0F, 0.5F);
 		BiomeList.COMMONnether = (new BiomeCommon(75, 0)).setColor(353825).setBiomeName("BWG4 Hell").setTemperatureRainfall(0.8F, 0.6F);
 		
-		BiomeManager.addBiome("test", BiomeList.OLDdesert, 1);
+		BiomeManager.addBiome("Plains", BiomeGenBase.plains, 1);
+		BiomeManager.addBiome("Desert", BiomeGenBase.desert, 1);
+		BiomeManager.addBiome("Extreme Hills", BiomeGenBase.extremeHills, 1);
+		BiomeManager.addBiome("Forest", BiomeGenBase.forest, 1);
+		BiomeManager.addBiome("Taiga", BiomeGenBase.taiga, 1);
+		BiomeManager.addBiome("Swampland", BiomeGenBase.swampland, 1);
+/*
+BiomeGenBase.icePlains "Ice Plains"
+BiomeGenBase.iceMountains "Ice Mountains"
+BiomeGenBase.mushroomIsland "MushroomIsland"
+BiomeGenBase.mushroomIslandShore "MushroomIslandShore"
+BiomeGenBase.beach "Beach"
+BiomeGenBase.desertHills "DesertHills"
+BiomeGenBase.forestHills "ForestHills"
+BiomeGenBase.taigaHills "TaigaHills"
+BiomeGenBase.extremeHillsEdge "Extreme Hills Edge"
+BiomeGenBase.jungle "Jungle"
+BiomeGenBase.jungleHills "JungleHills"
+BiomeGenBase.jungleEdge "JungleEdge"
+BiomeGenBase.deepOcean "Deep Ocean"
+BiomeGenBase.stoneBeach "Stone Beach"
+BiomeGenBase.coldBeach "Cold Beach"
+BiomeGenBase.birchForest "Birch Forest"
+BiomeGenBase.birchForestHills "Birch Forest Hills"
+BiomeGenBase.roofedForest "Roofed Forest"
+BiomeGenBase.coldTaiga "Cold Taiga"
+BiomeGenBase.coldTaigaHills "Cold Taiga Hills"
+BiomeGenBase.megaTaiga "Mega Taiga"
+BiomeGenBase.megaTaigaHills "Mega Taiga Hills"
+BiomeGenBase.extremeHillsPlus "Extreme Hills+"
+BiomeGenBase.savanna "Savanna"
+BiomeGenBase.savannaPlateau "Savanna Plateau"
+BiomeGenBase.mesa = "Mesa"
+BiomeGenBase.mesaPlateau_F "Mesa Plateau F"
+BiomeGenBase.mesaPlateau "Mesa Plateau"
+*/
 	}
 }

@@ -154,7 +154,7 @@ public class ChunkManagerOld extends WorldChunkManager
 				{
 					for(int j = 0; j < 64; j++)
 					{
-						biomeLookupTable[i + j * 64] = getBetaBiomes((float)i / 63F, (float)j / 63F); //getDefaultBiomes
+						biomeLookupTable[i + j * 64] = getDefaultBiomes((float)i / 63F, (float)j / 63F); //getDefaultBiomes
 					}
 				}
 			}
@@ -187,7 +187,7 @@ public class ChunkManagerOld extends WorldChunkManager
 				{
 					for(int j = 0; j < 64; j++)
 					{
-						biomeLookupTable[i + j * 64] = getBetaBiomes((float)i / 63F, (float)j / 63F); //getDefaultBiomes
+						biomeLookupTable[i + j * 64] = getDefaultBiomes((float)i / 63F, (float)j / 63F); //getDefaultBiomes
 					}
 				}
 			}
@@ -256,6 +256,121 @@ public class ChunkManagerOld extends WorldChunkManager
 		}
     }
 	
+    public int getDefaultBiomes(float temp, float rain) 
+    {
+		rain *= temp;
+		if(temp < 0.2F)
+		{
+			if(rain < 0.1F)
+			{
+				return BiomeGenBase.icePlains.biomeID;
+			}
+			else
+			{
+				return BiomeGenBase.coldTaiga.biomeID; 
+			}
+		}
+		if(temp < 0.4F)
+		{
+			if(rain < 0.1F)
+			{
+				return BiomeGenBase.coldTaiga.biomeID; 
+			}
+			if(rain < 0.2F)
+			{
+				return BiomeGenBase.icePlains.biomeID;
+			}
+			else
+			{
+				return BiomeGenBase.coldTaiga.biomeID; 
+			}
+		}
+		if(temp < 0.5F)
+		{
+			if(rain < 0.1F)
+			{
+				return BiomeGenBase.megaTaiga.biomeID;
+			}
+			if(rain < 0.2F)
+			{
+				return BiomeGenBase.forest.biomeID;
+			}
+			else
+			{
+				return BiomeGenBase.megaTaiga.biomeID;
+			} 
+		}
+		if(temp < 0.7F)
+		{
+			if(rain < 0.3F)
+			{
+				return BiomeGenBase.forest.biomeID;
+			}
+			if(rain < 0.5F)
+			{
+				return BiomeGenBase.plains.biomeID;
+			}
+			if(rain < 0.7F)
+			{
+				return BiomeGenBase.plains.biomeID;
+			}
+			else
+			{
+				return BiomeGenBase.swampland.biomeID;
+			} 
+		}
+		if(temp < 0.8F)
+		{
+			if(rain < 0.2F)
+			{
+				return BiomeGenBase.plains.biomeID;
+			}
+			if(rain < 0.5F)
+			{
+				return BiomeGenBase.forest.biomeID;
+			}
+			if(rain < 0.7F)
+			{
+				return BiomeGenBase.forest.biomeID;
+			}
+			else
+			{
+				return BiomeGenBase.swampland.biomeID;
+			}
+		}
+		if(rain < 0.2F)
+		{
+			if(temp < 0.9F)
+			{
+				return BiomeGenBase.savanna.biomeID;
+			}
+			else
+			{
+				return BiomeGenBase.desert.biomeID;
+			}
+		}
+		if(rain < 0.3F)
+		{
+			return BiomeGenBase.savanna.biomeID;
+		}
+		if(rain < 0.4F)
+		{
+			return BiomeGenBase.plains.biomeID;
+		}
+		if(rain < 0.7F)
+		{
+			return BiomeGenBase.forest.biomeID; 
+		}
+		if(rain < 0.8F)
+		{
+			return BiomeGenBase.jungleEdge.biomeID;
+		}
+		else
+		{
+			return BiomeGenBase.jungle.biomeID;
+		}
+    }
+    
     /*public int getDefaultBiomes(float temp, float rain) 
     {
 		rain *= temp;
