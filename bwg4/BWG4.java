@@ -2,6 +2,7 @@ package bwg4;
 
 import bwg4.biomes.BiomeLoader;
 import bwg4.network.ConnectionManager;
+import bwg4.network.PacketBWG4;
 import bwg4.network.PacketBWG4generatorInfo;
 import bwg4.network.PacketManager;
 import bwg4.support.Support;
@@ -17,6 +18,7 @@ import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
@@ -40,7 +42,6 @@ public class BWG4
 		BiomeLoader.load();
 		
 		FMLCommonHandler.instance().bus().register(new ConnectionManager());
-		packetmanager.registerPacket(PacketBWG4generatorInfo.class);
 		
 		DimensionManager.unregisterProviderType(0);
 		DimensionManager.registerProviderType(0, ProviderBWG4.class, true);
@@ -61,4 +62,10 @@ public class BWG4
 		
 		Support.load();
 	}
+	
+    @EventHandler
+    public void serverLoad(FMLServerStartingEvent event) {
+    	System.out.println("TEST ========================================================");
+        //NetworkRegistry.INSTANCE.newChannel("NetworkExample", new PacketHandler());
+    }
 }

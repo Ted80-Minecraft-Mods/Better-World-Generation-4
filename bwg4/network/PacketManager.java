@@ -112,15 +112,25 @@ public class PacketManager extends MessageToMessageCodec<FMLProxyPacket, PacketB
     }
 
     // Method to call from FMLInitializationEvent
-    public void initialise() 
+    public void initialise()
     {
+    	System.out.println("INIT ================================================");
+    	
         this.channels = NetworkRegistry.INSTANCE.newChannel("BWG", this);
+        registerPackets();
+    }
+
+    public void registerPackets()
+    {
+        registerPacket(PacketBWG4generatorInfo.class);
     }
 
     // Method to call from FMLPostInitializationEvent
     // Ensures that packet discriminators are common between server and client by using logical sorting
     public void postInitialise() 
     {
+    	System.out.println("PostINIT ================================================");
+    	
         if (this.isPostInitialised) 
         {
             return;
@@ -176,6 +186,8 @@ public class PacketManager extends MessageToMessageCodec<FMLProxyPacket, PacketB
         this.channels.get(Side.SERVER).attr(FMLOutboundHandler.FML_MESSAGETARGET).set(FMLOutboundHandler.OutboundTarget.PLAYER);
         this.channels.get(Side.SERVER).attr(FMLOutboundHandler.FML_MESSAGETARGETARGS).set(player);
         this.channels.get(Side.SERVER).writeAndFlush(message);
+        
+        System.out.println("Message was send ================================================");
     }
 
     /**
