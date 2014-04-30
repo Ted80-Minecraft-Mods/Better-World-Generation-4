@@ -20,8 +20,6 @@ public class ConnectionManager
     public void clientConnection(ServerConnectionFromClientEvent e)
     {
     	EntityPlayerMP player = ((NetHandlerPlayServer) e.handler).playerEntity;
-    	System.out.println("SEND TO ===============================================================");
     	BWG4.instance.packetmanager.sendTo(new PacketBWG4generatorInfo(12345L, "generatorString"), player);
-    	
     }
 }

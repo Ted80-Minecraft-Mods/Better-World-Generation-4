@@ -6,6 +6,8 @@ import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.IChunkProvider;
 import bwg4.api.biome.BiomeList;
+import bwg4.gui.GuiGeneratorSettings;
+import bwg4.gui.GuiSettingsButton;
 import bwg4.world.ProviderBWG4;
 import bwg4.world.generators.ChunkGeneratorInfdev;
 
@@ -14,6 +16,13 @@ public class GeneratorTypeInfdev extends GeneratorType
 	public GeneratorTypeInfdev(int id, int cat, String name, String screen, boolean c, boolean s) 
 	{
 		super(id, cat, name, screen, c, s);
+	}
+	
+	@Override
+	public boolean getSettings(GuiGeneratorSettings gui)
+	{
+		gui.settings.add(new GuiSettingsButton(new String[]{"Snow World: OFF", "Snow World: ON"}, new int[]{0, 1}, 20, 80, gui.width));
+		return true;
 	}
 	
 	@Override

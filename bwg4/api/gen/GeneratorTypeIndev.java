@@ -6,6 +6,9 @@ import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.IChunkProvider;
 import bwg4.api.biome.BiomeList;
+import bwg4.gui.GuiGeneratorSettings;
+import bwg4.gui.GuiSettingsButton;
+import bwg4.gui.GuiSettingsSlider;
 import bwg4.world.ProviderBWG4;
 import bwg4.world.generators.ChunkGeneratorIndev;
 
@@ -14,6 +17,16 @@ public class GeneratorTypeIndev extends GeneratorType
 	public GeneratorTypeIndev(int id, int cat, String name, String screen, boolean c, boolean s) 
 	{
 		super(id, cat, name, screen, c, s);
+	}
+	
+	@Override
+	public boolean getSettings(GuiGeneratorSettings gui)
+	{
+		gui.settings.add(new GuiSettingsButton(new String[]{"Theme: Default", "Theme: Hell", "Theme: Paradise", "Theme: Woods", "Theme: Snow"}, new int[]{0, 1, 2, 3, 4}, 20, 80, gui.width));
+		gui.settings.add(new GuiSettingsButton(new String[]{"Type: Island", "Type: Floating", "Type: Inland"}, new int[]{0, 1, 2}, 21, 100, gui.width));
+		gui.settings.add(new GuiSettingsSlider(new String[]{"Size: Small", "Size: Default", "Size: Large"}, new int[]{0, 1, 2}, 1, 22, 120, gui.width, 21, new int[]{0, 1}));
+		gui.settings.add(new GuiSettingsSlider(new String[]{"Layers: 1", "Layers: 2", "Layers: 3", "Layers: 4", "Layers: 5"}, new int[]{0, 1, 2, 3, 4}, 1, 23, 140, gui.width, 21, new int[]{1}));
+		return true;
 	}
 	
 	@Override

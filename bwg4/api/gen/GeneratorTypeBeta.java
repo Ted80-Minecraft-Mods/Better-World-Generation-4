@@ -5,6 +5,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.chunk.IChunkProvider;
 import bwg4.api.biome.BiomeList;
+import bwg4.gui.GuiGeneratorSettings;
 import bwg4.world.ChunkManagerOld;
 import bwg4.world.ProviderBWG4;
 import bwg4.world.generators.ChunkGeneratorBeta;
@@ -15,6 +16,13 @@ public class GeneratorTypeBeta extends GeneratorType
 	public GeneratorTypeBeta(int id, int cat, String name, String screen, boolean c, boolean s) 
 	{
 		super(id, cat, name, screen, c, s);
+	}
+
+	@Override
+	public boolean getSettings(GuiGeneratorSettings gui)
+	{
+		//settings.add(new GuiSettingsButton(new String[]{"Biomes: Beta", "Biomes: Better Default"}, new int[]{0, 1}, 20, 80, width));
+		return false;
 	}
 	
 	@Override

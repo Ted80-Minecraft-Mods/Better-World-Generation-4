@@ -80,6 +80,8 @@ public class PacketManager extends MessageToMessageCodec<FMLProxyPacket, PacketB
     @Override
     protected void decode(ChannelHandlerContext ctx, FMLProxyPacket msg, List<Object> out) throws Exception 
     {
+    	System.out.println("INCOMMING PACKET YES!");
+    	
         ByteBuf payload = msg.payload();
         byte discriminator = payload.readByte();
         Class<? extends PacketBWG4> clazz = this.packets.get(discriminator);
@@ -114,9 +116,7 @@ public class PacketManager extends MessageToMessageCodec<FMLProxyPacket, PacketB
     // Method to call from FMLInitializationEvent
     public void initialise()
     {
-    	System.out.println("INIT ================================================");
-    	
-        this.channels = NetworkRegistry.INSTANCE.newChannel("BWG", this);
+        this.channels = NetworkRegistry.INSTANCE.newChannel("BWG4", this);
         registerPackets();
     }
 
@@ -129,8 +129,6 @@ public class PacketManager extends MessageToMessageCodec<FMLProxyPacket, PacketB
     // Ensures that packet discriminators are common between server and client by using logical sorting
     public void postInitialise() 
     {
-    	System.out.println("PostINIT ================================================");
-    	
         if (this.isPostInitialised) 
         {
             return;
@@ -186,8 +184,6 @@ public class PacketManager extends MessageToMessageCodec<FMLProxyPacket, PacketB
         this.channels.get(Side.SERVER).attr(FMLOutboundHandler.FML_MESSAGETARGET).set(FMLOutboundHandler.OutboundTarget.PLAYER);
         this.channels.get(Side.SERVER).attr(FMLOutboundHandler.FML_MESSAGETARGETARGS).set(player);
         this.channels.get(Side.SERVER).writeAndFlush(message);
-        
-        System.out.println("Message was send ================================================");
     }
 
     /**

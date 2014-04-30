@@ -14,17 +14,17 @@ public class GuiGeneratorSettings extends GuiScreen
 {
 	private final GuiCreateWorld createWorldGui;
 	
-	private GuiButton BUTTON_DONE;
-	private GuiButton BUTTON_CATEGORY;
-	private GuiButton BUTTON_BIOMELIST;
-	private GuiButton BUTTON_WORLDSETTINGS;
+	public GuiButton BUTTON_DONE;
+	public GuiButton BUTTON_CATEGORY;
+	public GuiButton BUTTON_BIOMELIST;
+	public GuiButton BUTTON_WORLDSETTINGS;
 	
-	private int CATEGORY = 1;
-	private String[] categories = new String[]{"Enhanced", "Old", "Extreme Survival", "Fun"};//, "Adventure"};
+	public int CATEGORY = 1;
+	public String[] categories = new String[]{"Enhanced", "Old", "Extreme Survival", "Fun"};//, "Adventure"};
 	
-	private int generatorSelected = -1;
-	private ArrayList<GuiGeneratorButton> generators;
-	private ArrayList<GuiSettingsButton> settings;
+	public int generatorSelected = -1;
+	public ArrayList<GuiGeneratorButton> generators;
+	public ArrayList<GuiSettingsButton> settings;
 
 	public String BD_biomestring;
 	public String BD_worldstring;
@@ -32,6 +32,8 @@ public class GuiGeneratorSettings extends GuiScreen
 	public boolean decodebool;
 	public boolean setremember;
 	public int[] rememberSettings;
+	
+	public boolean hasSettings = false;
 	
 	public GuiGeneratorSettings(GuiCreateWorld gcw, String gs)
 	{
@@ -169,19 +171,17 @@ public class GuiGeneratorSettings extends GuiScreen
     		drawString(fontRendererObj, "Coming soon!", width / 2 - 110 + 1, 110, 10526880);
     	}
 
-		if(generatorSelected != -1)
-		{
-	    	if(GeneratorType.generatortypes[generatorSelected].HasSettings())
-	    	{
-	    		drawString(fontRendererObj, "Generator settings:", width / 2 + 5 + 1, 70, 10526880);
-	    	}
-		}
+    	if(hasSettings)
+    	{
+    		drawString(fontRendererObj, "Generator settings:", width / 2 + 5 + 1, 70, 10526880);
+    	}
 		
 		super.drawScreen(par1, par2, par3);
 	}
 	
 	public void switchCategory()
 	{
+		hasSettings = false;
 		BUTTON_CATEGORY.displayString = categories[CATEGORY];
 
 		if(generators != null)
@@ -248,48 +248,10 @@ public class GuiGeneratorSettings extends GuiScreen
 
 		BUTTON_BIOMELIST.visible = false;
 		BUTTON_WORLDSETTINGS.visible = false;
-		if(generatorSelected == GeneratorType.DEFAULT.GetID())
+		
+		if(generatorSelected > -1)
 		{
-			BUTTON_BIOMELIST.visible = true;
-			BUTTON_WORLDSETTINGS.visible = true;
-			settings.add(new GuiSettingsSlider(new String[]{"Biome size: 1", "Biome size: 2", "Biome size: 3", "Biome size: 4 (default)", "Biome size: 5", "Biome size: 6 (Large)", "Biome size: 7", "Biome size: 8"}, new int[]{1,2,3,4,5,6,7,8}, 3, 20, 120, width));
-			settings.add(new GuiSettingsButton(new String[]{"Amplified: OFF", "Amplified: ON"}, new int[]{0,1}, 21, 140, width));
-		}
-		else if(generatorSelected == GeneratorType.BETA173.GetID()) 
-		{
-			//settings.add(new GuiSettingsButton(new String[]{"Biomes: Beta", "Biomes: Better Default"}, new int[]{0, 1}, 20, 80, width));
-		}
-		else if(generatorSelected == GeneratorType.INFDEV.GetID() || generatorSelected == GeneratorType.ALPHA11.GetID()) 
-		{
-			settings.add(new GuiSettingsButton(new String[]{"Snow World: OFF", "Snow World: ON"}, new int[]{0, 1}, 20, 80, width));
-		}
-		else if(generatorSelected == GeneratorType.INDEV.GetID()) 
-		{ 
-			settings.add(new GuiSettingsButton(new String[]{"Theme: Default", "Theme: Hell", "Theme: Paradise", "Theme: Woods", "Theme: Snow"}, new int[]{0, 1, 2, 3, 4}, 20, 80, width));
-			settings.add(new GuiSettingsButton(new String[]{"Type: Island", "Type: Floating", "Type: Inland"}, new int[]{0, 1, 2}, 21, 100, width));
-			settings.add(new GuiSettingsSlider(new String[]{"Size: Small", "Size: Default", "Size: Large"}, new int[]{0, 1, 2}, 1, 22, 120, width, 21, new int[]{0, 1}));
-			settings.add(new GuiSettingsSlider(new String[]{"Layers: 1", "Layers: 2", "Layers: 3", "Layers: 4", "Layers: 5"}, new int[]{0, 1, 2, 3, 4}, 1, 23, 140, width, 21, new int[]{1}));
-		}
-		else if(generatorSelected == GeneratorType.ISLAND.GetID()) 
-		{ 
-			settings.add(new GuiSettingsButton(new String[]{"Theme: Default", "Theme: Tropical", "Theme: Paradise"}, new int[]{0, 1, 4}, 20, 80, width)); //"Theme: Hell", "Theme: Iceberg",   2, 3,
-			settings.add(new GuiSettingsSlider(new String[]{"Size: Small", "Size: Default", "Size: Large"}, new int[]{0, 1, 2}, 1, 21, 100, width, 20, new int[]{0, 1})); //, 2, 3
-		}
-		else if(generatorSelected == GeneratorType.SKYISLAND.GetID()) 
-		{ 
-			settings.add(new GuiSettingsButton(new String[]{"Theme: Default", "Theme: Snow", "Theme: Jungle"}, new int[]{0, 1, 2}, 20, 80, width)); 
-		}
-		else if(generatorSelected == GeneratorType.SKYBLOCK.GetID())
-		{
-			settings.add(new GuiSettingsSlider(new String[]{"Size: Small", "Size: Default", "Size: Large"}, new int[]{0, 1, 2}, 1, 20, 80, width));
-		}
-		else if(generatorSelected == GeneratorType.SKYLANDS.GetID()) 
-		{ 
-			//settings.add(new GuiSettingsButton(new String[]{"Biomes: Beta 1.7.3", "Biomes: Better Default"}, new int[]{1, 0}, 20, 80, width));
-		}
-		else if(generatorSelected == GeneratorType.DEADLYDESERT.GetID()) 
-		{ 
-			settings.add(new GuiSettingsButton(new String[]{"Extremely hard: OFF", "Extremely hard: ON"}, new int[]{0, 1}, 20, 80, width));
+			hasSettings = GeneratorType.generatortypes[generatorSelected].getSettings(this);
 		}
 
 		for(int s = 0; s < settings.size(); s++)

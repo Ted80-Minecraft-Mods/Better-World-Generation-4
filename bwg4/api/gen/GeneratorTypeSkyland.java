@@ -6,6 +6,8 @@ import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.IChunkProvider;
 import bwg4.api.biome.BiomeList;
+import bwg4.gui.GuiGeneratorSettings;
+import bwg4.gui.GuiSettingsButton;
 import bwg4.world.ChunkManagerOld;
 import bwg4.world.ProviderBWG4;
 import bwg4.world.generators.ChunkGeneratorBeta;
@@ -17,7 +19,14 @@ public class GeneratorTypeSkyland extends GeneratorType
 	{
 		super(id, cat, name, screen, c, s);
 	}
-	
+
+	@Override
+	public boolean getSettings(GuiGeneratorSettings gui)
+	{
+		//gui.settings.add(new GuiSettingsButton(new String[]{"Biomes: Beta 1.7.3", "Biomes: Better Default"}, new int[]{1, 0}, 20, 80, gui.width));
+		return false;
+	}
+
 	@Override
 	public WorldChunkManager getServerWorldChunkManager(ProviderBWG4 provider, World worldObj)
     {

@@ -375,7 +375,7 @@ public class ChunkGeneratorIsland implements IChunkProvider
 
                 for (int var11 = 255; var11 >= 0; --var11)
                 {
-                    int var12 = (var6 * 16 + var5) * 128 + var11;
+                    int var12 = (var6 * 16 + var5) * 256 + var11;
                     if(var11 <= 0 + rand.nextInt(5))
                     {
                     	blocks[var12] = Blocks.bedrock;

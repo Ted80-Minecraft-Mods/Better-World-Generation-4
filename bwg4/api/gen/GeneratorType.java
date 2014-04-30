@@ -1,6 +1,7 @@
 package bwg4.api.gen;
 
 import bwg4.api.biome.BiomeList;
+import bwg4.gui.GuiGeneratorSettings;
 import bwg4.world.ProviderBWG4;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
@@ -90,6 +91,13 @@ public class GeneratorType
 	public boolean HasSettings()
 	{
 		return hasSettings;
+	}
+	
+	//======================================= GENERATOR MENU SETTINGS ================================================
+	
+	public boolean getSettings(GuiGeneratorSettings gui)
+	{
+		return false;
 	}
 	
 	//======================================= GENERATOR TYPE SETTINGS ================================================
