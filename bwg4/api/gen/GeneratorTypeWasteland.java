@@ -12,9 +12,9 @@ import bwg4.world.generators.ChunkGeneratorWasteland;
 
 public class GeneratorTypeWasteland extends GeneratorType
 {
-	public GeneratorTypeWasteland(int id, int cat, String name, String screen, boolean c, boolean s) 
+	public GeneratorTypeWasteland(int id, int cat, String name, String screen, boolean c) 
 	{
-		super(id, cat, name, screen, c, s);
+		super(id, cat, name, screen, c);
 	}
 	
 	@Override

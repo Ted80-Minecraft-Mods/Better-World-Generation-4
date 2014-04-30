@@ -11,9 +11,9 @@ import bwg4.world.generators.ChunkGeneratorCave;
 
 public class GeneratorTypeCave extends GeneratorType
 {
-	public GeneratorTypeCave(int id, int cat, String name, String screen, boolean c, boolean s) 
+	public GeneratorTypeCave(int id, int cat, String name, String screen, boolean c) 
 	{
-		super(id, cat, name, screen, c, s, true, true);
+		super(id, cat, name, screen, c, true, true);
 	}
 
 	@Override

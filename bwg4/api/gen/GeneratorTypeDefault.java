@@ -11,9 +11,9 @@ import bwg4.world.ProviderBWG4;
 
 public class GeneratorTypeDefault extends GeneratorType
 {
-	public GeneratorTypeDefault(int id, int cat, String name, String screen, boolean c, boolean s) 
+	public GeneratorTypeDefault(int id, int cat, String name, String screen, boolean c) 
 	{
-		super(id, cat, name, screen, c, s);
+		super(id, cat, name, screen, c);
 	}
 	
 	@Override

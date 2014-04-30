@@ -13,9 +13,9 @@ import bwg4.world.generators.ChunkGeneratorInfdev;
 
 public class GeneratorTypeInfdev extends GeneratorType
 {
-	public GeneratorTypeInfdev(int id, int cat, String name, String screen, boolean c, boolean s) 
+	public GeneratorTypeInfdev(int id, int cat, String name, String screen, boolean c) 
 	{
-		super(id, cat, name, screen, c, s);
+		super(id, cat, name, screen, c);
 	}
 	
 	@Override

@@ -13,9 +13,9 @@ import net.minecraft.world.biome.WorldChunkManagerHell;;
 
 public class GeneratorTypeBeta extends GeneratorType
 {
-	public GeneratorTypeBeta(int id, int cat, String name, String screen, boolean c, boolean s) 
+	public GeneratorTypeBeta(int id, int cat, String name, String screen, boolean c) 
 	{
-		super(id, cat, name, screen, c, s);
+		super(id, cat, name, screen, c);
 	}
 
 	@Override
