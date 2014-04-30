@@ -19,7 +19,7 @@ public class GeneratorType
 	public static String genString;
 	
 	public static final GeneratorType[] generatortypes = new GeneratorType[40];
-	public static final GeneratorType DEFAULT = new GeneratorTypeDefault(1, 0, "BETTERDEFAULT", "Better Default", true);
+	public static final GeneratorType DEFAULT = new GeneratorTypeDefault(1, 0, "BETTERDEFAULT", "Better Default", false);
 	public static final GeneratorType FLAT = new GeneratorType(2, 0, "EXTRFLAT", "Extremeflat", false);
 	public static final GeneratorType BETA173 = new GeneratorTypeBeta(3, 1, "BETA173", "Beta 1.7.3", true);
 	public static final GeneratorType ALPHA12 = new GeneratorTypeAlpha12(4, 1, "ALPHA12", "Alpha 1.2.0", true);

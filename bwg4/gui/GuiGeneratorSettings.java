@@ -34,6 +34,7 @@ public class GuiGeneratorSettings extends GuiScreen
 	public int[] rememberSettings;
 	
 	public boolean hasSettings = false;
+	public boolean emptyCategory = false;
 	
 	public GuiGeneratorSettings(GuiCreateWorld gcw, String gs)
 	{
@@ -158,17 +159,17 @@ public class GuiGeneratorSettings extends GuiScreen
 		
 		//category
 		drawString(fontRendererObj, "Choose a category:", width / 2 - 155 + 1, 30, 10526880);
-    	if(CATEGORY != 4)
-    	{
-    		drawString(fontRendererObj, "Select a world generator:", width / 2 - 155 + 1, 70, 10526880);
-    	}
 		
     	String catpos = "(" + (CATEGORY + 1) + "/4)";
     	drawString(fontRendererObj, catpos, width / 2 - 5 - fontRendererObj.getStringWidth(catpos), 30, 10526880);
     	
-    	if(CATEGORY == 4)
+    	if(emptyCategory)
     	{
     		drawString(fontRendererObj, "Coming soon!", width / 2 - 110 + 1, 110, 10526880);
+    	}
+    	else	
+    	{
+    		drawString(fontRendererObj, "Select a world generator:", width / 2 - 155 + 1, 70, 10526880);
     	}
 
     	if(hasSettings)
@@ -182,6 +183,7 @@ public class GuiGeneratorSettings extends GuiScreen
 	public void switchCategory()
 	{
 		hasSettings = false;
+		emptyCategory = false;
 		BUTTON_CATEGORY.displayString = categories[CATEGORY];
 
 		if(generators != null)
@@ -205,6 +207,11 @@ public class GuiGeneratorSettings extends GuiScreen
 					count++;
 				}
 			}
+		}
+		
+		if(count == 0)
+		{
+			emptyCategory = true;
 		}
 	}
 	

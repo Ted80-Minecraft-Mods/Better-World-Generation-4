@@ -14,7 +14,7 @@ public class PacketBWG4generatorInfo extends PacketBWG4
 	{
 		super();
 		
-		System.out.println("CONSTRUCTOR PACKET ===============================================================");
+		//System.out.println("CONSTRUCTOR PACKET ===============================================================");
 		
 		worldseed = seed;
 		genSettings = settings;
@@ -23,7 +23,7 @@ public class PacketBWG4generatorInfo extends PacketBWG4
     /* Encode the packet data into the ByteBuf stream. Complex data sets may need specific data handlers */
     public void encodeInto(ChannelHandlerContext ctx, ByteBuf buffer)
     {
-    	System.out.println("CONSTRUCTING PACKET ===============================================================");
+    	//System.out.println("CONSTRUCTING PACKET ===============================================================");
     	
     	byte[] b = genSettings.getBytes();
     	
@@ -34,7 +34,7 @@ public class PacketBWG4generatorInfo extends PacketBWG4
     /* Decode the packet data from the ByteBuf stream. Complex data sets may need specific data handlers */
     public void decodeInto(ChannelHandlerContext ctx, ByteBuf buffer)
     {
-    	System.out.println("READ PACKET ===============================================================");
+    	//System.out.println("READ PACKET ===============================================================");
     	
     	byte[] b = new byte[0];
     	
@@ -47,20 +47,20 @@ public class PacketBWG4generatorInfo extends PacketBWG4
     /* Handle a packet on the client side. Note this occurs after decoding has completed. */
     public void handleClientSide(EntityPlayer player)
     {
-		System.out.println("HANDLE CLIENT ===============================================================");
+		//System.out.println("HANDLE CLIENT ===============================================================");
 		
     	GeneratorType.seed = worldseed;
     	
     	if(genSettings != null)
     	{
     		GeneratorType.genString = genSettings;
-        	System.out.println("[BWG4]: seed=" + worldseed + " genString=" + genSettings + " ============================================================");
+        	//System.out.println("[BWG4]: seed=" + worldseed + " genString=" + genSettings + " ============================================================");
     	}
     }
 
     /* Handle a packet on the server side. Note this occurs after decoding has completed. */
     public void handleServerSide(EntityPlayer player)
     {
-		System.out.println("HANDLE SERVER ===============================================================");
+		//System.out.println("HANDLE SERVER ===============================================================");
     }
 }
