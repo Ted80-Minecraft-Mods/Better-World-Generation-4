@@ -277,14 +277,14 @@ public class GuiGeneratorSettings extends GuiScreen
 		{
 			gensettings = genstring[1].split("&");
 		}
-		if(genstring.length > 2)
+		/*if(genstring.length > 2)
 		{
 			BD_biomestring = genstring[2];
 		}
 		else
 		{
 			BD_biomestring = BiomeManager.getDefaultString();
-		}
+		}*/
 		
 		int n = DecodeGeneratorString.getGeneratorIDFromName(genstring[0]);
 		if(n > -1)
@@ -336,16 +336,17 @@ public class GuiGeneratorSettings extends GuiScreen
 				}
 			}
 			
-			if(generatorSelected == GeneratorType.DEFAULT.GetID())
-			{
-				genstring += "#" + BD_biomestring;
-			}
+			//if(generatorSelected == GeneratorType.DEFAULT.GetID())
+			//{
+			//	genstring += "#" + BD_biomestring;
+			//}
 			
 			return genstring;
 		}
 		else
 		{
-			return GeneratorType.DEFAULT.GetName() + "#4&0#" + BiomeManager.getDefaultString();
+			//return GeneratorType.DEFAULT.GetName() + "#4&0#" + BiomeManager.getDefaultString();
+			return GeneratorType.BETA173.GetName();
 		}
 	}
 }
