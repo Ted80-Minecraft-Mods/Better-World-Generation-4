@@ -372,7 +372,7 @@ public class ChunkGeneratorSky implements IChunkProvider
 
     public void populate(IChunkProvider ichunkprovider, int i, int j)
     {
-		if (worldtype == 2)
+		if (worldtype == 1)
 		{
 			BlockSand.fallInstantly = true;
 			int k = i * 16;
@@ -711,7 +711,7 @@ public class ChunkGeneratorSky implements IChunkProvider
 			BlockSand.fallInstantly = false;
 		
 		}
-		else if (worldtype == 1)
+		else if (worldtype == 2)
 		{
 			BlockSand.fallInstantly = true;
 			int k = i * 16;
@@ -899,7 +899,7 @@ public class ChunkGeneratorSky implements IChunkProvider
 			}
 			
 			BiomeGenBase var6 = this.worldObj.getBiomeGenForCoords(var4 + 16, var5 + 16);
-			var6.decorate(this.worldObj, this.worldObj.rand, var4, var5);
+			//var6.decorate(this.worldObj, this.worldObj.rand, var4, var5);
 			
 			BlockSand.fallInstantly = false;
 		}	

@@ -21,16 +21,16 @@ public class BiomeCommon extends BiomeGenBase
     public BiomeCommon(int par1, int id)
     {
         super(par1);
-
+       
         if(id == 0) //NORMAL 1
         {
         	spawnableCreatureList.clear();
         }
 		if(id == 1) //NORMAL 2
 		{
-			spawnableCreatureList.add(new SpawnListEntry(EntityWolf.class, 5, 2, 6));
+			this.spawnableCreatureList.add(new SpawnListEntry(EntityWolf.class, 5, 2, 6));
 			spawnableMonsterList.add(new SpawnListEntry(EntityOcelot.class, 2, 1, 1));
-			spawnableCreatureList.add(new SpawnListEntry(EntityHorse.class, 5, 2, 6));
+			this.spawnableCreatureList.add(new SpawnListEntry(EntityHorse.class, 5, 2, 6));
 		}
 		if(id == 2) //SNOW
 		{

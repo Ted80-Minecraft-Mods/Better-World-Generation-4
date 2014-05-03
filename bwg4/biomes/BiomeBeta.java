@@ -32,7 +32,7 @@ public class BiomeBeta extends BiomeGenBase
     {
         super(par1);
 		id = i;
-		
+
 		if(id == 0 || id == 0)
 		{
 			spawnableMonsterList.add(new SpawnListEntry(EntityOcelot.class, 2, 1, 1));
@@ -53,7 +53,7 @@ public class BiomeBeta extends BiomeGenBase
 			spawnableCreatureList.clear();
 			topBlock = Blocks.sand;
 			fillerBlock = Blocks.sand;
-		}	
+		}
     }
     
     public WorldGenAbstractTree func_150567_a(Random par1Random)

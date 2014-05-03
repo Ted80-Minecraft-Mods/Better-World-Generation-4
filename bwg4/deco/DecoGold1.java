@@ -103,7 +103,7 @@ public class DecoGold1 extends WorldGenerator
 					{
 						int j4 = i4 - z;
 
-						if ((Math.abs(l3) != l1 || Math.abs(j4) != l1 || l1 <= 0) && par1World.getBlock(i3, j2, i4).isOpaqueCube())
+						if ((Math.abs(l3) != l1 || Math.abs(j4) != l1 || l1 <= 0) && !par1World.getBlock(i3, j2, i4).isOpaqueCube())
 						{
 							par1World.setBlock(i3, j2, i4, Blocks.leaves, 0, 0);
 						}
@@ -210,7 +210,7 @@ public class DecoGold1 extends WorldGenerator
 					{
 						int i5 = l4 - z;
 
-						if ((Math.abs(k4) != l1 || Math.abs(i5) != l1 || l1 <= 0) && par1World.getBlock(i3, j2, i4).isOpaqueCube())
+						if ((Math.abs(k4) != l1 || Math.abs(i5) != l1 || l1 <= 0) && !par1World.getBlock(i3, j2, i4).isOpaqueCube())
 						{
 							par1World.setBlock(i4, k3, l4, Blocks.leaves);
 						}
@@ -323,7 +323,7 @@ public class DecoGold1 extends WorldGenerator
 					{
 						int i5 = l4 - z;
 
-						if ((Math.abs(k4) != l1 || Math.abs(i5) != l1 || l1 <= 0) && par1World.getBlock(i3, j2, i4).isOpaqueCube())
+						if ((Math.abs(k4) != l1 || Math.abs(i5) != l1 || l1 <= 0) && !par1World.getBlock(i3, j2, i4).isOpaqueCube())
 						{
 							par1World.setBlock(i4, k3, l4, Blocks.leaves);
 						}

@@ -22,6 +22,8 @@ public class GeneratorTypeSkyblock extends GeneratorType
 	public boolean getSettings(GuiGeneratorSettings gui)
 	{
 		gui.settings.add(new GuiSettingsSlider(new String[]{"Size: Small", "Size: Default", "Size: Large"}, new int[]{0, 1, 2}, 1, 20, 80, gui.width));
+		gui.setCredits("Original map by Noobcrew", 108);
+		
 		return true;
 	}
 	

@@ -503,7 +503,7 @@ public class ChunkGeneratorBeta implements IChunkProvider
 				int l6 = k + rand.nextInt(16);
 				int i10 = rand.nextInt(32);
 				int l12 = l + rand.nextInt(16);
-				(new OldGenMinable(Blocks.gold_block, 8, 2)).generate(worldObj, rand, l6, i10, l12);
+				(new OldGenMinable(Blocks.gold_ore, 8, 2)).generate(worldObj, rand, l6, i10, l12);
 			}
 
 			for(int l3 = 0; l3 < 8; l3++) //GOOD
@@ -730,7 +730,7 @@ public class ChunkGeneratorBeta implements IChunkProvider
 						}		
 						
 						Block b = worldObj.getBlock(j19, k25 - 1, j22);
-						if (worldObj.func_147478_e(j19, k25, j22, false) && b != Blocks.ice && b != Blocks.water)
+						if (worldObj.func_147478_e(j19, k25, j22, false) && b != Blocks.ice && b != Blocks.water && k25 > 63)
 						{
 							worldObj.setBlock(j19, k25, j22, Blocks.snow_layer, 0, 2);
 						}
@@ -812,7 +812,7 @@ public class ChunkGeneratorBeta implements IChunkProvider
 						}		
 						
 						Block b = worldObj.getBlock(j19, k25 - 1, j22);
-						if (worldObj.func_147478_e(j19, k25, j22, false) && b != Blocks.ice && b != Blocks.water)
+						if (worldObj.func_147478_e(j19, k25, j22, false) && b != Blocks.ice && b != Blocks.water && k25 > 63)
 						{
 							worldObj.setBlock(j19, k25, j22, Blocks.snow_layer, 0, 2);
 						}

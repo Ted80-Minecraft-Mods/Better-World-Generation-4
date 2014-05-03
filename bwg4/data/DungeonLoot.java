@@ -259,10 +259,6 @@ public class DungeonLoot
     			if (i == 12 || i == 13 || i == 14) { return new ItemStack(Items.lava_bucket, par1Random.nextInt(2) + 1); }
     			else { return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random); }	
     		} 
-    		if(chestID == 3)
-    		{
-    			return ChestGenHooks.getOneItem(ChestGenHooks.DUNGEON_CHEST, par1Random);
-    		} 
     		else
     		{
     			int i = par1Random.nextInt(20);

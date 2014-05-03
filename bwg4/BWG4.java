@@ -1,6 +1,7 @@
 package bwg4;
 
 import bwg4.biomes.BiomeLoader;
+import bwg4.config.ConfigBWG4;
 import bwg4.network.ConnectionManager;
 import bwg4.network.PacketBWG4;
 import bwg4.network.PacketBWG4generatorInfo;
@@ -24,7 +25,7 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-@Mod(modid="BWG4", name="BetterWorldGeneration4", version="1.2.0")
+@Mod(modid="BWG4", name="BetterWorldGeneration4", version="1.2.0c")
 public class BWG4
 {	
 	@Instance("BWG4")
@@ -39,6 +40,7 @@ public class BWG4
 	{
 		instance = this;
 		
+		ConfigBWG4.init(event);
 		BiomeLoader.load();
 		
 		FMLCommonHandler.instance().bus().register(new ConnectionManager());
@@ -65,7 +67,6 @@ public class BWG4
 	
     @EventHandler
     public void serverLoad(FMLServerStartingEvent event) {
-    	System.out.println("TEST ========================================================");
         //NetworkRegistry.INSTANCE.newChannel("NetworkExample", new PacketHandler());
     }
 }

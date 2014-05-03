@@ -652,7 +652,7 @@ public class ChunkGeneratorAlpha implements IChunkProvider
 					}		
 					
 					Block b = worldObj_16.getBlock(k15, i21 - 1, j18);
-					if (worldObj_16.func_147478_e(k15, i21, j18, false) && b != Blocks.ice && b != Blocks.water)
+					if (worldObj_16.func_147478_e(k15, i21, j18, false) && b != Blocks.ice && b != Blocks.water && i21 > 63)
 					{
 						if(Blocks.snow_layer.canBlockStay(worldObj_16, k15, i21, j18))
 						{

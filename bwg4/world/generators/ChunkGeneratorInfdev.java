@@ -609,7 +609,7 @@ public class ChunkGeneratorInfdev implements IChunkProvider
                 }
 
                 Block b = field_907_p.getBlock(sn1 + k, sn3 - 1, sn2 + l);
-                if (field_907_p.func_147478_e(sn1 + k, sn3, sn2 + l, false) && b != Blocks.ice && b != Blocks.water)
+                if (field_907_p.func_147478_e(sn1 + k, sn3, sn2 + l, false) && b != Blocks.ice && b != Blocks.water && sn3 > 63)
                 {
                     field_907_p.setBlock(sn1 + k, sn3, sn2 + l, Blocks.snow_layer, 0, 2);
                 }

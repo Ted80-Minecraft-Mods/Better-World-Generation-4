@@ -429,7 +429,7 @@ public class ChunkGeneratorSkyIsland implements IChunkProvider
 		//======================== DECO =================================
 		if(par2 == 0 && par3 == 0)
 		{
-			(new DecoDungeons(1, false, false, true, false)).generate(world, rand, 0, 2, 0);
+			(new DecoDungeons(1, false, false, true, true)).generate(world, rand, 0, 2, 0);
 		}
 		else
 		{
@@ -611,7 +611,7 @@ public class ChunkGeneratorSkyIsland implements IChunkProvider
                 Block b = world.getBlock(var12 + var7, var14 - 1, var13 + var8);
                 if (this.world.func_147478_e(var12 + var7, var14, var13 + var8, false) && b != Blocks.ice && b != Blocks.water)
                 {
-                    this.world.setBlock(var12 + var7, var14, var13 + var8, Blocks.snow, 0, 2);
+                    this.world.setBlock(var12 + var7, var14, var13 + var8, Blocks.snow_layer, 0, 2);
                 }	
             }
         }			

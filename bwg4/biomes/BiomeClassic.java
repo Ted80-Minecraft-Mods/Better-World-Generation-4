@@ -15,9 +15,9 @@ public class BiomeClassic extends BiomeGenBase
     public BiomeClassic(int par1)
     {
         super(par1);
-		spawnableCreatureList.add(new SpawnListEntry(EntityWolf.class, 2, 1, 1));
-		spawnableCreatureList.add(new SpawnListEntry(EntityOcelot.class, 2, 1, 1));
-		spawnableCreatureList.add(new SpawnListEntry(EntityHorse.class, 2, 1, 1));
+        spawnableCreatureList.add(new SpawnListEntry(EntityWolf.class, 2, 1, 1));
+        spawnableCreatureList.add(new SpawnListEntry(EntityOcelot.class, 2, 1, 1));
+        spawnableCreatureList.add(new SpawnListEntry(EntityHorse.class, 2, 1, 1));
     }
     
     @SideOnly(Side.CLIENT)

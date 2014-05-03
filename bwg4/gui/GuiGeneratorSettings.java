@@ -36,10 +36,21 @@ public class GuiGeneratorSettings extends GuiScreen
 	public boolean hasSettings = false;
 	public boolean emptyCategory = false;
 	
+	public boolean credits = false;
+	public int creditsY = 0;
+	public String creditsText = "";
+	
 	public GuiGeneratorSettings(GuiCreateWorld gcw, String gs)
 	{
     	createWorldGui = gcw;
     	decodebool = true;
+	}
+	
+	public void setCredits(String text, int y)
+	{
+		credits = true;
+		creditsY = y;
+		creditsText = text;
 	}
 
 	public void initGui()
@@ -174,7 +185,12 @@ public class GuiGeneratorSettings extends GuiScreen
 
     	if(hasSettings)
     	{
-    		drawString(fontRendererObj, "Generator settings:", width / 2 + 5 + 1, 70, 10526880);
+    		drawString(fontRendererObj, "Generator settings:", width / 2 + 6, 70, 10526880);
+    	}
+    	
+    	if(credits)
+    	{
+    		drawString(fontRendererObj, creditsText, width / 2 + 6, creditsY, 10526880);
     	}
 		
 		super.drawScreen(par1, par2, par3);
@@ -182,6 +198,7 @@ public class GuiGeneratorSettings extends GuiScreen
 	
 	public void switchCategory()
 	{
+		credits = false;
 		hasSettings = false;
 		emptyCategory = false;
 		BUTTON_CATEGORY.displayString = categories[CATEGORY];
@@ -235,6 +252,8 @@ public class GuiGeneratorSettings extends GuiScreen
 	
 	public void selectGenerator()
 	{
+		credits = false;
+		
 		if(generatorSelected > -1)
 		{
 			BUTTON_DONE.enabled = true;
