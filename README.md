@@ -32,23 +32,30 @@ forum thread: http://www.minecraftforum.net/topic/1070207-162-forge-better-world
 
 ## CHANGELOG ##
 
-    Version 1.2.0 'planned'
+    Version 1.2.0c '03-5-2014'
+    - Fixed sky world generator crash
+    - Fixed end portal not generating on survival skyland
+
+    Version 1.2.0b '03-5-2014'
+    - Re-added config file
+    - Fixed gold ore not generating in beta
+    - Fixed a biome id bug
+    - Fixed snow generating on water
+    - Fixed pine trees and snow on survival skyland
+    - Added credits text when selecting skyblock generator
+    
+    Version 1.2.0a '03-5-2014'
     - Updated to minecraft 1.7
-    - Added Cave generator
-    - Added Wasteland generator
-    - Added Survival Cave generator 
+    - Added Survival Cave generator
     - Added alpha 1.1.0 generator
+    - Added Cave World generator
     - Added Size option to Survival island and skyblock
     - Added new generator menu
     - Added size and layer option to indev
-    - Added size and amplified option to better default
-    - Added ruins
-    - Added volcanoes
-    - Added rare secret ;)
     - Changed Survival Island paradise theme
     - Changed dungeon loot
     - Less biome ids :)
-    - Fixed ice ocean bug
+    - Temporarily disabled better default generator
         
     Version 1.1.9 '21-9-2013'
     - Updated to minecraft 1.6.4
