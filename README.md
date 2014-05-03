@@ -32,6 +32,9 @@ forum thread: http://www.minecraftforum.net/topic/1070207-162-forge-better-world
 
 ## CHANGELOG ##
 
+    Version 1.2.0c '03-5-2014'
+    - Fixed sky world generator crash
+    - Fixed end portal not generating on survival skyland
 
     Version 1.2.0b '03-5-2014'
     - Re-added config file
