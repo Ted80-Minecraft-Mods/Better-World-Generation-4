@@ -477,7 +477,7 @@ public class ChunkGeneratorSky implements IChunkProvider
 			for(int l3 = 0; l3 < 8; l3++)
 			{
 				int i7 = k + rand.nextInt(16);
-				int j10 = rand.nextInt(16);
+				int j10 = rand.nextInt(20) + 8;
 				int i13 = l + rand.nextInt(16);
 				(new OldGenMinable(Blocks.redstone_ore, 7, 2)).generate(worldObj, rand, i7, j10, i13);
 			}
@@ -485,7 +485,7 @@ public class ChunkGeneratorSky implements IChunkProvider
 			for(int i4 = 0; i4 < 1; i4++)
 			{
 				int j7 = k + rand.nextInt(16);
-				int k10 = rand.nextInt(16);
+				int k10 = rand.nextInt(20) + 8;
 				int j13 = l + rand.nextInt(16);
 				(new OldGenMinable(Blocks.diamond_ore, 7, 2)).generate(worldObj, rand, j7, k10, j13);
 			}
@@ -728,7 +728,7 @@ public class ChunkGeneratorSky implements IChunkProvider
 			for(int l3 = 0; l3 < 8; l3++)
 			{
 				int i7 = k + rand.nextInt(16);
-				int j10 = rand.nextInt(16) + 16;
+				int j10 = rand.nextInt(20) + 8;
 				int i13 = l + rand.nextInt(16);
 				(new OldGenMinable(Blocks.redstone_ore, 7, 2)).generate(worldObj, rand, i7, j10, i13);
 			}
@@ -736,7 +736,7 @@ public class ChunkGeneratorSky implements IChunkProvider
 			for(int i4 = 0; i4 < 1; i4++)
 			{
 				int j7 = k + rand.nextInt(16);
-				int k10 = rand.nextInt(16) + 16;
+				int k10 = rand.nextInt(20) + 8;
 				int j13 = l + rand.nextInt(16);
 				(new OldGenMinable(Blocks.diamond_block, 7, 2)).generate(worldObj, rand, j7, k10, j13);
 			}

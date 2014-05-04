@@ -24,8 +24,9 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
+import bwg4.data.Planets;
 
-@Mod(modid="BWG4", name="BetterWorldGeneration4", version="1.2.0c")
+@Mod(modid="BWG4", name="BetterWorldGeneration4", version="1.2.0d")
 public class BWG4
 {	
 	@Instance("BWG4")
@@ -63,6 +64,7 @@ public class BWG4
 		packetmanager.postInitialise();
 		
 		Support.load();
+		Planets.init();
 	}
 	
     @EventHandler

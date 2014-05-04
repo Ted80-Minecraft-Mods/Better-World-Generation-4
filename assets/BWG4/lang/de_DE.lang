@@ -1,0 +1,58 @@
+generator.BWG4=BWG4
+
+gui.selectcategory=Kategorie auswählen:
+gui.comingsoon=Kommt in Kürze!
+gui.selectGenerator=Weltgenerator auswählen:
+gui.generatorSettings=Generatoreinstellungen:
+gui.copystring=Generatoreinstellungen in die Zwischenablage kopieren
+
+bwg4.category.enhanced=Verbesserte Generatoren
+bwg4.category.old=Alte Generatoren
+bwg4.category.survival=Extremes Überleben
+bwg4.category.fun=Spaß
+
+bwg4.setting.size=Größe
+bwg4.setting.small=Klein
+bwg4.setting.default=Normal
+bwg4.setting.large=Groß
+bwg4.setting.snow=Schneewelt
+bwg4.setting.water=Water
+bwg4.setting.on=AN
+bwg4.setting.off=AUS
+bwg4.setting.theme=Thema
+bwg4.setting.type=Typ
+bwg4.setting.layer=Ebenen
+
+bwg4.theme.default=Standard
+bwg4.theme.snow=Schnee
+bwg4.theme.jungle=Tropen
+bwg4.theme.tropical=Tropisch
+bwg4.theme.paradise=Paradies
+bwg4.theme.hell=Hölle
+bwg4.theme.woods=Wälder
+
+bwg4.type.island=Insel
+bwg4.type.floating=Schwebend
+bwg4.type.inland=Festland
+
+bwg4.BETTERDEFAULT=Verbesserter Standardgenerator
+bwg4.EXTRFLAT=Extrem Flach
+bwg4.BETA173=Beta 1.7.3
+bwg4.ALPHA12=Alpha 1.2.0
+bwg4.ALPHA11=Alpha 1.1.0
+bwg4.INFDEV=Infdev
+bwg4.INDEV=Indev
+bwg4.WASTELAND=Ödland (Unfertig)
+bwg4.ISLAND=Überlebens-Insel
+bwg4.SKYISLAND=Himmelswelt (Überleben)
+bwg4.CAVESURV=Höhlenwelt (Überleben)
+bwg4.SKYBLOCK=Skyblock
+bwg4.SKYLANDS=Himmelswelt
+bwg4.CAVE=Höhlenwelt (Unfertig)
+bwg4.CITY=Unendliche Stadt
+bwg4.DEADLYDESERT=Tote Wüste
+bwg4.EXTREMEJUNGLE=Extremer Urwald
+bwg4.PLANET=Planetoids
+
+credits.skyblock=Originalwelt: Noobcrew
+credits.planet=Original mod by Seibai

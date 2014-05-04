@@ -169,13 +169,20 @@ public class ProviderBWG4 extends WorldProvider
         {
         	return true;
         }
+        else if(GeneratorType.currentGenerator == GeneratorType.PLANET)
+        {
+        	if(k == Blocks.leaves) { return true; } 
+        	return false;
+        }
         else if(GeneratorType.currentGenerator == GeneratorType.ISLAND || GeneratorType.currentGenerator == GeneratorType.BETA173 || GeneratorType.currentGenerator == GeneratorType.ALPHA12 || GeneratorType.currentGenerator == GeneratorType.INFDEV)
         {
-        	if(k == Blocks.sand) { return true; } else { return false; }
+        	if(k == Blocks.sand) { return true; } 
+        	return false;
         }
         else
         {
-        	if(k == Blocks.grass || k == Blocks.dirt || k == Blocks.sand) { return true; } else { return false; }
+        	if(k == Blocks.grass || k == Blocks.dirt || k == Blocks.sand) { return true; }
+        	return false;
         }
     }
 	
