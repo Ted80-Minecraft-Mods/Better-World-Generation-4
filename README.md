@@ -32,6 +32,11 @@ forum thread: http://www.minecraftforum.net/topic/1070207-162-forge-better-world
 
 ## CHANGELOG ##
 
+    Version 1.2.0e '04-5-2014'
+    - Added Planetoids generator
+    - Fixed diamonds not generating on skylands
+    - Added new translations (Germany, hungary)
+
     Version 1.2.0d '04-5-2014'
     - Added localization (https://github.com/BetterWorldGeneration/BetterWorldGeneration4/tree/master/assets/BWG4/lang)
 

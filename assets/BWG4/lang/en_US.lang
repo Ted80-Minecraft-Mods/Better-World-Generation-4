@@ -16,6 +16,7 @@ bwg4.setting.small=Small
 bwg4.setting.default=Default
 bwg4.setting.large=Large
 bwg4.setting.snow=Snow World
+bwg4.setting.water=Water
 bwg4.setting.on=ON
 bwg4.setting.off=OFF
 bwg4.setting.theme=Theme
@@ -51,5 +52,7 @@ bwg4.CAVE=Cave world (WIP)
 bwg4.CITY=Endless City
 bwg4.DEADLYDESERT=Deadly Desert
 bwg4.EXTREMEJUNGLE=Extreme Jungle
+bwg4.PLANET=Planetoids (WIP)
 
 credits.skyblock=Original map by Noobcrew
+credits.planet=Original mod by Seibai
