@@ -12,9 +12,9 @@ import bwg4.world.generators.ChunkGeneratorAlpha;
 
 public class GeneratorTypeAlpha12 extends GeneratorType
 {
-	public GeneratorTypeAlpha12(int id, int cat, String name, String screen, boolean c) 
+	public GeneratorTypeAlpha12(int id, int cat, String name, boolean c) 
 	{
-		super(id, cat, name, screen, c);
+		super(id, cat, name, c);
 	}
 	
 	@Override

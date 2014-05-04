@@ -1,5 +1,6 @@
 package bwg4.api.gen;
 
+import net.minecraft.util.StatCollector;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.WorldChunkManager;
@@ -13,15 +14,15 @@ import bwg4.world.generators.ChunkGeneratorInfdev;
 
 public class GeneratorTypeInfdev extends GeneratorType
 {
-	public GeneratorTypeInfdev(int id, int cat, String name, String screen, boolean c) 
+	public GeneratorTypeInfdev(int id, int cat, String name, boolean c) 
 	{
-		super(id, cat, name, screen, c);
+		super(id, cat, name, c);
 	}
 	
 	@Override
 	public boolean getSettings(GuiGeneratorSettings gui)
 	{
-		gui.settings.add(new GuiSettingsButton(new String[]{"Snow World: OFF", "Snow World: ON"}, new int[]{0, 1}, 20, 80, gui.width));
+		gui.settings.add(new GuiSettingsButton(new String[]{StatCollector.translateToLocal("bwg4.setting.snow") + ": " + StatCollector.translateToLocal("bwg4.setting.on"), StatCollector.translateToLocal("bwg4.setting.snow") + ": " + StatCollector.translateToLocal("bwg4.setting.off")}, new int[]{0, 1}, 20, 80, gui.width));
 		return true;
 	}
 	

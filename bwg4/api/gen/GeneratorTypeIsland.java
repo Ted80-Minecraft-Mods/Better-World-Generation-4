@@ -1,5 +1,6 @@
 package bwg4.api.gen;
 
+import net.minecraft.util.StatCollector;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.WorldChunkManager;
@@ -14,16 +15,16 @@ import bwg4.world.generators.ChunkGeneratorIsland;
 
 public class GeneratorTypeIsland extends GeneratorType
 {
-	public GeneratorTypeIsland(int id, int cat, String name, String screen, boolean c) 
+	public GeneratorTypeIsland(int id, int cat, String name, boolean c) 
 	{
-		super(id, cat, name, screen, c);
+		super(id, cat, name, c);
 	}
 
 	@Override
 	public boolean getSettings(GuiGeneratorSettings gui)
 	{
-		gui.settings.add(new GuiSettingsButton(new String[]{"Theme: Default", "Theme: Tropical", "Theme: Paradise"}, new int[]{0, 1, 4}, 20, 80, gui.width)); //"Theme: Hell", "Theme: Iceberg",   2, 3,
-		gui.settings.add(new GuiSettingsSlider(new String[]{"Size: Small", "Size: Default", "Size: Large"}, new int[]{0, 1, 2}, 1, 21, 100, gui.width, 20, new int[]{0, 1})); //, 2, 3
+		gui.settings.add(new GuiSettingsButton(new String[]{StatCollector.translateToLocal("bwg4.setting.theme") + ": " + StatCollector.translateToLocal("bwg4.theme.default"), StatCollector.translateToLocal("bwg4.setting.theme") + ": " + StatCollector.translateToLocal("bwg4.theme.tropical"), StatCollector.translateToLocal("bwg4.setting.theme") + ": " + StatCollector.translateToLocal("bwg4.theme.paradise")}, new int[]{0, 1, 4}, 20, 80, gui.width)); //"Theme: Hell", "Theme: Iceberg",   2, 3,
+		gui.settings.add(new GuiSettingsSlider(new String[]{StatCollector.translateToLocal("bwg4.setting.size") + ": " + StatCollector.translateToLocal("bwg4.setting.small"), StatCollector.translateToLocal("bwg4.setting.size") + ": " + StatCollector.translateToLocal("bwg4.setting.default"), StatCollector.translateToLocal("bwg4.setting.size") + ": " + StatCollector.translateToLocal("bwg4.setting.large")}, new int[]{0, 1, 2}, 1, 21, 100, gui.width, 20, new int[]{0, 1})); //, 2, 3
 		return true;
 	}
 	

@@ -20,7 +20,7 @@ public class GuiGeneratorSettings extends GuiScreen
 	public GuiButton BUTTON_WORLDSETTINGS;
 	
 	public int CATEGORY = 1;
-	public String[] categories = new String[]{"Enhanced", "Old", "Extreme Survival", "Fun"};//, "Adventure"};
+	public String[] categories;
 	
 	public int generatorSelected = -1;
 	public ArrayList<GuiGeneratorButton> generators;
@@ -40,10 +40,24 @@ public class GuiGeneratorSettings extends GuiScreen
 	public int creditsY = 0;
 	public String creditsText = "";
 	
+	public String[] translatedDrawStrings;
+	
 	public GuiGeneratorSettings(GuiCreateWorld gcw, String gs)
 	{
     	createWorldGui = gcw;
     	decodebool = true;
+    	
+    	categories = new String[4];
+    	categories[0] = StatCollector.translateToLocal("bwg4.category.enhanced");
+    	categories[1] = StatCollector.translateToLocal("bwg4.category.old");
+    	categories[2] = StatCollector.translateToLocal("bwg4.category.survival");
+    	categories[3] = StatCollector.translateToLocal("bwg4.category.fun");
+
+    	translatedDrawStrings = new String[4];
+    	translatedDrawStrings[0] = StatCollector.translateToLocal("gui.selectcategory");
+    	translatedDrawStrings[1] = StatCollector.translateToLocal("gui.comingsoon");
+    	translatedDrawStrings[2] = StatCollector.translateToLocal("gui.selectGenerator");
+    	translatedDrawStrings[3] = StatCollector.translateToLocal("gui.generatorSettings");
 	}
 	
 	public void setCredits(String text, int y)
@@ -57,7 +71,7 @@ public class GuiGeneratorSettings extends GuiScreen
 	{
         buttonList.add(BUTTON_DONE = new GuiButton(0, width / 2 - 155, height - 24, 150, 20, StatCollector.translateToLocal("gui.done")));
         buttonList.add(new GuiButton(1, width / 2 + 5, height - 24, 150, 20, StatCollector.translateToLocal("gui.cancel")));
-        buttonList.add(new GuiButton(3, width / 2 - 155, height - 48, 310, 20, "Copy generator-settings to Clipboard"));
+        buttonList.add(new GuiButton(3, width / 2 - 155, height - 48, 310, 20, StatCollector.translateToLocal("gui.copystring")));
 		
 		buttonList.add(BUTTON_CATEGORY = new GuiButton(2, width / 2 - 155, 40, 150, 20, categories[CATEGORY]));
 		buttonList.add(BUTTON_BIOMELIST = new GuiButton(4, width / 2 + 5, 80, 150, 20, "Biome Settings"));
@@ -169,23 +183,23 @@ public class GuiGeneratorSettings extends GuiScreen
 		drawString(fontRendererObj, title, (int) Math.floor(width / 2) - (int) Math.floor(fontRendererObj.getStringWidth(title) / 2), 10, 16777215);
 		
 		//category
-		drawString(fontRendererObj, "Choose a category:", width / 2 - 155 + 1, 30, 10526880);
+		drawString(fontRendererObj, translatedDrawStrings[0], width / 2 - 155 + 1, 30, 10526880);
 		
     	String catpos = "(" + (CATEGORY + 1) + "/4)";
     	drawString(fontRendererObj, catpos, width / 2 - 5 - fontRendererObj.getStringWidth(catpos), 30, 10526880);
     	
     	if(emptyCategory)
     	{
-    		drawString(fontRendererObj, "Coming soon!", width / 2 - 110 + 1, 110, 10526880);
+    		drawString(fontRendererObj, translatedDrawStrings[1], width / 2 - 110 + 1, 110, 10526880);
     	}
     	else	
     	{
-    		drawString(fontRendererObj, "Select a world generator:", width / 2 - 155 + 1, 70, 10526880);
+    		drawString(fontRendererObj, translatedDrawStrings[2], width / 2 - 155 + 1, 70, 10526880);
     	}
 
     	if(hasSettings)
     	{
-    		drawString(fontRendererObj, "Generator settings:", width / 2 + 6, 70, 10526880);
+    		drawString(fontRendererObj, translatedDrawStrings[3], width / 2 + 6, 70, 10526880);
     	}
     	
     	if(credits)
@@ -219,7 +233,7 @@ public class GuiGeneratorSettings extends GuiScreen
 			{
 				if(GeneratorType.generatortypes[g].GetCategory() == CATEGORY && GeneratorType.generatortypes[g].CanBeCreated())
 				{
-					generators.add(new GuiGeneratorButton(GeneratorType.generatortypes[g].GetScreenName(), g, count + 10, 80 + (20 * count), width));
+					generators.add(new GuiGeneratorButton(StatCollector.translateToLocal("bwg4." + GeneratorType.generatortypes[g].GetName()), g, count + 10, 80 + (20 * count), width));
 					buttonList.add(generators.get(generators.size() - 1).button);
 					count++;
 				}

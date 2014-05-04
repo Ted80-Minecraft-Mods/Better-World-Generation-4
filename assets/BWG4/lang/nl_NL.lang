@@ -1,0 +1,55 @@
+generator.BWG4=BWG4
+
+gui.selectcategory=Kies een categorie:
+gui.comingsoon=Komt binnekort!
+gui.selectGenerator=Kies een generator:
+gui.generatorSettings=Generator instellingen:
+gui.copystring=Kopieer generator-instellingen naar klembord
+
+bwg4.category.enhanced=Verbeterd
+bwg4.category.old=Oud
+bwg4.category.survival=Extreme Survival
+bwg4.category.fun=Plezier
+
+bwg4.setting.size=Grootte
+bwg4.setting.small=Klein
+bwg4.setting.default=Normaal
+bwg4.setting.large=Groot
+bwg4.setting.snow=Sneew wereld
+bwg4.setting.on=AAN
+bwg4.setting.off=UIT
+bwg4.setting.theme=Thema
+bwg4.setting.type=Type
+bwg4.setting.layer=Lagen
+
+bwg4.theme.default=Normaal
+bwg4.theme.snow=Sneeuw
+bwg4.theme.jungle=Oerwoud
+bwg4.theme.tropical=Tropies
+bwg4.theme.paradise=Paradijs
+bwg4.theme.hell=Hell
+bwg4.theme.woods=Bossen
+
+bwg4.type.island=Eiland
+bwg4.type.floating=Lucht
+bwg4.type.inland=Binneland
+
+bwg4.BETTERDEFAULT=Better Default
+bwg4.EXTRFLAT=Extremeflat
+bwg4.BETA173=Beta 1.7.3
+bwg4.ALPHA12=Alpha 1.2.0
+bwg4.ALPHA11=Alpha 1.1.0
+bwg4.INFDEV=Infdev
+bwg4.INDEV=Indev
+bwg4.WASTELAND=Wasteland (WIP)
+bwg4.ISLAND=Survival Island
+bwg4.SKYISLAND=Survival Skyland
+bwg4.CAVESURV=Cave Survival
+bwg4.SKYBLOCK=Skyblock
+bwg4.SKYLANDS=Skylands
+bwg4.CAVE=Cave world (WIP)
+bwg4.CITY=Endless City
+bwg4.DEADLYDESERT=Deadly Desert
+bwg4.EXTREMEJUNGLE=Extreme Jungle
+
+credits.skyblock=Original map by Noobcrew

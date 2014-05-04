@@ -15,9 +15,9 @@ import bwg4.world.generators.ChunkGeneratorSky;
 
 public class GeneratorTypeSkyland extends GeneratorType
 {
-	public GeneratorTypeSkyland(int id, int cat, String name, String screen, boolean c) 
+	public GeneratorTypeSkyland(int id, int cat, String name, boolean c) 
 	{
-		super(id, cat, name, screen, c);
+		super(id, cat, name, c);
 	}
 
 	@Override

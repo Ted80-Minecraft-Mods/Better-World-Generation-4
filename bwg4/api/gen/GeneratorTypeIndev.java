@@ -1,5 +1,6 @@
 package bwg4.api.gen;
 
+import net.minecraft.util.StatCollector;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.WorldChunkManager;
@@ -14,18 +15,18 @@ import bwg4.world.generators.ChunkGeneratorIndev;
 
 public class GeneratorTypeIndev extends GeneratorType
 {
-	public GeneratorTypeIndev(int id, int cat, String name, String screen, boolean c) 
+	public GeneratorTypeIndev(int id, int cat, String name, boolean c) 
 	{
-		super(id, cat, name, screen, c);
+		super(id, cat, name, c);
 	}
 	
 	@Override
 	public boolean getSettings(GuiGeneratorSettings gui)
 	{
-		gui.settings.add(new GuiSettingsButton(new String[]{"Theme: Default", "Theme: Hell", "Theme: Paradise", "Theme: Woods", "Theme: Snow"}, new int[]{0, 1, 2, 3, 4}, 20, 80, gui.width));
-		gui.settings.add(new GuiSettingsButton(new String[]{"Type: Island", "Type: Floating", "Type: Inland"}, new int[]{0, 1, 2}, 21, 100, gui.width));
-		gui.settings.add(new GuiSettingsSlider(new String[]{"Size: Small", "Size: Default", "Size: Large"}, new int[]{0, 1, 2}, 1, 22, 120, gui.width, 21, new int[]{0, 1}));
-		gui.settings.add(new GuiSettingsSlider(new String[]{"Layers: 1", "Layers: 2", "Layers: 3", "Layers: 4", "Layers: 5"}, new int[]{0, 1, 2, 3, 4}, 1, 23, 140, gui.width, 21, new int[]{1}));
+		gui.settings.add(new GuiSettingsButton(new String[]{StatCollector.translateToLocal("bwg4.setting.theme") + ": " + StatCollector.translateToLocal("bwg4.theme.default"), StatCollector.translateToLocal("bwg4.setting.theme") + ": " + StatCollector.translateToLocal("bwg4.theme.hell"), StatCollector.translateToLocal("bwg4.setting.theme") + ": " + StatCollector.translateToLocal("bwg4.theme.paradise"), StatCollector.translateToLocal("bwg4.setting.theme") + ": " + StatCollector.translateToLocal("bwg4.theme.woods"), StatCollector.translateToLocal("bwg4.setting.theme") + ": " + StatCollector.translateToLocal("bwg4.theme.snow")}, new int[]{0, 1, 2, 3, 4}, 20, 80, gui.width));
+		gui.settings.add(new GuiSettingsButton(new String[]{StatCollector.translateToLocal("bwg4.setting.type") + ": " + StatCollector.translateToLocal("bwg4.type.island"), StatCollector.translateToLocal("bwg4.setting.type") + ": " + StatCollector.translateToLocal("bwg4.type.floating"), StatCollector.translateToLocal("bwg4.setting.type") + ": " + StatCollector.translateToLocal("bwg4.type.inland")}, new int[]{0, 1, 2}, 21, 100, gui.width));
+		gui.settings.add(new GuiSettingsSlider(new String[]{StatCollector.translateToLocal("bwg4.setting.size") + ": " + StatCollector.translateToLocal("bwg4.setting.small"), StatCollector.translateToLocal("bwg4.setting.size") + ": " + StatCollector.translateToLocal("bwg4.setting.default"), StatCollector.translateToLocal("bwg4.setting.size") + ": " + StatCollector.translateToLocal("bwg4.setting.large")}, new int[]{0, 1, 2}, 1, 22, 120, gui.width, 21, new int[]{0, 1}));
+		gui.settings.add(new GuiSettingsSlider(new String[]{StatCollector.translateToLocal("bwg4.setting.layer") + ": 1", StatCollector.translateToLocal("bwg4.setting.layer") + ": 2", StatCollector.translateToLocal("bwg4.setting.layer") + ": 3", StatCollector.translateToLocal("bwg4.setting.layer") + ": 4", StatCollector.translateToLocal("bwg4.setting.layer") + ": 5"}, new int[]{0, 1, 2, 3, 4}, 1, 23, 140, gui.width, 21, new int[]{1}));
 		return true;
 	}
 	

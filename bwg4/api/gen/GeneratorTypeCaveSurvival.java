@@ -11,9 +11,9 @@ import net.minecraft.world.biome.WorldChunkManagerHell;
 
 public class GeneratorTypeCaveSurvival extends GeneratorType
 {
-	public GeneratorTypeCaveSurvival(int id, int cat, String name, String screen, boolean c) 
+	public GeneratorTypeCaveSurvival(int id, int cat, String name, boolean c) 
 	{
-		super(id, cat, name, screen, c, true, true);
+		super(id, cat, name, c, true, true);
 	}
 	
 	@Override

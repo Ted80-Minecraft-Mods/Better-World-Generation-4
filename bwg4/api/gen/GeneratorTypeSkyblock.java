@@ -1,5 +1,6 @@
 package bwg4.api.gen;
 
+import net.minecraft.util.StatCollector;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.WorldChunkManager;
@@ -13,16 +14,16 @@ import bwg4.world.generators.ChunkGeneratorSkyBlock;
 
 public class GeneratorTypeSkyblock extends GeneratorType
 {
-	public GeneratorTypeSkyblock(int id, int cat, String name, String screen, boolean c) 
+	public GeneratorTypeSkyblock(int id, int cat, String name, boolean c) 
 	{
-		super(id, cat, name, screen, c);
+		super(id, cat, name, c);
 	}
 
 	@Override
 	public boolean getSettings(GuiGeneratorSettings gui)
 	{
-		gui.settings.add(new GuiSettingsSlider(new String[]{"Size: Small", "Size: Default", "Size: Large"}, new int[]{0, 1, 2}, 1, 20, 80, gui.width));
-		gui.setCredits("Original map by Noobcrew", 108);
+		gui.settings.add(new GuiSettingsSlider(new String[]{StatCollector.translateToLocal("bwg4.setting.size") + ": " + StatCollector.translateToLocal("bwg4.setting.small"), StatCollector.translateToLocal("bwg4.setting.size") + ": " + StatCollector.translateToLocal("bwg4.setting.default"), StatCollector.translateToLocal("bwg4.setting.size") + ": " + StatCollector.translateToLocal("bwg4.setting.large")}, new int[]{0, 1, 2}, 1, 20, 80, gui.width));
+		gui.setCredits(StatCollector.translateToLocal("credits.skyblock"), 108);
 		
 		return true;
 	}
