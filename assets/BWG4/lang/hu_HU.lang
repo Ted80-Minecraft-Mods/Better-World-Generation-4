@@ -1,0 +1,55 @@
+generator.BWG4=BWG4
+
+gui.selectcategory=Válassz kategóriát:
+gui.comingsoon=Hamarosan!
+gui.selectGenerator=Válassz egy világgenerátort:
+gui.generatorSettings=Generátor beállítások:
+gui.copystring=Generátor beállítások másolása vágólapra
+
+bwg4.category.enhanced=Fokozott
+bwg4.category.old=Régi
+bwg4.category.survival=Extrém Túlélés
+bwg4.category.fun=Móka
+
+bwg4.setting.size=Méret
+bwg4.setting.small=Kicsi
+bwg4.setting.default=Alapértelmezett
+bwg4.setting.large=Nagy
+bwg4.setting.snow=Hóvilág
+bwg4.setting.on=BE
+bwg4.setting.off=KI
+bwg4.setting.theme=Téma
+bwg4.setting.type=Típus
+bwg4.setting.layer=Réteg
+
+bwg4.theme.default=Alapértelmezett
+bwg4.theme.snow=Hó
+bwg4.theme.jungle=Dzsungel
+bwg4.theme.tropical=Trópikus
+bwg4.theme.paradise=Paradicsom
+bwg4.theme.hell=Pokol
+bwg4.theme.woods=Erdő
+
+bwg4.type.island=Sziget
+bwg4.type.floating=Lebegő
+bwg4.type.inland=Belföld
+
+bwg4.BETTERDEFAULT=Jobb Alapértelmezett
+bwg4.EXTRFLAT=Extrémlapos
+bwg4.BETA173=Béta 1.7.3
+bwg4.ALPHA12=Alfa 1.2.0
+bwg4.ALPHA11=Alfa 1.1.0
+bwg4.INFDEV=Infdev
+bwg4.INDEV=Indev
+bwg4.WASTELAND=Pusztaság (Fejlesztés Alatt)
+bwg4.ISLAND=Túlélő Sziget
+bwg4.SKYISLAND=Túlélő Égsziget
+bwg4.CAVESURV=Barlangi Túlélés
+bwg4.SKYBLOCK=Skyblock/Égkocka
+bwg4.SKYLANDS=Égföld
+bwg4.CAVE=Barlangvilág (Fejlesztés Alatt)
+bwg4.CITY=Végtelen Város
+bwg4.DEADLYDESERT=Halálos Sivatag
+bwg4.EXTREMEJUNGLE=Extrém Dzsungel
+
+credits.skyblock=Eredeti világ a Noobcrew által.
