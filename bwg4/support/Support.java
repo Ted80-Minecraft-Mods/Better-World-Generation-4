@@ -1,5 +1,7 @@
 package bwg4.support;
 
+import cpw.mods.fml.common.Loader;
+
 public class Support 
 {
 	public static boolean biomesoplenty = false;
@@ -8,6 +10,9 @@ public class Support
 	
 	public static void load()
 	{
-		
+		if (Loader.isModLoaded("BiomesOPlenty"))
+		{
+			biomesoplenty = true;
+		}
 	}
 }

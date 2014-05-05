@@ -3,14 +3,18 @@ package bwg4.api.gen;
 import net.minecraft.util.StatCollector;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.IChunkProvider;
+import net.minecraft.world.gen.ChunkProviderHell;
 import bwg4.api.biome.BiomeList;
 import bwg4.gui.GuiGeneratorSettings;
 import bwg4.gui.GuiSettingsButton;
 import bwg4.gui.GuiSettingsSlider;
+import bwg4.support.Support;
 import bwg4.world.ProviderBWG4;
+import bwg4.world.ProviderBWG4Hell;
 import bwg4.world.generators.ChunkGeneratorPlanetoids;
 import bwg4.world.generators.ChunkGeneratorSkyBlock;
 
@@ -31,20 +35,20 @@ public class GeneratorTypePlanetoids extends GeneratorType
 	@Override
 	public WorldChunkManager getServerWorldChunkManager(ProviderBWG4 provider, World worldObj)
     {
-		return new WorldChunkManagerHell(BiomeList.COMMONnormal1, 0.5F);
+		return new WorldChunkManagerHell(BiomeList.COMMONnormal2, 0.5F);
     }
 
 	@Override
 	public WorldChunkManager getClientWorldChunkManager(ProviderBWG4 provider)
     {
-		return new WorldChunkManagerHell(BiomeList.COMMONnormal1, 0.5F);
+		return new WorldChunkManagerHell(BiomeList.COMMONnormal2, 0.5F);
     }
 
 	@Override
     public IChunkProvider getChunkGenerator(ProviderBWG4 provider, World worldObj)
     {	
 		int water = provider.trySetting(0, 2); 
-		return new ChunkGeneratorPlanetoids(worldObj, worldObj.getSeed(), water == 1 ? true : false);
+		return new ChunkGeneratorPlanetoids(worldObj, worldObj.getSeed(), water == 1 ? true : false, 0);
     }
 
 	@Override
@@ -93,5 +97,18 @@ public class GeneratorTypePlanetoids extends GeneratorType
     public boolean getWorldHasVoidParticles(ProviderBWG4 provider)
     {
 		return false;
+    }    
+	
+	@Override
+	public WorldChunkManager getHellChunkManager(ProviderBWG4Hell provider)
+    {
+    	return new WorldChunkManagerHell(BiomeList.COMMONnether, 0.0F);
+    }
+    
+	@Override
+    public IChunkProvider getHellChunkProvider(ProviderBWG4Hell provider)
+    {
+		int water = provider.trySetting(0, 2); 
+    	return new ChunkGeneratorPlanetoids(provider.worldObj, provider.worldObj.getSeed(), water == 1 ? true : false, 1);
     }
 }

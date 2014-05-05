@@ -10,7 +10,9 @@ import bwg4.api.biome.BiomeList;
 import bwg4.gui.GuiGeneratorSettings;
 import bwg4.gui.GuiSettingsButton;
 import bwg4.world.ProviderBWG4;
+import bwg4.world.ProviderBWG4Hell;
 import bwg4.world.generators.ChunkGeneratorSkyIsland;
+import bwg4.world.generators.ChunkGeneratorSurvivalNether;
 
 public class GeneratorTypeSkyIsland extends GeneratorType
 {
@@ -96,5 +98,17 @@ public class GeneratorTypeSkyIsland extends GeneratorType
     public boolean getWorldHasVoidParticles(ProviderBWG4 provider)
     {
 		return false;
+    }
+	
+	@Override
+    public WorldChunkManager getHellChunkManager(ProviderBWG4Hell provider)
+    {
+    	return new WorldChunkManagerHell(BiomeList.COMMONnether, 0.0F);
+    }
+    
+	@Override
+    public IChunkProvider getHellChunkProvider(ProviderBWG4Hell provider)
+    {
+		return new ChunkGeneratorSurvivalNether(provider.worldObj, provider.worldObj.getSeed());
     }
 }

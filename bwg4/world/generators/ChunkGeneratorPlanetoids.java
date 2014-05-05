@@ -12,6 +12,7 @@ import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.IProgressUpdate;
 import net.minecraft.world.ChunkPosition;
+import net.minecraft.world.SpawnerAnimals;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
@@ -25,13 +26,16 @@ public class ChunkGeneratorPlanetoids implements IChunkProvider
     private BiomeGenBase[] biomesForGeneration;
     int[][] field_73203_h = new int[32][32];
 	private boolean water = false;
-	private MapGenPlanets mapgenplanets = new MapGenPlanets();
+	private MapGenPlanets mapgenplanets;
+	private int dimension;
 	
-    public ChunkGeneratorPlanetoids(World par1World, long par2, boolean w)
+    public ChunkGeneratorPlanetoids(World par1World, long par2, boolean w, int d)
     {
         world = par1World;
         this.endRNG = new Random(par2);
+        mapgenplanets = new MapGenPlanets(d);
         water = w;
+        dimension = d;
     }
 
     public Chunk loadChunk(int par1, int par2)
@@ -59,7 +63,21 @@ public class ChunkGeneratorPlanetoids implements IChunkProvider
 						}
 						else
 						{
-							var3[i * 16 * 128 + j * 128 + k] = Blocks.water;
+							if(dimension == 0)
+							{
+								var3[i * 16 * 128 + j * 128 + k] = Blocks.water;
+							}
+							else
+							{
+								if(k == 4)
+								{
+									var3[i * 16 * 128 + j * 128 + k] = Blocks.flowing_lava;
+								}
+								else
+								{
+									var3[i * 16 * 128 + j * 128 + k] = Blocks.lava;
+								}
+							}
 						}
 					}
 				}
@@ -90,6 +108,8 @@ public class ChunkGeneratorPlanetoids implements IChunkProvider
         int var4 = par2 * 16;
         int var5 = par3 * 16;
         BiomeGenBase var6 = world.getBiomeGenForCoords(var4 + 16, var5 + 16);
+        
+        SpawnerAnimals.performWorldGenSpawning(this.world, var6, var4 + 8, var5 + 8, 16, 16, this.world.rand); 
     }
 
     public boolean saveChunks(boolean par1, IProgressUpdate par2IProgressUpdate)

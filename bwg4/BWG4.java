@@ -26,7 +26,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import bwg4.data.Planets;
 
-@Mod(modid="BWG4", name="BetterWorldGeneration4", version="1.2.0e")
+@Mod(modid="BWG4", name="BetterWorldGeneration4", version="1.2.0f", dependencies="after:BiomesOPlenty")
 public class BWG4
 {	
 	@Instance("BWG4")
@@ -45,11 +45,6 @@ public class BWG4
 		BiomeLoader.load();
 		
 		FMLCommonHandler.instance().bus().register(new ConnectionManager());
-		
-		DimensionManager.unregisterProviderType(0);
-		DimensionManager.registerProviderType(0, ProviderBWG4.class, true);
-		DimensionManager.unregisterProviderType(-1);
-		DimensionManager.registerProviderType(-1, ProviderBWG4Hell.class, true);
 	}
 	
 	@EventHandler
@@ -65,10 +60,10 @@ public class BWG4
 		
 		Support.load();
 		Planets.init();
+		
+		DimensionManager.unregisterProviderType(0);
+		DimensionManager.registerProviderType(0, ProviderBWG4.class, true);
+		DimensionManager.unregisterProviderType(-1);
+		DimensionManager.registerProviderType(-1, ProviderBWG4Hell.class, true);
 	}
-	
-    @EventHandler
-    public void serverLoad(FMLServerStartingEvent event) {
-        //NetworkRegistry.INSTANCE.newChannel("NetworkExample", new PacketHandler());
-    }
 }

@@ -1,7 +1,10 @@
 package bwg4.world;
 
+import bwg4.BWG4;
 import bwg4.api.biome.BiomeList;
 import bwg4.api.gen.GeneratorType;
+import bwg4.support.Support;
+import bwg4.support.SupportBopHell;
 import bwg4.world.generators.ChunkGeneratorSkyBlock;
 import bwg4.world.generators.ChunkGeneratorSurvivalNether;
 import cpw.mods.fml.relauncher.Side;
@@ -18,18 +21,30 @@ public class ProviderBWG4Hell extends WorldProviderHell
 	@Override
     public void registerWorldChunkManager()
     {	
-        if (GeneratorType.currentGenerator == GeneratorType.ISLAND || GeneratorType.currentGenerator == GeneratorType.SKYISLAND)
-        {
-			this.worldChunkMgr = new WorldChunkManagerHell(BiomeList.COMMONnether, 0.0F);
+		if(this.terrainType == BWG4.BWG4DEFAULT)
+		{
+			this.worldChunkMgr = GeneratorType.currentGenerator.getHellChunkManager(this);
 		}
-		else if (GeneratorType.currentGenerator == GeneratorType.SKYLANDS)
-        {
-			this.worldChunkMgr = new WorldChunkManagerHell(BiomeList.COMMONnether, 0.0F);
-        }
 		else
 		{
-			this.worldChunkMgr = new WorldChunkManagerHell(BiomeGenBase.hell, 0.0F);
-		}	
+			if(Support.biomesoplenty)
+			{
+				try
+				{
+					this.worldChunkMgr = SupportBopHell.getBopHellManager(this);
+				}
+				catch(Exception e)
+				{
+					System.out.println("[BWG4] Failed to load BOP HELL");
+					this.worldChunkMgr = new WorldChunkManagerHell(BiomeGenBase.hell, 0.0F);
+				}
+			}
+			else
+			{
+				this.worldChunkMgr = new WorldChunkManagerHell(BiomeGenBase.hell, 0.0F);
+			}
+		}
+
         this.isHellWorld = true;
         this.hasNoSky = true;
         this.dimensionId = -1;
@@ -38,60 +53,53 @@ public class ProviderBWG4Hell extends WorldProviderHell
 	@Override
     public IChunkProvider createChunkGenerator()
     {
-		if (GeneratorType.currentGenerator == GeneratorType.ISLAND || GeneratorType.currentGenerator == GeneratorType.SKYISLAND || GeneratorType.currentGenerator == GeneratorType.CAVESURV)
-        {
-			return new ChunkGeneratorSurvivalNether(this.worldObj, this.worldObj.getSeed());
-        }
-		else if (GeneratorType.currentGenerator == GeneratorType.SKYBLOCK)
+		if(this.terrainType == BWG4.BWG4DEFAULT)
 		{
-			return new ChunkGeneratorSkyBlock(this.worldObj, this.worldObj.getSeed(), true, 1);
+			return GeneratorType.currentGenerator.getHellChunkProvider(this);
 		}
 		else
 		{
-			return new ChunkProviderHell(this.worldObj, this.worldObj.getSeed());
-		}
-		 
-		/*if (BWG4GeneratorType.currentGenerator == BWG4GeneratorType.ISLAND || BWG4GeneratorType.currentGenerator == BWG4GeneratorType.SKYISLAND)
-        {
-			return new BWG4ChunkProviderSurvivalNether(this.worldObj, this.worldObj.getSeed());
-		}
-		else if (BWG4GeneratorType.currentGenerator == BWG4GeneratorType.SKYLANDS)
-        {
-			return new BWG4ChunkProviderSky(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled(), 4, 1);
-        }
-		else if (BWG4GeneratorType.currentGenerator == BWG4GeneratorType.SKYBLOCK)
-        {
-			return new BWG4ChunkProviderSkyBlock(this.worldObj, this.worldObj.getSeed(), true, 1);
-        }
-		else
-		{*/
-			/*if(Support.biomesOPlenty)
+			if(Support.biomesoplenty)
 			{
-				if (Loader.isModLoaded("Natura"))
+				IChunkProvider hell;
+				
+				try
 				{
-					try 
-					{
-						return new ChunkProviderBOPNaturaHell(this.worldObj, this.worldObj.getSeed());
-					}
-					catch (Exception e) 
-					{
-						System.out.println("[BiomesOPlenty] There was an error while integrating Natura with Biomes O' Plenty!");
-						e.printStackTrace(System.err);
-					}
+					hell = SupportBopHell.getBopHellProvider(this);
 				}
-
-				return new ChunkProviderBOPhell(this.worldObj, this.worldObj.getSeed());
+				catch(Exception e)
+				{
+					System.out.println("[BWG4] Failed to load BOP HELL");
+					hell = new ChunkProviderHell(this.worldObj, this.worldObj.getSeed());
+				}
+				
+				return hell;
 			}
 			else
 			{
 				return new ChunkProviderHell(this.worldObj, this.worldObj.getSeed());
 			}
-		}	*/
+		}
     }
 	
 	@SideOnly(Side.CLIENT)
     public Vec3 getFogColor(float par1, float par2)
     {
         return this.worldObj.getWorldVec3Pool().getVecFromPool(0.20000000298023224D, 0.029999999329447746D, 0.029999999329447746D);
-    }	
+    }
+	
+	public int trySetting(int pos, int max)
+	{
+		if(GeneratorType.currentSettings != null) 
+		{
+			if(GeneratorType.currentSettings.length > pos) 
+			{
+				if(GeneratorType.currentSettings[pos] <= max) 
+				{
+					return GeneratorType.currentSettings[pos];
+				}
+			}
+		}
+		return 0;
+	}	
 }

@@ -10,9 +10,12 @@ import bwg4.data.PlanetData;
 
 public class MapGenPlanets extends MapGenBWG4
 {	
-	public MapGenPlanets()
+	public int dimension;
+	
+	public MapGenPlanets(int d)
 	{
 		range = 4;
+		dimension = d;
 	}
 	
 	public void generatePlanet(long par1, PlanetData data, int size, int chunkX, int chunkY, Block[] blockarray, int centerX, int centerY, int centerZ)
@@ -51,11 +54,11 @@ public class MapGenPlanets extends MapGenBWG4
 	
     public void recursiveGenerate(World world, int bx, int by, int chunkX, int chunkY, Block[] blockarray)
     {
-        if (bx % 3 == 0 && by % 3 == 0 )
+        if (bx % 2 == 0 && by % 2 == 0 )
         {
-        	PlanetData data = Planets.getRandomPlanet(rand);
+        	PlanetData data = Planets.getRandomPlanet(rand, dimension);
         	int size = rand.nextInt(data.max - data.min);
-            generatePlanet(rand.nextLong(), data, size + data.min, chunkX, chunkY, blockarray, bx * 16 + rand.nextInt(20), by * 16 + rand.nextInt(20), 24 + rand.nextInt(80));
+            generatePlanet(rand.nextLong(), data, size + data.min, chunkX, chunkY, blockarray, bx * 16 + rand.nextInt(10), by * 16 + rand.nextInt(10), (size + data.min) + 2 + rand.nextInt(127 - ((size + data.min) * 2 + 4)));
         }
     }    
 }

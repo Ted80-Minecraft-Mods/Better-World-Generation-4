@@ -6,7 +6,9 @@ import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.chunk.IChunkProvider;
 import bwg4.api.biome.BiomeList;
 import bwg4.world.ProviderBWG4;
+import bwg4.world.ProviderBWG4Hell;
 import bwg4.world.generators.ChunkGeneratorCaveSurv;
+import bwg4.world.generators.ChunkGeneratorSurvivalNether;
 import net.minecraft.world.biome.WorldChunkManagerHell;
 
 public class GeneratorTypeCaveSurvival extends GeneratorType
@@ -82,5 +84,17 @@ public class GeneratorTypeCaveSurvival extends GeneratorType
     public boolean getWorldHasVoidParticles(ProviderBWG4 provider)
     {
     	return true;
+    }
+	
+	@Override
+    public WorldChunkManager getHellChunkManager(ProviderBWG4Hell provider)
+    {
+    	return new WorldChunkManagerHell(BiomeList.COMMONnether, 0.0F);
+    }
+    
+	@Override
+    public IChunkProvider getHellChunkProvider(ProviderBWG4Hell provider)
+    {
+		return new ChunkGeneratorSurvivalNether(provider.worldObj, provider.worldObj.getSeed());
     }
 }

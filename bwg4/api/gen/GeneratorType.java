@@ -2,12 +2,17 @@ package bwg4.api.gen;
 
 import bwg4.api.biome.BiomeList;
 import bwg4.gui.GuiGeneratorSettings;
+import bwg4.support.Support;
+import bwg4.support.SupportBopHell;
 import bwg4.world.ProviderBWG4;
+import bwg4.world.ProviderBWG4Hell;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.IChunkProvider;
+import net.minecraft.world.gen.ChunkProviderHell;
 
 public class GeneratorType 
 {
@@ -86,7 +91,7 @@ public class GeneratorType
 	{
 		return false;
 	}
-	
+
 	//======================================= GENERATOR TYPE SETTINGS ================================================
 	
 	public final boolean customFogColor;
@@ -145,5 +150,55 @@ public class GeneratorType
     public boolean getWorldHasVoidParticles(ProviderBWG4 provider)
     {
     	return true;
+    }
+    
+	//======================================= GENERATOR HELL SETTINGS ================================================
+
+    public WorldChunkManager getHellChunkManager(ProviderBWG4Hell provider)
+    {
+		if(Support.biomesoplenty)
+		{
+			WorldChunkManager hell;
+			
+			try
+			{
+				hell = SupportBopHell.getBopHellManager(provider);
+			}
+			catch(Exception e)
+			{
+				System.out.println("[BWG4] Failed to load BOP HELL");
+				hell = new WorldChunkManagerHell(BiomeGenBase.hell, 0.0F);
+			}
+			
+			return hell;
+		}
+		else
+		{
+			return new WorldChunkManagerHell(BiomeGenBase.hell, 0.0F);
+		}
+    }
+    
+    public IChunkProvider getHellChunkProvider(ProviderBWG4Hell provider)
+    {
+		if(Support.biomesoplenty)
+		{
+			IChunkProvider hell;
+			
+			try
+			{
+				hell = SupportBopHell.getBopHellProvider(provider);
+			}
+			catch(Exception e)
+			{
+				System.out.println("[BWG4] Failed to load BOP HELL");
+				hell = new ChunkProviderHell(provider.worldObj, provider.worldObj.getSeed());
+			}
+			
+			return hell;
+		}
+		else
+		{
+			return new ChunkProviderHell(provider.worldObj, provider.worldObj.getSeed());
+		}
     }
 }
