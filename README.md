@@ -32,6 +32,10 @@ forum thread: http://www.minecraftforum.net/topic/1070207-162-forge-better-world
 
 ## CHANGELOG ##
 
+    Version 1.2.0f '05-5-2014'
+    - Re-added biomes 'o plenty support
+    - Added planetoids hell dimension
+
     Version 1.2.0e '04-5-2014'
     - Added Planetoids generator
     - Fixed diamonds not generating on skylands
