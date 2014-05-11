@@ -32,6 +32,11 @@ forum thread: http://www.minecraftforum.net/topic/1070207-162-forge-better-world
 
 ## CHANGELOG ##
 
+    Version 1.2.0g '11-5-2014'
+    - Added French and Russian translation
+    - Temporarily multiplayer fix
+    - Fixed sky world generator crash
+
     Version 1.2.0f '05-5-2014'
     - Re-added biomes 'o plenty support
     - Added planetoids hell dimension
