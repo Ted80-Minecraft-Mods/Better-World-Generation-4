@@ -1,0 +1,58 @@
+generator.BWG4=BWG4
+
+gui.selectcategory=Choisir une catégorie:
+gui.comingsoon=A venir!
+gui.selectGenerator=Choisir un générateur de monde:
+gui.generatorSettings=Configuration avancée:
+gui.copystring=Copier les options dans le presse-papiers
+
+bwg4.category.enhanced=Génération Améliorée
+bwg4.category.old=Anciennes Générations
+bwg4.category.survival=Survie Extrême
+bwg4.category.fun=Fun
+
+bwg4.setting.size=Taille
+bwg4.setting.small=Petit
+bwg4.setting.default=Moyen
+bwg4.setting.large=Grand
+bwg4.setting.snow=Monde Enneigé
+bwg4.setting.water=Eau
+bwg4.setting.on=ON
+bwg4.setting.off=OFF
+bwg4.setting.theme=Thème
+bwg4.setting.type=Type
+bwg4.setting.layer=Couche
+
+bwg4.theme.default=Par défaut
+bwg4.theme.snow=Enneigé
+bwg4.theme.jungle=Jungle
+bwg4.theme.tropical=Tropical
+bwg4.theme.paradise=Paradisiaque
+bwg4.theme.hell=Enfers
+bwg4.theme.woods=Forêts
+
+bwg4.type.island=Île
+bwg4.type.floating=Flottant
+bwg4.type.inland=Terres
+
+bwg4.BETTERDEFAULT=Better Default
+bwg4.EXTRFLAT=Plat
+bwg4.BETA173=Beta 1.7.3
+bwg4.ALPHA12=Alpha 1.2.0
+bwg4.ALPHA11=Alpha 1.1.0
+bwg4.INFDEV=Infdev
+bwg4.INDEV=Indev
+bwg4.WASTELAND=Terres Dévastées (WIP)
+bwg4.ISLAND=Île Déserte
+bwg4.SKYISLAND=Île Volante
+bwg4.CAVESURV=Grotte Imposante
+bwg4.SKYBLOCK=Cube Volant
+bwg4.SKYLANDS=Îles Volantes
+bwg4.CAVE=Monde Souterrain (WIP)
+bwg4.CITY=Ville Infinie
+bwg4.DEADLYDESERT=Désert Mortel
+bwg4.EXTREMEJUNGLE=Jungle Epaisse
+bwg4.PLANET=Planetoïde (WIP)
+
+credits.skyblock=Conçu par Noobcrew
+credits.planet=Conçu par Seibai

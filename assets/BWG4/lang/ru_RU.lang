@@ -1,0 +1,58 @@
+generator.BWG4=BWG4
+
+gui.selectcategory=Выберите категорию:
+gui.comingsoon=Скоро!
+gui.selectGenerator=Выберите генератор мира:
+gui.generatorSettings=Настройки генератора:
+gui.copystring=Скопировать настройки генератора в буфер
+
+bwg4.category.enhanced=Улучшенная
+bwg4.category.old=Старая
+bwg4.category.survival=Экстримальное выживание
+bwg4.category.fun=Для развлечения
+
+bwg4.setting.size=Размер
+bwg4.setting.small=Маленький
+bwg4.setting.default=Обычный
+bwg4.setting.large=Большой
+bwg4.setting.snow=Снежный мир
+bwg4.setting.water=Вода
+bwg4.setting.on=Вкл.
+bwg4.setting.off=Откл.
+bwg4.setting.theme=Тема
+bwg4.setting.type=Тип
+bwg4.setting.layer=Слой
+
+bwg4.theme.default=Обычная
+bwg4.theme.snow=Снежная
+bwg4.theme.jungle=Джунгли
+bwg4.theme.tropical=Тропическая
+bwg4.theme.paradise=Райская
+bwg4.theme.hell=Адская
+bwg4.theme.woods=Лесная
+
+bwg4.type.island=Остров
+bwg4.type.floating=Летающий
+bwg4.type.inland=Остров
+
+bwg4.BETTERDEFAULT=Улучшенный обычный
+bwg4.EXTRFLAT=Супер-плоский
+bwg4.BETA173=Бета 1.7.3
+bwg4.ALPHA12=Альфа 1.2.0
+bwg4.ALPHA11=Альфа 1.1.0
+bwg4.INFDEV=Infdev
+bwg4.INDEV=Indev
+bwg4.WASTELAND=Пустошь (WIP)
+bwg4.ISLAND=Остров выживания
+bwg4.SKYISLAND=Небесный остров выживания
+bwg4.CAVESURV=Выживание в пещере
+bwg4.SKYBLOCK=Skyblock
+bwg4.SKYLANDS=Небесные острова
+bwg4.CAVE=Пещерный мир (WIP)
+bwg4.CITY=Бесконечный город
+bwg4.DEADLYDESERT=Смертельная пустыня
+bwg4.EXTREMEJUNGLE=Экстремальные джунгли
+bwg4.PLANET=Планетоиды (WIP)
+
+credits.skyblock=Оригинальная карта создана Noobcrew
+credits.planet=Оригинальная карта создана Seibai
