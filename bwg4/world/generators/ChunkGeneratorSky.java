@@ -372,7 +372,7 @@ public class ChunkGeneratorSky implements IChunkProvider
 
     public void populate(IChunkProvider ichunkprovider, int i, int j)
     {
-		if (worldtype == 1)
+		if (worldtype == 1 || worldtype == 2) //Beta = 1, default = 2
 		{
 			BlockSand.fallInstantly = true;
 			int k = i * 16;
@@ -711,7 +711,7 @@ public class ChunkGeneratorSky implements IChunkProvider
 			BlockSand.fallInstantly = false;
 		
 		}
-		else if (worldtype == 2)
+		/*else if (worldtype == 2)
 		{
 			BlockSand.fallInstantly = true;
 			int k = i * 16;
@@ -828,7 +828,7 @@ public class ChunkGeneratorSky implements IChunkProvider
 			MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(ichunkprovider, worldObj, rand, i, j, false));
 
 			BlockSand.fallInstantly = false;
-		}
+		}*/
 		else
 		{
 			BlockSand.fallInstantly = true;

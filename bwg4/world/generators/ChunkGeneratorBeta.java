@@ -413,8 +413,8 @@ public class ChunkGeneratorBeta implements IChunkProvider
 
     public void populate(IChunkProvider ichunkprovider, int i, int j)
     {
-		if (worldtype == 1)
-		{
+		//if (worldtype == 1)
+		//{
 	        BlockFalling.fallInstantly = true;
 			int k = i * 16;
 			int l = j * 16;
@@ -741,7 +741,7 @@ public class ChunkGeneratorBeta implements IChunkProvider
 			MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(ichunkprovider, worldObj, rand, i, j, false));
 
 			BlockFalling.fallInstantly = false;
-		}
+		/*}
 		else
 		{	
 			BlockFalling.fallInstantly = true; 
@@ -823,7 +823,7 @@ public class ChunkGeneratorBeta implements IChunkProvider
 			MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(ichunkprovider, worldObj, rand, i, j, false));
 			
 			BlockSand.fallInstantly = false;
-		}
+		}*/
     }
 
     public boolean saveChunks(boolean par1, IProgressUpdate par2IProgressUpdate)

@@ -17,8 +17,15 @@ import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 public class ConnectionManager 
 {
     @SubscribeEvent
+    public void serverFound(ClientConnectedToServerEvent e)
+    {
+    	System.out.println("SERVER FOUND");
+    }
+    
+    @SubscribeEvent
     public void clientConnection(ServerConnectionFromClientEvent e)
     {
+    	System.out.println("CLIENT FOUND");
     	EntityPlayerMP player = ((NetHandlerPlayServer) e.handler).playerEntity;
     	BWG4.instance.packetmanager.sendTo(new PacketBWG4generatorInfo(12345L, "generatorString"), player);
     }

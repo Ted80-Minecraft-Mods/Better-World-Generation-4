@@ -61,7 +61,7 @@ public class ProviderBWG4 extends WorldProvider
 		}
 		else 
 		{
-			GeneratorType.currentGenerator = null;
+			GeneratorType.currentGenerator = GeneratorType.ISLAND;
 			GeneratorType.biomestring = null;
 			GeneratorType.currentSettings = null;
 
@@ -165,19 +165,27 @@ public class ProviderBWG4 extends WorldProvider
     {
         Block k = this.worldObj.getTopBlock(par1, par2);
         
-        if(GeneratorType.currentGenerator == GeneratorType.WASTELAND || GeneratorType.currentGenerator == GeneratorType.CAVESURV || (GeneratorType.currentGenerator == GeneratorType.ISLAND && (trySetting(0, 4) == 2 || trySetting(0, 4) == 3)))
+        if(terrainType == BWG4.BWG4DEFAULT)
         {
-        	return true;
-        }
-        else if(GeneratorType.currentGenerator == GeneratorType.PLANET)
-        {
-        	if(k == Blocks.leaves) { return true; } 
-        	return false;
-        }
-        else if(GeneratorType.currentGenerator == GeneratorType.ISLAND || GeneratorType.currentGenerator == GeneratorType.BETA173 || GeneratorType.currentGenerator == GeneratorType.ALPHA12 || GeneratorType.currentGenerator == GeneratorType.INFDEV)
-        {
-        	if(k == Blocks.sand) { return true; } 
-        	return false;
+	        if(GeneratorType.currentGenerator == GeneratorType.WASTELAND || GeneratorType.currentGenerator == GeneratorType.CAVESURV || (GeneratorType.currentGenerator == GeneratorType.ISLAND && (trySetting(0, 4) == 2 || trySetting(0, 4) == 3)))
+	        {
+	        	return true;
+	        }
+	        else if(GeneratorType.currentGenerator == GeneratorType.PLANET)
+	        {
+	        	if(k == Blocks.leaves) { return true; } 
+	        	return false;
+	        }
+	        else if(GeneratorType.currentGenerator == GeneratorType.ISLAND || GeneratorType.currentGenerator == GeneratorType.BETA173 || GeneratorType.currentGenerator == GeneratorType.ALPHA12 || GeneratorType.currentGenerator == GeneratorType.INFDEV)
+	        {
+	        	if(k == Blocks.sand) { return true; } 
+	        	return false;
+	        }
+	        else
+	        {
+	        	if(k == Blocks.grass || k == Blocks.dirt || k == Blocks.sand) { return true; }
+	        	return false;
+	        }
         }
         else
         {
@@ -206,29 +214,38 @@ public class ProviderBWG4 extends WorldProvider
         
         if (!worldObj.provider.hasNoSky && worldObj.getWorldInfo().getGameType() != GameType.ADVENTURE)
         {
-			if((GeneratorType.currentGenerator == GeneratorType.ISLAND && trySetting(0, 4) != 4) || GeneratorType.currentGenerator == GeneratorType.SKYISLAND || indevcenter)
-			{
-				chunkcoordinates.posX = worldObj.rand.nextInt(spawnFuzz) - spawnFuzzHalf;
-				chunkcoordinates.posZ = worldObj.rand.nextInt(spawnFuzz) - spawnFuzzHalf;
-				chunkcoordinates.posY = worldObj.getTopSolidOrLiquidBlock(0, 0) + 1;
-			}
-			else if(GeneratorType.currentGenerator == GeneratorType.INDEV)
-			{
-				chunkcoordinates.posY = worldObj.getTopSolidOrLiquidBlock(chunkcoordinates.posX, chunkcoordinates.posZ) + 1;
-			}
-			else if(GeneratorType.currentGenerator == GeneratorType.SKYBLOCK)
-			{
-				chunkcoordinates.posY = 84;
-				chunkcoordinates.posZ = 0;
-				chunkcoordinates.posX = 0;
-			}
-			else if(GeneratorType.currentGenerator == GeneratorType.CAVESURV)
-			{
-				chunkcoordinates.posY = 42;
-				chunkcoordinates.posZ = 0;
-				chunkcoordinates.posX = 0;
-			}
-			else
+            if(terrainType == BWG4.BWG4DEFAULT)
+            {
+				if((GeneratorType.currentGenerator == GeneratorType.ISLAND && trySetting(0, 4) != 4) || GeneratorType.currentGenerator == GeneratorType.SKYISLAND || indevcenter)
+				{
+					chunkcoordinates.posX = worldObj.rand.nextInt(spawnFuzz) - spawnFuzzHalf;
+					chunkcoordinates.posZ = worldObj.rand.nextInt(spawnFuzz) - spawnFuzzHalf;
+					chunkcoordinates.posY = worldObj.getTopSolidOrLiquidBlock(0, 0) + 1;
+				}
+				else if(GeneratorType.currentGenerator == GeneratorType.INDEV)
+				{
+					chunkcoordinates.posY = worldObj.getTopSolidOrLiquidBlock(chunkcoordinates.posX, chunkcoordinates.posZ) + 1;
+				}
+				else if(GeneratorType.currentGenerator == GeneratorType.SKYBLOCK)
+				{
+					chunkcoordinates.posY = 84;
+					chunkcoordinates.posZ = 0;
+					chunkcoordinates.posX = 0;
+				}
+				else if(GeneratorType.currentGenerator == GeneratorType.CAVESURV)
+				{
+					chunkcoordinates.posY = 42;
+					chunkcoordinates.posZ = 0;
+					chunkcoordinates.posX = 0;
+				}
+				else
+				{
+					chunkcoordinates.posX += worldObj.rand.nextInt(spawnFuzz) - spawnFuzzHalf;
+					chunkcoordinates.posZ += worldObj.rand.nextInt(spawnFuzz) - spawnFuzzHalf;
+					chunkcoordinates.posY = worldObj.getTopSolidOrLiquidBlock(chunkcoordinates.posX, chunkcoordinates.posZ);
+				}
+            }
+            else
 			{
 				chunkcoordinates.posX += worldObj.rand.nextInt(spawnFuzz) - spawnFuzzHalf;
 				chunkcoordinates.posZ += worldObj.rand.nextInt(spawnFuzz) - spawnFuzzHalf;

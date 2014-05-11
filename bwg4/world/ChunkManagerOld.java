@@ -164,7 +164,7 @@ public class ChunkManagerOld extends WorldChunkManager
 				{
 					for(int j = 0; j < 64; j++)
 					{
-						biomeLookupTable[i + j * 64] = getDefaultBiomes((float)i / 63F, (float)j / 63F);
+						biomeLookupTable[i + j * 64] = getBetaBiomes((float)i / 63F, (float)j / 63F); //getDefaultBiomes
 					}
 				}
 			}
@@ -187,7 +187,7 @@ public class ChunkManagerOld extends WorldChunkManager
 				{
 					for(int j = 0; j < 64; j++)
 					{
-						biomeLookupTable[i + j * 64] = getDefaultBiomes((float)i / 63F, (float)j / 63F);
+						biomeLookupTable[i + j * 64] = getBetaBiomes((float)i / 63F, (float)j / 63F); //getDefaultBiomes
 					}
 				}
 			}

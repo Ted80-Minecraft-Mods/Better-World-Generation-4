@@ -1,5 +1,6 @@
 package bwg4;
 
+import bwg4.api.gen.GeneratorType;
 import bwg4.biomes.BiomeLoader;
 import bwg4.config.ConfigBWG4;
 import bwg4.network.ConnectionManager;
@@ -26,7 +27,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import bwg4.data.Planets;
 
-@Mod(modid="BWG4", name="BetterWorldGeneration4", version="1.2.0f", dependencies="after:BiomesOPlenty")
+@Mod(modid="BWG4", name="BetterWorldGeneration4", version="1.2.0g", dependencies="after:BiomesOPlenty")
 public class BWG4
 {	
 	@Instance("BWG4")
@@ -43,6 +44,7 @@ public class BWG4
 		
 		ConfigBWG4.init(event);
 		BiomeLoader.load();
+		GeneratorType.currentGenerator = GeneratorType.ISLAND;
 		
 		FMLCommonHandler.instance().bus().register(new ConnectionManager());
 	}
