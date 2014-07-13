@@ -8,7 +8,7 @@ forum thread: http://www.minecraftforum.net/topic/1070207-162-forge-better-world
     Client:
     1. Backup your worlds!
     2. Install the recommended version of Minecraft Forge.
-    3. Place the zip file into your .minecraft/mod folder.
+    3. Place the jar file into your .minecraft/mod folder.
     4. Start Minecraft and create a new world.
     5. Select the bwg4 worldtype.
     6. Click on the customize button.
@@ -19,7 +19,7 @@ forum thread: http://www.minecraftforum.net/topic/1070207-162-forge-better-world
     Server:
     1. Install the client version. (see above)
     2. Install the recommended version of Minecraft Forge on your server.
-    3. Place the zip file into your YourServerFolder/mod folder.
+    3. Place the jar file into your YourServerFolder/mod folder.
     4. Start Minecraft(client) and create a new world.
     5. Select the bwg4 worldtype.
     6. Click on the customize button.
