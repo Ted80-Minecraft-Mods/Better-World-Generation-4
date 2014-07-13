@@ -27,7 +27,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import bwg4.data.Planets;
 
-@Mod(modid="BWG4", name="BetterWorldGeneration4", version="1.2.0g", dependencies="after:BiomesOPlenty")
+@Mod(modid="BWG4", name="BetterWorldGeneration4", version="1.2.1", dependencies="after:BiomesOPlenty")
 public class BWG4
 {	
 	@Instance("BWG4")
