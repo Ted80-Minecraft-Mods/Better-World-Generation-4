@@ -32,6 +32,9 @@ forum thread: http://www.minecraftforum.net/topic/1070207-162-forge-better-world
 
 ## CHANGELOG ##
 
+    Version 1.2.1 '11-5-2014'
+    - Updated to minecraft 1.7.10
+
     Version 1.2.0g '11-5-2014'
     - Added French and Russian translation
     - Temporarily multiplayer fix
