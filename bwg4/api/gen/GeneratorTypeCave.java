@@ -57,7 +57,7 @@ public class GeneratorTypeCave extends GeneratorType
 	@Override
     public Vec3 getFogColor(ProviderBWG4 provider, World worldObj, float par1, float par2)
     {
-    	return worldObj.getWorldVec3Pool().getVecFromPool(0.0D, 0.0D, 0.0D);
+    	return Vec3.createVectorHelper(0.0D, 0.0D, 0.0D);
     }
 
 	@Override

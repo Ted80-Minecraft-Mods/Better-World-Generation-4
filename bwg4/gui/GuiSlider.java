@@ -40,7 +40,7 @@ public class GuiSlider extends GuiButton
     	settings.selected = settings.valuearray[pos];
     }
 
-    protected int getHoverState(boolean par1)
+    public int getHoverState(boolean par1)
     {
         return 0;
     }
