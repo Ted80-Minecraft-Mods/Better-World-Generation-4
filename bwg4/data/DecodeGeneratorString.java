@@ -1,6 +1,6 @@
 package bwg4.data;
 
-import bwg4.api.gen.GeneratorType;
+import bwg4.generatortype.GeneratorType;
 
 public class DecodeGeneratorString 
 {
@@ -13,7 +13,7 @@ public class DecodeGeneratorString
 		{
 			GeneratorType.currentGenerator = gentype;
 		}
-		if(genstring.length > 1) //GENERATOR SETTINGS
+		if(genstring.length > 1 && genstring[1].length() > 0) //GENERATOR SETTINGS
 		{
 			String[] settingstring = genstring[1].split("&");
 			GeneratorType.currentSettings = new int[settingstring.length];

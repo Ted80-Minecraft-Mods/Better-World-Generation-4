@@ -1,4 +1,4 @@
-package bwg4.api.gen;
+package bwg4.generatortype;
 
 import net.minecraft.util.StatCollector;
 import net.minecraft.util.Vec3;
@@ -6,7 +6,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.IChunkProvider;
-import bwg4.api.biome.BiomeList;
+import bwg4.api.BiomeList;
 import bwg4.gui.GuiGeneratorSettings;
 import bwg4.gui.GuiSettingsButton;
 import bwg4.world.ProviderBWG4;
@@ -22,7 +22,7 @@ public class GeneratorTypeInfdev extends GeneratorType
 	@Override
 	public boolean getSettings(GuiGeneratorSettings gui)
 	{
-		gui.settings.add(new GuiSettingsButton(new String[]{StatCollector.translateToLocal("bwg4.setting.snow") + ": " + StatCollector.translateToLocal("bwg4.setting.on"), StatCollector.translateToLocal("bwg4.setting.snow") + ": " + StatCollector.translateToLocal("bwg4.setting.off")}, new int[]{0, 1}, 20, 80, gui.width));
+		gui.settings.add(new GuiSettingsButton(new String[]{StatCollector.translateToLocal("bwg4.setting.snow") + ": " + StatCollector.translateToLocal("bwg4.setting.off"), StatCollector.translateToLocal("bwg4.setting.snow") + ": " + StatCollector.translateToLocal("bwg4.setting.on")}, new int[]{0, 1}, 20, 80, gui.width));
 		return true;
 	}
 	

@@ -1,8 +1,8 @@
 package bwg4.world;
 
 import bwg4.BWG4;
-import bwg4.api.biome.BiomeList;
-import bwg4.api.gen.GeneratorType;
+import bwg4.api.BiomeList;
+import bwg4.generatortype.GeneratorType;
 import bwg4.support.Support;
 import bwg4.support.SupportBopHell;
 import bwg4.world.generators.ChunkGeneratorSkyBlock;

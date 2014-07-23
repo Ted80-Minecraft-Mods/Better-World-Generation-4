@@ -25,14 +25,4 @@ public class BiomeInfo
 	{
 		enabled = bool;
 	}
-	
-    public String toString()
-    {
-        String var1 = "";
-		if(enabled == true)
-		{
-			var1 = Setting;
-		}
-        return var1;
-    }
 }

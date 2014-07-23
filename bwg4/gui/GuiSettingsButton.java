@@ -43,7 +43,6 @@ public class GuiSettingsButton
 	
 	public void setOldValue(int oldValue)
 	{
-		selected = 0;
 		for(int i = 0; i < valuearray.length; i++)
 		{
 			if(valuearray[i] == oldValue)

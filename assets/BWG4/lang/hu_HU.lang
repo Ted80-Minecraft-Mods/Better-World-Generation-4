@@ -35,7 +35,7 @@ bwg4.type.island=Sziget
 bwg4.type.floating=Lebegő
 bwg4.type.inland=Belföld
 
-bwg4.BETTERDEFAULT=Jobb Alapértelmezett
+bwg4.DEFAULT=Jobb Alapértelmezett
 bwg4.EXTRFLAT=Extrémlapos
 bwg4.BETA173=Béta 1.7.3
 bwg4.ALPHA12=Alfa 1.2.0
@@ -53,6 +53,7 @@ bwg4.CITY=Végtelen Város
 bwg4.DEADLYDESERT=Halálos Sivatag
 bwg4.EXTREMEJUNGLE=Extrém Dzsungel
 bwg4.PLANET=Bolygócskák
+bwg4.REALISTIC=Realistic
 
 credits.skyblock=Eredeti világ a Noobcrew által.
 credits.planet=Eredeti mod Seibai által.

@@ -1,9 +1,10 @@
 package bwg4.gui;
 
 import java.util.ArrayList;
-import bwg4.api.biome.BiomeManager;
-import bwg4.api.gen.GeneratorType;
+
+import bwg4.api.BiomeManager;
 import bwg4.data.DecodeGeneratorString;
+import bwg4.generatortype.GeneratorType;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiCreateWorld;
 import net.minecraft.client.gui.GuiScreen;
@@ -19,15 +20,14 @@ public class GuiGeneratorSettings extends GuiScreen
 	public GuiButton BUTTON_BIOMELIST;
 	public GuiButton BUTTON_WORLDSETTINGS;
 	
-	public int CATEGORY = 1;
+	public int CATEGORY = 0;
 	public String[] categories;
 	
 	public int generatorSelected = -1;
 	public ArrayList<GuiGeneratorButton> generators;
 	public ArrayList<GuiSettingsButton> settings;
 
-	public String BD_biomestring;
-	public String BD_worldstring;
+	public String biomestring;
 	
 	public boolean decodebool;
 	public boolean setremember;
@@ -91,20 +91,10 @@ public class GuiGeneratorSettings extends GuiScreen
         		generators.get(i).button.enabled = true;
         		if(generators.get(i).generatorID == generatorSelected)
         		{
-        			System.out.println(generatorSelected);
             		generators.get(i).button.enabled = false;
         		}
         	}
 			selectGenerator();
-
-			if(setremember)
-			{
-				for(int s = 0; s < settings.size(); s++)
-				{
-					settings.get(s).setOldValue(rememberSettings[s]);
-				}
-				setremember = false;
-			}
 		}
 	}
 
@@ -121,7 +111,6 @@ public class GuiGeneratorSettings extends GuiScreen
         }
         else if (button.id == 2) //CATEGORY
         {
-        	BD_biomestring = "";
         	CATEGORY++;
         	if(CATEGORY >= categories.length)
         	{
@@ -139,7 +128,7 @@ public class GuiGeneratorSettings extends GuiScreen
         }
         else if (button.id == 4) //COSTUMIZE BIOME LIST
         {
-        	mc.displayGuiScreen(new GuiBiomeSettings(mc, this, BD_biomestring, fontRendererObj));
+        	mc.displayGuiScreen(new GuiBiomeSettings(mc, this, biomestring, fontRendererObj));
         	
         	setremember = true;
         	rememberSettings = new int[settings.size()];
@@ -300,24 +289,31 @@ public class GuiGeneratorSettings extends GuiScreen
 		}
 		
 		dependencies();
+		
+		if(setremember)
+		{
+			for(int rs = 0; rs < settings.size(); rs++)
+			{
+				settings.get(rs).setOldValue(rememberSettings[rs]);
+			}
+			setremember = false;
+		}
 	}
 	
 	public void decodeString(String decodestring)
 	{
 		String[] genstring = decodestring.split("#");
 		String[] gensettings = new String[0];
-		if(genstring.length > 1)
+		if(genstring.length > 1 && genstring[1].length() > 0)
 		{
 			gensettings = genstring[1].split("&");
 		}
-		/*if(genstring.length > 2)
-		{
-			BD_biomestring = genstring[2];
-		}
 		else
 		{
-			BD_biomestring = BiomeManager.getDefaultString();
-		}*/
+			gensettings = new String[0];
+		}
+		
+		biomestring = genstring.length > 2 ? genstring[2] : BiomeManager.getDefaultString();
 		
 		int n = DecodeGeneratorString.getGeneratorIDFromName(genstring[0]);
 		if(n > -1)
@@ -356,30 +352,23 @@ public class GuiGeneratorSettings extends GuiScreen
 	{
 		if(generatorSelected > -1 && generatorSelected < GeneratorType.generatortypes.length)
 		{
-			String genstring = GeneratorType.generatortypes[generatorSelected].GetName();
+			String genstring = GeneratorType.generatortypes[generatorSelected].GetName() + "#";
 			for(int s = 0; s < settings.size(); s++)
 			{
-				if(s == 0)
-				{
-					genstring += "#" + settings.get(s).valuearray[settings.get(s).selected];
-				}
-				else
-				{
-					genstring += "&" + settings.get(s).valuearray[settings.get(s).selected];
-				}
+				genstring += s == 0 ? "" : "&";
+				genstring += settings.get(s).valuearray[settings.get(s).selected];
 			}
 			
-			//if(generatorSelected == GeneratorType.DEFAULT.GetID())
-			//{
-			//	genstring += "#" + BD_biomestring;
-			//}
+			if(generatorSelected == GeneratorType.DEFAULT.GetID())
+			{
+				genstring += "#" + biomestring;
+			}
 			
 			return genstring;
 		}
 		else
 		{
-			//return GeneratorType.DEFAULT.GetName() + "#4&0#" + BiomeManager.getDefaultString();
-			return GeneratorType.BETA173.GetName();
+			return GeneratorType.DEFAULT.GetName() + "##" + BiomeManager.getDefaultString();
 		}
 	}
 }

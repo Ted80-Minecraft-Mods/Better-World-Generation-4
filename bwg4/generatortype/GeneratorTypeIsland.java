@@ -1,22 +1,25 @@
-package bwg4.api.gen;
+package bwg4.generatortype;
 
 import net.minecraft.util.StatCollector;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.IChunkProvider;
-import bwg4.api.biome.BiomeList;
+import net.minecraft.world.gen.ChunkProviderHell;
+import bwg4.api.BiomeList;
 import bwg4.gui.GuiGeneratorSettings;
+import bwg4.gui.GuiSettingsButton;
 import bwg4.gui.GuiSettingsSlider;
 import bwg4.world.ProviderBWG4;
 import bwg4.world.ProviderBWG4Hell;
-import bwg4.world.generators.ChunkGeneratorSkyBlock;
+import bwg4.world.generators.ChunkGeneratorIsland;
 import bwg4.world.generators.ChunkGeneratorSurvivalNether;
 
-public class GeneratorTypeSkyblock extends GeneratorType
+public class GeneratorTypeIsland extends GeneratorType
 {
-	public GeneratorTypeSkyblock(int id, int cat, String name, boolean c) 
+	public GeneratorTypeIsland(int id, int cat, String name, boolean c) 
 	{
 		super(id, cat, name, c);
 	}
@@ -24,16 +27,20 @@ public class GeneratorTypeSkyblock extends GeneratorType
 	@Override
 	public boolean getSettings(GuiGeneratorSettings gui)
 	{
-		gui.settings.add(new GuiSettingsSlider(new String[]{StatCollector.translateToLocal("bwg4.setting.size") + ": " + StatCollector.translateToLocal("bwg4.setting.small"), StatCollector.translateToLocal("bwg4.setting.size") + ": " + StatCollector.translateToLocal("bwg4.setting.default"), StatCollector.translateToLocal("bwg4.setting.size") + ": " + StatCollector.translateToLocal("bwg4.setting.large")}, new int[]{0, 1, 2}, 1, 20, 80, gui.width));
-		gui.setCredits(StatCollector.translateToLocal("credits.skyblock"), 108);
-		
+		gui.settings.add(new GuiSettingsButton(new String[]{StatCollector.translateToLocal("bwg4.setting.theme") + ": " + StatCollector.translateToLocal("bwg4.theme.default"), StatCollector.translateToLocal("bwg4.setting.theme") + ": " + StatCollector.translateToLocal("bwg4.theme.tropical"), StatCollector.translateToLocal("bwg4.setting.theme") + ": " + StatCollector.translateToLocal("bwg4.theme.paradise")}, new int[]{0, 1, 4}, 20, 80, gui.width)); //"Theme: Hell", "Theme: Iceberg",   2, 3,
+		gui.settings.add(new GuiSettingsSlider(new String[]{StatCollector.translateToLocal("bwg4.setting.size") + ": " + StatCollector.translateToLocal("bwg4.setting.small"), StatCollector.translateToLocal("bwg4.setting.size") + ": " + StatCollector.translateToLocal("bwg4.setting.default"), StatCollector.translateToLocal("bwg4.setting.size") + ": " + StatCollector.translateToLocal("bwg4.setting.large")}, new int[]{0, 1, 2}, 1, 21, 100, gui.width, 20, new int[]{0, 1})); //, 2, 3
 		return true;
 	}
 	
 	@Override
 	public WorldChunkManager getServerWorldChunkManager(ProviderBWG4 provider, World worldObj)
-    {
-		return new WorldChunkManagerHell(BiomeList.COMMONnormal1, 0.5F);
+    {				
+		int themeID = provider.trySetting(0, 4) + 1; 
+		switch (themeID) 
+		{
+			case 5: return new WorldChunkManagerHell(BiomeList.COMMONnormal2, 0.5F);
+			default: return new WorldChunkManagerHell(BiomeList.COMMONnormal1, 0.5F);
+		}
     }
 
 	@Override
@@ -45,8 +52,9 @@ public class GeneratorTypeSkyblock extends GeneratorType
 	@Override
     public IChunkProvider getChunkGenerator(ProviderBWG4 provider, World worldObj)
     {	
-		int size = provider.trySetting(0, 2) + 1; 
-		return new ChunkGeneratorSkyBlock(worldObj, worldObj.getSeed(), false, size);
+		int themeID = provider.trySetting(0, 4) + 1; 
+		int size = provider.trySetting(1, 2) + 1; 
+        return new ChunkGeneratorIsland(worldObj, worldObj.getSeed(), themeID, size);
     }
 
 	@Override
@@ -76,7 +84,7 @@ public class GeneratorTypeSkyblock extends GeneratorType
 	@Override
     public float getCloudHeight(ProviderBWG4 provider)
     {
-		return -5F;
+    	return 128F;
     }
 
 	@Override
@@ -88,13 +96,13 @@ public class GeneratorTypeSkyblock extends GeneratorType
 	@Override
     public double getHorizon(ProviderBWG4 provider)
     {
-		return 0.0D;
+    	return 64D;
     }
 
 	@Override
     public boolean getWorldHasVoidParticles(ProviderBWG4 provider)
     {
-		return false;
+    	return true;
     }
 	
 	@Override
@@ -106,6 +114,6 @@ public class GeneratorTypeSkyblock extends GeneratorType
 	@Override
     public IChunkProvider getHellChunkProvider(ProviderBWG4Hell provider)
     {
-		return new ChunkGeneratorSkyBlock(provider.worldObj, provider.worldObj.getSeed(), true, 1);
+		return new ChunkGeneratorSurvivalNether(provider.worldObj, provider.worldObj.getSeed());
     }
 }

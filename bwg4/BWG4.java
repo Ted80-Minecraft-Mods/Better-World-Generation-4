@@ -1,6 +1,5 @@
 package bwg4;
 
-import bwg4.api.gen.GeneratorType;
 import bwg4.biomes.BiomeLoader;
 import bwg4.config.ConfigBWG4;
 import bwg4.network.ConnectionManager;
@@ -26,6 +25,7 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import bwg4.data.Planets;
+import bwg4.generatortype.GeneratorType;
 
 @Mod(modid="BWG4", name="BetterWorldGeneration4", version="1.2.1", dependencies="after:BiomesOPlenty")
 public class BWG4

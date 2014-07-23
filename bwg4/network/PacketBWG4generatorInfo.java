@@ -3,7 +3,7 @@ package bwg4.network;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import net.minecraft.entity.player.EntityPlayer;
-import bwg4.api.gen.GeneratorType;
+import bwg4.generatortype.GeneratorType;
 
 public class PacketBWG4generatorInfo extends PacketBWG4
 {

@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import bwg4.api.biome.BiomeList;
-import bwg4.api.gen.GeneratorType;
+import bwg4.api.BiomeList;
+import bwg4.generatortype.GeneratorType;
 import bwg4.noise.OldNoiseGeneratorOctaves2;
 import net.minecraft.world.ChunkPosition;
 import net.minecraft.world.World;

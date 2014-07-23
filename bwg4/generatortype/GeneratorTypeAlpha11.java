@@ -1,34 +1,40 @@
-package bwg4.api.gen;
+package bwg4.generatortype;
 
+import net.minecraft.util.StatCollector;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.chunk.IChunkProvider;
-import bwg4.api.biome.BiomeList;
+import bwg4.api.BiomeList;
 import bwg4.gui.GuiGeneratorSettings;
-import bwg4.world.ChunkManagerOld;
+import bwg4.gui.GuiSettingsButton;
 import bwg4.world.ProviderBWG4;
-import bwg4.world.generators.ChunkGeneratorBeta;
-import net.minecraft.world.biome.WorldChunkManagerHell;;
+import bwg4.world.generators.ChunkGeneratorAlpha;
+import bwg4.world.generators.ChunkGeneratorInfdev;
+import net.minecraft.world.biome.WorldChunkManagerHell;
 
-public class GeneratorTypeBeta extends GeneratorType
+public class GeneratorTypeAlpha11 extends GeneratorType
 {
-	public GeneratorTypeBeta(int id, int cat, String name, boolean c) 
+	public GeneratorTypeAlpha11(int id, int cat, String name, boolean c) 
 	{
 		super(id, cat, name, c);
 	}
-
+	
 	@Override
 	public boolean getSettings(GuiGeneratorSettings gui)
 	{
-		//settings.add(new GuiSettingsButton(new String[]{"Biomes: Beta", "Biomes: Better Default"}, new int[]{0, 1}, 20, 80, width));
-		return false;
+		gui.settings.add(new GuiSettingsButton(new String[]{StatCollector.translateToLocal("bwg4.setting.snow") + ": " + StatCollector.translateToLocal("bwg4.setting.off"), StatCollector.translateToLocal("bwg4.setting.snow") + ": " + StatCollector.translateToLocal("bwg4.setting.on")}, new int[]{0, 1}, 20, 80, gui.width));
+		return true;
 	}
 	
 	@Override
 	public WorldChunkManager getServerWorldChunkManager(ProviderBWG4 provider, World worldObj)
     {
-		return new ChunkManagerOld(worldObj, true);
+		if(provider.trySetting(0, 1) == 0) 
+		{ 
+			return new WorldChunkManagerHell(BiomeList.CLASSICnormal, 0.5F); 
+		}
+		return new WorldChunkManagerHell(BiomeList.CLASSICsnow, 0.5F); 
     }
 
 	@Override
@@ -40,7 +46,7 @@ public class GeneratorTypeBeta extends GeneratorType
 	@Override
     public IChunkProvider getChunkGenerator(ProviderBWG4 provider, World worldObj)
     {	
-        return new ChunkGeneratorBeta(worldObj, worldObj.getSeed(), worldObj.getWorldInfo().isMapFeaturesEnabled(), provider.trySetting(0, 1) + 1);
+		return new ChunkGeneratorInfdev(worldObj, worldObj.getSeed(), worldObj.getWorldInfo().isMapFeaturesEnabled(), true);
     }
 
 	@Override

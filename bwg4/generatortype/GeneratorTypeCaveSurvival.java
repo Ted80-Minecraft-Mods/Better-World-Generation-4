@@ -1,38 +1,41 @@
-package bwg4.api.gen;
+package bwg4.generatortype;
 
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.WorldChunkManager;
-import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.IChunkProvider;
-import bwg4.api.biome.BiomeList;
-import bwg4.world.ChunkManagerOld;
+import bwg4.api.BiomeList;
 import bwg4.world.ProviderBWG4;
-import bwg4.world.generators.ChunkGeneratorAlpha;
+import bwg4.world.ProviderBWG4Hell;
+import bwg4.world.generators.ChunkGeneratorCaveSurv;
+import bwg4.world.generators.ChunkGeneratorSurvivalNether;
+import net.minecraft.world.biome.WorldChunkManagerHell;
 
-public class GeneratorTypeAlpha12 extends GeneratorType
+public class GeneratorTypeCaveSurvival extends GeneratorType
 {
-	public GeneratorTypeAlpha12(int id, int cat, String name, boolean c) 
+	public GeneratorTypeCaveSurvival(int id, int cat, String name, boolean c) 
 	{
-		super(id, cat, name, c);
+		super(id, cat, name, c, true, true);
 	}
 	
 	@Override
 	public WorldChunkManager getServerWorldChunkManager(ProviderBWG4 provider, World worldObj)
     {
-		return new ChunkManagerOld(worldObj, true);
+		provider.hasNoSky = true;
+		return new WorldChunkManagerHell(BiomeList.COMMONnormal1, 0.5F);
     }
 
 	@Override
 	public WorldChunkManager getClientWorldChunkManager(ProviderBWG4 provider)
     {
-		return new WorldChunkManagerHell(BiomeList.CLASSICnormal, 0.5F);
+		provider.hasNoSky = true;
+		return new WorldChunkManagerHell(BiomeList.COMMONnormal1, 0.5F);
     }
 
 	@Override
     public IChunkProvider getChunkGenerator(ProviderBWG4 provider, World worldObj)
     {	
-		return new ChunkGeneratorAlpha(worldObj, worldObj.getSeed(), worldObj.getWorldInfo().isMapFeaturesEnabled());
+    	return new ChunkGeneratorCaveSurv(worldObj, worldObj.getSeed());
     }
 
 	@Override
@@ -44,19 +47,19 @@ public class GeneratorTypeAlpha12 extends GeneratorType
 	@Override
     public float getCalculateCelestialAngle(ProviderBWG4 provider, long par1, float par3)
     {
-    	return 0F;
+    	return 0.8f;
     }
 
 	@Override
     public boolean isSurfaceWorld(ProviderBWG4 provider)
     {
-    	return true;
+    	return false;
     }
 
 	@Override
     public Vec3 getFogColor(ProviderBWG4 provider, World worldObj, float par1, float par2)
     {
-    	return null;
+    	return Vec3.createVectorHelper(0.0D, 0.0D, 0.0D);
     }
 
 	@Override
@@ -81,5 +84,17 @@ public class GeneratorTypeAlpha12 extends GeneratorType
     public boolean getWorldHasVoidParticles(ProviderBWG4 provider)
     {
     	return true;
+    }
+	
+	@Override
+    public WorldChunkManager getHellChunkManager(ProviderBWG4Hell provider)
+    {
+    	return new WorldChunkManagerHell(BiomeList.COMMONnether, 0.0F);
+    }
+    
+	@Override
+    public IChunkProvider getHellChunkProvider(ProviderBWG4Hell provider)
+    {
+		return new ChunkGeneratorSurvivalNether(provider.worldObj, provider.worldObj.getSeed());
     }
 }

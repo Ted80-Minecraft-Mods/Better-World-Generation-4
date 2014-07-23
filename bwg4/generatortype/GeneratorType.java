@@ -1,6 +1,6 @@
-package bwg4.api.gen;
+package bwg4.generatortype;
 
-import bwg4.api.biome.BiomeList;
+import bwg4.api.BiomeList;
 import bwg4.gui.GuiGeneratorSettings;
 import bwg4.support.Support;
 import bwg4.support.SupportBopHell;
@@ -24,7 +24,7 @@ public class GeneratorType
 	public static String genString;
 	
 	public static final GeneratorType[] generatortypes = new GeneratorType[40];
-	public static final GeneratorType DEFAULT = new GeneratorTypeDefault(0, 0, "BETTERDEFAULT", false);
+	public static final GeneratorType DEFAULT = new GeneratorTypeDefault(0, 0, "DEFAULT", true);
 	public static final GeneratorType FLAT = new GeneratorType(1, 0, "EXTRFLAT", false);
 	public static final GeneratorType BETA173 = new GeneratorTypeBeta(2, 1, "BETA173", true);
 	public static final GeneratorType ALPHA12 = new GeneratorTypeAlpha12(3, 1, "ALPHA12", true);
@@ -42,6 +42,8 @@ public class GeneratorType
 	public static final GeneratorType CITY = new GeneratorType(15, 3, "CITY", false);
 	public static final GeneratorType DEADLYDESERT = new GeneratorType(16, 5, "DEADLYDESERT", false);
 	public static final GeneratorType EXTREMEJUNGLE = new GeneratorType(17, 5, "EXTREMEJUNGLE", false);
+	public static final GeneratorType REALISTIC = new GeneratorTypeDefault(18, 0, "REALISTIC", true);
+	//20 == realistic Biomes 'o plenty
 	
 	private final int GeneratorTypeId;
 	private final String GeneratorName;

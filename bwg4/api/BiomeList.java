@@ -1,9 +1,13 @@
-package bwg4.api.biome;
+package bwg4.api;
 
 import net.minecraft.world.biome.BiomeGenBase;
 
 public class BiomeList 
 {
+	public static BiomeGenBase DEFAULTplains;
+	public static BiomeGenBase DEFAULTdesert;
+	public static BiomeGenBase DEFAULTjungle;
+	
 	public static BiomeGenBase OLDrainforest;
 	public static BiomeGenBase OLDswampland;
 	public static BiomeGenBase OLDseasonalForest;

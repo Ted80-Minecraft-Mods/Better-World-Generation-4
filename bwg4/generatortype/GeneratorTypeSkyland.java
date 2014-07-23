@@ -1,11 +1,11 @@
-package bwg4.api.gen;
+package bwg4.generatortype;
 
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.IChunkProvider;
-import bwg4.api.biome.BiomeList;
+import bwg4.api.BiomeList;
 import bwg4.gui.GuiGeneratorSettings;
 import bwg4.gui.GuiSettingsButton;
 import bwg4.world.ChunkManagerOld;

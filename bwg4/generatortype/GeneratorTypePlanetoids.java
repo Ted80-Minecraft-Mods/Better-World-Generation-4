@@ -1,55 +1,54 @@
-package bwg4.api.gen;
+package bwg4.generatortype;
 
 import net.minecraft.util.StatCollector;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.IChunkProvider;
-import bwg4.api.biome.BiomeList;
+import net.minecraft.world.gen.ChunkProviderHell;
+import bwg4.api.BiomeList;
 import bwg4.gui.GuiGeneratorSettings;
 import bwg4.gui.GuiSettingsButton;
+import bwg4.gui.GuiSettingsSlider;
+import bwg4.support.Support;
 import bwg4.world.ProviderBWG4;
 import bwg4.world.ProviderBWG4Hell;
-import bwg4.world.generators.ChunkGeneratorSkyIsland;
-import bwg4.world.generators.ChunkGeneratorSurvivalNether;
+import bwg4.world.generators.ChunkGeneratorPlanetoids;
+import bwg4.world.generators.ChunkGeneratorSkyBlock;
 
-public class GeneratorTypeSkyIsland extends GeneratorType
+public class GeneratorTypePlanetoids extends GeneratorType
 {
-	public GeneratorTypeSkyIsland(int id, int cat, String name, boolean c) 
+	public GeneratorTypePlanetoids(int id, int cat, String name, boolean c) 
 	{
 		super(id, cat, name, c);
 	}
-	
-	@Override
+
 	public boolean getSettings(GuiGeneratorSettings gui)
 	{
-		gui.settings.add(new GuiSettingsButton(new String[]{StatCollector.translateToLocal("bwg4.setting.theme") + ": " + StatCollector.translateToLocal("bwg4.theme.default"), StatCollector.translateToLocal("bwg4.setting.theme") + ": " + StatCollector.translateToLocal("bwg4.theme.snow"), StatCollector.translateToLocal("bwg4.setting.theme") + ": " + StatCollector.translateToLocal("bwg4.theme.jungle")}, new int[]{0, 1, 2}, 20, 80, gui.width)); 
+		gui.settings.add(new GuiSettingsButton(new String[]{StatCollector.translateToLocal("bwg4.setting.water") + ": " + StatCollector.translateToLocal("bwg4.setting.off"), StatCollector.translateToLocal("bwg4.setting.water") + ": " + StatCollector.translateToLocal("bwg4.setting.on")}, new int[]{0, 1}, 20, 80, gui.width));
+		gui.setCredits(StatCollector.translateToLocal("credits.planet"), 108);
 		return true;
 	}
 	
 	@Override
 	public WorldChunkManager getServerWorldChunkManager(ProviderBWG4 provider, World worldObj)
     {
-		int themeID = provider.trySetting(0, 2) + 1; 
-		switch (themeID) 
-		{
-			case 2: return new WorldChunkManagerHell(BiomeList.COMMONsnow, 0.5F);
-			default: return new WorldChunkManagerHell(BiomeList.COMMONnormal2, 0.5F);
-		}
+		return new WorldChunkManagerHell(BiomeList.COMMONnormal2, 0.5F);
     }
 
 	@Override
 	public WorldChunkManager getClientWorldChunkManager(ProviderBWG4 provider)
     {
-		return new WorldChunkManagerHell(BiomeList.COMMONnormal1, 0.5F);
+		return new WorldChunkManagerHell(BiomeList.COMMONnormal2, 0.5F);
     }
 
 	@Override
     public IChunkProvider getChunkGenerator(ProviderBWG4 provider, World worldObj)
     {	
-		int themeID = provider.trySetting(0, 2) + 1; 
-        return new ChunkGeneratorSkyIsland(worldObj, worldObj.getSeed(), themeID);
+		int water = provider.trySetting(0, 2); 
+		return new ChunkGeneratorPlanetoids(worldObj, worldObj.getSeed(), water == 1 ? true : false, 0);
     }
 
 	@Override
@@ -79,7 +78,7 @@ public class GeneratorTypeSkyIsland extends GeneratorType
 	@Override
     public float getCloudHeight(ProviderBWG4 provider)
     {
-		return -5F;
+		return 200F;
     }
 
 	@Override
@@ -98,10 +97,10 @@ public class GeneratorTypeSkyIsland extends GeneratorType
     public boolean getWorldHasVoidParticles(ProviderBWG4 provider)
     {
 		return false;
-    }
+    }    
 	
 	@Override
-    public WorldChunkManager getHellChunkManager(ProviderBWG4Hell provider)
+	public WorldChunkManager getHellChunkManager(ProviderBWG4Hell provider)
     {
     	return new WorldChunkManagerHell(BiomeList.COMMONnether, 0.0F);
     }
@@ -109,6 +108,7 @@ public class GeneratorTypeSkyIsland extends GeneratorType
 	@Override
     public IChunkProvider getHellChunkProvider(ProviderBWG4Hell provider)
     {
-		return new ChunkGeneratorSurvivalNether(provider.worldObj, provider.worldObj.getSeed());
+		int water = provider.trySetting(0, 2); 
+    	return new ChunkGeneratorPlanetoids(provider.worldObj, provider.worldObj.getSeed(), water == 1 ? true : false, 1);
     }
 }

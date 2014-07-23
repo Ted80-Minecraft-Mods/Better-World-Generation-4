@@ -34,7 +34,7 @@ bwg4.type.island=Eiland
 bwg4.type.floating=Lucht
 bwg4.type.inland=Binneland
 
-bwg4.BETTERDEFAULT=Better Default
+bwg4.DEFAULT=Default
 bwg4.EXTRFLAT=Extremeflat
 bwg4.BETA173=Beta 1.7.3
 bwg4.ALPHA12=Alpha 1.2.0
@@ -52,6 +52,7 @@ bwg4.CITY=Endless City
 bwg4.DEADLYDESERT=Deadly Desert
 bwg4.EXTREMEJUNGLE=Extreme Jungle
 bwg4.PLANET=Planetoids (WIP)
+bwg4.REALISTIC=Realistic
 
 credits.skyblock=Original map by Noobcrew
 credits.planet=Original mod by Seibai

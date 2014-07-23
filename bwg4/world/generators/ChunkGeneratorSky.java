@@ -3,7 +3,7 @@ package bwg4.world.generators;
 import java.util.List;
 import java.util.Random;
 
-import bwg4.api.biome.BiomeList;
+import bwg4.api.BiomeList;
 import bwg4.deco.DecoDungeons;
 import bwg4.deco.DecoSurvival;
 import bwg4.deco.old.OldGenClay;

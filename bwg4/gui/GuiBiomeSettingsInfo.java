@@ -6,12 +6,14 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import bwg4.api.biome.BiomeManager;
+
+import bwg4.api.BiomeManager;
 import net.minecraft.world.biome.BiomeGenBase;
 
 public class GuiBiomeSettingsInfo
 {
     private final List Biomelist = new ArrayList();
+    public int biomesEnabled;
 	
     public List theBiomesList()
     {
@@ -26,10 +28,7 @@ public class GuiBiomeSettingsInfo
     public String toString()
     {
 		//CREATE STRING
-        StringBuilder genstring = new StringBuilder();
-		
-		//VERSION
-        genstring.append("2&");
+    	String s = "";
 		
 		//GET BIOME INFO
 		boolean first = true;
@@ -37,79 +36,60 @@ public class GuiBiomeSettingsInfo
         {
         	if(((BiomeInfo)this.Biomelist.get(var2)).getEnabled())
         	{
-	            if (!first)
+        		if (!first)
 	            {
-	            	genstring.append(";");
+	            	s += ";";
 	            }
 	            else
 	            {
 	                first = false;
 	            }
 	
-	            genstring.append(((BiomeInfo)this.Biomelist.get(var2)).toString());
+	            s += ((BiomeInfo)this.Biomelist.get(var2)).getNAME();
         	}
         }
 
-		return genstring.toString();
+		return s;
 	}
 	
-	public static GuiBiomeSettingsInfo FromString(String par0Str)
+	public static GuiBiomeSettingsInfo FromString(String settings)
     {
-		GuiBiomeSettingsInfo var0 = new GuiBiomeSettingsInfo();
-        if (par0Str != "")
+		GuiBiomeSettingsInfo info = new GuiBiomeSettingsInfo();
+		info.biomesEnabled = 0;
+        if (settings != null && settings.length() > 0)
         {
-			String[] mainarray = par0Str.split("&");
-			if(Integer.parseInt(mainarray[0]) == 1)
-			{
-				String[] biomesarray = mainarray[1].split(";");
-				String settingName;
-				boolean enabled;
-				
-				for(int biome = 0; biome < biomesarray.length; ++biome)
-				{
-					String[] biomeINFO = biomesarray[biome].split("=");
-					settingName = biomeINFO[0];
-	
-					if(biomeINFO[1].equals("true"))
-					{
-						enabled = true;
-					}
-					else
-					{
-						enabled = false;
-					}
-					
-					var0.theBiomesList().add(new BiomeInfo(settingName, enabled)); 
-				}
-			}
-			else
-			{
-				String[] deflist = BiomeManager.getStringList();
-				String[] biomesarray = mainarray[1].split(";");
-				String settingName;
-				boolean enabled;
-				
-				for(int b = 0; b < deflist.length; b++)
-				{
-					if(deflist[b] != null)
-					{
-						enabled = false;
-						for(int biome = 0; biome < biomesarray.length; ++biome)
-						{
-							if(deflist[b] != null)
-							{
-								if(biomesarray[biome].equals(deflist[b])) 
-								{ 
-									enabled = true;
-								}
-							}
-						}
-						var0.theBiomesList().add(new BiomeInfo(deflist[b], enabled)); 
-					}
-				}
-			}
-			return var0;
-		}
-		return defaultBiomesList();
+        	String[] enabledbiomes = settings.split(";");
+        	
+        	String[] biomes = BiomeManager.getBiomeNames();
+        	int l = biomes.length;
+        	for(int i = 0; i < l; i++)
+        	{
+        		for(int j = enabledbiomes.length - 1; j > -1; j--)
+        		{
+        			if(biomes[i].equals(enabledbiomes[j]))
+        			{
+                		info.theBiomesList().add(new BiomeInfo(biomes[i], true)); 
+                		info.biomesEnabled++;
+                		break;
+        			}
+        			
+        			if(j == 0)
+        			{
+                		info.theBiomesList().add(new BiomeInfo(biomes[i], false)); 
+        			}
+        		}
+        	}
+        }
+        else
+        {
+        	String[] biomes = BiomeManager.getBiomeNames();
+        	int l = biomes.length;
+        	for(int i = 0; i < l; i++)
+        	{
+        		info.theBiomesList().add(new BiomeInfo(biomes[i], true)); 
+        		info.biomesEnabled++;
+        	}
+        }
+        return info;
 	}
 }

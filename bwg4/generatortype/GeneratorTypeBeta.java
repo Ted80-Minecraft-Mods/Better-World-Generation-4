@@ -1,39 +1,46 @@
-package bwg4.api.gen;
+package bwg4.generatortype;
 
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.WorldChunkManager;
-import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.IChunkProvider;
-import bwg4.api.biome.BiomeList;
+import bwg4.api.BiomeList;
+import bwg4.gui.GuiGeneratorSettings;
+import bwg4.world.ChunkManagerOld;
 import bwg4.world.ProviderBWG4;
-import bwg4.world.generators.ChunkGeneratorCave;
+import bwg4.world.generators.ChunkGeneratorBeta;
+import net.minecraft.world.biome.WorldChunkManagerHell;;
 
-public class GeneratorTypeCave extends GeneratorType
+public class GeneratorTypeBeta extends GeneratorType
 {
-	public GeneratorTypeCave(int id, int cat, String name, boolean c) 
+	public GeneratorTypeBeta(int id, int cat, String name, boolean c) 
 	{
-		super(id, cat, name, c, true, true);
+		super(id, cat, name, c);
 	}
 
 	@Override
+	public boolean getSettings(GuiGeneratorSettings gui)
+	{
+		//settings.add(new GuiSettingsButton(new String[]{"Biomes: Beta", "Biomes: Better Default"}, new int[]{0, 1}, 20, 80, width));
+		return false;
+	}
+	
+	@Override
 	public WorldChunkManager getServerWorldChunkManager(ProviderBWG4 provider, World worldObj)
     {
-		provider.hasNoSky = true;
-		return new WorldChunkManagerHell(BiomeList.COMMONnormal1, 0.5F);
+		return new ChunkManagerOld(worldObj, true);
     }
 
 	@Override
 	public WorldChunkManager getClientWorldChunkManager(ProviderBWG4 provider)
     {
-		provider.hasNoSky = true;
-		return new WorldChunkManagerHell(BiomeList.COMMONnormal1, 0.5F);
+		return new WorldChunkManagerHell(BiomeList.CLASSICnormal, 0.5F);
     }
 
 	@Override
     public IChunkProvider getChunkGenerator(ProviderBWG4 provider, World worldObj)
     {	
-		return new ChunkGeneratorCave(worldObj, worldObj.getSeed(), false);
+        return new ChunkGeneratorBeta(worldObj, worldObj.getSeed(), worldObj.getWorldInfo().isMapFeaturesEnabled(), provider.trySetting(0, 1) + 1);
     }
 
 	@Override
@@ -45,19 +52,19 @@ public class GeneratorTypeCave extends GeneratorType
 	@Override
     public float getCalculateCelestialAngle(ProviderBWG4 provider, long par1, float par3)
     {
-    	return 0.8f;
+    	return 0F;
     }
 
 	@Override
     public boolean isSurfaceWorld(ProviderBWG4 provider)
     {
-    	return false;
+    	return true;
     }
 
 	@Override
     public Vec3 getFogColor(ProviderBWG4 provider, World worldObj, float par1, float par2)
     {
-    	return Vec3.createVectorHelper(0.0D, 0.0D, 0.0D);
+    	return null;
     }
 
 	@Override
@@ -69,7 +76,7 @@ public class GeneratorTypeCave extends GeneratorType
 	@Override
     public int getAverageGroundLevel(ProviderBWG4 provider)
     {
-		return 50;
+    	return 64;
     }
 
 	@Override

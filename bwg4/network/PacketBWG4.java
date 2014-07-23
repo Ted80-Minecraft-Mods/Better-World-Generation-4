@@ -1,6 +1,6 @@
 package bwg4.network;
 
-import bwg4.api.gen.GeneratorType;
+import bwg4.generatortype.GeneratorType;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import net.minecraft.entity.player.EntityPlayer;

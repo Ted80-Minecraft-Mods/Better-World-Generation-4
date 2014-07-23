@@ -2,7 +2,7 @@ package bwg4.data;
 
 import java.util.Random;
 
-import bwg4.api.gen.GeneratorType;
+import bwg4.generatortype.GeneratorType;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;

@@ -15,7 +15,8 @@ public class GuiBiomeSettings extends GuiScreen
     private final GuiGeneratorSettings guiGeneratorSettings;
 	private GuiBiomeSettingsList guidefaultlist;     
     private GuiBiomeSettingsInfo theDefaultGeneratorInfo = GuiBiomeSettingsInfo.defaultBiomesList(); 
-	
+
+    private GuiButton buttonDone;
     private GuiButton buttonEnable;
     private GuiButton buttonAll;
 	
@@ -28,6 +29,7 @@ public class GuiBiomeSettings extends GuiScreen
     	fr = f;
     	guiGeneratorSettings = par1;
 		setGeneratorInfo(par2Str);
+		
     }
 	
     public String getGeneratorInfo()
@@ -49,7 +51,7 @@ public class GuiBiomeSettings extends GuiScreen
     {
 		this.buttonList.clear();
 		this.guidefaultlist = new GuiBiomeSettingsList(this);
-        this.buttonList.add(new GuiButton(0, this.width / 2 - 102, this.height - 28, 100, 20, StatCollector.translateToLocal("gui.done")));
+        this.buttonList.add(this.buttonDone = new GuiButton(0, this.width / 2 - 102, this.height - 28, 100, 20, StatCollector.translateToLocal("gui.done")));
         this.buttonList.add(new GuiButton(1, this.width / 2 + 3, this.height - 28, 100, 20, StatCollector.translateToLocal("gui.cancel")));
         this.buttonList.add(this.buttonEnable = new GuiButton(2, this.width / 2 - 102, this.height - 52, 100, 20, "Enable/Disable"));
         this.buttonList.add(this.buttonAll = new GuiButton(3, this.width / 2 + 3, this.height - 52, 100, 20, "Disable All"));
@@ -62,7 +64,7 @@ public class GuiBiomeSettings extends GuiScreen
 	
 		if (par1GuiButton.id == 0)
         {
-			guiGeneratorSettings.BD_biomestring = getGeneratorInfo();
+			guiGeneratorSettings.biomestring = getGeneratorInfo();
             this.mc.displayGuiScreen(guiGeneratorSettings);
         }
 		else if (par1GuiButton.id == 1)
@@ -75,10 +77,12 @@ public class GuiBiomeSettings extends GuiScreen
 			if(var6.getEnabled() == true)
 			{
 				var6.setEnabled(false);
+				theDefaultGeneratorInfo.biomesEnabled--;
 			}
 			else
 			{
 				var6.setEnabled(true);
+				theDefaultGeneratorInfo.biomesEnabled++;
 			}
         }
 		else if (par1GuiButton.id == 3)
@@ -89,6 +93,7 @@ public class GuiBiomeSettings extends GuiScreen
 				{
 					BiomeInfo var6 = (BiomeInfo)theDefaultGeneratorInfo.theBiomesList().get(i);
 					var6.setEnabled(false);
+					theDefaultGeneratorInfo.biomesEnabled--;
 				}
 				all = true;
 			}
@@ -98,6 +103,7 @@ public class GuiBiomeSettings extends GuiScreen
 				{
 					BiomeInfo var6 = (BiomeInfo)theDefaultGeneratorInfo.theBiomesList().get(i);
 					var6.setEnabled(true);
+					theDefaultGeneratorInfo.biomesEnabled++;
 				}
 				all = false;
 			}
@@ -107,6 +113,15 @@ public class GuiBiomeSettings extends GuiScreen
         {
 			biome = (BiomeInfo)theDefaultGeneratorInfo.theBiomesList().get(theDefaultGeneratorInfo.theBiomesList().size() - this.guidefaultlist.selected - 1);
         }
+		
+		if(theDefaultGeneratorInfo.biomesEnabled == 0)
+		{
+			buttonDone.enabled = false;
+		}
+		else
+		{
+			buttonDone.enabled = true;
+		}
 	}
 	
 	public void updateButtons()

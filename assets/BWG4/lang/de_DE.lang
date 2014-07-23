@@ -35,7 +35,7 @@ bwg4.type.island=Insel
 bwg4.type.floating=Schwebend
 bwg4.type.inland=Festland
 
-bwg4.BETTERDEFAULT=Verbesserter Standardgenerator
+bwg4.DEFAULT=Verbesserter Standardgenerator
 bwg4.EXTRFLAT=Extrem Flach
 bwg4.BETA173=Beta 1.7.3
 bwg4.ALPHA12=Alpha 1.2.0
@@ -53,6 +53,7 @@ bwg4.CITY=Unendliche Stadt
 bwg4.DEADLYDESERT=Tote Wüste
 bwg4.EXTREMEJUNGLE=Extremer Urwald
 bwg4.PLANET=Planetoids (Unfertig)
+bwg4.REALISTIC=Realistic
 
 credits.skyblock=Originalwelt: Noobcrew
 credits.planet=Original mod by Seibai

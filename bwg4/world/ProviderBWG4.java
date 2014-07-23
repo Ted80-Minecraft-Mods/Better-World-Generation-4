@@ -1,10 +1,10 @@
 package bwg4.world;
 
 import bwg4.BWG4;
-import bwg4.api.biome.BiomeList;
-import bwg4.api.biome.BiomeManager;
-import bwg4.api.gen.GeneratorType;
+import bwg4.api.BiomeList;
+import bwg4.api.BiomeManager;
 import bwg4.data.DecodeGeneratorString;
+import bwg4.generatortype.GeneratorType;
 import bwg4.world.generators.ChunkGeneratorAlpha;
 import bwg4.world.generators.ChunkGeneratorBeta;
 import bwg4.world.generators.ChunkGeneratorIndev;
@@ -28,29 +28,21 @@ public class ProviderBWG4 extends WorldProvider
     {
 		if(this.worldObj.getWorldInfo().getTerrainType() == BWG4.BWG4DEFAULT && !worldObj.isRemote)
 		{
-			//System.out.println("BWG4 GENERATORSTRING: " + worldObj.getWorldInfo().getGeneratorOptions());
+			System.out.println("BWG4 GENERATORSTRING: " + worldObj.getWorldInfo().getGeneratorOptions());
 			if(worldObj.getWorldInfo().getGeneratorOptions().length() > 2)
 			{
 				DecodeGeneratorString.decode(worldObj.getWorldInfo().getGeneratorOptions());
-				/*if(GeneratorType.currentGenerator == GeneratorType.DEFAULT)
+				if(GeneratorType.currentGenerator == GeneratorType.DEFAULT)
 				{
-					if(GeneratorType.biomestring != null)
-					{
-						if(GeneratorType.biomestring.length() < 4)
-						{
-							GeneratorType.biomestring = BiomeManager.getDefaultString();
-						}
-					}
-					else
+					if(GeneratorType.biomestring == null || GeneratorType.biomestring.length() < 3)
 					{
 						GeneratorType.biomestring = BiomeManager.getDefaultString();
 					}
-				}*/
+				}
 			}
 			else
 			{
-				//DecodeGeneratorString.decode("BetterDefault#4&0#" + BiomeManager.getDefaultString());
-				DecodeGeneratorString.decode("BETA173");
+				DecodeGeneratorString.decode("BetterDefault##" + BiomeManager.getDefaultString());
 			}
 			
 			this.worldChunkMgr = GeneratorType.currentGenerator.getServerWorldChunkManager(this, this.worldObj);
