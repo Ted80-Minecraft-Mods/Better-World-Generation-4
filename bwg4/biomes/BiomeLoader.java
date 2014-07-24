@@ -5,16 +5,17 @@ import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import bwg4.api.BiomeList;
 import bwg4.api.BiomeManager;
-import bwg4.biomes.override.*;
+import bwg4.biomes.realistic.*;
 import bwg4.config.ConfigBWG4;
 
 public class BiomeLoader 
 {
 	public static void load()
 	{
-		BiomeList.DEFAULTplains = (new DefaultBiomePlains(1)).setColor(9286496).setBiomeName("Plains");
-		BiomeList.DEFAULTdesert = (new DefaultBiomeDesert(2)).setColor(16421912).setBiomeName("Desert").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setHeight(new BiomeGenBase.Height(0.125F, 0.05F));
-		BiomeList.DEFAULTjungle = (new DefaultBiomeJungle(21)).setColor(5470985).setBiomeName("Jungle").func_76733_a(5470985).setTemperatureRainfall(0.95F, 0.9F);
+		BiomeList.REALISTICpole = (new RealisticBiomePole(200)).setColor(9286496).setBiomeName("Polar").setTemperatureRainfall(0.0F, 0.1F);
+		BiomeList.REALISTICglacier = (new RealisticBiomeGlacier(201)).setColor(9286496).setBiomeName("Glacier").setTemperatureRainfall(0.0F, 0.1F);
+		BiomeList.REALISTICsnowtaiga = (new RealisticBiomeSnowTaiga(202)).setColor(9286496).setBiomeName("Taiga").setTemperatureRainfall(0.0F, 0.1F);
+		BiomeList.REALISTICtaiga = (new RealisticBiomeTaiga(203)).setColor(9286496).setBiomeName("SnowTaiga").setTemperatureRainfall(0.7F, 0.5F);
 		
 		BiomeList.OLDdesert = (new BiomeBeta(ConfigBWG4.biomeIDs[0], 7)).setColor(16421912).setBiomeName("desert").setTemperatureRainfall(0.95F, 0.1F).setDisableRain();
 		BiomeList.OLDforest = (new BiomeBeta(ConfigBWG4.biomeIDs[1], 3)).setColor(353825).setBiomeName("forest").setTemperatureRainfall(0.8F, 0.6F);
@@ -35,9 +36,7 @@ public class BiomeLoader
 		BiomeList.COMMONsnow = (new BiomeCommon(ConfigBWG4.biomeIDs[14], 2)).setColor(353825).setBiomeName("BWG4_com3").setTemperatureRainfall(0.0F, 0.5F);
 		BiomeList.COMMONnether = (new BiomeCommon(ConfigBWG4.biomeIDs[15], 3)).setColor(353825).setBiomeName("BWG4_nether").setTemperatureRainfall(0.8F, 0.6F);
 		
-		BiomeManager.addBiome("Plains", BiomeList.DEFAULTplains, 0f);
-		//BiomeManager.addBiome("Desert", BiomeList.DEFAULTdesert, 0.5f);
-		//BiomeManager.addBiome("Jungle", BiomeList.DEFAULTjungle, 1f);
+		BiomeManager.addBiome("Taiga", BiomeList.REALISTICtaiga, 0f);
 		
 		//TODO Biomedictonairy
 	}

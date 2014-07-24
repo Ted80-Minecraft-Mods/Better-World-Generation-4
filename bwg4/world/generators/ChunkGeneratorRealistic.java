@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import bwg4.api.BiomeList;
-import bwg4.biomes.DefaultBiome;
+import bwg4.biomes.RealisticBiome;
 import bwg4.deco.DecoDungeons;
 import bwg4.deco.old.OldGenClay;
 import bwg4.deco.old.OldGenLakes;
@@ -43,7 +43,7 @@ import net.minecraft.world.gen.structure.MapGenStronghold;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 
-public class ChunkGeneratorDefault implements IChunkProvider
+public class ChunkGeneratorRealistic implements IChunkProvider
 {
     private Random rand;
 	
@@ -64,7 +64,7 @@ public class ChunkGeneratorDefault implements IChunkProvider
     private final float[] parabolicField;
     private float parabolicFieldTotal;
 	
-    public ChunkGeneratorDefault(World world, long l, boolean m)
+    public ChunkGeneratorRealistic(World world, long l, boolean m)
     {
         field_902_u = new MapGenBWG4Caves();
         worldObj = world;
@@ -117,10 +117,8 @@ public class ChunkGeneratorDefault implements IChunkProvider
     
     public void generateTerrain(WorldChunkManager wcm, int cx, int cy, Block[] blocks, byte[] metadata, BiomeGenBase biomes[], float[] n)
     {	
-    	float noise3Dstength = 10f;
-    	
     	int p;
-    	float noise;
+    	float[] noise;
     	float noise3;
     	for(int i = 0; i < 16; i++)
     	{
@@ -130,7 +128,7 @@ public class ChunkGeneratorDefault implements IChunkProvider
     			for(int k = 0; k < 256; k++)
     			{
     				p = (j * 16 + i) * 256 + k;
-    				if(k > noise + noise3Dstength)
+    				if(k > noise[0] + noise[1])
     				{
     					if(k < 63)
         				{
@@ -141,9 +139,9 @@ public class ChunkGeneratorDefault implements IChunkProvider
         					blocks[p] = Blocks.air;
         				}
     				}
-    				else if(k <= noise + noise3Dstength && k >= noise - noise3Dstength)
+    				else if(k <= noise[0] + noise[1] && k >= noise[0] - noise[1])
     				{
-        				noise3 = perlin.noise3((cx * 16 + j) / 20f, (cy * 16 + i) / 20f, k / 20f) + (noise - k) / (noise3Dstength * 2);
+        				noise3 = perlin.noise3((cx * 16 + j) / 20f, (cy * 16 + i) / 20f, k / 20f) + (noise[0] - k) / (noise[1] * 2);
         				if(noise3 > 0f)
         				{
         					blocks[p] = Blocks.stone;
@@ -157,17 +155,17 @@ public class ChunkGeneratorDefault implements IChunkProvider
         					blocks[p] = Blocks.air;
         				}
     				}
-    				else if(k < noise - noise3Dstength)
+    				else if(k < noise[0] - noise[1])
     				{
-    					blocks[p] = Blocks.gold_block;
+    					blocks[p] = Blocks.stone;
     				}
     			}
-    			n[j * 16 + i] = noise;
+    			n[j * 16 + i] = noise[0];
     		}
     	}
     }
     
-    public float getNoise(WorldChunkManager wcm, int a, int b, int x, int y, BiomeGenBase biomes[])
+    public float[] getNoise(WorldChunkManager wcm, int a, int b, int x, int y, BiomeGenBase biomes[])
     {
     	float[] noiseArray = new float[256];
     	for(int i = -parabolicSize; i <= parabolicSize; i++)
@@ -179,15 +177,26 @@ public class ChunkGeneratorDefault implements IChunkProvider
     	}
     	
     	float noise = 0f;
-    	for(int k = 0; k < 256; k++)
+    	float noise3D = 0f;
+    	
+    	int k;
+    	for(k = 0; k < 256; k++)
     	{
     		if(noiseArray[k] > 0.0f)
     		{
-    			noise += ((DefaultBiome)BiomeGenBase.getBiome(k)).getNoise(perlin, x, y) * noiseArray[k];
+    			noise += ((RealisticBiome)BiomeGenBase.getBiome(k)).rNoise(perlin, x, y) * noiseArray[k];
     		}
     	}
     	
-    	return noise;
+    	for(k = 0; k < 256; k++)
+    	{
+    		if(noiseArray[k] > 0.0f)
+    		{
+    			noise3D += ((RealisticBiome)BiomeGenBase.getBiome(k)).r3Dnoise(noise) * noiseArray[k];
+    		}
+    	}
+    	
+    	return new float[]{noise, noise3D};
     }
 
     public void replaceBlocksForBiome(int cx, int cy, Block[] blocks, byte[] metadata, BiomeGenBase biomes[], float[] n)
@@ -199,32 +208,7 @@ public class ChunkGeneratorDefault implements IChunkProvider
     			BiomeGenBase biome = biomes[(parabolicSize + i) * biomesForGenLength + (parabolicSize + j)];
     			int depth = -1;
                 
-    			((DefaultBiome)biome).replaceBlocksForBiome(i, j, blocks, metadata, depth, rand, n);
-    			
-    			/*
-    			for(int k = 255; k > -1; k--)
-    			{
-    				Block b = blocks[(j * 16 + i) * 256 + k];
-                    if(b == Blocks.air)
-                    {
-                    	depth = -1;
-                    }
-                    else if(b == Blocks.stone)
-                    {
-                    	depth++;
-                    	blocks[(j * 16 + i) * 256 + k] = ((DefaultBiome)biome).replaceBlocksForBiome(i, k, j, depth, rand, n);
-                    	
-                    	depth++;
-                    	if(depth == 0)
-                    	{
-                    		blocks[(j * 16 + i) * 256 + k] = top;
-                    	}
-                    	else if(depth < 4)
-                    	{
-                    		blocks[(j * 16 + i) * 256 + k] = filler;
-                    	}
-                    }
-    			}*/
+    			((RealisticBiome)biome).rReplace(i, j, blocks, metadata, depth, rand, n);
     		}
     	}
     }
@@ -264,10 +248,53 @@ public class ChunkGeneratorDefault implements IChunkProvider
             this.strongholdGenerator.generateStructuresInChunk(worldObj, rand, i, j);
         }
         
-        ((DefaultBiome)biomegenbase).bwg4Decorate(this.worldObj, this.rand, x, y, perlin);
+        ((RealisticBiome)biomegenbase).rDecorate(this.worldObj, this.rand, x, y, perlin);
+        
+		for(int l18 = 0; l18 < 50; l18++)
+		{
+			int l21 = x + rand.nextInt(16) + 8;
+			int k23 = rand.nextInt(rand.nextInt(120) + 8);
+			int l24 = y + rand.nextInt(16) + 8;
+			(new WorldGenLiquids(Blocks.flowing_water)).generate(worldObj, rand, l21, k23, l24);
+		}
+
+		for(int i19 = 0; i19 < 20; i19++)
+		{
+			int i22 = x + rand.nextInt(16) + 8;
+			int l23 = rand.nextInt(rand.nextInt(rand.nextInt(112) + 8) + 8);
+			int i25 = y + rand.nextInt(16) + 8;
+			(new WorldGenLiquids(Blocks.flowing_lava)).generate(worldObj, rand, i22, l23, i25);
+		}
+        
         SpawnerAnimals.performWorldGenSpawning(this.worldObj, biomegenbase, x + 8, y + 8, 16, 16, this.rand);
 
         MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(ichunkprovider, worldObj, rand, i, j, flag));
+        
+        x += 8;
+        y += 8;
+		
+        for (int sn1 = 0; sn1 < 16; ++sn1)
+        {
+            for (int sn2 = 0; sn2 < 16; ++sn2)
+            {
+                int sn3 = worldObj.getPrecipitationHeight(x + sn1, y + sn2);
+
+                if (worldObj.isBlockFreezable(sn1 + x, sn3 - 1, sn2 + y))
+                {
+                	worldObj.setBlock(sn1 + x, sn3 - 1, sn2 + y, Blocks.ice, 0, 2);
+                }
+
+                Block b = worldObj.getBlock(sn1 + x, sn3 - 1, sn2 + y);
+                if (worldObj.func_147478_e(sn1 + x, sn3, sn2 + y, false) && b != Blocks.ice && b != Blocks.water && sn3 > 63)
+                {
+                	if(worldObj.getBlock(sn1 + x, sn3, sn2 + y) != Blocks.snow_layer && b != Blocks.packed_ice)
+                	{
+                		worldObj.setBlock(sn1 + x, sn3, sn2 + y, Blocks.snow_layer, 0, 2);
+                	}
+                }
+            }
+        }
+		
 
         BlockFalling.fallInstantly = false;
     }

@@ -1,8 +1,8 @@
-package bwg4.biomes.override;
+package bwg4.biomes.realistic;
 
 import java.util.Random;
 
-import bwg4.biomes.DefaultBiome;
+import bwg4.biomes.RealisticBiome;
 import bwg4.util.PerlinNoise;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -11,7 +11,7 @@ import net.minecraft.world.biome.BiomeGenDesert;
 import net.minecraft.world.gen.feature.WorldGenCactus;
 import net.minecraft.world.gen.feature.WorldGenDeadBush;
 
-public class DefaultBiomeDesert extends BiomeGenDesert implements DefaultBiome
+public class DefaultBiomeDesert extends BiomeGenDesert implements RealisticBiome
 {
 	public DefaultBiomeDesert(int id)
 	{
@@ -19,7 +19,7 @@ public class DefaultBiomeDesert extends BiomeGenDesert implements DefaultBiome
 	}
 
 	@Override
-	public void bwg4Decorate(World world, Random rand, int chunkX, int chunkY, PerlinNoise perlin) 
+	public void rDecorate(World world, Random rand, int chunkX, int chunkY, PerlinNoise perlin) 
 	{
 		for(int i15 = 0; i15 < 2; i15++)
 		{
@@ -39,13 +39,13 @@ public class DefaultBiomeDesert extends BiomeGenDesert implements DefaultBiome
 	}
 
 	@Override
-	public float getNoise(PerlinNoise perlin, int x, int y) 
+	public float rNoise(PerlinNoise perlin, int x, int y) 
 	{
 		return (perlin.noise2(x / 60f, y / 60f) * 20) + (perlin.noise2(x / 20f, y / 20f) * 8) + 80;
 	}
 
 	@Override
-	public void replaceBlocksForBiome(int x, int y, Block[] blocks, byte[] metadata, int depth, Random rand, float[] noise) 
+	public void rReplace(int x, int y, Block[] blocks, byte[] metadata, int depth, Random rand, float[] noise) 
 	{
 		for(int k = 255; k > -1; k--)
 		{
@@ -68,5 +68,11 @@ public class DefaultBiomeDesert extends BiomeGenDesert implements DefaultBiome
         		}
             }
 		}
+	}
+
+	@Override
+	public float r3Dnoise(float z) 
+	{
+		return 5f;
 	}
 }

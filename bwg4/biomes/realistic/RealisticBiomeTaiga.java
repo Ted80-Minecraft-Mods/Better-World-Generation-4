@@ -1,11 +1,12 @@
-package bwg4.biomes.override;
+package bwg4.biomes.realistic;
 
 import java.util.Random;
 
 import bwg4.api.BiomeList;
-import bwg4.biomes.DefaultBiome;
+import bwg4.biomes.RealisticBiome;
 import bwg4.deco.DecoBigTree;
 import bwg4.deco.DecoGold1;
+import bwg4.deco.DecoGrass;
 import bwg4.deco.DecoPineTree;
 import bwg4.util.CliffCalculator;
 import bwg4.util.PerlinNoise;
@@ -16,56 +17,122 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.BiomeGenPlains;
 import net.minecraft.world.biome.BiomeGenTaiga;
+import net.minecraft.world.gen.feature.WorldGenBlockBlob;
+import net.minecraft.world.gen.feature.WorldGenDoublePlant;
+import net.minecraft.world.gen.feature.WorldGenFlowers;
 import net.minecraft.world.gen.feature.WorldGenForest;
 import net.minecraft.world.gen.feature.WorldGenMegaJungle;
+import net.minecraft.world.gen.feature.WorldGenPumpkin;
 import net.minecraft.world.gen.feature.WorldGenShrub;
 import net.minecraft.world.gen.feature.WorldGenTallGrass;
 import net.minecraft.world.gen.feature.WorldGenTrees;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
-public class DefaultBiomePlains extends BiomeGenTaiga implements DefaultBiome
+public class RealisticBiomeTaiga extends BiomeGenBase implements RealisticBiome
 {
-	public DefaultBiomePlains(int id)
+	public RealisticBiomeTaiga(int id)
 	{
-		super(id, 0);
+		super(id);
 	}
 
 	@Override
-	public void bwg4Decorate(World world, Random rand, int chunkX, int chunkY, PerlinNoise perlin) 
+	public void rDecorate(World world, Random rand, int chunkX, int chunkY, PerlinNoise perlin) 
 	{
-		float l = perlin.noise2(chunkX / 50f, chunkY / 50f) * 12f + 4f;
+		//boulders
+		for (int l = 0; l < 2; ++l)
+		{
+			int i1 = chunkX + rand.nextInt(16) + 8;
+			int j1 = chunkY + rand.nextInt(16) + 8;
+		    int k1 = world.getHeightValue(i1, j1);
+			if(k1 < 95)
+			{
+		    	(new WorldGenBlockBlob(Blocks.mossy_cobblestone, 0)).generate(world, rand, i1, k1, j1);
+			}
+		}
+
+		//trees
+		boolean bush = false;
+		float l = perlin.noise2(chunkX / 50f, chunkY / 50f) * 15f + 4f;
+		if(l < 0f) { l = 2; bush = true; }
 		for (int b1 = 0; b1 < l; b1++)
 		{
 			int j6 = chunkX + rand.nextInt(16) + 8;
 			int k10 = chunkY + rand.nextInt(16) + 8;
 			int z52 = world.getHeightValue(j6, k10);
-			
-			if(z52 < 125)
+
+			if(z52 < 100)
 			{
-				WorldGenerator worldgenerator = randomTree(rand, z52);
+				WorldGenerator worldgenerator;
+				worldgenerator = bush ? new WorldGenShrub(0, 0) : new DecoPineTree(5);
+				worldgenerator.setScale(1.0D, 1.0D, 1.0D);
+				worldgenerator.generate(world, rand, j6, z52, k10);
+			}
+			else if(z52 < 130)
+			{
+				WorldGenerator worldgenerator;
+				worldgenerator = rand.nextBoolean() ? new WorldGenShrub(0, 0) : new DecoPineTree(3);
 				worldgenerator.setScale(1.0D, 1.0D, 1.0D);
 				worldgenerator.generate(world, rand, j6, z52, k10);
 			}
 		}
 		
-		for(int l14 = 0; l14 < 10; l14++)
+		//pumpkin
+		if(rand.nextInt(28) == 0)
+		{
+			int j16 = chunkX + rand.nextInt(16) + 8;
+			int j18 = rand.nextInt(128);
+			int j21 = chunkY + rand.nextInt(16) + 8;
+			(new WorldGenPumpkin()).generate(world, rand, j16, j18, j21);
+		}
+		
+		//flowers
+		if(rand.nextInt(2) == 0)
+		{
+			int j15 = chunkX + rand.nextInt(16) + 8;
+			int j17 = rand.nextInt(128);
+			int j20 = chunkY + rand.nextInt(16) + 8;
+			(new WorldGenFlowers(Blocks.red_flower)).generate(world, rand, j15, j17, j20);
+		}
+		
+		//mushroom
+		if(rand.nextInt(4) == 0)
+		{
+			int k15 = chunkX + rand.nextInt(16) + 8;
+			int k17 = rand.nextInt(128);
+			int k20 = chunkY + rand.nextInt(16) + 8;
+			
+			if(rand.nextBoolean())
+			{
+				(new WorldGenFlowers(Blocks.brown_mushroom)).generate(world, rand, k15, k17, k20);
+			}
+			else
+			{
+				(new WorldGenFlowers(Blocks.red_mushroom)).generate(world, rand, k15, k17, k20);
+			}
+		}
+
+		//grass
+		for(int l14 = 0; l14 < 15; l14++)
 		{
 			int l19 = chunkX + rand.nextInt(16) + 8;
 			int k22 = rand.nextInt(128);
 			int j24 = chunkY + rand.nextInt(16) + 8;
-			(new WorldGenTallGrass(Blocks.tallgrass, 1)).generate(world, rand, l19, k22, j24);
+
+			if(k22 < 78 && rand.nextInt(2) == 0)
+			{
+				(new DecoGrass(Blocks.double_plant, 2)).generate(world, rand, l19, k22, j24);
+			}
+			else
+			{
+				(new DecoGrass(Blocks.tallgrass, 1)).generate(world, rand, l19, k22, j24);
+			}
 		}
-	}
-	
-	public WorldGenerator randomTree(Random par1Random, int height)
-	{
-		return new DecoPineTree(4); 
 	}
 
 	@Override
-	public float getNoise(PerlinNoise perlin, int x, int y) 
+	public float rNoise(PerlinNoise perlin, int x, int y) 
 	{
-		float h = perlin.noise2(x / 180f, y / 180f) * 135f;// + perlin.noise2(x / 12f, y / 12f) * 2f;
+		float h = perlin.noise2(x / 180f, y / 180f) * 135f;
 		h *= h / 40f;
 		
 		float sh = perlin.noise2(x / 10f, y / 10f) * 4f;
@@ -79,14 +146,14 @@ public class DefaultBiomePlains extends BiomeGenTaiga implements DefaultBiome
 				h = 0f;
 			}
 			
-			h += perlin.noise2(x / 50f, y / 50f) * (30f - h) * 0.7f + perlin.noise2(x / 15f, y / 15f) * (30f - h) * 0.2f;
+			h += perlin.noise2(x / 100f, y / 100f) * (30f - h) * 1f + perlin.noise2(x / 15f, y / 15f) * (30f - h) * 0.1f;
 		}
 		
 		return h + 64f;
 	}
 	
 	@Override
-	public void replaceBlocksForBiome(int x, int y, Block[] blocks, byte[] metadata, int depth, Random rand, float[] noise) 
+	public void rReplace(int x, int y, Block[] blocks, byte[] metadata, int depth, Random rand, float[] noise) 
 	{
 		float c = CliffCalculator.calc(x, y, noise);
 		boolean cliff = c > 1.1f ? true : false;
@@ -100,6 +167,8 @@ public class DefaultBiomePlains extends BiomeGenTaiga implements DefaultBiome
             if(b == Blocks.air)
             {
             	depth = -1;
+            	snow = false;
+            	gravel = false;
             }
             else if(b == Blocks.stone)
             {
@@ -135,16 +204,18 @@ public class DefaultBiomePlains extends BiomeGenTaiga implements DefaultBiome
             			}
             			else if(k < 63)
             			{
+            				gravel = true;
             				blocks[(y * 16 + x) * 256 + k] = Blocks.water;
             			}
             			else
             			{
+            				gravel = true;
             				blocks[(y * 16 + x) * 256 + k] = Blocks.air;
             			}
 	        		}
 	        		else if(depth > 0 && depth < 4)
 	        		{
-	        			if(k < 64 && gravel) //GRAVELLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+	        			if(k < 64 && gravel)
 	        			{
 		        			blocks[(y * 16 + x) * 256 + k] = Blocks.gravel;
 	        			}
@@ -187,5 +258,12 @@ public class DefaultBiomePlains extends BiomeGenTaiga implements DefaultBiome
             	}
             }
 		}
+	}
+
+	@Override
+	public float r3Dnoise(float z) 
+	{
+		float n = z > 120f ? 0f : (120f - z) / 6f;
+		return n > 7f ? 7f : n;
 	}
 }

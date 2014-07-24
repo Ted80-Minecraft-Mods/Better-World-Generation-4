@@ -16,7 +16,7 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.gen.layer.IntCache;
 
-public class ChunkManagerDefault extends WorldChunkManager
+public class ChunkManagerRealistic extends WorldChunkManager
 {
     private BiomeCache biomeCache;
     private List biomesToSpawnIn;
@@ -25,14 +25,16 @@ public class ChunkManagerDefault extends WorldChunkManager
     private BiomeGenBase[] biomelist;
     private int biomeLength;
     private boolean remote = false;
+    
+    private static int biomeLookupTable[] = new int[4096];	
 	
-	protected ChunkManagerDefault()
+	protected ChunkManagerRealistic()
 	{
         this.biomeCache = new BiomeCache(this);
         this.biomesToSpawnIn = new ArrayList();
 	}
 
-    public ChunkManagerDefault(World par1World, boolean r)
+    public ChunkManagerRealistic(World par1World, boolean r)
     {
         this();
         long seed = par1World.getSeed();
@@ -40,13 +42,43 @@ public class ChunkManagerDefault extends WorldChunkManager
         
         if(r)
         {
-        	biomelist = BiomeManager.getBiomesByNames(GeneratorType.biomestring.split(";"));
+        	BiomeGenBase[] ba = new BiomeGenBase[]{
+        		BiomeList.REALISTICglacier,
+        		BiomeList.REALISTICsnowtaiga
+        	};
+        	
+			for(int i = 0; i < 64; i++)
+			{
+				for(int j = 0; j < 64; j++)
+				{
+					biomeLookupTable[i + j * 64] = getBiomeByTempHum((float)i / 63F, (float)j / 63F);
+				}
+			}
+        	
+        	biomelist = ba;
         	remote = true;
         	biomeLength = biomelist.length;
         }
     }    
+    
+    public int getBiomeByTempHum(float t, float h) 
+    {
+    	if(t < 0.05f)
+    	{
+    		return BiomeList.REALISTICpole.biomeID;
+    	}
+    	if(t < 0.1f && h > 0.5f)
+    	{
+    		return BiomeList.REALISTICglacier.biomeID;
+    	}
+    	if(t < 0.12f)
+    	{
+    		return BiomeList.REALISTICsnowtaiga.biomeID;
+    	}
+    	
+    	return BiomeList.REALISTICglacier.biomeID;
+    }
 	
-    //chunkX * 16, chunkY * 16, 16, 16
     public int[] getBiomesGens(int par1, int par2, int par3, int par4)
     {	
     	int[] d = new int[par3 * par4];
@@ -80,6 +112,13 @@ public class ChunkManagerDefault extends WorldChunkManager
 		int p = (int) (t * biomeLength);
 		p = p < 0 ? 0 : p >= biomeLength ? biomeLength - 1 : p;
 		return biomelist[p];
+    }
+    
+    public static int getBiomeFromLookup(double d, double d1)
+    {
+        int i = (int)(d * 63D);
+        int j = (int)(d1 * 63D);
+        return biomeLookupTable[i + j * 64];
     }
     
     public List getBiomesToSpawnIn()

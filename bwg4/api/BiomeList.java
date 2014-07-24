@@ -4,7 +4,11 @@ import net.minecraft.world.biome.BiomeGenBase;
 
 public class BiomeList 
 {
-	public static BiomeGenBase DEFAULTplains;
+	public static BiomeGenBase REALISTICpole;
+	public static BiomeGenBase REALISTICglacier;
+	public static BiomeGenBase REALISTICsnowtaiga;
+	public static BiomeGenBase REALISTICtaiga;
+	
 	public static BiomeGenBase DEFAULTdesert;
 	public static BiomeGenBase DEFAULTjungle;
 	
