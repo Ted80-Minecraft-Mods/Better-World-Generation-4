@@ -31,6 +31,7 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkProvider;
+import net.minecraft.world.gen.MapGenCaves;
 import net.minecraft.world.gen.feature.WorldGenCactus;
 import net.minecraft.world.gen.feature.WorldGenDeadBush;
 import net.minecraft.world.gen.feature.WorldGenFlowers;
@@ -48,7 +49,7 @@ public class ChunkGeneratorRealistic implements IChunkProvider
     private Random rand;
 	
     private World worldObj;
-    private MapGenBWG4 field_902_u;
+    private MapGenCaves caves;
     private final boolean mapFeaturesEnabled;
     private MapGenStronghold strongholdGenerator = new MapGenStronghold();
     private MapGenMineshaft mineshaftGenerator = new MapGenMineshaft();
@@ -66,7 +67,7 @@ public class ChunkGeneratorRealistic implements IChunkProvider
 	
     public ChunkGeneratorRealistic(World world, long l, boolean m)
     {
-        field_902_u = new MapGenBWG4Caves();
+    	caves = new MapGenCaves();
         worldObj = world;
         rand = new Random(l);
         perlin = new PerlinNoise(l);
@@ -97,7 +98,7 @@ public class ChunkGeneratorRealistic implements IChunkProvider
     	
         generateTerrain(wcm, cx, cy, blocks, metadata, biomesForGeneration, noise);
         replaceBlocksForBiome(cx, cy, blocks, metadata, biomesForGeneration, noise);
-        //field_902_u.generate(this, worldObj, cx, cy, blocks);
+        //caves.func_151539_a(this, worldObj, cx, cy, blocks);
         
         if (this.mapFeaturesEnabled)
         {
@@ -139,7 +140,7 @@ public class ChunkGeneratorRealistic implements IChunkProvider
         					blocks[p] = Blocks.air;
         				}
     				}
-    				else if(k <= noise[0] + noise[1] && k >= noise[0] - noise[1])
+    				else if(k <= noise[0] + noise[1] * 6 && k >= noise[0] - noise[1] * 6)
     				{
         				noise3 = perlin.noise3((cx * 16 + j) / 20f, (cy * 16 + i) / 20f, k / 20f) + (noise[0] - k) / (noise[1] * 2);
         				if(noise3 > 0f)
@@ -208,7 +209,7 @@ public class ChunkGeneratorRealistic implements IChunkProvider
     			BiomeGenBase biome = biomes[(parabolicSize + i) * biomesForGenLength + (parabolicSize + j)];
     			int depth = -1;
                 
-    			((RealisticBiome)biome).rReplace(i, j, blocks, metadata, depth, rand, n);
+    			((RealisticBiome)biome).rReplace(blocks, metadata, cx * 16 + j, cy * 16 + i, i, j, depth, rand, perlin, n);
     		}
     	}
     }
@@ -248,6 +249,109 @@ public class ChunkGeneratorRealistic implements IChunkProvider
             this.strongholdGenerator.generateStructuresInChunk(worldObj, rand, i, j);
         }
         
+		if(rand.nextInt(10) == 0)
+		{
+			int i2 = x + rand.nextInt(16) + 8;
+			int l4 = rand.nextInt(50);
+			int i8 = y + rand.nextInt(16) + 8;
+			(new OldGenLakes(Blocks.water)).generate(worldObj, rand, i2, l4, i8);
+		}
+		
+		if(rand.nextInt(18) == 0) 
+		{
+			int j2 = x + rand.nextInt(16) + 8;
+			int i5 = rand.nextInt(rand.nextInt(45) + 8);
+			int j8 = y + rand.nextInt(16) + 8;
+			if(i5 < 64 || rand.nextInt(10) == 0)
+			{
+				(new OldGenLakes(Blocks.lava)).generate(worldObj, rand, j2, i5, j8);
+			}
+		} 
+		
+		for(int k1 = 0; k1 < 8; k1++)
+		{
+			int j5 = x + rand.nextInt(16) + 8;
+			int k8 = rand.nextInt(128);
+			int j11 = y + rand.nextInt(16) + 8;
+			(new DecoDungeons(0)).generate(worldObj, rand, j5, k8, j11);
+		}
+		
+		for(int j2 = 0; j2 < 10; j2++)
+		{
+			int l5 = x + rand.nextInt(16);
+			int i9 = rand.nextInt(64);
+			int l11 = y + rand.nextInt(16);
+			(new OldGenMinable(Blocks.dirt, 32, 2)).generate(worldObj, rand, l5, i9, l11);
+		}
+
+		for(int k2 = 0; k2 < 5; k2++)
+		{
+			int i6 = x + rand.nextInt(16);
+			int j9 = rand.nextInt(64);
+			int i12 = y + rand.nextInt(16);
+			(new OldGenMinable(Blocks.gravel, 32, 2)).generate(worldObj, rand, i6, j9, i12);
+		}
+
+		for(int i3 = 0; i3 < 20; i3++)
+		{
+			int j6 = x + rand.nextInt(16);
+			int k9 = rand.nextInt(128);
+			int j12 = y + rand.nextInt(16);
+			(new OldGenMinable(Blocks.coal_ore, 16, 2)).generate(worldObj, rand, j6, k9, j12);
+		}
+
+		for(int j3 = 0; j3 < 20; j3++)
+		{
+			int k6 = x + rand.nextInt(16);
+			int l9 = rand.nextInt(64);
+			int k12 = y + rand.nextInt(16);
+			(new OldGenMinable(Blocks.iron_ore, 8, 2)).generate(worldObj, rand, k6, l9, k12);
+		}
+
+		for(int k3 = 0; k3 < 2; k3++)
+		{
+			int l6 = x + rand.nextInt(16);
+			int i10 = rand.nextInt(32);
+			int l12 = y + rand.nextInt(16);
+			(new OldGenMinable(Blocks.gold_ore, 8, 2)).generate(worldObj, rand, l6, i10, l12);
+		}
+
+		for(int l3 = 0; l3 < 8; l3++)
+		{
+			int i7 = x + rand.nextInt(16);
+			int j10 = rand.nextInt(16);
+			int i13 = y + rand.nextInt(16);
+			(new OldGenMinable(Blocks.redstone_ore, 7, 2)).generate(worldObj, rand, i7, j10, i13);
+		}
+
+		for(int i4 = 0; i4 < 1; i4++)
+		{
+			int j7 = x + rand.nextInt(16);
+			int k10 = rand.nextInt(16);
+			int j13 = y + rand.nextInt(16);
+			(new OldGenMinable(Blocks.diamond_ore, 7, 2)).generate(worldObj, rand, j7, k10, j13);
+		}
+
+		for(int j4 = 0; j4 < 1; j4++)
+		{
+			int k7 = x + rand.nextInt(16);
+			int l10 = rand.nextInt(16) + rand.nextInt(16);
+			int k13 = y + rand.nextInt(16);
+			(new OldGenMinable(Blocks.lapis_ore, 6, 2)).generate(worldObj, rand, k7, l10, k13);
+		}
+		
+        for (int g12 = 0; g12 < 4; ++g12)
+        {
+            int n1 = x + rand.nextInt(16);
+            int m1 = rand.nextInt(28) + 4;
+            int p1 = y + rand.nextInt(16);
+
+            if (worldObj.getBlock(n1, m1, p1).isReplaceableOreGen(worldObj, n1, m1, p1, Blocks.stone))
+            {
+            	worldObj.setBlock(n1, m1, p1, Blocks.emerald_ore, 0, 2);
+            }
+        }
+        
         ((RealisticBiome)biomegenbase).rDecorate(this.worldObj, this.rand, x, y, perlin);
         
 		for(int l18 = 0; l18 < 50; l18++)
@@ -269,7 +373,7 @@ public class ChunkGeneratorRealistic implements IChunkProvider
         SpawnerAnimals.performWorldGenSpawning(this.worldObj, biomegenbase, x + 8, y + 8, 16, 16, this.rand);
 
         MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(ichunkprovider, worldObj, rand, i, j, flag));
-        
+
         x += 8;
         y += 8;
 		

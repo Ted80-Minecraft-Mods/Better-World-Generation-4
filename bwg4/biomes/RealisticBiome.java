@@ -12,6 +12,6 @@ public interface RealisticBiome
 {
     public void rDecorate(World world, Random rand, int chunkX, int chunkY, PerlinNoise perlin);
     public float rNoise(PerlinNoise perlin, int x, int y);
-    public void rReplace(int x, int y, Block[] blocks, byte[] metadata, int depth, Random rand, float[] noise);
+    public void rReplace(Block[] blocks, byte[] metadata, int i, int j, int x, int y, int depth, Random rand, PerlinNoise perlin, float[] noise);
     public float r3Dnoise(float z);
 }

@@ -39,7 +39,7 @@ public class DefaultBiomeJungle extends BiomeGenJungle implements RealisticBiome
 	}
 
 	@Override
-	public void rReplace(int x, int y, Block[] blocks, byte[] metadata, int depth, Random rand, float[] noise) 
+	public void rReplace(Block[] blocks, byte[] metadata, int i, int j, int x, int y, int depth, Random rand, PerlinNoise perlin, float[] noise) 
 	{
 		for(int k = 255; k > -1; k--)
 		{

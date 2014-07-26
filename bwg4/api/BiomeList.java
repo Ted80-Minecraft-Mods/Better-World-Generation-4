@@ -8,8 +8,14 @@ public class BiomeList
 	public static BiomeGenBase REALISTICglacier;
 	public static BiomeGenBase REALISTICsnowtaiga;
 	public static BiomeGenBase REALISTICtaiga;
+	public static BiomeGenBase REALISTICcanyon;
+	public static BiomeGenBase REALSITICmesa;
+	public static BiomeGenBase REALISTICsavannahField;
+	public static BiomeGenBase REALISTICsavannahHills;
+	public static BiomeGenBase REALISTICdesert;
+	public static BiomeGenBase REALISTICjungleRivers;
+	public static BiomeGenBase REALISTICjungleHills;
 	
-	public static BiomeGenBase DEFAULTdesert;
 	public static BiomeGenBase DEFAULTjungle;
 	
 	public static BiomeGenBase OLDrainforest;

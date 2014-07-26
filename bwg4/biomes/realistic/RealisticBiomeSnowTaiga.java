@@ -61,14 +61,14 @@ public class RealisticBiomeSnowTaiga extends BiomeGenBase implements RealisticBi
 			int k10 = chunkY + rand.nextInt(16) + 8;
 			int z52 = world.getHeightValue(j6, k10);
 
-			if(z52 < 100)
+			if(z52 < 90)
 			{
 				WorldGenerator worldgenerator;
-				worldgenerator = bush ? new WorldGenShrub(0, 0) : new DecoPineTree(5);
+				worldgenerator = bush ? new WorldGenShrub(0, 0) : new DecoPineTree(4);
 				worldgenerator.setScale(1.0D, 1.0D, 1.0D);
 				worldgenerator.generate(world, rand, j6, z52, k10);
 			}
-			else if(z52 < 130)
+			else if(z52 < 110)
 			{
 				WorldGenerator worldgenerator;
 				worldgenerator = rand.nextBoolean() ? new WorldGenShrub(0, 0) : new DecoPineTree(3);
@@ -81,17 +81,25 @@ public class RealisticBiomeSnowTaiga extends BiomeGenBase implements RealisticBi
 	@Override
 	public float rNoise(PerlinNoise perlin, int x, int y) 
 	{
-		float h = perlin.noise2(x / 180f, y / 180f) * 135f;
-		h *= h / 40f;
+		float h = perlin.noise2(x / 180f, y / 180f) * 150f;
+		h *= h / 50f;
 		
 		float sh = perlin.noise2(x / 10f, y / 10f) * 4f;
 		sh *= h / 20f > 3.75f ? 3.75f : h / 20f;
 		h += sh;
-		//h -= 20f;
+		
+		float h2 = perlin.noise2(x / 40f, y / 40f) * 65f;
+		h2 *= h2 / 35f;
+		
+		float sh2 = perlin.noise2(x / 10f, y / 10f) * 4f;
+		sh2 *= h2 / 20f > 3.75f ? 3.75f : h2 / 20f;
+		h2 += sh2;
 		
 		float s = perlin.noise2(x / 180f, y / 180f) * 70;
-		s += perlin.noise2(x / 25f, y / 25f) * 9;
+		s += perlin.noise2(x / 40f, y / 40f) * 10;
 		s += perlin.noise2(x / 10f, y / 10f) * 6;
+		
+		h2 += s;
 		
 		h = h > s ? h : s;
 		
@@ -99,7 +107,7 @@ public class RealisticBiomeSnowTaiga extends BiomeGenBase implements RealisticBi
 	}
 	
 	@Override
-	public void rReplace(int x, int y, Block[] blocks, byte[] metadata, int depth, Random rand, float[] noise) 
+	public void rReplace(Block[] blocks, byte[] metadata, int i, int j, int x, int y, int depth, Random rand, PerlinNoise perlin, float[] noise) 
 	{
 		float c = CliffCalculator.calc(x, y, noise);
 		boolean cliff = c > 1.1f ? true : false;
@@ -126,7 +134,14 @@ public class RealisticBiomeSnowTaiga extends BiomeGenBase implements RealisticBi
         				}
         				else
         				{
-        					blocks[(y * 16 + x) * 256 + k] = rand.nextInt(3) == 0 ? Blocks.cobblestone : Blocks.stone; 
+                    		if(depth > -1 && depth < 2)
+                    		{
+                    			blocks[(y * 16 + x) * 256 + k] = rand.nextInt(3) == 0 ? Blocks.cobblestone : Blocks.stone; 
+                    		}
+                    		else
+                    		{
+                    			blocks[(y * 16 + x) * 256 + k] = Blocks.stone;
+                    		}
         				}
 	        		}
             	}

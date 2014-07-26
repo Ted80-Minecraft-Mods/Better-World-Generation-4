@@ -6,6 +6,7 @@ import java.util.Random;
 
 import bwg4.api.BiomeList;
 import bwg4.api.BiomeManager;
+import bwg4.biomes.RealisticBiome;
 import bwg4.generatortype.GeneratorType;
 import bwg4.noise.OldNoiseGeneratorOctaves2;
 import bwg4.util.PerlinNoise;
@@ -22,7 +23,6 @@ public class ChunkManagerRealistic extends WorldChunkManager
     private List biomesToSpawnIn;
 
     private PerlinNoise perlin;
-    private BiomeGenBase[] biomelist;
     private int biomeLength;
     private boolean remote = false;
     
@@ -42,11 +42,6 @@ public class ChunkManagerRealistic extends WorldChunkManager
         
         if(r)
         {
-        	BiomeGenBase[] ba = new BiomeGenBase[]{
-        		BiomeList.REALISTICglacier,
-        		BiomeList.REALISTICsnowtaiga
-        	};
-        	
 			for(int i = 0; i < 64; i++)
 			{
 				for(int j = 0; j < 64; j++)
@@ -54,29 +49,20 @@ public class ChunkManagerRealistic extends WorldChunkManager
 					biomeLookupTable[i + j * 64] = getBiomeByTempHum((float)i / 63F, (float)j / 63F);
 				}
 			}
-        	
-        	biomelist = ba;
         	remote = true;
-        	biomeLength = biomelist.length;
         }
     }    
     
+    public static int getBiomeFromLookup(float d, float d1)
+    {
+        int i = (int)(d * 63D);
+        int j = (int)(d1 * 63D);
+        return biomeLookupTable[i + j * 64];
+    }
+    
     public int getBiomeByTempHum(float t, float h) 
     {
-    	if(t < 0.05f)
-    	{
-    		return BiomeList.REALISTICpole.biomeID;
-    	}
-    	if(t < 0.1f && h > 0.5f)
-    	{
-    		return BiomeList.REALISTICglacier.biomeID;
-    	}
-    	if(t < 0.12f)
-    	{
-    		return BiomeList.REALISTICsnowtaiga.biomeID;
-    	}
-    	
-    	return BiomeList.REALISTICglacier.biomeID;
+    	return BiomeList.REALISTICsavannahField.biomeID;
     }
 	
     public int[] getBiomesGens(int par1, int par2, int par3, int par4)
@@ -96,6 +82,7 @@ public class ChunkManagerRealistic extends WorldChunkManager
     	{
 	    	for(int j = 0; j < par3 * par4; j++)
 	    	{
+	    		//TODO wtf?
 	    		d[j] = 1;
 	    	}
     	}
@@ -104,21 +91,18 @@ public class ChunkManagerRealistic extends WorldChunkManager
 
     public BiomeGenBase getBiomeGenAt(int par1, int par2)
     {
-        return getBiomeFromList(0.5f + perlin.noise2(par1 / 600f, par2 / 600f) + (perlin.noise2(par1 / 40f, par2 / 40f) / 4f));
+    	float temp = 0.5f + perlin.noise2(par1 / 500f, par2 / 500f);
+    	float hum = 0.5f + perlin.noise2(par1 / 500f, par2 / 500f);
+    	
+    	temp = temp > 1f ? 1f : temp < 0f ? 0f : temp;
+    	hum = hum > 1f ? 1f : hum < 0f ? 0f : hum;
+    	
+        return BiomeGenBase.getBiome(getBiomeFromLookup(temp, hum));
     }
     
-    public BiomeGenBase getBiomeFromList(float t)
+    public float getNoiseAt(int x, int y)
     {
-		int p = (int) (t * biomeLength);
-		p = p < 0 ? 0 : p >= biomeLength ? biomeLength - 1 : p;
-		return biomelist[p];
-    }
-    
-    public static int getBiomeFromLookup(double d, double d1)
-    {
-        int i = (int)(d * 63D);
-        int j = (int)(d1 * 63D);
-        return biomeLookupTable[i + j * 64];
+    	return ((RealisticBiome)getBiomeGenAt(x, y)).rNoise(perlin, x, y);
     }
     
     public List getBiomesToSpawnIn()

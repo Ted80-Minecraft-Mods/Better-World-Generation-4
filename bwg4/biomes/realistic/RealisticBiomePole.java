@@ -49,7 +49,7 @@ public class RealisticBiomePole extends BiomeGenBase implements RealisticBiome
 	}
 
 	@Override
-	public void rReplace(int x, int y, Block[] blocks, byte[] metadata, int depth, Random rand, float[] noise) 
+	public void rReplace(Block[] blocks, byte[] metadata, int i, int j, int x, int y, int depth, Random rand, PerlinNoise perlin, float[] noise) 
 	{
 		float c = CliffCalculator.calc(x, y, noise);
 		boolean cliff = c > 1.6f ? true : false;
@@ -76,7 +76,14 @@ public class RealisticBiomePole extends BiomeGenBase implements RealisticBiome
         				}
         				else
         				{
-        					blocks[(y * 16 + x) * 256 + k] = rand.nextInt(3) == 0 ? Blocks.cobblestone : Blocks.stone; 
+                    		if(depth > -1 && depth < 2)
+                    		{
+                    			blocks[(y * 16 + x) * 256 + k] = rand.nextInt(3) == 0 ? Blocks.cobblestone : Blocks.stone; 
+                    		}
+                    		else
+                    		{
+                    			blocks[(y * 16 + x) * 256 + k] = Blocks.stone;
+                    		}
         				}
 	        		}
             	}

@@ -12,10 +12,17 @@ public class BiomeLoader
 {
 	public static void load()
 	{
-		BiomeList.REALISTICpole = (new RealisticBiomePole(200)).setColor(9286496).setBiomeName("Polar").setTemperatureRainfall(0.0F, 0.1F);
-		BiomeList.REALISTICglacier = (new RealisticBiomeGlacier(201)).setColor(9286496).setBiomeName("Glacier").setTemperatureRainfall(0.0F, 0.1F);
-		BiomeList.REALISTICsnowtaiga = (new RealisticBiomeSnowTaiga(202)).setColor(9286496).setBiomeName("Taiga").setTemperatureRainfall(0.0F, 0.1F);
-		BiomeList.REALISTICtaiga = (new RealisticBiomeTaiga(203)).setColor(9286496).setBiomeName("SnowTaiga").setTemperatureRainfall(0.7F, 0.5F);
+		BiomeList.REALISTICpole = (new RealisticBiomePole(200)).setColor(16777215).setBiomeName("Polar").setTemperatureRainfall(0.0F, 0.1F);
+		BiomeList.REALISTICglacier = (new RealisticBiomeGlacier(201)).setColor(16777215).setBiomeName("Glacier").setTemperatureRainfall(0.0F, 0.1F);
+		BiomeList.REALISTICsnowtaiga = (new RealisticBiomeSnowTaiga(202)).setColor(16777215).setBiomeName("Taiga").setTemperatureRainfall(0.0F, 0.1F);
+		BiomeList.REALISTICtaiga = (new RealisticBiomeTaiga(203)).setColor(16777215).setBiomeName("SnowTaiga").setTemperatureRainfall(0.7F, 0.5F);
+		BiomeList.REALISTICcanyon = (new RealisticBiomeCanyon(204)).setColor(16421912).setBiomeName("Canyon").setTemperatureRainfall(2.0f, 0.0f);
+		BiomeList.REALSITICmesa = (new RealisticBiomeMesa(205)).setColor(16421912).setBiomeName("Mesa").setTemperatureRainfall(2.0f, 0.0f);
+		BiomeList.REALISTICsavannahField = (new RealisticBiomeSavannahField(206)).setColor(16421912).setBiomeName("Savannah Field").setTemperatureRainfall(0.9f, 0.1f);
+		BiomeList.REALISTICsavannahHills = (new RealisticBiomeSavannahHills(207)).setColor(16421912).setBiomeName("Savannah Hills").setTemperatureRainfall(0.9f, 0.1f);
+		BiomeList.REALISTICdesert = (new RealisticBiomeDesert(208)).setColor(16421912).setBiomeName("Desert").setTemperatureRainfall(2.0f, 0.0f);
+		BiomeList.REALISTICjungleRivers = (new RealisticBiomeJungleRivers(209)).setColor(353825).setBiomeName("Jungle Rivers").setTemperatureRainfall(2.0f, 0.0f);
+		BiomeList.REALISTICjungleHills = (new RealisticBiomeJungleHills(210)).setColor(353825).setBiomeName("Jungle Hills").setTemperatureRainfall(1.0f, 1.0f);
 		
 		BiomeList.OLDdesert = (new BiomeBeta(ConfigBWG4.biomeIDs[0], 7)).setColor(16421912).setBiomeName("desert").setTemperatureRainfall(0.95F, 0.1F).setDisableRain();
 		BiomeList.OLDforest = (new BiomeBeta(ConfigBWG4.biomeIDs[1], 3)).setColor(353825).setBiomeName("forest").setTemperatureRainfall(0.8F, 0.6F);
