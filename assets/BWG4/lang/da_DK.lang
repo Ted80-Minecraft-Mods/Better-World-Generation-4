@@ -1,0 +1,59 @@
+generator.BWG4=BWG4
+
+gui.selectcategory=Vælg en kategori:
+gui.comingsoon=Kommer snart!
+gui.selectGenerator=Vælg en verdens-generator:
+gui.generatorSettings=Generator instillinger:
+gui.copystring=Kopier generator-instillinger til udklipsholderen
+
+bwg4.category.enhanced=Forbedret
+bwg4.category.old=Gammel
+bwg4.category.survival=Ekstrem Overlevelse
+bwg4.category.fun=Sjov
+
+bwg4.setting.size=Størrelse
+bwg4.setting.small=Lille
+bwg4.setting.default=Standard
+bwg4.setting.large=Stor
+bwg4.setting.snow=Sne Verden
+bwg4.setting.water=Vand Verden
+bwg4.setting.on=ON
+bwg4.setting.off=OFF
+bwg4.setting.theme=Tema
+bwg4.setting.type=Type
+bwg4.setting.layer=Lag
+
+bwg4.theme.default=Standard
+bwg4.theme.snow=Sne
+bwg4.theme.jungle=Jungle
+bwg4.theme.tropical=Tropisk
+bwg4.theme.paradise=Paradis
+bwg4.theme.hell=Helved
+bwg4.theme.woods=Skove
+
+bwg4.type.island=Øer
+bwg4.type.floating=Flyvende
+bwg4.type.inland=Indland
+
+bwg4.DEFAULT=Forbedret Standard
+bwg4.EXTRFLAT=Ekstremflad
+bwg4.BETA173=Beta 1.7.3
+bwg4.ALPHA12=Alpha 1.2.0
+bwg4.ALPHA11=Alpha 1.1.0
+bwg4.INFDEV=Infdev
+bwg4.INDEV=Indev
+bwg4.WASTELAND=Ødeland (WIP)
+bwg4.ISLAND=Overlevelses Ø
+bwg4.SKYISLAND=Overlevses Himmelland
+bwg4.CAVESURV=Grotte Overlevelse
+bwg4.SKYBLOCK=Himmelblok
+bwg4.SKYLANDS=Himmeløer
+bwg4.CAVE=Grotte verden (WIP)
+bwg4.CITY=Endeløs By
+bwg4.DEADLYDESERT=Dødelig Ørken
+bwg4.EXTREMEJUNGLE=Ekstrem Jungle
+bwg4.PLANET=Planeter (WIP)
+bwg4.REALISTIC=Realistisk
+
+credits.skyblock=Originalt bane af Noobcrew
+credits.planet=Originalt mod af Seibai
