@@ -210,6 +210,8 @@ public class ChunkGeneratorRealistic implements IChunkProvider
     			int depth = -1;
                 
     			((RealisticBiome)biome).rReplace(blocks, metadata, cx * 16 + j, cy * 16 + i, i, j, depth, rand, perlin, n);
+    			
+    			blocks[(j * 16 + i) * 256] = Blocks.bedrock;
     		}
     	}
     }
@@ -351,6 +353,22 @@ public class ChunkGeneratorRealistic implements IChunkProvider
             	worldObj.setBlock(n1, m1, p1, Blocks.emerald_ore, 0, 2);
             }
         }
+        
+		if(rand.nextInt(5) == 0)
+		{
+			int k15 = x + rand.nextInt(16) + 8;
+			int k17 = rand.nextInt(64);
+			int k20 = y + rand.nextInt(16) + 8;
+			
+			if(rand.nextBoolean())
+			{
+				(new WorldGenFlowers(Blocks.brown_mushroom)).generate(worldObj, rand, k15, k17, k20);
+			}
+			else
+			{
+				(new WorldGenFlowers(Blocks.red_mushroom)).generate(worldObj, rand, k15, k17, k20);
+			}
+		}
         
         ((RealisticBiome)biomegenbase).rDecorate(this.worldObj, this.rand, x, y, perlin);
         

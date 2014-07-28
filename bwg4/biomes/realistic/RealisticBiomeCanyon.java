@@ -3,7 +3,9 @@ package bwg4.biomes.realistic;
 import java.util.Random;
 
 import bwg4.biomes.RealisticBiome;
+import bwg4.deco.DecoCacti;
 import bwg4.deco.DecoPineTree;
+import bwg4.deco.old.OldGenReed;
 import bwg4.util.CliffCalculator;
 import bwg4.util.PerlinNoise;
 import net.minecraft.block.Block;
@@ -13,6 +15,8 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenBlockBlob;
 import net.minecraft.world.gen.feature.WorldGenCactus;
 import net.minecraft.world.gen.feature.WorldGenDeadBush;
+import net.minecraft.world.gen.feature.WorldGenFlowers;
+import net.minecraft.world.gen.feature.WorldGenPumpkin;
 import net.minecraft.world.gen.feature.WorldGenShrub;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
@@ -64,6 +68,21 @@ public class RealisticBiomeCanyon extends BiomeGenBase implements RealisticBiome
 			worldgenerator.generate(world, rand, j6, z52, k10);
 		}
 		
+		if(rand.nextInt(3) == 0) 
+		{
+			int i18 = chunkX + rand.nextInt(16) + 8;
+			int i23 = chunkY + rand.nextInt(16) + 8;
+			(new OldGenReed()).generate(world, rand, i18, 60 + rand.nextInt(8), i23);
+		}
+		
+		if(rand.nextInt(28) == 0)
+		{
+			int j16 = chunkX + rand.nextInt(16) + 8;
+			int j18 = rand.nextInt(128);
+			int j21 = chunkY + rand.nextInt(16) + 8;
+			(new WorldGenPumpkin()).generate(world, rand, j16, j18, j21);
+		}
+		
 		for(int i15 = 0; i15 < 5; i15++)
 		{
 			int i17 = chunkX + rand.nextInt(16) + 8;
@@ -77,7 +96,7 @@ public class RealisticBiomeCanyon extends BiomeGenBase implements RealisticBiome
 			int k21 = chunkX + rand.nextInt(16) + 8;
 			int j23 = rand.nextInt(160);
 			int k24 = chunkY + rand.nextInt(16) + 8;
-			(new WorldGenCactus()).generate(world, rand, k21, j23, k24);
+			(new DecoCacti(true)).generate(world, rand, k21, j23, k24);
 		}
 	}
 

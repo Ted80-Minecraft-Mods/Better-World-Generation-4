@@ -2,24 +2,34 @@ package bwg4.biomes.realistic;
 
 import java.util.Random;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import bwg4.biomes.RealisticBiome;
+import bwg4.deco.DecoCacti;
+import bwg4.deco.DecoFlowers;
 import bwg4.deco.DecoGrass;
 import bwg4.deco.DecoPineTree;
 import bwg4.deco.DecoSavannah;
+import bwg4.deco.old.OldGenReed;
 import bwg4.util.CliffCalculator;
 import bwg4.util.PerlinNoise;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.MathHelper;
+import net.minecraft.world.ColorizerFoliage;
+import net.minecraft.world.ColorizerGrass;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenBlockBlob;
+import net.minecraft.world.gen.feature.WorldGenCactus;
 import net.minecraft.world.gen.feature.WorldGenFlowers;
+import net.minecraft.world.gen.feature.WorldGenPumpkin;
 import net.minecraft.world.gen.feature.WorldGenShrub;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
-public class RealisticBiomeSavannahHills extends BiomeGenBase implements RealisticBiome
+public class RealisticBiomeSavannah extends BiomeGenBase implements RealisticBiome
 {
-	public RealisticBiomeSavannahHills(int id) 
+	public RealisticBiomeSavannah(int id) 
 	{
 		super(id);
 	}
@@ -35,27 +45,81 @@ public class RealisticBiomeSavannahHills extends BiomeGenBase implements Realist
 			(new WorldGenBlockBlob(Blocks.cobblestone, 0)).generate(world, rand, i1, k1, j1);
 		}
 		
-		for(int b33 = 0; b33 < 3; b33++)
+		if(perlin.noise2(chunkX / 180f, chunkY / 180f) > 0.20f)
 		{
-			int j6 = chunkX + rand.nextInt(16) + 8;
-			int k10 = chunkY + rand.nextInt(16) + 8;
-			int z52 = world.getHeightValue(j6, k10);
+			for(int b33 = 0; b33 < 7; b33++)
+			{
+				int j6 = chunkX + rand.nextInt(16) + 8;
+				int k10 = chunkY + rand.nextInt(16) + 8;
+				int z52 = world.getHeightValue(j6, k10);
 
-			WorldGenerator worldgenerator = rand.nextInt(6) == 0 ? new WorldGenShrub(0, 0) : new DecoSavannah(2);
-			worldgenerator.setScale(1.0D, 1.0D, 1.0D);
-			worldgenerator.generate(world, rand, j6, z52, k10);
+				WorldGenerator worldgenerator = rand.nextInt(9) == 0 ? new WorldGenShrub(0, 0) : rand.nextInt(7) == 0 ? new DecoSavannah(1): new DecoSavannah(2);
+				worldgenerator.setScale(1.0D, 1.0D, 1.0D);
+				worldgenerator.generate(world, rand, j6, z52, k10);
+			}
+		}
+		else
+		{
+			int a = 3 - (int)(perlin.noise2(chunkX / 100f, chunkY / 100f) * 7);
+			if(a < 1 || rand.nextInt(a) == 0)
+			{
+				int j6 = chunkX + rand.nextInt(16) + 8;
+				int k10 = chunkY + rand.nextInt(16) + 8;
+				int z52 = world.getHeightValue(j6, k10);
+	
+				WorldGenerator worldgenerator = rand.nextBoolean() ? new WorldGenShrub(0, 0) : rand.nextInt(5) == 0 ? new DecoSavannah(0) : new DecoSavannah(1);
+				worldgenerator.setScale(1.0D, 1.0D, 1.0D);
+				worldgenerator.generate(world, rand, j6, z52, k10);
+			}
 		}
 		
-		//flowers
-		if(rand.nextInt(2) == 0)
+		if(rand.nextInt(5) == 0)
+		{
+			int k15 = chunkX + rand.nextInt(16) + 8;
+			int k17 = rand.nextInt(64) + 64;
+			int k20 = chunkY + rand.nextInt(16) + 8;
+			
+			if(rand.nextBoolean())
+			{
+				(new WorldGenFlowers(Blocks.brown_mushroom)).generate(world, rand, k15, k17, k20);
+			}
+			else
+			{
+				(new WorldGenFlowers(Blocks.red_mushroom)).generate(world, rand, k15, k17, k20);
+			}
+		}
+		
+		if(rand.nextInt(3) == 0) 
+		{
+			int i18 = chunkX + rand.nextInt(16) + 8;
+			int i23 = chunkY + rand.nextInt(16) + 8;
+			(new OldGenReed()).generate(world, rand, i18, 60 + rand.nextInt(8), i23);
+		}
+		
+		if(rand.nextInt(28) == 0)
+		{
+			int j16 = chunkX + rand.nextInt(16) + 8;
+			int j18 = rand.nextInt(128);
+			int j21 = chunkY + rand.nextInt(16) + 8;
+			(new WorldGenPumpkin()).generate(world, rand, j16, j18, j21);
+		}
+		
+		for(int f23 = 0; f23 < 3; f23++)
 		{
 			int j15 = chunkX + rand.nextInt(16) + 8;
 			int j17 = rand.nextInt(128);
 			int j20 = chunkY + rand.nextInt(16) + 8;
-			(new WorldGenFlowers(Blocks.yellow_flower)).generate(world, rand, j15, j17, j20);
+			(new DecoFlowers(new int[]{9,9,9,9,3,3,3,3,3,2,2,2,11,11,11})).generate(world, rand, j15, j17, j20);
 		}
 		
-		//grass
+		for(int k18 = 0; k18 < 12; k18++)
+		{
+			int k21 = chunkX + rand.nextInt(16) + 8;
+			int j23 = rand.nextInt(160);
+			int k24 = chunkY + rand.nextInt(16) + 8;
+			(new DecoCacti(false)).generate(world, rand, k21, j23, k24);
+		}
+		
 		for(int l14 = 0; l14 < 15; l14++)
 		{
 			int l19 = chunkX + rand.nextInt(16) + 8;
@@ -79,10 +143,10 @@ public class RealisticBiomeSavannahHills extends BiomeGenBase implements Realist
 		float h = perlin.noise2(x / 100f, y / 100f) * 7;
 		h += perlin.noise2(x / 20f, y / 20f) * 2;
 		
-		float m = perlin.noise2(x / 180f, y / 180f) * 65f;
+		float m = perlin.noise2(x / 180f, y / 180f) * 70f;
 		m *= m / 40f;
 		
-		float sm = perlin.noise2(x / 30f, y / 30f) * 7f;
+		float sm = perlin.noise2(x / 30f, y / 30f) * 8f;
 		sm *= m / 20f > 3.75f ? 3.75f : m / 20f;
 		m += sm;
 		
@@ -116,7 +180,7 @@ public class RealisticBiomeSavannahHills extends BiomeGenBase implements Realist
             		{
             			blocks[(y * 16 + x) * 256 + k] = rand.nextInt(3) == 0 ? Blocks.cobblestone : Blocks.stone; 
             		}
-            		else
+            		else if (depth < 10)
             		{
             			blocks[(y * 16 + x) * 256 + k] = Blocks.stone;
             		}
@@ -148,4 +212,16 @@ public class RealisticBiomeSavannahHills extends BiomeGenBase implements Realist
 	{
 		return 0;
 	}
+	
+    @SideOnly(Side.CLIENT)
+    public int getBiomeGrassColor(int i, int dont, int care)
+    {
+        return ColorizerGrass.getGrassColor(1f, 0f);
+    }
+
+    @SideOnly(Side.CLIENT)
+    public int getBiomeFoliageColor(int i, int dont, int care)
+    {
+        return ColorizerFoliage.getFoliageColor(0.8f, 0.2f);
+    }
 }

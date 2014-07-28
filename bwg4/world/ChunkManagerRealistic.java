@@ -62,7 +62,7 @@ public class ChunkManagerRealistic extends WorldChunkManager
     
     public int getBiomeByTempHum(float t, float h) 
     {
-    	return BiomeList.REALISTICsavannahField.biomeID;
+    	return BiomeList.REALISTICtaiga.biomeID;
     }
 	
     public int[] getBiomesGens(int par1, int par2, int par3, int par4)

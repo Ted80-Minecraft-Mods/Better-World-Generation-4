@@ -19,7 +19,7 @@ public class DecoSavannah extends WorldGenerator
     public boolean generate(World world, Random rand, int x, int y, int z)
     {
     	Block b = world.getBlock(x, y - 1, z);
-    	if(b != Blocks.grass && b != Blocks.dirt)
+    	if(b != Blocks.grass && b != Blocks.dirt && b != Blocks.sand)
     	{
     		return false;
     	}
@@ -31,7 +31,7 @@ public class DecoSavannah extends WorldGenerator
 	    	
 	    	for(int i = 0; i < h; i++)
 	    	{
-	    		world.setBlock(x, y + i, z, Blocks.log, 0, 0);
+	    		world.setBlock(x, y + i, z, Blocks.log2, 0, 0);
 	    	}
 			genLeaves(world, rand, x, y + h, z);
 			
@@ -49,7 +49,7 @@ public class DecoSavannah extends WorldGenerator
 				
 				while(sh < h)
 				{
-					world.setBlock(x + (int)(xd * c), y + sh, z + (int)(yd * c), Blocks.log, 0, 0);
+					world.setBlock(x + (int)(xd * c), y + sh, z + (int)(yd * c), Blocks.log2, 0, 0);
 					sh++;
 					c += 0.5f;
 				}
@@ -63,7 +63,7 @@ public class DecoSavannah extends WorldGenerator
 	    	
 	    	for(int i = 0; i < h; i++)
 	    	{
-	    		world.setBlock(x, y + i, z, Blocks.log, 0, 0);
+	    		world.setBlock(x, y + i, z, Blocks.log2, 0, 0);
 	    	}
 			genLeaves(world, rand, x, y + h, z);
 			
@@ -81,7 +81,7 @@ public class DecoSavannah extends WorldGenerator
 				
 				while(sh < h)
 				{
-					world.setBlock(x + (int)(xd * c), y + sh, z + (int)(yd * c), Blocks.log, 0, 0);
+					world.setBlock(x + (int)(xd * c), y + sh, z + (int)(yd * c), Blocks.log2, 0, 0);
 					sh++;
 					c += 0.5f;
 				}
@@ -95,7 +95,7 @@ public class DecoSavannah extends WorldGenerator
 	    	
 	    	for(int i = 0; i < h; i++)
 	    	{
-	    		world.setBlock(x, y + i, z, Blocks.log);
+	    		world.setBlock(x, y + i, z, Blocks.log2);
 	    	}
 			genLeaves(world, rand, x, y + h, z);
 			
@@ -113,7 +113,7 @@ public class DecoSavannah extends WorldGenerator
 				
 				while(sh < h)
 				{
-					world.setBlock(x + (int)(xd * c), y + sh, z + (int)(yd * c), Blocks.log);
+					world.setBlock(x + (int)(xd * c), y + sh, z + (int)(yd * c), Blocks.log2);
 					sh++;
 					c += 0.5f;
 				}
@@ -152,7 +152,7 @@ public class DecoSavannah extends WorldGenerator
 	    		}
 	    	}
 	    	
-	    	world.setBlock(x, y, z, Blocks.log);
+	    	world.setBlock(x, y, z, Blocks.log2);
     	}
     	else
     	{
@@ -180,7 +180,7 @@ public class DecoSavannah extends WorldGenerator
 	    		}
 	    	}
 	    	
-	    	world.setBlock(x, y, z, Blocks.log);
+	    	world.setBlock(x, y, z, Blocks.log2);
     	}
     }
 }

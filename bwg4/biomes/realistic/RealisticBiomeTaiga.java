@@ -5,6 +5,7 @@ import java.util.Random;
 import bwg4.api.BiomeList;
 import bwg4.biomes.RealisticBiome;
 import bwg4.deco.DecoBigTree;
+import bwg4.deco.DecoFlowers;
 import bwg4.deco.DecoGold1;
 import bwg4.deco.DecoGrass;
 import bwg4.deco.DecoPineTree;
@@ -76,29 +77,10 @@ public class RealisticBiomeTaiga extends BiomeGenBase implements RealisticBiome
 			}
 		}
 		
-		//pumpkin
-		if(rand.nextInt(28) == 0)
-		{
-			int j16 = chunkX + rand.nextInt(16) + 8;
-			int j18 = rand.nextInt(128);
-			int j21 = chunkY + rand.nextInt(16) + 8;
-			(new WorldGenPumpkin()).generate(world, rand, j16, j18, j21);
-		}
-		
-		//flowers
-		if(rand.nextInt(2) == 0)
-		{
-			int j15 = chunkX + rand.nextInt(16) + 8;
-			int j17 = rand.nextInt(128);
-			int j20 = chunkY + rand.nextInt(16) + 8;
-			(new WorldGenFlowers(Blocks.red_flower)).generate(world, rand, j15, j17, j20);
-		}
-		
-		//mushroom
-		if(rand.nextInt(4) == 0)
+		if(rand.nextInt(5) == 0)
 		{
 			int k15 = chunkX + rand.nextInt(16) + 8;
-			int k17 = rand.nextInt(128);
+			int k17 = rand.nextInt(64) + 64;
 			int k20 = chunkY + rand.nextInt(16) + 8;
 			
 			if(rand.nextBoolean())
@@ -110,8 +92,23 @@ public class RealisticBiomeTaiga extends BiomeGenBase implements RealisticBiome
 				(new WorldGenFlowers(Blocks.red_mushroom)).generate(world, rand, k15, k17, k20);
 			}
 		}
+		
+		if(rand.nextInt(28) == 0)
+		{
+			int j16 = chunkX + rand.nextInt(16) + 8;
+			int j18 = rand.nextInt(128);
+			int j21 = chunkY + rand.nextInt(16) + 8;
+			(new WorldGenPumpkin()).generate(world, rand, j16, j18, j21);
+		}
+		
+		for(int f23 = 0; f23 < 2; f23++)
+		{
+			int j15 = chunkX + rand.nextInt(16) + 8;
+			int j17 = rand.nextInt(128);
+			int j20 = chunkY + rand.nextInt(16) + 8;
+			(new DecoFlowers(new int[]{9,0,3})).generate(world, rand, j15, j17, j20);
+		}
 
-		//grass
 		for(int l14 = 0; l14 < 15; l14++)
 		{
 			int l19 = chunkX + rand.nextInt(16) + 8;
