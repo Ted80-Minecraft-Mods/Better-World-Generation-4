@@ -1,0 +1,59 @@
+generator.BWG4=BWG4
+
+gui.selectcategory=카테고리를 선택하세요:
+gui.comingsoon=Coming soon!
+gui.selectGenerator=월드생성방식을 선택하세요:
+gui.generatorSettings=월드생성 설정:
+gui.copystring=월드생성 설정을 클립보드에 복사했습니다.
+
+bwg4.category.enhanced=강화
+bwg4.category.old=구버전
+bwg4.category.survival=극단적인 서바이벌
+bwg4.category.fun=재미
+
+bwg4.setting.size=크기
+bwg4.setting.small=작음
+bwg4.setting.default=기본
+bwg4.setting.large=큼
+bwg4.setting.snow=설원
+bwg4.setting.water=물
+bwg4.setting.on=ON
+bwg4.setting.off=OFF
+bwg4.setting.theme=주제
+bwg4.setting.type=타입
+bwg4.setting.layer=레이어
+
+bwg4.theme.default=기본
+bwg4.theme.snow=설원
+bwg4.theme.jungle=정글
+bwg4.theme.tropical=열대
+bwg4.theme.paradise=낙원
+bwg4.theme.hell=지옥
+bwg4.theme.woods=나무
+
+bwg4.type.island=섬
+bwg4.type.floating=Floating
+bwg4.type.inland=섬
+
+bwg4.DEFAULT=기본 강화
+bwg4.EXTRFLAT=익스트림 플렛
+bwg4.BETA173=Beta 1.7.3
+bwg4.ALPHA12=Alpha 1.2.0
+bwg4.ALPHA11=Alpha 1.1.0
+bwg4.INFDEV=Infdev
+bwg4.INDEV=Indev
+bwg4.WASTELAND=황무지 (WIP)
+bwg4.ISLAND=서바이벌 섬
+bwg4.SKYISLAND=서바이벌 스카이 블럭
+bwg4.CAVESURV=지하 서바이벌
+bwg4.SKYBLOCK=스카이블럭
+bwg4.SKYLANDS=스카이랜드
+bwg4.CAVE=동굴 세계(WIP)
+bwg4.CITY=무한한 도시
+bwg4.DEADLYDESERT=죽음의 사막
+bwg4.EXTREMEJUNGLE=익스트림 정글
+bwg4.PLANET=미행성 (WIP)
+bwg4.REALISTIC=현실적인
+
+credits.skyblock=최초 맵 제작자 : Noobcrew
+credits.planet=최초 모드 제작자 : Seibai
